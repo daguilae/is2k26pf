@@ -81,7 +81,7 @@
             this.menuStrip1.MaximumSize = new System.Drawing.Size(0, 503);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 1069, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1620, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1620, 30);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "MenuStrip";
             // 
@@ -91,7 +91,7 @@
             this.cerrarSesiónToolStripMenuItem});
             this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // cerrarSesiónToolStripMenuItem
@@ -111,7 +111,7 @@
             this.Btn_Aplicacion});
             this.catálogosToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
-            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.catálogosToolStripMenuItem.Size = new System.Drawing.Size(102, 26);
             this.catálogosToolStripMenuItem.Text = "Catálogos";
             // 
             // empleadosToolStripMenuItem1
@@ -155,7 +155,7 @@
             this.Btn_Bitacora});
             this.procesosToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
-            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+            this.procesosToolStripMenuItem.Size = new System.Drawing.Size(95, 26);
             this.procesosToolStripMenuItem.Text = "Procesos";
             // 
             // Btn_Bitacora
@@ -172,7 +172,7 @@
             this.cambiarContraseñaToolStripMenuItem});
             this.herramientasToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.herramientasToolStripMenuItem.Text = "&Herramientas";
             // 
             // optionsToolStripMenuItem
@@ -196,7 +196,7 @@
             this.asignacionDeAplicacionAPerfilesToolStripMenuItem});
             this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Rockwell", 10F);
             this.asignacionesToolStripMenuItem.Name = "asignacionesToolStripMenuItem";
-            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
+            this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.asignacionesToolStripMenuItem.Text = "Asignaciones";
             // 
             // asignacionDeAplicacionAUsuarioToolStripMenuItem
@@ -294,8 +294,5 @@
         private System.Windows.Forms.ToolStripMenuItem asignacionDeAplicacionAPerfilesToolStripMenuItem;
         private System.Windows.Forms.Panel Pnl_Superior;
         private System.Windows.Forms.PictureBox Pic_Cerrar;
-
-           
-    
     }
 }

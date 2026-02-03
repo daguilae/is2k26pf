@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_EmpleadosV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_EmpleadosV2.Designer.cs">
+      <DependentUpon>Frm_EmpleadosV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Permisos_Perfiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_EmpleadosV2.resx">
+      <DependentUpon>Frm_EmpleadosV2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Permisos_Perfiles.resx">
       <DependentUpon>Frm_Permisos_Perfiles.cs</DependentUpon>
     </EmbeddedResource>

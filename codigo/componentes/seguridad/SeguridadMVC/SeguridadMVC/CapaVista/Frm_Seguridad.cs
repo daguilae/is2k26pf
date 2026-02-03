@@ -199,14 +199,14 @@ namespace Capa_Vista_Seguridad
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
-            Frm_Empleados formEmpleado = new Frm_Empleados();
+            Frm_EmpleadosV2 formEmpleado = new Frm_EmpleadosV2();
             formEmpleado.MdiParent = this;
             formEmpleado.Show();
         }
         private void empleadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
-            Frm_Empleados formEmpleado = new Frm_Empleados();
+            Frm_EmpleadosV2 formEmpleado = new Frm_EmpleadosV2();
             formEmpleado.MdiParent = this;
             formEmpleado.Show();
         }
