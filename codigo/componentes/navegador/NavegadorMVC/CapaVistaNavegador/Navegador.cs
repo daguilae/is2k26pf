@@ -53,7 +53,7 @@ namespace Capa_Vista_Navegador
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-                false,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
             );
 
@@ -270,7 +270,7 @@ namespace Capa_Vista_Navegador
               permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-              false,
+              permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
           );
             ctrl.LimpiarCombos(this, SAlias);
@@ -431,7 +431,7 @@ namespace Capa_Vista_Navegador
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
-                false,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
             );
 
