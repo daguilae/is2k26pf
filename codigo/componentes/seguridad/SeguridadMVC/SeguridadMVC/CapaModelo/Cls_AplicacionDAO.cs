@@ -158,6 +158,7 @@ namespace Capa_Modelo_Seguridad
         // ===============================================================
         // FUNCIÓN: fun_VerificarRelaciones
         // Descripción: Verifica si la aplicación tiene asignaciones activas (llaves foráneas).
+        //Brandon Hernandez 5/02/2026
         // ===============================================================
         public bool fun_VerificarRelaciones(int idAplicacion)
         {
@@ -193,19 +194,18 @@ namespace Capa_Modelo_Seguridad
         // ===============================================================
         public DataTable ObtenerReportes()
         {
-            string SQL_SELECT_REPORTES = @"SELECT Pk_Id_Reporte 
-                                 FROM Tbl_Reportes 
-                                 ORDER BY Pk_Id_Reporte";
-
-            DataTable dt = new DataTable();
+            DataTable dtResultado = new DataTable();
+            string sQuery = @"SELECT Pk_Id_Reporte,  Cmp_Titulo_Reporte
+                                   FROM Tbl_Reportes
+                                   ORDER BY Pk_Id_Reporte";
 
             using (OdbcConnection conn = conexion.conexion())
+            using (OdbcCommand cmd = new OdbcCommand(sQuery, conn))
+            using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
             {
-                OdbcDataAdapter da = new OdbcDataAdapter(SQL_SELECT_REPORTES, conn);
-                da.Fill(dt);
+                da.Fill(dtResultado);
             }
-
-            return dt;
+            return dtResultado;
         }
     }
 }
