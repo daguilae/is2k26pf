@@ -79,7 +79,7 @@ namespace Capa_Vista_Seguridad
 
                 // Abrir Frm_Principal
                 this.Hide();
-                Frm_Principal frmMenu = new Frm_Principal();
+                Frm_Seguridad frmMenu = new Frm_Seguridad();
                 frmMenu.ShowDialog();
                 this.Close();
             }

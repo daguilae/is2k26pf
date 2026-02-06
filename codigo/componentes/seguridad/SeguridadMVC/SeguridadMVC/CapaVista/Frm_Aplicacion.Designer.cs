@@ -84,7 +84,7 @@ namespace Capa_Vista_Seguridad
             this.Cbo_buscar.Location = new System.Drawing.Point(193, 32);
             this.Cbo_buscar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Cbo_buscar.Name = "Cbo_buscar";
-            this.Cbo_buscar.Size = new System.Drawing.Size(407, 33);
+            this.Cbo_buscar.Size = new System.Drawing.Size(407, 28);
             this.Cbo_buscar.TabIndex = 6;
             // 
             // Txt_id_aplicacion
@@ -93,7 +93,7 @@ namespace Capa_Vista_Seguridad
             this.Txt_id_aplicacion.Location = new System.Drawing.Point(299, 39);
             this.Txt_id_aplicacion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Txt_id_aplicacion.Name = "Txt_id_aplicacion";
-            this.Txt_id_aplicacion.Size = new System.Drawing.Size(535, 33);
+            this.Txt_id_aplicacion.Size = new System.Drawing.Size(535, 29);
             this.Txt_id_aplicacion.TabIndex = 7;
             // 
             // Gpb_buscar_aplicacion
@@ -134,7 +134,7 @@ namespace Capa_Vista_Seguridad
             this.Lbl_id_aplicacion.Location = new System.Drawing.Point(49, 42);
             this.Lbl_id_aplicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_id_aplicacion.Name = "Lbl_id_aplicacion";
-            this.Lbl_id_aplicacion.Size = new System.Drawing.Size(134, 22);
+            this.Lbl_id_aplicacion.Size = new System.Drawing.Size(114, 20);
             this.Lbl_id_aplicacion.TabIndex = 9;
             this.Lbl_id_aplicacion.Text = "ID Aplicacion";
             // 
@@ -145,7 +145,7 @@ namespace Capa_Vista_Seguridad
             this.Lbl_id_modulo.Location = new System.Drawing.Point(49, 150);
             this.Lbl_id_modulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_id_modulo.Name = "Lbl_id_modulo";
-            this.Lbl_id_modulo.Size = new System.Drawing.Size(106, 22);
+            this.Lbl_id_modulo.Size = new System.Drawing.Size(90, 20);
             this.Lbl_id_modulo.TabIndex = 10;
             this.Lbl_id_modulo.Text = "ID Modulo";
             // 
@@ -156,7 +156,7 @@ namespace Capa_Vista_Seguridad
             this.Lbl_nombre_aplicacion.Location = new System.Drawing.Point(48, 214);
             this.Lbl_nombre_aplicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_nombre_aplicacion.Name = "Lbl_nombre_aplicacion";
-            this.Lbl_nombre_aplicacion.Size = new System.Drawing.Size(187, 22);
+            this.Lbl_nombre_aplicacion.Size = new System.Drawing.Size(161, 20);
             this.Lbl_nombre_aplicacion.TabIndex = 11;
             this.Lbl_nombre_aplicacion.Text = "Nombre Aplicacion";
             // 
@@ -167,7 +167,7 @@ namespace Capa_Vista_Seguridad
             this.Lbl_descripcion.Location = new System.Drawing.Point(48, 267);
             this.Lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_descripcion.Name = "Lbl_descripcion";
-            this.Lbl_descripcion.Size = new System.Drawing.Size(120, 22);
+            this.Lbl_descripcion.Size = new System.Drawing.Size(104, 20);
             this.Lbl_descripcion.TabIndex = 12;
             this.Lbl_descripcion.Text = "Descripcion";
             // 
@@ -177,7 +177,7 @@ namespace Capa_Vista_Seguridad
             this.Txt_Nombre_aplicacion.Location = new System.Drawing.Point(299, 212);
             this.Txt_Nombre_aplicacion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Txt_Nombre_aplicacion.Name = "Txt_Nombre_aplicacion";
-            this.Txt_Nombre_aplicacion.Size = new System.Drawing.Size(535, 33);
+            this.Txt_Nombre_aplicacion.Size = new System.Drawing.Size(535, 29);
             this.Txt_Nombre_aplicacion.TabIndex = 14;
             // 
             // Txt_descripcion
@@ -186,7 +186,7 @@ namespace Capa_Vista_Seguridad
             this.Txt_descripcion.Location = new System.Drawing.Point(299, 262);
             this.Txt_descripcion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Txt_descripcion.Name = "Txt_descripcion";
-            this.Txt_descripcion.Size = new System.Drawing.Size(535, 33);
+            this.Txt_descripcion.Size = new System.Drawing.Size(535, 29);
             this.Txt_descripcion.TabIndex = 15;
             // 
             // Gbp_datos_aplicacion
@@ -216,8 +216,9 @@ namespace Capa_Vista_Seguridad
             this.Cbo_id_reporte.FormattingEnabled = true;
             this.Cbo_id_reporte.Location = new System.Drawing.Point(299, 91);
             this.Cbo_id_reporte.Name = "Cbo_id_reporte";
-            this.Cbo_id_reporte.Size = new System.Drawing.Size(534, 33);
+            this.Cbo_id_reporte.Size = new System.Drawing.Size(534, 28);
             this.Cbo_id_reporte.TabIndex = 18;
+            this.Cbo_id_reporte.SelectedIndexChanged += new System.EventHandler(this.Cbo_id_reporte_SelectedIndexChanged);
             // 
             // lbl_id_reporte
             // 
@@ -226,7 +227,7 @@ namespace Capa_Vista_Seguridad
             this.lbl_id_reporte.Location = new System.Drawing.Point(48, 101);
             this.lbl_id_reporte.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_id_reporte.Name = "lbl_id_reporte";
-            this.lbl_id_reporte.Size = new System.Drawing.Size(108, 22);
+            this.lbl_id_reporte.Size = new System.Drawing.Size(92, 20);
             this.lbl_id_reporte.TabIndex = 17;
             this.lbl_id_reporte.Text = "ID Reporte";
             // 
@@ -236,7 +237,7 @@ namespace Capa_Vista_Seguridad
             this.Cbo_id_modulo.FormattingEnabled = true;
             this.Cbo_id_modulo.Location = new System.Drawing.Point(299, 149);
             this.Cbo_id_modulo.Name = "Cbo_id_modulo";
-            this.Cbo_id_modulo.Size = new System.Drawing.Size(534, 33);
+            this.Cbo_id_modulo.Size = new System.Drawing.Size(534, 28);
             this.Cbo_id_modulo.TabIndex = 16;
             // 
             // Gbp_estado_aplicacion
@@ -260,7 +261,7 @@ namespace Capa_Vista_Seguridad
             this.Rdb_inactivo.Location = new System.Drawing.Point(361, 28);
             this.Rdb_inactivo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Rdb_inactivo.Name = "Rdb_inactivo";
-            this.Rdb_inactivo.Size = new System.Drawing.Size(107, 26);
+            this.Rdb_inactivo.Size = new System.Drawing.Size(92, 24);
             this.Rdb_inactivo.TabIndex = 1;
             this.Rdb_inactivo.TabStop = true;
             this.Rdb_inactivo.Text = "Inactivo";
@@ -273,7 +274,7 @@ namespace Capa_Vista_Seguridad
             this.Rdb_estado_activo.Location = new System.Drawing.Point(87, 28);
             this.Rdb_estado_activo.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Rdb_estado_activo.Name = "Rdb_estado_activo";
-            this.Rdb_estado_activo.Size = new System.Drawing.Size(93, 26);
+            this.Rdb_estado_activo.Size = new System.Drawing.Size(80, 24);
             this.Rdb_estado_activo.TabIndex = 0;
             this.Rdb_estado_activo.TabStop = true;
             this.Rdb_estado_activo.Text = "Activo";
@@ -286,7 +287,7 @@ namespace Capa_Vista_Seguridad
             this.Lbl_mantenimiento_aplicacion.Location = new System.Drawing.Point(742, 118);
             this.Lbl_mantenimiento_aplicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_mantenimiento_aplicacion.Name = "Lbl_mantenimiento_aplicacion";
-            this.Lbl_mantenimiento_aplicacion.Size = new System.Drawing.Size(512, 41);
+            this.Lbl_mantenimiento_aplicacion.Size = new System.Drawing.Size(422, 35);
             this.Lbl_mantenimiento_aplicacion.TabIndex = 18;
             this.Lbl_mantenimiento_aplicacion.Text = "Mantenimiento de Aplicación";
             // 
@@ -380,7 +381,7 @@ namespace Capa_Vista_Seguridad
             // 
             // FrmAplicacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1277, 617);
