@@ -41,12 +41,9 @@ namespace Capa_Vista_Navegador
         // carga los alias y etiquetas al iniciar el navegador
         private void Navegador_Load(object sender, EventArgs e)
         {
-            // Los botones se inicializan en su estado inicial, Reportes, ingresar e imprimir
-            // Obtener permisos del usuario conectado
+            // ... (Tu código de permisos y botones sigue igual) ...
             Cls_Privilegios_Seguridad privilegios = new Cls_Privilegios_Seguridad();
-
             Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(IPkId_Aplicacion, IPkId_Modulo);
-
 
             BotonesEstadoCRUD(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
@@ -66,8 +63,14 @@ namespace Capa_Vista_Navegador
                     // Instancia del controlador
                     Cls_ControladorNavegador controladorNavegador = new Cls_ControladorNavegador();
 
-                    // Genera dinámicamente los labels y combos
-                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, 3, SEtiquetas);
+                    // --- CAMBIO AQUÍ ---
+                    // Eliminamos el '3'.
+                    // Parámetros: (Alias, Contenedor/Form, X, Y, Etiquetas)
+                    controladorNavegador.AsignarAlias(SAlias, this, 20, 100, SEtiquetas);
+
+                    // Si tu método AsignarAlias nuevo está en otra clase, asegúrate de haber copiado
+                    // el código nuevo en Cls_ControladorNavegador.cs
+
                     ctrl.DesactivarTodosComboBoxes(this); // KEVIN NATARENO, 11/10/2025
                 }
                 catch (Exception ex)
