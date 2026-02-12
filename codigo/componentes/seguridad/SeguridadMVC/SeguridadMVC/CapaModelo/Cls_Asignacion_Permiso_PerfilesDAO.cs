@@ -16,7 +16,78 @@ namespace Capa_Modelo_Seguridad
     {
         private Cls_Conexion conexion = new Cls_Conexion();
 
-        
+        /// Brandon Alexander Hernandez 0901-22-9663 11/02/2026
+        /// Obtiene un permiso específico de un perfil para una aplicación
+
+        public DataTable ObtenerPermisoPerfilEspecifico(int iIdPerfil, int iIdAplicacion)
+        {
+            DataTable dt = new DataTable();
+            OdbcConnection conn = null;
+
+            string query = @"SELECT 
+                p.Cmp_Puesto_Perfil AS nombre_perfil,
+                a.Cmp_Nombre_Aplicacion AS nombre_aplicacion,
+                ppa.Cmp_Ingresar_Permisos_Aplicacion_Perfil + 0 AS bIngresar_permiso_aplicacion_perfil,
+                ppa.Cmp_Consultar_Permisos_Aplicacion_Perfil + 0 AS bConsultar_permiso_aplicacion_perfil,
+                ppa.Cmp_Modificar_Permisos_Aplicacion_Perfil + 0 AS bModificar_permiso_aplicacion_perfil,
+                ppa.Cmp_Eliminar_Permisos_Aplicacion_Perfil + 0 AS bEliminar_permiso_aplicacion_perfil,
+                ppa.Cmp_Imprimir_Permisos_Aplicacion_Perfil + 0 AS imprimir_permiso_aplicacion_perfil,
+                ppa.Fk_Id_Perfil AS iFk_id_perfil,
+                ppa.Fk_Id_Modulo AS iFk_id_modulo,
+                ppa.Fk_Id_Aplicacion AS iFk_id_aplicacion
+            FROM Tbl_Permiso_Perfil_Aplicacion ppa
+            INNER JOIN Tbl_Perfil p ON ppa.Fk_Id_Perfil = p.Pk_Id_Perfil
+            INNER JOIN Tbl_Aplicacion a ON ppa.Fk_Id_Aplicacion = a.Pk_Id_Aplicacion
+            WHERE ppa.Fk_Id_Perfil = ? AND ppa.Fk_Id_Aplicacion = ?";
+
+            try
+            {
+                conn = conexion.conexion();
+                // NO llamar a conn.Open() porque conexion.conexion() ya la abre
+
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idPerfil", iIdPerfil);
+                    cmd.Parameters.AddWithValue("@idAplicacion", iIdAplicacion);
+
+                  
+                    using (OdbcDataAdapter adapter = new OdbcDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+
+                    Console.WriteLine($"Filas retornadas: {dt.Rows.Count}");
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        DataRow row = dt.Rows[0];
+                    
+                    }
+                    else
+                    {
+                        Console.WriteLine("¡NO SE ENCONTRARON DATOS!");
+                    }
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR en ObtenerPermisoPerfilEspecifico: " + ex.Message);
+                Console.WriteLine("StackTrace: " + ex.StackTrace);
+                
+                return dt;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                    Console.WriteLine("Conexión cerrada en ObtenerPermisoPerfilEspecifico");
+                }
+            }
+        }
 
 
         public DataTable datObtenerPerfiles()
@@ -118,8 +189,13 @@ namespace Capa_Modelo_Seguridad
 
         public bool bExistePermisoPerfil(int iIdPerfil, int iIdModulo, int iIdAplicacion)
         {
-            using (OdbcConnection conn = conexion.conexion())
+            OdbcConnection conn = null;
+            try
             {
+                conn = conexion.conexion();
+
+                // NO llamar a conn.Open() porque conexion.conexion() ya la abre
+
                 string verificar = @"SELECT COUNT(*) 
                              FROM Tbl_Permiso_Perfil_Aplicacion
                              WHERE Fk_Id_Perfil = ? AND Fk_Id_Modulo = ? AND Fk_Id_Aplicacion = ?";
@@ -131,7 +207,25 @@ namespace Capa_Modelo_Seguridad
                     cmd.Parameters.AddWithValue("?", iIdAplicacion);
 
                     int existe = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    Console.WriteLine($"bExistePermisoPerfil → Perfil:{iIdPerfil}, Modulo:{iIdModulo}, App:{iIdAplicacion} = {existe}");
+
                     return existe > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error en bExistePermisoPerfil: " + ex.Message);
+              
+                return false;
+            }
+            finally
+            {
+                if (conn != null && conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                    Console.WriteLine("Conexión cerrada en bExistePermisoPerfil");
                 }
             }
         }
@@ -239,8 +333,8 @@ namespace Capa_Modelo_Seguridad
             }
             catch (Exception ex)
             {
-                // Opcional: log o manejo de error
-                Console.WriteLine("Error al obtener permisos por perfil: " + ex.Message);
+               
+                
             }
             return dt;
         }
