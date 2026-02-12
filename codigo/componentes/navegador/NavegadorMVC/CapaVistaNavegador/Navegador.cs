@@ -51,7 +51,7 @@ namespace Capa_Vista_Navegador
             BotonesEstadoCRUD(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
@@ -81,7 +81,7 @@ namespace Capa_Vista_Navegador
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
             ctrl.LimpiarCombos(this, SAlias); // KEVIN NATARENO, 11/10/2025
-
+            
             if (SAlias == null || SAlias.Length < 2)
             {
                 MessageBox.Show("No se han definido los alias de la tabla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,6 +90,7 @@ namespace Capa_Vista_Navegador
 
             
             Btn_ingresar.Enabled = false;
+            Btn_guardar.Enabled = true;
             Btn_cancelar.Enabled = true;
             mostrarDatos();
             ctrl.ActivarTodosComboBoxes(this);
@@ -236,25 +237,27 @@ namespace Capa_Vista_Navegador
         public void BotonesEstadoCRUD(
                   bool ingresar,
                   bool modificar,
-                  bool guardar,
+                  //bool guardar,
                   bool eliminar,
                   bool consultar,
                   bool imprimir)
         {
             Btn_ingresar.Enabled = ingresar;
             Btn_modificar.Enabled = modificar;
-            Btn_guardar.Enabled = guardar;
+            //Btn_guardar.Enabled = guardar;
             Btn_eliminar.Enabled = eliminar;
             Btn_consultar.Enabled = consultar;
             Btn_imprimir.Enabled = imprimir;
 
             // Botones de navegación, se mantienen activos
+            Btn_guardar.Enabled = false;
             Btn_cancelar.Enabled = false;
             Btn_refrescar.Enabled = true;
             Btn_inicio.Enabled = true;
             Btn_anterior.Enabled = true;
             Btn_sig.Enabled = true;
             Btn_fin.Enabled = true;
+            Btn_ayuda.Enabled = true;
         }
 
 
@@ -268,7 +271,7 @@ namespace Capa_Vista_Navegador
             BotonesEstadoCRUD(
               permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-              permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+              //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
               permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
@@ -429,7 +432,7 @@ namespace Capa_Vista_Navegador
             BotonesEstadoCRUD(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
-                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
