@@ -114,15 +114,17 @@ namespace Capa_Vista_Seguridad
             Dictionary<int, ToolStripMenuItem> mapaCatalogos = new Dictionary<int, ToolStripMenuItem>
             {
                 {301, empleadosToolStripMenuItem1},
-                {302, usuariosToolStripMenuItem},
+             
                 {303, perfilesToolStripMenuItem},
                 {304, modulosToolStripMenuItem},
-                {305, Btn_Aplicacion}
+                
             };
 
             Dictionary<int, ToolStripMenuItem> mapaProcesos = new Dictionary<int, ToolStripMenuItem>
             {
-                {309, procesosToolStripMenuItem }
+                {309, Btn_Bitacora },
+                {305, aplicaciónToolStripMenuItem},
+                {302, usuariosToolStripMenuItem }
             };
 
             Dictionary<int, ToolStripMenuItem> mapaAsignaciones = new Dictionary<int, ToolStripMenuItem>
@@ -238,13 +240,7 @@ namespace Capa_Vista_Seguridad
             modulo.MdiParent = this;
             modulo.Show();
         }
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CerrarFormulariosHijos();
-            Frm_Usuario frm = new Frm_Usuario();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+       
         private void Btn_Bitacora_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
@@ -268,10 +264,7 @@ namespace Capa_Vista_Seguridad
         }
         private void Btn_Aplicacion_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
-            FrmAplicacion formAplicacion = new FrmAplicacion();
-            formAplicacion.MdiParent = this;
-            formAplicacion.Show();
+        
         }
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -396,6 +389,35 @@ namespace Capa_Vista_Seguridad
                 MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        // Brandon Hernandez 0901-22-9663
+        //11/02/2026 El MDI principal no contaba con boton de cerrar sesión 
+        private void Btn_Cerrar_Sesion_Click(object sender, EventArgs e)
+        {
+            // Registrar en bitácora
+            ctrlBitacora.RegistrarCierreSesion(Cls_Usuario_Conectado.iIdUsuario);
+
+            this.Hide();
+            Frm_Login formLogin = new Frm_Login();
+            formLogin.ShowDialog();
+            this.Close();
+        }
+        // Brandon Hernandez 0901-22-9663
+        //11/02/202 se movio aplicaciones y usuarios a procesos
+        private void aplicaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosHijos();
+            FrmAplicacion formAplicacion = new FrmAplicacion();
+            formAplicacion.MdiParent = this;
+            formAplicacion.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            CerrarFormulariosHijos();
+            Frm_Usuario frm = new Frm_Usuario();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

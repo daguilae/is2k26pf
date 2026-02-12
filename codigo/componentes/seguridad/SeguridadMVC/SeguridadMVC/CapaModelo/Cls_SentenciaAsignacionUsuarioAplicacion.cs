@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Odbc;
+using System.Windows.Forms;
 
 namespace Capa_Modelo_Seguridad
 {
@@ -9,6 +10,8 @@ namespace Capa_Modelo_Seguridad
     {
         Cls_Conexion conexion = new Cls_Conexion();
             //consulta para pasar obtener aplicacion y sus permisos  --> Brandon Hernandez 0901-22-9663
+
+        //Brandon Hernandez 0901-22-9663 11/02/2016 busca los permisos ya agregados 
         public DataTable ObtenerPermisosUsuarioAplicacion(int iIdUsuario, int iIdAplicacion)
         {
             DataTable dt = new DataTable();
@@ -35,6 +38,27 @@ namespace Capa_Modelo_Seguridad
             return dt;
         }
 
+        public DataTable ObtenerPermisoEspecifico(int iIdUsuario, int iIdModulo, int iIdAplicacion)
+        {
+            try
+            {
+                // Usar el método que ya existe
+                DataTable dt = ObtenerPermisosUsuarioAplicacion(iIdUsuario, iIdAplicacion);
+
+                // Verificar que se obtuvieron datos
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    return dt;
+                }
+
+                return new DataTable(); // Retornar tabla vacía si no hay datos
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en ObtenerPermisoEspecifico: " + ex.Message);
+                return new DataTable();
+            }
+        }
         // Obtener todos los usuarios
         public DataTable fun_ObtenerUsuarios()
         {
@@ -49,7 +73,6 @@ namespace Capa_Modelo_Seguridad
             }
             return dt;
         }
-
         // Obtener todos los módulos
         public DataTable fun_ObtenerModulos()
         {

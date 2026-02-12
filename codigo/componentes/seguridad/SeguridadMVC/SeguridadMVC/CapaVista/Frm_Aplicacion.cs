@@ -54,6 +54,7 @@ namespace Capa_Vista_Seguridad
             Cbo_id_modulo.Enabled = puedeEditar;
             Txt_Nombre_aplicacion.Enabled = puedeEditar;
             Txt_descripcion.Enabled = puedeEditar;
+            Cbo_id_reporte.Enabled = puedeEditar;
 
 
         }
@@ -208,6 +209,7 @@ namespace Capa_Vista_Seguridad
                 Cbo_id_modulo.Enabled = false; // ← MÓDULO NO EDITABLE EN MODIFICACIÓN
                 Btn_guardar.Enabled = false;
                 Btn_modificar.Enabled = _canModificar;
+                Cbo_id_reporte.Enabled = false;
             }
             else
             {
@@ -352,6 +354,8 @@ namespace Capa_Vista_Seguridad
             Rdb_inactivo.Checked = false;
             Cbo_id_modulo.SelectedItem = null;
             Cbo_id_reporte.SelectedIndex = -1;
+            
+
 
             //Restaurar estado de controles según permisos
             bool puedeEditar = (_canIngresar || _canModificar);
@@ -359,6 +363,9 @@ namespace Capa_Vista_Seguridad
             Cbo_id_modulo.Enabled = _canIngresar; // ← HABILITADO SOLO EN MODO NUEVO
             Btn_guardar.Enabled = _canIngresar;
             Btn_modificar.Enabled = _canModificar;
+            Cbo_id_reporte.Enabled = _canIngresar;
+
+
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
