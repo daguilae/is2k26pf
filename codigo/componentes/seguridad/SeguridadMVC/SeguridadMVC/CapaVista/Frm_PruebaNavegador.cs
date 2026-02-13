@@ -29,22 +29,17 @@ namespace Capa_Vista_Seguridad
             };
 
             string[] columnas = {
-                    "Tbl_Perfil",
-                    "Pk_Id_Perfil",
-                    "Cmp_Puesto_Perfil",
-                    "Cmp_Descripcion_Perfil",
-                    "Cmp_Estado_Perfil",
-                    "Cmp_Tipo_Perfil"
-                };
+    "tbl_contacto",
+    "Pk_Contacto_Id",
+    "Cmp_Correo",
+    "Cmp_Telefono"
+};
 
             string[] sEtiquetas = {
-                    "Código Perfil",
-                    "Puesto del Perfil",
-                    "Descripción del Perfil",
-                    "Estado del Perfil",
-                    "Tipo de Perfil"
-                };
-
+    "Código Contacto",
+    "Correo Electrónico",
+    "Teléfono"
+};
 
             int id_aplicacion = 303;
             int id_Modulo = 4;
