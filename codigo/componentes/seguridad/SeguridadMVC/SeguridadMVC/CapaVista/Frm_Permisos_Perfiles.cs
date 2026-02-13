@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace Capa_Vista_Seguridad
 {
     public partial class Frm_Permisos_Perfiles : Form
     {
-        
+
         Cls_Asignacion_Permiso_PerfilControlador controlador = new Cls_Asignacion_Permiso_PerfilControlador();
         Cls_Registrar_Permisos_Bitacora registrarBitacora = new Cls_Registrar_Permisos_Bitacora();  //Aron Esquit  0901-22-13036
         Cls_BitacoraControlador ctrlBitacora = new Cls_BitacoraControlador();  //Bitacora  Aron Esquit 0901-22-13036
@@ -28,7 +29,10 @@ namespace Capa_Vista_Seguridad
         public Frm_Permisos_Perfiles()
         {
             InitializeComponent();
-            Dgv_Permisos.AllowUserToAddRows = false;
+
+           
+            InicializarDataGridView();
+
             fun_AplicarPermisos();
 
 
@@ -70,26 +74,116 @@ namespace Capa_Vista_Seguridad
         {
             Dgv_Permisos.Columns.Clear();
             Dgv_Permisos.Rows.Clear();
+            Dgv_Permisos.AllowUserToAddRows = false;
+            Dgv_Permisos.AllowUserToDeleteRows = true;
+            Dgv_Permisos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            Dgv_Permisos.EditMode = DataGridViewEditMode.EditOnEnter;
 
-            Dgv_Permisos.Columns.Add("Perfil", "Perfil");
-            Dgv_Permisos.Columns.Add("Aplicacion", "Aplicación");
-            Dgv_Permisos.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Ingresar", HeaderText = "Ingresar" });
-            Dgv_Permisos.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Consultar", HeaderText = "Consultar" });
-            Dgv_Permisos.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Modificar", HeaderText = "Modificar" });
-            Dgv_Permisos.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Eliminar", HeaderText = "Eliminar" });
-            Dgv_Permisos.Columns.Add(new DataGridViewCheckBoxColumn() { Name = "Imprimir", HeaderText = "Imprimir" });
+            // COLUMNAS EN ORDEN ESPECÍFICO
+            // Índice 0: Perfil (texto)
+            var colPerfil = new DataGridViewTextBoxColumn()
+            {
+                Name = "Perfil",
+                HeaderText = "Perfil",
+                ReadOnly = true,
+                Width = 150
+            };
 
-            // IDs ocultos
-            Dgv_Permisos.Columns.Add("IdPerfil", "IdPerfil");
-            Dgv_Permisos.Columns["IdPerfil"].Visible = false;
-            Dgv_Permisos.Columns.Add("IdModulo", "IdModulo");
-            Dgv_Permisos.Columns["IdModulo"].Visible = false;
-            Dgv_Permisos.Columns.Add("IdAplicacion", "IdAplicacion");
-            Dgv_Permisos.Columns["IdAplicacion"].Visible = false;
+            // Índice 1: Aplicacion (texto)
+            var colAplicacion = new DataGridViewTextBoxColumn()
+            {
+                Name = "Aplicacion",
+                HeaderText = "Aplicación",
+                ReadOnly = true,
+                Width = 150
+            };
+
+            // Índice 2: Ingresar (checkbox)
+            var colIngresar = new DataGridViewCheckBoxColumn()
+            {
+                Name = "Ingresar",
+                HeaderText = "Ingresar",
+                Width = 80
+            };
+
+            // Índice 3: Consultar (checkbox)
+            var colConsultar = new DataGridViewCheckBoxColumn()
+            {
+                Name = "Consultar",
+                HeaderText = "Consultar",
+                Width = 80
+            };
+
+            // Índice 4: Modificar (checkbox)
+            var colModificar = new DataGridViewCheckBoxColumn()
+            {
+                Name = "Modificar",
+                HeaderText = "Modificar",
+                Width = 80
+            };
+
+            // Índice 5: Eliminar (checkbox)
+            var colEliminar = new DataGridViewCheckBoxColumn()
+            {
+                Name = "Eliminar",
+                HeaderText = "Eliminar",
+                Width = 80
+            };
+
+            // Índice 6: Imprimir (checkbox)
+            var colImprimir = new DataGridViewCheckBoxColumn()
+            {
+                Name = "Imprimir",
+                HeaderText = "Imprimir",
+                Width = 80
+            };
+
+            // Índice 7: IdPerfil (oculto)
+            var colIdPerfil = new DataGridViewTextBoxColumn()
+            {
+                Name = "IdPerfil",
+                Visible = false
+            };
+
+            // Índice 8: IdModulo (oculto)
+            var colIdModulo = new DataGridViewTextBoxColumn()
+            {
+                Name = "IdModulo",
+                Visible = false
+            };
+
+            // Índice 9: IdAplicacion (oculto)
+            var colIdAplicacion = new DataGridViewTextBoxColumn()
+            {
+                Name = "IdAplicacion",
+                Visible = false
+            };
+
+            // AGREGAR TODAS LAS COLUMNAS EN ORDEN
+            Dgv_Permisos.Columns.AddRange(new DataGridViewColumn[]
+            {
+        colPerfil,      // 0
+        colAplicacion,  // 1
+        colIngresar,    // 2
+        colConsultar,   // 3
+        colModificar,   // 4
+        colEliminar,    // 5
+        colImprimir,    // 6
+        colIdPerfil,    // 7
+        colIdModulo,    // 8
+        colIdAplicacion // 9
+            });
+
+            // Bloquear edición de columnas específicas
+            Dgv_Permisos.CellBeginEdit += (s, e) =>
+            {
+                string colName = Dgv_Permisos.Columns[e.ColumnIndex].Name;
+                if (colName == "Perfil" || colName == "Aplicacion")
+                    e.Cancel = true;
+            };
         }
-
-
-        private void Btn_salir_Click(object sender, EventArgs e)
+    
+            private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -113,10 +207,9 @@ namespace Capa_Vista_Seguridad
             Cbo_Modulos.SelectedIndexChanged += Cbo_Modulos_SelectedIndexChanged;
             Cbo_aplicaciones.DataSource = null;
             Cbo_aplicaciones.Items.Clear();
-            InicializarDataGridView();
+           
 
-            Dgv_Permisos.CellBeginEdit += Dgv_Permisos_CellBeginEdit;
-            Dgv_Permisos.CellClick += Dgv_Permisos_CellClick;
+
         }
 
         private void Cbo_Modulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,52 +236,42 @@ namespace Capa_Vista_Seguridad
 
         private void Btn_agregar_Click(object sender, EventArgs e)
         {
-            if (Cbo_perfiles.SelectedIndex == -1 || Cbo_Modulos.SelectedIndex == -1 || Cbo_aplicaciones.SelectedIndex == -1)
+            try
             {
-                MessageBox.Show("Seleccione Perfil, Módulo y Aplicación.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string sPerfilNombre = Cbo_perfiles.Text;
-            string sAplicacionNombre = Cbo_aplicaciones.Text;
-            int iIdPerfil = Convert.ToInt32(Cbo_perfiles.SelectedValue);
-            int iIdAplicacion = Convert.ToInt32(Cbo_aplicaciones.SelectedValue);
-            int iIdModulo = Convert.ToInt32(Cbo_Modulos.SelectedValue);
-
-            // Verifica si ya existe la fila (evita duplicados)
-            bool bExiste = false;
-            foreach (DataGridViewRow row in Dgv_Permisos.Rows)
-            {
-                if (row.IsNewRow) continue;
-                int iPerfil = Convert.ToInt32(row.Cells["IdPerfil"].Value);
-                int iModulo = Convert.ToInt32(row.Cells["IdModulo"].Value);
-                int iAplicacion = Convert.ToInt32(row.Cells["IdAplicacion"].Value);
-                if (iPerfil == iIdPerfil && iModulo == iIdModulo && iAplicacion == iIdAplicacion)
+                if (Cbo_perfiles.SelectedIndex == -1 || Cbo_Modulos.SelectedIndex == -1 || Cbo_aplicaciones.SelectedIndex == -1)
                 {
-                    bExiste = true;
-                    break;
+                    MessageBox.Show("Seleccione perfil, módulo y aplicación.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string sPerfil = Cbo_perfiles.Text;
+                string sAplicacion = Cbo_aplicaciones.Text;
+                int iIdPerfil = Convert.ToInt32(Cbo_perfiles.SelectedValue);
+                int iIdModulo = Convert.ToInt32(Cbo_Modulos.SelectedValue);
+                int iIdAplicacion = Convert.ToInt32(Cbo_aplicaciones.SelectedValue);
+
+                // DEBUG: Mostrar los IDs que se están usando
+             
+
+                // Delegar al controlador
+                bool puedeAgregar = controlador.ValidarYAgregarPermisoPerfil(Dgv_Permisos, iIdPerfil, iIdModulo, iIdAplicacion, sPerfil, sAplicacion);
+
+                if (puedeAgregar)
+                {
+                    Cbo_perfiles.SelectedIndex = -1;
+                    Cbo_Modulos.SelectedIndex = -1;
+                    Cbo_aplicaciones.SelectedIndex = -1;
                 }
             }
-
-            if (!bExiste)
+            catch (Exception ex)
             {
-                Dgv_Permisos.Rows.Add(
-                    sPerfilNombre,
-                    sAplicacionNombre,
-                    false, false, false, false, false, // Permisos iniciales
-                    iIdPerfil,
-                    iIdModulo,
-                    iIdAplicacion
-                );
-
-            }
-            else
-            {
-                MessageBox.Show("Este Perfil ya tiene la aplicación asignada, solo modifique los permisos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error: " + ex.Message + "\n\n" + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void Btn_insertar_Click(object sender, EventArgs e)
+
+
+            private void Btn_insertar_Click(object sender, EventArgs e)
         {
             if (Dgv_Permisos.Rows.Count == 0 ||
                 (Dgv_Permisos.Rows.Count == 1 && Dgv_Permisos.AllowUserToAddRows && Dgv_Permisos.Rows[0].IsNewRow))
@@ -334,6 +417,69 @@ namespace Capa_Vista_Seguridad
 
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
+
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\componentes\seguridad\Ayuda permisos aplicación.chm";
+
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+
+
+
+                if (rutaEncontrada != null)
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"Permisos-Perfiles-Ayuda.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);

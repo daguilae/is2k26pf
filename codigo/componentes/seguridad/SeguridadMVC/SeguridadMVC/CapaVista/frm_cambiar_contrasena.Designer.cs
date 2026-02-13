@@ -29,6 +29,7 @@ namespace Capa_Vista_Seguridad
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_cambiar_contrasena));
             this.Txt_confirmar_contrasena = new System.Windows.Forms.TextBox();
             this.Txt_nueva_contrasena = new System.Windows.Forms.TextBox();
             this.Txt_contrasena_actual = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@ namespace Capa_Vista_Seguridad
             this.Chk_Mostrar = new System.Windows.Forms.CheckBox();
             this.Pnl_Superior = new System.Windows.Forms.Panel();
             this.Pic_Cerrar = new System.Windows.Forms.PictureBox();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Pnl_Superior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Cerrar)).BeginInit();
             this.SuspendLayout();
@@ -161,12 +163,28 @@ namespace Capa_Vista_Seguridad
             this.Pic_Cerrar.TabStop = false;
             this.Pic_Cerrar.Click += new System.EventHandler(this.Pic_Cerrar_Click);
             // 
-            // frm_cambiar_contrasena
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_ayuda.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ayuda.Image")));
+            this.Btn_ayuda.Location = new System.Drawing.Point(13, 51);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(99, 96);
+            this.Btn_ayuda.TabIndex = 105;
+            this.Btn_ayuda.Text = "Ayuda";
+            this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_ayuda.UseVisualStyleBackColor = false;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
+            // 
+            // Frm_cambiar_contrasena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(755, 486);
+            this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Pnl_Superior);
             this.Controls.Add(this.Chk_Mostrar);
             this.Controls.Add(this.Txt_confirmar_contrasena);
@@ -178,7 +196,7 @@ namespace Capa_Vista_Seguridad
             this.Controls.Add(this.Lbl_nueva_contrasena);
             this.Controls.Add(this.Lbl_contrasena_actual);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frm_cambiar_contrasena";
+            this.Name = "Frm_cambiar_contrasena";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_cambiar_contrasena";
             this.Pnl_Superior.ResumeLayout(false);
@@ -200,5 +218,6 @@ namespace Capa_Vista_Seguridad
         private System.Windows.Forms.CheckBox Chk_Mostrar;
         private System.Windows.Forms.Panel Pnl_Superior;
         private System.Windows.Forms.PictureBox Pic_Cerrar;
+        private System.Windows.Forms.Button Btn_ayuda;
     }
 }

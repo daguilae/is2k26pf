@@ -42,7 +42,7 @@ namespace Capa_Controlador_Seguridad
 
                 gCtrlBitacora.RegistrarAccion(
                     Cls_Usuario_Conectado.iIdUsuario,
-                    1,
+                    302,
                     $"Insertó un nuevo usuario: {sNombreUsuario}",
                     true
                 );
@@ -84,7 +84,7 @@ namespace Capa_Controlador_Seguridad
 
                 gCtrlBitacora.RegistrarAccion(
                     Cls_Usuario_Conectado.iIdUsuario,
-                    2,
+                    302,
                     $"Actualizó usuario: {sNombreUsuario}",
                     true
                 );
@@ -108,7 +108,7 @@ namespace Capa_Controlador_Seguridad
                 {
                     gCtrlBitacora.RegistrarAccion(
                         Cls_Usuario_Conectado.iIdUsuario,
-                        3,
+                        302,
                         $"Eliminó usuario con ID: {iIdUsuario}",
                         true
                     );

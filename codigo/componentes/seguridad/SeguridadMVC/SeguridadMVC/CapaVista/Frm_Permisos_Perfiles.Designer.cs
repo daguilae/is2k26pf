@@ -29,6 +29,7 @@ namespace Capa_Vista_Seguridad
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Permisos_Perfiles));
             this.Lbl_titulo = new System.Windows.Forms.Label();
             this.Gbp_datos = new System.Windows.Forms.GroupBox();
             this.Btn_agregar = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@ namespace Capa_Vista_Seguridad
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Pnl_Superior = new System.Windows.Forms.Panel();
             this.Pic_Cerrar = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.Gbp_datos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Permisos)).BeginInit();
             this.Pnl_Superior.SuspendLayout();
@@ -258,12 +260,28 @@ namespace Capa_Vista_Seguridad
             this.Pic_Cerrar.TabStop = false;
             this.Pic_Cerrar.Click += new System.EventHandler(this.Pic_Cerrar_Click);
             // 
-            // Frm_PermisosPerfiles
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.button1.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(712, 51);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 82);
+            this.button1.TabIndex = 102;
+            this.button1.Text = "Ayuda";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Frm_Permisos_Perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(836, 583);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Pnl_Superior);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.Btn_Buscar);
@@ -274,7 +292,7 @@ namespace Capa_Vista_Seguridad
             this.Controls.Add(this.Gbp_datos);
             this.Controls.Add(this.Lbl_titulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Frm_PermisosPerfiles";
+            this.Name = "Frm_Permisos_Perfiles";
             this.Text = "FrmPermisosPerfiles";
             this.Load += new System.EventHandler(this.FrmPermisosPerfiles_Load);
             this.Gbp_datos.ResumeLayout(false);
@@ -306,5 +324,6 @@ namespace Capa_Vista_Seguridad
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel Pnl_Superior;
         private System.Windows.Forms.PictureBox Pic_Cerrar;
+        private System.Windows.Forms.Button button1;
     }
 }

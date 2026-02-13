@@ -13,6 +13,10 @@ namespace Capa_Controlador_Seguridad
         private readonly Cls_Sentencias_Bitacora gBitacora = new Cls_Sentencias_Bitacora();
         private readonly Cls_Consulta_Asignaciones_Bitacora consultaBitacora = new Cls_Consulta_Asignaciones_Bitacora();
 
+        // IDs de aplicaciones específicas para registrar en bitácora
+        private const int ID_APLICACION_USUARIOS = 306;  // Para permisos de usuarios
+        private const int ID_APLICACION_PERFILES = 307;  // Para permisos de perfiles
+
         // Usuarios
         public void fun_CompararYRegistrar(
             int iIdUsuarioAccion,
@@ -27,11 +31,11 @@ namespace Capa_Controlador_Seguridad
             Cls_Permisos gPermisosAnteriores = consultaBitacora.fun_ConsultarPermisosAsignados(
                 iIdUsuario, iIdModulo, iIdAplicacion);
 
-            // Comparar y registrar cambios
+            // Comparar y registrar cambios - USA ID 306
             fun_RegistrarCambiosPermisos(
                 "usuario",
                 iIdUsuarioAccion,
-                iIdAplicacion,
+                ID_APLICACION_USUARIOS,  // Cambiado a 306
                 sNombreUsuario,
                 sNombreAplicacion,
                 gPermisosAnteriores,
@@ -52,11 +56,11 @@ namespace Capa_Controlador_Seguridad
             Cls_Permisos gPermisosAnteriores = consultaBitacora.fun_ConsultarPermisosPerfil(
                 iIdPerfil, iIdModulo, iIdAplicacion);
 
-            // Comparar y registrar cambios
+            // Comparar y registrar cambios - USA ID 307
             fun_RegistrarCambiosPermisos(
                 "perfil",
                 iIdUsuarioAccion,
-                iIdAplicacion,
+                ID_APLICACION_PERFILES,  // Cambiado a 307
                 sNombrePerfil,
                 sNombreAplicacion,
                 gPermisosAnteriores,
@@ -67,7 +71,7 @@ namespace Capa_Controlador_Seguridad
         private void fun_RegistrarCambiosPermisos(
             string tipoEntidad,
             int iIdUsuarioAccion,
-            int iIdAplicacion,
+            int iIdAplicacionBitacora,  // Nombre más descriptivo
             string sNombreEntidad,
             string sNombreAplicacion,
             Cls_Permisos gPermisos_Anteriores,
@@ -101,7 +105,8 @@ namespace Capa_Controlador_Seguridad
             {
                 string sMensaje = $"Al {tipoEntidad} '{sNombreEntidad}' se le asignaron permisos en la aplicación '{sNombreAplicacion}': {string.Join(", ", lstAgregados)}";
                 sMensaje = sMensaje.Replace("'", "''");
-                gBitacora.InsertarBitacora(iIdUsuarioAccion, iIdAplicacion, sMensaje, true);
+                // Usa el ID de aplicación específico (306 o 307)
+                gBitacora.InsertarBitacora(iIdUsuarioAccion, iIdAplicacionBitacora, sMensaje, true);
             }
 
             // Registrar permisos removidos
@@ -109,9 +114,11 @@ namespace Capa_Controlador_Seguridad
             {
                 string sMensaje = $"Al {tipoEntidad} '{sNombreEntidad}' se le removieron permisos en la aplicación '{sNombreAplicacion}': {string.Join(", ", lstRemovidos)}";
                 sMensaje = sMensaje.Replace("'", "''");
-                gBitacora.InsertarBitacora(iIdUsuarioAccion, iIdAplicacion, sMensaje, true);
+                // Usa el ID de aplicación específico (306 o 307)
+                gBitacora.InsertarBitacora(iIdUsuarioAccion, iIdAplicacionBitacora, sMensaje, true);
             }
         }
+
         public void fun_CompararYRegistrarPerfilManual(
             int iIdUsuarioAccion,
             int iIdAplicacion,
@@ -120,7 +127,8 @@ namespace Capa_Controlador_Seguridad
             Cls_Permisos gPermisosAnteriores,
             Cls_Permisos gPermisosActuales)
         {
-            fun_RegistrarCambiosPermisos("perfil", iIdUsuarioAccion, iIdAplicacion,
+            // USA ID 307 para perfiles
+            fun_RegistrarCambiosPermisos("perfil", iIdUsuarioAccion, ID_APLICACION_PERFILES,
                                          sNombrePerfil, sNombreAplicacion,
                                          gPermisosAnteriores, gPermisosActuales);
         }
@@ -171,13 +179,6 @@ namespace Capa_Controlador_Seguridad
                 gPermisosActuales
             );
         }
-
-
-
-
-
-
-
     }
 }
 

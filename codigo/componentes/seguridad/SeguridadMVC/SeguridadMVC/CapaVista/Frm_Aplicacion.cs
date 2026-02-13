@@ -54,6 +54,7 @@ namespace Capa_Vista_Seguridad
             Cbo_id_modulo.Enabled = puedeEditar;
             Txt_Nombre_aplicacion.Enabled = puedeEditar;
             Txt_descripcion.Enabled = puedeEditar;
+            Cbo_id_reporte.Enabled = puedeEditar;
 
 
         }
@@ -64,42 +65,28 @@ namespace Capa_Vista_Seguridad
             fun_ConfigurarComboBox();
             fun_CargarComboModulos();
             fun_CargarComboReportes();
+           
         }
 
         private void RecargarTodo()
-        {
+        { CargarDatosIniciales();
             fun_LimpiarCampos();
             Cbo_buscar.Items.Clear();
             Cbo_id_modulo.Items.Clear();
             CargarDatosIniciales();
         }
 
+        //Brandon Hernandez 5/02/2026
         private void fun_CargarComboReportes()
         {
-            DataTable dtReportes = controlador.ObtenerReportes();
-
-            Cbo_id_reporte.Items.Clear();
-
-            // Agregar opción "Sin reporte" con valor 0
-            Cbo_id_reporte.Items.Add(new { Display = "Sin reporte", Id = 0 });
-
-            foreach (DataRow row in dtReportes.Rows)
-            {
-                int idReporte = Convert.ToInt32(row["Pk_Id_Reporte"]);
-                Cbo_id_reporte.Items.Add(new
-                {
-                    Display = idReporte.ToString(),
-                    Id = idReporte
-                });
-            }
-
-            // Configurar DISPLAY y VALUE members DESPUÉS de agregar items
-            Cbo_id_reporte.DisplayMember = "Display";
-            Cbo_id_reporte.ValueMember = "Id";
-
-            // Seleccionar "Sin reporte" por defecto
-            if (Cbo_id_reporte.Items.Count > 0)
-                Cbo_id_reporte.SelectedIndex = 0;
+            
+            var dt = controlador.ObtenerReportes();
+             //Cbo_id_reporte.Items.Clear();
+            Cbo_id_reporte.DataSource = dt;
+            Cbo_id_reporte.DisplayMember = "Cmp_Titulo_Reporte";
+            Cbo_id_reporte.ValueMember = "Pk_Id_Reporte";
+            // Establecer sin selección inicial
+            Cbo_id_reporte.SelectedIndex = -1;
         }
 
         private void fun_CargarAplicaciones()
@@ -193,29 +180,36 @@ namespace Capa_Vista_Seguridad
                 }
 
                 // Obtener y mostrar el reporte asignado
+                // Brandon Alexander Hernandez Salguero 0901-22-9663
                 if (!resultado.aplicacion.IsNull("iFkIdReporte"))
                 {
                     int idReporte = Convert.ToInt32(resultado.aplicacion["iFkIdReporte"]);
-                    foreach (var item in Cbo_id_reporte.Items)
+
+                    // Intentar seleccionar por valor
+                    Cbo_id_reporte.SelectedValue = idReporte;
+
+                    // Verificar si se seleccionó correctamente
+                    if (Cbo_id_reporte.SelectedValue == null ||
+                        Convert.ToInt32(Cbo_id_reporte.SelectedValue) != idReporte)
                     {
-                        int itemId = (int)item.GetType().GetProperty("Id").GetValue(item);
-                        if (itemId == idReporte)
-                        {
-                            Cbo_id_reporte.SelectedItem = item;
-                            break;
-                        }
+                        // Si no existe ese ID en el combo, dejar sin selección
+                        Cbo_id_reporte.SelectedIndex = -1;
+                        MessageBox.Show($"El reporte con ID {idReporte} no existe en la lista",
+                                        "Advertencia",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    Cbo_id_reporte.SelectedIndex = 0;
+                    Cbo_id_reporte.SelectedIndex = -1; // Sin selección si no hay reporte
                 }
-
                 // NUEVO: Deshabilitar el ComboBox de módulos en modo modificación
                 Txt_id_aplicacion.Enabled = false;
                 Cbo_id_modulo.Enabled = false; // ← MÓDULO NO EDITABLE EN MODIFICACIÓN
                 Btn_guardar.Enabled = false;
                 Btn_modificar.Enabled = _canModificar;
+                Cbo_id_reporte.Enabled = false;
             }
             else
             {
@@ -240,12 +234,9 @@ namespace Capa_Vista_Seguridad
 
             // Obtener ID del reporte seleccionado
             int? idReporte = null;
-            if (Cbo_id_reporte.SelectedItem != null)
+            if (Cbo_id_reporte.SelectedIndex != -1 && Cbo_id_reporte.SelectedValue != null)
             {
-                var selectedReport = Cbo_id_reporte.SelectedItem;
-                int reportId = (int)selectedReport.GetType().GetProperty("Id").GetValue(selectedReport);
-                if (reportId != 0)
-                    idReporte = reportId;
+                idReporte = Convert.ToInt32(Cbo_id_reporte.SelectedValue);
             }
 
             // Llamar al controlador para modificar (la validación está en el controlador)
@@ -306,16 +297,12 @@ namespace Capa_Vista_Seguridad
                 iIdModulo = Convert.ToInt32(((dynamic)Cbo_id_modulo.SelectedItem).Id);
             }
 
-            // Obtener reporte
+            // Obtener reporte Brandon Alexander Hernandez Salguero 0901-22-9663
             int? idReporte = null;
-            if (Cbo_id_reporte.SelectedItem != null)
+            if (Cbo_id_reporte.SelectedItem != null && Cbo_id_reporte.SelectedIndex != -1)
             {
-                var selectedReport = Cbo_id_reporte.SelectedItem;
-                int reportId = (int)selectedReport.GetType().GetProperty("Id").GetValue(selectedReport);
-                if (reportId != 0)
-                {
-                    idReporte = reportId;
-                }
+                DataRowView row = (DataRowView)Cbo_id_reporte.SelectedItem;
+                idReporte = Convert.ToInt32(row["Pk_Id_Reporte"]);
             }
 
             // Llamar al controlador para guardar (la validación está en el controlador)
@@ -366,7 +353,9 @@ namespace Capa_Vista_Seguridad
             Rdb_estado_activo.Checked = true;
             Rdb_inactivo.Checked = false;
             Cbo_id_modulo.SelectedItem = null;
-            Cbo_id_reporte.SelectedIndex = 0;
+            Cbo_id_reporte.SelectedIndex = -1;
+            
+
 
             //Restaurar estado de controles según permisos
             bool puedeEditar = (_canIngresar || _canModificar);
@@ -374,6 +363,9 @@ namespace Capa_Vista_Seguridad
             Cbo_id_modulo.Enabled = _canIngresar; // ← HABILITADO SOLO EN MODO NUEVO
             Btn_guardar.Enabled = _canIngresar;
             Btn_modificar.Enabled = _canModificar;
+            Cbo_id_reporte.Enabled = _canIngresar;
+
+
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -414,6 +406,11 @@ namespace Capa_Vista_Seguridad
 
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
+
+        private void Cbo_id_reporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);

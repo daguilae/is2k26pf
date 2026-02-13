@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_Seguridad
 {
-    partial class Frm_PruebaNavegador
+    partial class Frm_EmpleadosV2
     {
         /// <summary>
         /// Required designer variable.
@@ -36,22 +36,23 @@ namespace Capa_Vista_Seguridad
             // 
             this.navegador1.IPkId_Aplicacion = 0;
             this.navegador1.IPkId_Modulo = 0;
-            this.navegador1.Location = new System.Drawing.Point(13, 13);
+            this.navegador1.Location = new System.Drawing.Point(22, 22);
+            this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.SAlias = null;
             this.navegador1.SEtiquetas = null;
-            this.navegador1.Size = new System.Drawing.Size(1180, 488);
+            this.navegador1.Size = new System.Drawing.Size(1632, 620);
             this.navegador1.SNombreTabla = null;
             this.navegador1.TabIndex = 0;
             // 
-            // Frm_PruebaNavegador
+            // Frm_EmpleadosV2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 540);
+            this.ClientSize = new System.Drawing.Size(1667, 655);
             this.Controls.Add(this.navegador1);
-            this.Name = "Frm_PruebaNavegador";
-            this.Text = "Frm_PruebaNavegador";
+            this.Name = "Frm_EmpleadosV2";
+            this.Text = "Frm_EmpleadosV2";
             this.ResumeLayout(false);
 
         }

@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Seguridad;
+using System.IO;
 
 namespace Capa_Vista_Seguridad
 {
@@ -45,7 +47,16 @@ namespace Capa_Vista_Seguridad
             );
 
             this.FormClosing += Frm_Seguridad_FormClosing;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.Manual;
+
+            Rectangle area = Screen.PrimaryScreen.WorkingArea;
+            this.Location = area.Location;
+            this.Size = area.Size;
         }
+
+
         private void Frm_Seguridad_Load(object sender, EventArgs e)
         {
             // Mostrar usuario conectado en StatusStrip
@@ -70,7 +81,6 @@ namespace Capa_Vista_Seguridad
         {
             menuItems = new Dictionary<MenuOpciones, ToolStripMenuItem>
             {
-                { MenuOpciones.Archivo, archivoToolStripMenuItem },
                 { MenuOpciones.Catalogos, catálogosToolStripMenuItem },
                 { MenuOpciones.Procesos, procesosToolStripMenuItem },
                 { MenuOpciones.Herramientas, herramientasToolStripMenuItem },
@@ -104,15 +114,17 @@ namespace Capa_Vista_Seguridad
             Dictionary<int, ToolStripMenuItem> mapaCatalogos = new Dictionary<int, ToolStripMenuItem>
             {
                 {301, empleadosToolStripMenuItem1},
-                {302, usuariosToolStripMenuItem},
+             
                 {303, perfilesToolStripMenuItem},
                 {304, modulosToolStripMenuItem},
-                {305, Btn_Aplicacion}
+                
             };
 
             Dictionary<int, ToolStripMenuItem> mapaProcesos = new Dictionary<int, ToolStripMenuItem>
             {
-                {309, procesosToolStripMenuItem }
+                {309, Btn_Bitacora },
+                {305, aplicaciónToolStripMenuItem},
+                {302, usuariosToolStripMenuItem }
             };
 
             Dictionary<int, ToolStripMenuItem> mapaAsignaciones = new Dictionary<int, ToolStripMenuItem>
@@ -189,14 +201,14 @@ namespace Capa_Vista_Seguridad
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
-            Frm_Empleados formEmpleado = new Frm_Empleados();
+            Frm_EmpleadosV2 formEmpleado = new Frm_EmpleadosV2();
             formEmpleado.MdiParent = this;
             formEmpleado.Show();
         }
         private void empleadosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
-            Frm_Empleados formEmpleado = new Frm_Empleados();
+            Frm_EmpleadosV2 formEmpleado = new Frm_EmpleadosV2();
             formEmpleado.MdiParent = this;
             formEmpleado.Show();
         }
@@ -224,17 +236,11 @@ namespace Capa_Vista_Seguridad
         private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
-            Frm_Modulo modulo = new Frm_Modulo();
+            Frm_Modulo_V2 modulo = new Frm_Modulo_V2();
             modulo.MdiParent = this;
             modulo.Show();
         }
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CerrarFormulariosHijos();
-            Frm_Usuario frm = new Frm_Usuario();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+       
         private void Btn_Bitacora_Click(object sender, EventArgs e)
         {
             CerrarFormulariosHijos();
@@ -258,10 +264,7 @@ namespace Capa_Vista_Seguridad
         }
         private void Btn_Aplicacion_Click_1(object sender, EventArgs e)
         {
-            CerrarFormulariosHijos();
-            FrmAplicacion formAplicacion = new FrmAplicacion();
-            formAplicacion.MdiParent = this;
-            formAplicacion.Show();
+        
         }
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -340,10 +343,81 @@ namespace Capa_Vista_Seguridad
             this.Close();
         }
 
-        private void pruebaNavegadorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
-            Frm_PruebaNavegador nav = new Frm_PruebaNavegador();
-            nav.ShowDialog();
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\componentes\seguridad\Ayuda_MDI.chm";
+
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+
+                // Ruta de respaldo (opcional)
+                string rutaAbsolutaRespaldo =
+                    @"C:\Users\arone\OneDrive\Escritorio\asis2k25p2\ayuda\componentes\seguridad\Ayuda_MDI.chm";
+
+                if (rutaEncontrada == null && File.Exists(rutaAbsolutaRespaldo))
+                    rutaEncontrada = rutaAbsolutaRespaldo;
+
+                if (rutaEncontrada != null)
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"Ayuda_MDI.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // Brandon Hernandez 0901-22-9663
+        //11/02/2026 El MDI principal no contaba con boton de cerrar sesión 
+        private void Btn_Cerrar_Sesion_Click(object sender, EventArgs e)
+        {
+            // Registrar en bitácora
+            ctrlBitacora.RegistrarCierreSesion(Cls_Usuario_Conectado.iIdUsuario);
+
+            this.Hide();
+            Frm_Login formLogin = new Frm_Login();
+            formLogin.ShowDialog();
+            this.Close();
+        }
+        // Brandon Hernandez 0901-22-9663
+        //11/02/202 se movio aplicaciones y usuarios a procesos
+        private void aplicaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CerrarFormulariosHijos();
+            FrmAplicacion formAplicacion = new FrmAplicacion();
+            formAplicacion.MdiParent = this;
+            formAplicacion.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            CerrarFormulariosHijos();
+            Frm_Usuario frm = new Frm_Usuario();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

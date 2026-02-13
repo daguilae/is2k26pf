@@ -29,12 +29,17 @@ namespace Capa_Vista_Seguridad
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_asignacion_perfil_usuario));
             this.label1 = new System.Windows.Forms.Label();
             this.Gbp_consulta = new System.Windows.Forms.GroupBox();
             this.Cbo_usuario = new System.Windows.Forms.ComboBox();
             this.Lbl_usuario = new System.Windows.Forms.Label();
+            this.Btn_eliminar_consulta = new System.Windows.Forms.Button();
             this.Dgv_consulta = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Btn_agregar = new System.Windows.Forms.Button();
+            this.btn_finalizar = new System.Windows.Forms.Button();
+            this.Btn_eliminar_asignacion = new System.Windows.Forms.Button();
             this.Dgv_asignaciones = new System.Windows.Forms.DataGridView();
             this.Cbo_perfil = new System.Windows.Forms.ComboBox();
             this.Lbl_perfiles = new System.Windows.Forms.Label();
@@ -42,10 +47,7 @@ namespace Capa_Vista_Seguridad
             this.Cbo_usuarios2 = new System.Windows.Forms.ComboBox();
             this.Pnl_Superior = new System.Windows.Forms.Panel();
             this.Pic_Cerrar = new System.Windows.Forms.PictureBox();
-            this.Btn_agregar = new System.Windows.Forms.Button();
-            this.btn_finalizar = new System.Windows.Forms.Button();
-            this.Btn_eliminar_asignacion = new System.Windows.Forms.Button();
-            this.Btn_eliminar_consulta = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Gbp_consulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_consulta)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -101,6 +103,22 @@ namespace Capa_Vista_Seguridad
             this.Lbl_usuario.TabIndex = 2;
             this.Lbl_usuario.Text = "Usuarios";
             // 
+            // Btn_eliminar_consulta
+            // 
+            this.Btn_eliminar_consulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.Btn_eliminar_consulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_eliminar_consulta.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar_32px;
+            this.Btn_eliminar_consulta.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_eliminar_consulta.Location = new System.Drawing.Point(436, 171);
+            this.Btn_eliminar_consulta.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_eliminar_consulta.Name = "Btn_eliminar_consulta";
+            this.Btn_eliminar_consulta.Size = new System.Drawing.Size(116, 58);
+            this.Btn_eliminar_consulta.TabIndex = 3;
+            this.Btn_eliminar_consulta.Text = "cancelar";
+            this.Btn_eliminar_consulta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_eliminar_consulta.UseVisualStyleBackColor = false;
+            this.Btn_eliminar_consulta.Click += new System.EventHandler(this.Btn_eliminar_consulta_Click);
+            // 
             // Dgv_consulta
             // 
             this.Dgv_consulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -128,6 +146,54 @@ namespace Capa_Vista_Seguridad
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asingacion de Perfiles a Usuarios";
+            // 
+            // Btn_agregar
+            // 
+            this.Btn_agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.Btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_agregar.Image = global::Capa_Vista_Seguridad.Properties.Resources.add_insert_new_plus_button_icon_142943;
+            this.Btn_agregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_agregar.Location = new System.Drawing.Point(162, 100);
+            this.Btn_agregar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_agregar.Name = "Btn_agregar";
+            this.Btn_agregar.Size = new System.Drawing.Size(118, 46);
+            this.Btn_agregar.TabIndex = 8;
+            this.Btn_agregar.Text = "Agregar";
+            this.Btn_agregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_agregar.UseVisualStyleBackColor = false;
+            this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
+            // 
+            // btn_finalizar
+            // 
+            this.btn_finalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.btn_finalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.btn_finalizar.Image = global::Capa_Vista_Seguridad.Properties.Resources.asignar;
+            this.btn_finalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_finalizar.Location = new System.Drawing.Point(319, 351);
+            this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_finalizar.Name = "btn_finalizar";
+            this.btn_finalizar.Size = new System.Drawing.Size(118, 58);
+            this.btn_finalizar.TabIndex = 7;
+            this.btn_finalizar.Text = "asignar";
+            this.btn_finalizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_finalizar.UseVisualStyleBackColor = false;
+            this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click);
+            // 
+            // Btn_eliminar_asignacion
+            // 
+            this.Btn_eliminar_asignacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.Btn_eliminar_asignacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_eliminar_asignacion.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar_32px;
+            this.Btn_eliminar_asignacion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_eliminar_asignacion.Location = new System.Drawing.Point(319, 181);
+            this.Btn_eliminar_asignacion.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_eliminar_asignacion.Name = "Btn_eliminar_asignacion";
+            this.Btn_eliminar_asignacion.Size = new System.Drawing.Size(116, 58);
+            this.Btn_eliminar_asignacion.TabIndex = 6;
+            this.Btn_eliminar_asignacion.Text = "cancelar";
+            this.Btn_eliminar_asignacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_eliminar_asignacion.UseVisualStyleBackColor = false;
+            this.Btn_eliminar_asignacion.Click += new System.EventHandler(this.Btn_eliminar_asignacion_Click_1);
             // 
             // Dgv_asignaciones
             // 
@@ -202,76 +268,28 @@ namespace Capa_Vista_Seguridad
             this.Pic_Cerrar.TabStop = false;
             this.Pic_Cerrar.Click += new System.EventHandler(this.Pic_Cerrar_Click);
             // 
-            // Btn_agregar
+            // Btn_ayuda
             // 
-            this.Btn_agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
-            this.Btn_agregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_agregar.Image = global::Capa_Vista_Seguridad.Properties.Resources.add_insert_new_plus_button_icon_142943;
-            this.Btn_agregar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_agregar.Location = new System.Drawing.Point(162, 100);
-            this.Btn_agregar.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_agregar.Name = "Btn_agregar";
-            this.Btn_agregar.Size = new System.Drawing.Size(118, 46);
-            this.Btn_agregar.TabIndex = 8;
-            this.Btn_agregar.Text = "Agregar";
-            this.Btn_agregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_agregar.UseVisualStyleBackColor = false;
-            this.Btn_agregar.Click += new System.EventHandler(this.Btn_agregar_Click);
+            this.Btn_ayuda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
+            this.Btn_ayuda.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ayuda.Image")));
+            this.Btn_ayuda.Location = new System.Drawing.Point(1009, 52);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(86, 86);
+            this.Btn_ayuda.TabIndex = 96;
+            this.Btn_ayuda.Text = "Ayuda";
+            this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_ayuda.UseVisualStyleBackColor = false;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
-            // btn_finalizar
-            // 
-            this.btn_finalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
-            this.btn_finalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.btn_finalizar.Image = global::Capa_Vista_Seguridad.Properties.Resources.asignar;
-            this.btn_finalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_finalizar.Location = new System.Drawing.Point(319, 351);
-            this.btn_finalizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_finalizar.Name = "btn_finalizar";
-            this.btn_finalizar.Size = new System.Drawing.Size(118, 58);
-            this.btn_finalizar.TabIndex = 7;
-            this.btn_finalizar.Text = "asignar";
-            this.btn_finalizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_finalizar.UseVisualStyleBackColor = false;
-            this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click);
-            // 
-            // Btn_eliminar_asignacion
-            // 
-            this.Btn_eliminar_asignacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
-            this.Btn_eliminar_asignacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_eliminar_asignacion.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar_32px;
-            this.Btn_eliminar_asignacion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_eliminar_asignacion.Location = new System.Drawing.Point(319, 181);
-            this.Btn_eliminar_asignacion.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_eliminar_asignacion.Name = "Btn_eliminar_asignacion";
-            this.Btn_eliminar_asignacion.Size = new System.Drawing.Size(116, 58);
-            this.Btn_eliminar_asignacion.TabIndex = 6;
-            this.Btn_eliminar_asignacion.Text = "cancelar";
-            this.Btn_eliminar_asignacion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_eliminar_asignacion.UseVisualStyleBackColor = false;
-            this.Btn_eliminar_asignacion.Click += new System.EventHandler(this.Btn_eliminar_asignacion_Click_1);
-            // 
-            // Btn_eliminar_consulta
-            // 
-            this.Btn_eliminar_consulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
-            this.Btn_eliminar_consulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(214)))), ((int)(((byte)(221)))));
-            this.Btn_eliminar_consulta.Image = global::Capa_Vista_Seguridad.Properties.Resources.cancelar_32px;
-            this.Btn_eliminar_consulta.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_eliminar_consulta.Location = new System.Drawing.Point(436, 171);
-            this.Btn_eliminar_consulta.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_eliminar_consulta.Name = "Btn_eliminar_consulta";
-            this.Btn_eliminar_consulta.Size = new System.Drawing.Size(116, 58);
-            this.Btn_eliminar_consulta.TabIndex = 3;
-            this.Btn_eliminar_consulta.Text = "cancelar";
-            this.Btn_eliminar_consulta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_eliminar_consulta.UseVisualStyleBackColor = false;
-            this.Btn_eliminar_consulta.Click += new System.EventHandler(this.Btn_eliminar_consulta_Click);
-            // 
-            // frmasignacion_perfil_usuario
+            // Frm_asignacion_perfil_usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(185)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(1137, 648);
+            this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Pnl_Superior);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Gbp_consulta);
@@ -279,7 +297,7 @@ namespace Capa_Vista_Seguridad
             this.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmasignacion_perfil_usuario";
+            this.Name = "Frm_asignacion_perfil_usuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asignaciones Perfil a Usuario";
             this.Load += new System.EventHandler(this.frmasignacion_perfil_usuario_Load);
@@ -315,5 +333,6 @@ namespace Capa_Vista_Seguridad
         private System.Windows.Forms.Button Btn_agregar;
         private System.Windows.Forms.Panel Pnl_Superior;
         private System.Windows.Forms.PictureBox Pic_Cerrar;
+        private System.Windows.Forms.Button Btn_ayuda;
     }
 }
