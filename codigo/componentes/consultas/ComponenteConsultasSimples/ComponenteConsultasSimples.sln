@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.36324.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Componente_Consultas_simples", "Capa_Vista_Componente_Consultas_simples\Capa_Vista_Componente_Consultas_simples.csproj", "{540568BD-687D-4CEA-8C58-FC7055F4A974}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Componente_Consultas_Simples", "Capa_Vista_Componente_Consultas_simples\Capa_Vista_Componente_Consultas_Simples.csproj", "{540568BD-687D-4CEA-8C58-FC7055F4A974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Componente_Consultas", "Capa_Controlador_Componente_Consultas\Capa_Controlador_Componente_Consultas.csproj", "{90CC9766-F288-4761-B819-CFB1495A66B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Componente_Consultas_Simples", "Capa_Controlador_Componente_Consultas\Capa_Controlador_Componente_Consultas_Simples.csproj", "{90CC9766-F288-4761-B819-CFB1495A66B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Componente_Consultas", "Capa_Modelo_Componente_Consultas\Capa_Modelo_Componente_Consultas.csproj", "{F7C62E38-8FB2-4280-82EF-E5A72384323A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Componente_Consultas_Simples", "Capa_Modelo_Componente_Consultas\Capa_Modelo_Componente_Consultas_Simples.csproj", "{F7C62E38-8FB2-4280-82EF-E5A72384323A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
