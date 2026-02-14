@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Capa_Modelo_Componente_Consultas</RootNamespace>
-    <AssemblyName>Capa_Modelo_Componente_Consultas</AssemblyName>
+    <AssemblyName>Capa_Modelo_Componente_Consultas_Simples</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

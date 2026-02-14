@@ -17,7 +17,11 @@ namespace Capa_Vista_Componente_Consultas
 
         private void btn_ConsultaSimple_Click(object sender, EventArgs e)
         {
-            using (var f = new Frm_Consultas())
+            //Richard Anthony de León Milian 0901-22-10245
+            /***EJEMPLO***/
+            //string[] arr = new string[1];
+            //arr[0] = "tbl_empleado";
+            using (var f = new Frm_Consulta_Simple(/*arr*/))//Se recibe una variable que contiene la tabla externa
             {
                 this.Hide();
                 f.ShowDialog(this);

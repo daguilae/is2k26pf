@@ -34,9 +34,8 @@
     <Reference Include="Capa_Controlador_Componente_Consultas">
       <HintPath>..\Capa_Controlador_Componente_Consultas\bin\Debug\Capa_Controlador_Componente_Consultas.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Modelo_Componente_Consultas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Capa_Modelo_Componente_Consultas\bin\Debug\Capa_Modelo_Componente_Consultas.dll</HintPath>
+    <Reference Include="Capa_Vista_Componente_Consultas_simples">
+      <HintPath>..\..\ComponenteConsultasSimples\Capa_Vista_Componente_Consultas_simples\bin\Debug\Capa_Vista_Componente_Consultas_simples.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,11 +55,11 @@
     <Compile Include="Frm_Consulta_Compleja.Designer.cs">
       <DependentUpon>Frm_Consulta_Compleja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Consultas.cs">
+    <Compile Include="Frm_Consulta_Simple.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Consultas.Designer.cs">
-      <DependentUpon>Frm_Consultas.cs</DependentUpon>
+    <Compile Include="Frm_Consulta_Simple.Designer.cs">
+      <DependentUpon>Frm_Consulta_Simple.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
@@ -79,8 +78,8 @@
     <EmbeddedResource Include="Frm_Consulta_Compleja.resx">
       <DependentUpon>Frm_Consulta_Compleja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Consultas.resx">
-      <DependentUpon>Frm_Consultas.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Consulta_Simple.resx">
+      <DependentUpon>Frm_Consulta_Simple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>

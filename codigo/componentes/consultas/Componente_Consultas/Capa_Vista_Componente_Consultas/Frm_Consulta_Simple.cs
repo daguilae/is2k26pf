@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Capa_Vista_Componente_Consultas
+{
+    public partial class Frm_Consulta_Simple : Form
+    {
+        public Frm_Consulta_Simple()
+        {
+            InitializeComponent();
+        }
+        public Frm_Consulta_Simple(string[] sParametros) : this()
+        {
+            if (sParametros != null && sParametros.Length > 0)
+                consulta_simple1.NombreTablaExterna = sParametros[0];
+        }
+
+    }
+}
