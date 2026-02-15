@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidarDatosCliente_Ejecucion", "ValidarDatosCliente_Ejecucion\ValidarDatosCliente_Ejecucion.csproj", "{9E65B9AF-DED1-4D12-86A1-D1F761734546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E65B9AF-DED1-4D12-86A1-D1F761734546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E65B9AF-DED1-4D12-86A1-D1F761734546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E65B9AF-DED1-4D12-86A1-D1F761734546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E65B9AF-DED1-4D12-86A1-D1F761734546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A919AF7D-7D20-4B37-96A8-2565286FB8E8}
+	EndGlobalSection
+EndGlobal
