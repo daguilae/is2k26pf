@@ -29,6 +29,7 @@ namespace Capa_Controlador_emision_pasaporte
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_emision_pasaporte));
             this.btn_guardar = new System.Windows.Forms.Button();
             this.lbl_emision_pasaporte = new System.Windows.Forms.Label();
             this.Txt_nombre = new System.Windows.Forms.TextBox();
@@ -65,16 +66,19 @@ namespace Capa_Controlador_emision_pasaporte
             this.button1 = new System.Windows.Forms.Button();
             this.Btn_imprimir = new System.Windows.Forms.Button();
             this.Btn_cerrar = new System.Windows.Forms.Button();
+            this.Btn_ayuda = new System.Windows.Forms.Button();
+            this.Btn_cerrarr = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Ptb_fotografia)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(579, 466);
+            this.btn_guardar.Image = ((System.Drawing.Image)(resources.GetObject("btn_guardar.Image")));
+            this.btn_guardar.Location = new System.Drawing.Point(588, 456);
             this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(90, 40);
+            this.btn_guardar.Size = new System.Drawing.Size(71, 52);
             this.btn_guardar.TabIndex = 0;
-            this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = true;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
@@ -252,11 +256,11 @@ namespace Capa_Controlador_emision_pasaporte
             // 
             // Btn_buscar
             // 
-            this.Btn_buscar.Location = new System.Drawing.Point(435, 469);
+            this.Btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buscar.Image")));
+            this.Btn_buscar.Location = new System.Drawing.Point(464, 458);
             this.Btn_buscar.Name = "Btn_buscar";
-            this.Btn_buscar.Size = new System.Drawing.Size(86, 37);
+            this.Btn_buscar.Size = new System.Drawing.Size(80, 50);
             this.Btn_buscar.TabIndex = 21;
-            this.Btn_buscar.Text = "Buscar";
             this.Btn_buscar.UseVisualStyleBackColor = true;
             // 
             // Lbl_fecha_emision
@@ -324,6 +328,7 @@ namespace Capa_Controlador_emision_pasaporte
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.panel1.Controls.Add(this.Btn_cerrarr);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1015, 41);
@@ -372,28 +377,50 @@ namespace Capa_Controlador_emision_pasaporte
             // 
             // Btn_imprimir
             // 
-            this.Btn_imprimir.Location = new System.Drawing.Point(727, 466);
+            this.Btn_imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_imprimir.Image")));
+            this.Btn_imprimir.Location = new System.Drawing.Point(708, 456);
             this.Btn_imprimir.Name = "Btn_imprimir";
-            this.Btn_imprimir.Size = new System.Drawing.Size(81, 40);
+            this.Btn_imprimir.Size = new System.Drawing.Size(73, 52);
             this.Btn_imprimir.TabIndex = 35;
-            this.Btn_imprimir.Text = "Imprimir";
             this.Btn_imprimir.UseVisualStyleBackColor = true;
             // 
             // Btn_cerrar
             // 
-            this.Btn_cerrar.Location = new System.Drawing.Point(856, 466);
+            this.Btn_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_cerrar.Image")));
+            this.Btn_cerrar.Location = new System.Drawing.Point(833, 458);
             this.Btn_cerrar.Name = "Btn_cerrar";
-            this.Btn_cerrar.Size = new System.Drawing.Size(80, 40);
+            this.Btn_cerrar.Size = new System.Drawing.Size(70, 50);
             this.Btn_cerrar.TabIndex = 36;
-            this.Btn_cerrar.Text = "Cerrar";
             this.Btn_cerrar.UseVisualStyleBackColor = true;
             this.Btn_cerrar.Click += new System.EventHandler(this.Btn_cerrar_Click);
+            // 
+            // Btn_ayuda
+            // 
+            this.Btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ayuda.Image")));
+            this.Btn_ayuda.Location = new System.Drawing.Point(865, 54);
+            this.Btn_ayuda.Name = "Btn_ayuda";
+            this.Btn_ayuda.Size = new System.Drawing.Size(70, 55);
+            this.Btn_ayuda.TabIndex = 37;
+            this.Btn_ayuda.UseVisualStyleBackColor = true;
+            // 
+            // Btn_cerrarr
+            // 
+            this.Btn_cerrarr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cerrarr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(78)))), ((int)(((byte)(88)))));
+            this.Btn_cerrarr.Image = ((System.Drawing.Image)(resources.GetObject("Btn_cerrarr.Image")));
+            this.Btn_cerrarr.Location = new System.Drawing.Point(937, 3);
+            this.Btn_cerrarr.Name = "Btn_cerrarr";
+            this.Btn_cerrarr.Size = new System.Drawing.Size(78, 38);
+            this.Btn_cerrarr.TabIndex = 0;
+            this.Btn_cerrarr.UseVisualStyleBackColor = true;
+            this.Btn_cerrarr.Click += new System.EventHandler(this.Btn_cerrarr_Click);
             // 
             // Frm_emision_pasaporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 520);
+            this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Btn_cerrar);
             this.Controls.Add(this.Btn_imprimir);
             this.Controls.Add(this.button1);
@@ -433,6 +460,7 @@ namespace Capa_Controlador_emision_pasaporte
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Frm_emision_pasaporte";
             this.Text = "Tipo";
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Ptb_fotografia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -477,6 +505,8 @@ namespace Capa_Controlador_emision_pasaporte
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button Btn_imprimir;
         private System.Windows.Forms.Button Btn_cerrar;
+        private System.Windows.Forms.Button Btn_ayuda;
+        private System.Windows.Forms.Button Btn_cerrarr;
     }
 }
 

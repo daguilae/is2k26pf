@@ -23,5 +23,10 @@ namespace Capa_vista_Emision_pasaporte
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

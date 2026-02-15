@@ -67,5 +67,10 @@ namespace Capa_Controlador_emision_pasaporte
             this.Close();
 
         }
+
+        private void Btn_cerrarr_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
