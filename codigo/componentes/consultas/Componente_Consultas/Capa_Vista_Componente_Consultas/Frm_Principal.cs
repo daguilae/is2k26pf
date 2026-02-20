@@ -14,10 +14,15 @@ namespace Capa_Vista_Componente_Consultas
         }
 
 
-
+        // Evento del botón que abre el formulario de consulta simple.
+        // La variable "arr" es para que el navegador nos envíe la tabla externa
+        // (en este caso "tbl_empleado" como ejemplo).
         private void btn_ConsultaSimple_Click(object sender, EventArgs e)
         {
-            using (var f = new Frm_Consultas())
+            string[] arr = new string[1];
+            arr[0] = "tbl_empleado";
+
+            using (var f = new Frm_Consulta_Simple(arr))
             {
                 this.Hide();
                 f.ShowDialog(this);

@@ -36,12 +36,12 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Lbl_Valor = new System.Windows.Forms.Label();
             this.Lbl_Operador = new System.Windows.Forms.Label();
             this.Lbl_Campos = new System.Windows.Forms.Label();
-            this.Cbo_Operador = new System.Windows.Forms.ComboBox();
-            this.Cbo_Campos = new System.Windows.Forms.ComboBox();
             this.Txt_Filtro = new System.Windows.Forms.TextBox();
             this.Gpb_Ordenamiento = new System.Windows.Forms.GroupBox();
             this.Rdb_asc = new System.Windows.Forms.RadioButton();
             this.Rdb_desc = new System.Windows.Forms.RadioButton();
+            this.Cbo_Operador = new System.Windows.Forms.ComboBox();
+            this.Cbo_Campos = new System.Windows.Forms.ComboBox();
             this.Gpb_Listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_consultas_simples)).BeginInit();
             this.Gpb_Ordenamiento.SuspendLayout();
@@ -66,7 +66,7 @@ namespace Capa_Vista_Componente_Consultas_simples
             // 
             this.Btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Btn_buscar.Image = global::Capa_Vista_Componente_Consultas_simples.Properties.Resources.android_search_icon_icons1;
-            this.Btn_buscar.Location = new System.Drawing.Point(651, 34);
+            this.Btn_buscar.Location = new System.Drawing.Point(647, 32);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(67, 61);
             this.Btn_buscar.TabIndex = 29;
@@ -84,10 +84,10 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Gpb_Listado.Controls.Add(this.Lbl_Valor);
             this.Gpb_Listado.Controls.Add(this.Lbl_Operador);
             this.Gpb_Listado.Controls.Add(this.Lbl_Campos);
-            this.Gpb_Listado.Controls.Add(this.Cbo_Operador);
-            this.Gpb_Listado.Controls.Add(this.Cbo_Campos);
             this.Gpb_Listado.Controls.Add(this.Txt_Filtro);
             this.Gpb_Listado.Controls.Add(this.Gpb_Ordenamiento);
+            this.Gpb_Listado.Controls.Add(this.Cbo_Operador);
+            this.Gpb_Listado.Controls.Add(this.Cbo_Campos);
             this.Gpb_Listado.Controls.Add(this.Btn_buscar);
             this.Gpb_Listado.Controls.Add(this.Btn_Filtrar);
             this.Gpb_Listado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +112,7 @@ namespace Capa_Vista_Componente_Consultas_simples
             // Lbl_Valor
             // 
             this.Lbl_Valor.AutoSize = true;
-            this.Lbl_Valor.Location = new System.Drawing.Point(488, 34);
+            this.Lbl_Valor.Location = new System.Drawing.Point(498, 32);
             this.Lbl_Valor.Name = "Lbl_Valor";
             this.Lbl_Valor.Size = new System.Drawing.Size(69, 29);
             this.Lbl_Valor.TabIndex = 40;
@@ -121,7 +121,7 @@ namespace Capa_Vista_Componente_Consultas_simples
             // Lbl_Operador
             // 
             this.Lbl_Operador.AutoSize = true;
-            this.Lbl_Operador.Location = new System.Drawing.Point(295, 34);
+            this.Lbl_Operador.Location = new System.Drawing.Point(305, 32);
             this.Lbl_Operador.Name = "Lbl_Operador";
             this.Lbl_Operador.Size = new System.Drawing.Size(117, 29);
             this.Lbl_Operador.TabIndex = 39;
@@ -130,34 +130,16 @@ namespace Capa_Vista_Componente_Consultas_simples
             // Lbl_Campos
             // 
             this.Lbl_Campos.AutoSize = true;
-            this.Lbl_Campos.Location = new System.Drawing.Point(161, 33);
+            this.Lbl_Campos.Location = new System.Drawing.Point(171, 31);
             this.Lbl_Campos.Name = "Lbl_Campos";
             this.Lbl_Campos.Size = new System.Drawing.Size(103, 29);
             this.Lbl_Campos.TabIndex = 38;
             this.Lbl_Campos.Text = "Campos";
             // 
-            // Cbo_Operador
-            // 
-            this.Cbo_Operador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cbo_Operador.FormattingEnabled = true;
-            this.Cbo_Operador.Location = new System.Drawing.Point(300, 67);
-            this.Cbo_Operador.Name = "Cbo_Operador";
-            this.Cbo_Operador.Size = new System.Drawing.Size(132, 28);
-            this.Cbo_Operador.TabIndex = 37;
-            // 
-            // Cbo_Campos
-            // 
-            this.Cbo_Campos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cbo_Campos.FormattingEnabled = true;
-            this.Cbo_Campos.Location = new System.Drawing.Point(162, 67);
-            this.Cbo_Campos.Name = "Cbo_Campos";
-            this.Cbo_Campos.Size = new System.Drawing.Size(132, 28);
-            this.Cbo_Campos.TabIndex = 36;
-            // 
             // Txt_Filtro
             // 
             this.Txt_Filtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Txt_Filtro.Location = new System.Drawing.Point(438, 71);
+            this.Txt_Filtro.Location = new System.Drawing.Point(448, 69);
             this.Txt_Filtro.Name = "Txt_Filtro";
             this.Txt_Filtro.Size = new System.Drawing.Size(186, 23);
             this.Txt_Filtro.TabIndex = 35;
@@ -167,7 +149,7 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Gpb_Ordenamiento.Controls.Add(this.Rdb_asc);
             this.Gpb_Ordenamiento.Controls.Add(this.Rdb_desc);
             this.Gpb_Ordenamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.Gpb_Ordenamiento.Location = new System.Drawing.Point(17, 52);
+            this.Gpb_Ordenamiento.Location = new System.Drawing.Point(27, 50);
             this.Gpb_Ordenamiento.Name = "Gpb_Ordenamiento";
             this.Gpb_Ordenamiento.Size = new System.Drawing.Size(138, 47);
             this.Gpb_Ordenamiento.TabIndex = 34;
@@ -198,6 +180,24 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Rdb_desc.Text = "DESC";
             this.Rdb_desc.UseVisualStyleBackColor = true;
             // 
+            // Cbo_Operador
+            // 
+            this.Cbo_Operador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_Operador.FormattingEnabled = true;
+            this.Cbo_Operador.Location = new System.Drawing.Point(310, 65);
+            this.Cbo_Operador.Name = "Cbo_Operador";
+            this.Cbo_Operador.Size = new System.Drawing.Size(132, 28);
+            this.Cbo_Operador.TabIndex = 37;
+            // 
+            // Cbo_Campos
+            // 
+            this.Cbo_Campos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_Campos.FormattingEnabled = true;
+            this.Cbo_Campos.Location = new System.Drawing.Point(172, 65);
+            this.Cbo_Campos.Name = "Cbo_Campos";
+            this.Cbo_Campos.Size = new System.Drawing.Size(132, 28);
+            this.Cbo_Campos.TabIndex = 36;
+            // 
             // Consulta_simple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,11 +224,11 @@ namespace Capa_Vista_Componente_Consultas_simples
         private System.Windows.Forms.Label Lbl_Valor;
         private System.Windows.Forms.Label Lbl_Operador;
         private System.Windows.Forms.Label Lbl_Campos;
-        private System.Windows.Forms.ComboBox Cbo_Operador;
-        private System.Windows.Forms.ComboBox Cbo_Campos;
         private System.Windows.Forms.TextBox Txt_Filtro;
         private System.Windows.Forms.GroupBox Gpb_Ordenamiento;
         private System.Windows.Forms.RadioButton Rdb_asc;
         private System.Windows.Forms.RadioButton Rdb_desc;
+        private System.Windows.Forms.ComboBox Cbo_Operador;
+        private System.Windows.Forms.ComboBox Cbo_Campos;
     }
 }

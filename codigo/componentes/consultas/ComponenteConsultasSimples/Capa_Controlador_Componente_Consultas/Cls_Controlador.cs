@@ -13,7 +13,7 @@ namespace Capa_Controlador_Componente_Consultas
     public class Cls_Controlador
     {
         //  Inicializa sentencia 
-        Sentencias sentencias = new Sentencias();
+        Cls_Sentencias sentencias = new Cls_Sentencias();
 
 
         // Funcion para Obtencion De Tablas

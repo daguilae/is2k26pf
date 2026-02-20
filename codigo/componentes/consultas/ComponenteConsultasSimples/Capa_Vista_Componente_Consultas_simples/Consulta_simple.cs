@@ -32,10 +32,10 @@ namespace Capa_Vista_Componente_Consultas_simples
         // CARLO ANDREE BARQUERO BOCHE 0901-22-60 15/10/2025
         // Constructor que recibe el nombre de la tabla desde otro módulo
 
-        public Consulta_simple(string nombreTabla)
+        public Consulta_simple(string snombreTabla)
         {
             InitializeComponent();
-            snombreTablaExterna = nombreTabla;
+            snombreTablaExterna = snombreTabla;
             Rdb_asc.CheckedChanged += Orden_CheckedChanged;
             Rdb_desc.CheckedChanged += Orden_CheckedChanged;
 
@@ -51,7 +51,7 @@ namespace Capa_Vista_Componente_Consultas_simples
         [Browsable(true)]
         [Category("Datos")]
         [Description("Nombre de la tabla que el control debe consultar al cargarse.")]
-        public string NombreTablaExterna
+        public string sNombreTablaExterna
         {
             get => snombreTablaExterna;
             set
@@ -84,18 +84,18 @@ namespace Capa_Vista_Componente_Consultas_simples
         // Diego André Monterroso Rabarique 0901-22-1369  16/10/2025
         // Carga los datos de la tabla en el grid y llena combos
 
-        private void CargarDatosTabla(string tabla)
+        private void CargarDatosTabla(string stabla)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(tabla))
+                if (string.IsNullOrWhiteSpace(stabla))
                 {
                     MessageBox.Show("No se ha recibido el nombre de la tabla.", "Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                DataTable datos = controlador.fun_EjecutarConsulta(tabla, "");
+                DataTable datos = controlador.fun_EjecutarConsulta(stabla, "");
                 Dgv_consultas_simples.DataSource = datos;
                 Dgv_consultas_simples.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -137,28 +137,28 @@ namespace Capa_Vista_Componente_Consultas_simples
         }
         // Diego André Monterroso Rabarique 0901-22-1369 15/10/2025
         // Llena los campos del ComboBox con nombres amigables
-        private void LlenarComboCamposConFriendlyNames(DataTable resultado)
+        private void LlenarComboCamposConFriendlyNames(DataTable dresultado)
         {
             Cbo_Campos.Items.Clear();
             mapNombreAmigableAReal.Clear();
 
-            foreach (DataColumn col in resultado.Columns)
+            foreach (DataColumn col in dresultado.Columns)
             {
                 string friendly = col.ColumnName;
                 friendly = Regex.Replace(friendly, @"^(cmp_|tbl_|cmp|pk_|pkid_)?", "", RegexOptions.IgnoreCase);
                 friendly = friendly.Replace("_", " ");
                 friendly = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(friendly.ToLower());
 
-                string key = friendly;
+                string skey = friendly;
                 int i = 1;
-                while (mapNombreAmigableAReal.ContainsKey(key))
+                while (mapNombreAmigableAReal.ContainsKey(skey))
                 {
-                    key = friendly + " (" + i + ")";
+                    skey = friendly + " (" + i + ")";
                     i++;
                 }
 
-                mapNombreAmigableAReal[key] = col.ColumnName;
-                Cbo_Campos.Items.Add(key);
+                mapNombreAmigableAReal[skey] = col.ColumnName;
+                Cbo_Campos.Items.Add(skey);
             }
 
             if (Cbo_Campos.Items.Count > 0)
@@ -172,7 +172,7 @@ namespace Capa_Vista_Componente_Consultas_simples
         }
         // Jose Pablo Medina 0901-22-22592
         // Botón Filtrar: genera una consulta simple 15/10/2025
-        private void Btn_filtrar_Click(object sender, EventArgs e)
+        private void Btn_filtrar_Click(object osender, EventArgs e)
         {
             try
             {
@@ -201,13 +201,13 @@ namespace Capa_Vista_Componente_Consultas_simples
                     return;
                 }
 
-                string campoReal = mapNombreAmigableAReal[friendly];
+                string scampoReal = mapNombreAmigableAReal[friendly];
                 string sorden = (Rdb_asc.Checked ? "ORDER BY 1 ASC" :
                                 (Rdb_desc.Checked ? "ORDER BY 1 DESC" : ""));
 
                 DataTable resultado = controlador.fun_ConsultaFiltrada(
                     snombreTablaExterna,
-                    campoReal,
+                    scampoReal,
                     operador,
                     valorRaw,
                     sorden
@@ -223,14 +223,14 @@ namespace Capa_Vista_Componente_Consultas_simples
         }
         // RICHARD ANTONY DE LEON 0901 - 22 - 10265 13/10/2025
         // Ordenamiento ASC / DESC
-        private void Orden_CheckedChanged(object sender, EventArgs e)
+        private void Orden_CheckedChanged(object osender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(snombreTablaExterna))
                 return;
 
-            bool asc = Rdb_asc.Checked;
+            bool basc = Rdb_asc.Checked;
 
-            DataTable resultado = controlador.fun_ConsultaOrdenada(snombreTablaExterna, asc);
+            DataTable resultado = controlador.fun_ConsultaOrdenada(snombreTablaExterna, basc);
             Dgv_consultas_simples.DataSource = resultado;
             Dgv_consultas_simples.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
