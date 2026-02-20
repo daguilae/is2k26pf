@@ -11,7 +11,7 @@ namespace Capa_Modelo_Componente_Consultas
 {
     public class Sentencias
     {
-        Conexion con = new Conexion();
+        Cls_Conexion con = new Cls_Conexion();
         // Diego André Monterroso Rabarique 0901-22-1369 15/10/2025
         // Obtiene todas las tablas de la base de datos bd_hoteleria
         public DataTable fun_ObtenerTablas()

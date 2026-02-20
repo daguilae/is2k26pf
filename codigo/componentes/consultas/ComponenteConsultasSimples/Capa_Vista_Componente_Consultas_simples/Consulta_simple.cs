@@ -14,7 +14,7 @@ namespace Capa_Vista_Componente_Consultas_simples
 {
     public partial class Consulta_simple : UserControl
     {
-        private readonly Controlador controlador = new Controlador();
+        private readonly Cls_Controlador controlador = new Cls_Controlador();
         private string snombreTablaExterna;
         private readonly Dictionary<string, string> mapNombreAmigableAReal = new Dictionary<string, string>();
 

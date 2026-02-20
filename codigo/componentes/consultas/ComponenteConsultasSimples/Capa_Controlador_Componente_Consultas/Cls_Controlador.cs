@@ -10,7 +10,7 @@ using Capa_Modelo_Componente_Consultas;
 
 namespace Capa_Controlador_Componente_Consultas
 {
-    public class Controlador
+    public class Cls_Controlador
     {
         //  Inicializa sentencia 
         Sentencias sentencias = new Sentencias();
@@ -37,17 +37,17 @@ namespace Capa_Controlador_Componente_Consultas
 
         // Jose Pablo Medina 0901-22-22592 15/10/2025
         // Funcion para poder ejecutar la consulta Filtrada
-        public DataTable fun_ConsultaFiltrada(string tabla, string campo, string operador, string valor, string sorden)
+        public DataTable fun_ConsultaFiltrada(string stabla, string scampo, string soperador, string svalor, string sorden)
         {
-            return sentencias.fun_EjecutarConsultaCondicional(tabla, campo, operador, valor, sorden);
+            return sentencias.fun_EjecutarConsultaCondicional(stabla, scampo, soperador, svalor, sorden);
         }
 
 
         // RICHARD ANTONY DE LEON 0901 - 22 - 10265 13/10/2025
         // Funcion para poder ejecutar la consulta po orden
-        public DataTable fun_ConsultaOrdenada(string tabla, bool asc)
+        public DataTable fun_ConsultaOrdenada(string stabla, bool basc)
         {
-            return sentencias.fun_ConsultaOrdenada(tabla, asc);
+            return sentencias.fun_ConsultaOrdenada(stabla, basc);
         }
 
     }
