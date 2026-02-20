@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Capa_Controlador_Componente_Consultas</RootNamespace>
-    <AssemblyName>Capa_Controlador_Componente_Consultas</AssemblyName>
+    <AssemblyName>Capa_Controlador_Componente_Consultas_Simples</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Modelo_Componente_Consultas">
-      <HintPath>..\Capa_Modelo_Componente_Consultas\bin\Debug\Capa_Modelo_Componente_Consultas.dll</HintPath>
+    <Reference Include="Capa_Modelo_Componente_Consultas_Simples">
+      <HintPath>..\Capa_Modelo_Componente_Consultas\bin\Debug\Capa_Modelo_Componente_Consultas_Simples.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controlador.cs" />
+    <Compile Include="Cls_Controlador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
