@@ -150,5 +150,30 @@ namespace Capa_Modelo_Banrural // Paula Daniela Leonardo Paredes 0901-22-9580
                 return count > 0;
             }
         }
+
+        // ===============================
+        // 7) OBTENER ID REAL SEGÚN TIPO + DURACION
+        // ===============================
+        public int ObtenerIdTipoPasaporte(string tipoPasaporte, int duracion)
+        {
+            string sql = @"
+        SELECT Pk_Id_Tipo_Pasaporte
+        FROM Tbl_Tipo_Pasaporte
+        WHERE Cmp_Tipo_Pasaporte = ?
+          AND Cmp_Duracion_Pasaporte = ?
+        LIMIT 1;";
+
+            using (OdbcConnection conn = conexion.conexion())
+            using (OdbcCommand cmd = new OdbcCommand(sql, conn))
+            {
+                cmd.Parameters.Add("tipo", OdbcType.VarChar).Value = tipoPasaporte;
+                cmd.Parameters.Add("dur", OdbcType.Int).Value = duracion;
+
+                object result = cmd.ExecuteScalar();
+                if (result == null || result == DBNull.Value) return 0;
+
+                return Convert.ToInt32(result);
+            }
+        }
     }
 }

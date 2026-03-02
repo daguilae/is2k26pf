@@ -45,15 +45,15 @@ namespace Capa_Vista_Banrural //Paula Daniela Leonardo Paredes 0901-22-9580
 
             // Cargar tipos de pasaporte
             DataTable tipos = ctrl.ObtenerTiposPasaporte();
+
             Cmb_TipoPasaporte.DisplayMember = "Cmp_Tipo_Pasaporte";
-            Cmb_TipoPasaporte.ValueMember = "Pk_Id_Tipo_Pasaporte";
+            Cmb_TipoPasaporte.ValueMember = "Cmp_Tipo_Pasaporte";  // 👈 ESTE ES EL FIX
             Cmb_TipoPasaporte.DataSource = tipos;
 
-            // Dejar sin selección al inicio
             Cmb_TipoPasaporte.SelectedIndex = -1;
 
-            // Duración vacía al inicio
             Cmb_Duracion.DataSource = null;
+            Txt_TotalPagar.Clear();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -226,16 +226,44 @@ namespace Capa_Vista_Banrural //Paula Daniela Leonardo Paredes 0901-22-9580
                 return;
             }
 
-            if (Cmb_TipoPasaporte.SelectedValue == null)
+            if (Cmb_TipoPasaporte.SelectedValue == null || string.IsNullOrWhiteSpace(Cmb_TipoPasaporte.SelectedValue.ToString()))
             {
-                MessageBox.Show("Seleccione tipo de pasaporte.");
+                MessageBox.Show("Seleccione un tipo de pasaporte.");
+                return;
+            }
+
+            if (Cmb_Duracion.SelectedValue == null || string.IsNullOrWhiteSpace(Cmb_Duracion.SelectedValue.ToString()))
+            {
+                MessageBox.Show("Seleccione la duración del pasaporte.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Txt_TotalPagar.Text))
+            {
+                MessageBox.Show("No se pudo calcular el total a pagar. Seleccione tipo y duración.");
                 return;
             }
 
             int noBoleta = int.Parse(Txt_NoBoleta.Text);
-            int idTipo = Convert.ToInt32(Cmb_TipoPasaporte.SelectedValue);
 
-            int ok = ctrl.GuardarBoleta(noBoleta, _idCiudadano, idTipo);
+            string tipo = Cmb_TipoPasaporte.SelectedValue.ToString();
+
+            if (!int.TryParse(Cmb_Duracion.SelectedValue.ToString(), out int duracion))
+            {
+                MessageBox.Show("Duración inválida.");
+                return;
+            }
+
+            // Obtener el ID REAL de Tbl_Tipo_Pasaporte según tipo + duración
+            int idTipoReal = ctrl.ObtenerIdTipoPasaporte(tipo, duracion);
+
+            if (idTipoReal == 0)
+            {
+                MessageBox.Show("No se encontró la tarifa para ese tipo y duración.");
+                return;
+            }
+
+            int ok = ctrl.GuardarBoleta(noBoleta, _idCiudadano, idTipoReal);
 
             if (ok == 1)
             {
@@ -248,7 +276,7 @@ namespace Capa_Vista_Banrural //Paula Daniela Leonardo Paredes 0901-22-9580
 
                 if (dr == DialogResult.Yes)
                 {
-                    //ImprimirBoleta(); // lo definimos luego (PDF o reporte)
+                    // ImprimirBoleta();  // lo hacemos después
                 }
             }
             else

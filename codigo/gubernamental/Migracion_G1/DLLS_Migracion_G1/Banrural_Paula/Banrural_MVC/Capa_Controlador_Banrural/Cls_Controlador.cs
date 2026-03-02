@@ -41,5 +41,10 @@ namespace Capa_Controlador_Banrural
         {
             return sen.ExisteNumeroBoleta(numeroBoleta);
         }
+
+        public int ObtenerIdTipoPasaporte(string tipo, int duracion)
+        {
+            return sen.ObtenerIdTipoPasaporte(tipo, duracion);
+        }
     }
 }

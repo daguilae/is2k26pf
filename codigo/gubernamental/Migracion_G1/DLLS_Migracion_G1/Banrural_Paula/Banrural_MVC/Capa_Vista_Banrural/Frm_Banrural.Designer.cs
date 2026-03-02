@@ -414,6 +414,7 @@ namespace Capa_Vista_Banrural
             this.Name = "Frm_Banrural";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Banrural";
+            this.Load += new System.EventHandler(this.Frm_Banrural_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Pic_Banrural)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
