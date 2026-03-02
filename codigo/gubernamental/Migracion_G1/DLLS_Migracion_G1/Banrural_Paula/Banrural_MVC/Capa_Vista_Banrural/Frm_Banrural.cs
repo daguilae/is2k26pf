@@ -181,26 +181,30 @@ namespace Capa_Vista_Banrural //Paula Daniela Leonardo Paredes 0901-22-9580
         {
             if (Cmb_TipoPasaporte.SelectedValue == null) return;
 
-            // Evita el error cuando SelectedValue es DataRowView al cargar DataSource
-            if (!int.TryParse(Cmb_TipoPasaporte.SelectedValue.ToString(), out int idTipo))
-                return;
+            string tipo = Cmb_TipoPasaporte.SelectedValue.ToString();
 
-            DataTable dur = ctrl.ObtenerDuracionesPorTipo(idTipo);
+            DataTable dur = ctrl.ObtenerDuracionesPorTipo(tipo);
+
             Cmb_Duracion.DisplayMember = "Cmp_Duracion_Pasaporte";
             Cmb_Duracion.ValueMember = "Cmp_Duracion_Pasaporte";
             Cmb_Duracion.DataSource = dur;
 
-            Txt_TotalPagar.Text = ctrl.ObtenerPrecioTipo(idTipo).ToString("0.00");
+            Cmb_Duracion.SelectedIndex = -1;
+            Txt_TotalPagar.Clear();
         }
 
         private void Cmb_Duracion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Cmb_TipoPasaporte.SelectedValue == null) return;
+            if (Cmb_Duracion.SelectedValue == null) return;
 
-            if (!int.TryParse(Cmb_TipoPasaporte.SelectedValue.ToString(), out int idTipo))
+            string tipo = Cmb_TipoPasaporte.SelectedValue.ToString();
+
+            if (!int.TryParse(Cmb_Duracion.SelectedValue.ToString(), out int duracion))
                 return;
 
-            Txt_TotalPagar.Text = ctrl.ObtenerPrecioTipo(idTipo).ToString("0.00");
+            decimal precio = ctrl.ObtenerPrecio(tipo, duracion);
+            Txt_TotalPagar.Text = precio.ToString("0.00");
         }
 
         private void Txt_TotalPagar_TextChanged(object sender, EventArgs e)

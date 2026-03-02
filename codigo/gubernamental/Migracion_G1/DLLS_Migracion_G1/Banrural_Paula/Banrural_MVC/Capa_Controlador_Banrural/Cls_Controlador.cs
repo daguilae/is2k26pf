@@ -22,14 +22,14 @@ namespace Capa_Controlador_Banrural
             return sen.ObtenerTiposPasaporte();
         }
 
-        public DataTable ObtenerDuracionesPorTipo(int idTipo)
+        public DataTable ObtenerDuracionesPorTipo(string tipo)
         {
-            return sen.ObtenerDuracionesPorTipo(idTipo);
+            return sen.ObtenerDuracionesPorTipo(tipo);
         }
 
-        public decimal ObtenerPrecioTipo(int idTipo)
+        public decimal ObtenerPrecio(string tipo, int duracion)
         {
-            return sen.ObtenerPrecioPorTipo(idTipo);
+            return sen.ObtenerPrecio(tipo, duracion);
         }
 
         public int GuardarBoleta(int numeroBoleta, int idCiudadano, int idTipo)
