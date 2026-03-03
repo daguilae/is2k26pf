@@ -21,5 +21,40 @@ namespace Capa_Vista_Banrural
         {
             this.Close();
         }
+
+        private void Txt_Dpi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_BuscarDpi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_Nombres_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txt_Apellidos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dgv_Boletas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Btn_ModificarBoleta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_EliminarBoleta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
