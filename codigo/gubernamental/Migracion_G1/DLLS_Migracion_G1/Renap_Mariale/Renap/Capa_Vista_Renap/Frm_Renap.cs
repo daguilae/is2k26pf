@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Renap;
 
+
+// EMPIEZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026
 namespace Capa_Vista_Renap
 {
     public partial class Frm_Renap : Form
@@ -16,6 +18,8 @@ namespace Capa_Vista_Renap
         public Frm_Renap()
         {
             InitializeComponent();
+            actualizardatagriew();
+            this.Load += Frm_Renap_Load;
         }
 
         int idCiudadanoSeleccionado = 0;
@@ -32,9 +36,35 @@ namespace Capa_Vista_Renap
             DataTable dt = controlador.llenarTbl(ciu);
             dgv_renap.DataSource = dt;
 
+            dgv_renap.Columns["Pk_Id_Ciudadano"].HeaderText = "ID Ciudadano";
+            dgv_renap.Columns["Cmp_Dpi_Ciudadano"].HeaderText = "DPI";
+            dgv_renap.Columns["Cmp_Nombres_Ciudadano"].HeaderText = "Nombres";
+            dgv_renap.Columns["Cmp_Apellidos_Ciudadano"].HeaderText = "Apellidos";
+            dgv_renap.Columns["Cmp_Sexo_Ciudadano"].HeaderText = "Sexo";
+            dgv_renap.Columns["Cmp_Nacionalidad_Ciudadano"].HeaderText = "Nacionalidad";
+            dgv_renap.Columns["Cmp_Lugar_Nacimiento_Ciudadano"].HeaderText = "Lugar de nacimiento";
+            dgv_renap.Columns["Cmp_Fecha_Nacimiento_Ciudadano"].HeaderText = "Fecha de nacimiento";
+
         }
 
+        private void Frm_Renap_Load(object sender, EventArgs e)
+        {
+            
+            dgv_renap.EnableHeadersVisualStyles = false;
 
+           
+            dgv_renap.ColumnHeadersDefaultCellStyle.BackColor = Color.Goldenrod;
+
+           
+            dgv_renap.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            
+            dgv_renap.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Segoe UI", 8, FontStyle.Bold);
+
+            
+            dgv_renap.ColumnHeadersHeight = 35;
+        }
 
 
 
@@ -201,5 +231,11 @@ namespace Capa_Vista_Renap
                 MessageBox.Show("Error al modificar el registro.");
             }
         }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
+// FINALIZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026

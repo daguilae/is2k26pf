@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Data.Odbc;
 using System.Data;
 
+
+// EMPIEZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026
 namespace Capa_Modelo_Renap
 {
     public class Cls_Sentencias
     {
         Cls_Conexion cn = new Cls_Conexion();
 
-
-        // obtener datos de una tabla CAPA MODELO
 
         public OdbcDataAdapter llenarTbl(string tabla)
         {
@@ -25,8 +25,6 @@ namespace Capa_Modelo_Renap
 
             return da;
         }
-
-
 
 
         public bool GuardarCiudadano(long dpi, string nombres, string apellidos,
@@ -49,7 +47,7 @@ namespace Capa_Modelo_Renap
 
                 OdbcCommand cmd = new OdbcCommand(sql, conn);
 
-                // ODBC usa SOLO el orden
+               
                 cmd.Parameters.AddWithValue("", dpi);
                 cmd.Parameters.AddWithValue("", nombres);
                 cmd.Parameters.AddWithValue("", apellidos);
@@ -115,7 +113,6 @@ namespace Capa_Modelo_Renap
 
                 OdbcCommand cmd = new OdbcCommand(sql, conn);
 
-                // orden exacto
                 cmd.Parameters.AddWithValue("", dpi);
                 cmd.Parameters.AddWithValue("", nombres);
                 cmd.Parameters.AddWithValue("", apellidos);
@@ -165,3 +162,4 @@ namespace Capa_Modelo_Renap
 
     }
 }
+// FINALIZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026

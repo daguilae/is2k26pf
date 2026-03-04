@@ -8,14 +8,12 @@ using System.Data;
 using System.Data.Odbc;
 
 
+// EMPIEZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026
 namespace Capa_Controlador_Renap
 {
     public class Cls_Controlador
     {
         Cls_Sentencias modelo = new Cls_Sentencias();
-
-
-        // LLenar una tabla CAPA CONTROLADOR
 
 
         public DataTable llenarTbl(string tabla)
@@ -25,8 +23,6 @@ namespace Capa_Controlador_Renap
             dt.Fill(table);
             return table;
         }
-
-
 
 
 
@@ -77,3 +73,4 @@ namespace Capa_Controlador_Renap
 
     }
 }
+// FINALIZA CODIGO HECHO POR: MARIA MORALES 0901-22-1226 EN LA FECHA DE: 04/03/2026
