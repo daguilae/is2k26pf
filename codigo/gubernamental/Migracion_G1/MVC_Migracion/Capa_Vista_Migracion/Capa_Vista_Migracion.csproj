@@ -70,6 +70,10 @@
     <Reference Include="Capa_Vista_Renap">
       <HintPath>..\..\DLLS_Migracion_G1\Renap_Mariale\Renap\Capa_Vista_Renap\bin\Debug\Capa_Vista_Renap.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Sedes">
       <HintPath>..\..\DLLS_Migracion_G1\Sede_Gerber\Capa_Vista_Sedes\Capa_Vista_Sedes\bin\Debug\Capa_Vista_Sedes.dll</HintPath>
     </Reference>

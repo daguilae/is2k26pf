@@ -149,6 +149,13 @@ namespace Capa_Vista_Migracion
 
         }
 
+        private void reporteadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Reporteador.Frm_Reportes Reportes = new Capa_Vista_Reporteador.Frm_Reportes();
+            Reportes.MdiParent = this;
+            Reportes.Show();
+        }
+
         //===== Kevin Natareno , 22/02/2026 =================================
     }
 }
