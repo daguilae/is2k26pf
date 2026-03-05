@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Capa_Modelo_Componente_Consultas
 {
-    public class Sentencias
+    public class Cls_Sentencias
     {
-        Conexion con = new Conexion();
+        Cls_Conexion con = new Cls_Conexion();
         // Diego André Monterroso Rabarique 0901-22-1369 15/10/2025
         // Obtiene todas las tablas de la base de datos bd_hoteleria
         public DataTable fun_ObtenerTablas()
@@ -105,7 +105,7 @@ namespace Capa_Modelo_Componente_Consultas
 
         // Carlo Andree Barquero Boche 0901-22-601 15/10/2025
         //  Consulta simple (campo, operador, valor)
-        public DataTable fun_EjecutarConsultaCondicional(string tabla, string campo, string operador, string valor, string sorden = "")
+        public DataTable fun_EjecutarConsultaCondicional(string stabla, string scampo, string soperador, string svalor, string sorden = "")
         {
             DataTable dt = new DataTable();
 
@@ -113,8 +113,8 @@ namespace Capa_Modelo_Componente_Consultas
             {
                 using (OdbcConnection conexion = con.conexion())
                 {
-                    string where = ConstruirWhere(campo, operador, valor);
-                    string query = $"SELECT * FROM {tabla} WHERE {where}";
+                    string where = ConstruirWhere(scampo, soperador, svalor);
+                    string query = $"SELECT * FROM {stabla} WHERE {where}";
 
                     if (!string.IsNullOrWhiteSpace(sorden))
                         query += $" {sorden}";
@@ -134,20 +134,20 @@ namespace Capa_Modelo_Componente_Consultas
         }
 
         // RICHARD ANTONY DE LEON 0901 - 22 - 10265 13/10/2025
-        public DataTable fun_ConsultaOrdenada(string tabla, bool asc)
+        public DataTable fun_ConsultaOrdenada(string stabla, bool basc)
         {
-            string sorden = asc ? "ORDER BY 1 ASC" : "ORDER BY 1 DESC";
-            return fun_EjecutarConsulta(tabla, sorden);
+            string sorden = basc ? "ORDER BY 1 ASC" : "ORDER BY 1 DESC";
+            return fun_EjecutarConsulta(stabla, sorden);
         }
 
 
         // Jose Pablo Medina 0901-22-22592 15/10/2025
         // Genera WHERE
-        private string ConstruirWhere(string campo, string operador, string valor)
+        private string ConstruirWhere(string scampo, string soperador, string svalor)
         {
-            string v = valor.Replace("'", "''");
+            string v = svalor.Replace("'", "''");
 
-            switch (operador)
+            switch (soperador)
             {
                 case "=":
                 case "!=":
@@ -155,19 +155,19 @@ namespace Capa_Modelo_Componente_Consultas
                 case "<":
                 case ">=":
                 case "<=":
-                    return $"{campo} {operador} '{v}'";
+                    return $"{scampo} {soperador} '{v}'";
 
                 case "Contiene":
-                    return $"{campo} LIKE '%{v}%'";
+                    return $"{scampo} LIKE '%{v}%'";
 
                 case "Comienza con":
-                    return $"{campo} LIKE '{v}%'";
+                    return $"{scampo} LIKE '{v}%'";
 
                 case "Termina con":
-                    return $"{campo} LIKE '%{v}'";
+                    return $"{scampo} LIKE '%{v}'";
 
                 default:
-                    return $"{campo} = '{v}'";
+                    return $"{scampo} = '{v}'";
             }
         }
 
