@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Capa_Controlador_Contsancia;
+
+namespace generacion_constancia
+{
+    public partial class Frm_datos : Form
+    {
+        public Frm_datos()
+        {
+            InitializeComponent();
+        }
+    }
+}
