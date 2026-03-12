@@ -654,7 +654,37 @@ namespace Capa_Controlador_Navegador
                 chk.Enabled = false;
             }
         }
-        
 
+        //Rellenar los controles combobox y textbox
+        // ======================= Richard De León =======================
+        public void RellenarControlesDesdeValores(Control contenedor, string[] sAlias, Dictionary<string, string> valores)
+        {
+            for (int i = 1; i < sAlias.Length; i++)
+            {
+                string campo = sAlias[i];
+                string valor = valores.ContainsKey(campo) ? valores[campo] : "";
+
+                Control[] encontrados = contenedor.Controls.Find("Cbo_" + campo, true);
+                if (encontrados.Length > 0 && encontrados[0] is ComboBox cbo)
+                {
+                    cbo.Text = valor;
+                    continue;
+                }
+
+                encontrados = contenedor.Controls.Find("Dtp_" + campo, true);
+                if (encontrados.Length > 0 && encontrados[0] is DateTimePicker dtp)
+                {
+                    if (DateTime.TryParse(valor, out DateTime fecha))
+                        dtp.Value = fecha;
+                    continue;
+                }
+
+                encontrados = contenedor.Controls.Find("Chk_" + campo, true);
+                if (encontrados.Length > 0 && encontrados[0] is CheckBox chk)
+                {
+                    chk.Checked = valor == "1" || valor.ToLower() == "true";
+                }
+            }
+        }
     }
 }

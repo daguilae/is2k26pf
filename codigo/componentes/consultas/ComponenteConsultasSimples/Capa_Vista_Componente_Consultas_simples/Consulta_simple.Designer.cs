@@ -29,10 +29,10 @@ namespace Capa_Vista_Componente_Consultas_simples
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Consulta_simple));
             this.Btn_Filtrar = new System.Windows.Forms.Button();
             this.Btn_buscar = new System.Windows.Forms.Button();
             this.Gpb_Listado = new System.Windows.Forms.GroupBox();
-            this.Dgv_consultas_simples = new System.Windows.Forms.DataGridView();
             this.Lbl_Valor = new System.Windows.Forms.Label();
             this.Lbl_Operador = new System.Windows.Forms.Label();
             this.Lbl_Campos = new System.Windows.Forms.Label();
@@ -42,18 +42,19 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Rdb_desc = new System.Windows.Forms.RadioButton();
             this.Cbo_Operador = new System.Windows.Forms.ComboBox();
             this.Cbo_Campos = new System.Windows.Forms.ComboBox();
+            this.Dgv_consultas_simples = new System.Windows.Forms.DataGridView();
             this.Gpb_Listado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_consultas_simples)).BeginInit();
             this.Gpb_Ordenamiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_consultas_simples)).BeginInit();
             this.SuspendLayout();
             // 
             // Btn_Filtrar
             // 
             this.Btn_Filtrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Btn_Filtrar.Image = global::Capa_Vista_Componente_Consultas_simples.Properties.Resources.android_search_icon_icons1;
-            this.Btn_Filtrar.Location = new System.Drawing.Point(720, 32);
+            this.Btn_Filtrar.Location = new System.Drawing.Point(737, 31);
             this.Btn_Filtrar.Name = "Btn_Filtrar";
-            this.Btn_Filtrar.Size = new System.Drawing.Size(67, 61);
+            this.Btn_Filtrar.Size = new System.Drawing.Size(77, 61);
             this.Btn_Filtrar.TabIndex = 28;
             this.Btn_Filtrar.Text = "Filtrar";
             this.Btn_Filtrar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -64,13 +65,13 @@ namespace Capa_Vista_Componente_Consultas_simples
             // 
             // Btn_buscar
             // 
-            this.Btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Btn_buscar.Image = global::Capa_Vista_Componente_Consultas_simples.Properties.Resources.android_search_icon_icons1;
-            this.Btn_buscar.Location = new System.Drawing.Point(647, 32);
+            this.Btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_buscar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buscar.Image")));
+            this.Btn_buscar.Location = new System.Drawing.Point(653, 31);
             this.Btn_buscar.Name = "Btn_buscar";
-            this.Btn_buscar.Size = new System.Drawing.Size(67, 61);
+            this.Btn_buscar.Size = new System.Drawing.Size(78, 61);
             this.Btn_buscar.TabIndex = 29;
-            this.Btn_buscar.Text = "Buscar";
+            this.Btn_buscar.Text = "Refrescar";
             this.Btn_buscar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Btn_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.Btn_buscar.UseCompatibleTextRendering = true;
@@ -83,31 +84,20 @@ namespace Capa_Vista_Componente_Consultas_simples
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Gpb_Listado.Controls.Add(this.Lbl_Valor);
             this.Gpb_Listado.Controls.Add(this.Lbl_Operador);
+            this.Gpb_Listado.Controls.Add(this.Btn_Filtrar);
             this.Gpb_Listado.Controls.Add(this.Lbl_Campos);
             this.Gpb_Listado.Controls.Add(this.Txt_Filtro);
             this.Gpb_Listado.Controls.Add(this.Gpb_Ordenamiento);
             this.Gpb_Listado.Controls.Add(this.Cbo_Operador);
             this.Gpb_Listado.Controls.Add(this.Cbo_Campos);
             this.Gpb_Listado.Controls.Add(this.Btn_buscar);
-            this.Gpb_Listado.Controls.Add(this.Btn_Filtrar);
             this.Gpb_Listado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gpb_Listado.Location = new System.Drawing.Point(2, 33);
             this.Gpb_Listado.Name = "Gpb_Listado";
-            this.Gpb_Listado.Size = new System.Drawing.Size(803, 115);
+            this.Gpb_Listado.Size = new System.Drawing.Size(826, 115);
             this.Gpb_Listado.TabIndex = 30;
             this.Gpb_Listado.TabStop = false;
             this.Gpb_Listado.Text = "Consultas Simples";
-            // 
-            // Dgv_consultas_simples
-            // 
-            this.Dgv_consultas_simples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_consultas_simples.Location = new System.Drawing.Point(16, 154);
-            this.Dgv_consultas_simples.Margin = new System.Windows.Forms.Padding(2);
-            this.Dgv_consultas_simples.Name = "Dgv_consultas_simples";
-            this.Dgv_consultas_simples.RowHeadersWidth = 51;
-            this.Dgv_consultas_simples.RowTemplate.Height = 24;
-            this.Dgv_consultas_simples.Size = new System.Drawing.Size(782, 314);
-            this.Dgv_consultas_simples.TabIndex = 31;
             // 
             // Lbl_Valor
             // 
@@ -198,6 +188,17 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Cbo_Campos.Size = new System.Drawing.Size(132, 28);
             this.Cbo_Campos.TabIndex = 36;
             // 
+            // Dgv_consultas_simples
+            // 
+            this.Dgv_consultas_simples.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_consultas_simples.Location = new System.Drawing.Point(16, 153);
+            this.Dgv_consultas_simples.Margin = new System.Windows.Forms.Padding(2);
+            this.Dgv_consultas_simples.Name = "Dgv_consultas_simples";
+            this.Dgv_consultas_simples.RowHeadersWidth = 51;
+            this.Dgv_consultas_simples.RowTemplate.Height = 24;
+            this.Dgv_consultas_simples.Size = new System.Drawing.Size(782, 314);
+            this.Dgv_consultas_simples.TabIndex = 31;
+            // 
             // Consulta_simple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -205,12 +206,12 @@ namespace Capa_Vista_Componente_Consultas_simples
             this.Controls.Add(this.Gpb_Listado);
             this.Controls.Add(this.Dgv_consultas_simples);
             this.Name = "Consulta_simple";
-            this.Size = new System.Drawing.Size(825, 511);
+            this.Size = new System.Drawing.Size(831, 511);
             this.Gpb_Listado.ResumeLayout(false);
             this.Gpb_Listado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_consultas_simples)).EndInit();
             this.Gpb_Ordenamiento.ResumeLayout(false);
             this.Gpb_Ordenamiento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_consultas_simples)).EndInit();
             this.ResumeLayout(false);
 
         }

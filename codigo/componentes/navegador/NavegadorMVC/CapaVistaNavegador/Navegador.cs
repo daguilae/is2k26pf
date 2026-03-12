@@ -412,14 +412,14 @@ namespace Capa_Vista_Navegador
                 return;
             }
 
-            string[] sArr = { SNombreTabla };
+            var f = new Frm_Consulta_Simple(new string[] { SNombreTabla });
 
-            using (var f = new Frm_Consulta_Simple(sArr))
+            f.RegistroSeleccionado += valores =>
             {
-                this.Hide();
-                f.ShowDialog(this);
-                this.Show();
-            }
+                ctrl.RellenarControlesDesdeValores(this, SAlias, valores);
+            };
+
+            f.ShowDialog(this);
         }
 
         // ======================= Pedro Ibañez =======================
