@@ -5,7 +5,7 @@ using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Globalization;
 
 namespace Capa_Modelo_Componente_Consultas
 {
@@ -146,16 +146,37 @@ namespace Capa_Modelo_Componente_Consultas
         private string ConstruirWhere(string scampo, string soperador, string svalor)
         {
             string v = svalor.Replace("'", "''");
+            bool esFecha = false;
+
+            if (DateTime.TryParseExact(v,
+                new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "d-M-yyyy", "yyyy-MM-dd" },
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None,
+                out DateTime fecha))
+            {
+                v = fecha.ToString("yyyy-MM-dd");
+                esFecha = true;
+            }
 
             switch (soperador)
             {
                 case "=":
+                    return esFecha ? $"DATE({scampo}) = '{v}'" : $"{scampo} = '{v}'";
+
                 case "!=":
+                    return esFecha ? $"DATE({scampo}) != '{v}'" : $"{scampo} != '{v}'";
+
                 case ">":
+                    return esFecha ? $"DATE({scampo}) > '{v}'" : $"{scampo} > '{v}'";
+
                 case "<":
+                    return esFecha ? $"DATE({scampo}) < '{v}'" : $"{scampo} < '{v}'";
+
                 case ">=":
+                    return esFecha ? $"DATE({scampo}) >= '{v}'" : $"{scampo} >= '{v}'";
+
                 case "<=":
-                    return $"{scampo} {soperador} '{v}'";
+                    return esFecha ? $"DATE({scampo}) <= '{v}'" : $"{scampo} <= '{v}'";
 
                 case "Contiene":
                     return $"{scampo} LIKE '%{v}%'";
@@ -167,7 +188,7 @@ namespace Capa_Modelo_Componente_Consultas
                     return $"{scampo} LIKE '%{v}'";
 
                 default:
-                    return $"{scampo} = '{v}'";
+                    return esFecha ? $"DATE({scampo}) = '{v}'" : $"{scampo} = '{v}'";
             }
         }
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Capa_Controlador_Componente_Consultas;
 using System.ComponentModel;
-
+using System.Globalization;
 
 
 
@@ -18,6 +18,9 @@ namespace Capa_Vista_Componente_Consultas_simples
         private string snombreTablaExterna;
         private readonly Dictionary<string, string> mapNombreAmigableAReal = new Dictionary<string, string>();
 
+        //Evento de click en el datagridview
+        public event Action<Dictionary<string, string>> RegistroSeleccionado;
+
         // CARLO ANDREE BARQUERO BOCHE 0901-22-601 15/10/2025
         //  Constructor vacío (usado por el diseñador)
 
@@ -27,10 +30,8 @@ namespace Capa_Vista_Componente_Consultas_simples
             Rdb_asc.CheckedChanged += Orden_CheckedChanged;
             Rdb_desc.CheckedChanged += Orden_CheckedChanged;
             this.Load += Consulta_simple_Load;
+            Dgv_consultas_simples.CellClick += Dgv_consultas_simples_CellClick;
         }
-
-        // CARLO ANDREE BARQUERO BOCHE 0901-22-60 15/10/2025
-        // Constructor que recibe el nombre de la tabla desde otro módulo
 
         public Consulta_simple(string snombreTabla)
         {
@@ -38,12 +39,29 @@ namespace Capa_Vista_Componente_Consultas_simples
             snombreTablaExterna = snombreTabla;
             Rdb_asc.CheckedChanged += Orden_CheckedChanged;
             Rdb_desc.CheckedChanged += Orden_CheckedChanged;
-
- 
             this.Load += Consulta_simple_Load;
+            Dgv_consultas_simples.CellClick += Dgv_consultas_simples_CellClick;
 
             if (!string.IsNullOrWhiteSpace(snombreTablaExterna))
                 CargarDatosTabla(snombreTablaExterna);
+        }
+
+        //Disparar el evento cuando se seleccione una fila
+        private void Dgv_consultas_simples_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow fila = Dgv_consultas_simples.Rows[e.RowIndex];
+            Dictionary<string, string> valores = new Dictionary<string, string>();
+
+            foreach (DataGridViewCell celda in fila.Cells)
+            {
+                string columna = Dgv_consultas_simples.Columns[celda.ColumnIndex].Name;
+                string valor = celda.Value?.ToString() ?? "";
+                valores[columna] = valor;
+            }
+
+            RegistroSeleccionado?.Invoke(valores);
         }
 
         // CARLO ANDREE BARQUERO BOCHE 0901-22-601 15/10/2025
@@ -205,11 +223,23 @@ namespace Capa_Vista_Componente_Consultas_simples
                 string sorden = (Rdb_asc.Checked ? "ORDER BY 1 ASC" :
                                 (Rdb_desc.Checked ? "ORDER BY 1 DESC" : ""));
 
+                string valorFinal = valorRaw;
+
+                // Si el usuario escribió una fecha como 10/12/2025
+                if (DateTime.TryParseExact(valorRaw,
+                                           new[] { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "dd-MM-yyyy" },
+                                           CultureInfo.InvariantCulture,
+                                           DateTimeStyles.None,
+                                           out DateTime fecha))
+                {
+                    valorFinal = fecha.ToString("yyyy-MM-dd");
+                }
+
                 DataTable resultado = controlador.fun_ConsultaFiltrada(
                     snombreTablaExterna,
                     scampoReal,
                     operador,
-                    valorRaw,
+                    valorFinal,
                     sorden
                 );
 
@@ -234,5 +264,6 @@ namespace Capa_Vista_Componente_Consultas_simples
             Dgv_consultas_simples.DataSource = resultado;
             Dgv_consultas_simples.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
     }
 }

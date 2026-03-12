@@ -13,12 +13,18 @@ namespace Capa_Vista_Componente_Consultas
 {
     public partial class Frm_Consulta_Simple : Form
     {
+        public event Action<Dictionary<string, string>> RegistroSeleccionado;
+
         public Frm_Consulta_Simple()
         {
             InitializeComponent();
+
+            consulta_simple1.RegistroSeleccionado += valores =>
+            {
+                RegistroSeleccionado?.Invoke(valores);
+            };
         }
-        // Constructor que recibe parámetros y asigna el nombre de la tabla externa
-        // al control consulta_simple1 si existe al menos un valor en el arreglo.
+
         public Frm_Consulta_Simple(string[] sParametros) : this()
         {
             if (sParametros != null && sParametros.Length > 0)
