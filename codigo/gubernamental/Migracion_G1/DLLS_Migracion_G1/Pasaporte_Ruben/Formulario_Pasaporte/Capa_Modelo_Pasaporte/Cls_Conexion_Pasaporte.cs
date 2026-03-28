@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Data.Odbc;
 
-
-//Inicio de codigo de coexion con la bd  Carlo Sosa 0901-22-1106  04/09/2025
-
-namespace Capa_Modelo_Seguridad
+namespace Capa_Modelo_Pasaporte
 {
-    public class Cls_Conexion
+   public class Cls_Conexion_Pasaporte
     {
         // Devuelve la cadena de conexión ODBC
         public string ObtenerCadenaConexion()
         {
-            return "Dsn=bd_SIG";
+            return "Dsn=bd_hoteleria";
         }
 
         // Abre y retorna una nueva conexión ODBC
