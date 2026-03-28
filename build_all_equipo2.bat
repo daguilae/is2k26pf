@@ -1,3 +1,4 @@
+:INICIO
 @echo off
 setlocal enabledelayedexpansion
 color 0A
@@ -13,7 +14,7 @@ set "MSBUILD_PATH=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\
 set "COMPONENTES_DIR=C:\is2k26pf\codigo\componentes"
 
 :: Ruta de PROYECTOS DEL EQUIPO 2
-set "BASE_DIR=C:\is2k26pf\codigo\gubernamental\Equipo 2"
+set "BASE_DIR=C:\is2k26pf\codigo\empresarial\Equipo 2"
 
 :: Carpeta del script
 set "ROOT_DIR=%~dp0"
@@ -31,6 +32,7 @@ for /L %%i in (1,1,4) do (
     echo ============================================
 
     call :CompilarModulo REPORTEADOR || echo Error en REPORTEADOR ciclo %%i
+    call :CompilarModulo CONSULTAS   || echo Error en CONSULTAS ciclo %%i
     call :CompilarModulo SEGURIDAD   || echo Error en SEGURIDAD ciclo %%i
     call :CompilarModulo NAVEGADOR   || echo Error en NAVEGADOR ciclo %%i
 )
@@ -128,9 +130,63 @@ for %%d in (%dlls%) do (
 
 echo.
 echo ============================================
+echo VERIFICANDO DLLs DE CONSULTAS
+echo ============================================
+
+if exist "%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Modelo_Componente_Consultas\bin\Debug\*.dll" (
+    echo [OK] ComponenteConsultasSimples - Capa Modelo
+) else (
+    echo [FALTA] ComponenteConsultasSimples - Capa Modelo
+)
+
+if exist "%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Controlador_Componente_Consultas\bin\Debug\*.dll" (
+    echo [OK] ComponenteConsultasSimples - Capa Controlador
+) else (
+    echo [FALTA] ComponenteConsultasSimples - Capa Controlador
+)
+
+if exist "%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Vista_Componente_Consultas_*\bin\Debug\*.dll" (
+    echo [OK] ComponenteConsultasSimples - Capa Vista
+) else (
+    echo [FALTA] ComponenteConsultasSimples - Capa Vista
+)
+
+if exist "%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Modelo_Componente_Consultas\bin\Debug\*.dll" (
+    echo [OK] Componente_Consultas - Capa Modelo
+) else (
+    echo [FALTA] Componente_Consultas - Capa Modelo
+)
+
+if exist "%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Controlador_Componente_Consultas\bin\Debug\*.dll" (
+    echo [OK] Componente_Consultas - Capa Controlador
+) else (
+    echo [FALTA] Componente_Consultas - Capa Controlador
+)
+
+if exist "%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Vista_Componente_Consultas\bin\Debug\*.dll" (
+    echo [OK] Componente_Consultas - Capa Vista
+) else (
+    echo [FALTA] Componente_Consultas - Capa Vista
+)
+
+echo.
+echo ============================================
 echo COMPILACION FINALIZADA COMPLETAMENTE
 echo ============================================
-pause
+echo.
+echo ============================================
+echo Presiona una opcion:
+echo [R] Recompilar
+echo [S] Salir
+echo ============================================
+
+choice /c RS /n /m "Seleccion: "
+
+if errorlevel 2 goto FIN
+if errorlevel 1 goto INICIO
+
+:FIN
+exit /b 0
 exit /b 0
 
 
@@ -148,6 +204,42 @@ if /I "%1"=="REPORTEADOR" (
     "%MSBUILD_PATH%" "%COMPONENTES_DIR%\reporteador\reporteador\Capa_Vista_Reporteador\Capa_Vista_Reporteador.csproj" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
 )
 
+if /I "%1"=="CONSULTAS" (
+    echo ============================================
+    echo COMPILANDO COMPONENTE: ComponenteConsultasSimples
+    echo ============================================
+
+    for %%p in ("%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Modelo_Componente_Consultas\*.csproj") do (
+        "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+    )
+
+    for %%p in ("%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Controlador_Componente_Consultas\*.csproj") do (
+        "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+    )
+
+    for /d %%d in ("%COMPONENTES_DIR%\consultas\ComponenteConsultasSimples\Capa_Vista_Componente_Consultas_*") do (
+        for %%p in ("%%~fd\*.csproj") do (
+            "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+        )
+    )
+
+    echo ============================================
+    echo COMPILANDO COMPONENTE: Componente_Consultas
+    echo ============================================
+
+    for %%p in ("%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Modelo_Componente_Consultas\*.csproj") do (
+        "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+    )
+
+    for %%p in ("%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Controlador_Componente_Consultas\*.csproj") do (
+        "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+    )
+
+    for %%p in ("%COMPONENTES_DIR%\consultas\Componente_Consultas\Capa_Vista_Componente_Consultas\*.csproj") do (
+        "%MSBUILD_PATH%" "%%~fp" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
+    )
+)
+
 if /I "%1"=="SEGURIDAD" (
     "%MSBUILD_PATH%" "%COMPONENTES_DIR%\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\Capa_Modelo_Seguridad.csproj" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
     "%MSBUILD_PATH%" "%COMPONENTES_DIR%\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\Capa_Controlador_Seguridad.csproj" /t:Rebuild /p:Configuration=Debug >> logs\build_log.txt 2>&1
@@ -161,3 +253,4 @@ if /I "%1"=="NAVEGADOR" (
 )
 
 exit /b 0
+

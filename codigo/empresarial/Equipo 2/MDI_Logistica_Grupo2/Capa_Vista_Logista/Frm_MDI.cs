@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Mov_Inv;
 using Capa_Vista_LineaProd;
+using Capa_Vista_Ventas;
 
 namespace Capa_Vista_Logista
 {
@@ -36,6 +37,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Mantenimiento_LineaProducto LineaProducto = new Frm_Mantenimiento_LineaProducto();
             LineaProducto.ShowDialog();
+        }
+
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Vendedores vendedores = new Frm_Vendedores();
+             vendedores.ShowDialog();
         }
     }
 }
