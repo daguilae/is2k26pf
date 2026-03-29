@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_Mov_Inv;
-using Capa_Vista_LineaProd;
+//using Capa_Vista_LineaProd;
 using Capa_Vista_Ventas;
 using Mantenimiento_Proveedores;
 using Capa_Vista_Marca;
 using Capa_Vista_Empresa_Transporte;
 using Capa_Vista_Reporteador;
 using Capa_Vista_Seguridad;
+using Capa_Vista_Bodegaa;
 
 namespace Capa_Vista_Logista
 {
@@ -38,12 +39,12 @@ namespace Capa_Vista_Logista
             CXC.ShowDialog();
         }
 
-        private void lineaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
+/*        private void lineaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Mantenimiento_LineaProducto LineaProducto = new Frm_Mantenimiento_LineaProducto();
             LineaProducto.ShowDialog();
         }
-
+*/
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Vendedores vendedores = new Frm_Vendedores();
@@ -90,6 +91,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Seguridad MDI_seguridad = new Frm_Seguridad();
             MDI_seguridad.ShowDialog();
+        }
+
+        private void bodegaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Bodega bodega = new Frm_Bodega();
+            bodega.ShowDialog();
         }
     }
 }
