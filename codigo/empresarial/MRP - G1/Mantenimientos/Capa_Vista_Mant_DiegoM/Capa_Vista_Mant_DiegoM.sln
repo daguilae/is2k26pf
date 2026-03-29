@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Mant_DiegoM", "Capa_Vista_Mant_DiegoM\Capa_Vista_Mant_DiegoM.csproj", "{DB090CAA-3DD4-46E0-B370-415B3AC6FA5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB090CAA-3DD4-46E0-B370-415B3AC6FA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB090CAA-3DD4-46E0-B370-415B3AC6FA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB090CAA-3DD4-46E0-B370-415B3AC6FA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB090CAA-3DD4-46E0-B370-415B3AC6FA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {746226C3-AF34-4D8A-AC7A-E6B3DEC4AB13}
+	EndGlobalSection
+EndGlobal
