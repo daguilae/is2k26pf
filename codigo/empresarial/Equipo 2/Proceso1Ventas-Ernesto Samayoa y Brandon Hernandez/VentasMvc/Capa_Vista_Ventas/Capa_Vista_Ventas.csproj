@@ -72,6 +72,12 @@
       <DependentUpon>Frm_Vendedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rpt_Clientes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Clientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Rpt_Vendedores.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +91,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Vendedores.resx">
       <DependentUpon>Frm_Vendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Clientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Clientes.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt_Vendedores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
