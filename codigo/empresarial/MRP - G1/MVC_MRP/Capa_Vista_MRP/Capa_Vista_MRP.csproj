@@ -37,6 +37,45 @@
     <Reference Include="Capa_Controlador_Seguridad">
       <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_vista">
+      <HintPath>..\..\Mantenimientos\Estado_recpcion_material\Capa_vista\bin\Debug\Capa_vista.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Bom">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Mariale_Bom\Capa_Vista_Bom\bin\Debug\Capa_Vista_Bom.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Estado_Fases">
+      <HintPath>..\..\Mantenimientos\Estado_Fase_Produccion\Estado_Fase_Produccion\Capa_Vista_Estado_Fases\bin\Debug\Capa_Vista_Estado_Fases.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Estado_Orden_Recibida">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Estado_Orden_Recibida\Capa_Vista_Estado_Orden_Recibida\bin\Debug\Capa_Vista_Estado_Orden_Recibida.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mantenimiento">
+      <HintPath>..\..\Mantenimientos\Estado_Orden_Produccion\Estado_Orden_Produccion\Capa_Vista_Mantenimiento\bin\Debug\Capa_Vista_Mantenimiento.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mantenimiento_Gerber">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Gerber\Capa_Vista_Mantenimiento_Gerber\bin\Debug\Capa_Vista_Mantenimiento_Gerber.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_DiegoM">
+      <HintPath>..\..\Mantenimientos\Capa_Vista_Mant_DiegoM\Capa_Vista_Mant_DiegoM\bin\Debug\Capa_Vista_Mant_DiegoM.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_Kevin">
+      <HintPath>..\..\Mantenimientos\Mantenimientos_Kevin\Capa_Vista_Mant_Kevin\bin\Debug\Capa_Vista_Mant_Kevin.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_Merma">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Merma_Paula\Capa_Vista_Mant_Merma\bin\Debug\Capa_Vista_Mant_Merma.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_UDM">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_UDM_Paula\Capa_Vista_Mant_UDM\bin\Debug\Capa_Vista_Mant_UDM.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_vista_produccion">
+      <HintPath>..\..\Mantenimientos\Estado_produccion_Ruben\mantenimiento_produccion\Capa_vista_produccion\bin\Debug\Capa_vista_produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_TipoInve">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Tipo_de_Movimiento_Inventario">
+      <HintPath>..\..\Mantenimientos\Tipo_de_movimineto_inventario\Capa_Vista_Tipo_de_Movimiento_Inventario\bin\Debug\Capa_Vista_Tipo_de_Movimiento_Inventario.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
