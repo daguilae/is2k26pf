@@ -42,6 +42,7 @@ namespace Capa_Vista_Logista
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -112,6 +113,8 @@ namespace Capa_Vista_Logista
             this.cuentaPorCobrarToolStripMenuItem,
             this.lineaDeProductoToolStripMenuItem,
             this.vendedoresToolStripMenuItem,
+            this.proveedoresToolStripMenuItem});
+            this.vendedoresToolStripMenuItem,
             this.clientesToolStripMenuItem});
             this.catálogosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.catálogosToolStripMenuItem.Name = "catálogosToolStripMenuItem";
@@ -168,8 +171,13 @@ namespace Capa_Vista_Logista
             this.asignacionesToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.asignacionesToolStripMenuItem.Text = "Ayudas";
             // 
+            // proveedoresToolStripMenuItem
             // clientesToolStripMenuItem
             // 
+            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
+            this.proveedoresToolStripMenuItem.Text = "Proveedores";
+            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -185,6 +193,7 @@ namespace Capa_Vista_Logista
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_MDI";
             this.Text = "Frm_MDI";
+            this.Load += new System.EventHandler(this.Frm_MDI_Load);
             this.Pnl_Superior.ResumeLayout(false);
             this.Pnl_Superior.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -209,6 +218,7 @@ namespace Capa_Vista_Logista
         private System.Windows.Forms.ToolStripMenuItem cuentaPorCobrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lineaDeProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
     }
 }

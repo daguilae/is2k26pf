@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Capa_Vista_Mov_Inv;
 using Capa_Vista_LineaProd;
 using Capa_Vista_Ventas;
+using Mantenimiento_Proveedores;
+
 
 namespace Capa_Vista_Logista
 {
@@ -43,6 +45,17 @@ namespace Capa_Vista_Logista
         {
             Frm_Vendedores vendedores = new Frm_Vendedores();
              vendedores.ShowDialog();
+        }
+
+        private void Frm_MDI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_proveedores proveedores = new Frm_proveedores();
+            proveedores.ShowDialog();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
