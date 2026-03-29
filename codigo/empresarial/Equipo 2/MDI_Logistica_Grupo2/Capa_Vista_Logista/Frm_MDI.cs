@@ -15,6 +15,7 @@ using Capa_Vista_Marca;
 using Capa_Vista_Empresa_Transporte;
 using Capa_Vista_Reporteador;
 using Capa_Vista_Seguridad;
+using Capa_Vista_Bodegaa;
 
 namespace Capa_Vista_Logista
 {
@@ -90,6 +91,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Seguridad MDI_seguridad = new Frm_Seguridad();
             MDI_seguridad.ShowDialog();
+        }
+
+        private void bodegaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Bodega bodega = new Frm_Bodega();
+            bodega.ShowDialog();
         }
     }
 }

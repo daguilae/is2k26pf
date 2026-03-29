@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{20B743B3-A65B-4341-96C0-697A9B279CD8}</ProjectGuid>
+    <ProjectGuid>{AEB736C7-B02C-49C8-85D0-8A7CA7BD747C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Vista_Logista</RootNamespace>
-    <AssemblyName>Capa_Vista_Logista</AssemblyName>
+    <RootNamespace>Capa_Vista_Bodegaa</RootNamespace>
+    <AssemblyName>Capa_Vista_Bodegaa</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,37 +32,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
-    <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Bodegaa">
-      <HintPath>..\..\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Empresa_Transporte">
-      <HintPath>..\..\Proceso4 Mantenimiento Transporte Sergio Izeppi\Capa_Vista_Empresa_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_LineaProd">
-      <HintPath>..\..\Proceso5-MantenimientoLineaProducto\P5KenphLunaMantLinea\Capa_Vista_LineaProd\bin\Debug\Capa_Vista_LineaProd.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_vista_Mantenimiento_Proveedores">
-      <HintPath>..\..\Proceso 2 Proveesores Macos velásquez\Mantenimiento Proveedores\Mantenimiento Proveedores\bin\Debug\Capa_vista_Mantenimiento_Proveedores.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Marca">
-      <HintPath>..\..\Proceso 5 Mantenimiento-Marca-PabloQuiroa\Capa_Vista_Marca\bin\Debug\Capa_Vista_Marca.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Mov_Inv">
-      <HintPath>..\..\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Capa_Controlador_Navegador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
+      <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Seguridad">
-      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaVista\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Ventas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Proceso 1Ventas-Ernesto Samayoa y Brandon Hernandez\VentasMvc\Capa_Vista_Ventas\bin\Debug\Capa_Vista_Ventas.dll</HintPath>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -82,27 +57,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_LOGIN.cs">
+    <Compile Include="Frm_Bodega.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_LOGIN.Designer.cs">
-      <DependentUpon>Frm_LOGIN.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_MDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_MDI.Designer.cs">
-      <DependentUpon>Frm_MDI.cs</DependentUpon>
+    <Compile Include="Frm_Bodega.Designer.cs">
+      <DependentUpon>Frm_Bodega.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rpt_Bodega.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Bodega.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Frm_LOGIN.resx">
-      <DependentUpon>Frm_LOGIN.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Bodega.resx">
+      <DependentUpon>Frm_Bodega.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_MDI.resx">
-      <DependentUpon>Frm_MDI.cs</DependentUpon>
+    <EmbeddedResource Include="Rpt_Bodega.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Bodega.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
