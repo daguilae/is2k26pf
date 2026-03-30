@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36324.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Renap", "Capa_Modelo_Renap\Capa_Modelo_Renap.csproj", "{6C06DAA2-80C5-4726-BBD5-2EC7A01E9CF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Renap", "Capa_Controlador_Renap\Capa_Controlador_Renap.csproj", "{B2256624-C2A6-4EE1-8DB8-C275A7ED3A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Renap", "Capa_Vista_Renap\Capa_Vista_Renap.csproj", "{8C1BACF3-CE0E-4606-8DB6-715095B3711D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C06DAA2-80C5-4726-BBD5-2EC7A01E9CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C06DAA2-80C5-4726-BBD5-2EC7A01E9CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C06DAA2-80C5-4726-BBD5-2EC7A01E9CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C06DAA2-80C5-4726-BBD5-2EC7A01E9CF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2256624-C2A6-4EE1-8DB8-C275A7ED3A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2256624-C2A6-4EE1-8DB8-C275A7ED3A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2256624-C2A6-4EE1-8DB8-C275A7ED3A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2256624-C2A6-4EE1-8DB8-C275A7ED3A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1BACF3-CE0E-4606-8DB6-715095B3711D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1BACF3-CE0E-4606-8DB6-715095B3711D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1BACF3-CE0E-4606-8DB6-715095B3711D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1BACF3-CE0E-4606-8DB6-715095B3711D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21DB1410-B1B5-48BA-9EC6-9322332A1390}
+	EndGlobalSection
+EndGlobal
