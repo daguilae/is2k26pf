@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Mov_Inv;
+using Mantenimiento_tipo_MOV_inv;
 using Capa_Vista_LineaProd;
 using Capa_Vista_Ventas;
 using Mantenimiento_Proveedores;
@@ -97,6 +97,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Bodega bodega = new Frm_Bodega();
             bodega.ShowDialog();
+        }
+
+        private void movimientoOperacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_mantenimiento_tipo_mov_inv Movimiento = new Frm_mantenimiento_tipo_mov_inv();
+            Movimiento.ShowDialog();
         }
     }
 }
