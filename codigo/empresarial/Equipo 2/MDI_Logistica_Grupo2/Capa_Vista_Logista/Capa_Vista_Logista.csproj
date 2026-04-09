@@ -36,22 +36,22 @@
       <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Bodegaa">
-      <HintPath>..\..\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
+      <HintPath>..\..\DISTRIBUCION\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Empresa_Transporte">
-      <HintPath>..\..\Proceso4 Mantenimiento Transporte Sergio Izeppi\Capa_Vista_Empresa_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
+      <HintPath>..\..\DISTRIBUCION\Proceso4 Mantenimiento Transporte Sergio Izeppi\Capa_Vista_Empresa_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_LineaProd">
-      <HintPath>..\..\Proceso5-MantenimientoLineaProducto\P5KenphLunaMantLinea\Capa_Vista_LineaProd\bin\Debug\Capa_Vista_LineaProd.dll</HintPath>
+      <HintPath>..\..\PRODUCCION\Proceso 5-MantenimientoLineaProducto\P5KenphLunaMantLinea\Capa_Vista_LineaProd\bin\Debug\Capa_Vista_LineaProd.dll</HintPath>
     </Reference>
     <Reference Include="Capa_vista_Mantenimiento_Proveedores">
-      <HintPath>..\..\Proceso 2 Proveesores Macos velásquez\Mantenimiento Proveedores\Mantenimiento Proveedores\bin\Debug\Capa_vista_Mantenimiento_Proveedores.dll</HintPath>
+      <HintPath>..\..\COMPRAS\Proceso 2 Proveesores Macos velásquez\Mantenimiento Proveedores\Mantenimiento Proveedores\bin\Debug\Capa_vista_Mantenimiento_Proveedores.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Marca">
-      <HintPath>..\..\Proceso 5 Mantenimiento-Marca-PabloQuiroa\Capa_Vista_Marca\bin\Debug\Capa_Vista_Marca.dll</HintPath>
+      <HintPath>..\..\PRODUCCION\Proceso 5 Mantenimiento-Marca-PabloQuiroa\Capa_Vista_Marca\bin\Debug\Capa_Vista_Marca.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Mov_Inv">
-      <HintPath>..\..\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
+      <HintPath>..\..\INVENTARIO\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,12 +62,18 @@
     </Reference>
     <Reference Include="Capa_Vista_Ventas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Proceso 1Ventas-Ernesto Samayoa y Brandon Hernandez\VentasMvc\Capa_Vista_Ventas\bin\Debug\Capa_Vista_Ventas.dll</HintPath>
+      <HintPath>..\..\VENTAS\Proceso 1Ventas-Ernesto Samayoa y Brandon Hernandez\VentasMvc\Capa_Vista_Ventas\bin\Debug\Capa_Vista_Ventas.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Mantenimiento_cuentas_por_pagar">
+      <HintPath>..\..\COMPRAS\proseso 2 mantenimiento cuentas por  pagar Danilo\Mantenimiento_cuentas_por_pagar\Mantenimiento_cuentas_por_pagar\bin\Debug\Mantenimiento_cuentas_por_pagar.dll</HintPath>
+    </Reference>
+    <Reference Include="Mantenimiento_tipo_MOV_inv">
+      <HintPath>..\..\INVENTARIO\Proceso 5 Mantenimiento Movimiento Intentario\Mantenimiento_tipo_MOV_inv\Mantenimiento_tipo_MOV_inv\bin\Debug\Mantenimiento_tipo_MOV_inv.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

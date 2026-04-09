@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Vista_Mov_Inv;
+using Mantenimiento_tipo_MOV_inv;
 using Capa_Vista_LineaProd;
 using Capa_Vista_Ventas;
 using Mantenimiento_Proveedores;
@@ -16,6 +16,8 @@ using Capa_Vista_Empresa_Transporte;
 using Capa_Vista_Reporteador;
 using Capa_Vista_Seguridad;
 using Capa_Vista_Bodegaa;
+using Capa_Vista_Mov_Inv;
+using Mantenimiento_cuentas_por_pagar;
 
 namespace Capa_Vista_Logista
 {
@@ -48,7 +50,7 @@ namespace Capa_Vista_Logista
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Vendedores vendedores = new Frm_Vendedores();
-             vendedores.ShowDialog();
+            vendedores.ShowDialog();
         }
 
         private void Frm_MDI_Load(object sender, EventArgs e)
@@ -97,6 +99,30 @@ namespace Capa_Vista_Logista
         {
             Frm_Bodega bodega = new Frm_Bodega();
             bodega.ShowDialog();
+        }
+
+        private void movimientoOperacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_mantenimiento_tipo_mov_inv Movimiento = new Frm_mantenimiento_tipo_mov_inv();
+            Movimiento.ShowDialog();
+        }
+
+        private void cuentasPorPagarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Mantenimiento_cuentas_por_pagar CXP = new Frm_Mantenimiento_cuentas_por_pagar();
+            CXP.ShowDialog();
+        }
+
+        private void pagosVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Pagos pagos = new Frm_Pagos();
+            pagos.ShowDialog();
+        }
+
+        private void movimientoDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Encabezado_Transaccion Trans = new Frm_Encabezado_Transaccion();
+            Trans.ShowDialog();
         }
     }
 }
