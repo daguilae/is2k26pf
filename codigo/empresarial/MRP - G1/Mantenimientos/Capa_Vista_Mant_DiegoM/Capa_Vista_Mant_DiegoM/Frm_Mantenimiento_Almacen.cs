@@ -32,7 +32,8 @@ namespace Capa_Vista_Mant_DiegoM
              "Pk_Id_Almacen",
              "Nombre_Almacen",
              "Ubicacion_Almacen",
-             "Tipo_Almacen"
+             "Tipo_Almacen",
+             "Estado_Almacen"
 
              };
 
@@ -40,7 +41,8 @@ namespace Capa_Vista_Mant_DiegoM
              "ID Almacen",
              "Nombre Almacen",
              "Ubicacion",
-             "Tipo Almacen"
+             "Tipo Almacen",
+             "Estado"
             };
 
 
@@ -55,6 +57,12 @@ namespace Capa_Vista_Mant_DiegoM
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reportes frm = new Frm_Reportes("Reporte_Almacenes.rpt");
+            frm.ShowDialog();
         }
     }
 }
