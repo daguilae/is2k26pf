@@ -95,11 +95,23 @@
     <Compile Include="Frm_Pago_Transferencia.Designer.cs">
       <DependentUpon>Frm_Pago_Transferencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Sucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Sucursales.Designer.cs">
+      <DependentUpon>Frm_Sucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Vendedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Vendedores.designer.cs">
       <DependentUpon>Frm_Vendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Ventas.Designer.cs">
+      <DependentUpon>Frm_Ventas.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -111,6 +123,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Rpt_Clientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_Sucursales.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Sucursales.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Rpt_Vendedores.cs">
@@ -139,8 +157,14 @@
     <EmbeddedResource Include="Frm_Pago_Transferencia.resx">
       <DependentUpon>Frm_Pago_Transferencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Sucursales.resx">
+      <DependentUpon>Frm_Sucursales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Vendedores.resx">
       <DependentUpon>Frm_Vendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Ventas.resx">
+      <DependentUpon>Frm_Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -149,6 +173,10 @@
     <EmbeddedResource Include="Rpt_Clientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_Clientes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Sucursales.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Sucursales.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt_Vendedores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -175,6 +203,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_limpiar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shopping_commerce_flower_supermarket_sale_cart_icon_255564.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4105943-accounts-group-people-user-user-group-users_113923.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location_map_pin_mark_icon_148685.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

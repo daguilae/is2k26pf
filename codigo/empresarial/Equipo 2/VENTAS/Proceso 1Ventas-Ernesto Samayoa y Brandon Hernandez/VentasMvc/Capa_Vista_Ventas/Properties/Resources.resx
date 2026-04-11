@@ -118,22 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icono_modificar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_modificar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4105943-accounts-group-people-user-user-group-users_113923" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4105943-accounts-group-people-user-user-group-users_113923.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icono_agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icono_agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icono_eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_eliminar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icono_guardar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_guardar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icono_modificar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_modificar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono_agregar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_agregar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icono_imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icono_imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icono_limpiar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono_limpiar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopping_commerce_flower_supermarket_sale_cart_icon_255564" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopping_commerce_flower_supermarket_sale_cart_icon_255564.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="location_map_pin_mark_icon_148685" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\location_map_pin_mark_icon_148685.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

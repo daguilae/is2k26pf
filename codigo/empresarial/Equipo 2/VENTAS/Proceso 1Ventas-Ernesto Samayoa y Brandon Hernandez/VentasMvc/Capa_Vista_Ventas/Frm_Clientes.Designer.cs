@@ -33,7 +33,9 @@ namespace Capa_Vista_Ventas
             this.navegador1 = new Capa_Vista_Navegador.Navegador();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // navegador1
@@ -52,6 +54,7 @@ namespace Capa_Vista_Ventas
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -70,6 +73,16 @@ namespace Capa_Vista_Ventas
             this.label1.TabIndex = 0;
             this.label1.Text = "MANTENIMIENTO CLIENTES";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Capa_Vista_Ventas.Properties.Resources._4105943_accounts_group_people_user_user_group_users_113923;
+            this.pictureBox1.Location = new System.Drawing.Point(470, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(71, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // Frm_Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -82,6 +95,7 @@ namespace Capa_Vista_Ventas
             this.Text = "Mantenimiento Clientes";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -91,5 +105,6 @@ namespace Capa_Vista_Ventas
         private Capa_Vista_Navegador.Navegador navegador1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
