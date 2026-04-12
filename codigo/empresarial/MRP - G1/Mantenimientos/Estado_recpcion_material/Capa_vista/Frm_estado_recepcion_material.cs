@@ -47,7 +47,7 @@ namespace Capa_vista
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 711;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

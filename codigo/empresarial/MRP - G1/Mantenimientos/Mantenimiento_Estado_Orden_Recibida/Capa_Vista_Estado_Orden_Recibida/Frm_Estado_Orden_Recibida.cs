@@ -43,7 +43,7 @@ namespace Capa_Vista_Estado_Orden_Recibida
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 710;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

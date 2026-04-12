@@ -32,7 +32,8 @@ namespace Capa_Vista_Mant_DiegoM
              "Pk_Id_Almacen",
              "Nombre_Almacen",
              "Ubicacion_Almacen",
-             "Tipo_Almacen"
+             "Tipo_Almacen",
+             "Estado_Almacen"
 
              };
 
@@ -40,12 +41,13 @@ namespace Capa_Vista_Mant_DiegoM
              "ID Almacen",
              "Nombre Almacen",
              "Ubicacion",
-             "Tipo Almacen"
+             "Tipo Almacen",
+             "Estado"
             };
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 703;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;
@@ -55,6 +57,12 @@ namespace Capa_Vista_Mant_DiegoM
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reportes frm = new Frm_Reportes("Reporte_Almacenes.rpt");
+            frm.ShowDialog();
         }
     }
 }

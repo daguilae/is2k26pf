@@ -52,7 +52,7 @@ namespace Capa_Vista_Estado_Fases
             this.ClientSize = new System.Drawing.Size(1568, 605);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Mantenimiento_Estado_FP";
-            this.Text = "Frm_Mantenimiento_Estado_FP";
+            this.Text = "Estados Fase de Producción";
             this.ResumeLayout(false);
 
         }

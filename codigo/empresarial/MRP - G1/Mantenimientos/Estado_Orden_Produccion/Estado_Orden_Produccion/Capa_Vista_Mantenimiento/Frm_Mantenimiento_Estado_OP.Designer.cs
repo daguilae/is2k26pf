@@ -52,7 +52,7 @@ namespace Capa_Vista_Mantenimiento
             this.ClientSize = new System.Drawing.Size(1511, 657);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Mantenimiento_Estado_OP";
-            this.Text = "Frm_Mantenimiento_Estado_OP";
+            this.Text = "Estado Orden de Producción";
             this.ResumeLayout(false);
 
         }

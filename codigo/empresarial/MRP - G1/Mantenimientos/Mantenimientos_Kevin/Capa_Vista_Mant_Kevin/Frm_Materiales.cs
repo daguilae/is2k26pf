@@ -59,7 +59,7 @@ namespace Capa_Vista_Mant_Kevin
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 704;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

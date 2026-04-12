@@ -34,13 +34,13 @@ namespace Capa_Vista_Mantenimiento
                  "Descripcion_Estado_Orden_Produccion"
              };
 
-             string[] sEtiquetas = {
+            string[] sEtiquetas = {
                  "ID",
                  "Nombre Estado",
                  "Descripcion Estado"
              };
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 709;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

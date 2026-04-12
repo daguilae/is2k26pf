@@ -49,11 +49,13 @@ namespace Capa_Vista_MRP
             this.estadoOrdenRecibidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoRecepciónMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoDeInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesosMRPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ordenProduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +67,7 @@ namespace Capa_Vista_MRP
             this.archivoToolStripMenuItem,
             this.catálogosPrincipalesToolStripMenuItem,
             this.catálogosSecundariosToolStripMenuItem,
+            this.procesosMRPToolStripMenuItem,
             this.herramientasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -160,58 +163,66 @@ namespace Capa_Vista_MRP
             // estadoDeProducciónToolStripMenuItem
             // 
             this.estadoDeProducciónToolStripMenuItem.Name = "estadoDeProducciónToolStripMenuItem";
-            this.estadoDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoDeProducciónToolStripMenuItem.Text = "Estado de Producción";
             this.estadoDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeProducciónToolStripMenuItem_Click);
             // 
             // tipoDeMovimientoDeInventarioToolStripMenuItem
             // 
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Name = "tipoDeMovimientoDeInventarioToolStripMenuItem";
-            this.tipoDeMovimientoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.tipoDeMovimientoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Text = "Tipo de Movimiento de Inventario";
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeMovimientoDeInventarioToolStripMenuItem_Click);
             // 
             // estadoBOMToolStripMenuItem
             // 
             this.estadoBOMToolStripMenuItem.Name = "estadoBOMToolStripMenuItem";
-            this.estadoBOMToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoBOMToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoBOMToolStripMenuItem.Text = "Estado BOM";
             this.estadoBOMToolStripMenuItem.Click += new System.EventHandler(this.estadoBOMToolStripMenuItem_Click);
             // 
             // estadoPlanDeProducciónToolStripMenuItem
             // 
             this.estadoPlanDeProducciónToolStripMenuItem.Name = "estadoPlanDeProducciónToolStripMenuItem";
-            this.estadoPlanDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoPlanDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoPlanDeProducciónToolStripMenuItem.Text = "Estado Plan de Producción";
             this.estadoPlanDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoPlanDeProducciónToolStripMenuItem_Click);
             // 
             // estadoOrdenDeProducciónToolStripMenuItem
             // 
             this.estadoOrdenDeProducciónToolStripMenuItem.Name = "estadoOrdenDeProducciónToolStripMenuItem";
-            this.estadoOrdenDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoOrdenDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoOrdenDeProducciónToolStripMenuItem.Text = "Estado Orden de Producción";
             this.estadoOrdenDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoOrdenDeProducciónToolStripMenuItem_Click);
             // 
             // estadoOrdenRecibidaToolStripMenuItem
             // 
             this.estadoOrdenRecibidaToolStripMenuItem.Name = "estadoOrdenRecibidaToolStripMenuItem";
-            this.estadoOrdenRecibidaToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoOrdenRecibidaToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoOrdenRecibidaToolStripMenuItem.Text = "Estado Orden Recibida";
             this.estadoOrdenRecibidaToolStripMenuItem.Click += new System.EventHandler(this.estadoOrdenRecibidaToolStripMenuItem_Click);
             // 
             // estadoRecepciónMaterialToolStripMenuItem
             // 
             this.estadoRecepciónMaterialToolStripMenuItem.Name = "estadoRecepciónMaterialToolStripMenuItem";
-            this.estadoRecepciónMaterialToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.estadoRecepciónMaterialToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoRecepciónMaterialToolStripMenuItem.Text = "Estado Recepción Material";
             this.estadoRecepciónMaterialToolStripMenuItem.Click += new System.EventHandler(this.estadoRecepciónMaterialToolStripMenuItem_Click);
             // 
             // tipoDeInventarioToolStripMenuItem
             // 
             this.tipoDeInventarioToolStripMenuItem.Name = "tipoDeInventarioToolStripMenuItem";
-            this.tipoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(318, 26);
+            this.tipoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.tipoDeInventarioToolStripMenuItem.Text = "Tipo de Inventario";
             this.tipoDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInventarioToolStripMenuItem_Click);
+            // 
+            // procesosMRPToolStripMenuItem
+            // 
+            this.procesosMRPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ordenProduccionToolStripMenuItem});
+            this.procesosMRPToolStripMenuItem.Name = "procesosMRPToolStripMenuItem";
+            this.procesosMRPToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.procesosMRPToolStripMenuItem.Text = "Procesos MRP";
             // 
             // herramientasToolStripMenuItem
             // 
@@ -242,6 +253,13 @@ namespace Capa_Vista_MRP
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(49, 20);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // ordenProduccionToolStripMenuItem
+            // 
+            this.ordenProduccionToolStripMenuItem.Name = "ordenProduccionToolStripMenuItem";
+            this.ordenProduccionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordenProduccionToolStripMenuItem.Text = "Orden Produccion";
+            this.ordenProduccionToolStripMenuItem.Click += new System.EventHandler(this.ordenProduccionToolStripMenuItem_Click);
             // 
             // Frm_MDI_MRP
             // 
@@ -291,6 +309,8 @@ namespace Capa_Vista_MRP
         private System.Windows.Forms.ToolStripMenuItem tipoDeInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem procesosMRPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordenProduccionToolStripMenuItem;
     }
 }
 

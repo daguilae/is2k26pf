@@ -44,7 +44,7 @@ namespace Capa_Vista_Mant_Merma
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 725;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;
