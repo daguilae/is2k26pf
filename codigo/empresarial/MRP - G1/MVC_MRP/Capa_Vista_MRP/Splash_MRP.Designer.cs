@@ -90,7 +90,7 @@ namespace Capa_Vista_MRP
             this.lblPorcentaje.AutoSize = true;
             this.lblPorcentaje.Location = new System.Drawing.Point(703, 353);
             this.lblPorcentaje.Name = "lblPorcentaje";
-            this.lblPorcentaje.Size = new System.Drawing.Size(46, 17);
+            this.lblPorcentaje.Size = new System.Drawing.Size(44, 16);
             this.lblPorcentaje.TabIndex = 4;
             this.lblPorcentaje.Text = "label1";
             // 
@@ -106,7 +106,7 @@ namespace Capa_Vista_MRP
             this.Controls.Add(this.LbSubtitulo);
             this.Controls.Add(this.LbTitulo);
             this.Name = "Splash_MRP";
-            this.Text = "Splash_MRP";
+            this.Text = "Sistema MRP";
             this.Load += new System.EventHandler(this.Splash_MRP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picGif)).EndInit();
             this.ResumeLayout(false);
