@@ -20,6 +20,7 @@ using Capa_Vista_Mov_Inv;
 using Mantenimiento_cuentas_por_pagar;
 using Capa_Vista_OrdenProduccion;
 using Capa_vista_Factura;
+using Capa_Vista_OrdenDetalle;
 namespace Capa_Vista_Logista
 {
     public partial class Frm_MDI : Form
@@ -158,6 +159,13 @@ namespace Capa_Vista_Logista
         {
             Frm_factura factura = new Frm_factura();
             factura.ShowDialog();
+        }
+
+        private void detalleOrdenDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Orden_Produccion_Detalle OrdenProd = new Frm_Orden_Produccion_Detalle();
+            OrdenProd.ShowDialog();
+           
         }
     }
 }

@@ -57,6 +57,9 @@
     <Reference Include="Capa_Vista_Mov_Inv">
       <HintPath>..\..\INVENTARIO\Proceso 5 Transacciones de Inventario Pedro Ibañez\P5MovInvPedroIbañez\Capa_Vista_Mov_Inv\bin\Debug\Capa_Vista_Mov_Inv.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_OrdenDetalle">
+      <HintPath>..\..\PRODUCCION\Orden_Produccion_Detalle\Capa_Vista_OrdenDetalle\bin\Debug\Capa_Vista_OrdenDetalle.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_OrdenProduccion">
       <HintPath>..\..\PRODUCCION\Orden_Produccion\Capa_Vista_OrdenProduccion\bin\Debug\Capa_Vista_OrdenProduccion.dll</HintPath>
     </Reference>
