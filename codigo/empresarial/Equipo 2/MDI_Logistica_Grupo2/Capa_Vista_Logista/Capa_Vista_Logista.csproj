@@ -38,9 +38,11 @@
     <Reference Include="Capa_Vista_Bodegaa">
       <HintPath>..\..\DISTRIBUCION\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
     </Reference>
-    <Reference Include="Capa_Vista_Empresa_Transporte, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DISTRIBUCION\Proceso4 Mantenimiento Transporte Sergio Izeppi\Proceso4_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
+    <Reference Include="Capa_Vista_Compras">
+      <HintPath>..\..\COMPRAS\Proceso 2 compras Danilo\Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Empresa_Transporte">
+      <HintPath>..\..\DISTRIBUCION\Proceso4 Mantenimiento Transporte Sergio Izeppi\Capa_Vista_Empresa_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
     </Reference>
     <Reference Include="Capa_vista_Factura">
       <HintPath>..\..\COMPRAS\Proceso 2 Facturas\Frm_facturas\Capa_vista_Factura\bin\Debug\Capa_vista_Factura.dll</HintPath>
