@@ -41,6 +41,9 @@
     <Reference Include="Capa_Vista_Compras">
       <HintPath>..\..\COMPRAS\Proceso 2 compras Danilo\Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Comprobantes">
+      <HintPath>..\..\DISTRIBUCION\Proceso4-Comprobantes-Richard-de-Leon\Capa_Vista_Comprobantes\bin\Debug\Capa_Vista_Comprobantes.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Empresa_Transporte">
       <HintPath>..\..\DISTRIBUCION\Proceso4 Mantenimiento Transporte Sergio Izeppi\Capa_Vista_Empresa_Transporte\Capa_Vista_Empresa_Transporte\bin\Debug\Capa_Vista_Empresa_Transporte.dll</HintPath>
     </Reference>

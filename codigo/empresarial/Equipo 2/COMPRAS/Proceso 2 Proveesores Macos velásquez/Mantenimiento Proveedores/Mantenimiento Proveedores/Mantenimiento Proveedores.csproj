@@ -74,6 +74,12 @@
       <DependentUpon>Reporte Proveedores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte Proveedores1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte Proveedores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Rpt_proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
