@@ -14,6 +14,10 @@ using Capa_Vista_TipoInve;
 using Capa_Vista_Tipo_de_Movimiento_Inventario;
 using Capa_Vista_Estado_Orden_Recibida;
 using Capa_vista_produccion;
+// Enrega de producto terminado
+using Capa_Vista_Materiales;
+using Capa_Vista_InventarioPT;
+using Capa_Vista_Movimiento_Inventario;
 
 namespace Capa_Vista_MRP
 {
@@ -86,7 +90,7 @@ namespace Capa_Vista_MRP
 
         private void materialesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Materiales m = new Frm_Materiales();
+            Capa_Vista_Mant_Kevin.Frm_Materiales m = new Capa_Vista_Mant_Kevin.Frm_Materiales();
             m.Show();
         }
 
@@ -148,6 +152,24 @@ namespace Capa_Vista_MRP
         {
             Capa_Vista_Orden_Produccion.Frm_Orden_Produccion orden = new Capa_Vista_Orden_Produccion.Frm_Orden_Produccion();
             orden.Show();
+        }
+
+        private void materialesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Materiales.Frm_Materiales m = new Capa_Vista_Materiales.Frm_Materiales();
+            m.Show();
+        }
+
+        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Inventario_EntregaPT m = new Frm_Inventario_EntregaPT();
+            m.Show();
+        }
+
+        private void movimientoInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Movimiento_Inventario m = new Frm_Movimiento_Inventario();
+            m.Show();
         }
     }
     
