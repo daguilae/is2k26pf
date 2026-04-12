@@ -63,6 +63,16 @@ namespace Capa_Vista_Ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4105943_accounts_group_people_user_user_group_users_113923 {
+            get {
+                object obj = ResourceManager.GetObject("4105943-accounts-group-people-user-user-group-users_113923", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icono_agregar {
             get {
                 object obj = ResourceManager.GetObject("icono_agregar", resourceCulture);
@@ -116,6 +126,26 @@ namespace Capa_Vista_Ventas.Properties {
         internal static System.Drawing.Bitmap icono_modificar {
             get {
                 object obj = ResourceManager.GetObject("icono_modificar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap location_map_pin_mark_icon_148685 {
+            get {
+                object obj = ResourceManager.GetObject("location_map_pin_mark_icon_148685", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopping_commerce_flower_supermarket_sale_cart_icon_255564 {
+            get {
+                object obj = ResourceManager.GetObject("shopping_commerce_flower_supermarket_sale_cart_icon_255564", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

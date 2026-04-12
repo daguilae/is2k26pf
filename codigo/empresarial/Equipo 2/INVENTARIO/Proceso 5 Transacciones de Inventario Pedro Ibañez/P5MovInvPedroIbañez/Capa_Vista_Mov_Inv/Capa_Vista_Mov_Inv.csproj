@@ -65,6 +65,12 @@
     <Compile Include="Frm_Encabezado_Transaccion.Designer.cs">
       <DependentUpon>Frm_Encabezado_Transaccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Inventario_Mantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Inventario_Mantenimiento.Designer.cs">
+      <DependentUpon>Frm_Inventario_Mantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Mantenimiento_Tipo_Op_CXC.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Frm_Encabezado_Transaccion.resx">
       <DependentUpon>Frm_Encabezado_Transaccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Inventario_Mantenimiento.resx">
+      <DependentUpon>Frm_Inventario_Mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Mantenimiento_Tipo_Op_CXC.resx">
       <DependentUpon>Frm_Mantenimiento_Tipo_Op_CXC.cs</DependentUpon>

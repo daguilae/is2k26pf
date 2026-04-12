@@ -17,6 +17,7 @@ using Capa_Vista_Reporteador;
 using Capa_Vista_Seguridad;
 using Capa_Vista_Bodegaa;
 using Capa_Vista_Mov_Inv;
+
 using Mantenimiento_cuentas_por_pagar;
 
 namespace Capa_Vista_Logista
@@ -123,6 +124,25 @@ namespace Capa_Vista_Logista
         {
             Frm_Encabezado_Transaccion Trans = new Frm_Encabezado_Transaccion();
             Trans.ShowDialog();
+        }
+
+        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Inventario_Mantenimiento Inv = new Frm_Inventario_Mantenimiento();
+            Inv.ShowDialog();
+        }
+
+        private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Ventas ventas = new Frm_Ventas();
+            ventas.ShowDialog();
+
+        }
+
+        private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Sucursales sucursales = new Frm_Sucursales();
+            sucursales.ShowDialog();
         }
     }
 }
