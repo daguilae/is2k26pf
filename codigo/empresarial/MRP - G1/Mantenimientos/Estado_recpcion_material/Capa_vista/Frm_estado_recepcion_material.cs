@@ -47,7 +47,7 @@ namespace Capa_vista
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 711;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;
@@ -59,9 +59,6 @@ namespace Capa_vista
             navegador1.mostrarDatos();
         }
 
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

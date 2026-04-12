@@ -67,6 +67,9 @@
     <Reference Include="Capa_Vista_Mant_UDM">
       <HintPath>..\..\Mantenimientos\Mantenimiento_UDM_Paula\Capa_Vista_Mant_UDM\bin\Debug\Capa_Vista_Mant_UDM.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Orden_Produccion">
+      <HintPath>..\..\DLLS\Orden_produccion_Ruben\Orden_Produccion\Capa_Vista_Orden_Produccion\bin\Debug\Capa_Vista_Orden_Produccion.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_vista_produccion">
       <HintPath>..\..\Mantenimientos\Estado_produccion_Ruben\mantenimiento_produccion\Capa_vista_produccion\bin\Debug\Capa_vista_produccion.dll</HintPath>
     </Reference>

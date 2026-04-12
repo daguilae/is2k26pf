@@ -43,7 +43,6 @@ namespace Capa_vista
             this.navegador1.Size = new System.Drawing.Size(1180, 488);
             this.navegador1.SNombreTabla = null;
             this.navegador1.TabIndex = 0;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // Frm_estado_recepcion_material
             // 

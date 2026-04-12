@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayuda Estado Orden de Producción</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        color: #222;
+      }
+      .container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+      .brand img {
+        width: 60px;
+        height: auto;
+        display: block;
+        margin: 0;
+      }
+      .brand h1 {
+        font-size: 1.6rem;
+        margin: 0;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 22px;
+      }
+      .intro {
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .field-info {
+        border-left: 3px solid #8a9cb2;
+        background: #f7f8fa;
+        padding: 14px 16px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      .field-info h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+      .field-info p {
+        margin: 0 0 8px;
+        line-height: 1.6;
+      }
+      .field-info .note {
+        font-size: 0.95rem;
+        color: #555;
+      }
+      .example {
+        margin-top: 6px;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: #eef0f3;
+        color: #333;
+        font-family: Consolas, 'Courier New', monospace;
+      }
+      .footer {
+        margin-top: 24px;
+        font-size: 0.95rem;
+        color: #444;
+      }
+      .content-image {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="brand">
+        <img src="Logo.jpeg" alt="Logo" />
+        <h1>Ayuda: Registrar Estado de Orden de Producción</h1>
+      </header>
+
+      <main class="card">
+        <p class="intro">
+          En este formulario se registran los estados que pueden tomar las órdenes de producción.
+          Cada campo debe llenarse con información válida para que el registro se guarde correctamente.
+        </p>
+        <img class="content-image" src="Formulario.png" alt="">
+        <section class="field-info">
+          <h3>1. ID del estado</h3>
+          <p>
+            Este campo acepta únicamente números enteros mayores a cero. No se permiten valores negativos,
+            ceros ni decimales.
+          </p>
+          <p class="note">
+            El ID no debe repetirse con otros IDs ya registrados en el sistema.
+            Cada estado debe tener un identificador único.
+          </p>
+          <div class="example">Ejemplo: 1, 2, 3, 10</div>
+        </section>
+
+        <section class="field-info">
+          <h3>2. Nombre del estado</h3>
+          <p>
+            En este campo se ingresa el nombre que identifica al estado. 
+          </p>
+          <p class="note">
+            Registrar un nombre corto que identifique fácilmente el estado.
+          </p>
+          <div class="example">Ejemplo: En proceso</div>
+        </section>
+
+        <section class="field-info">
+          <h3>3. Descripción del estado</h3>
+          <p>
+            Aquí se describe con mayor detalle el significado del estado. 
+          </p>
+          <p class="note">
+            La descripción sirve para explicar qué representa ese estado y cuándo se utiliza en el proceso.
+          </p>
+          <div class="example">Ejemplo: Producción en curso.</div>
+        </section>
+
+        <div class="footer">
+          Asegúrese de revisar cada campo antes de enviar el formulario. El ID debe ser único y mayor a cero,
+          mientras que el nombre y la descripción deben ser textos claros y descriptivos.
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

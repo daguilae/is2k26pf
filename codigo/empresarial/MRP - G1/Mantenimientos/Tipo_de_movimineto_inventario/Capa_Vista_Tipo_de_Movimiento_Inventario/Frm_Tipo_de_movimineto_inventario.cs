@@ -41,7 +41,7 @@ namespace Capa_Vista_Tipo_de_Movimiento_Inventario
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 706;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

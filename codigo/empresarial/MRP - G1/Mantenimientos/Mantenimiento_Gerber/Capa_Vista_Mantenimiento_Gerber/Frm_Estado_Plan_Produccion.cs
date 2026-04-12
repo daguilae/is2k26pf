@@ -43,7 +43,7 @@ namespace Capa_Vista_Mantenimiento_Gerber
 
 
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 708;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;
@@ -53,6 +53,11 @@ namespace Capa_Vista_Mantenimiento_Gerber
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+        }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

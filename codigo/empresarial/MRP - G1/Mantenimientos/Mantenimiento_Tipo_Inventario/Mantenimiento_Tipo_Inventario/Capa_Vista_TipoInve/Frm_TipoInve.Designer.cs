@@ -36,7 +36,7 @@ namespace Capa_Vista_TipoInve
             // 
             this.navegador1.IPkId_Aplicacion = 0;
             this.navegador1.IPkId_Modulo = 0;
-            this.navegador1.Location = new System.Drawing.Point(24, 11);
+            this.navegador1.Location = new System.Drawing.Point(1, 1);
             this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
             this.navegador1.SAlias = null;

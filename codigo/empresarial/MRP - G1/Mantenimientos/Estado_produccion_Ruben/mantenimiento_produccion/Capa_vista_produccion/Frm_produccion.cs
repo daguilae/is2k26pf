@@ -41,7 +41,7 @@ namespace Capa_vista_produccion
                          "Descripcion:"
                      };
 
-            int id_aplicacion = 401;
+            int id_aplicacion = 705;
             int id_modulo = 5;
 
             navegador1.IPkId_Aplicacion = id_aplicacion;

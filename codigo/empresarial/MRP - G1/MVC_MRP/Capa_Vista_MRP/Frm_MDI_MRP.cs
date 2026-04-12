@@ -143,6 +143,12 @@ namespace Capa_Vista_MRP
             Frm_TipoInve m = new Frm_TipoInve();
             m.Show();
         }
+
+        private void ordenProduccionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Orden_Produccion.Frm_Orden_Produccion orden = new Capa_Vista_Orden_Produccion.Frm_Orden_Produccion();
+            orden.Show();
+        }
     }
     
 }
