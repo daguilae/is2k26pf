@@ -49,6 +49,9 @@
     <Reference Include="Capa_Vista_Estado_Orden_Recibida">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Estado_Orden_Recibida\Capa_Vista_Estado_Orden_Recibida\bin\Debug\Capa_Vista_Estado_Orden_Recibida.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_InventarioPT">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Inventario\Capa_Vista_InventarioPT\bin\Debug\Capa_Vista_InventarioPT.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Mantenimiento">
       <HintPath>..\..\Mantenimientos\Estado_Orden_Produccion\Estado_Orden_Produccion\Capa_Vista_Mantenimiento\bin\Debug\Capa_Vista_Mantenimiento.dll</HintPath>
     </Reference>
@@ -66,6 +69,12 @@
     </Reference>
     <Reference Include="Capa_Vista_Mant_UDM">
       <HintPath>..\..\Mantenimientos\Mantenimiento_UDM_Paula\Capa_Vista_Mant_UDM\bin\Debug\Capa_Vista_Mant_UDM.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Materiales">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Materiales\Capa_Vista_Materiales\bin\Debug\Capa_Vista_Materiales.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Movimiento_Inventario">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Movimiento_Inventario\Capa_Vista_Movimiento_Inventario\bin\Debug\Capa_Vista_Movimiento_Inventario.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Orden_Produccion">
       <HintPath>..\..\DLLS\Orden_produccion_Ruben\Orden_Produccion\Capa_Vista_Orden_Produccion\bin\Debug\Capa_Vista_Orden_Produccion.dll</HintPath>

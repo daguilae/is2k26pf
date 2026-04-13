@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Capa_Vista_Mant_DiegoM">
-      <HintPath>..\..\..\..\Desktop\IS\is2k26pf\codigo\empresarial\MRP - G1\Mantenimientos\Capa_Vista_Mant_DiegoM\Capa_Vista_Mant_DiegoM\bin\Debug\Capa_Vista_Mant_DiegoM.dll</HintPath>
+      <HintPath>..\..\Capa_Vista_Mant_DiegoM\bin\Debug\Capa_Vista_Mant_DiegoM.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

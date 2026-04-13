@@ -54,5 +54,10 @@ namespace Capa_Vista_Mantenimiento_Gerber
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
         }
+
+        private void navegador1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

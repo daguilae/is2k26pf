@@ -59,9 +59,6 @@ namespace Capa_vista
             navegador1.mostrarDatos();
         }
 
-        private void navegador1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaEstadoBOM.chm
+Contents file=AyudaEstado_BOM.hhc
+Default Window=ayudaEstadoBOM
+Display compile progress=No
+Language=0x80a Español (México)
+
+[WINDOWS]
+ayudaEstadoBOM="estadoBOM","AyudaEstado_BOM.hhc",,"Estado_BOM_Ayuda.html",,,,,,0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+Estado_BOM_Ayuda.html
+
+[INFOTYPES]
+

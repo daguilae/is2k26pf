@@ -28,10 +28,11 @@ namespace Capa_Vista_Mant_Kevin
             };
 
             string[] columnas = {
-                "Tbl_Categoria_Producto",
-                "Pk_Id_Categoria_Producto",
-                "Nombre_Categoria_Producto",
+                "Tbl_Categoria_Material",
+                "Pk_Id_Categoria_Material",
+                "Nombre_Categoria_Material",
                 "Fk_Tipo_Material"
+                
             };
 
             string[] sEtiquetas = {

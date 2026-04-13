@@ -30,13 +30,15 @@ namespace Capa_Vista_Mant_DiegoM
             string[] columnas = {
              "Tbl_Tipo_Material",
              "Pk_Id_Tipo_Material",
-             "Nombre_Tipo_Material"
-
+             "Nombre_Tipo_Material",
+             "Estado_Tipo_Material"
         };
 
             string[] sEtiquetas = {
             "ID Tipo Material",
-            "Nombre Tipo Material"
+            "Nombre Tipo Material",
+            "Estado"
+
             };
 
 
@@ -51,6 +53,12 @@ namespace Capa_Vista_Mant_DiegoM
             navegador1.SAlias = columnas;
             navegador1.SEtiquetas = sEtiquetas;
             navegador1.mostrarDatos();
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reportes frm = new Frm_Reportes("Reporte_Tipo_Material.rpt");
+            frm.ShowDialog();
         }
     }
 }
