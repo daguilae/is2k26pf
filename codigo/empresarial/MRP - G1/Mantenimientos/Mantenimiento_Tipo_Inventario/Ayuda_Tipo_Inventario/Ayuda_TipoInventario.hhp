@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_TipoInventario.chm
+Contents file=AyudaTipoInve.hhc
+Default Window=AyudaTipoInventario
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaTipoInventario="Ayudas para tabla de tipo de inventario","AyudaTipoInve.hhc",,"Index.html","Index.html","Index.html","Index.html","Index.html","Index.html",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+Index.html
+
+[INFOTYPES]
+

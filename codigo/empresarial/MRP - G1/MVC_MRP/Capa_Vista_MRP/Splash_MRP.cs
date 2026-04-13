@@ -18,6 +18,8 @@ namespace Capa_Vista_MRP
         {
             InitializeComponent();
             ConfigurarDiseño();
+
+            timer1.Interval = 10;
             timer1.Start();
         }
 
