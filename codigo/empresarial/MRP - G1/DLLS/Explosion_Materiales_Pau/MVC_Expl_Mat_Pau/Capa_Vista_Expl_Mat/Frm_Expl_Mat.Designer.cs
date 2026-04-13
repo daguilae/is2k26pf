@@ -106,7 +106,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             this.Btn_Salir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(872, 5);
+            this.Btn_Salir.Location = new System.Drawing.Point(903, 5);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(60, 47);
             this.Btn_Salir.TabIndex = 6;
@@ -116,7 +116,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             this.Btn_Ayuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(806, 5);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(837, 5);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(60, 47);
             this.Btn_Ayuda.TabIndex = 7;
@@ -157,7 +157,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             this.Btn_Imprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Imprimir.Image")));
-            this.Btn_Imprimir.Location = new System.Drawing.Point(740, 5);
+            this.Btn_Imprimir.Location = new System.Drawing.Point(771, 5);
             this.Btn_Imprimir.Name = "Btn_Imprimir";
             this.Btn_Imprimir.Size = new System.Drawing.Size(60, 47);
             this.Btn_Imprimir.TabIndex = 17;
@@ -354,6 +354,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(982, 953);
             this.Controls.Add(this.Gpb_Factibilidad);
             this.Controls.Add(this.Gpb_Deficit);
@@ -386,6 +387,7 @@ namespace Capa_Vista_Expl_Mat
             this.Controls.Add(this.Pnl_1);
             this.Controls.Add(this.Lbl_Seleccion);
             this.Name = "Frm_Expl_Mat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Explosión de Materiales";
             ((System.ComponentModel.ISupportInitialize)(this.Nud_Cantidad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
