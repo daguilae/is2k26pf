@@ -43,11 +43,23 @@
     <Reference Include="Capa_Vista_Bom">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Mariale_Bom\Capa_Vista_Bom\bin\Debug\Capa_Vista_Bom.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Cronograma">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Cronograma Fases de Producción\Capa_Vista_Cronograma\bin\Debug\Capa_Vista_Cronograma.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_CVRecetas">
+      <HintPath>..\..\DLLS\MVC_Consultar_Receta\Receta_Mariale\Capa_Vista_CVRecetas\bin\Debug\Capa_Vista_CVRecetas.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Estado_Fases">
       <HintPath>..\..\Mantenimientos\Estado_Fase_Produccion\Estado_Fase_Produccion\Capa_Vista_Estado_Fases\bin\Debug\Capa_Vista_Estado_Fases.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Estado_Orden_Recibida">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Estado_Orden_Recibida\Capa_Vista_Estado_Orden_Recibida\bin\Debug\Capa_Vista_Estado_Orden_Recibida.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Expl_Mat">
+      <HintPath>..\..\DLLS\Explosion_Materiales_Pau\MVC_Expl_Mat_Pau\Capa_Vista_Expl_Mat\bin\Debug\Capa_Vista_Expl_Mat.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Fases">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Fases de Produccion\Capa_Vista_Fases\bin\Debug\Capa_Vista_Fases.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_InventarioPT">
       <HintPath>..\..\DLLS\Entrega de Producto Terminado\Inventario\Capa_Vista_InventarioPT\bin\Debug\Capa_Vista_InventarioPT.dll</HintPath>
@@ -76,11 +88,23 @@
     <Reference Include="Capa_Vista_Movimiento_Inventario">
       <HintPath>..\..\DLLS\Entrega de Producto Terminado\Movimiento_Inventario\Capa_Vista_Movimiento_Inventario\bin\Debug\Capa_Vista_Movimiento_Inventario.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_vista_Orden">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Orden de Produccion\Capa_vista_Orden\bin\Debug\Capa_vista_Orden.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Orden_Produccion">
       <HintPath>..\..\DLLS\Orden_produccion_Ruben\Orden_Produccion\Capa_Vista_Orden_Produccion\bin\Debug\Capa_Vista_Orden_Produccion.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Plan">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Plan de Produccion\Capa_Vista_Plan\bin\Debug\Capa_Vista_Plan.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_vista_produccion">
       <HintPath>..\..\Mantenimientos\Estado_produccion_Ruben\mantenimiento_produccion\Capa_vista_produccion\bin\Debug\Capa_vista_produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_recepcion">
+      <HintPath>..\..\DLLS\MVC_Recepcion_Material_Cesar\Capa_Vista_recepcion\bin\Debug\Capa_Vista_recepcion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_RO">
+      <HintPath>..\..\DLLS\MVC_Recibir_Orden\Capa_Vista_RO\bin\Debug\Capa_Vista_RO.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_TipoInve">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>

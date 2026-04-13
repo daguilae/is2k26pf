@@ -18,12 +18,22 @@ using Capa_vista_produccion;
 using Capa_Vista_Materiales;
 using Capa_Vista_InventarioPT;
 using Capa_Vista_Movimiento_Inventario;
+using Capa_Vista_RO;
+using Capa_Vista_CVRecetas;
+using Capa_Vista_Expl_Mat;
+using Capa_Vista_recepcion;
+using Capa_Vista_Plan;
+using Capa_Vista_Fases;
+using Capa_Vista_Cronograma;
+using Capa_vista_Orden;
+using Capa_Vista_Orden_Produccion;
 
 namespace Capa_Vista_MRP
 {
     public partial class Frm_MDI_MRP : Form
     {
         private int childFormNumber = 0;
+
 
         public Frm_MDI_MRP()
         {
@@ -169,6 +179,55 @@ namespace Capa_Vista_MRP
         private void movimientoInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Movimiento_Inventario m = new Frm_Movimiento_Inventario();
+            m.Show();
+        }
+
+        private void recibirOrdenDeLogísticaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Recibir_Orden m = new Frm_Recibir_Orden();
+            m.Show();
+        }
+
+        private void bOMYFactibilidadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Recetas m = new Frm_Recetas();
+            m.Show();
+        }
+
+        private void explosiónDeMaterialesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Expl_Mat m = new Frm_Expl_Mat();
+            m.Show();
+
+        }
+
+        private void recepciónDeMaterialesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_recepcion_material m = new Frm_recepcion_material();
+            m.Show();
+        }
+
+        private void planDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Plan_Produccion m = new Frm_Plan_Produccion();
+            m.Show();
+        }
+
+        private void cronogramaFasesDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Cronograma_Fases m = new Frm_Cronograma_Fases();
+            m.Show();
+        }
+
+        private void fasesDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Fases_Produccion m = new Frm_Fases_Produccion();
+            m.Show();
+        }
+
+        private void ordenDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_vista_Orden.Frm_Orden_Produccion m = new Capa_vista_Orden.Frm_Orden_Produccion();
             m.Show();
         }
     }
