@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Vista_TipoInve;
 
+
+
+
 namespace Ejecucion_TipoInv
 {
     static class Program
