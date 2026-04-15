@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EAC4777-5118-4BC5-98B4-8A236E843882}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capa_Vista_MRP</RootNamespace>
+    <AssemblyName>Capa_Vista_MRP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_MRP">
+      <HintPath>..\Capa_Controlador_MRP\bin\Debug\Capa_Controlador_MRP.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_vista">
+      <HintPath>..\..\Mantenimientos\Estado_recpcion_material\Capa_vista\bin\Debug\Capa_vista.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Bom">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Mariale_Bom\Capa_Vista_Bom\bin\Debug\Capa_Vista_Bom.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Cronograma">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Cronograma Fases de Producción\Capa_Vista_Cronograma\bin\Debug\Capa_Vista_Cronograma.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_CVRecetas">
+      <HintPath>..\..\DLLS\MVC_Consultar_Receta\Receta_Mariale\Capa_Vista_CVRecetas\bin\Debug\Capa_Vista_CVRecetas.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Estado_Fases">
+      <HintPath>..\..\Mantenimientos\Estado_Fase_Produccion\Estado_Fase_Produccion\Capa_Vista_Estado_Fases\bin\Debug\Capa_Vista_Estado_Fases.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Estado_Orden_Recibida">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Estado_Orden_Recibida\Capa_Vista_Estado_Orden_Recibida\bin\Debug\Capa_Vista_Estado_Orden_Recibida.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Expl_Mat">
+      <HintPath>..\..\DLLS\Explosion_Materiales_Pau\MVC_Expl_Mat_Pau\Capa_Vista_Expl_Mat\bin\Debug\Capa_Vista_Expl_Mat.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Fases">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Fases de Produccion\Capa_Vista_Fases\bin\Debug\Capa_Vista_Fases.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_InventarioPT">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Inventario\Capa_Vista_InventarioPT\bin\Debug\Capa_Vista_InventarioPT.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mantenimiento">
+      <HintPath>..\..\Mantenimientos\Estado_Orden_Produccion\Estado_Orden_Produccion\Capa_Vista_Mantenimiento\bin\Debug\Capa_Vista_Mantenimiento.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mantenimiento_Gerber">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Gerber\Capa_Vista_Mantenimiento_Gerber\bin\Debug\Capa_Vista_Mantenimiento_Gerber.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_DiegoM">
+      <HintPath>..\..\Mantenimientos\Capa_Vista_Mant_DiegoM\Capa_Vista_Mant_DiegoM\bin\Debug\Capa_Vista_Mant_DiegoM.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_Kevin">
+      <HintPath>..\..\Mantenimientos\Mantenimientos_Kevin\Capa_Vista_Mant_Kevin\bin\Debug\Capa_Vista_Mant_Kevin.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_Merma">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Merma_Paula\Capa_Vista_Mant_Merma\bin\Debug\Capa_Vista_Mant_Merma.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Mant_UDM">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_UDM_Paula\Capa_Vista_Mant_UDM\bin\Debug\Capa_Vista_Mant_UDM.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Materiales">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Materiales\Capa_Vista_Materiales\bin\Debug\Capa_Vista_Materiales.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Movimiento_Inventario">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Movimiento_Inventario\Capa_Vista_Movimiento_Inventario\bin\Debug\Capa_Vista_Movimiento_Inventario.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_vista_Orden">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Orden de Produccion\Capa_vista_Orden\bin\Debug\Capa_vista_Orden.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Orden_Produccion">
+      <HintPath>..\..\DLLS\Orden_produccion_Ruben\Orden_Produccion\Capa_Vista_Orden_Produccion\bin\Debug\Capa_Vista_Orden_Produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Plan">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Plan de Produccion\Capa_Vista_Plan\bin\Debug\Capa_Vista_Plan.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_vista_produccion">
+      <HintPath>..\..\Mantenimientos\Estado_produccion_Ruben\mantenimiento_produccion\Capa_vista_produccion\bin\Debug\Capa_vista_produccion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_recepcion">
+      <HintPath>..\..\DLLS\MVC_Recepcion_Material_Cesar\Capa_Vista_recepcion\bin\Debug\Capa_Vista_recepcion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_RO">
+      <HintPath>..\..\DLLS\MVC_Recibir_Orden\Capa_Vista_RO\bin\Debug\Capa_Vista_RO.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_TipoInve">
+      <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Tipo_de_Movimiento_Inventario">
+      <HintPath>..\..\Mantenimientos\Tipo_de_movimineto_inventario\Capa_Vista_Tipo_de_Movimiento_Inventario\bin\Debug\Capa_Vista_Tipo_de_Movimiento_Inventario.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cls_Vista_MRP.cs" />
+    <Compile Include="Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_MDI_MRP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_MDI_MRP.Designer.cs">
+      <DependentUpon>Frm_MDI_MRP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Cambiar_Contrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Cambiar_Contrasena.Designer.cs">
+      <DependentUpon>Frm_Cambiar_Contrasena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Recuperar_Contrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Recuperar_Contrasena.Designer.cs">
+      <DependentUpon>Frm_Recuperar_Contrasena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Splash_MRP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash_MRP.Designer.cs">
+      <DependentUpon>Splash_MRP.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+    <Content Include="Resources\WhatsApp Image 2026-02-14 at 4.01.39 PM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_MDI_MRP.resx">
+      <DependentUpon>Frm_MDI_MRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Cambiar_Contrasena.resx">
+      <DependentUpon>Frm_Cambiar_Contrasena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Recuperar_Contrasena.resx">
+      <DependentUpon>Frm_Recuperar_Contrasena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash_MRP.resx">
+      <DependentUpon>Splash_MRP.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fondo de Minecraft para pc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gatito martillando.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gatito martillando1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gatito.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

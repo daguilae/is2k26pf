@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36602.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Fases", "Capa_Vista_Fases\Capa_Vista_Fases.csproj", "{832613ED-119D-41BB-899F-828E6DB17EAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{832613ED-119D-41BB-899F-828E6DB17EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832613ED-119D-41BB-899F-828E6DB17EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832613ED-119D-41BB-899F-828E6DB17EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832613ED-119D-41BB-899F-828E6DB17EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DB5B8C1-A069-47EB-B458-EDA13E625EAD}
+	EndGlobalSection
+EndGlobal

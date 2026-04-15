@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estado Producción</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenedor {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 900px;
+            max-width: 95%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #555;
+            border-left: 5px solid #667eea;
+            padding-left: 10px;
+        }
+
+        .seccion {
+            margin-bottom: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        ul li {
+            background: #f8f9ff;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        ul li:hover {
+            background: #e6e9ff;
+            transform: translateX(5px);
+        }
+
+        ul li b {
+            color: #4a4a4a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f1f3ff;
+        }
+
+        .card {
+            background: #fafafa;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <h1>Estado Producción</h1>
+
+    <div class="seccion card">
+        <h2>Descripción de Funciones</h2>
+        <ul>
+            <li><b>Ingresar / Nuevo:</b> Habilita los campos para registrar un nuevo tipo.</li>
+            <li><b>Modificar:</b> Permite editar el nombre del registro seleccionado actualmente.</li>
+            <li><b>Guardar:</b> Confirma y almacena los cambios realizados.</li>
+            <li><b>Cancelar:</b> Anula la operación actual y bloquea la edición de campos.</li>
+            <li><b>Eliminar:</b> Borra permanentemente el registro seleccionado de la tabla.</li>
+            <li><b>Consultar:</b> Abre la búsqueda para localizar un ID o Nombre específico.</li>
+            <li><b>Imprimir / Reporte:</b> Genera un documento de impresión de los tipos de inventario.</li>
+            <li><b>Navegación:</b> Usa los botones Inicio, Anterior, Siguiente y Fin para moverte entre los registros existentes.</li>
+            <li><b>Salir:</b> Cierra el formulario y regresa al menú principal.</li>
+        </ul>
+    </div>
+
+    <div class="seccion card">
+        <h2>Descripción de Campos</h2>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>Número de identificación del estado de producción.</td>
+            </tr>
+            <tr>
+                <td>Estado</td>
+                <td>Muestra el estado de la producción (en proceso, terminado, etc.).</td>
+            </tr>
+            <tr>
+                <td>Descripción</td>
+                <td>Indica qué se está produciendo y en qué estado se encuentra.</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36602.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejecución Cronograma", "Ejecución Cronograma\Ejecución Cronograma.csproj", "{3BEEB8E4-35BC-4C6A-BC2D-7B2EE91B6B65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BEEB8E4-35BC-4C6A-BC2D-7B2EE91B6B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BEEB8E4-35BC-4C6A-BC2D-7B2EE91B6B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BEEB8E4-35BC-4C6A-BC2D-7B2EE91B6B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BEEB8E4-35BC-4C6A-BC2D-7B2EE91B6B65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65EDFFC8-07F4-4E3A-A8DB-397486F5C23B}
+	EndGlobalSection
+EndGlobal
