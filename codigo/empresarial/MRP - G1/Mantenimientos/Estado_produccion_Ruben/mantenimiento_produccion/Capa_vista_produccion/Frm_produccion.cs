@@ -54,5 +54,11 @@ namespace Capa_vista_produccion
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte r = new Frm_Reporte();
+            r.Show();
+        }
     }
 }

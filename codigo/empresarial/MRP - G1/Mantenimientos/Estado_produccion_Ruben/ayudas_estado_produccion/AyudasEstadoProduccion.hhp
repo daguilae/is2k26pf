@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudasEstadoProduccion.chm
+Contents file=estado_orden_produccion.hhc
+Default Window=Ayuda
+Display compile progress=No
+Language=0x409 English (United States)
+
+[WINDOWS]
+Ayuda="Capacitacion - ayuda estado produccion","estado_orden_produccion.hhc",,"index.html","index.html","index.html","index.html","index.html","index.html",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+index.html
+
+[INFOTYPES]
+
