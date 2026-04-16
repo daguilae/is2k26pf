@@ -73,6 +73,16 @@ namespace Capa_Vista_Logista.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4105943_accounts_group_people_user_user_group_users_113923 {
+            get {
+                object obj = ResourceManager.GetObject("4105943-accounts-group-people-user-user-group-users_113923", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CXC {
             get {
                 object obj = ResourceManager.GetObject("CXC", resourceCulture);

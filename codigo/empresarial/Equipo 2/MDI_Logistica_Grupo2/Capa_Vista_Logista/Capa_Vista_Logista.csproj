@@ -38,6 +38,10 @@
     <Reference Include="Capa_Vista_Bodegaa">
       <HintPath>..\..\DISTRIBUCION\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Bodegas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Mantenimiento_Bodegas\Frm_Mant_Bodegas\Capa_Vista_Bodegas\bin\Debug\Capa_Vista_Bodegas.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Compras">
       <HintPath>..\..\COMPRAS\Proceso 2 compras Danilo\Compras\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
     </Reference>
@@ -192,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transporte.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4105943-accounts-group-people-user-user-group-users_113923.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

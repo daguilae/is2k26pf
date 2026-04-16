@@ -23,6 +23,7 @@ using Capa_vista_Factura;
 using Capa_Vista_OrdenDetalle;
 using Capa_Vista_Comprobantes;
 using Capa_Vista_Compras;
+using Capa_Vista_Bodegas;
 
 namespace Capa_Vista_Logista
 {
@@ -230,6 +231,12 @@ namespace Capa_Vista_Logista
         {
             Frm_Compras_CXP compras = new Frm_Compras_CXP();
             compras.ShowDialog();
+        }
+
+        private void bodegasToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                Frm_MantenimientoB bodegas = new Frm_MantenimientoB();
+                bodegas.ShowDialog();
         }
     }
 }
