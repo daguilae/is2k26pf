@@ -103,13 +103,18 @@ namespace Capa_Vista_CVRecetas
         //boton de guardar cesar santizo 0901-22-5215 (para guardar receta)
         private void Btn_guardar_Click_1(object sender, EventArgs e)
         {
-            // Verificar si idBomExistente es igual a 0
-            // Si es igual a 0, se debe crear el BOM completo
+            int idProducto = Convert.ToInt32(Cbo_producto.SelectedValue);
+            string descripcion = Txt_descripcion.Text;
+            string version = Txt_versionBOM.Text;
+            DateTime fecha = dtp_fecha.Value;
+            int estado = Convert.ToInt32(Cbo_estado.SelectedValue);
             try
             {
+                // Verificar si idBomExistente es igual a 0
+                // Si es igual a 0, se debe crear el BOM completo
                 if (idBOMExistente == 0)
                 {
-                    con.guardarBOMCompleto(fasesNuevas);
+                    con.guardarBOMCompleto(descripcion, version, fecha, estado, idProducto, fasesNuevas);
                     MessageBox.Show("Receta guardada correctamente");
                 }
                 // En caso contrario, se guardan solo datos nuevos de detalle o fases
@@ -118,26 +123,6 @@ namespace Capa_Vista_CVRecetas
                     con.guardarDatosNuevos(idBOMExistente, fasesNuevas);
                     MessageBox.Show("Receta guardada correctamente");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar: " + ex.Message);
-            }
-
-            ////
-            try
-            {
-                int idProducto = Convert.ToInt32(Cbo_producto.SelectedValue);
-                string descripcion = Txt_descripcion.Text;
-                string version = Txt_versionBOM.Text;
-                DateTime fecha = dtp_fecha.Value;
-                int estado = Convert.ToInt32(Cbo_estado.SelectedValue);
-
-                con.guardarBOM(descripcion, version, fecha, estado, idProducto);
-
-                MessageBox.Show("Receta guardada correctamente");
-                recargarDatos();
-
             }
             catch (Exception ex)
             {
@@ -256,6 +241,7 @@ namespace Capa_Vista_CVRecetas
 
 
             DataTable dtGrid = con.cargarBOMGrid(idProducto);
+            pro_ObtenerFases(idBOM);
             // dgv_detalle.DataSource = dtGrid;
         }
 

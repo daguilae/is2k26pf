@@ -228,7 +228,8 @@ namespace Capa_Modelo_Recetas
         }
 
         // Método para crear el proceso completo desde la creación de BOM, Detalle y Fases. Anderson Trigueros
-        public void creaciónCompleta(/*datosBOM*//*listaDetalle*/ List<(string sFase, string sDescripcion, int iHoras)> listaFases)
+        public void creaciónCompleta(string descripcion, string version, DateTime fecha, int estado, int material,
+            /*listaDetalle*/ List<(string sFase, string sDescripcion, int iHoras)> listaFases)
         {
             try
             {
@@ -238,7 +239,17 @@ namespace Capa_Modelo_Recetas
                     try
                     {
                         //Código para crear el BOM
+                        string sql = @"INSERT INTO Tbl_BOM
+                                       (Descripcion_BOM, Version_BOM, Fecha_Creacion_BOM, Fk_Id_Estado_BOM, Fk_Id_Material)
+                                       VALUES (?, ?, ?, ?, ?)";
 
+                        OdbcCommand cmd = new OdbcCommand(sql, con, transaccion);
+                        cmd.Parameters.AddWithValue("", descripcion);
+                        cmd.Parameters.AddWithValue("", version);
+                        cmd.Parameters.AddWithValue("", fecha);
+                        cmd.Parameters.AddWithValue("", estado);
+                        cmd.Parameters.AddWithValue("", material);
+                        cmd.ExecuteNonQuery();
 
                         //Obtener el id del BOM
                         OdbcCommand cmdLastId = new OdbcCommand("SELECT LAST_INSERT_ID();", con, transaccion);
@@ -246,10 +257,10 @@ namespace Capa_Modelo_Recetas
 
                         //Ingresar detalle
 
-
+                        //Ingresar fases de producción
                         if (listaFases != null && listaFases.Count > 0)
                         {
-                            //Ingresar fases de producción
+                            
                             string sIngresarFase = @"INSERT INTO Tbl_Fases_Produccion
                                                 (Fk_Id_BOM, Nombre_Fase_Produccion, Descripcion_Fase_Produccion, Horas_Hombre) 
                                                 VALUES (?, ?, ?, ?)";
@@ -268,8 +279,6 @@ namespace Capa_Modelo_Recetas
                                 cmdGuardar.ExecuteNonQuery();
                             }
                         }
-
-
                         transaccion.Commit();
                     }
                     catch

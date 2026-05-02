@@ -48,9 +48,10 @@ namespace Capa_Controlador_Recetas
         }
 
         //Método para transacción completa. Anderson Trigueros
-        public void guardarBOMCompleto(/*datosBOM*//*listaDetalle*/ List<(string sFase, string sDescripcion, int iHoras)> listaFases)
+        public void guardarBOMCompleto(string descripcion, string version, DateTime fecha, int estado, int producto, /*Lista detallle*/ 
+            List<(string sFase, string sDescripcion, int iHoras)> listaFases)
         {
-            sen.creaciónCompleta(listaFases);
+            sen.creaciónCompleta(descripcion, version, fecha, estado, producto, listaFases);
         }
         //Método para transacción datos nuevos con BOM existente. Anderson Trigueros
         public void guardarDatosNuevos(int iCodigoBOM, /*datosBOM*//*listaDetalle*/ List<(string sFase, string sDescripcion, int iHoras)> listaFases)
