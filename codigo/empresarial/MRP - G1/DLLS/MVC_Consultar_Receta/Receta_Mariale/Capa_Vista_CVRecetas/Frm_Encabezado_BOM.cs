@@ -21,8 +21,34 @@ namespace Capa_Vista_CVRecetas
             InitializeComponent();
             this.Load += Frm_Encabezado_BOM_Load;
             Dg_BOM.CellContentClick += Dg_BOM_CellContentClick;
+
+            Cmb_Id.SelectedIndexChanged += Cmb_Id_SelectedIndexChanged;
+            Cmb_Estado.SelectedIndexChanged += Cmb_Estado_SelectedIndexChanged;
+            Dtp_Desde.ValueChanged += Dtp_Desde_ValueChanged;
+            Dtp_Hasta.ValueChanged += Dtp_Hasta_ValueChanged;
+            Btn_Limpiar.Click += Btn_Limpiar_Click;
         }
 
+        // Diego Monterroso 0901-22-1369
+        private void Cmb_Id_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            aplicarFiltro();
+        }
+        // Diego Monterroso 0901-22-1369
+        private void Cmb_Estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            aplicarFiltro();
+        }
+        // Diego Monterroso 0901-22-1369
+        private void Dtp_Desde_ValueChanged(object sender, EventArgs e)
+        {
+            aplicarFiltro();
+        }
+        // Diego Monterroso 0901-22-1369
+        private void Dtp_Hasta_ValueChanged(object sender, EventArgs e)
+        {
+            aplicarFiltro();
+        }
 
         private void cargarGrid()
         {
@@ -83,10 +109,27 @@ namespace Capa_Vista_CVRecetas
         }
 
 
-
+        // Diego Monterroso 0901-22-1369
         private void Frm_Encabezado_BOM_Load(object sender, EventArgs e)
         {
-            cargarGrid(); 
+            Cmb_Estado.Items.Clear();
+            Cmb_Estado.Items.Add("Todos");
+            Cmb_Estado.Items.Add("Activo");
+            Cmb_Estado.Items.Add("Inactivo");
+            Cmb_Estado.SelectedIndex = 0;
+
+            // Fechas
+            Dtp_Desde.Value = DateTime.Today.AddYears(-5);
+            Dtp_Hasta.Value = DateTime.Today.AddYears(5);
+
+            // Diego Monterroso 0901-22-1369
+            DataTable dt = con.obtenerListadoBOM();
+            Cmb_Id.DataSource = dt;
+            Cmb_Id.DisplayMember = "ID";     // lo que se muestra
+            Cmb_Id.ValueMember = "ID";       // valor real
+            Cmb_Id.SelectedIndex = -1;       // que inicie vacío
+
+            cargarGrid();
         }
 
 
@@ -109,6 +152,51 @@ namespace Capa_Vista_CVRecetas
 
             fr.Show();
         }
+        private void aplicarFiltro()
+        {
+            string id = "";
+
+            if (Cmb_Id.SelectedIndex != -1)
+            {
+                id = Cmb_Id.SelectedValue.ToString();
+            }
+            string estado = Cmb_Estado.Text;
+
+            if (estado == "Todos")
+                estado = "";
+
+            DateTime desde = Dtp_Desde.Value.Date;
+            DateTime hasta = Dtp_Hasta.Value.Date.AddDays(1).AddSeconds(-1);
+
+            DataTable dt = con.filtrarListadoBOM(id, estado, desde, hasta);
+            Dg_BOM.DataSource = dt;
+
+            if (Dg_BOM.Columns.Contains("ID"))
+                Dg_BOM.Columns["ID"].Visible = false;
+
+            EstilizarGrid();
+
+
+        }
+        private void Btn_Limpiar_Click(object sender, EventArgs e)
+        {
+            Cmb_Id.DataSource = null;
+            DataTable dt = con.obtenerListadoBOM();
+            Cmb_Id.DataSource = dt;
+            Cmb_Id.DisplayMember = "ID";
+            Cmb_Id.ValueMember = "ID";
+            Cmb_Id.SelectedIndex = -1;
+
+            // Resetear estado
+            Cmb_Estado.SelectedIndex = 0;
+
+            // Resetear fechas
+            Dtp_Desde.Value = DateTime.Today.AddYears(-5);
+            Dtp_Hasta.Value = DateTime.Today.AddYears(5);
+
+            // Recargar todo el grid
+            cargarGrid();
+        }
     }
 }
-// Hecho por: Maria Morales 0901-22-1226
+

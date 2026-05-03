@@ -81,6 +81,11 @@ namespace Capa_Controlador_Recetas
             return sen.obtenerDetalleBOM(id);
         }
 
+        //Hecho por Diego Monterroso
+        public DataTable filtrarListadoBOM(string id, string estado, DateTime? desde, DateTime? hasta)
+        {
+            return sen.filtrarBOM(id, estado, desde, hasta);
+        }
 
     }
 }

@@ -405,7 +405,56 @@ namespace Capa_Modelo_Recetas
 
             return tabla;
         }
+        // Hecho Por Diego Monterroso
+        public DataTable filtrarBOM(string id, string estado, DateTime? desde, DateTime? hasta)
+        {
+            DataTable tabla = new DataTable();
 
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string sql = @"
+        SELECT 
+            b.Pk_Id_BOM AS ID,
+            m.Nombre_Material AS Producto,
+            b.Descripcion_BOM AS Descripcion,
+            b.Version_BOM AS Version,
+            b.Fecha_Creacion_BOM AS Fecha,
+            e.Nombre_Estado_BOM AS Estado
+        FROM Tbl_BOM b
+        JOIN Tbl_Materiales m ON b.Fk_Id_Material = m.Pk_Id_Materiales
+        JOIN Tbl_Estado_BOM e ON b.Fk_Id_Estado_BOM = e.Pk_Id_Estado_BOM
+        WHERE 1=1";
+
+                // filtros dinámicos
+                if (!string.IsNullOrEmpty(id))
+                    sql += " AND b.Pk_Id_BOM = ?";
+
+                if (!string.IsNullOrEmpty(estado))
+                    sql += " AND e.Nombre_Estado_BOM = ?";
+
+                if (desde != null && hasta != null)
+                    sql += " AND b.Fecha_Creacion_BOM BETWEEN ? AND ?";
+
+                OdbcCommand cmd = new OdbcCommand(sql, conn);
+
+                if (!string.IsNullOrEmpty(id))
+                    cmd.Parameters.AddWithValue("", id);
+
+                if (!string.IsNullOrEmpty(estado))
+                    cmd.Parameters.AddWithValue("", estado);
+
+                if (desde != null && hasta != null)
+                {
+                    cmd.Parameters.AddWithValue("", desde);
+                    cmd.Parameters.AddWithValue("", hasta);
+                }
+
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(tabla);
+            }
+
+            return tabla;
+        }
 
     }
 }

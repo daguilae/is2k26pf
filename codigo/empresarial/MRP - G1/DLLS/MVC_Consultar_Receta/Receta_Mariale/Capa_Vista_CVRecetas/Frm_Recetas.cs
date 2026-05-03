@@ -554,5 +554,10 @@ namespace Capa_Vista_CVRecetas
 
             re.Show();
         }
+
+        private void Btn_salir_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
