@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Controlador.cs" />
     <Compile Include="Controlador_detalle_Materiales.cs" />
+    <Compile Include="Controlador_Fases.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

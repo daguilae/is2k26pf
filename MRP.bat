@@ -36,21 +36,47 @@ for /L %%i in (1,1,4) do (
 )
 
 :: ==========================================================
-:: 2. COMPILACION DINAMICA DE DLLS
+:: 2. COMPILACION DINAMICA DE DLLS (CICLOS AUTOMATICOS)
 :: ==========================================================
 echo.
 color 0E
 echo [+] Compilando Carpeta de DLLS Dinamica...
 if exist "%MRP_DLLS_DIR%" (
-    for /r "%MRP_DLLS_DIR%" %%d in (*.csproj) do (
-        echo    -> DLL: %%~nxd
-        "%MSBUILD_PATH%" "%%d" /t:Build /p:Configuration=Debug /v:m /m > nul 2>&1
-        if !errorlevel! equ 0 (
-            echo        [OK] Compilado correctamente
+    set "MAX_CICLOS=10"
+    set "CICLO_ACTUAL=1"
+    set "HAY_ERRORES=1"
+
+    :CicloDLL
+    if !CICLO_ACTUAL! gtr !MAX_CICLOS! (
+        echo    [ADVERTENCIA] Se alcanzo el limite de !MAX_CICLOS! ciclos. Algunas DLLs podrian tener errores de codigo.
+        goto FinCicloDLL
+    )
+    
+    if !HAY_ERRORES! equ 1 (
+        echo    --- Iniciando Ciclo !CICLO_ACTUAL! de compilacion de DLLs ---
+        set "HAY_ERRORES=0"
+        
+        for /r "%MRP_DLLS_DIR%" %%d in (*.csproj) do (
+            echo    -^> Intentando DLL: %%~nxd
+            "%MSBUILD_PATH%" "%%d" /t:Build /p:Configuration=Debug /v:m /m > nul 2>&1
+            if !errorlevel! equ 0 (
+                echo        [OK] Compilado correctamente
+            ) else (
+                echo        [ERROR] Fallo. Faltan dependencias o hay error de sintaxis.
+                set "HAY_ERRORES=1"
+            )
+        )
+        
+        if !HAY_ERRORES! equ 1 (
+            echo    [INFO] Hubo fallos en el ciclo !CICLO_ACTUAL!. Reintentando compilacion...
+            set /a "CICLO_ACTUAL+=1"
+            goto CicloDLL
         ) else (
-            echo        [ERROR] Fallo en compilacion
+            echo    [EXITO] Todas las DLLs fueron compiladas correctamente en el ciclo !CICLO_ACTUAL!.
         )
     )
+    :FinCicloDLL
+    echo [+] Finalizada la evaluacion de DLLs.
 ) else (
     echo    [ADVERTENCIA] Carpeta DLLS no encontrada: %MRP_DLLS_DIR%
 )
@@ -63,7 +89,7 @@ color 0A
 echo [+] Compilando Soluciones de Hoteleria...
 if exist "%HOTELERIA_DIR%" (
     for /r "%HOTELERIA_DIR%" %%f in (*.sln) do (
-        echo    -> Solucion: %%~nxf
+        echo    -^> Solucion: %%~nxf
         "%MSBUILD_PATH%" "%%f" /p:Configuration=Debug /m /v:m > nul 2>&1
     )
 ) else (
@@ -79,7 +105,7 @@ echo [+] Compilando Mantenimientos MRP Dinamicamente...
 if exist "%MRP_MAINT_DIR%" (
     for /L %%P in (1,1,2) do (
         for /r "%MRP_MAINT_DIR%" %%p in (*.csproj) do (
-            echo    -> Mantenimiento: %%~nxp
+            echo    -^> Mantenimiento: %%~nxp
             "%MSBUILD_PATH%" "%%p" /t:Build /p:Configuration=Debug /v:m /m > nul 2>&1
         )
     )
@@ -95,7 +121,7 @@ color 0F
 echo [+] Compilando MVC_MRP Principal (Ultimo paso)...
 if exist "%MRP_MVC_DIR%" (
     if exist "%MRP_MVC_DIR%\MVC_MRP.sln" (
-        echo    -> Compilando solucion MVC_MRP.sln
+        echo    -^> Compilando solucion MVC_MRP.sln
         "%MSBUILD_PATH%" "%MRP_MVC_DIR%\MVC_MRP.sln" /t:Build /p:Configuration=Debug /v:m /m > nul 2>&1
         if !errorlevel! equ 0 (
             echo        [OK] Solucion MVC_MRP compilada correctamente
@@ -104,7 +130,7 @@ if exist "%MRP_MVC_DIR%" (
         )
     )
     
-    echo    -> Compilando proyectos individuales...
+    echo    -^> Compilando proyectos individuales...
     if exist "%MRP_MVC_DIR%\Capa_Modelo_MRP\Capa_Modelo_MRP.csproj" (
         "%MSBUILD_PATH%" "%MRP_MVC_DIR%\Capa_Modelo_MRP\Capa_Modelo_MRP.csproj" /t:Build /p:Configuration=Debug /v:m /m > nul 2>&1
         echo        [OK] Capa_Modelo_MRP

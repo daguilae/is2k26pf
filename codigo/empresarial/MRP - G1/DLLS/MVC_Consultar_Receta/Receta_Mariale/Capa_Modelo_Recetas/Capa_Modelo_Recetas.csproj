@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Modelo_Seguridad">
+      <HintPath>..\..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sentencias.cs" />
     <Compile Include="Sentencia_detalle_Materiales.cs" />

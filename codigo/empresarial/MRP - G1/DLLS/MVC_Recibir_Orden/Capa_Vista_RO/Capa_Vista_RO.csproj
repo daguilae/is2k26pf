@@ -84,10 +84,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_Detalle_De_Ordenes_Recibidas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_Detalle_De_Ordenes_Recibidas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte_Ordenes_RecibidasV1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_Ordenes_RecibidasV1.Designer.cs">
+      <DependentUpon>Reporte_Ordenes_RecibidasV1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reporte_Orden_Recibida.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporte_Orden_Recibida.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte_Orden_RecibidaV1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_Orden_RecibidaV1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -105,9 +123,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Detalle_De_Ordenes_Recibidas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_Detalle_De_Ordenes_Recibidas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Ordenes_RecibidasV1.resx">
+      <DependentUpon>Reporte_Ordenes_RecibidasV1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte_Orden_Recibida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Orden_Recibida.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Orden_RecibidaV1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_Orden_RecibidaV1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
