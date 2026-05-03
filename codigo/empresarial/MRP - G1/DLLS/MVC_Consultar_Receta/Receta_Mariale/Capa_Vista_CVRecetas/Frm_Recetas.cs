@@ -545,10 +545,14 @@ namespace Capa_Vista_CVRecetas
             pro_ObtenerFases(idBOM);
         }
 
+        private void Btn_imprimir_Click(object sender, EventArgs e)
+        {
+            BOM_Reporte re = new BOM_Reporte();
 
+            // FORZAR REFRESH
+            re.Refresh();
 
-
-
-
+            re.Show();
+        }
     }
 }

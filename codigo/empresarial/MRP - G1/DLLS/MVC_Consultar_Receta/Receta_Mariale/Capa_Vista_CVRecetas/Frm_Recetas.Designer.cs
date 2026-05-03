@@ -352,6 +352,7 @@ namespace Capa_Vista_CVRecetas
             this.Btn_imprimir.Text = "Imprimir";
             this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_imprimir.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.Click += new System.EventHandler(this.Btn_imprimir_Click);
             // 
             // Btn_consultar
             // 
