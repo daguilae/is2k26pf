@@ -1,19 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Odbc;
-
+using Capa_Modelo_Seguridad;
 namespace Capa_Modelo_Recetas
 {
     public class Sentencias
     {
-        Conexion cn = new Conexion();
+        private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-       
         public DataTable obtenerProductosTerminados()
         {
             DataTable tabla = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
 
-            using (OdbcConnection conn = cn.AbrirConexion())
             {
                 string sql = @"
                 SELECT m.Pk_Id_Materiales, m.Nombre_Material
@@ -28,13 +28,12 @@ namespace Capa_Modelo_Recetas
 
             return tabla;
         }
-
-        
+    
         public DataTable obtenerBOM(int idProducto)
         {
             DataTable tabla = new DataTable();
 
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string sql = @"
                 SELECT 
@@ -61,7 +60,7 @@ namespace Capa_Modelo_Recetas
         {
             DataTable tabla = new DataTable();
 
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string sql = @"
         SELECT 
@@ -88,8 +87,7 @@ namespace Capa_Modelo_Recetas
         public DataTable obtenerEstados()
         {
             DataTable tabla = new DataTable();
-
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string sql = "SELECT * FROM Tbl_Estado_BOM";
 
@@ -103,7 +101,7 @@ namespace Capa_Modelo_Recetas
         // cesar santizo 0901-22-5215 boton guardar//
         public void insertarBOM(string descripcion, string version, DateTime fecha, int estado, int material)
         {
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string sql = @"INSERT INTO Tbl_BOM
         (Descripcion_BOM, Version_BOM, Fecha_Creacion_BOM, Fk_Id_Estado_BOM, Fk_Id_Material)
@@ -124,7 +122,7 @@ namespace Capa_Modelo_Recetas
         // cesar santizo 0901-22-5215 boton editar//
         public void editarBOM(int idBOM, string descripcion, string version, DateTime fecha, int estado)
         {
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string sql = @"UPDATE Tbl_BOM SET
         Descripcion_BOM = ?,
@@ -148,7 +146,7 @@ namespace Capa_Modelo_Recetas
         // maria morales 0901-22-1226 boton eliminar
         public void eliminarBOM(int idBOM)
         {
-            using (OdbcConnection conn = cn.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 
                 OdbcTransaction trans = conn.BeginTransaction();
@@ -177,6 +175,237 @@ namespace Capa_Modelo_Recetas
                 }
             }
         }
+
+        // ----------------------------- Sentencias para realizar una sola transacción en la base de datos ----------------- //
+
+        // Método para guardar nuevos materiales o fases de producción. Anderson Trigueros
+        public void agregarDatosNuevos(int iCodigoBOM, /*datosBOM*/
+            List<(int idMaterial, int idUnidad, decimal cantidad)> listaDetalles, //Ruben Lopez 0901-20-4620
+            List<(string sFase, string sDescripcion, int iHoras)> listaFases)
+        {
+            using (OdbcConnection con = conexion.conexion())
+            {
+                using (OdbcTransaction transaccion = con.BeginTransaction())
+                {
+                    try
+                    {
+                        // Guardar nuevas fases
+                        if (listaFases != null && listaFases.Count > 0)
+                        {
+                            string sIngresarFase = @"INSERT INTO Tbl_Fases_Produccion
+                                                    (Fk_Id_BOM, Nombre_Fase_Produccion, Descripcion_Fase_Produccion, Horas_Hombre) 
+                                                    VALUES (?, ?, ?, ?)";
+
+                            OdbcCommand cmdGuardar = new OdbcCommand(sIngresarFase, con, transaccion);
+
+                            foreach (var fase in listaFases)
+                            {
+                                cmdGuardar.Parameters.Clear();
+
+                                cmdGuardar.Parameters.AddWithValue("", iCodigoBOM);
+                                cmdGuardar.Parameters.AddWithValue("", fase.sFase);
+                                cmdGuardar.Parameters.AddWithValue("", fase.sDescripcion);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iHoras);
+
+                                cmdGuardar.ExecuteNonQuery();
+                            }
+                        }
+
+                        //Ruben Lopez 0901-20-4620
+                        // Guardar nuevos detalles
+                        if (listaDetalles != null && listaDetalles.Count > 0)
+                        {
+                            string sIngresarDetalle = @"INSERT INTO Tbl_BOM_Detalle
+                                                        (Fk_Id_BOM, Fk_Id_Materiales, Fk_Id_Unidad_Medida, Cantidad_Requerida_BOM_Detalle)
+                                                        VALUES (?, ?, ?, ?)";
+
+                            OdbcCommand cmdGuardarDetalle = new OdbcCommand(sIngresarDetalle, con, transaccion);
+
+                            foreach (var detalle in listaDetalles)
+                            {
+                                cmdGuardarDetalle.Parameters.Clear();
+                                cmdGuardarDetalle.Parameters.AddWithValue("", iCodigoBOM);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.idMaterial);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.idUnidad);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.cantidad);
+                                cmdGuardarDetalle.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaccion.Commit();
+                    }
+                    catch
+                    {
+                        transaccion.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        // Método para crear el proceso completo desde la creación de BOM, Detalle y Fases. Anderson Trigueros
+        public void creaciónCompleta(string descripcion, string version, DateTime fecha, int estado, int material,
+            List<(int idMaterial, int idUnidad, decimal cantidad)> listaDetalle, //Ruben Lopez 0901-20-4620
+            List<(string sFase, string sDescripcion, int iHoras)> listaFases)
+        {
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    OdbcTransaction transaccion = con.BeginTransaction();
+                    try
+                    {
+                        //Código para crear el BOM
+                        string sql = @"INSERT INTO Tbl_BOM
+                                       (Descripcion_BOM, Version_BOM, Fecha_Creacion_BOM, Fk_Id_Estado_BOM, Fk_Id_Material)
+                                       VALUES (?, ?, ?, ?, ?)";
+
+                        OdbcCommand cmd = new OdbcCommand(sql, con, transaccion);
+                        cmd.Parameters.AddWithValue("", descripcion);
+                        cmd.Parameters.AddWithValue("", version);
+                        cmd.Parameters.AddWithValue("", fecha);
+                        cmd.Parameters.AddWithValue("", estado);
+                        cmd.Parameters.AddWithValue("", material);
+                        cmd.ExecuteNonQuery();
+
+                        //Obtener el id del BOM
+                        OdbcCommand cmdLastId = new OdbcCommand("SELECT LAST_INSERT_ID();", con, transaccion);
+                        int idBOM = Convert.ToInt32(cmdLastId.ExecuteScalar());
+
+                        //Ruben Lopez 0901-20-4620
+                        //Ingresar detalle
+                        if (listaDetalle != null && listaDetalle.Count > 0)
+                        {
+                            string sIngresarDetalle = @"INSERT INTO Tbl_BOM_Detalle
+                                                        (Fk_Id_BOM, Fk_Id_Materiales, Fk_Id_Unidad_Medida, Cantidad_Requerida_BOM_Detalle)
+                                                        VALUES (?, ?, ?, ?)";
+
+                            OdbcCommand cmdGuardarDetalle = new OdbcCommand(sIngresarDetalle, con, transaccion);
+
+                            foreach (var detalle in listaDetalle)
+                            {
+                                cmdGuardarDetalle.Parameters.Clear();
+                                cmdGuardarDetalle.Parameters.AddWithValue("", idBOM);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.idMaterial);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.idUnidad);
+                                cmdGuardarDetalle.Parameters.AddWithValue("", detalle.cantidad);
+                                cmdGuardarDetalle.ExecuteNonQuery();
+                            }
+                        }
+
+                        //Ingresar fases de producción
+                        if (listaFases != null && listaFases.Count > 0)
+                        {
+                            
+                            string sIngresarFase = @"INSERT INTO Tbl_Fases_Produccion
+                                                (Fk_Id_BOM, Nombre_Fase_Produccion, Descripcion_Fase_Produccion, Horas_Hombre) 
+                                                VALUES (?, ?, ?, ?)";
+
+                            OdbcCommand cmdGuardar = new OdbcCommand(sIngresarFase, con, transaccion);
+
+                            foreach (var fase in listaFases)
+                            {
+                                cmdGuardar.Parameters.Clear();
+
+                                cmdGuardar.Parameters.AddWithValue("", idBOM);
+                                cmdGuardar.Parameters.AddWithValue("", fase.sFase);
+                                cmdGuardar.Parameters.AddWithValue("", fase.sDescripcion);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iHoras);
+
+                                cmdGuardar.ExecuteNonQuery();
+                            }
+                        }
+                        transaccion.Commit();
+                    }
+                    catch
+                    {
+                        transaccion.Rollback();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al guardar receta: " + ex.Message);
+            }
+        }
+
+        // Hecho por: Maria Morales 0901-22-1226
+        // SENTENCIAS PARA CARGAR RECETAS YA INGRESADAS
+        public DataTable obtenerTodosBOM()
+        {
+            DataTable tabla = new DataTable();
+
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string sql = @"
+                    SELECT 
+                        b.Pk_Id_BOM AS ID,
+                        m.Nombre_Material AS Producto,
+                        b.Descripcion_BOM AS Descripcion,
+                        b.Version_BOM AS Version,
+                        b.Fecha_Creacion_BOM AS Fecha,
+                        e.Nombre_Estado_BOM AS Estado
+                    FROM Tbl_BOM b
+                    JOIN Tbl_Materiales m ON b.Fk_Id_Material = m.Pk_Id_Materiales
+                    JOIN Tbl_Estado_BOM e ON b.Fk_Id_Estado_BOM = e.Pk_Id_Estado_BOM;";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
+                da.Fill(tabla);
+            }
+
+            return tabla;
+        }
+
+        public DataTable obtenerBOMPorID(int idBOM)
+        {
+            DataTable tabla = new DataTable();
+
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string sql = @"
+        SELECT *
+        FROM Tbl_BOM
+        WHERE Pk_Id_BOM = ?";
+
+                OdbcCommand cmd = new OdbcCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", idBOM);
+
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(tabla);
+            }
+
+            return tabla;
+        }
+
+        public DataTable obtenerDetalleBOM(int idBOM)
+        {
+            DataTable tabla = new DataTable();
+
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string sql = @"
+        SELECT 
+            d.Fk_Id_Materiales,
+            m.Nombre_Material AS Material,
+            d.Fk_Id_Unidad_Medida,
+            u.Nombre_Unidad_Medida AS Unidad,
+            d.Cantidad_Requerida_BOM_Detalle AS Cantidad
+        FROM Tbl_BOM_Detalle d
+        JOIN Tbl_Materiales m ON d.Fk_Id_Materiales = m.Pk_Id_Materiales
+        JOIN Tbl_Unidad_Medida u ON d.Fk_Id_Unidad_Medida = u.Pk_Id_Unidad_Medida
+        WHERE d.Fk_Id_BOM = ?";
+
+                OdbcCommand cmd = new OdbcCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", idBOM);
+
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(tabla);
+            }
+
+            return tabla;
+        }
+
 
     }
 }

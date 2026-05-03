@@ -23,12 +23,24 @@ namespace Capa_Vista_RO
         }
         private void Frm_Encabezado_Orden_Load(object sender, EventArgs e)
         {
+            // Arón Ricardo Esquit - 0901-22-13036 - 01/05/26
+            dateTimePicker1.ShowCheckBox = true;
+            dateTimePicker2.ShowCheckBox = true;
+            dateTimePicker1.Value = new DateTime(2026, 4, 1);
+            dateTimePicker2.Value = new DateTime(2026, 5, 1);
+            dateTimePicker1.Checked = false;
+            dateTimePicker2.Checked = false;
+
             CargarGrid();
             CargarEstadosCombo();
+
             dgvOrdenes.CellClick += dgvOrdenes_CellClick;
             txtID.TextChanged += Filtrar;
             cmbEstado.SelectedIndexChanged += Filtrar;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
         }
+
         private void CargarEstadosCombo()
         {
             var estados = controlador.ObtenerEstados();
@@ -57,7 +69,6 @@ namespace Capa_Vista_RO
         private void CargarGrid()
         {
             var datos = controlador.ObtenerOrdenes();
-
             dgvOrdenes.DataSource = controlador.ObtenerOrdenes();
             ConfigurarGrid();
             AgregarBotonVer();
@@ -122,6 +133,7 @@ namespace Capa_Vista_RO
 
                     Frm_Detalle_Orden frm = new Frm_Detalle_Orden(idOrden); 
                     frm.ShowDialog();
+                    CargarGrid();
                 }
                 else
                 {
@@ -134,6 +146,34 @@ namespace Capa_Vista_RO
         {
             Frm_Detalle_Orden frm = new Frm_Detalle_Orden();
             frm.ShowDialog();
+            CargarGrid();
+        }
+
+        // Arón Ricardo Esquit - 0901-22-13036 - 01/05/26
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarSiAmbosChecked();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarSiAmbosChecked();
+        }
+
+        private void FiltrarSiAmbosChecked()
+        {
+            if (!dateTimePicker1.Checked || !dateTimePicker2.Checked)
+            {
+                CargarGrid();
+                return;
+            }
+
+            string fechaInicio = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string fechaFin = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+
+            dgvOrdenes.DataSource = controlador.FiltrarOrdenesPorFecha(fechaInicio, fechaFin);
+            ConfigurarGrid();
+            AgregarBotonVer();
         }
     }
 }  // ------ KEVIN NATARENO - 0901-21-635, 28/04/2026 --------

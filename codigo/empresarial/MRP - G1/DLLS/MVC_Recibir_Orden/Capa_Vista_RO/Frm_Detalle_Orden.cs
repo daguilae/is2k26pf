@@ -9,14 +9,14 @@ namespace Capa_Vista_RO
     // ------ LETICIA SONTAY - 9959-21-9664, 28/04/2026 --------
     public partial class Frm_Detalle_Orden : Form
     {
+        private bool _modoCreacion = false;
         private readonly Cls_Controlador_Orden _controlador = new Cls_Controlador_Orden();
         private int _idOrden;
         private bool _cargando = false;
         private bool _cargandoMat = false;
         // Arón Ricardo Esquit - 0901-22-13036 - 30/04/26
         private bool editandoDetalle = false;
-
-
+        
 
         // Constructor sin parámetros llama al principal
         public Frm_Detalle_Orden() : this(0) { }
@@ -333,8 +333,12 @@ namespace Capa_Vista_RO
         // ------ DANI - 0901-22-9136, 29/04/2026 --------
         private void Btn_ingresar_Click(object sender, EventArgs e)
         {
+            _modoCreacion = true;
             EstadoControles(true);
-            InicializarColumnasMateriales(); // resetea el grid al ingresar
+            InicializarColumnasMateriales();
+            Cmb_ID.DropDownStyle = ComboBoxStyle.Simple; 
+            Cmb_ID.SelectedIndex = -1;
+            Cmb_ID.Text = "";
             Cmb_ID.Focus();
         }
 
@@ -344,6 +348,9 @@ namespace Capa_Vista_RO
         {
             DialogResult resp = MessageBox.Show("¿Desea cancelar la operación?", "Confirmar",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            _modoCreacion = false;
+            Cmb_ID.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cmb_ID.Enabled = true;
 
             if (resp == DialogResult.Yes)
             {
@@ -399,28 +406,58 @@ namespace Capa_Vista_RO
                 }
 
                 // Arón Ricardo Esquit - 0901-22-13036 - 30/04/26
-                if (Cmb_ID.SelectedValue == null)
+                if (!_modoCreacion)
                 {
-                    MessageBox.Show("Debe seleccionar una orden.");
-                    return;
-                }
+                    if (Cmb_ID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Debe seleccionar una orden.");
+                        return;
+                    }
+                    int idOrden = Convert.ToInt32(Cmb_ID.SelectedValue);
+                    bool exito = _controlador.GuardarDetalleOrden(idOrden, dtDetalle);
 
-                int idOrden = Convert.ToInt32(Cmb_ID.SelectedValue);
-
-                bool exito = _controlador.GuardarDetalleOrden(idOrden, dtDetalle);
-
-                if (exito)
-                {
-                    MessageBox.Show("Materiales agregados correctamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    EstadoControles(false);
-                    LimpiarCampos();
-                    InicializarColumnasMateriales(); 
+                    if (exito)
+                    {
+                        MessageBox.Show("Materiales agregados correctamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        EstadoControles(false);
+                        LimpiarCampos();
+                        InicializarColumnasMateriales();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al intentar guardar.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al intentar guardar la orden.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if (string.IsNullOrWhiteSpace(idLogistica))
+                    {
+                        MessageBox.Show("Debe ingresar un ID de logística.");
+                        return;
+                    }
+
+                    bool exito = _controlador.GuardarOrdenCompleta(idLogistica, estado, fechaReq, obs, dtDetalle);
+
+                    if (exito)
+                    {
+                        MessageBox.Show("Orden creada exitosamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _modoCreacion = false;
+                        Cmb_ID.DropDownStyle = ComboBoxStyle.DropDownList; // 👈 vuelve a modo solo lectura
+                        Cmb_ID.Enabled = true;
+                        EstadoControles(false);
+                        LimpiarCampos();
+                        InicializarColumnasMateriales();
+                        CargarComboOrdenes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al crear la orden.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)
@@ -571,41 +608,16 @@ namespace Capa_Vista_RO
         {
             try
             {
-                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
-                const string subRutaAyuda = @"Ayuda\Ayuda_de_Recibir_Orden.chm";
+                string rutaBase = Path.Combine(Application.StartupPath, "Ayuda_de_Recibir_Orden.chm");
 
-                string rutaEncontrada = null;
-                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-                // Busca la carpeta hacia arriba (10 niveles)
-                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                if (File.Exists(rutaBase))
                 {
-                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
-                    if (File.Exists(candidata))
-                    {
-                        rutaEncontrada = candidata;
-                        break;
-                    }
-                }
-
-                // Ruta de respaldo (opcional)
-                string rutaAbsolutaRespaldo =
-                    @"C:\Users\arone\OneDrive\Escritorio\is2k26pf\codigo\empresarial\MRP - G1\DLLS\MVC_Recibir_Orden\Ayuda\Ayuda_de_Recibir_Orden.chm";
-
-                if (rutaEncontrada == null && File.Exists(rutaAbsolutaRespaldo))
-                    rutaEncontrada = rutaAbsolutaRespaldo;
-
-                if (rutaEncontrada != null)
-                {
-                    // Esta es la ruta INTERNA del archivo dentro del CHM
-                    string rutaInterna = @"ayuda-RecibirOrden.html";
-
-                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                    Help.ShowHelp(this, rutaBase, HelpNavigator.Topic, "ayuda-RecibirOrden.html");
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se encontró el archivo de ayuda.\nRuta buscada: " + rutaBase,
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

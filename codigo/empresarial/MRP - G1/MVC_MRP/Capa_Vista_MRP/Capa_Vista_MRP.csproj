@@ -43,6 +43,9 @@
     <Reference Include="Capa_Vista_Bom">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Mariale_Bom\Capa_Vista_Bom\bin\Debug\Capa_Vista_Bom.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Costo_Fase">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Costo Fase\Capa_Vista_Costo_Fase\bin\Debug\Capa_Vista_Costo_Fase.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Cronograma">
       <HintPath>..\..\DLLS\Plan y Orden de Producción\Cronograma Fases de Producción\Capa_Vista_Cronograma\bin\Debug\Capa_Vista_Cronograma.dll</HintPath>
     </Reference>
@@ -111,6 +114,9 @@
     </Reference>
     <Reference Include="Capa_Vista_TipoInve">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Tipo_Costo">
+      <HintPath>..\..\DLLS\Plan y Orden de Producción\Tipo de Costo\Capa_Vista_Tipo_Costo\bin\Debug\Capa_Vista_Tipo_Costo.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_Tipo_de_Movimiento_Inventario">
       <HintPath>..\..\Mantenimientos\Tipo_de_movimineto_inventario\Capa_Vista_Tipo_de_Movimiento_Inventario\bin\Debug\Capa_Vista_Tipo_de_Movimiento_Inventario.dll</HintPath>

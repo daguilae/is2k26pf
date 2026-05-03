@@ -5,12 +5,14 @@ using Capa_Vista_Mant_DiegoM;
 using Capa_Vista_Mant_Kevin;
 using Capa_Vista_Mantenimiento;
 using Capa_Vista_Bom;
+using Capa_Vista_Costo_Fase;
 using Capa_vista;
 using Capa_Vista_Estado_Fases;
 using Capa_Vista_Mantenimiento_Gerber;
 using Capa_Vista_Mant_Merma;
 using Capa_Vista_Mant_UDM;
 using Capa_Vista_TipoInve;
+using Capa_Vista_Tipo_Costo;
 using Capa_Vista_Tipo_de_Movimiento_Inventario;
 using Capa_Vista_Estado_Orden_Recibida;
 using Capa_vista_produccion;
@@ -259,6 +261,20 @@ namespace Capa_Vista_MRP
         private void disponibilidadDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_DispoInve m = new Frm_DispoInve();
+            m.MdiParent = this;
+            m.Show();
+        }
+
+        private void costosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Costo_Fases m = new Frm_Costo_Fases();
+            m.MdiParent = this;
+            m.Show();
+        }
+
+        private void tipoDeCostoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Tipo_Costo m = new Frm_Tipo_Costo();
             m.MdiParent = this;
             m.Show();
         }

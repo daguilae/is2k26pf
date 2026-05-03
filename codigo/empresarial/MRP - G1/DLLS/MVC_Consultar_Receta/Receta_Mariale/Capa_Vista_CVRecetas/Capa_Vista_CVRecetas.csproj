@@ -69,6 +69,12 @@
     <Compile Include="Detalle_Materiales.Designer.cs">
       <DependentUpon>Detalle_Materiales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Encabezado_BOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Encabezado_BOM.Designer.cs">
+      <DependentUpon>Frm_Encabezado_BOM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Recetas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Detalle_Materiales.resx">
       <DependentUpon>Detalle_Materiales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Encabezado_BOM.resx">
+      <DependentUpon>Frm_Encabezado_BOM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Recetas.resx">
       <DependentUpon>Frm_Recetas.cs</DependentUpon>
