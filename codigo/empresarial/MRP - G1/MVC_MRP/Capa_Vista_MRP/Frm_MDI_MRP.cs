@@ -210,7 +210,7 @@ namespace Capa_Vista_MRP
 
         private void bOMYFactibilidadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Recetas m = new Frm_Recetas();
+            Frm_Encabezado_BOM m = new Frm_Encabezado_BOM();
             m.MdiParent = this;
             m.Show();
         }
