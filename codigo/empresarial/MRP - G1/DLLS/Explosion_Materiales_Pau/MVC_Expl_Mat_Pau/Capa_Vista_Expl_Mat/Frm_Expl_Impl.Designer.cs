@@ -90,7 +90,7 @@ namespace Capa_Vista_Expl_Mat
             // Btn_CrearExplosion
             // 
             this.Btn_CrearExplosion.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_CrearExplosion.Location = new System.Drawing.Point(951, 48);
+            this.Btn_CrearExplosion.Location = new System.Drawing.Point(925, 48);
             this.Btn_CrearExplosion.Name = "Btn_CrearExplosion";
             this.Btn_CrearExplosion.Size = new System.Drawing.Size(165, 29);
             this.Btn_CrearExplosion.TabIndex = 12;

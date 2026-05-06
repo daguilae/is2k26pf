@@ -49,22 +49,25 @@ namespace Capa_Vista_Expl_Mat
         {
             if (Dgv_InformacionExplosion.Columns.Count == 0) return;
 
-            // Ocultar PK
-            if (Dgv_InformacionExplosion.Columns.Contains("Pk_Id_Explosion"))
-                Dgv_InformacionExplosion.Columns["Pk_Id_Explosion"].Visible = false;
+            if (Dgv_InformacionExplosion.Columns.Contains("No_Explosion"))
+            {
+                Dgv_InformacionExplosion.Columns["No_Explosion"].HeaderText = "No. Explosión";
+                Dgv_InformacionExplosion.Columns["No_Explosion"].Visible = true;
+            }
 
-            // Encabezados legibles
-            if (Dgv_InformacionExplosion.Columns.Contains("Orden"))
-                Dgv_InformacionExplosion.Columns["Orden"].HeaderText = "N° Orden";
-
-            if (Dgv_InformacionExplosion.Columns.Contains("Producto"))
-                Dgv_InformacionExplosion.Columns["Producto"].HeaderText = "Producto";
+            if (Dgv_InformacionExplosion.Columns.Contains("No_Orden"))
+                Dgv_InformacionExplosion.Columns["No_Orden"].HeaderText = "No. Orden";
 
             if (Dgv_InformacionExplosion.Columns.Contains("Fecha_Explosion"))
                 Dgv_InformacionExplosion.Columns["Fecha_Explosion"].HeaderText = "Fecha Explosión";
 
-            if (Dgv_InformacionExplosion.Columns.Contains("Factibilidad"))
-                Dgv_InformacionExplosion.Columns["Factibilidad"].HeaderText = "Factibilidad";
+            // Ocultar cualquier otra columna que no necesites
+            foreach (DataGridViewColumn col in Dgv_InformacionExplosion.Columns)
+            {
+                if (col.Name != "No_Explosion" && col.Name != "No_Orden"
+                    && col.Name != "Fecha_Explosion" && col.Name != "Ver")
+                    col.Visible = false;
+            }
 
             Dgv_InformacionExplosion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Dgv_InformacionExplosion.ReadOnly = true;
@@ -131,8 +134,8 @@ namespace Capa_Vista_Expl_Mat
             if (Dgv_InformacionExplosion.Columns[e.ColumnIndex].Name == "Ver")
             {
                 var valor = Dgv_InformacionExplosion
-                                .Rows[e.RowIndex]
-                                .Cells["Pk_Id_Explosion"].Value;
+                            .Rows[e.RowIndex]
+                            .Cells["No_Explosion"].Value;
 
                 if (valor != DBNull.Value && valor != null)
                 {

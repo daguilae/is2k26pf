@@ -16,21 +16,14 @@ namespace Capa_Modelo_Expl_Mat
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
+                // El SELECT queda así en los 3 métodos:
                 string query = @"
-                    SELECT 
-                        e.Pk_Id_Explosion,
-                        op.Pk_Id_Orden_Produccion       AS Orden,
-                        m.Nombre_Material                AS Producto,
-                        e.Fecha_Explosion,
-                        CASE WHEN e.Es_Factible = 1 
-                             THEN 'Factible' 
-                             ELSE 'No Factible' END      AS Factibilidad
-                    FROM Tbl_Explosion_Materiales e
-                    INNER JOIN Tbl_Orden_Produccion op 
-                        ON e.Fk_Id_Orden_Produccion = op.Pk_Id_Orden_Produccion
-                    INNER JOIN Tbl_Materiales m 
-                        ON op.Fk_Id_Material = m.Pk_Id_Materiales
-                    ORDER BY e.Fecha_Explosion DESC";
+            SELECT 
+                e.Pk_Id_Explosion                                AS No_Explosion,
+                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
+                FROM Tbl_Explosion_Materiales e
+                ORDER BY e.Fecha_Explosion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.Fill(dt);
@@ -45,21 +38,13 @@ namespace Capa_Modelo_Expl_Mat
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
-                    SELECT 
-                        e.Pk_Id_Explosion,
-                        op.Pk_Id_Orden_Produccion       AS Orden,
-                        m.Nombre_Material                AS Producto,
-                        e.Fecha_Explosion,
-                        CASE WHEN e.Es_Factible = 1 
-                             THEN 'Factible' 
-                             ELSE 'No Factible' END      AS Factibilidad
-                    FROM Tbl_Explosion_Materiales e
-                    INNER JOIN Tbl_Orden_Produccion op 
-                        ON e.Fk_Id_Orden_Produccion = op.Pk_Id_Orden_Produccion
-                    INNER JOIN Tbl_Materiales m 
-                        ON op.Fk_Id_Material = m.Pk_Id_Materiales
-                    WHERE CAST(e.Pk_Id_Explosion AS CHAR) LIKE ?
-                    ORDER BY e.Fecha_Explosion DESC";
+            SELECT 
+                e.Pk_Id_Explosion                                AS No_Explosion,
+                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
+            FROM Tbl_Explosion_Materiales e
+            WHERE CAST(e.Pk_Id_Explosion AS CHAR) LIKE ?
+            ORDER BY e.Fecha_Explosion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("?", "%" + idExplosion + "%");
@@ -68,28 +53,19 @@ namespace Capa_Modelo_Expl_Mat
             return dt;
         }
 
-        // Filtrar por rango de fechas
         public DataTable FiltrarPorFechas(string fechaInicio, string fechaFin)
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
-                    SELECT 
-                        e.Pk_Id_Explosion,
-                        op.Pk_Id_Orden_Produccion       AS Orden,
-                        m.Nombre_Material                AS Producto,
-                        e.Fecha_Explosion,
-                        CASE WHEN e.Es_Factible = 1 
-                             THEN 'Factible' 
-                             ELSE 'No Factible' END      AS Factibilidad
-                    FROM Tbl_Explosion_Materiales e
-                    INNER JOIN Tbl_Orden_Produccion op 
-                        ON e.Fk_Id_Orden_Produccion = op.Pk_Id_Orden_Produccion
-                    INNER JOIN Tbl_Materiales m 
-                        ON op.Fk_Id_Material = m.Pk_Id_Materiales
-                    WHERE DATE(e.Fecha_Explosion) BETWEEN ? AND ?
-                    ORDER BY e.Fecha_Explosion DESC";
+            SELECT 
+                e.Pk_Id_Explosion                                AS No_Explosion,
+                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
+            FROM Tbl_Explosion_Materiales e
+            WHERE DATE(e.Fecha_Explosion) BETWEEN ? AND ?
+            ORDER BY e.Fecha_Explosion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.SelectCommand.Parameters.AddWithValue("?", fechaInicio);

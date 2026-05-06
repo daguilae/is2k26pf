@@ -10,7 +10,7 @@ namespace Capa_Controlador_Expl_Mat
 {
     public class Cls_Controlador_Expl
     {
-        // Paula Daniela Leonardo Paredes - [tu carné] - [fecha]
+        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
         private readonly Cls_Sentencias_Expl_e_Impl sentencias
                        = new Cls_Sentencias_Expl_e_Impl();
 
@@ -28,5 +28,50 @@ namespace Capa_Controlador_Expl_Mat
         {
             return sentencias.FiltrarPorFechas(fechaInicio, fechaFin);
         }
+
+        // Agrega esto dentro de la clase Cls_Controlador_Expl
+        // (después de los métodos del encabezado)
+
+        private readonly Cls_Sentencias_Expl sentenciasDetalle
+                       = new Cls_Sentencias_Expl();
+
+        public DataTable ObtenerOrdenesProduccion()
+        {
+            return sentenciasDetalle.ObtenerOrdenesProduccion();
+        }
+
+        public DataTable ObtenerInfoOrden(int idOrden)
+        {
+            return sentenciasDetalle.ObtenerInfoOrden(idOrden);
+        }
+
+        public DataTable ObtenerProductosOrden(int idOrden)
+        {
+            return sentenciasDetalle.ObtenerProductosOrden(idOrden);
+        }
+
+        public DataTable ObtenerBOMParaExplosion(int idOrden)
+        {
+            return sentenciasDetalle.ObtenerBOMParaExplosion(idOrden);
+        }
+
+        public int GuardarExplosion(int idOrden)
+        {
+            return sentenciasDetalle.GuardarExplosion(idOrden);
+        }
+
+        public bool GuardarDetalleExplosion(int idExplosion, DataTable detalle)
+        {
+            return sentenciasDetalle.GuardarDetalleExplosion(idExplosion, detalle);
+        }
+
+        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
+
+
+
+        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
+        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
+
+
     }
 }

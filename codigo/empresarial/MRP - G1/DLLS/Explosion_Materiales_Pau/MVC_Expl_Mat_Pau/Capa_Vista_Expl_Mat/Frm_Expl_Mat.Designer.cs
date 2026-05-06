@@ -46,9 +46,6 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_fin = new System.Windows.Forms.Button();
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
-            this.Gpb_Factibilidad = new System.Windows.Forms.GroupBox();
-            this.Gpb_Deficit = new System.Windows.Forms.GroupBox();
-            this.Gpb_Stock = new System.Windows.Forms.GroupBox();
             this.Gpb_TotalMateriales = new System.Windows.Forms.GroupBox();
             this.Pnl_4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -59,12 +56,13 @@ namespace Capa_Vista_Expl_Mat
             this.Dgv_InformacionOrden = new System.Windows.Forms.DataGridView();
             this.Lbl_Seleccion = new System.Windows.Forms.Label();
             this.Lbl_InfoOrden = new System.Windows.Forms.Label();
-            this.Btn_CargarOrden = new System.Windows.Forms.Button();
             this.Cmb_OrdenProduccion = new System.Windows.Forms.ComboBox();
             this.Lbl_OrdenProduccion = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.Lbl_FechaExplosion = new System.Windows.Forms.Label();
+            this.Lbl_TotalMateriales = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
+            this.Gpb_TotalMateriales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosAFabricar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_InformacionOrden)).BeginInit();
@@ -131,6 +129,7 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_guardar.Text = "Guardar";
             this.Btn_guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Btn_cancelar
             // 
@@ -196,6 +195,7 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_refrescar.Text = "Refrescar";
             this.Btn_refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_refrescar.UseVisualStyleBackColor = true;
+            this.Btn_refrescar.Click += new System.EventHandler(this.Btn_refrescar_Click);
             // 
             // Btn_inicio
             // 
@@ -275,41 +275,17 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_salir.UseVisualStyleBackColor = true;
             // 
-            // Gpb_Factibilidad
-            // 
-            this.Gpb_Factibilidad.Location = new System.Drawing.Point(1295, 888);
-            this.Gpb_Factibilidad.Name = "Gpb_Factibilidad";
-            this.Gpb_Factibilidad.Size = new System.Drawing.Size(232, 106);
-            this.Gpb_Factibilidad.TabIndex = 58;
-            this.Gpb_Factibilidad.TabStop = false;
-            this.Gpb_Factibilidad.Text = "Factibilidad";
-            // 
-            // Gpb_Deficit
-            // 
-            this.Gpb_Deficit.Location = new System.Drawing.Point(836, 892);
-            this.Gpb_Deficit.Name = "Gpb_Deficit";
-            this.Gpb_Deficit.Size = new System.Drawing.Size(232, 106);
-            this.Gpb_Deficit.TabIndex = 57;
-            this.Gpb_Deficit.TabStop = false;
-            this.Gpb_Deficit.Text = "Con Déficit";
-            // 
-            // Gpb_Stock
-            // 
-            this.Gpb_Stock.Location = new System.Drawing.Point(434, 888);
-            this.Gpb_Stock.Name = "Gpb_Stock";
-            this.Gpb_Stock.Size = new System.Drawing.Size(232, 106);
-            this.Gpb_Stock.TabIndex = 56;
-            this.Gpb_Stock.TabStop = false;
-            this.Gpb_Stock.Text = "Con Stock";
-            // 
             // Gpb_TotalMateriales
             // 
-            this.Gpb_TotalMateriales.Location = new System.Drawing.Point(12, 888);
+            this.Gpb_TotalMateriales.Controls.Add(this.Lbl_TotalMateriales);
+            this.Gpb_TotalMateriales.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Gpb_TotalMateriales.Location = new System.Drawing.Point(646, 888);
             this.Gpb_TotalMateriales.Name = "Gpb_TotalMateriales";
             this.Gpb_TotalMateriales.Size = new System.Drawing.Size(232, 106);
             this.Gpb_TotalMateriales.TabIndex = 55;
             this.Gpb_TotalMateriales.TabStop = false;
             this.Gpb_TotalMateriales.Text = "Total de Materiales";
+            this.Gpb_TotalMateriales.Enter += new System.EventHandler(this.Gpb_TotalMateriales_Enter);
             // 
             // Pnl_4
             // 
@@ -328,6 +304,7 @@ namespace Capa_Vista_Expl_Mat
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1515, 295);
             this.dataGridView1.TabIndex = 53;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Btn_ExplotarBOM
             // 
@@ -335,12 +312,13 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_ExplotarBOM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_ExplotarBOM.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_ExplotarBOM.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Btn_ExplotarBOM.Location = new System.Drawing.Point(667, 201);
+            this.Btn_ExplotarBOM.Location = new System.Drawing.Point(469, 201);
             this.Btn_ExplotarBOM.Name = "Btn_ExplotarBOM";
             this.Btn_ExplotarBOM.Size = new System.Drawing.Size(192, 37);
             this.Btn_ExplotarBOM.TabIndex = 52;
             this.Btn_ExplotarBOM.Text = "Explotar Orden";
             this.Btn_ExplotarBOM.UseVisualStyleBackColor = false;
+            this.Btn_ExplotarBOM.Click += new System.EventHandler(this.Btn_ExplotarBOM_Click);
             // 
             // Lbl_ResultadosExpl
             // 
@@ -361,6 +339,7 @@ namespace Capa_Vista_Expl_Mat
             this.Dgv_ProductosAFabricar.RowTemplate.Height = 24;
             this.Dgv_ProductosAFabricar.Size = new System.Drawing.Size(1515, 121);
             this.Dgv_ProductosAFabricar.TabIndex = 50;
+            this.Dgv_ProductosAFabricar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_ProductosAFabricar_CellContentClick);
             // 
             // Lbl_ProductoFabricar
             // 
@@ -381,6 +360,7 @@ namespace Capa_Vista_Expl_Mat
             this.Dgv_InformacionOrden.RowTemplate.Height = 24;
             this.Dgv_InformacionOrden.Size = new System.Drawing.Size(1515, 98);
             this.Dgv_InformacionOrden.TabIndex = 48;
+            this.Dgv_InformacionOrden.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_InformacionOrden_CellContentClick);
             // 
             // Lbl_Seleccion
             // 
@@ -402,19 +382,6 @@ namespace Capa_Vista_Expl_Mat
             this.Lbl_InfoOrden.TabIndex = 46;
             this.Lbl_InfoOrden.Text = "Información de la Orden";
             // 
-            // Btn_CargarOrden
-            // 
-            this.Btn_CargarOrden.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.Btn_CargarOrden.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_CargarOrden.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_CargarOrden.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.Btn_CargarOrden.Location = new System.Drawing.Point(469, 201);
-            this.Btn_CargarOrden.Name = "Btn_CargarOrden";
-            this.Btn_CargarOrden.Size = new System.Drawing.Size(192, 37);
-            this.Btn_CargarOrden.TabIndex = 45;
-            this.Btn_CargarOrden.Text = "Cargar Orden";
-            this.Btn_CargarOrden.UseVisualStyleBackColor = false;
-            // 
             // Cmb_OrdenProduccion
             // 
             this.Cmb_OrdenProduccion.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -423,6 +390,7 @@ namespace Capa_Vista_Expl_Mat
             this.Cmb_OrdenProduccion.Name = "Cmb_OrdenProduccion";
             this.Cmb_OrdenProduccion.Size = new System.Drawing.Size(445, 28);
             this.Cmb_OrdenProduccion.TabIndex = 44;
+            this.Cmb_OrdenProduccion.SelectedIndexChanged += new System.EventHandler(this.Cmb_OrdenProduccion_SelectedIndexChanged);
             // 
             // Lbl_OrdenProduccion
             // 
@@ -441,6 +409,7 @@ namespace Capa_Vista_Expl_Mat
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(275, 22);
             this.dateTimePicker1.TabIndex = 59;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // Lbl_FechaExplosion
             // 
@@ -452,6 +421,18 @@ namespace Capa_Vista_Expl_Mat
             this.Lbl_FechaExplosion.TabIndex = 60;
             this.Lbl_FechaExplosion.Text = "Fecha de Explosión:";
             // 
+            // Lbl_TotalMateriales
+            // 
+            this.Lbl_TotalMateriales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Lbl_TotalMateriales.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TotalMateriales.Location = new System.Drawing.Point(3, 23);
+            this.Lbl_TotalMateriales.Name = "Lbl_TotalMateriales";
+            this.Lbl_TotalMateriales.Size = new System.Drawing.Size(226, 80);
+            this.Lbl_TotalMateriales.TabIndex = 0;
+            this.Lbl_TotalMateriales.Text = "0";
+            this.Lbl_TotalMateriales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Lbl_TotalMateriales.Click += new System.EventHandler(this.Lbl_TotalMateriales_Click);
+            // 
             // Frm_Expl_Mat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -460,9 +441,6 @@ namespace Capa_Vista_Expl_Mat
             this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.Lbl_FechaExplosion);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.Gpb_Factibilidad);
-            this.Controls.Add(this.Gpb_Deficit);
-            this.Controls.Add(this.Gpb_Stock);
             this.Controls.Add(this.Gpb_TotalMateriales);
             this.Controls.Add(this.Pnl_4);
             this.Controls.Add(this.dataGridView1);
@@ -473,7 +451,6 @@ namespace Capa_Vista_Expl_Mat
             this.Controls.Add(this.Dgv_InformacionOrden);
             this.Controls.Add(this.Lbl_Seleccion);
             this.Controls.Add(this.Lbl_InfoOrden);
-            this.Controls.Add(this.Btn_CargarOrden);
             this.Controls.Add(this.Cmb_OrdenProduccion);
             this.Controls.Add(this.Lbl_OrdenProduccion);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -481,6 +458,7 @@ namespace Capa_Vista_Expl_Mat
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle Explosión de Materiales";
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.Gpb_TotalMateriales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosAFabricar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_InformacionOrden)).EndInit();
@@ -506,9 +484,6 @@ namespace Capa_Vista_Expl_Mat
         private System.Windows.Forms.Button Btn_fin;
         private System.Windows.Forms.Button Btn_ayuda;
         private System.Windows.Forms.Button Btn_salir;
-        private System.Windows.Forms.GroupBox Gpb_Factibilidad;
-        private System.Windows.Forms.GroupBox Gpb_Deficit;
-        private System.Windows.Forms.GroupBox Gpb_Stock;
         private System.Windows.Forms.GroupBox Gpb_TotalMateriales;
         private System.Windows.Forms.Panel Pnl_4;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -519,10 +494,10 @@ namespace Capa_Vista_Expl_Mat
         private System.Windows.Forms.DataGridView Dgv_InformacionOrden;
         private System.Windows.Forms.Label Lbl_Seleccion;
         private System.Windows.Forms.Label Lbl_InfoOrden;
-        private System.Windows.Forms.Button Btn_CargarOrden;
         private System.Windows.Forms.ComboBox Cmb_OrdenProduccion;
         private System.Windows.Forms.Label Lbl_OrdenProduccion;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label Lbl_FechaExplosion;
+        private System.Windows.Forms.Label Lbl_TotalMateriales;
     }
 }
