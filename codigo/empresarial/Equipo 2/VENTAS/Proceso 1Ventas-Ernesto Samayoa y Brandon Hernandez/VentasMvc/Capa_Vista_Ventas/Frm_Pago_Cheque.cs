@@ -14,15 +14,20 @@ namespace Capa_Vista_Ventas
     {
 
         private int iIdPago;
-        private decimal deMontoPago;
+        private decimal gMonto;
         public Frm_Pago_Cheque(int idPago, decimal monto)
         {
             InitializeComponent();
             iIdPago = idPago;
-            deMontoPago = monto;
+            gMonto = monto;
+            fun_PrecargarDatos();
 
         }
+        private void fun_PrecargarDatos()
+        {
+            Txt_Monto_Total.Text = $"Q { gMonto.ToString("F2")}";
 
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -52,6 +52,10 @@ namespace Capa_Vista_Ventas
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Guardar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
+            this.Txt_Monto_Total = new System.Windows.Forms.TextBox();
+            this.Lbl_Monto_Pendiente = new System.Windows.Forms.Label();
+            this.Txt_Monto_Pagar = new System.Windows.Forms.TextBox();
+            this.Lbl_Monto_Pagar = new System.Windows.Forms.Label();
             this.Gbo_Cmpos.SuspendLayout();
             this.Gbo_Pago_Con_Cheque.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -59,6 +63,10 @@ namespace Capa_Vista_Ventas
             // 
             // Gbo_Cmpos
             // 
+            this.Gbo_Cmpos.Controls.Add(this.Txt_Monto_Pagar);
+            this.Gbo_Cmpos.Controls.Add(this.Lbl_Monto_Pagar);
+            this.Gbo_Cmpos.Controls.Add(this.Txt_Monto_Total);
+            this.Gbo_Cmpos.Controls.Add(this.Lbl_Monto_Pendiente);
             this.Gbo_Cmpos.Controls.Add(this.Cbo_Estado_Cheque);
             this.Gbo_Cmpos.Controls.Add(this.Dtp_Fecha_Cobro);
             this.Gbo_Cmpos.Controls.Add(this.Dtp_Fecha_Emision);
@@ -286,6 +294,40 @@ namespace Capa_Vista_Ventas
             this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
             // 
+            // Txt_Monto_Total
+            // 
+            this.Txt_Monto_Total.Location = new System.Drawing.Point(762, 91);
+            this.Txt_Monto_Total.Name = "Txt_Monto_Total";
+            this.Txt_Monto_Total.Size = new System.Drawing.Size(265, 22);
+            this.Txt_Monto_Total.TabIndex = 135;
+            // 
+            // Lbl_Monto_Pendiente
+            // 
+            this.Lbl_Monto_Pendiente.AutoSize = true;
+            this.Lbl_Monto_Pendiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Monto_Pendiente.Location = new System.Drawing.Point(562, 92);
+            this.Lbl_Monto_Pendiente.Name = "Lbl_Monto_Pendiente";
+            this.Lbl_Monto_Pendiente.Size = new System.Drawing.Size(166, 21);
+            this.Lbl_Monto_Pendiente.TabIndex = 134;
+            this.Lbl_Monto_Pendiente.Text = "Monto Pendiente ";
+            // 
+            // Txt_Monto_Pagar
+            // 
+            this.Txt_Monto_Pagar.Location = new System.Drawing.Point(762, 149);
+            this.Txt_Monto_Pagar.Name = "Txt_Monto_Pagar";
+            this.Txt_Monto_Pagar.Size = new System.Drawing.Size(265, 22);
+            this.Txt_Monto_Pagar.TabIndex = 137;
+            // 
+            // Lbl_Monto_Pagar
+            // 
+            this.Lbl_Monto_Pagar.AutoSize = true;
+            this.Lbl_Monto_Pagar.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Monto_Pagar.Location = new System.Drawing.Point(546, 150);
+            this.Lbl_Monto_Pagar.Name = "Lbl_Monto_Pagar";
+            this.Lbl_Monto_Pagar.Size = new System.Drawing.Size(138, 21);
+            this.Lbl_Monto_Pagar.TabIndex = 136;
+            this.Lbl_Monto_Pagar.Text = "Monto a pagar";
+            // 
             // Frm_Pago_Cheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -336,5 +378,9 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Button Btn_Cancelar_Ventas;
         private System.Windows.Forms.Button Btn_Guardar_Ventas;
         private System.Windows.Forms.Button Btn_Agregar_Ventas;
+        private System.Windows.Forms.TextBox Txt_Monto_Total;
+        private System.Windows.Forms.Label Lbl_Monto_Pendiente;
+        private System.Windows.Forms.TextBox Txt_Monto_Pagar;
+        private System.Windows.Forms.Label Lbl_Monto_Pagar;
     }
 }

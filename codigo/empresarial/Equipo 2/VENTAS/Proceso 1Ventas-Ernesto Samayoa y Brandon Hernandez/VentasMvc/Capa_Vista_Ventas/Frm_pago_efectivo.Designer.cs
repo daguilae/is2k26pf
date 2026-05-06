@@ -31,10 +31,14 @@ namespace Capa_Vista_Ventas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_pago_efectivo));
             this.Gbo_Cmpos = new System.Windows.Forms.GroupBox();
+            this.Txt_Vuelto = new System.Windows.Forms.TextBox();
+            this.Lbl_Vuelto = new System.Windows.Forms.Label();
+            this.Txt_Dinero_Recibido = new System.Windows.Forms.TextBox();
+            this.Lbl_Dinero_recibido = new System.Windows.Forms.Label();
+            this.Txt_Monto_Total = new System.Windows.Forms.TextBox();
+            this.Lbl_Monto_Pendiente = new System.Windows.Forms.Label();
             this.Txt_Observaciones = new System.Windows.Forms.TextBox();
-            this.Txt_Numero_Recibo = new System.Windows.Forms.TextBox();
             this.Lbl_Observaciones = new System.Windows.Forms.Label();
-            this.Lbl_Numero_Recibo = new System.Windows.Forms.Label();
             this.Gbo_Pago_Con_Efectivo = new System.Windows.Forms.GroupBox();
             this.Lbl_Pago_Con_Efectivo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,49 +55,88 @@ namespace Capa_Vista_Ventas
             // 
             // Gbo_Cmpos
             // 
+            this.Gbo_Cmpos.Controls.Add(this.Txt_Vuelto);
+            this.Gbo_Cmpos.Controls.Add(this.Lbl_Vuelto);
+            this.Gbo_Cmpos.Controls.Add(this.Txt_Dinero_Recibido);
+            this.Gbo_Cmpos.Controls.Add(this.Lbl_Dinero_recibido);
+            this.Gbo_Cmpos.Controls.Add(this.Txt_Monto_Total);
+            this.Gbo_Cmpos.Controls.Add(this.Lbl_Monto_Pendiente);
             this.Gbo_Cmpos.Controls.Add(this.Txt_Observaciones);
-            this.Gbo_Cmpos.Controls.Add(this.Txt_Numero_Recibo);
             this.Gbo_Cmpos.Controls.Add(this.Lbl_Observaciones);
-            this.Gbo_Cmpos.Controls.Add(this.Lbl_Numero_Recibo);
-            this.Gbo_Cmpos.Location = new System.Drawing.Point(12, 352);
+            this.Gbo_Cmpos.Location = new System.Drawing.Point(12, 333);
             this.Gbo_Cmpos.Name = "Gbo_Cmpos";
-            this.Gbo_Cmpos.Size = new System.Drawing.Size(1131, 159);
+            this.Gbo_Cmpos.Size = new System.Drawing.Size(947, 261);
             this.Gbo_Cmpos.TabIndex = 128;
             this.Gbo_Cmpos.TabStop = false;
             // 
+            // Txt_Vuelto
+            // 
+            this.Txt_Vuelto.Location = new System.Drawing.Point(204, 162);
+            this.Txt_Vuelto.Name = "Txt_Vuelto";
+            this.Txt_Vuelto.Size = new System.Drawing.Size(191, 22);
+            this.Txt_Vuelto.TabIndex = 39;
+            // 
+            // Lbl_Vuelto
+            // 
+            this.Lbl_Vuelto.AutoSize = true;
+            this.Lbl_Vuelto.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Vuelto.Location = new System.Drawing.Point(21, 162);
+            this.Lbl_Vuelto.Name = "Lbl_Vuelto";
+            this.Lbl_Vuelto.Size = new System.Drawing.Size(73, 21);
+            this.Lbl_Vuelto.TabIndex = 38;
+            this.Lbl_Vuelto.Text = "Vuelto ";
+            // 
+            // Txt_Dinero_Recibido
+            // 
+            this.Txt_Dinero_Recibido.Location = new System.Drawing.Point(204, 111);
+            this.Txt_Dinero_Recibido.Name = "Txt_Dinero_Recibido";
+            this.Txt_Dinero_Recibido.Size = new System.Drawing.Size(191, 22);
+            this.Txt_Dinero_Recibido.TabIndex = 37;
+            this.Txt_Dinero_Recibido.TextChanged += new System.EventHandler(this.Txt_Dinero_Recibido_TextChanged);
+            // 
+            // Lbl_Dinero_recibido
+            // 
+            this.Lbl_Dinero_recibido.AutoSize = true;
+            this.Lbl_Dinero_recibido.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Dinero_recibido.Location = new System.Drawing.Point(19, 107);
+            this.Lbl_Dinero_recibido.Name = "Lbl_Dinero_recibido";
+            this.Lbl_Dinero_recibido.Size = new System.Drawing.Size(160, 21);
+            this.Lbl_Dinero_recibido.TabIndex = 36;
+            this.Lbl_Dinero_recibido.Text = "Dinero Recibido ";
+            // 
+            // Txt_Monto_Total
+            // 
+            this.Txt_Monto_Total.Location = new System.Drawing.Point(204, 35);
+            this.Txt_Monto_Total.Name = "Txt_Monto_Total";
+            this.Txt_Monto_Total.Size = new System.Drawing.Size(178, 22);
+            this.Txt_Monto_Total.TabIndex = 35;
+            // 
+            // Lbl_Monto_Pendiente
+            // 
+            this.Lbl_Monto_Pendiente.AutoSize = true;
+            this.Lbl_Monto_Pendiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Monto_Pendiente.Location = new System.Drawing.Point(19, 35);
+            this.Lbl_Monto_Pendiente.Name = "Lbl_Monto_Pendiente";
+            this.Lbl_Monto_Pendiente.Size = new System.Drawing.Size(166, 21);
+            this.Lbl_Monto_Pendiente.TabIndex = 34;
+            this.Lbl_Monto_Pendiente.Text = "Monto Pendiente ";
+            // 
             // Txt_Observaciones
             // 
-            this.Txt_Observaciones.Location = new System.Drawing.Point(235, 88);
+            this.Txt_Observaciones.Location = new System.Drawing.Point(229, 211);
             this.Txt_Observaciones.Name = "Txt_Observaciones";
             this.Txt_Observaciones.Size = new System.Drawing.Size(280, 22);
             this.Txt_Observaciones.TabIndex = 28;
-            // 
-            // Txt_Numero_Recibo
-            // 
-            this.Txt_Numero_Recibo.Location = new System.Drawing.Point(235, 28);
-            this.Txt_Numero_Recibo.Name = "Txt_Numero_Recibo";
-            this.Txt_Numero_Recibo.Size = new System.Drawing.Size(280, 22);
-            this.Txt_Numero_Recibo.TabIndex = 27;
             // 
             // Lbl_Observaciones
             // 
             this.Lbl_Observaciones.AutoSize = true;
             this.Lbl_Observaciones.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Observaciones.Location = new System.Drawing.Point(31, 89);
+            this.Lbl_Observaciones.Location = new System.Drawing.Point(25, 212);
             this.Lbl_Observaciones.Name = "Lbl_Observaciones";
             this.Lbl_Observaciones.Size = new System.Drawing.Size(149, 21);
             this.Lbl_Observaciones.TabIndex = 17;
             this.Lbl_Observaciones.Text = "Observaciones:";
-            // 
-            // Lbl_Numero_Recibo
-            // 
-            this.Lbl_Numero_Recibo.AutoSize = true;
-            this.Lbl_Numero_Recibo.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Numero_Recibo.Location = new System.Drawing.Point(31, 28);
-            this.Lbl_Numero_Recibo.Name = "Lbl_Numero_Recibo";
-            this.Lbl_Numero_Recibo.Size = new System.Drawing.Size(150, 21);
-            this.Lbl_Numero_Recibo.TabIndex = 16;
-            this.Lbl_Numero_Recibo.Text = "Número recibo:";
             // 
             // Gbo_Pago_Con_Efectivo
             // 
@@ -187,6 +230,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Guardar_Ventas.Text = "GUARDAR";
             this.Btn_Guardar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Guardar_Ventas.UseVisualStyleBackColor = false;
+            this.Btn_Guardar_Ventas.Click += new System.EventHandler(this.Btn_Guardar_Ventas_Click);
             // 
             // Btn_Agregar_Ventas
             // 
@@ -205,7 +249,7 @@ namespace Capa_Vista_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 589);
+            this.ClientSize = new System.Drawing.Size(1034, 659);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Btn_Cancelar_Ventas);
@@ -230,9 +274,7 @@ namespace Capa_Vista_Ventas
         #endregion
         private System.Windows.Forms.GroupBox Gbo_Cmpos;
         private System.Windows.Forms.TextBox Txt_Observaciones;
-        private System.Windows.Forms.TextBox Txt_Numero_Recibo;
         private System.Windows.Forms.Label Lbl_Observaciones;
-        private System.Windows.Forms.Label Lbl_Numero_Recibo;
         private System.Windows.Forms.GroupBox Gbo_Pago_Con_Efectivo;
         private System.Windows.Forms.Label Lbl_Pago_Con_Efectivo;
         private System.Windows.Forms.Panel panel1;
@@ -242,5 +284,11 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Button Btn_Cancelar_Ventas;
         private System.Windows.Forms.Button Btn_Guardar_Ventas;
         private System.Windows.Forms.Button Btn_Agregar_Ventas;
+        private System.Windows.Forms.TextBox Txt_Vuelto;
+        private System.Windows.Forms.Label Lbl_Vuelto;
+        private System.Windows.Forms.TextBox Txt_Dinero_Recibido;
+        private System.Windows.Forms.Label Lbl_Dinero_recibido;
+        private System.Windows.Forms.TextBox Txt_Monto_Total;
+        private System.Windows.Forms.Label Lbl_Monto_Pendiente;
     }
 }
