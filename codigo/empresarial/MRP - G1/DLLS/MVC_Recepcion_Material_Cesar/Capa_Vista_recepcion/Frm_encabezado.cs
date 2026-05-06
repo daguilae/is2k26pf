@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_recepcion
 {
-    public partial class Frm_reporte : Form
+    public partial class Frm_encabezado : Form
     {
-        public Frm_reporte()
+        public Frm_encabezado()
         {
             InitializeComponent();
+        }
+
+        private void Btn_crear_Click(object sender, EventArgs e)
+        {
+            Frm_detalle frm = new Frm_detalle();
+            frm.ShowDialog();
         }
     }
 }

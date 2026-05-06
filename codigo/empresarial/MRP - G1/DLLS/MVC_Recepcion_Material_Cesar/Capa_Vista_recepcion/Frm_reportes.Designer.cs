@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_recepcion
 {
-    partial class Frm_reporte
+    partial class Frm_reportes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,42 +30,29 @@ namespace Capa_Vista_recepcion
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.crystalReportViewer2 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.reporte2 = new Capa_Vista_recepcion.reporte();
+            this.Recepcion_1 = new Capa_Vista_recepcion.Recepcion_();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.ActiveViewIndex = 0;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ReportSource = this.Recepcion_1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // crystalReportViewer2
+            // Frm_reportes
             // 
-            this.crystalReportViewer2.ActiveViewIndex = 0;
-            this.crystalReportViewer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer2.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer2.Name = "crystalReportViewer2";
-            this.crystalReportViewer2.ReportSource = this.reporte2;
-            this.crystalReportViewer2.Size = new System.Drawing.Size(800, 450);
-            this.crystalReportViewer2.TabIndex = 1;
-            // 
-            // Frm_reporte
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.crystalReportViewer2);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "Frm_reporte";
-            this.Text = "Frm_reporte";
+            this.Name = "Frm_reportes";
+            this.Text = "Reporte recepcion";
             this.ResumeLayout(false);
 
         }
@@ -73,7 +60,6 @@ namespace Capa_Vista_recepcion
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer2;
-        private reporte reporte2;
+        private Recepcion_ Recepcion_1;
     }
 }

@@ -16,14 +16,14 @@ namespace Capa_Vista_recepcion {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class reporte : ReportClass {
+    public class Recepcion_ : ReportClass {
         
-        public reporte() {
+        public Recepcion_() {
         }
         
         public override string ResourceName {
             get {
-                return "reporte.rpt";
+                return "Recepcion .rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Capa_Vista_recepcion {
         
         public override string FullResourceName {
             get {
-                return "Capa_Vista_recepcion.reporte.rpt";
+                return "Capa_Vista_recepcion.Recepcion .rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Capa_Vista_recepcion {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedreporte : Component, ICachedReport {
+    public class CachedRecepcion_ : Component, ICachedReport {
         
-        public Cachedreporte() {
+        public CachedRecepcion_() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Capa_Vista_recepcion {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            reporte rpt = new reporte();
+            Recepcion_ rpt = new Recepcion_();
             rpt.Site = this.Site;
             return rpt;
         }
