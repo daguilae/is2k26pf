@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
 using System.Data;
+using Capa_Controlador_Mov_Inv;
 
 namespace Capa_Modelo_Ventas
 {
@@ -442,7 +443,28 @@ namespace Capa_Modelo_Ventas
                     if (sCmp_Tipo_Operacion == "Cotizacion" || sCmp_Tipo_Operacion == "Pedido")
                     {
                         dFecha_Entrega = dFecha_Especial;
+
+                        // Mapear DataTable a lista de tuplas para el movimiento de inventario
+                        var detalleInventario = detalle.AsEnumerable()
+                            .Select(row => (
+                                idInventario: row.Field<int>("IdProducto"),
+                                idBodega: row.Field<int>("IdBodega"),
+                                cantidad: row.Field<float>("Cantidad"),
+                                idUnidad: row.Field<int>("IdUnidad")
+                            ))
+                            .ToList();
+
+                        Cls_Mov_Inv_Controlador inventario = new Cls_Mov_Inv_Controlador();
+                        bool actualizacionStock = inventario.fun_ApartarStock(
+                            3,
+                            dCmp_Fecha_Venta,
+                            "Venta",
+                            detalleInventario
+                        );
+
+
                     }
+
 
                     // INSERTAR ENCABEZADO CON FECHAS
                     using (OdbcCommand cmdVenta = new OdbcCommand(SQL_INSERT_VENTA, conn, trans))
@@ -506,8 +528,29 @@ namespace Capa_Modelo_Ventas
                     // CREAR CUENTA POR COBRAR SOLO SI ES VENTA
                     if (bEsVenta)
                     {
-                        // SUMAR SALDO AL CLIENTE
-                        using (OdbcCommand cmdUpdateCliente = new OdbcCommand(
+                        {
+                            //nuevo
+                            // Mapear DataTable a lista de tuplas para el movimiento de inventario
+                            var detalleInventario = detalle.AsEnumerable()
+                                .Select(row => (
+                                    idInventario: row.Field<int>("IdProducto"),
+                                    idBodega: row.Field<int>("IdBodega"),
+                                    cantidad: row.Field<float>("Cantidad"),
+                                    idUnidad: row.Field<int>("IdUnidad")
+                                ))
+                                .ToList();
+
+                            Cls_Mov_Inv_Controlador inventario = new Cls_Mov_Inv_Controlador();
+                            bool actualizacionStock = inventario.fun_GuardarMovimiento(
+                                3,
+                                dCmp_Fecha_Venta,
+                                "Venta",
+                                detalleInventario
+                            );
+                        }
+                            
+                            // SUMAR SALDO AL CLIENTE
+                            using (OdbcCommand cmdUpdateCliente = new OdbcCommand(
                             "UPDATE tbl_clientes SET Cmp_Saldo_Total = Cmp_Saldo_Total + ? WHERE Pk_Id_Cliente = ?", conn, trans))
                         {
                             cmdUpdateCliente.Parameters.AddWithValue("?", fCmp_Saldo_Total);
