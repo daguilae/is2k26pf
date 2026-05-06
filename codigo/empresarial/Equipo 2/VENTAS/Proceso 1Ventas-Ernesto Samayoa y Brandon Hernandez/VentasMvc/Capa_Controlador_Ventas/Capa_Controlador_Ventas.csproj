@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cls_Asignacion_Clientes_Controlador.cs" />
+    <Compile Include="Cls_CXCDetalle_Controlador.cs" />
     <Compile Include="Cls_Ventas_Controlador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

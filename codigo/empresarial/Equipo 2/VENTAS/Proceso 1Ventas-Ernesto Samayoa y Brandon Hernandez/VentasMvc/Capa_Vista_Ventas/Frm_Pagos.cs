@@ -70,7 +70,7 @@ namespace Capa_Vista_Ventas
             Cbo_CXC.Text = _idCuentaPorCobrar.ToString();
             Cbo_CXC.Enabled = false;
 
-            Txt_Monto.Text = _monto.ToString("F2");
+            Txt_Monto.Text = $"Q:{_monto.ToString("F2")}";
             Txt_Monto.ReadOnly = true;
 
            
@@ -120,21 +120,21 @@ namespace Capa_Vista_Ventas
         {
         }
 
-        private void AbrirSubformulario(string sMetodo, int iIdPago, decimal deMonto)
+        private void AbrirSubformulario(string sMetodo, int iIdPago, decimal monto)
         {
             switch (sMetodo)
             {
                 case "Tarjeta":
-                    new Frm_Pago_Tarjeta(iIdPago, deMonto).ShowDialog();
+                    new Frm_Pago_Tarjeta(iIdPago,monto).ShowDialog();
                     break;
                 case "Efectivo":
-                    new Frm_pago_efectivo(iIdPago, deMonto).ShowDialog();
+                    new Frm_pago_efectivo(iIdPago, monto).ShowDialog();
                     break;
                 case "Transferencia":
-                    new Frm_Pago_Transferencia(iIdPago, deMonto).ShowDialog();
+                    new Frm_Pago_Transferencia(iIdPago, monto).ShowDialog();
                     break;
                 case "Cheque":
-                    new Frm_Pago_Cheque(iIdPago, deMonto).ShowDialog();
+                    new Frm_Pago_Cheque(iIdPago, monto).ShowDialog();
                     break;
             }
         }

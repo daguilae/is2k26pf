@@ -15,11 +15,18 @@ namespace Capa_Vista_Ventas
         private int gIdPago;
         private decimal gMonto;
 
-        public Frm_Pago_Tarjeta(int iIdPago, decimal deMonto)
+        public Frm_Pago_Tarjeta(int iIdPago, decimal monto)
         {
             InitializeComponent();
             gIdPago = iIdPago;
-            gMonto = deMonto;
+            gMonto = monto;
+            fun_PrecargarDatos();
+            
+        }
+        private void fun_PrecargarDatos()
+        {
+            Txt_Monto_Total.Text = $"Q { gMonto.ToString("F2")}";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
