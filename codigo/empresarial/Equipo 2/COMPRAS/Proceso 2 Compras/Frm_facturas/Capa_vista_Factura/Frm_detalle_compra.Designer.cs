@@ -61,13 +61,6 @@ namespace Capa_vista_Factura
             this.Txt_PrecioUnitario = new System.Windows.Forms.TextBox();
             this.Lbl_DetalleProductos = new System.Windows.Forms.Label();
             this.Dgv_DetalleProductos = new System.Windows.Forms.DataGridView();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUniad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Txt_total = new System.Windows.Forms.TextBox();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -87,6 +80,15 @@ namespace Capa_vista_Factura
             this.Btn_Grabar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -443,54 +445,22 @@ namespace Capa_vista_Factura
             this.Dgv_DetalleProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_DetalleProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCodigo,
+            this.ColumnBodega,
             this.ColumnProducto,
-            this.ColumnUniad,
+            this.ColumnUnidad,
             this.ColumnCantidad,
             this.ColumnPrecio,
             this.ColumnSubtotal,
-            this.ColumnTotal});
+            this.ColumnTotal,
+            this.ColumnIdUnidad});
             this.Dgv_DetalleProductos.Location = new System.Drawing.Point(63, 432);
             this.Dgv_DetalleProductos.Margin = new System.Windows.Forms.Padding(2);
             this.Dgv_DetalleProductos.Name = "Dgv_DetalleProductos";
             this.Dgv_DetalleProductos.RowHeadersWidth = 51;
             this.Dgv_DetalleProductos.RowTemplate.Height = 24;
-            this.Dgv_DetalleProductos.Size = new System.Drawing.Size(781, 196);
+            this.Dgv_DetalleProductos.Size = new System.Drawing.Size(930, 196);
             this.Dgv_DetalleProductos.TabIndex = 47;
-            // 
-            // ColumnCodigo
-            // 
-            this.ColumnCodigo.HeaderText = "Codigo";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            // 
-            // ColumnProducto
-            // 
-            this.ColumnProducto.HeaderText = "Producto";
-            this.ColumnProducto.Name = "ColumnProducto";
-            // 
-            // ColumnUniad
-            // 
-            this.ColumnUniad.HeaderText = "Unidad de Medida";
-            this.ColumnUniad.Name = "ColumnUniad";
-            // 
-            // ColumnCantidad
-            // 
-            this.ColumnCantidad.HeaderText = "Cantidad";
-            this.ColumnCantidad.Name = "ColumnCantidad";
-            // 
-            // ColumnPrecio
-            // 
-            this.ColumnPrecio.HeaderText = "Precio Unitario";
-            this.ColumnPrecio.Name = "ColumnPrecio";
-            // 
-            // ColumnSubtotal
-            // 
-            this.ColumnSubtotal.HeaderText = "Subtotal";
-            this.ColumnSubtotal.Name = "ColumnSubtotal";
-            // 
-            // ColumnTotal
-            // 
-            this.ColumnTotal.HeaderText = "Total";
-            this.ColumnTotal.Name = "ColumnTotal";
+            this.Dgv_DetalleProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_DetalleProductos_CellContentClick);
             // 
             // Txt_total
             // 
@@ -649,7 +619,7 @@ namespace Capa_vista_Factura
             this.Btn_remover.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_remover.Image = global::Capa_vista_Factura.Properties.Resources.delete_remove_trash_icon_177304;
             this.Btn_remover.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_remover.Location = new System.Drawing.Point(876, 503);
+            this.Btn_remover.Location = new System.Drawing.Point(1095, 510);
             this.Btn_remover.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_remover.Name = "Btn_remover";
             this.Btn_remover.Size = new System.Drawing.Size(85, 61);
@@ -666,7 +636,7 @@ namespace Capa_vista_Factura
             this.Btn_limpiar.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_limpiar.Image = global::Capa_vista_Factura.Properties.Resources.refresh_page_arrow_button_icon_icons_com_53909;
             this.Btn_limpiar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_limpiar.Location = new System.Drawing.Point(876, 579);
+            this.Btn_limpiar.Location = new System.Drawing.Point(1095, 586);
             this.Btn_limpiar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_limpiar.Name = "Btn_limpiar";
             this.Btn_limpiar.Size = new System.Drawing.Size(85, 66);
@@ -683,7 +653,7 @@ namespace Capa_vista_Factura
             this.Btn_Agregar.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Agregar.Image = global::Capa_vista_Factura.Properties.Resources.add_insert_new_plus_button_icon_142943;
             this.Btn_Agregar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Agregar.Location = new System.Drawing.Point(876, 425);
+            this.Btn_Agregar.Location = new System.Drawing.Point(1095, 432);
             this.Btn_Agregar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Agregar.Name = "Btn_Agregar";
             this.Btn_Agregar.Size = new System.Drawing.Size(85, 64);
@@ -793,6 +763,53 @@ namespace Capa_vista_Factura
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
             // 
+            // ColumnCodigo
+            // 
+            this.ColumnCodigo.HeaderText = "Codigo";
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            // 
+            // ColumnBodega
+            // 
+            this.ColumnBodega.HeaderText = "Bodega";
+            this.ColumnBodega.Name = "ColumnBodega";
+            // 
+            // ColumnProducto
+            // 
+            this.ColumnProducto.HeaderText = "Producto";
+            this.ColumnProducto.Name = "ColumnProducto";
+            // 
+            // ColumnUnidad
+            // 
+            this.ColumnUnidad.HeaderText = "Unidad de Medida";
+            this.ColumnUnidad.Name = "ColumnUnidad";
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.HeaderText = "Cantidad";
+            this.ColumnCantidad.Name = "ColumnCantidad";
+            // 
+            // ColumnPrecio
+            // 
+            this.ColumnPrecio.HeaderText = "Precio Unitario";
+            this.ColumnPrecio.Name = "ColumnPrecio";
+            // 
+            // ColumnSubtotal
+            // 
+            this.ColumnSubtotal.HeaderText = "Subtotal";
+            this.ColumnSubtotal.Name = "ColumnSubtotal";
+            // 
+            // ColumnTotal
+            // 
+            this.ColumnTotal.HeaderText = "Total";
+            this.ColumnTotal.Name = "ColumnTotal";
+            // 
+            // ColumnIdUnidad
+            // 
+            this.ColumnIdUnidad.HeaderText = "idunidad";
+            this.ColumnIdUnidad.Name = "ColumnIdUnidad";
+            this.ColumnIdUnidad.ReadOnly = true;
+            this.ColumnIdUnidad.Visible = false;
+            // 
             // Frm_detalle_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -859,7 +876,6 @@ namespace Capa_vista_Factura
         private System.Windows.Forms.Button Btn_Editar;
         private System.Windows.Forms.Button Btn_Ingresar;
         private System.Windows.Forms.GroupBox Gpo_Detalle;
-        private System.Windows.Forms.TextBox Txt_Cantidad;
         private System.Windows.Forms.Label Lbl_Tipo;
         private System.Windows.Forms.Label Lbl_CodigoCta;
         private System.Windows.Forms.Label Lbl_Valor;
@@ -879,13 +895,6 @@ namespace Capa_vista_Factura
         private System.Windows.Forms.ComboBox Cmb_producto;
         private System.Windows.Forms.Label Lbl_diascredito;
         private System.Windows.Forms.Button Btn_Consultar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUniad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
         private System.Windows.Forms.ComboBox Cmb_bodega;
         private System.Windows.Forms.Label Lbl_bodega;
         private System.Windows.Forms.Button Btn_Eliminar;
@@ -895,5 +904,15 @@ namespace Capa_vista_Factura
         private System.Windows.Forms.Button Btn_Siguiente;
         private System.Windows.Forms.Button Btn_Anterior;
         private System.Windows.Forms.Button Btn_Inicio;
+        private System.Windows.Forms.TextBox Txt_Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBodega;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdUnidad;
     }
 }

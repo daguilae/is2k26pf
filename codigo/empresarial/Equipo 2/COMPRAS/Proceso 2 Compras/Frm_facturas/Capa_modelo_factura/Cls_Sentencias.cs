@@ -19,25 +19,24 @@ namespace Capa_modelo_factura
         public DataTable obtenerDetalles()
         {
             DataTable dt = new DataTable();
-            // Combinamos las tablas para traer el nombre del producto en lugar de solo el ID
-            string sql = @"SELECT 
-    C.pk_id_compra AS Compra,
-    C.cmp_fecha AS Fecha,
-    PR.cmp_Nombre_Proveedor AS Proveedor,
-    C.cmp_tipo_compra AS TipoPago, 
-    C.cmp_estado AS Estado,
-    I.nombre_prod AS Producto, 
-    D.cmp_cantidad AS Cantidad, 
-    D.cmp_precio AS Precio,
-    (D.cmp_cantidad * D.cmp_precio) AS Total
-FROM tbl_detalle_compra D
-INNER JOIN tbl_compra C 
-    ON D.fk_id_compra = C.pk_id_compra
-INNER JOIN tbl_inventario I 
-    ON D.fk_inventario_id = I.pk_inventario_id
-INNER JOIN tbl_proveedores PR 
-    ON C.fk_id_proveedor = PR.pk_id_proveedor
-ORDER BY C.cmp_fecha DESC;";
+            // MODIFICADO: Agregamos JOIN con tbl_unidad_de_medida para traer el nombre
+            string sql = @"SELECT  
+                C.pk_id_compra AS Compra,
+                C.cmp_fecha AS Fecha,
+                PR.cmp_Nombre_Proveedor AS Proveedor,
+                C.cmp_tipo_compra AS TipoPago, 
+                C.cmp_estado AS Estado,
+                I.nombre_prod AS Producto, 
+                D.cmp_cantidad AS Cantidad, 
+                U.Nombre_Unidad AS Unidad, -- Ahora traemos el nombre de la unidad
+                D.cmp_precio AS Precio,
+                (D.cmp_cantidad * D.cmp_precio) AS Total
+            FROM tbl_detalle_compra D
+            INNER JOIN tbl_compra C ON D.fk_id_compra = C.pk_id_compra
+            INNER JOIN tbl_inventario I ON D.fk_inventario_id = I.pk_inventario_id
+            INNER JOIN tbl_proveedores PR ON C.fk_id_proveedor = PR.pk_id_proveedor
+            INNER JOIN tbl_unidad_de_medida U ON D.fk_id_unidad = U.ID_Unidad -- Nuevo JOIN
+            ORDER BY C.cmp_fecha DESC;";
 
             OdbcConnection conn = cn.conexion();
             try
@@ -83,13 +82,12 @@ ORDER BY C.cmp_fecha DESC;";
 
         public DataTable obtenerUnidadMedida()
         {
-            string sql = @"SELECT ID_Unidad, Nombre_Unidad
+            string sql = @"SELECT ID_Unidad, 
+                          CONCAT(ID_Unidad, '_', Abreviacion_Medida) AS Nombre_Unidad
                    FROM tbl_unidad_de_medida
                    WHERE Estado_Medida = 'Activo'";
-
             return cn.ObtenerDatos(sql);
         }
-
 
 
 
@@ -162,17 +160,15 @@ ORDER BY C.cmp_fecha DESC;";
         // Guardar cada fila del detalle
 
 
-        public void guardarDetalleCompra(int idCompra, int idInventario,
-                                  int cantidad, string unidad, decimal precio)
+        
+        public void guardarDetalleCompra(int idCompra, int idInventario, float cantidad, int idUnidad, decimal precio)
         {
-            
             string precioStr = precio.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
+            
             string sql = $@"INSERT INTO tbl_detalle_compra 
-                   (fk_id_compra, fk_inventario_id, cmp_cantidad, 
-                    cmp_unidad, cmp_precio) 
-                   VALUES ({idCompra}, {idInventario}, {cantidad}, 
-                           '{unidad}', {precioStr})";
+                           (fk_id_compra, fk_inventario_id, fk_id_unidad, cmp_cantidad, cmp_precio) 
+                           VALUES ({idCompra}, {idInventario}, {idUnidad}, {cantidad}, {precioStr})";
 
             OdbcConnection conn = cn.conexion();
             try
@@ -189,7 +185,6 @@ ORDER BY C.cmp_fecha DESC;";
                 cn.desconexion(conn);
             }
         }
-
 
 
         // Obtener ID del inventario por nombre de producto
@@ -221,6 +216,7 @@ ORDER BY C.cmp_fecha DESC;";
 
     return id;
 }
+
 
 
 
@@ -257,15 +253,16 @@ ORDER BY C.cmp_fecha DESC;";
         public DataTable obtenerDetallePorCompra(int idCompra)
         {
             DataTable dt = new DataTable();
-            // Traemos el nombre del producto desde tbl_inventario para que se vea bien en el grid
+            // MODIFICADO: JOIN con la tabla de unidades
             string sql = @"SELECT 
                         I.nombre_prod AS Producto, 
                         D.cmp_cantidad AS Cantidad, 
-                        D.cmp_unidad AS Unidad, 
+                        U.Nombre_Unidad AS Unidad, -- Nombre en lugar de ID
                         D.cmp_precio AS Precio,
                         (D.cmp_cantidad * D.cmp_precio) AS Subtotal
                    FROM tbl_detalle_compra D
                    INNER JOIN tbl_inventario I ON D.fk_inventario_id = I.pk_inventario_id
+                   INNER JOIN tbl_unidad_de_medida U ON D.fk_id_unidad = U.ID_Unidad
                    WHERE D.fk_id_compra = ?";
 
             OdbcConnection conn = cn.conexion();
@@ -290,7 +287,7 @@ ORDER BY C.cmp_fecha DESC;";
         /*--------------------Editar Compras------*/
 
 
-       
+
 
         /*-----------------------Acutaliar Tablas-------------------*/
 
@@ -383,7 +380,7 @@ ORDER BY C.cmp_fecha DESC;";
         public DataTable obtenerBodegas()
         {
             DataTable dt = new DataTable();
-            // Seleccionamos el ID para el valor interno y el Nombre para mostrar al usuario
+            
             string sql = "SELECT Pk_Id_Bodega, Cmp_Nombre_Bodega FROM tbl_bodega WHERE Cmp_Estado_Bodega = 'Activo';";
 
             OdbcConnection conn = cn.conexion();
