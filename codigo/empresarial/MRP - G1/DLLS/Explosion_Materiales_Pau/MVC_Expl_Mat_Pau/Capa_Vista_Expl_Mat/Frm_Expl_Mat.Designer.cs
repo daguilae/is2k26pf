@@ -47,6 +47,7 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_ayuda = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
             this.Gpb_TotalMateriales = new System.Windows.Forms.GroupBox();
+            this.Lbl_TotalMateriales = new System.Windows.Forms.Label();
             this.Pnl_4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Btn_ExplotarBOM = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@ namespace Capa_Vista_Expl_Mat
             this.Lbl_OrdenProduccion = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.Lbl_FechaExplosion = new System.Windows.Forms.Label();
-            this.Lbl_TotalMateriales = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.Gpb_TotalMateriales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -287,6 +287,18 @@ namespace Capa_Vista_Expl_Mat
             this.Gpb_TotalMateriales.Text = "Total de Materiales";
             this.Gpb_TotalMateriales.Enter += new System.EventHandler(this.Gpb_TotalMateriales_Enter);
             // 
+            // Lbl_TotalMateriales
+            // 
+            this.Lbl_TotalMateriales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Lbl_TotalMateriales.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TotalMateriales.Location = new System.Drawing.Point(3, 23);
+            this.Lbl_TotalMateriales.Name = "Lbl_TotalMateriales";
+            this.Lbl_TotalMateriales.Size = new System.Drawing.Size(226, 80);
+            this.Lbl_TotalMateriales.TabIndex = 0;
+            this.Lbl_TotalMateriales.Text = "0";
+            this.Lbl_TotalMateriales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Lbl_TotalMateriales.Click += new System.EventHandler(this.Lbl_TotalMateriales_Click);
+            // 
             // Pnl_4
             // 
             this.Pnl_4.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -420,18 +432,6 @@ namespace Capa_Vista_Expl_Mat
             this.Lbl_FechaExplosion.Size = new System.Drawing.Size(180, 20);
             this.Lbl_FechaExplosion.TabIndex = 60;
             this.Lbl_FechaExplosion.Text = "Fecha de Explosión:";
-            // 
-            // Lbl_TotalMateriales
-            // 
-            this.Lbl_TotalMateriales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Lbl_TotalMateriales.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_TotalMateriales.Location = new System.Drawing.Point(3, 23);
-            this.Lbl_TotalMateriales.Name = "Lbl_TotalMateriales";
-            this.Lbl_TotalMateriales.Size = new System.Drawing.Size(226, 80);
-            this.Lbl_TotalMateriales.TabIndex = 0;
-            this.Lbl_TotalMateriales.Text = "0";
-            this.Lbl_TotalMateriales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Lbl_TotalMateriales.Click += new System.EventHandler(this.Lbl_TotalMateriales_Click);
             // 
             // Frm_Expl_Mat
             // 
