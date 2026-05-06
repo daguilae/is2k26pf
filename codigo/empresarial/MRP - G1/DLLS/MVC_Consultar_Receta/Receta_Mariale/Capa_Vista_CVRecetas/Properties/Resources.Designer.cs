@@ -59,5 +59,15 @@ namespace Capa_Vista_CVRecetas.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_remove_trash_icon_177304 {
+            get {
+                object obj = ResourceManager.GetObject("delete_remove_trash_icon_177304", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

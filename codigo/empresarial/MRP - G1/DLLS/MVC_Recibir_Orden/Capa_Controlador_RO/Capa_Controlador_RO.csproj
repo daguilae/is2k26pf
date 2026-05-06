@@ -31,8 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Modelo_RO">
       <HintPath>..\Capa_Modelo_RO\bin\Debug\Capa_Modelo_RO.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

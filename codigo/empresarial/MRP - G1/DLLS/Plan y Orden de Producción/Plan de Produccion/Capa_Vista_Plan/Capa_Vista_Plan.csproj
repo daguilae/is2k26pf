@@ -31,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Controlador_NavegadorTrs">
-      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_NavegadorTrs.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_NavegadorTrs">
-      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_NavegadorTrs.dll</HintPath>
+    <Reference Include="Capa_Controlador_Plan">
+      <HintPath>..\Capa_Controlador_Plan\bin\Debug\Capa_Controlador_Plan.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Frm_Plan_Produccion.cs">
       <SubType>Form</SubType>
     </Compile>

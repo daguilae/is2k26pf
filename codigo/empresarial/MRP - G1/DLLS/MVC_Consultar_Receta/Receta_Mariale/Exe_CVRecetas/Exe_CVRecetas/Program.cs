@@ -17,7 +17,7 @@ namespace Exe_CVRecetas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Recetas());
+            Application.Run(new Frm_Encabezado_BOM());
         }
     }
 }

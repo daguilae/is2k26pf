@@ -38,8 +38,16 @@
     <Reference Include="Capa_Controlador_RO">
       <HintPath>..\Capa_Controlador_RO\bin\Debug\Capa_Controlador_RO.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_NavegadorTrs">
       <HintPath>..\..\..\NavegadorTransaccionalMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_NavegadorTrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />

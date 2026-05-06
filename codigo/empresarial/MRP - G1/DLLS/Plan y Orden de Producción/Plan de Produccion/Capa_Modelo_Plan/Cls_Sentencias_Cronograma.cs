@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Capa_Modelo_Seguridad;
 
-namespace Capa_Vista_Plan
+namespace Capa_Modelo_Plan
 {
-    public class Class1
+    public class Cls_Sentencias_Cronograma
     {
+
     }
 }

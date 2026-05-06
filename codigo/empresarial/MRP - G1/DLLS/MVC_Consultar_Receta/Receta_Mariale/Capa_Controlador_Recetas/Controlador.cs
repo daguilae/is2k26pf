@@ -48,15 +48,44 @@ namespace Capa_Controlador_Recetas
         }
 
         //Método para transacción completa. Anderson Trigueros
-        public void guardarBOMCompleto(string descripcion, string version, DateTime fecha, int estado, int producto, /*Lista detallle*/ 
+        public void guardarBOMCompleto(string descripcion, string version, DateTime fecha, int estado, int producto,
+            List<(int idMaterial, int idUnidad, decimal cantidad)> listaDetalles,
             List<(string sFase, string sDescripcion, int iHoras)> listaFases)
         {
-            sen.creaciónCompleta(descripcion, version, fecha, estado, producto, listaFases);
+            sen.creaciónCompleta(descripcion, version, fecha, estado, producto, listaDetalles, listaFases);
         }
         //Método para transacción datos nuevos con BOM existente. Anderson Trigueros
-        public void guardarDatosNuevos(int iCodigoBOM, /*datosBOM*//*listaDetalle*/ List<(string sFase, string sDescripcion, int iHoras)> listaFases)
+        public void guardarDatosNuevos(int iCodigoBOM, /*datosBOM*/
+            List<(int idMaterial, int idUnidad, decimal cantidad)> listaDetalle,
+            List<(string sFase, string sDescripcion, int iHoras)> listaFases)
         {
-            sen.agregarDatosNuevos(iCodigoBOM, listaFases);
+            sen.agregarDatosNuevos(iCodigoBOM, listaDetalle, listaFases);
         }
+
+
+        // SENTENCIAS PARA RECETAS YA INGRESADAS 
+
+        // Hecho por: Maria Morales 0901-22-1226
+        public DataTable obtenerListadoBOM()
+        {
+            return sen.obtenerTodosBOM();
+        }
+
+        public DataTable obtenerBOMPorID(int id)
+        {
+            return sen.obtenerBOMPorID(id);
+        }
+
+        public DataTable obtenerDetalleBOM(int id)
+        {
+            return sen.obtenerDetalleBOM(id);
+        }
+
+        //Hecho por Diego Monterroso
+        public DataTable filtrarListadoBOM(string id, string estado, DateTime? desde, DateTime? hasta)
+        {
+            return sen.filtrarBOM(id, estado, desde, hasta);
+        }
+
     }
 }

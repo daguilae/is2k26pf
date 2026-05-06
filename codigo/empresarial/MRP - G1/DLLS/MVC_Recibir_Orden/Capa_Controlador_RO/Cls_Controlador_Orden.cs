@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Capa_Modelo_RO;
+using Capa_Controlador_Seguridad;
+using Capa_Modelo_Seguridad;
 
 namespace Capa_Controlador_RO
 {
@@ -14,6 +16,10 @@ namespace Capa_Controlador_RO
         private Cls_Sentencias modelo = new Cls_Sentencias();
         private Cls_Consultas_Ordenes _modelo = new Cls_Consultas_Ordenes();
         private Cls_Sentencias_Detalle detalle = new Cls_Sentencias_Detalle();
+
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+        private Cls_BitacoraControlador gCtrlBitacora = new Cls_BitacoraControlador();
+
 
         // ------ KEVIN NATARENO - 0901-21-635, 28/04/2026 --------
         public DataTable ObtenerOrdenes()
@@ -77,22 +83,59 @@ namespace Capa_Controlador_RO
         }
         // ------ PAULA DANIELA LEONARDO - 0901-22-9580, 28/04/2026 --------
 
-
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
         public bool GuardarOrdenCompleta(string idLog, int estado, DateTime req, string obs, DataTable detalle)
         {
-            return _modelo.GuardarOrden(idLog, estado, req, obs, detalle);
+            bool resultado = _modelo.GuardarOrden(idLog, estado, req, obs, detalle);
+
+            if (resultado)
+            {
+                gCtrlBitacora.RegistrarAccion(
+                    Capa_Modelo_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                    731,
+                    $"Registró una nueva orden recibida con ID externo '{idLog}'",
+                    true
+                );
+            }
+
+            return resultado;
         }
 
         // Método para modificar
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
         public bool ActualizarOrden(int pk, string idLog, int estado, DateTime req, string obs)
         {
-            return _modelo.ModificarOrden(pk, idLog, estado, req, obs);
-        }
+            bool resultado = _modelo.ModificarOrden(pk, idLog, estado, req, obs);
 
+            if (resultado)
+            {
+                gCtrlBitacora.RegistrarAccion(
+                    Capa_Modelo_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                    731,
+                    $"Modificó la orden recibida con ID interno '{pk}' y ID externo '{idLog}'",
+                    true
+                );
+            }
+
+            return resultado;
+        }
         // Método para eliminar
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
         public bool BorrarOrden(int pk)
         {
-            return _modelo.EliminarOrden(pk);
+            bool resultado = _modelo.EliminarOrden(pk);
+
+            if (resultado)
+            {
+                gCtrlBitacora.RegistrarAccion(
+                    Capa_Modelo_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                    731,
+                    $"Eliminó la orden recibida con ID interno '{pk}'",
+                    true
+                );
+            }
+
+            return resultado;
         }
 
         public int ObtenerIdPorCodigo(string codigo)
@@ -101,11 +144,41 @@ namespace Capa_Controlador_RO
         }
 
         // Arón Ricardo Esquit - 0901-22-13036 - 30/04/26
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
         public bool GuardarDetalleOrden(int idOrden, DataTable detalle)
         {
-            return _modelo.GuardarDetalleOrden(idOrden, detalle);
+            bool resultado = _modelo.GuardarDetalleOrden(idOrden, detalle);
+
+            if (resultado)
+            {
+                gCtrlBitacora.RegistrarAccion(
+                    Capa_Modelo_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                    731,
+                    $"Agregó materiales al detalle de la orden recibida con ID interno '{idOrden}'",
+                    true
+                );
+            }
+
+            return resultado;
         }
 
+        // Arón Ricardo Esquit - 0901-22-13036 - 01/05/26
+        public DataTable FiltrarOrdenesPorFecha(string fechaInicio, string fechaFin)
+        {
+            return modelo.FiltrarOrdenesPorFecha(fechaInicio, fechaFin);
+        }
+
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+        public (bool ingresar, bool consultar, bool modificar, bool eliminar, bool imprimir)? ObtenerPermisosOrden(int idAplicacion, int idModulo)
+        {
+            Cls_Permiso_Usuario_Controlador ctrlPermisos = new Cls_Permiso_Usuario_Controlador();
+
+            return ctrlPermisos.ConsultarPermisos(
+                Capa_Modelo_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                idAplicacion,
+                idModulo
+            );
+        }
 
     }
 }

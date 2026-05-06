@@ -1,83 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <link href="css/estilos.css" rel="stylesheet" type="text/css">
-    <title>Ayuda</title>
+    <title>Ayuda - Crear Receta</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: #0078d7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            margin: 25px auto;
+            padding: 20px;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 8px #ccc;
+        }
+
+        h2 {
+            color: #0078d7;
+            border-bottom: 2px solid #0078d7;
+            padding-bottom: 5px;
+        }
+
+        .contenedor-img {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .contenedor-img img {
+            width: 100%;
+            max-width: 1100px;
+            border: 2px solid #0078d7;
+            border-radius: 8px;
+        }
+
+        .marca {
+            position: absolute;
+            background: red;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .texto-marca {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .flecha {
+            position: absolute;
+            color: red;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 
 <body>
-    <br>
-    <center>
-        <img class="imgRisko" src="img/LOGO MRP.png" >
-        <h1> Capacitación - Usuario</h1>
-    </center>
-    <br>
+<div style="text-align:center; padding:30px; background:white;">
+    <img src="img/LOGO MRP.png" alt="INTELLIPLAN" style="max-width:400px; width:100%;">
+</div>
+<header>
+    <h1>Manual de Ayuda - Crear Receta</h1>
+    <p>Módulo para registrar BOM, fases de producción y costos por fase.</p>
+</header>
 
-    <div class="container">
-        <h2>Formulario </h2>
-        <p class="h1"> Este proceso se encargar de consultar y registrar nuevas recetas, de igual manera se puede editar y elmimar.
-            </p>
+<section>
+    <h2>1. Pantalla principal del módulo</h2>
+    <p>
+        En esta pantalla se crea una receta de producción. 
+        La receta está compuesta por los datos generales, el detalle del BOM,
+        las fases de producción y los costos relacionados.
+    </p>
 
-        <img src="img/Receta.png">
-        <br><br><br>
-
-        <h2>Proceso Usuario</h2>
-        <p>El proceso de este formulario es el siguiente:
-
-    El usuario se encuentra en el formulario de creación de recetas, donde deberá seleccionar un producto.
-    Posteriormente, deberá hacer clic en el botón “Consultar”, ubicado en la parte superior.
-
-    Al realizar esta acción, el sistema mostrará la información correspondiente, en caso de que el producto seleccionado ya cuente con una receta registrada.</p>
-        <img src="img/Consultar.png">
-            <br><br><br>
-
-         
-        <p>
-En caso de que el producto seleccionado no cuente con una receta registrada, el usuario podrá crear una nueva.
-Para ello, deberá completar los campos correspondientes del formulario:
-<br>
-
-Descripción: se detalla la información de los componentes o materiales necesarios para la fabricación del producto.
-<br>
-Estado: indica si la receta se encuentra activa o inactiva.
-<br>
-Versión del BOM: especifica la versión de la lista de materiales asociada a la receta.
-<br>
-Fecha de creación: corresponde a la fecha en la que se registra la receta.
-<br>
-
-Una vez completados todos los campos, el usuario deberá hacer clic en el botón “Guardar”, ubicado en la parte superior, para registrar la nueva receta en el sistema.
-</p>
-        <img src="img/Consulta.png">
-        <br><br><br>
-        <img src="img/datos.png">
-        <br><br><br>    
-
-        <p>
-A continuación, se describe el proceso para editar y eliminar una receta dentro del sistema:
-<br>
-
-Para realizar cualquiera de estas acciones, el usuario deberá seleccionar un registro dentro de la tabla (Data Grid View). 
-Al seleccionarlo, los datos correspondientes se cargarán automáticamente en los campos del formulario ubicados en la parte superior.
-<br>
-Edición de receta:<br>
-Una vez cargados los datos, el usuario podrá modificar la información en los campos que desee, como la descripción o la versión del BOM. 
-Posteriormente, deberá hacer clic en el botón “Editar”, ubicado en la parte superior, para guardar los cambios realizados. 
-El sistema actualizará la información en la tabla automáticamente.</p>
-        <img src="img/edicion.png">
-        <br><br><br>
-<br>
-<p>
-Eliminación de receta:<br>
-Para eliminar una receta, el usuario deberá seleccionar el registro en la tabla. 
-Luego, hacer clic en el botón “Eliminar”. 
-El sistema mostrará un mensaje de confirmación para validar la acción. 
-Si el usuario confirma, el registro será eliminado del sistema.
-</p>
-        <img src="img/Eliminar.png">
+    <div class="texto-marca">
+        <b>1.</b> Botones del navegador: ingresar, modificar, guardar, eliminar, consultar, imprimir y ayuda.
     </div>
-</body>
 
+    <div class="texto-marca">
+        <b>2.</b> Panel izquierdo: contiene los datos generales de la receta.
+    </div>
+
+    <div class="texto-marca">
+        <b>3.</b> Panel derecho: contiene las pestañas Detalle BOM, Fase de Producción y Costos.
+    </div>
+    <div>
+        <img src="img/principal.png" alt="Detalle BOM">
+    </div>
+</section>
+
+<section>
+    <h2>2. Detalle BOM - Ingreso de materiales</h2>
+
+    <p>
+        En esta pestaña se agregan los materiales necesarios para fabricar el producto.
+    </p>
+
+    <ul>
+        <li><b>Producto:</b> producto al que pertenece la receta.</li>
+        <li><b>Material:</b> material que se utilizará en la producción.</li>
+        <li><b>Unidad:</b> unidad de medida del material.</li>
+        <li><b>Cantidad:</b> cantidad requerida del material.</li>
+        <li><b>Agregar:</b> inserta el material en el detalle.</li>
+        <li><b>Eliminar:</b> elimina el material seleccionado.</li>
+    </ul>
+
+    <div class="contenedor-img">
+        <img src="img/detalle_bom.png" alt="Detalle BOM">
+
+    </div>
+</section>
+
+<section>
+    <h2>3. Fases de Producción</h2>
+
+    <p>
+        En esta pestaña se registran las fases necesarias para fabricar el producto.
+        Por ejemplo: corte, armado, costura, revisión o empaque.
+    </p>
+
+    <ul>
+        <li><b>Nombre de fase:</b> nombre del proceso de producción.</li>
+        <li><b>Descripción de fase:</b> explicación corta de la fase.</li>
+        <li><b>Horas hombre:</b> tiempo estimado de trabajo humano.</li>
+        <li><b>Agregar:</b> guarda la fase en la tabla.</li>
+        <li><b>Eliminar:</b> elimina la fase seleccionada.</li>
+    </ul>
+
+    <div class="contenedor-img">
+        <img src="img/fases_produccion.png" alt="Fases de producción">
+
+        
+    </div>
+</section>
+
+<section>
+    <h2>4. Costos por Fase</h2>
+
+    <p>
+        En esta pestaña se registran los costos asociados a cada fase de producción.
+    </p>
+
+    <ul>
+        <li><b>Id Costo Fase:</b> identificador del costo.</li>
+        <li><b>Fase Producción:</b> fase a la que pertenece el costo.</li>
+        <li><b>Tipo Costo:</b> tipo de costo registrado.</li>
+        <li><b>Costo:</b> monto del costo.</li>
+        <li><b>Agregar:</b> registra el costo.</li>
+        <li><b>Eliminar:</b> elimina el costo seleccionado.</li>
+    </ul>
+
+    <div class="contenedor-img">
+        <img src="img/costos.png" alt="Costos por fase">
+
+      
+    </div>
+</section>
+
+<section>
+    <h2>5. Botón de Ayuda</h2>
+
+    <p>
+        Al presionar el botón <b>Ayuda</b>, el sistema abrirá este manual en el navegador,
+        mostrando la explicación visual del módulo.
+    </p>
+</section>
+
+</body>
 </html>
