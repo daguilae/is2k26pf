@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data;
 using Capa_modelo_factura;
-
+using System.Linq;
 using Capa_Controlador_CXP;
+using Capa_Controlador_Mov_Inv;
 namespace Capa_controlador_Facturas
 {
     public class Cls_controlador
@@ -60,19 +61,51 @@ namespace Capa_controlador_Facturas
         }
 
 
-        public int guardarCompra(int idProveedor, int idOrdenCompra, int idbodega, string serie,
-                          string numero, DateTime fecha, string tipoPago,
-                          decimal subtotal, decimal total,
-                          int diasCredito, DateTime? fechaVencimiento)
+        public void GuardarCompra(
+               int idProveedor, int idOrdenCompra, int idbodega,
+               string serie, string numero, DateTime fecha, string tipoPago,
+               decimal subtotal, decimal total, int diasCredito,
+               DateTime? fechaVencimiento, DataTable detalles)
         {
-            return sn.guardarCompra(idProveedor, idOrdenCompra,idbodega, serie, numero, fecha,
-                                     tipoPago, subtotal, total, diasCredito, fechaVencimiento);
-        }
+            
+            int idCompra = sn.guardarCompra(
+                idProveedor, idOrdenCompra, idbodega, serie, numero,
+                fecha, tipoPago, subtotal, total, diasCredito, fechaVencimiento
+            );
 
-        public void guardarDetalleCompra(int idCompra, int idInventario,
-                                          int cantidad, string unidad, decimal precio)
-        {
-            sn.guardarDetalleCompra(idCompra, idInventario, cantidad, unidad, precio);
+           
+            var detalleInventario = detalles.AsEnumerable()
+                .Select(row => (
+                    idInventario: Convert.ToInt32(row["idInventario"]),
+                    idBodega: idbodega,
+                    cantidad: Convert.ToSingle(row["cantidad"]),
+                    idUnidad: Convert.ToInt32(row["idUnidad"]) 
+                ))
+                .ToList();
+
+            
+            Cls_Mov_Inv_Controlador inventario = new Cls_Mov_Inv_Controlador();
+            bool actualizacionStock = inventario.fun_GuardarMovimiento(
+                2,      
+                fecha,
+                "Compra",
+                detalleInventario
+            );
+
+            
+            foreach (DataRow row in detalles.Rows)
+            {
+                int idInventario = Convert.ToInt32(row["idInventario"]);
+                float cantidad = Convert.ToSingle(row["cantidad"]);
+
+                
+                int idUnidad = Convert.ToInt32(row["idUnidad"]);
+
+                decimal precio = Convert.ToDecimal(row["precio"]);
+
+                
+                sn.guardarDetalleCompra(idCompra, idInventario, cantidad, idUnidad, precio);
+            }
         }
 
         public int obtenerIdInventario(string nombreProducto)
