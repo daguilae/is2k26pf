@@ -69,8 +69,11 @@ namespace Capa_Controlador_Expl_Mat
 
 
 
-        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
-        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
+
+
+
+        //DANIELA SALGUERO
+        //DANIELA SALGUERO
 
 
     }

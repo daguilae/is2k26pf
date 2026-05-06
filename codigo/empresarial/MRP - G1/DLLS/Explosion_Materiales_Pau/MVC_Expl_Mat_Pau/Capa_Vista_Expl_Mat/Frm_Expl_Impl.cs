@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Expl_Mat;
 
 namespace Capa_Vista_Expl_Mat
+// PAULA DANIELA LEONARDO PAREDES  0901-22-9580
 {
     public partial class Frm_Expl_Impl : Form
     {
@@ -154,5 +155,20 @@ namespace Capa_Vista_Expl_Mat
             frm.ShowDialog();
             CargarGrid();
         }
+        // PAULA DANIELA LEONARDO PAREDES  0901-22-9580
+
+
+
+
+
+
+
+
+
+        //DANIELA SALGUERO
+        //DANIELA SALGUERO
+
+
+
     }
 }
