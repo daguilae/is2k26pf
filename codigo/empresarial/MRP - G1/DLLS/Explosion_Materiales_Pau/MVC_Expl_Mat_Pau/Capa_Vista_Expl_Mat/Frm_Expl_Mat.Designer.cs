@@ -89,7 +89,7 @@ namespace Capa_Vista_Expl_Mat
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1561, 116);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1582, 116);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // Btn_ingresar
@@ -275,6 +275,7 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Gpb_TotalMateriales
             // 
@@ -439,7 +440,7 @@ namespace Capa_Vista_Expl_Mat
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1582, 853);
+            this.ClientSize = new System.Drawing.Size(1603, 853);
             this.Controls.Add(this.Lbl_FechaExplosion);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.Gpb_TotalMateriales);
