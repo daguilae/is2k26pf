@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Modelo_Plan;
 using Capa_Controlador_Plan;
 
 
@@ -21,9 +22,58 @@ namespace Capa_Vista_Plan
         int iCodigoPlanExistente = 1;
         DateTime fechaInicioOrden;
         DateTime fechaFinOrden;
+
+        private List<Cls_Sentencia_OrdenTemp> listaOrdenes = new List<Cls_Sentencia_OrdenTemp>();
+
         public Frm_Plan_Produccion()
         {
             InitializeComponent();
+            inicializarColumnas();
+            cargarCombos();
+        }
+        //Cargar data grid orden Gerber Asturias
+        private void inicializarColumnas()
+        {
+            Dgv_Orden_Pro.Columns.Clear();
+            Dgv_Orden_Pro.Columns.Add("noOrden", "No.");
+
+
+            Dgv_Orden_Pro.Columns.Add("idMaterial", "ID Material");
+            Dgv_Orden_Pro.Columns.Add("idEstado", "ID Estado");
+
+
+            Dgv_Orden_Pro.Columns.Add("material", "Material");
+            Dgv_Orden_Pro.Columns.Add("estado", "Estado");
+            Dgv_Orden_Pro.Columns.Add("cantidad", "Cantidad Programada");
+            Dgv_Orden_Pro.Columns.Add("fechaInicio", "Fecha Inicio");
+            Dgv_Orden_Pro.Columns.Add("fechaFin", "Fecha Fin");
+
+            Dgv_Orden_Pro.Columns["idMaterial"].Visible = false;
+            Dgv_Orden_Pro.Columns["idEstado"].Visible = false;
+
+
+            Dgv_Orden_Pro.AutoSizeColumnsMode =
+                DataGridViewAutoSizeColumnsMode.Fill;
+
+            Dgv_Orden_Pro.AllowUserToAddRows = false;
+
+            Dgv_Orden_Pro.ReadOnly = true;
+
+            Dgv_Orden_Pro.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        public void cargarCombos()
+        {
+
+            Cbo_OrdenRecibida.DataSource = ordenes.listarOrdenes();
+            Cbo_OrdenRecibida.DisplayMember = "Pk_Id_Orden_Recibida";
+            Cbo_OrdenRecibida.ValueMember = "Pk_Id_Orden_Recibida";
+            Cbo_OrdenRecibida.SelectedIndex = -1;
+            Cbo_Estado_Orden.DataSource = ordenes.listarEstados();
+            Cbo_Estado_Orden.DisplayMember = "Nombre_Estado_Plan_Produccion";
+            Cbo_Estado_Orden.ValueMember = "Pk_Id_Estado_Plan_Produccion";
+            Cbo_Estado_Orden.SelectedIndex = -1;
         }
 
         private void Frm_Plan_Produccion_Load(object sender, EventArgs e)
@@ -406,7 +456,217 @@ namespace Capa_Vista_Plan
 
         }
 
+        private void Lbl_NombreFase_Click(object sender, EventArgs e)
+        {
 
+        }
+
+            private void Cbo_Material_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Cbo_Material.SelectedItem == null)
+                return;
+
+            if (Cbo_Material.SelectedItem is DataRowView fila)
+            {
+                Txt_Cantidad_Programada.Text =
+                    fila["Cantidad_Solicitada"].ToString();
+            }
+        }
+
+        private void Btn_agregarOrden_Click(object sender, EventArgs e)
+        {
+            if (Cbo_Material.SelectedValue == null)
+            {
+                MessageBox.Show(
+                    "Seleccione un material.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (Cbo_Estado_Orden.SelectedValue == null)
+            {
+                MessageBox.Show(
+                    "Seleccione un estado.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(
+                Txt_Cantidad_Programada.Text))
+            {
+                MessageBox.Show(
+                    "Ingrese una cantidad.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            decimal cantidad;
+
+            if (!decimal.TryParse(
+                Txt_Cantidad_Programada.Text,
+                out cantidad))
+            {
+                MessageBox.Show(
+                    "La cantidad es inválida.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (cantidad <= 0)
+            {
+                MessageBox.Show(
+                    "La cantidad debe ser mayor a 0.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+
+            DateTime fechaFin;
+
+            if (!DateTime.TryParse(Txt_Fecha_Fin.Text, out fechaFin))
+            {
+                MessageBox.Show(
+                    "La fecha fin es inválida.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (fechaFin < Dtp_Fecha_Inicio.Value)
+            {
+                MessageBox.Show(
+                    "La fecha fin no puede ser menor a la fecha inicio.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
+
+
+            iNoOrden++;
+
+
+            Cls_Sentencia_OrdenTemp orden = new Cls_Sentencia_OrdenTemp();
+
+            orden.NoOrden = iNoOrden;
+
+            orden.IdMaterial =
+                Convert.ToInt32(
+                    Cbo_Material.SelectedValue);
+
+            orden.Material =
+                Cbo_Material.Text;
+
+            orden.IdEstado =
+                Convert.ToInt32(
+                    Cbo_Estado_Orden.SelectedValue);
+
+            orden.Estado =
+                Cbo_Estado_Orden.Text;
+
+            orden.Cantidad =
+                cantidad;
+
+            orden.FechaInicio =
+                Dtp_Fecha_Inicio.Value;
+
+            orden.FechaFin = fechaFin;
+
+
+            listaOrdenes.Add(orden);
+
+
+            Dgv_Orden_Pro.Rows.Add(
+                orden.NoOrden,
+                orden.IdMaterial,
+                orden.IdEstado,
+                orden.Material,
+                orden.Estado,
+                orden.Cantidad,
+                orden.FechaInicio.ToShortDateString(),
+                orden.FechaFin.ToShortDateString()
+            );
+
+
+            limpiarCampos();
+        }
+
+        private void limpiarCampos()
+        {
+            Txt_Cantidad_Programada.Clear();
+
+            Cbo_Material.SelectedIndex = -1;
+
+            Cbo_Estado_Orden.SelectedIndex = -1;
+
+            Dtp_Fecha_Inicio.Value = DateTime.Now;
+
+            Txt_Fecha_Fin.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        private void cargarGrid()
+        {
+            Dgv_Orden_Pro.Rows.Clear();
+
+            foreach (var item in listaOrdenes)
+            {
+                Dgv_Orden_Pro.Rows.Add(
+                    item.NoOrden,
+                    item.IdMaterial,
+                    item.IdEstado,
+                    item.Material,
+                    item.Estado,
+                    item.Cantidad,
+                    item.FechaInicio.ToShortDateString(),
+                    item.FechaFin.ToShortDateString()
+                );
+            }
+        }
+
+        private void Cbo_OrdenRecibida_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (Cbo_OrdenRecibida.SelectedIndex == -1)
+                return;
+
+            if (Cbo_OrdenRecibida.SelectedValue == null)
+                return;
+
+            int idOrden;
+
+            if (int.TryParse(
+                Cbo_OrdenRecibida.SelectedValue.ToString(),
+                out idOrden))
+            {
+                Cbo_Material.DataSource =
+                    ordenes.filtrarMateriales(idOrden);
+
+                Cbo_Material.DisplayMember =
+                    "Nombre_Material";
+
+                Cbo_Material.ValueMember =
+                    "Pk_Id_Materiales";
+
+                Cbo_Material.SelectedIndex = -1;
+            }
+        }
     }
 
 }
