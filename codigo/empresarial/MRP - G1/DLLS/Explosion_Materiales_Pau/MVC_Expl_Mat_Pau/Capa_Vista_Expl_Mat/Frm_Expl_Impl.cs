@@ -34,7 +34,7 @@ namespace Capa_Vista_Expl_Mat
             dateTimePicker1.Checked = false;
             dateTimePicker2.Checked = false;
 
-            CargarOrdenesProduccion();
+            ObtenerOrdenesRecibidas();
             Btn_GenerarOrdenLogistica.Enabled = false;
             Cmb_OrdenProduccion.SelectedIndexChanged
                 += Cmb_OrdenProduccion_SelectedIndexChanged;
@@ -194,12 +194,12 @@ namespace Capa_Vista_Expl_Mat
 
         private DataTable _datosImplosion;
 
-        private void CargarOrdenesProduccion()
+        private void ObtenerOrdenesRecibidas()
         {
-            DataTable dt = controlador.ObtenerOrdenesProduccion();
+            DataTable dt = controlador.ObtenerOrdenesRecibidas();
             Cmb_OrdenProduccion.DataSource = dt;
             Cmb_OrdenProduccion.DisplayMember = "No_Orden";  
-            Cmb_OrdenProduccion.ValueMember = "Pk_Id_Orden_Produccion";
+            Cmb_OrdenProduccion.ValueMember = "Pk_Id_Orden_Recibida";
             Cmb_OrdenProduccion.SelectedIndex = -1;
         }
 
