@@ -32,11 +32,14 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Frm_Entrega_Venta_Load(object sender, EventArgs e)
         {
+            fun_EstadoInicial();
             pro_CargarDatos2();
 
             Dgv_Entrega_Venta.Columns.Clear();
             Dgv_Entrega_Venta.Columns.Add("identregaventa", "ID Entrega de Venta");
             Dgv_Entrega_Venta.Columns.Add("idventa", "ID de la Venta");
+            Dgv_Entrega_Venta.Columns.Add("nombre_prod", "Producto");
+            Dgv_Entrega_Venta.Columns.Add("Cmp_Cantidad_Producto", "Cantidad");
             Dgv_Entrega_Venta.Columns.Add("idtransporte", "ID del Transporte");
             Dgv_Entrega_Venta.Columns.Add("direccion", "Direccion");
             Dgv_Entrega_Venta.Columns.Add("fecha", "Fecha");
@@ -76,6 +79,8 @@ namespace Capa_Vista_Empresa_Transporte
 
                     Dgv_Entrega_Venta.Rows[iIndice].Cells["identregaventa"].Value = fila["codigo"];
                     Dgv_Entrega_Venta.Rows[iIndice].Cells["idventa"].Value = fila["venta"];
+                    Dgv_Entrega_Venta.Rows[iIndice].Cells["nombre_prod"].Value = fila["producto"];
+                    Dgv_Entrega_Venta.Rows[iIndice].Cells["Cmp_Cantidad_Producto"].Value = fila["cantidad"];
                     Dgv_Entrega_Venta.Rows[iIndice].Cells["idtransporte"].Value = fila["transporte"];
                     Dgv_Entrega_Venta.Rows[iIndice].Cells["direccion"].Value = fila["direccion"];
                     Dgv_Entrega_Venta.Rows[iIndice].Cells["fecha"].Value = fila["fecha"];
@@ -195,6 +200,20 @@ namespace Capa_Vista_Empresa_Transporte
 
                 // 5. GUARDAR EL ID DE LA ENTREGA (La llave primaria para el UPDATE/DELETE)
                 this.iCodigoEntrega = iCodigoEntrega;
+
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Venta.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = true;
+            Btn_Eliminar.Enabled = true;
 
         }
 
@@ -358,6 +377,49 @@ namespace Capa_Vista_Empresa_Transporte
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fun_EstadoInicial()
+        {
+            //Habilitados
+            Btn_Ingresar.Enabled = true;
+            Btn_Reporte.Enabled = true;
+            Btn_Ayuda.Enabled = true;
+            Btn_Salir.Enabled = true;
+
+            //Deshabilitados
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = false;
+
+            //ComboBox bloqueados
+            Txt_ID_Transporte.Enabled = false;
+            Txt_ID_Venta.Enabled = false;
+            Txt_Direccion.Enabled = false;
+            DTP_Fecha.Enabled = false;
+            Cbo_Estado_Entrega.Enabled = false;
+        }
+
+        private void Btn_Ingresar_Click(object sender, EventArgs e)
+        {
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Venta.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            //Limpiar selección
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
+            Btn_Guardar.Enabled = true;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
         }
     }
 }

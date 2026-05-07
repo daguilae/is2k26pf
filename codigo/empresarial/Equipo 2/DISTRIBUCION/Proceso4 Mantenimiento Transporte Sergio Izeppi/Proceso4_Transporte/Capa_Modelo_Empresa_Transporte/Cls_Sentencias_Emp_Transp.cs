@@ -156,14 +156,17 @@ namespace Capa_Modelo_Empresa_Transporte
                 using (OdbcConnection con = conexion.conexion())
                 {
                     string sConsultaTransporte = @"SELECT 
-                                                    c.Pk_Id_Entrega_Compra AS codigo, 
-                                                    c.Fk_Id_OrdenCompra AS compra, 
-                                                    c.Fk_Id_Transporte AS transporte, 
-                                                    c.Cmp_Direccion AS direccion, 
-                                                    c.Cmp_Fecha AS fecha, 
-                                                    c.Cmp_Estado_Entrega AS estado
-                                                FROM 
-                                                    tbl_entrega_compra c";
+                                                e.Pk_Id_Entrega_Compra AS codigo, 
+                                                e.Fk_Id_Compra AS compra, 
+                                                i.nombre_prod AS producto,
+                                                dc.cmp_cantidad AS cantidad,
+                                                e.Fk_Id_Transporte AS transporte, 
+                                                e.Cmp_Direccion AS direccion, 
+                                                e.Cmp_Fecha AS fecha, 
+                                                e.Cmp_Estado_Entrega AS estado
+                                            FROM tbl_entrega_compra e
+                                            INNER JOIN tbl_detalle_compra dc ON e.Fk_Id_Compra = dc.fk_id_compra
+                                            INNER JOIN tbl_inventario i ON dc.fk_inventario_id = i.pk_inventario_id;";
                     OdbcCommand cmd = new OdbcCommand(sConsultaTransporte, con);
 
                     OdbcDataAdapter da = new OdbcDataAdapter(cmd);
@@ -183,7 +186,7 @@ namespace Capa_Modelo_Empresa_Transporte
             {
                 using (OdbcConnection con = new Cls_Conexion_Emp_Transp().conexion())
                 {
-                    string sql = "INSERT INTO tbl_entrega_compra (Fk_Id_OrdenCompra, Fk_Id_Transporte, Cmp_Direccion, Cmp_Fecha, Cmp_Estado_Entrega) "
+                    string sql = "INSERT INTO tbl_entrega_compra (Fk_Id_Compra, Fk_Id_Transporte, Cmp_Direccion, Cmp_Fecha, Cmp_Estado_Entrega) "
                         + "VALUES ( ?, ?, ?, ?, ?)";
 
                     OdbcCommand cmd = new OdbcCommand(sql, con);
@@ -203,7 +206,6 @@ namespace Capa_Modelo_Empresa_Transporte
             }
         }
 
-        // 1. Agregamos iCodigoEntrega a los parámetros (ahora son 6)
         public void pro_ModificarCompra(int iCodigoEntrega, int iCodigoCompra, int iCodigoTransporte, string sDireccion, string sFecha, string sEstado)
         {
             try
@@ -211,7 +213,7 @@ namespace Capa_Modelo_Empresa_Transporte
                 using (OdbcConnection con = new Cls_Conexion_Emp_Transp().conexion())
                 {
                     string sql = @"UPDATE tbl_entrega_compra
-                           SET Fk_Id_OrdenCompra = ?,
+                           SET Fk_Id_Compra = ?,
                                Fk_Id_Transporte = ?,
                                Cmp_Direccion = ?,
                                Cmp_Fecha = ?,
@@ -248,7 +250,7 @@ namespace Capa_Modelo_Empresa_Transporte
                     {
                         string sql = @"SELECT COUNT(*) 
                            FROM tbl_entrega_compra
-                           WHERE Fk_Id_OrdenCompra = ?";
+                           WHERE Fk_Id_Compra = ?";
 
                         OdbcCommand cmd = new OdbcCommand(sql, con);
                         cmd.Parameters.AddWithValue("", iCodigoCompra);
@@ -291,16 +293,18 @@ namespace Capa_Modelo_Empresa_Transporte
             {
                 using (OdbcConnection con = conexion.conexion())
                 {
-                    // Consulta adaptada a tbl_entrega_venta
                     string sConsultaVenta = @"SELECT 
                                         v.Pk_Id_Entrega_Venta AS codigo, 
                                         v.Fk_Id_Venta AS venta, 
+										i.nombre_prod AS Producto, 
+										dv.Cmp_Cantidad_Producto AS Cantidad,
                                         v.Fk_Id_Transporte AS transporte, 
                                         v.Cmp_Direccion AS direccion, 
-                                        v.Cmp_Fecha AS fecha, 
+                                        DATE_FORMAT(v.Cmp_Fecha, '%d/%m/%Y') AS fecha, 
                                         v.Cmp_Estado_Entrega AS estado
-                                    FROM 
-                                        tbl_entrega_venta v";
+                                    FROM tbl_entrega_venta v  
+                                    INNER JOIN tbl_detalle_ventas dv ON v.Fk_Id_Venta = dv.Fk_Id_Ventas
+									INNER JOIN tbl_inventario i ON dv.Fk_Id_Inventario = i.pk_inventario_id";
 
                     OdbcCommand cmd = new OdbcCommand(sConsultaVenta, con);
                     OdbcDataAdapter da = new OdbcDataAdapter(cmd);
@@ -429,14 +433,17 @@ namespace Capa_Modelo_Empresa_Transporte
                 using (OdbcConnection con = conexion.conexion())
                 {
                     string sConsultaProduccion = @"SELECT 
-                                            p.Pk_Id_Entrega_Produccion AS codigo, 
-                                            p.Fk_Id_OrdenP AS orden_produccion, 
-                                            p.Fk_Id_Transporte AS transporte, 
-                                            p.Cmp_Direccion AS direccion, 
-                                            p.Cmp_Fecha AS fecha, 
-                                            p.Cmp_Estado_Entrega AS estado
-                                        FROM 
-                                            tbl_entrega_produccion p";
+                                                p.Pk_Id_Entrega_Produccion AS codigo, 
+                                                p.Fk_Id_OrdenP AS produccion, 
+                                                i.nombre_prod AS Producto,
+                                                dp.Cmp_Cantidad_Solicitada AS Cantidad,
+                                                p.Fk_Id_Transporte AS transporte, 
+                                                p.Cmp_Direccion AS direccion, 
+                                                p.Cmp_Fecha AS fecha, 
+                                                p.Cmp_Estado_Entrega AS estado
+                                            FROM tbl_entrega_produccion p
+                                            INNER JOIN tbl_orden_produccion_detalle dp ON p.Fk_Id_OrdenP = dp.Fk_ID_OrdenProduccion
+                                            INNER JOIN tbl_inventario i ON dp.Fk_ID_Producto = i.pk_inventario_id";
 
                     OdbcCommand cmd = new OdbcCommand(sConsultaProduccion, con);
                     OdbcDataAdapter da = new OdbcDataAdapter(cmd);
@@ -487,8 +494,8 @@ namespace Capa_Modelo_Empresa_Transporte
                 using (OdbcConnection con = new Cls_Conexion_Emp_Transp().conexion())
                 {
                     string sql = @"SELECT COUNT(*) 
-                           FROM tbl_entrega_venta
-                           WHERE Fk_Id_Venta = ?";
+                           FROM tbl_entrega_produccion
+                           WHERE Fk_Id_OrdenP = ?";
 
                     OdbcCommand cmd = new OdbcCommand(sql, con);
                     cmd.Parameters.AddWithValue("", iCodigoOrdenP);
