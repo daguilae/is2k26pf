@@ -60,6 +60,50 @@ namespace Capa_Vista_Ventas
         {
             this.Close();
         }
+
+        private void Dgv_Ventas_Generales_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            try
+            {
+                if (Dgv_Ventas_Generales.Rows[e.RowIndex].Cells["TipoOperacion"].Value != null)
+                {
+                    string tipo = Dgv_Ventas_Generales.Rows[e.RowIndex]
+                        .Cells["TipoOperacion"]
+                        .Value.ToString();
+
+                    // VENTA
+                    if (tipo == "Venta")
+                    {
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+
+                    // COTIZACION
+                    else if (tipo == "Cotizacion")
+                    {
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Khaki;
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+
+                    // PEDIDO
+                    else if (tipo == "Pedido")
+                    {
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                        Dgv_Ventas_Generales.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Btn_Reporte_Ventas_Click(object sender, EventArgs e)
+        {
+            Rpt_Ventas_Generales rpt = new Rpt_Ventas_Generales();
+            rpt.Show();
+        }
     }
 }
 
