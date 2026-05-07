@@ -29,9 +29,6 @@ namespace Capa_Controlador_Expl_Mat
             return sentencias.FiltrarPorFechas(fechaInicio, fechaFin);
         }
 
-        // Agrega esto dentro de la clase Cls_Controlador_Expl
-        // (después de los métodos del encabezado)
-
         private readonly Cls_Sentencias_Expl sentenciasDetalle
                        = new Cls_Sentencias_Expl();
 
