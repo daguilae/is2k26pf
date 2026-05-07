@@ -35,19 +35,19 @@ namespace Capa_Controlador_Expl_Mat
         private readonly Cls_Sentencias_Expl sentenciasDetalle
                        = new Cls_Sentencias_Expl();
 
-        public DataTable ObtenerOrdenesProduccion()
+        public DataTable ObtenerOrdenesRecibidas()
         {
-            return sentenciasDetalle.ObtenerOrdenesProduccion();
+            return sentenciasDetalle.ObtenerOrdenesRecibidas();
         }
 
-        public DataTable ObtenerInfoOrden(int idOrden)
+        public DataTable ObtenerInfoOrdenRecibida(int idOrden)
         {
-            return sentenciasDetalle.ObtenerInfoOrden(idOrden);
+            return sentenciasDetalle.ObtenerInfoOrdenRecibida(idOrden);
         }
 
-        public DataTable ObtenerProductosOrden(int idOrden)
+        public DataTable ObtenerProductosOrdenRecibida(int idOrden)
         {
-            return sentenciasDetalle.ObtenerProductosOrden(idOrden);
+            return sentenciasDetalle.ObtenerProductosOrdenRecibida(idOrden);
         }
 
         public DataTable ObtenerBOMParaExplosion(int idOrden)
