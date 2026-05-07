@@ -20,7 +20,7 @@ namespace Capa_Modelo_Expl_Mat
                 string query = @"
             SELECT 
                 e.Pk_Id_Explosion                                AS No_Explosion,
-                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                e.Fk_Id_Orden_Recibida                         AS No_Orden,
                 DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
                 FROM Tbl_Explosion_Materiales e
                 ORDER BY e.Fecha_Explosion DESC";
@@ -40,7 +40,7 @@ namespace Capa_Modelo_Expl_Mat
                 string query = @"
             SELECT 
                 e.Pk_Id_Explosion                                AS No_Explosion,
-                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                e.Fk_Id_Orden_Recibida                         AS No_Orden,
                 DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
             FROM Tbl_Explosion_Materiales e
             WHERE CAST(e.Pk_Id_Explosion AS CHAR) LIKE ?
@@ -61,7 +61,7 @@ namespace Capa_Modelo_Expl_Mat
                 string query = @"
             SELECT 
                 e.Pk_Id_Explosion                                AS No_Explosion,
-                e.Fk_Id_Orden_Produccion                         AS No_Orden,
+                e.Fk_Id_Orden_Recibida                         AS No_Orden,
                 DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
             FROM Tbl_Explosion_Materiales e
             WHERE DATE(e.Fecha_Explosion) BETWEEN ? AND ?
@@ -99,7 +99,7 @@ namespace Capa_Modelo_Expl_Mat
                     ON emd.Fk_Id_Material = m.Pk_Id_Materiales
             LEFT JOIN Tbl_Inventario inv 
                     ON emd.Fk_Id_Material = inv.Fk_Id_Material
-            WHERE em.Fk_Id_Orden_Produccion = ?
+            WHERE em.Fk_Id_Orden_Recibida = ?
             GROUP BY emd.Fk_Id_Material, m.Nombre_Material, emd.Cantidad_Real_Con_Merma
             ORDER BY m.Nombre_Material";
 
@@ -120,7 +120,7 @@ namespace Capa_Modelo_Expl_Mat
                 {
                     string qEncabezado = @"
                 INSERT INTO Encabezado_Orden_Material 
-                    (Fk_Id_Orden_Produccion, Fk_Id_Estado_Orden_Material, Fecha_Solicitud)
+                    (Fk_Id_Orden_Recibida, Fk_Id_Estado_Orden_Material, Fecha_Solicitud)
                 VALUES (?, 2, NOW())";
 
                     OdbcCommand cmdEnc = new OdbcCommand(qEncabezado, conn, tx);
@@ -166,7 +166,7 @@ namespace Capa_Modelo_Expl_Mat
                 string query = @"
             SELECT COUNT(*) 
             FROM Encabezado_Orden_Material 
-            WHERE Fk_Id_Orden_Produccion = ?";
+            WHERE Fk_Id_Orden_Recibida = ?";
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
                 cmd.Parameters.AddWithValue("?", idOrden);
