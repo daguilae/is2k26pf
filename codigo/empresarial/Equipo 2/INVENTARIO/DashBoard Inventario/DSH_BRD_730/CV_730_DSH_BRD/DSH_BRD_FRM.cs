@@ -120,7 +120,7 @@ namespace CV_730_DSH_BRD
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         
