@@ -33,12 +33,12 @@ namespace Capa_Vista_Prod
             this.Lbl_Costos = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Tbc_Produccion = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tab_Produccion = new System.Windows.Forms.TabPage();
+            this.tabCostos = new System.Windows.Forms.TabPage();
+            this.tabMerma = new System.Windows.Forms.TabPage();
             this.Lbl_Orden = new System.Windows.Forms.Label();
             this.Cbo_Orden = new System.Windows.Forms.ComboBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabMaterial = new System.Windows.Forms.TabPage();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -79,45 +79,45 @@ namespace Capa_Vista_Prod
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.Tbc_Produccion);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabMaterial);
+            this.tabControl1.Controls.Add(this.tabMerma);
+            this.tabControl1.Controls.Add(this.tab_Produccion);
+            this.tabControl1.Controls.Add(this.tabCostos);
             this.tabControl1.Location = new System.Drawing.Point(28, 143);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1169, 457);
             this.tabControl1.TabIndex = 8;
             // 
-            // Tbc_Produccion
+            // tab_Produccion
             // 
-            this.Tbc_Produccion.Location = new System.Drawing.Point(4, 25);
-            this.Tbc_Produccion.Name = "Tbc_Produccion";
-            this.Tbc_Produccion.Padding = new System.Windows.Forms.Padding(3);
-            this.Tbc_Produccion.Size = new System.Drawing.Size(1005, 423);
-            this.Tbc_Produccion.TabIndex = 0;
-            this.Tbc_Produccion.Text = "Mano de Obra";
-            this.Tbc_Produccion.UseVisualStyleBackColor = true;
+            this.tab_Produccion.Location = new System.Drawing.Point(4, 25);
+            this.tab_Produccion.Name = "tab_Produccion";
+            this.tab_Produccion.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Produccion.Size = new System.Drawing.Size(1161, 428);
+            this.tab_Produccion.TabIndex = 0;
+            this.tab_Produccion.Text = "Mano de Obra";
+            this.tab_Produccion.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabCostos
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1005, 423);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Costos Indirectos";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabCostos.Location = new System.Drawing.Point(4, 25);
+            this.tabCostos.Name = "tabCostos";
+            this.tabCostos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCostos.Size = new System.Drawing.Size(1161, 428);
+            this.tabCostos.TabIndex = 1;
+            this.tabCostos.Text = "Costos Indirectos";
+            this.tabCostos.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tabMerma
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1005, 423);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Mermas";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabMerma.Location = new System.Drawing.Point(4, 25);
+            this.tabMerma.Name = "tabMerma";
+            this.tabMerma.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMerma.Size = new System.Drawing.Size(1161, 428);
+            this.tabMerma.TabIndex = 2;
+            this.tabMerma.Text = "Mermas";
+            this.tabMerma.UseVisualStyleBackColor = true;
             // 
             // Lbl_Orden
             // 
@@ -138,14 +138,14 @@ namespace Capa_Vista_Prod
             this.Cbo_Orden.Size = new System.Drawing.Size(132, 24);
             this.Cbo_Orden.TabIndex = 19;
             // 
-            // tabPage1
+            // tabMaterial
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1161, 428);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Consumo de Materiales";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabMaterial.Location = new System.Drawing.Point(4, 25);
+            this.tabMaterial.Name = "tabMaterial";
+            this.tabMaterial.Size = new System.Drawing.Size(1161, 428);
+            this.tabMaterial.TabIndex = 3;
+            this.tabMaterial.Text = "Consumo de Materiales";
+            this.tabMaterial.UseVisualStyleBackColor = true;
             // 
             // Frm_Produccion
             // 
@@ -168,11 +168,11 @@ namespace Capa_Vista_Prod
         private System.Windows.Forms.Label Lbl_Costos;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage Tbc_Produccion;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tab_Produccion;
+        private System.Windows.Forms.TabPage tabCostos;
+        private System.Windows.Forms.TabPage tabMerma;
         private System.Windows.Forms.Label Lbl_Orden;
         private System.Windows.Forms.ComboBox Cbo_Orden;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabMaterial;
     }
 }
