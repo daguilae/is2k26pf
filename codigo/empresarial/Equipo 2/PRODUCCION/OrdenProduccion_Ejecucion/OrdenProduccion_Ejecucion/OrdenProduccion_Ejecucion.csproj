@@ -36,7 +36,8 @@
     <StartupObject>OrdenProduccion_Ejecucion.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Vista_OrdenProduccion">
+    <Reference Include="Capa_Vista_OrdenProduccion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Orden_Produccion\Capa_Vista_OrdenProduccion\bin\Debug\Capa_Vista_OrdenProduccion.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -52,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>

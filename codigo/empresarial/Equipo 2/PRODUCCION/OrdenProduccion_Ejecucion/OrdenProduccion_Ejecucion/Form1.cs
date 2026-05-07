@@ -16,9 +16,8 @@ namespace OrdenProduccion_Ejecucion
         public Form1()
         {
             InitializeComponent();
-            Frm_OrdenProduccion_Encabezado vista = new Frm_OrdenProduccion_Encabezado();
-            vista.Show();
-            
+            Frm_OrdenProduccion_Encabezado vistaNueva = new Frm_OrdenProduccion_Encabezado();
+            vistaNueva.Show();
         }
     }
 }
