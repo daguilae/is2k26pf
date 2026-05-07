@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador_RO;
 using System.IO;
+using Capa_Vista_Reporteador;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_RO
 {
@@ -16,7 +18,13 @@ namespace Capa_Vista_RO
         private bool _cargandoMat = false;
         // Arón Ricardo Esquit - 0901-22-13036 - 30/04/26
         private bool editandoDetalle = false;
-        
+
+        // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+        // Permisos
+        private (bool ingresar, bool consultar, bool modificar, bool eliminar, bool imprimir)? permisos;
+        private int idAplicacion = 731;
+        private int idModulo = 5;
+
 
         // Constructor sin parámetros llama al principal
         public Frm_Detalle_Orden() : this(0) { }
@@ -29,24 +37,48 @@ namespace Capa_Vista_RO
             EstadoControles(false);
         }
 
+        private void CargarPermisos()
+        {
+            permisos = _controlador.ObtenerPermisosOrden(idAplicacion, idModulo);
+
+            Btn_ingresar.Enabled = true;
+
+            Btn_guardar.Enabled = false;
+            Btn_modificar.Enabled = false;
+            Btn_eliminar.Enabled = false;
+            Btn_imprimir.Enabled = false;
+        }
+
         // ------ DANI - 0901-22-9136, 29/04/2026 --------
         private void EstadoControles(bool habilitar)
         {
             panel2.Enabled = habilitar;
             panel3.Enabled = habilitar;
 
-            Btn_modificar.Enabled = habilitar;
-            Btn_eliminar.Enabled = habilitar;
-            Btn_consultar.Enabled = habilitar;
+
+            // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+            Btn_modificar.Enabled = habilitar && permisos?.modificar == true;
+            Btn_eliminar.Enabled = habilitar && permisos?.eliminar == true;
+            Btn_consultar.Enabled = habilitar && permisos?.consultar == true;
             Btn_refrescar.Enabled = habilitar;
-            Btn_imprimir.Enabled = habilitar;
+            Btn_imprimir.Enabled = habilitar && permisos?.imprimir == true;
             Btn_inicio.Enabled = habilitar;
             Btn_anterior.Enabled = habilitar;
             Btn_sig.Enabled = habilitar;
             Btn_fin.Enabled = habilitar;
             Btn_ayuda.Enabled = habilitar;
 
-            Btn_guardar.Enabled = habilitar;
+            // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+            if (_modoCreacion)
+            {
+                Btn_guardar.Enabled = habilitar && permisos?.ingresar == true;
+            }
+            else
+            {
+                Btn_guardar.Enabled = habilitar && permisos?.modificar == true;
+            }
+
+
             Btn_cancelar.Enabled = habilitar;
 
             Btn_ingresar.Enabled = !habilitar;
@@ -73,6 +105,10 @@ namespace Capa_Vista_RO
 
             if (_idOrden > 0)
                 Cmb_ID.SelectedValue = _idOrden;
+
+            // Arón Ricardo Esquit - 0901-22-13036 - 04/05/26
+            CargarPermisos();
+
         }
 
         // ------ DANI - 0901-22-9136, 29/04/2026 --------
@@ -361,7 +397,7 @@ namespace Capa_Vista_RO
                 editandoDetalle = false;
                 Cmb_ID.Enabled = true;
 
-                Btn_guardar.Enabled = true; 
+                Btn_guardar.Enabled = false;
             }
         }
 
@@ -624,6 +660,19 @@ namespace Capa_Vista_RO
             {
                 MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Btn_imprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Reporte_Ordenes_RecibidasV1 rpt = new Reporte_Ordenes_RecibidasV1();
+                rpt.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Ha ocurrido un error conectando a reporteadors");
             }
         }
     }
