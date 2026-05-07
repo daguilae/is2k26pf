@@ -173,6 +173,7 @@ namespace Capa_Vista_Mov_Inv
             this.Dgv_Encabezado_Movimiento_Inventarios.RowTemplate.Height = 24;
             this.Dgv_Encabezado_Movimiento_Inventarios.Size = new System.Drawing.Size(993, 420);
             this.Dgv_Encabezado_Movimiento_Inventarios.TabIndex = 32;
+            this.Dgv_Encabezado_Movimiento_Inventarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEncabezados_CellDoubleClick);
             // 
             // Btn_fin
             // 

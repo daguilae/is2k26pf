@@ -58,36 +58,34 @@ namespace Capa_Vista_Mov_Inv
             }
         }
 
-        private void Dgv_Encabezado_Movimiento_Inventarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        // Evento de doble clic en el DataGridView
+        private void dgvEncabezados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Evitar clic en encabezado
-            if (e.RowIndex < 0) return;
-
-            try
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow fila = Dgv_Encabezado_Movimiento_Inventarios.Rows[e.RowIndex];
 
-                // Guardar datos en la clase
-                Cls_Constructor_Encabezado Encab = new Cls_Constructor_Encabezado()
-                {
-                    ID = Convert.ToInt32(fila.Cells["ID"].Value),
-                    IdTipoMovimiento = Convert.ToInt32(fila.Cells["ID_Tipo"].Value),
-                    TipoMovimiento = fila.Cells["Tipo_Movimiento"].Value.ToString(),
-                    Fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value),
-                    Descripcion = fila.Cells["Descripcion"].Value.ToString()
-                };
+                // Extraer datos usando las columnas exactas del DGV
+                int idMovimiento = Convert.ToInt32(fila.Cells["ID"].Value);
+                int idTipo = Convert.ToInt32(fila.Cells["ID_Tipo"].Value);
+                string tipoMovimiento = fila.Cells["Tipo_Movimiento"].Value?.ToString() ?? string.Empty;
+                DateTime fecha = Convert.ToDateTime(fila.Cells["Fecha"].Value);
+                string descripcion = fila.Cells["Descripcion"].Value?.ToString() ?? string.Empty;
 
-                // Abrir formulario y enviar datos
-                Frm_Encabezado_Transaccion frmEncabezado = new Frm_Encabezado_Transaccion(Encab);
-                frmEncabezado.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar datos: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Frm_Encabezado_Transaccion frmDetalles = new Frm_Encabezado_Transaccion(
+                    idMovimiento,
+                    idTipo,
+                    tipoMovimiento,
+                    fecha,
+                    descripcion
+                );
+
+                frmDetalles.ShowDialog();
+
+                // Refrescar el DGV al cerrar
+                fun_CargarDGV();
             }
         }
-
         private void Btn_Refrescar_Click(object sender, EventArgs e)
         {
             fun_CargarDGV();

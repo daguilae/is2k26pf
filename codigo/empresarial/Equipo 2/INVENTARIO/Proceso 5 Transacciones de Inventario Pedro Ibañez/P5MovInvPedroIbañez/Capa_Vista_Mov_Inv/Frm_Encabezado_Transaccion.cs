@@ -25,15 +25,56 @@ namespace Capa_Vista_Mov_Inv
         Cls_Mov_Inv_Controlador ctrl = new Cls_Mov_Inv_Controlador();
 
         private Cls_Constructor_Encabezado _encabezado;
-
-        // Constructor que recibe los datos
-        public Frm_Encabezado_Transaccion(Cls_Constructor_Encabezado Encab)
+        public Frm_Encabezado_Transaccion(int idMovimiento, int idTipo, string tipoMovimiento, DateTime fecha, string descripcion)
         {
             InitializeComponent();
-            _encabezado = Encab;
+
+
+
             fun_cargar_combos();
             EstadoInicialControles();
             EstadoInicialBotones();
+            // Mapeo exacto con los controles del formulario
+            Cbo_Id_Movimiento.SelectedValue = idMovimiento;       // ID Movimiento -> 1, 2, 3...
+            CBO_ID_Tipo_Movimiento.SelectedValue = idTipo;        // ID Tipo -> 1, 2...
+            DTP_FECHA_Movimiento.Value = fecha;                   // Fecha -> 1/10/2025 8:00 AM
+            txt_descripcion.Text = descripcion;                   // Descripción -> "Compra inicial..."
+
+            CargarDetallesEnGrid(idMovimiento);
+        }
+
+
+
+        private void CargarDetallesEnGrid(int idMovimiento)
+        {
+            try
+            {
+                DataTable dtDetalles = ctrl.fun_ObtenerDetallesPorMovimiento(idMovimiento);
+
+                DGV_DETALLE_MOVIMIENTO.Rows.Clear();
+
+                foreach (DataRow row in dtDetalles.Rows)
+                {
+                    int index = DGV_DETALLE_MOVIMIENTO.Rows.Add();
+                    DataGridViewRow fila = DGV_DETALLE_MOVIMIENTO.Rows[index];
+
+                    fila.Cells["Clm_ID_Producto"].Value = row["fk_inventario_id"];
+                    fila.Cells["Clm_Producto"].Value = row["nombre_prod"];
+                    fila.Cells["ID_unidad"].Value = row["fk_id_unidad_medida"];
+                    fila.Cells["UnidadMedida"].Value = row["Nombre_Unidad"];
+                    fila.Cells["ID_Bodega"].Value = row["fk_bodega_id"];
+                    fila.Cells["Bodega"].Value = row["Cmp_Nombre_Bodega"];
+                    fila.Cells["Clm_Cantidad"].Value = row["cantidad_transaccionada"];
+                }
+
+                DGV_DETALLE_MOVIMIENTO.AllowUserToAddRows = false;
+                DGV_DETALLE_MOVIMIENTO.ReadOnly = true;
+                DGV_DETALLE_MOVIMIENTO.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Frm_Encabezado_Transaccion_Load(object sender, EventArgs e)

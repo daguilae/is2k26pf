@@ -94,6 +94,50 @@ namespace Capa_Modelo_Mov_Inv
             return sResultado;
         }
         //================================================
+        // Obtener Detalle por movimiento
+        public DataTable fun_ObtenerDetallesPorMovimiento(int idMovimiento)
+        {
+            DataTable dtDetalles = new DataTable();
+            try
+            {
+                string sQuery = @"SELECT 
+                            d.fk_movimiento_id,
+                            d.fk_inventario_id,
+                            i.nombre_prod,
+                            e.fk_bodega_id,
+                            b.Cmp_Nombre_Bodega,
+                            e.fk_id_unidad_medida,
+                            u.Nombre_Unidad,
+                            d.cantidad_transaccionada
+                          FROM tbl_movimiento_inventario_detalle d
+                          INNER JOIN tbl_inventario i 
+                                ON d.fk_inventario_id = i.pk_inventario_id
+                          INNER JOIN tbl_existencias e 
+                                ON d.fk_inventario_id = e.fk_inventario_id
+                          INNER JOIN tbl_bodega b 
+                                ON e.fk_bodega_id = b.Pk_Id_Bodega
+                          INNER JOIN tbl_unidad_de_medida u 
+                                ON e.fk_id_unidad_medida = u.ID_Unidad
+                          WHERE d.fk_movimiento_id = ?";
+
+                using (OdbcConnection oConn = conexion.oConexion())
+                {
+                    oConn.Open();
+                    using (OdbcCommand oCmd = new OdbcCommand(sQuery, oConn))
+                    {
+                        oCmd.Parameters.AddWithValue("?", idMovimiento);
+                        OdbcDataAdapter oDA = new OdbcDataAdapter(oCmd);
+                        oDA.Fill(dtDetalles);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener detalles: " + ex.Message);
+            }
+            return dtDetalles;
+        }
+        //================================================
         // Obtener Stock
         public float fun_ObtenerStockActual(int idInventario, int idBodega)
         {

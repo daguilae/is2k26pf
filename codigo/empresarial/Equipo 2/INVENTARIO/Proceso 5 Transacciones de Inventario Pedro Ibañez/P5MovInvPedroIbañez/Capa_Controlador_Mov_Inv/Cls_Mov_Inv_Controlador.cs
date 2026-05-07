@@ -42,6 +42,19 @@ namespace Capa_Controlador_Mov_Inv
             return dtIdbod;
         }
 
+        public DataTable fun_ObtenerDetallesPorMovimiento(int idMovimiento)
+        {
+            try
+            {
+
+                return Dao.fun_ObtenerDetallesPorMovimiento(idMovimiento);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en controlador al obtener detalles: " + ex.Message);
+            }
+        }
+
         private bool fun_Verificar_TipoMov(int idTipoMov)
         {
             //ENTRADA = TRUE
