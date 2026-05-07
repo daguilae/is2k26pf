@@ -1,4 +1,5 @@
 ﻿
+
 namespace Capa_Vista_Expl_Mat
 {
     partial class Frm_Expl_Mat
