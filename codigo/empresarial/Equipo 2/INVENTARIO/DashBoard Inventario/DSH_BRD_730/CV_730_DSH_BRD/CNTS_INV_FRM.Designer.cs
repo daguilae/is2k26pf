@@ -29,6 +29,7 @@ namespace CV_730_DSH_BRD
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CNTS_INV_FRM));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbProducto = new System.Windows.Forms.ComboBox();
             this.cmbBodega = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,6 @@ namespace CV_730_DSH_BRD
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -187,43 +187,39 @@ namespace CV_730_DSH_BRD
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(959, 91);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(60, 125);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "BUSCAR";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // btnImprimir
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(1025, 91);
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(959, 91);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(60, 125);
+            this.btnImprimir.Size = new System.Drawing.Size(84, 125);
             this.btnImprimir.TabIndex = 3;
             this.btnImprimir.Text = "IMPRIMIR";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.UseVisualStyleBackColor = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Location = new System.Drawing.Point(1091, 91);
+            this.btnAyuda.Image = ((System.Drawing.Image)(resources.GetObject("btnAyuda.Image")));
+            this.btnAyuda.Location = new System.Drawing.Point(1049, 91);
             this.btnAyuda.Name = "btnAyuda";
-            this.btnAyuda.Size = new System.Drawing.Size(60, 125);
+            this.btnAyuda.Size = new System.Drawing.Size(84, 125);
             this.btnAyuda.TabIndex = 4;
             this.btnAyuda.Text = "AYUDA";
+            this.btnAyuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAyuda.UseVisualStyleBackColor = true;
             this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1157, 91);
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Location = new System.Drawing.Point(1139, 91);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 125);
+            this.btnSalir.Size = new System.Drawing.Size(84, 125);
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "SALIR";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -264,7 +260,6 @@ namespace CV_730_DSH_BRD
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -294,7 +289,6 @@ namespace CV_730_DSH_BRD
         private System.Windows.Forms.RadioButton rbDescendente;
         private System.Windows.Forms.RadioButton rbAscendente;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnAyuda;
         private System.Windows.Forms.Button btnSalir;
