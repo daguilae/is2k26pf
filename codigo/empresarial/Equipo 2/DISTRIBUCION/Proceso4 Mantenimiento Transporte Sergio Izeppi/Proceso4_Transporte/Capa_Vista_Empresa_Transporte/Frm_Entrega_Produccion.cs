@@ -16,10 +16,9 @@ namespace Capa_Vista_Empresa_Transporte
     {
         Cls_Emp_Transp_Controlador controlador = new Cls_Emp_Transp_Controlador();
 
-        // Variables para el control de cambios y edición en Producción
         int iCodigoEntrega = -1;
 
-        int iCodigoProduccionOriginal = 0; // Cambiado de Venta a Producción
+        int iCodigoProduccionOriginal = 0; 
         int iCodigoTransporteOriginal = 0;
 
         string sDireccionOriginal = "";
@@ -33,11 +32,14 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Frm_Entrega_Produccion_Load(object sender, EventArgs e)
         {
+            fun_EstadoInicial();
             pro_CargarDatos2();
 
             Dgv_Entrega_Produccion.Columns.Clear();
             Dgv_Entrega_Produccion.Columns.Add("identregaproduccion", "ID Entrega Produccion");
             Dgv_Entrega_Produccion.Columns.Add("idordenp", "ID Orden de Produccion");
+            Dgv_Entrega_Produccion.Columns.Add("nombre_prod", "Producto");
+            Dgv_Entrega_Produccion.Columns.Add("Cmp_Cantidad_Solicitada", "Cantidad");
             Dgv_Entrega_Produccion.Columns.Add("idtransporte", "ID del Transporte");
             Dgv_Entrega_Produccion.Columns.Add("direccion", "Direccion");
             Dgv_Entrega_Produccion.Columns.Add("fecha", "Fecha");
@@ -45,6 +47,8 @@ namespace Capa_Vista_Empresa_Transporte
 
             Dgv_Entrega_Produccion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Dgv_Entrega_Produccion.AllowUserToAddRows = false;
+
+            pro_DatosProduccion();
         }
 
         private void pro_CargarDatos2()
@@ -66,7 +70,6 @@ namespace Capa_Vista_Empresa_Transporte
             try
             {
                 DataTable tabla = controlador.fun_DatosProduccion();
-
                 Dgv_Entrega_Produccion.Rows.Clear();
 
                 foreach (DataRow fila in tabla.Rows)
@@ -75,6 +78,8 @@ namespace Capa_Vista_Empresa_Transporte
 
                     Dgv_Entrega_Produccion.Rows[iIndice].Cells["identregaproduccion"].Value = fila["codigo"];
                     Dgv_Entrega_Produccion.Rows[iIndice].Cells["idordenp"].Value = fila["produccion"];
+                    Dgv_Entrega_Produccion.Rows[iIndice].Cells["nombre_prod"].Value = fila["producto"];
+                    Dgv_Entrega_Produccion.Rows[iIndice].Cells["Cmp_Cantidad_Solicitada"].Value = fila["cantidad"];
                     Dgv_Entrega_Produccion.Rows[iIndice].Cells["idtransporte"].Value = fila["transporte"];
                     Dgv_Entrega_Produccion.Rows[iIndice].Cells["direccion"].Value = fila["direccion"];
                     Dgv_Entrega_Produccion.Rows[iIndice].Cells["fecha"].Value = fila["fecha"];
@@ -89,7 +94,6 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            // Variables adaptadas a Producción
             int iCodigoOrdenP;
             int iCodigoTransporte;
             string sDireccion;
@@ -185,7 +189,7 @@ namespace Capa_Vista_Empresa_Transporte
             int iCodigoTransporte = Convert.ToInt32(fila.Cells["idtransporte"].Value);
             string sDireccion = fila.Cells["direccion"].Value?.ToString() ?? "";
             string sFecha = fila.Cells["fecha"].Value?.ToString() ?? "";
-            string sEstado = fila.Cells["estado"].Value?.ToString() ?? "";
+            string sEstado = fila.Cells["estadoentrega"].Value?.ToString() ?? "";
 
             // 3. PASAR LOS DATOS A LOS CONTROLES (Usando Txt_ID_Produccion)
             Txt_ID_Produccion.Text = iCodigoProduccion.ToString();
@@ -204,6 +208,20 @@ namespace Capa_Vista_Empresa_Transporte
 
             // 5. GUARDAR EL ID DE LA ENTREGA (Llave primaria para UPDATE)
             this.iCodigoEntrega = iCodigoEntrega;
+
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Produccion.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = true;
+            Btn_Eliminar.Enabled = true;
         }
 
         private void pro_Actualizar(int iCodigoOrdenP, int iCodigoTransporte, string sDireccion, string sFecha, string sEstado)
@@ -375,6 +393,49 @@ namespace Capa_Vista_Empresa_Transporte
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fun_EstadoInicial()
+        {
+            //Habilitados
+            Btn_Ingresar.Enabled = true;
+            Btn_Reporte.Enabled = true;
+            Btn_Ayuda.Enabled = true;
+            Btn_Salir.Enabled = true;
+
+            //Deshabilitados
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = false;
+
+            //ComboBox bloqueados
+            Txt_ID_Transporte.Enabled = false;
+            Txt_ID_Produccion.Enabled = false;
+            Txt_Direccion.Enabled = false;
+            DTP_Fecha.Enabled = false;
+            Cbo_Estado_Entrega.Enabled = false;
+        }
+
+        private void Btn_Ingresar_Click(object sender, EventArgs e)
+        {
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Produccion.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            //Limpiar selección
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
+            Btn_Guardar.Enabled = true;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
         }
     }
 }
