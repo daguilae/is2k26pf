@@ -17,11 +17,14 @@ namespace Capa_Vista_Plan
     {
         Cls_Controlador_Ordenes ordenes = new Cls_Controlador_Ordenes();
         Cls_Controlador_Cronograma cronograma = new Cls_Controlador_Cronograma();
+        Cls_Controlador_General controladorGeneral = new Cls_Controlador_General();
+
         int iCodigoPlan = 0;
         int iNoOrden = 0;
-        int iCodigoPlanExistente = 1;
+        int iCodigoPlanExistente = 4;
         DateTime fechaInicioOrden;
         DateTime fechaFinOrden;
+        int iLeadTimeProducto = 0;
 
         private List<Cls_Sentencia_OrdenTemp> listaOrdenes = new List<Cls_Sentencia_OrdenTemp>();
 
@@ -83,6 +86,7 @@ namespace Capa_Vista_Plan
             pro_ObtenerOrdenes(iCodigoPlanExistente);
             pro_ObtenerEmpleados();
             pro_ObtenerEstado();
+            pro_DatosPlan(iCodigoPlanExistente);
             Dgv_Cronograma.Columns.Clear();
             Dgv_Cronograma.Columns.Add("faseProduccion", "Fase de Producción");
             Dgv_Cronograma.Columns.Add("fechaInicio", "Fecha Inicio de Fase");
@@ -96,6 +100,20 @@ namespace Capa_Vista_Plan
         }
 
         /* ---------------------------------- Métodos para el proceso de plan de producción ----------------------------*/
+
+        private void pro_DatosPlan(int iCodigoPlan)
+        {
+            DataTable plan = cronograma.fun_OrdenesPlan(iCodigoPlan);
+            if(plan.Rows.Count > 0)
+            {
+                DataRow fila = plan.Rows[0];
+                Txt_DescripcionPlan.Text = fila["Descripcion"].ToString();
+                Cbo_OrdenRecibida.SelectedValue = Convert.ToInt32(fila["NoOrdenRecibida"]);
+                Dtp_Fecha.Value = Convert.ToDateTime(fila["Fecha"]);
+                Cbo_EstadoPlan.Text = fila["EstadoPlan"].ToString();
+            }
+        }
+
         private void pro_OrdenesRecibidas()
         {
             try
@@ -171,43 +189,55 @@ namespace Capa_Vista_Plan
             int iCodigoEstadoPlan = Convert.ToInt32(Cbo_EstadoPlan.SelectedValue);
             DateTime fechaPlan = Dtp_Fecha.Value.Date;
 
+            try
+            {
+                if (iCodigoPlanExistente == 0)
+                {
+                    if (iNoPedido == 0 || iCodigoEstadoPlan == 0 || string.IsNullOrWhiteSpace(sDescripcionPlan))
+                    {
+                        MessageBox.Show("Debe completar todos los campos.");
+                        return;
+                    }
 
+                    if(listaOrdenes.Count == 0)
+                    {
+                        MessageBox.Show("Debe agregar al menos una orden de producción");
+                        return;
+                    }
+
+                    iCodigoPlan = controladorGeneral.pro_GuardarPlanCompleto(iNoPedido, sDescripcionPlan, iCodigoEstadoPlan, fechaPlan, 
+                        listaOrdenes);
+                    iCodigoPlan = iCodigoPlanExistente;
+                    MessageBox.Show("Plan y Órdenes de Producción guardados correctamente");
+                    pro_ObtenerOrdenes(iCodigoPlan);
+                    pro_DatosPlan(iCodigoPlan);
+
+                }
+                //Si existe un plan de producción y la lista de cronograma tiene datos, guardar en base de datos el cronograma
+                else if (cronogramaFases != null && cronogramaFases.Count > 0)
+                {
+                    cronograma.proGuardarCronograma(iNoOrden, cronogramaFases);
+                    MessageBox.Show("Cronograma de Fases Guardado Correctamente");
+                    cronogramaFases.Clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar: " + ex.Message);
+            }
         }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        /* ---------------------------------- Métodos para el proceso de Ordenes de Producción ----------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-        /* ---------------------------------- Métodos para el proceso de Cronograma de Fases ----------------------------*/
+        /* ------------------------- Métodos para el proceso de Cronograma de Fases  Anderson Trigueros ----------------------------*/
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            // Supongamos que quieres bloquear la segunda pestaña
-            if (e.TabPage == Cronograma )
+            if (e.TabPage == Cronograma && iCodigoPlanExistente == 0)
             {
-                // e.Cancel = true; // Bloquea el acceso
+                e.Cancel = true; 
             }
         }
 
@@ -363,9 +393,11 @@ namespace Capa_Vista_Plan
                 if (Cbo_NoOrden.SelectedValue is DataRowView) return;
 
                 int iCodigoOrden = Convert.ToInt32(Cbo_NoOrden.SelectedValue);
+                iNoOrden = iCodigoOrden;
 
                 if (iCodigoOrden > 0)
                 {
+                    cronogramaFases.Clear();
                     pro_ObtenerFases(iCodigoOrden);
                     DataRowView fila = (DataRowView)Cbo_NoOrden.SelectedItem;
                     
@@ -456,6 +488,9 @@ namespace Capa_Vista_Plan
 
         }
 
+
+        /* ---------------------------------- Métodos para el proceso de Ordenes de Producción ----------------------------*/
+
         private void Lbl_NombreFase_Click(object sender, EventArgs e)
         {
 
@@ -470,6 +505,7 @@ namespace Capa_Vista_Plan
             {
                 Txt_Cantidad_Programada.Text =
                     fila["Cantidad_Solicitada"].ToString();
+                iLeadTimeProducto = Convert.ToInt32(fila["DiasFabricacion"]);
             }
         }
 
@@ -619,7 +655,8 @@ namespace Capa_Vista_Plan
 
             Dtp_Fecha_Inicio.Value = DateTime.Now;
 
-            Txt_Fecha_Fin.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            Txt_Fecha_Fin.Clear();
+
         }
 
         private void cargarGrid()
@@ -666,6 +703,21 @@ namespace Capa_Vista_Plan
 
                 Cbo_Material.SelectedIndex = -1;
             }
+        }
+
+        /* ----------------- Anderson Trigueros ----------------------------*/
+        private void Dtp_Fecha_Inicio_ValueChanged(object sender, EventArgs e)
+        {
+            if (iLeadTimeProducto == 0) return;
+
+            decimal cantidadDecimal;
+            if (!decimal.TryParse(Txt_Cantidad_Programada.Text, out cantidadDecimal))
+            {
+                return;
+            }
+            int cantidadSolicitada = Convert.ToInt32(cantidadDecimal);
+            int totalDiasFabricacion = iLeadTimeProducto * cantidadSolicitada;
+            Txt_Fecha_Fin.Text = Dtp_Fecha_Inicio.Value.AddDays(totalDiasFabricacion).ToString("dd/MM/yyyy"); 
         }
     }
 
