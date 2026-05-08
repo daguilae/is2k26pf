@@ -19,6 +19,16 @@ namespace Capa_Controlador_Expl_Mat
             return sentencias.ObtenerExplosiones();
         }
 
+        public DataTable ObtenerDetalleExplosionPorId(int idExplosion)
+        {
+            return sentenciasDetalle.ObtenerDetalleExplosionPorId(idExplosion);
+        }
+
+        public DataTable ObtenerExplosionPorId(int idExplosion)
+        {
+            return sentenciasDetalle.ObtenerExplosionPorId(idExplosion);
+        }
+
         public DataTable FiltrarPorId(string idExplosion)
         {
             return sentencias.FiltrarPorId(idExplosion);

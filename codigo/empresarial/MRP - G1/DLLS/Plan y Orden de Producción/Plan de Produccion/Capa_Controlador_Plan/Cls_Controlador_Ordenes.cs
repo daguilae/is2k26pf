@@ -31,5 +31,11 @@ namespace Capa_Controlador_Plan
             return modelo.obtenerMaterialPorOrden(
                 idOrden);
         }
+
+        public DataTable obtenerOrdenesProduccionPorOrden(int idOrden)
+        {
+            return modelo.obtenerOrdenesProduccionPorOrden(
+                idOrden);
+        }
     }
 }

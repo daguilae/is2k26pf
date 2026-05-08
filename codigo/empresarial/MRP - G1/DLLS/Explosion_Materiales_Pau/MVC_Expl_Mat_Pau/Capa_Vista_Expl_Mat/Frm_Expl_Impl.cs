@@ -160,9 +160,9 @@ namespace Capa_Vista_Expl_Mat
                 {
                     int idExplosion = Convert.ToInt32(valor);
 
-                    //Frm_Expl_Mat frm = new Frm_Expl_Mat(idExplosion);
-                    // frm.ShowDialog();
-                    // CargarGrid();
+                    Frm_Expl_Mat frm = new Frm_Expl_Mat(idExplosion);
+                    frm.ShowDialog();
+                    CargarGrid();
                 }
             }
         }

@@ -175,5 +175,66 @@ namespace Capa_Modelo_Expl_Mat
                 }
             }
         }
+
+
+        public DataTable ObtenerDetalleExplosionPorId(int idExplosion)
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT
+                emd.Fk_Id_Material                          AS Id_Material,
+                mp.Nombre_Material                          AS Producto,
+                mh.Codigo_Material                          AS Codigo_MP,
+                mh.Nombre_Material                          AS Material,
+                um.Abreviatura_Unidad_Medida                AS Unidad,
+                bd.Cantidad_Requerida_BOM_Detalle            AS Cant_Por_Unidad,
+                bd.Porcentaje_Merma_BOM_Detalle              AS Pct_Merma,
+                emd.Cantidad_Total                          AS Cant_Total,
+                emd.Cantidad_Real_Con_Merma                 AS Cant_Real
+            FROM Tbl_Explosion_Materiales em
+            INNER JOIN Tbl_Explosion_Materiales_Detalle emd
+                ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+            INNER JOIN Tbl_Materiales mh
+                ON emd.Fk_Id_Material = mh.Pk_Id_Materiales
+            INNER JOIN Tbl_Unidad_Medida um
+                ON mh.Fk_Id_Unidad_Medida = um.Pk_Id_Unidad_Medida
+            INNER JOIN Tbl_Orden_Recibida o
+                ON em.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+            INNER JOIN Tbl_Orden_Recibida_Detalle ord
+                ON ord.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+            INNER JOIN Tbl_Materiales mp
+                ON ord.Fk_Id_Material = mp.Pk_Id_Materiales
+            INNER JOIN Tbl_BOM b
+                ON b.Fk_Id_Material = mp.Pk_Id_Materiales
+            INNER JOIN Tbl_BOM_Detalle bd
+                ON bd.Fk_Id_BOM = b.Pk_Id_BOM
+               AND bd.Fk_Id_Materiales = emd.Fk_Id_Material
+            WHERE em.Pk_Id_Explosion = ?";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("?", idExplosion);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable ObtenerExplosionPorId(int idExplosion)
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT Pk_Id_Explosion, Fk_Id_Orden_Recibida, Fecha_Explosion
+            FROM Tbl_Explosion_Materiales
+            WHERE Pk_Id_Explosion = ?";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("?", idExplosion);
+                da.Fill(dt);
+            }
+            return dt;
+        }
     }
 }

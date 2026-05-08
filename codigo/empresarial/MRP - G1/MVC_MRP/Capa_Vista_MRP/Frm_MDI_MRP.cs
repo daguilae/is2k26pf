@@ -29,6 +29,7 @@ using Capa_Vista_Fases;
 using Capa_Vista_Cronograma;
 using Capa_vista_Orden;
 using Capa_Vista_DispoInve;
+using Capa_Vista_Prod;
 
 namespace Capa_Vista_MRP
 {
@@ -217,7 +218,7 @@ namespace Capa_Vista_MRP
 
         private void explosiónDeMaterialesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Expl_Mat m = new Frm_Expl_Mat();
+            Frm_Expl_Impl m = new Frm_Expl_Impl();
             m.MdiParent = this;
             m.Show();
 
@@ -225,7 +226,7 @@ namespace Capa_Vista_MRP
 
         private void recepciónDeMaterialesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_recepcion_material m = new Frm_recepcion_material();
+            Frm_encabezado m = new Frm_encabezado();
             m.MdiParent = this;
             m.Show();
         }
@@ -275,6 +276,13 @@ namespace Capa_Vista_MRP
         private void tipoDeCostoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Tipo_Costo m = new Frm_Tipo_Costo();
+            m.MdiParent = this;
+            m.Show();
+        }
+
+        private void costosDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Produccion m = new Frm_Produccion();
             m.MdiParent = this;
             m.Show();
         }

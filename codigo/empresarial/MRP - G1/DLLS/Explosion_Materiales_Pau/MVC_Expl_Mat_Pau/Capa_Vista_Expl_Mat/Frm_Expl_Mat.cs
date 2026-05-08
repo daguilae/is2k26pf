@@ -33,8 +33,36 @@ namespace Capa_Vista_Expl_Mat
             CargarComboOrdenes();
             ConfigurarGridExplosion();
 
+            // Si es modo consulta, cargar la explosión guardada
             if (_idExplosionCargada > 0)
-                Btn_guardar.Enabled = false;
+                CargarExplosionGuardada(_idExplosionCargada);
+        }
+
+        private void CargarExplosionGuardada(int idExplosion)
+        {
+            DataTable dt = controlador.ObtenerDetalleExplosionPorId(idExplosion);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron datos para esta explosión.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Cargar grid de resultados
+            dataGridView1.DataSource = dt;
+            ConfigurarGridExplosion();
+            Lbl_TotalMateriales.Text = dt.Rows.Count.ToString();
+
+            // Obtener el id de la orden recibida desde la explosión
+            // y cargar info de la orden y productos
+            DataTable infoExplosion = controlador.ObtenerExplosionPorId(idExplosion);
+            if (infoExplosion.Rows.Count > 0)
+            {
+                int idOrden = Convert.ToInt32(infoExplosion.Rows[0]["Fk_Id_Orden_Recibida"]);
+                CargarInfoOrden(idOrden);
+                CargarProductosOrden(idOrden);
+            }
         }
 
         // ─── COMBO ────────────────────────────────────────────────
@@ -275,6 +303,12 @@ namespace Capa_Vista_Expl_Mat
             Btn_guardar.Enabled = true;
 
             Lbl_TotalMateriales.Text = "";
+        }
+
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         // ─── EVENTOS SIN LÓGICA ───────────────────────────────────
