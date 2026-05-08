@@ -12,6 +12,12 @@ namespace Capa_Controlador_Plan
     {
         Cls_Sentencias_Cronograma sentenciasCronograma = new Cls_Sentencias_Cronograma();
 
+        public DataTable fun_OrdenesPlan(int iCodigoPlan)
+        {
+            return sentenciasCronograma.fun_ObtenerDatosPlan(iCodigoPlan);
+        }
+
+
         public DataTable fun_OrdenesRecibidas()
         {
             return sentenciasCronograma.fun_ObtenerOrdenesRecibidas();
@@ -45,6 +51,12 @@ namespace Capa_Controlador_Plan
         public DataTable fun_ObtenerCronograma(int iCodigoOrden)
         {
             return sentenciasCronograma.fun_ObtenerCronograma(iCodigoOrden);
+        }
+
+        public void proGuardarCronograma(int iCodigoOrden, List<(int iCodigoFase, int iEmpleado, DateTime FechaInicio,
+                    DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)> cronogramaFases)
+        {
+            sentenciasCronograma.pro_GuardarCronograma(iCodigoOrden, cronogramaFases);
         }
     }
 }

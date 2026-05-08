@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Capa_Modelo_Plan;
+
+namespace Capa_Controlador_Plan
+{
+    public class Cls_Controlador_General
+    {
+        Cls_Sentencias sentencias = new Cls_Sentencias();
+
+        public int pro_GuardarPlanCompleto(int iNoPedido, string sDescripcion, int iEstadoPlan, DateTime fechaPlan,
+            List<Cls_Sentencia_OrdenTemp> listaOrdenes)
+        {
+            return sentencias.creaciónCompleta(iNoPedido, sDescripcion, iEstadoPlan, fechaPlan, listaOrdenes);
+        }
+    }
+}

@@ -46,6 +46,7 @@ namespace Capa_Modelo_Plan
         SELECT 
             M.Pk_Id_Materiales,
             M.Nombre_Material,
+            M.Lead_Time_Produccion_Dias AS DiasFabricacion,
             D.Cantidad_Solicitada
         FROM Tbl_Orden_Recibida_Detalle D
         INNER JOIN Tbl_Materiales M

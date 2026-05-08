@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cls_Controlador_Cronograma.cs" />
+    <Compile Include="Cls_Controlador_General.cs" />
     <Compile Include="Cls_Controlador_Ordenes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
