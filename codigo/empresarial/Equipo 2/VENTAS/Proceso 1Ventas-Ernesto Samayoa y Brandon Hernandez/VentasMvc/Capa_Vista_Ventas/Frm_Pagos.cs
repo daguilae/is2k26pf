@@ -128,7 +128,7 @@ namespace Capa_Vista_Ventas
                     new Frm_Pago_Tarjeta(iIdPago,monto).ShowDialog();
                     break;
                 case "Efectivo":
-                    new Frm_pago_efectivo(iIdPago, monto).ShowDialog();
+                    new Frm_pago_efectivo(iIdPago, monto, _idCuentaPorCobrar).ShowDialog();
                     break;
                 case "Transferencia":
                     new Frm_Pago_Transferencia(iIdPago, monto).ShowDialog();

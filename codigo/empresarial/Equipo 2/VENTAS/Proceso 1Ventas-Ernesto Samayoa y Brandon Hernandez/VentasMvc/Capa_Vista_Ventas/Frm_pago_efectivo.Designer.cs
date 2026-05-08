@@ -46,7 +46,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Salir = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
-            this.Btn_Guardar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
             this.Gbo_Cmpos.SuspendLayout();
             this.Gbo_Pago_Con_Efectivo.SuspendLayout();
@@ -217,20 +217,20 @@ namespace Capa_Vista_Ventas
             this.Btn_Cancelar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Cancelar_Ventas.UseVisualStyleBackColor = true;
             // 
-            // Btn_Guardar_Ventas
+            // Btn_Guardar
             // 
-            this.Btn_Guardar_Ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Btn_Guardar_Ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Guardar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar_Ventas.Image")));
-            this.Btn_Guardar_Ventas.Location = new System.Drawing.Point(241, 109);
-            this.Btn_Guardar_Ventas.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Guardar_Ventas.Name = "Btn_Guardar_Ventas";
-            this.Btn_Guardar_Ventas.Size = new System.Drawing.Size(111, 98);
-            this.Btn_Guardar_Ventas.TabIndex = 144;
-            this.Btn_Guardar_Ventas.Text = "GUARDAR";
-            this.Btn_Guardar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Guardar_Ventas.UseVisualStyleBackColor = false;
-            this.Btn_Guardar_Ventas.Click += new System.EventHandler(this.Btn_Guardar_Ventas_Click);
+            this.Btn_Guardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Btn_Guardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.Image")));
+            this.Btn_Guardar.Location = new System.Drawing.Point(241, 109);
+            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Guardar.Name = "Btn_Guardar";
+            this.Btn_Guardar.Size = new System.Drawing.Size(111, 98);
+            this.Btn_Guardar.TabIndex = 144;
+            this.Btn_Guardar.Text = "GUARDAR";
+            this.Btn_Guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Guardar.UseVisualStyleBackColor = false;
+            this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Ventas_Click);
             // 
             // Btn_Agregar_Ventas
             // 
@@ -253,7 +253,7 @@ namespace Capa_Vista_Ventas
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.Btn_Cancelar_Ventas);
-            this.Controls.Add(this.Btn_Guardar_Ventas);
+            this.Controls.Add(this.Btn_Guardar);
             this.Controls.Add(this.Btn_Agregar_Ventas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Gbo_Cmpos);
@@ -282,7 +282,7 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button Btn_Cancelar_Ventas;
-        private System.Windows.Forms.Button Btn_Guardar_Ventas;
+        private System.Windows.Forms.Button Btn_Guardar;
         private System.Windows.Forms.Button Btn_Agregar_Ventas;
         private System.Windows.Forms.TextBox Txt_Vuelto;
         private System.Windows.Forms.Label Lbl_Vuelto;
