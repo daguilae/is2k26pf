@@ -176,9 +176,9 @@ namespace Capa_Vista_Ventas
         {
             try
             {
-                Cbo_Estado.DataSource = controlador.ObtenerEstadoVenta();
-                Cbo_Estado.DisplayMember = "EstadoVenta";
-                Cbo_Estado.ValueMember = "EstadoVenta";
+                Cbo_Estado.Items.Clear();
+                Cbo_Estado.Items.Add("Activo");
+                Cbo_Estado.Items.Add("Inactivo");
                 Cbo_Estado.SelectedIndex = -1;
             }
             catch (Exception ex)
