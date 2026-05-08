@@ -58,7 +58,7 @@ namespace Capa_vista_orden_compra
 
                     DataTable dt = cont.llenarTblDetalle();
 
-                    // MENSAJE 3: ¿Qué regresó el controlador?
+                    
                     if (dt == null)
                     {
                         

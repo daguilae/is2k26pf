@@ -22,6 +22,7 @@ namespace Capa_vista_orden_compra
             cargarProveedores();
             cargarUnidadMedida();
             cargarBodegas();
+
             CalcularTotal();
             CalcularTotalresta();
             
@@ -119,11 +120,34 @@ namespace Capa_vista_orden_compra
             int idInventario = Convert.ToInt32(Cmb_producto.SelectedValue);
             string producto = Cmb_producto.Text;
             string unidad = Cmb_unidad.Text;
+            int idUnidad = Convert.ToInt32(Cmb_unidad.SelectedValue);
 
             decimal subtotal = cantidad * precio;
 
 
-            Dgv_DetalleProductos.Rows.Add(idInventario, producto, unidad, cantidad, precio, subtotal, subtotal);
+
+            int fila = Dgv_DetalleProductos.Rows.Add();
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnCodigo"].Value = idInventario;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnProducto"].Value = producto;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnUnidad"].Value = unidad;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnCantidad"].Value = cantidad;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnPrecioUnitario"].Value = precio;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnSubtotal"].Value = subtotal;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnTotal"].Value = subtotal;
+
+            Dgv_DetalleProductos.Rows[fila].Cells["ColumnIdUnidad"].Value = idUnidad;
+
+
+
+
+
             CalcularTotal();
 
             Txt_Cantidad.Clear();
@@ -157,107 +181,215 @@ namespace Capa_vista_orden_compra
 
         private void Btn_Grabar_Click(object sender, EventArgs e)
         {
-
-
             if (Cmb_proveedor.SelectedValue == null)
             {
-                MessageBox.Show("Seleccione un proveedor.", "Atención",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un proveedor.",
+                                "Atención",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
             if (Cmb_bodega.SelectedValue == null)
             {
-                MessageBox.Show("Seleccione una bodega.", "Atención",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione una bodega.",
+                                "Atención",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
-            if (Cmb_tipoPago.SelectedIndex == 0)
+            if (Cmb_tipoPago.SelectedIndex <= 0)
             {
-                MessageBox.Show("Seleccione el tipo de pago.", "Atención",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione el tipo de pago.",
+                                "Atención",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
 
-            bool hayFilas = false;
-            foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
-                if (!fila.IsNewRow) { hayFilas = true; break; }
-
-            if (!hayFilas)
-            {
-                MessageBox.Show("Agregue al menos un producto al detalle.", "Atención",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // ── Leer datos del encabezado ─────────────────────────
             try
             {
+                // ───────────────── CABECERA ─────────────────
+
                 int idProveedor = Convert.ToInt32(Cmb_proveedor.SelectedValue);
+
                 int idBodega = Convert.ToInt32(Cmb_bodega.SelectedValue);
+
                 string numero = Txt_NumeroOrden.Text.Trim();
-                DateTime fecha = Dtp_fechaRegistro.Value;       
+
+                DateTime fecha = Dtp_fechaRegistro.Value;
+
                 DateTime fechaEntrega = Dtp_fecha_entrega.Value;
-                string tipoPago = Cmb_tipoPago.SelectedItem.ToString().Trim().ToLower();
+
+                string tipoPago = Cmb_tipoPago.SelectedItem
+                                                .ToString()
+                                                .Trim()
+                                                .ToLower();
 
                 int diasCredito = 0;
+
                 if (tipoPago == "credito")
                 {
-                    if (!int.TryParse(Txt_diascredito.Text, out diasCredito) || diasCredito <= 0)
+                    if (!int.TryParse(Txt_diascredito.Text,
+                                      out diasCredito))
                     {
-                        MessageBox.Show("Ingrese los días de crédito válidos.", "Atención",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                        throw new Exception(
+                            "Los días de crédito deben ser numéricos.");
                     }
                 }
 
-                // ── Calcular subtotal y total desde el grid ───────
-                decimal subtotal = 0;
-                foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
+                // ───────────────── DETALLE ─────────────────
+
+                DataTable dtDetalle = new DataTable();
+
+                dtDetalle.Columns.Add("idInventario", typeof(int));
+
+                dtDetalle.Columns.Add("idUnidad", typeof(int));
+
+                dtDetalle.Columns.Add("cantidad", typeof(float));
+
+                dtDetalle.Columns.Add("precio", typeof(decimal));
+
+                decimal subtotalCalculado = 0;
+
+                int contadorFila = 1;
+
+                foreach (DataGridViewRow fila
+                         in Dgv_DetalleProductos.Rows)
                 {
                     if (fila.IsNewRow) continue;
-                    if (decimal.TryParse(fila.Cells["ColumnSubtotal"].Value?.ToString(),
-                                         out decimal sub))
-                        subtotal += sub;
+
+                    try
+                    {
+                        var valCodigo =
+                            fila.Cells["ColumnCodigo"].Value;
+
+                        var valUnidad =
+                            fila.Cells["ColumnIdUnidad"].Value;
+
+                        var valCantidad =
+                            fila.Cells["ColumnCantidad"].Value;
+
+                        var valPrecio =
+                            fila.Cells["ColumnPrecioUnitario"].Value;
+
+                        var valSubtotal =
+                            fila.Cells["ColumnSubtotal"].Value;
+
+                        if (valCodigo == null ||
+                            valUnidad == null ||
+                            valCantidad == null ||
+                            valPrecio == null)
+                        {
+                            throw new Exception(
+                                "Faltan datos en esta fila.");
+                        }
+
+                        int idInventario =
+                            Convert.ToInt32(valCodigo);
+
+                        int idUnidad =
+                            Convert.ToInt32(valUnidad);
+
+                        float cantidad =
+                            float.Parse(
+                                valCantidad.ToString(),
+                                System.Globalization
+                                .CultureInfo.InvariantCulture);
+
+                        decimal precio =
+                            decimal.Parse(
+                                valPrecio.ToString(),
+                                System.Globalization
+                                .CultureInfo.InvariantCulture);
+
+                        decimal subtotalFila =
+                            decimal.Parse(
+                                valSubtotal.ToString(),
+                                System.Globalization
+                                .CultureInfo.InvariantCulture);
+
+                        subtotalCalculado += subtotalFila;
+
+                        dtDetalle.Rows.Add(
+                            idInventario,
+                            idUnidad,
+                            cantidad,
+                            precio);
+                    }
+                    catch (Exception exFila)
+                    {
+                        throw new Exception(
+                            $"Error en fila {contadorFila}: "
+                            + exFila.Message);
+                    }
+
+                    contadorFila++;
                 }
-                decimal total = subtotal;
 
-                // ── Guardar encabezado ────────────────────────────
-                int idOrden = cont.guardarOrdenCompra(idProveedor, idBodega, numero,
-                                                       fecha, fechaEntrega, tipoPago,
-                                                       diasCredito, subtotal, total);
-
-                // ── Guardar detalle fila por fila ─────────────────
-                foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
+                if (dtDetalle.Rows.Count == 0)
                 {
-                    if (fila.IsNewRow) continue;
-
-                    int idInventario = Convert.ToInt32(fila.Cells["ColumnCodigo"].Value);
-                    int cantidad = Convert.ToInt32(fila.Cells["ColumnCantidad"].Value);
-                    decimal precio = Convert.ToDecimal(fila.Cells["ColumnPrecioUnitario"].Value);
-
-                    cont.guardarDetalleOrdenCompra(idOrden, idInventario, cantidad, precio);
+                    throw new Exception(
+                        "No hay productos en el detalle.");
                 }
 
-                MessageBox.Show("¡Orden de compra guardada correctamente!",
-                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                decimal total = subtotalCalculado;
 
-                // ── Limpiar formulario y generar nuevo número ─────
+                // ───────────────── GUARDAR ENCABEZADO ─────────────────
+
+                int idOrden = cont.guardarOrdenCompra(
+                    idProveedor,
+                    idBodega,
+                    numero,
+                    fecha,
+                    fechaEntrega,
+                    tipoPago,
+                    diasCredito,
+                    subtotalCalculado,
+                    total);
+
+                // ───────────────── GUARDAR DETALLE ─────────────────
+
+                foreach (DataRow row in dtDetalle.Rows)
+                {
+                    cont.guardarDetalleOrdenCompra(
+                        idOrden,
+                        Convert.ToInt32(row["idInventario"]),
+                        Convert.ToInt32(row["idUnidad"]),
+                        Convert.ToSingle(row["cantidad"]),
+                        Convert.ToDecimal(row["precio"]));
+                }
+
+                MessageBox.Show(
+                    "¡Orden de compra guardada correctamente!",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                // ───────────────── LIMPIAR ─────────────────
+
                 Dgv_DetalleProductos.Rows.Clear();
-                Txt_NumeroOrden.Text = cont.generarNumeroOrden();
+
+                Txt_NumeroOrden.Text =
+                    cont.generarNumeroOrden();
+
                 Txt_total.Text = "0.00";
+
                 Txt_diascredito.Clear();
+
+                Txt_estado.Clear();
+
                 Cmb_tipoPago.SelectedIndex = 0;
-                Txt_estado.Text = "";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "NO SE PUDO GUARDAR:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
-
 
         }
 
@@ -272,16 +404,40 @@ namespace Capa_vista_orden_compra
             Cmb_proveedor.ValueMember = "pk_id_proveedor";
         }
 
+
         private void cargarUnidadMedida()
         {
             DataTable dt = cont.obtenerUnidadMedida();
 
+            // DIAGNÓSTICO - Borrar después de confirmar que funciona
+            if (dt == null)
+            {
+                MessageBox.Show("El DataTable es NULL", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("El DataTable está vacío (0 filas)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+           
+            string columnas = "";
+            foreach (DataColumn col in dt.Columns)
+                columnas += col.ColumnName + "\n";
+
+            
+
+           
+            Cmb_unidad.DataSource = null;
             Cmb_unidad.DataSource = dt;
-            Cmb_unidad.DisplayMember = "Nombre_Unidad";
+            Cmb_unidad.DisplayMember = "Nombre_Unidad"; 
             Cmb_unidad.ValueMember = "ID_Unidad";
+            Cmb_unidad.SelectedIndex = -1;
         }
+
+     
 
 
         private void cargarProductos()
@@ -364,16 +520,16 @@ namespace Capa_vista_orden_compra
             {
                 if (row.IsNewRow) continue;
 
-                int cantidad;
+                float cantidad;
                 decimal precio;
 
-                if (!int.TryParse(row.Cells["ColumnCantidad"].Value?.ToString(), out cantidad))
+                if (!float.TryParse(row.Cells["ColumnCantidad"].Value?.ToString(), out cantidad))
                     continue;
 
                 if (!decimal.TryParse(row.Cells["ColumnPrecioUnitario"].Value?.ToString(), out precio))
                     continue;
 
-                total += cantidad * precio;
+                total += Convert.ToDecimal(cantidad) * precio;
             }
 
             Txt_total.Text = total.ToString("0.00");
@@ -409,6 +565,7 @@ namespace Capa_vista_orden_compra
                 Dgv_DetalleProductos.DataSource = null;
                 return;
             }
+
 
             Dgv_DetalleProductos.DataSource = resultado; */
         }

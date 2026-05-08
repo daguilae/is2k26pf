@@ -49,6 +49,7 @@ namespace Capa_controlador_orden_compra
             return sn.obtenerUnidadMedida();
         }
 
+
         public decimal calcularTotalCompra(DataTable dtDetalle)
         {
             decimal total = 0;
@@ -79,10 +80,17 @@ namespace Capa_controlador_orden_compra
                                                  diasCredito, subtotal, total);
         }
 
-        public void guardarDetalleOrdenCompra(int idOrden, int idInventario,
-                                               int cantidad, decimal precio)
+        public void guardarDetalleOrdenCompra(int idOrden,
+                                       int idInventario,
+                                       int idUnidad,
+                                       float cantidad,
+                                       decimal precio)
         {
-            sn.guardarDetalleOrdenCompra(idOrden, idInventario, cantidad, precio);
+            sn.guardarDetalleOrdenCompra(idOrden,
+                                         idInventario,
+                                         idUnidad,
+                                         cantidad,
+                                         precio);
         }
 
 
