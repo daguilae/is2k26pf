@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_MRP_Orden_Recibida", "API_MRP_Orden_Recibida\API_MRP_Orden_Recibida.csproj", "{D7143859-BBE1-4675-B805-78589D55A5A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7143859-BBE1-4675-B805-78589D55A5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7143859-BBE1-4675-B805-78589D55A5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7143859-BBE1-4675-B805-78589D55A5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7143859-BBE1-4675-B805-78589D55A5A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A687571-F8B8-44C7-9522-5915A9E08DF7}
+	EndGlobalSection
+EndGlobal
