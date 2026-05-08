@@ -21,7 +21,7 @@ namespace Capa_Vista_Plan
 
         int iCodigoPlan = 0;
         int iNoOrden = 0;
-        int iCodigoPlanExistente = 4;
+        int iCodigoPlanExistente = 0;
         DateTime fechaInicioOrden;
         DateTime fechaFinOrden;
         int iLeadTimeProducto = 0;
@@ -207,7 +207,7 @@ namespace Capa_Vista_Plan
 
                     iCodigoPlan = controladorGeneral.pro_GuardarPlanCompleto(iNoPedido, sDescripcionPlan, iCodigoEstadoPlan, fechaPlan, 
                         listaOrdenes);
-                    iCodigoPlan = iCodigoPlanExistente;
+                    iCodigoPlanExistente = iCodigoPlan;
                     MessageBox.Show("Plan y Órdenes de Producción guardados correctamente");
                     pro_ObtenerOrdenes(iCodigoPlan);
                     pro_DatosPlan(iCodigoPlan);
@@ -382,6 +382,71 @@ namespace Capa_Vista_Plan
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pro_ObtenerOrdenesProduccion(int idOrdenRecibida)
+        {
+            try
+            {
+                DataTable tabla =
+                    ordenes.obtenerOrdenesProduccionPorOrden(
+                        idOrdenRecibida);
+
+                Dgv_Orden_Pro.Rows.Clear();
+
+                if (tabla.Rows.Count == 0)
+                {
+                    return;
+                }
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    int iIndice =
+                        Dgv_Orden_Pro.Rows.Add();
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["noOrden"].Value =
+                        fila["NoOrden"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["idMaterial"].Value =
+                        fila["IdMaterial"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["idEstado"].Value =
+                        fila["IdEstado"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["material"].Value =
+                        fila["Material"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["estado"].Value =
+                        fila["Estado"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["cantidad"].Value =
+                        fila["Cantidad"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["fechaInicio"].Value =
+                        Convert.ToDateTime(
+                            fila["FechaInicio"])
+                            .ToShortDateString();
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["fechaFin"].Value =
+                        Convert.ToDateTime(
+                            fila["FechaFin"])
+                            .ToShortDateString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar órdenes: " +
+                    ex.Message);
             }
         }
 
@@ -702,6 +767,7 @@ namespace Capa_Vista_Plan
                     "Pk_Id_Materiales";
 
                 Cbo_Material.SelectedIndex = -1;
+                pro_ObtenerOrdenesProduccion(idOrden);
             }
         }
 
