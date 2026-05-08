@@ -197,16 +197,62 @@ namespace Capa_Controlador_Ventas
 
                 string idRecibo = $"RCP-{fecha}-{codigoAleatorio}";
 
-                Console.WriteLine($"✓ ID Recibo generado: {idRecibo}");
+              
                 return idRecibo;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error al generar ID Recibo: {ex.Message}");
+            
                 throw;
             }
         }
+        public string GenerarVoucher()
+        {
+            try
+            {
+                // Formato: VHC-YYYYMMDD-XXXXXX
+                // Ejemplo: VHC-20260508-A7F2K9
 
+                string fecha = DateTime.Now.ToString("yyyyMMdd");
+                string codigoAleatorio = GenerarCodigoAleatorio(6);
+
+                string idRecibo = $"VHC-{fecha}-{codigoAleatorio}";
+
+         
+                return idRecibo;
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+        public string GenerarCheque()
+        {
+            // Formato: CHC-YYYYMMDD-XXXXXX
+            // Ejemplo: CHC-20260508-A7F2K9
+
+            string fecha = DateTime.Now.ToString("yyyyMMdd");
+            string codigoAleatorio = GenerarCodigoAleatorio(6);
+
+            string idRecibo = $"CHC-{fecha}-{codigoAleatorio}";
+
+            Console.WriteLine($"✓ ID Recibo generado: {idRecibo}");
+            return idRecibo;
+        }
+        public string GenerarTransferencia()
+        {
+            // Formato: CHC-YYYYMMDD-XXXXXX
+            // Ejemplo: CHC-20260508-A7F2K9
+
+            string fecha = DateTime.Now.ToString("yyyyMMdd");
+            string codigoAleatorio = GenerarCodigoAleatorio(6);
+
+            string idRecibo = $"TRS-{fecha}-{codigoAleatorio}";
+
+            Console.WriteLine($"✓ ID Recibo generado: {idRecibo}");
+            return idRecibo;
+        }
         //  Generar código aleatorio 
         private string GenerarCodigoAleatorio(int longitud)
         {
