@@ -1,7 +1,7 @@
 ﻿
 namespace Capa_Vista_recepcion
 {
-    partial class Frm_detalle
+    partial class Frm_Detalle_Recepcion
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Capa_Vista_recepcion
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_detalle));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Detalle_Recepcion));
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Btn_salir = new System.Windows.Forms.Button();
@@ -143,6 +143,7 @@ namespace Capa_Vista_recepcion
             this.Btn_ayuda.Text = "Ayuda";
             this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click_1);
             // 
             // Btn_fin
             // 
@@ -379,7 +380,7 @@ namespace Capa_Vista_recepcion
             this.Nud_Cantidad.Location = new System.Drawing.Point(286, 120);
             this.Nud_Cantidad.Margin = new System.Windows.Forms.Padding(2);
             this.Nud_Cantidad.Name = "Nud_Cantidad";
-            this.Nud_Cantidad.Size = new System.Drawing.Size(175, 22);
+            this.Nud_Cantidad.Size = new System.Drawing.Size(175, 20);
             this.Nud_Cantidad.TabIndex = 33;
             // 
             // Cbo_Materiales
@@ -387,7 +388,7 @@ namespace Capa_Vista_recepcion
             this.Cbo_Materiales.FormattingEnabled = true;
             this.Cbo_Materiales.Location = new System.Drawing.Point(286, 75);
             this.Cbo_Materiales.Name = "Cbo_Materiales";
-            this.Cbo_Materiales.Size = new System.Drawing.Size(175, 24);
+            this.Cbo_Materiales.Size = new System.Drawing.Size(175, 21);
             this.Cbo_Materiales.TabIndex = 28;
             // 
             // Btn_eliminarMat
@@ -478,7 +479,7 @@ namespace Capa_Vista_recepcion
             this.Cbo_Almacen.FormattingEnabled = true;
             this.Cbo_Almacen.Location = new System.Drawing.Point(18, 158);
             this.Cbo_Almacen.Name = "Cbo_Almacen";
-            this.Cbo_Almacen.Size = new System.Drawing.Size(273, 24);
+            this.Cbo_Almacen.Size = new System.Drawing.Size(273, 21);
             this.Cbo_Almacen.TabIndex = 30;
             // 
             // lbl_almacen
@@ -511,14 +512,14 @@ namespace Capa_Vista_recepcion
             // 
             this.Dtp_Ingreso.Location = new System.Drawing.Point(18, 349);
             this.Dtp_Ingreso.Name = "Dtp_Ingreso";
-            this.Dtp_Ingreso.Size = new System.Drawing.Size(273, 22);
+            this.Dtp_Ingreso.Size = new System.Drawing.Size(273, 20);
             this.Dtp_Ingreso.TabIndex = 25;
             // 
             // Dtp_Notificacion
             // 
             this.Dtp_Notificacion.Location = new System.Drawing.Point(18, 282);
             this.Dtp_Notificacion.Name = "Dtp_Notificacion";
-            this.Dtp_Notificacion.Size = new System.Drawing.Size(273, 22);
+            this.Dtp_Notificacion.Size = new System.Drawing.Size(273, 20);
             this.Dtp_Notificacion.TabIndex = 24;
             // 
             // Cbo_estado
@@ -526,7 +527,7 @@ namespace Capa_Vista_recepcion
             this.Cbo_estado.FormattingEnabled = true;
             this.Cbo_estado.Location = new System.Drawing.Point(18, 221);
             this.Cbo_estado.Name = "Cbo_estado";
-            this.Cbo_estado.Size = new System.Drawing.Size(273, 24);
+            this.Cbo_estado.Size = new System.Drawing.Size(273, 21);
             this.Cbo_estado.TabIndex = 23;
             // 
             // label8
@@ -601,14 +602,14 @@ namespace Capa_Vista_recepcion
             this.label2.TabIndex = 17;
             this.label2.Text = "Datos De Recepcion";
             // 
-            // Frm_detalle
+            // Frm_Detalle_Recepcion
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1159, 813);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
-            this.Name = "Frm_detalle";
-            this.Text = "Frm_detalle";
+            this.Name = "Frm_Detalle_Recepcion";
+            this.Text = "Detalle_Recepcion";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);

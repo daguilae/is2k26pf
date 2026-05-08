@@ -16,7 +16,7 @@ namespace Ejecucion_ExplosionMateriales
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Capa_Vista_Expl_Mat.Frm_Expl_Mat());
+            Application.Run(new Capa_Vista_Expl_Mat.Frm_Expl_Impl());
         }
     }
 }

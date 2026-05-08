@@ -40,10 +40,10 @@ namespace Capa_Vista_recepcion
             this.Dg_BOM = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Dtp_Hasta = new System.Windows.Forms.DateTimePicker();
-            this.Dtp_Desde = new System.Windows.Forms.DateTimePicker();
+            this.Dtp_Ingreso = new System.Windows.Forms.DateTimePicker();
+            this.Dtp_Noti = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.Btn_eliminar = new System.Windows.Forms.Button();
+            this.Btn_Limpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dg_BOM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@ namespace Capa_Vista_recepcion
             this.Cmb_Id.Location = new System.Drawing.Point(121, 109);
             this.Cmb_Id.Margin = new System.Windows.Forms.Padding(4);
             this.Cmb_Id.Name = "Cmb_Id";
-            this.Cmb_Id.Size = new System.Drawing.Size(177, 24);
+            this.Cmb_Id.Size = new System.Drawing.Size(177, 21);
             this.Cmb_Id.TabIndex = 43;
             // 
             // Cmb_Estado
@@ -73,7 +73,7 @@ namespace Capa_Vista_recepcion
             this.Cmb_Estado.Location = new System.Drawing.Point(405, 111);
             this.Cmb_Estado.Margin = new System.Windows.Forms.Padding(4);
             this.Cmb_Estado.Name = "Cmb_Estado";
-            this.Cmb_Estado.Size = new System.Drawing.Size(177, 24);
+            this.Cmb_Estado.Size = new System.Drawing.Size(177, 21);
             this.Cmb_Estado.TabIndex = 42;
             // 
             // Lbl_Estado
@@ -90,7 +90,7 @@ namespace Capa_Vista_recepcion
             // Btn_crear
             // 
             this.Btn_crear.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_crear.Location = new System.Drawing.Point(1416, 110);
+            this.Btn_crear.Location = new System.Drawing.Point(1461, 110);
             this.Btn_crear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_crear.Name = "Btn_crear";
             this.Btn_crear.Size = new System.Drawing.Size(187, 30);
@@ -133,12 +133,12 @@ namespace Capa_Vista_recepcion
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1050, 112);
+            this.label5.Location = new System.Drawing.Point(1099, 113);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 23);
+            this.label5.Size = new System.Drawing.Size(82, 23);
             this.label5.TabIndex = 36;
-            this.label5.Text = "Hasta:";
+            this.label5.Text = "Ingreso";
             // 
             // label4
             // 
@@ -147,25 +147,25 @@ namespace Capa_Vista_recepcion
             this.label4.Location = new System.Drawing.Point(678, 112);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 23);
+            this.label4.Size = new System.Drawing.Size(134, 23);
             this.label4.TabIndex = 35;
-            this.label4.Text = "Desde: ";
+            this.label4.Text = "Notificación:";
             // 
-            // Dtp_Hasta
+            // Dtp_Ingreso
             // 
-            this.Dtp_Hasta.Location = new System.Drawing.Point(1123, 113);
-            this.Dtp_Hasta.Margin = new System.Windows.Forms.Padding(4);
-            this.Dtp_Hasta.Name = "Dtp_Hasta";
-            this.Dtp_Hasta.Size = new System.Drawing.Size(265, 22);
-            this.Dtp_Hasta.TabIndex = 34;
+            this.Dtp_Ingreso.Location = new System.Drawing.Point(1189, 114);
+            this.Dtp_Ingreso.Margin = new System.Windows.Forms.Padding(4);
+            this.Dtp_Ingreso.Name = "Dtp_Ingreso";
+            this.Dtp_Ingreso.Size = new System.Drawing.Size(265, 20);
+            this.Dtp_Ingreso.TabIndex = 34;
             // 
-            // Dtp_Desde
+            // Dtp_Noti
             // 
-            this.Dtp_Desde.Location = new System.Drawing.Point(758, 113);
-            this.Dtp_Desde.Margin = new System.Windows.Forms.Padding(4);
-            this.Dtp_Desde.Name = "Dtp_Desde";
-            this.Dtp_Desde.Size = new System.Drawing.Size(265, 22);
-            this.Dtp_Desde.TabIndex = 33;
+            this.Dtp_Noti.Location = new System.Drawing.Point(820, 112);
+            this.Dtp_Noti.Margin = new System.Windows.Forms.Padding(4);
+            this.Dtp_Noti.Name = "Dtp_Noti";
+            this.Dtp_Noti.Size = new System.Drawing.Size(265, 20);
+            this.Dtp_Noti.TabIndex = 33;
             // 
             // label3
             // 
@@ -178,23 +178,24 @@ namespace Capa_Vista_recepcion
             this.label3.TabIndex = 32;
             this.label3.Text = "Fecha";
             // 
-            // Btn_eliminar
+            // Btn_Limpiar
             // 
-            this.Btn_eliminar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_eliminar.Image")));
-            this.Btn_eliminar.Location = new System.Drawing.Point(1574, 251);
-            this.Btn_eliminar.Name = "Btn_eliminar";
-            this.Btn_eliminar.Size = new System.Drawing.Size(74, 87);
-            this.Btn_eliminar.TabIndex = 45;
-            this.Btn_eliminar.Text = "Eliminar";
-            this.Btn_eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_Limpiar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Limpiar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Limpiar.Image")));
+            this.Btn_Limpiar.Location = new System.Drawing.Point(1574, 251);
+            this.Btn_Limpiar.Name = "Btn_Limpiar";
+            this.Btn_Limpiar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_Limpiar.TabIndex = 45;
+            this.Btn_Limpiar.Text = "limpiar";
+            this.Btn_Limpiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Limpiar.UseVisualStyleBackColor = true;
+            this.Btn_Limpiar.Click += new System.EventHandler(this.Btn_Limpiar_Click);
             // 
             // Frm_encabezado
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1660, 707);
-            this.Controls.Add(this.Btn_eliminar);
+            this.Controls.Add(this.Btn_Limpiar);
             this.Controls.Add(this.Lbl_id);
             this.Controls.Add(this.Cmb_Id);
             this.Controls.Add(this.Cmb_Estado);
@@ -205,8 +206,8 @@ namespace Capa_Vista_recepcion
             this.Controls.Add(this.Dg_BOM);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.Dtp_Hasta);
-            this.Controls.Add(this.Dtp_Desde);
+            this.Controls.Add(this.Dtp_Ingreso);
+            this.Controls.Add(this.Dtp_Noti);
             this.Controls.Add(this.label3);
             this.Name = "Frm_encabezado";
             this.Text = "Encabezado Recepcion";
@@ -228,9 +229,9 @@ namespace Capa_Vista_recepcion
         private System.Windows.Forms.DataGridView Dg_BOM;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker Dtp_Hasta;
-        private System.Windows.Forms.DateTimePicker Dtp_Desde;
+        private System.Windows.Forms.DateTimePicker Dtp_Ingreso;
+        private System.Windows.Forms.DateTimePicker Dtp_Noti;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Btn_eliminar;
+        private System.Windows.Forms.Button Btn_Limpiar;
     }
 }

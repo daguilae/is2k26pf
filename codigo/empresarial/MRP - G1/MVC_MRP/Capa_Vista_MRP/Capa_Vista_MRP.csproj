@@ -103,6 +103,9 @@
     <Reference Include="Capa_Vista_Plan">
       <HintPath>..\..\DLLS\Plan y Orden de Producción\Plan de Produccion\Capa_Vista_Plan\bin\Debug\Capa_Vista_Plan.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Prod">
+      <HintPath>..\..\DLLS\MVC_Produccion\Capa_Vista_Prod\bin\Debug\Capa_Vista_Prod.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_vista_produccion">
       <HintPath>..\..\Mantenimientos\Estado_produccion_Ruben\mantenimiento_produccion\Capa_vista_produccion\bin\Debug\Capa_vista_produccion.dll</HintPath>
     </Reference>

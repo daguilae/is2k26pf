@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_Expl_Impl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Expl_Impl.Designer.cs">
+      <DependentUpon>Frm_Expl_Impl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Expl_Mat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_Expl_Impl.resx">
+      <DependentUpon>Frm_Expl_Impl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Expl_Mat.resx">
       <DependentUpon>Frm_Expl_Mat.cs</DependentUpon>
     </EmbeddedResource>

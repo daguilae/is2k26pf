@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Data.Odbc" Version="10.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_RO">
+      <HintPath>..\..\is2k26pf\codigo\empresarial\MRP - G1\DLLS\MVC_Recibir_Orden\Capa_Controlador_RO\bin\Debug\Capa_Controlador_RO.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_RO">
+      <HintPath>..\..\is2k26pf\codigo\empresarial\MRP - G1\DLLS\MVC_Recibir_Orden\Capa_Modelo_RO\bin\Debug\Capa_Modelo_RO.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Seguridad">
+      <HintPath>..\..\is2k26pf\codigo\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
