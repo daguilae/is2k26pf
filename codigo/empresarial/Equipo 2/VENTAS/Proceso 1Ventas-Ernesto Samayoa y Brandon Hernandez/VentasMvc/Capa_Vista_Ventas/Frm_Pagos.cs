@@ -125,16 +125,16 @@ namespace Capa_Vista_Ventas
             switch (sMetodo)
             {
                 case "Tarjeta":
-                    new Frm_Pago_Tarjeta(iIdPago,monto).ShowDialog();
+                    new Frm_Pago_Tarjeta(iIdPago,monto,_idCuentaPorCobrar).ShowDialog();
                     break;
                 case "Efectivo":
                     new Frm_pago_efectivo(iIdPago, monto, _idCuentaPorCobrar).ShowDialog();
                     break;
                 case "Transferencia":
-                    new Frm_Pago_Transferencia(iIdPago, monto).ShowDialog();
+                    new Frm_Pago_Transferencia(iIdPago, monto, _idCuentaPorCobrar).ShowDialog();
                     break;
                 case "Cheque":
-                    new Frm_Pago_Cheque(iIdPago, monto).ShowDialog();
+                    new Frm_Pago_Cheque(iIdPago, monto,_idCuentaPorCobrar).ShowDialog();
                     break;
             }
         }

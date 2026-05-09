@@ -31,6 +31,10 @@ namespace Capa_Vista_Ventas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pago_Tarjeta));
             this.Gbo_Cmpos = new System.Windows.Forms.GroupBox();
+            this.Txt_Monto_Pagar = new System.Windows.Forms.TextBox();
+            this.Lbl_Monto_Pagar = new System.Windows.Forms.Label();
+            this.Txt_Monto_Total = new System.Windows.Forms.TextBox();
+            this.Lbl_Monto_Pendiente = new System.Windows.Forms.Label();
             this.Txt_Codigo_Postal = new System.Windows.Forms.TextBox();
             this.Txt_Cvc = new System.Windows.Forms.TextBox();
             this.Txt_Fecha_Vencimiento = new System.Windows.Forms.TextBox();
@@ -50,10 +54,6 @@ namespace Capa_Vista_Ventas
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Guardar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
-            this.Lbl_Monto_Pendiente = new System.Windows.Forms.Label();
-            this.Txt_Monto_Total = new System.Windows.Forms.TextBox();
-            this.Lbl_Monto_Pagar = new System.Windows.Forms.Label();
-            this.Txt_Monto_Pagar = new System.Windows.Forms.TextBox();
             this.Gbo_Cmpos.SuspendLayout();
             this.Gbo_Pago_Con_Tarjeta.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,6 +81,40 @@ namespace Capa_Vista_Ventas
             this.Gbo_Cmpos.TabIndex = 127;
             this.Gbo_Cmpos.TabStop = false;
             // 
+            // Txt_Monto_Pagar
+            // 
+            this.Txt_Monto_Pagar.Location = new System.Drawing.Point(250, 215);
+            this.Txt_Monto_Pagar.Name = "Txt_Monto_Pagar";
+            this.Txt_Monto_Pagar.Size = new System.Drawing.Size(265, 22);
+            this.Txt_Monto_Pagar.TabIndex = 35;
+            // 
+            // Lbl_Monto_Pagar
+            // 
+            this.Lbl_Monto_Pagar.AutoSize = true;
+            this.Lbl_Monto_Pagar.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Monto_Pagar.Location = new System.Drawing.Point(34, 216);
+            this.Lbl_Monto_Pagar.Name = "Lbl_Monto_Pagar";
+            this.Lbl_Monto_Pagar.Size = new System.Drawing.Size(138, 21);
+            this.Lbl_Monto_Pagar.TabIndex = 34;
+            this.Lbl_Monto_Pagar.Text = "Monto a pagar";
+            // 
+            // Txt_Monto_Total
+            // 
+            this.Txt_Monto_Total.Location = new System.Drawing.Point(737, 154);
+            this.Txt_Monto_Total.Name = "Txt_Monto_Total";
+            this.Txt_Monto_Total.Size = new System.Drawing.Size(178, 22);
+            this.Txt_Monto_Total.TabIndex = 33;
+            // 
+            // Lbl_Monto_Pendiente
+            // 
+            this.Lbl_Monto_Pendiente.AutoSize = true;
+            this.Lbl_Monto_Pendiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Monto_Pendiente.Location = new System.Drawing.Point(566, 154);
+            this.Lbl_Monto_Pendiente.Name = "Lbl_Monto_Pendiente";
+            this.Lbl_Monto_Pendiente.Size = new System.Drawing.Size(166, 21);
+            this.Lbl_Monto_Pendiente.TabIndex = 32;
+            this.Lbl_Monto_Pendiente.Text = "Monto Pendiente ";
+            // 
             // Txt_Codigo_Postal
             // 
             this.Txt_Codigo_Postal.Location = new System.Drawing.Point(722, 88);
@@ -94,6 +128,7 @@ namespace Capa_Vista_Ventas
             this.Txt_Cvc.Name = "Txt_Cvc";
             this.Txt_Cvc.Size = new System.Drawing.Size(107, 22);
             this.Txt_Cvc.TabIndex = 30;
+            this.Txt_Cvc.TextChanged += new System.EventHandler(this.Txt_Cvc_TextChanged);
             // 
             // Txt_Fecha_Vencimiento
             // 
@@ -108,6 +143,7 @@ namespace Capa_Vista_Ventas
             this.Txt_Numero_Tarjeta.Name = "Txt_Numero_Tarjeta";
             this.Txt_Numero_Tarjeta.Size = new System.Drawing.Size(280, 22);
             this.Txt_Numero_Tarjeta.TabIndex = 28;
+            this.Txt_Numero_Tarjeta.TextChanged += new System.EventHandler(this.Txt_Numero_Tarjeta_TextChanged);
             // 
             // Txt_Nombre_Titular
             // 
@@ -258,6 +294,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Guardar_Ventas.Text = "GUARDAR";
             this.Btn_Guardar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Guardar_Ventas.UseVisualStyleBackColor = false;
+            this.Btn_Guardar_Ventas.Click += new System.EventHandler(this.Btn_Guardar_Ventas_Click);
             // 
             // Btn_Agregar_Ventas
             // 
@@ -271,40 +308,6 @@ namespace Capa_Vista_Ventas
             this.Btn_Agregar_Ventas.Text = "INGRESAR";
             this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
-            // 
-            // Lbl_Monto_Pendiente
-            // 
-            this.Lbl_Monto_Pendiente.AutoSize = true;
-            this.Lbl_Monto_Pendiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Monto_Pendiente.Location = new System.Drawing.Point(566, 154);
-            this.Lbl_Monto_Pendiente.Name = "Lbl_Monto_Pendiente";
-            this.Lbl_Monto_Pendiente.Size = new System.Drawing.Size(208, 26);
-            this.Lbl_Monto_Pendiente.TabIndex = 32;
-            this.Lbl_Monto_Pendiente.Text = "Monto Pendiente ";
-            // 
-            // Txt_Monto_Total
-            // 
-            this.Txt_Monto_Total.Location = new System.Drawing.Point(737, 154);
-            this.Txt_Monto_Total.Name = "Txt_Monto_Total";
-            this.Txt_Monto_Total.Size = new System.Drawing.Size(178, 22);
-            this.Txt_Monto_Total.TabIndex = 33;
-            // 
-            // Lbl_Monto_Pagar
-            // 
-            this.Lbl_Monto_Pagar.AutoSize = true;
-            this.Lbl_Monto_Pagar.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Monto_Pagar.Location = new System.Drawing.Point(34, 216);
-            this.Lbl_Monto_Pagar.Name = "Lbl_Monto_Pagar";
-            this.Lbl_Monto_Pagar.Size = new System.Drawing.Size(173, 26);
-            this.Lbl_Monto_Pagar.TabIndex = 34;
-            this.Lbl_Monto_Pagar.Text = "Monto a pagar";
-            // 
-            // Txt_Monto_Pagar
-            // 
-            this.Txt_Monto_Pagar.Location = new System.Drawing.Point(250, 215);
-            this.Txt_Monto_Pagar.Name = "Txt_Monto_Pagar";
-            this.Txt_Monto_Pagar.Size = new System.Drawing.Size(265, 22);
-            this.Txt_Monto_Pagar.TabIndex = 35;
             // 
             // Frm_Pago_Tarjeta
             // 
