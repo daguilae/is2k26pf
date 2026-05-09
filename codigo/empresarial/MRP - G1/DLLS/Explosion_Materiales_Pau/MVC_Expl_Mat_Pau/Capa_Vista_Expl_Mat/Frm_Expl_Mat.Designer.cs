@@ -94,6 +94,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_ingresar
             // 
+            this.Btn_ingresar.Enabled = false;
             this.Btn_ingresar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ingresar.Image")));
             this.Btn_ingresar.Location = new System.Drawing.Point(4, 4);
@@ -107,6 +108,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_modificar
             // 
+            this.Btn_modificar.Enabled = false;
             this.Btn_modificar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_modificar.Image")));
             this.Btn_modificar.Location = new System.Drawing.Point(111, 4);
@@ -134,6 +136,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_cancelar
             // 
+            this.Btn_cancelar.Enabled = false;
             this.Btn_cancelar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_cancelar.Image")));
             this.Btn_cancelar.Location = new System.Drawing.Point(325, 4);
@@ -147,6 +150,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_eliminar
             // 
+            this.Btn_eliminar.Enabled = false;
             this.Btn_eliminar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_eliminar.Image")));
             this.Btn_eliminar.Location = new System.Drawing.Point(432, 4);
@@ -200,6 +204,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_inicio
             // 
+            this.Btn_inicio.Enabled = false;
             this.Btn_inicio.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
             this.Btn_inicio.Location = new System.Drawing.Point(860, 4);
@@ -213,6 +218,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_anterior
             // 
+            this.Btn_anterior.Enabled = false;
             this.Btn_anterior.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
             this.Btn_anterior.Location = new System.Drawing.Point(967, 4);
@@ -226,6 +232,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_sig
             // 
+            this.Btn_sig.Enabled = false;
             this.Btn_sig.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
             this.Btn_sig.Location = new System.Drawing.Point(1074, 4);
@@ -239,6 +246,7 @@ namespace Capa_Vista_Expl_Mat
             // 
             // Btn_fin
             // 
+            this.Btn_fin.Enabled = false;
             this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
             this.Btn_fin.Location = new System.Drawing.Point(1181, 4);
