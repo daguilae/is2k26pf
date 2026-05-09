@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_Detalle_Orden_Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Detalle_Orden_Material.Designer.cs">
+      <DependentUpon>Frm_Detalle_Orden_Material.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Encabezado_Orden_Material.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_Detalle_Orden_Material.resx">
+      <DependentUpon>Frm_Detalle_Orden_Material.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Encabezado_Orden_Material.resx">
       <DependentUpon>Frm_Encabezado_Orden_Material.cs</DependentUpon>
     </EmbeddedResource>

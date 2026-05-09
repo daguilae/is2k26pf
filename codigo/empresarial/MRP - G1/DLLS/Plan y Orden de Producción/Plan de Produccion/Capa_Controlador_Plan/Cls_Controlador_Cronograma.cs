@@ -58,5 +58,11 @@ namespace Capa_Controlador_Plan
         {
             sentenciasCronograma.pro_GuardarCronograma(iCodigoOrden, cronogramaFases);
         }
+
+        public void proActualizarCronograma(int iCodigoCronograma, DateTime fechaInicio, DateTime fechaFin, int iCantidadPersonal, 
+            int iEncargado, int iEstado)
+        {
+            sentenciasCronograma.pro_ActualizarCronograma(iCodigoCronograma, fechaInicio, fechaFin, iCantidadPersonal, iEncargado, iEstado);
+        }
     }
 }

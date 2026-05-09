@@ -39,6 +39,16 @@ namespace Capa_Controlador_Expl_Mat
             return sentencias.FiltrarPorFechas(fechaInicio, fechaFin);
         }
 
+        public DataTable FiltrarPorNombre(string nombreOrden)
+        {
+            return sentencias.FiltrarPorNombre(nombreOrden);
+        }
+
+        public bool EliminarExplosion(int idExplosion)
+        {
+            return sentencias.EliminarExplosion(idExplosion);
+        }
+
         private readonly Cls_Sentencias_Expl sentenciasDetalle
                        = new Cls_Sentencias_Expl();
 

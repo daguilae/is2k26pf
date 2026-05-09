@@ -129,6 +129,7 @@ namespace Capa_Vista_Plan
             this.Btn_ayuda.Text = "Ayuda";
             this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // Btn_fin
             // 
@@ -207,6 +208,7 @@ namespace Capa_Vista_Plan
             this.Btn_imprimir.Text = "Imprimir";
             this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_imprimir.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.Click += new System.EventHandler(this.Btn_imprimir_Click);
             // 
             // Btn_consultar
             // 
@@ -263,7 +265,6 @@ namespace Capa_Vista_Plan
             // 
             // Btn_modificar
             // 
-            this.Btn_modificar.Enabled = false;
             this.Btn_modificar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_modificar.Image")));
             this.Btn_modificar.Location = new System.Drawing.Point(120, 75);
@@ -360,6 +361,7 @@ namespace Capa_Vista_Plan
             this.Dgv_Orden_Pro.RowTemplate.Height = 24;
             this.Dgv_Orden_Pro.Size = new System.Drawing.Size(1084, 249);
             this.Dgv_Orden_Pro.TabIndex = 53;
+            this.Dgv_Orden_Pro.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Orden_Pro_CellContentClick);
             // 
             // Txt_Fecha_Fin
             // 
@@ -459,7 +461,6 @@ namespace Capa_Vista_Plan
             // 
             // Btn_Actualizar_Orden
             // 
-            this.Btn_Actualizar_Orden.Enabled = false;
             this.Btn_Actualizar_Orden.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Actualizar_Orden.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Actualizar_Orden.Image")));
             this.Btn_Actualizar_Orden.Location = new System.Drawing.Point(117, 69);
@@ -470,6 +471,7 @@ namespace Capa_Vista_Plan
             this.Btn_Actualizar_Orden.Text = "Modificar";
             this.Btn_Actualizar_Orden.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Actualizar_Orden.UseVisualStyleBackColor = true;
+            this.Btn_Actualizar_Orden.Click += new System.EventHandler(this.Btn_Actualizar_Orden_Click);
             // 
             // Btn_agregarOrden
             // 
@@ -550,6 +552,7 @@ namespace Capa_Vista_Plan
             this.Btn_Actualizar.Size = new System.Drawing.Size(57, 57);
             this.Btn_Actualizar.TabIndex = 31;
             this.Btn_Actualizar.UseVisualStyleBackColor = false;
+            this.Btn_Actualizar.Click += new System.EventHandler(this.Btn_Actualizar_Click);
             // 
             // Dtp_FechaFin
             // 
@@ -737,6 +740,7 @@ namespace Capa_Vista_Plan
             this.Dgv_Cronograma.RowTemplate.Height = 24;
             this.Dgv_Cronograma.Size = new System.Drawing.Size(1077, 295);
             this.Dgv_Cronograma.TabIndex = 3;
+            this.Dgv_Cronograma.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Cronograma_CellClick);
             // 
             // panel2
             // 

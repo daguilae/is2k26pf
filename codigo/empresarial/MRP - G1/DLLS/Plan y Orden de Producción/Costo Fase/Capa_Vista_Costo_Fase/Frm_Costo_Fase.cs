@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Costo_Fase;
 using Capa_Modelo_Costo_Fase;
+using System.IO;
 using CrystalDecisions;
 
 
@@ -255,6 +256,37 @@ namespace Capa_Vista_Costo_Fase
             Cbo_Tipo_Costo.DataSource = controlador.ObtenerTiposCosto();
 
             MessageBox.Show("Formulario y datos actualizados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayuda_Costo",
+                "Ayuda_Costo.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "Cliente.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
         }
     }
 }

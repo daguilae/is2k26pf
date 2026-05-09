@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Modelo_Plan;
+using System.Data.Odbc;
+using System.IO;
 using Capa_Controlador_Plan;
 
 
@@ -21,16 +23,21 @@ namespace Capa_Vista_Plan
 
         int iCodigoPlan = 0;
         int iNoOrden = 0;
-        int iCodigoPlanExistente = 4;
+        int iCodigoPlanExistente = 0;
         DateTime fechaInicioOrden;
         DateTime fechaFinOrden;
         int iLeadTimeProducto = 0;
+        int iIndiceEditar = -1;
+        int iIdOrdenProduccionEditar = 0;
 
         private List<Cls_Sentencia_OrdenTemp> listaOrdenes = new List<Cls_Sentencia_OrdenTemp>();
 
-        public Frm_Plan_Produccion()
+        public Frm_Plan_Produccion(int codigoPlan)
         {
             InitializeComponent();
+            Dgv_Orden_Pro.CellClick += Dgv_Orden_Pro_CellContentClick;
+            Txt_Cantidad_Programada.TextChanged += Txt_Cantidad_Programada_TextChanged;
+            iCodigoPlanExistente = codigoPlan;
             inicializarColumnas();
             cargarCombos();
         }
@@ -104,13 +111,17 @@ namespace Capa_Vista_Plan
         private void pro_DatosPlan(int iCodigoPlan)
         {
             DataTable plan = cronograma.fun_OrdenesPlan(iCodigoPlan);
-            if(plan.Rows.Count > 0)
+            if (plan.Rows.Count > 0)
             {
                 DataRow fila = plan.Rows[0];
                 Txt_DescripcionPlan.Text = fila["Descripcion"].ToString();
                 Cbo_OrdenRecibida.SelectedValue = Convert.ToInt32(fila["NoOrdenRecibida"]);
                 Dtp_Fecha.Value = Convert.ToDateTime(fila["Fecha"]);
                 Cbo_EstadoPlan.Text = fila["EstadoPlan"].ToString();
+            }
+            if(iCodigoPlanExistente != 0)
+            {
+                Cbo_OrdenRecibida.Enabled = false;
             }
         }
 
@@ -131,10 +142,19 @@ namespace Capa_Vista_Plan
                 }
                 else
                 {
-                    Cbo_OrdenRecibida.DataSource = null;
-                    Cbo_OrdenRecibida.Items.Clear();
-                    Cbo_OrdenRecibida.Items.Add("No hay órdenes registradas");
-                    Cbo_OrdenRecibida.SelectedIndex = 0;
+                    if(iCodigoPlanExistente == 0)
+                    {
+                        Cbo_OrdenRecibida.DataSource = null;
+                        Cbo_OrdenRecibida.Items.Clear();
+                        Cbo_OrdenRecibida.Items.Add("No hay órdenes sin planificar");
+                        Cbo_OrdenRecibida.SelectedIndex = 0;
+                        MessageBox.Show(
+                            "Todas las órdenes recibidas ya tienen un plan de producción asignado.",
+                            "Información",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
                 }
             }
             catch (Exception ex)
@@ -172,7 +192,6 @@ namespace Capa_Vista_Plan
             {
                 MessageBox.Show("Ocurrió un error al cargar los estados: " + ex.Message);
             }
-
         }
 
 
@@ -199,15 +218,15 @@ namespace Capa_Vista_Plan
                         return;
                     }
 
-                    if(listaOrdenes.Count == 0)
+                    if (listaOrdenes.Count == 0)
                     {
                         MessageBox.Show("Debe agregar al menos una orden de producción");
                         return;
                     }
 
-                    iCodigoPlan = controladorGeneral.pro_GuardarPlanCompleto(iNoPedido, sDescripcionPlan, iCodigoEstadoPlan, fechaPlan, 
+                    iCodigoPlan = controladorGeneral.pro_GuardarPlanCompleto(iNoPedido, sDescripcionPlan, iCodigoEstadoPlan, fechaPlan,
                         listaOrdenes);
-                    iCodigoPlan = iCodigoPlanExistente;
+                    iCodigoPlanExistente = iCodigoPlan;
                     MessageBox.Show("Plan y Órdenes de Producción guardados correctamente");
                     pro_ObtenerOrdenes(iCodigoPlan);
                     pro_DatosPlan(iCodigoPlan);
@@ -219,6 +238,7 @@ namespace Capa_Vista_Plan
                     cronograma.proGuardarCronograma(iNoOrden, cronogramaFases);
                     MessageBox.Show("Cronograma de Fases Guardado Correctamente");
                     cronogramaFases.Clear();
+                    Dgv_Cronograma.Rows.Clear();
                 }
 
             }
@@ -237,7 +257,7 @@ namespace Capa_Vista_Plan
         {
             if (e.TabPage == Cronograma && iCodigoPlanExistente == 0)
             {
-                e.Cancel = true; 
+                e.Cancel = true;
             }
         }
 
@@ -330,7 +350,7 @@ namespace Capa_Vista_Plan
             }
         }
 
-        public void pro_ObtenerEstado() 
+        public void pro_ObtenerEstado()
         {
             try
             {
@@ -371,8 +391,10 @@ namespace Capa_Vista_Plan
                 {
                     int iIndice = Dgv_Cronograma.Rows.Add();
                     Dgv_Cronograma.Rows[iIndice].Cells["faseProduccion"].Value = fila["Fase"];
-                    Dgv_Cronograma.Rows[iIndice].Cells["fechaInicio"].Value = fila["FechaInicio"];
-                    Dgv_Cronograma.Rows[iIndice].Cells["fechaFinal"].Value = fila["FechaFin"];
+                    Dgv_Cronograma.Rows[iIndice].Cells["fechaInicio"].Value =
+                        Convert.ToDateTime(fila["FechaInicio"]).ToString("dd/MM/yyyy");
+                    Dgv_Cronograma.Rows[iIndice].Cells["fechaFinal"].Value =
+                        Convert.ToDateTime(fila["FechaFin"]).ToString("dd/MM/yyyy");
                     Dgv_Cronograma.Rows[iIndice].Cells["cantidadPersonal"].Value = fila["Cantidad"];
                     Dgv_Cronograma.Rows[iIndice].Cells["encargado"].Value = fila["Encargado"];
                     Dgv_Cronograma.Rows[iIndice].Cells["estadoFase"].Value = fila["Estado"];
@@ -382,6 +404,71 @@ namespace Capa_Vista_Plan
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pro_ObtenerOrdenesProduccion(int idOrdenRecibida)
+        {
+            try
+            {
+                DataTable tabla =
+                    ordenes.obtenerOrdenesProduccionPorOrden(
+                        idOrdenRecibida);
+
+                Dgv_Orden_Pro.Rows.Clear();
+
+                if (tabla.Rows.Count == 0)
+                {
+                    return;
+                }
+
+                foreach (DataRow fila in tabla.Rows)
+                {
+                    int iIndice =
+                        Dgv_Orden_Pro.Rows.Add();
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["noOrden"].Value =
+                        fila["NoOrden"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["idMaterial"].Value =
+                        fila["IdMaterial"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["idEstado"].Value =
+                        fila["IdEstado"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["material"].Value =
+                        fila["Material"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["estado"].Value =
+                        fila["Estado"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["cantidad"].Value =
+                        fila["Cantidad"];
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["fechaInicio"].Value =
+                        Convert.ToDateTime(
+                            fila["FechaInicio"])
+                            .ToShortDateString();
+
+                    Dgv_Orden_Pro.Rows[iIndice]
+                        .Cells["fechaFin"].Value =
+                        Convert.ToDateTime(
+                            fila["FechaFin"])
+                            .ToShortDateString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar órdenes: " +
+                    ex.Message);
             }
         }
 
@@ -400,7 +487,7 @@ namespace Capa_Vista_Plan
                     cronogramaFases.Clear();
                     pro_ObtenerFases(iCodigoOrden);
                     DataRowView fila = (DataRowView)Cbo_NoOrden.SelectedItem;
-                    
+
                     Txt_ProductoC.Text = fila["Producto"].ToString();
                     fechaInicioOrden = Convert.ToDateTime(fila["FechaInicio"]);
                     fechaFinOrden = Convert.ToDateTime(fila["FechaFin"]);
@@ -419,8 +506,9 @@ namespace Capa_Vista_Plan
             }
         }
 
-        List<(int iCodigoFase, int iEmpleado, DateTime FechaInicio, DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)> 
+        List<(int iCodigoFase, int iEmpleado, DateTime FechaInicio, DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)>
             cronogramaFases = new List<(int, int, DateTime, DateTime, int, int)>();
+
         private void Btn_agregar_fases_Click(object sender, EventArgs e)
         {
             int iCodigoOrden = Convert.ToInt32(Cbo_NoOrden.SelectedValue);
@@ -467,7 +555,7 @@ namespace Capa_Vista_Plan
                 return;
             }
 
-            cronogramaFases.Add((iCodigoFase, iCodigoEncargado, fechaInicioFase, fechaFinalFase, iCantidadPersonal,iCodigoEstado));
+            cronogramaFases.Add((iCodigoFase, iCodigoEncargado, fechaInicioFase, fechaFinalFase, iCantidadPersonal, iCodigoEstado));
             ActualizarGridCronograma();
 
         }
@@ -484,10 +572,107 @@ namespace Capa_Vista_Plan
             Dgv_Cronograma.Rows[iIndice].Cells["cantidadPersonal"].Value = ultimoCronograma.iCantidadPersonal;
             Dgv_Cronograma.Rows[iIndice].Cells["encargado"].Value = Cbo_Empleados.Text;
             Dgv_Cronograma.Rows[iIndice].Cells["estadoFase"].Value = Cbo_EstadoFase.Text;
+            LimpiarCamposCronograma();
+        }
 
+        private void LimpiarCamposCronograma()
+        {
+            Txt_CantidadPersonal.Clear();
+            Cbo_EstadoFase.SelectedIndex = 0;
+            Cbo_Empleados.SelectedIndex = 0;
+            Cbo_Fases.SelectedIndex = 0;
+            Dtp_FechaInicio.Value = DateTime.Today;
+            Dtp_FechaFin.Value = DateTime.Today;
+        }
+
+        private void Dgv_Cronograma_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            DataGridViewRow fila = Dgv_Cronograma.Rows[e.RowIndex];
+            if (fila == null) return;
+
+            string sFase = fila.Cells["faseProduccion"].Value.ToString() ?? "";
+            string sCantidad = fila.Cells["cantidadPersonal"].Value?.ToString() ?? "";
+            string sEstado = fila.Cells["estadoFase"].Value?.ToString() ?? "";
+            string sEmpleado = fila.Cells["encargado"].Value?.ToString() ?? "";
+            string fechaInicio = fila.Cells["fechaInicio"].Value?.ToString() ?? "";
+            string fechaFinal = fila.Cells["fechaFinal"].Value?.ToString() ?? "";
+
+            Cbo_Fases.Text = sFase;
+            Cbo_Empleados.Text = sEmpleado;
+            Cbo_EstadoFase.Text = sEstado;
+
+            Txt_CantidadPersonal.Text = sCantidad;
+
+            Dtp_FechaInicio.Value = Convert.ToDateTime(fechaInicio);
+            Dtp_FechaFin.Value = Convert.ToDateTime(fechaFinal);
 
         }
 
+        private void Btn_Actualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Dgv_Cronograma.CurrentRow == null)
+                {
+                    MessageBox.Show("Debe seleccionar una fila.");
+                    return;
+                }
+                int iCodigoCronograma = Convert.ToInt32(Dgv_Cronograma.CurrentRow.Tag);
+                int iCodigoEncargado = Convert.ToInt32(Cbo_Empleados.SelectedValue);
+                int iCodigoEstado = Convert.ToInt32(Cbo_EstadoFase.SelectedValue);
+                DateTime fechaInicioFase = Dtp_FechaInicio.Value.Date;
+                DateTime fechaFinalFase = Dtp_FechaFin.Value.Date;
+
+                if (fechaInicioFase < fechaInicioOrden)
+                {
+                    MessageBox.Show(
+                        $"La fecha inicial de la fase no puede ser menor a la fecha inicial de la orden ({fechaInicioOrden:dd/MM/yyyy})."
+                    );
+                    return;
+                }
+
+                if (fechaFinalFase > fechaFinOrden)
+                {
+                    MessageBox.Show(
+                        $"La fecha final de la fase no puede ser mayor a la fecha final de la orden ({fechaFinOrden:dd/MM/yyyy})."
+                    );
+                    return;
+                }
+
+                if (fechaFinalFase < fechaInicioFase)
+                {
+                    MessageBox.Show("La fecha final de la fase no puede ser menor a la fecha inicial.");
+                    return;
+                }
+
+                int iCantidadPersonal;
+
+                if (!int.TryParse(Txt_CantidadPersonal.Text, out iCantidadPersonal) || iCantidadPersonal <= 0)
+                {
+                    MessageBox.Show("La cantidad de personal debe ser mayor a 0.");
+                    return;
+                }
+
+                if (iCodigoEncargado == 0 || iCodigoEstado == 0)
+                {
+                    MessageBox.Show("Debe seleccionar todas las opciones.");
+                    return;
+                }
+
+                cronograma.proActualizarCronograma(iCodigoCronograma, fechaInicioFase, fechaFinalFase, iCantidadPersonal,
+                    iCodigoEncargado, iCodigoEstado);
+
+                MessageBox.Show("Cronograma actualizado correctamente.");
+
+                pro_ObtenerCronograma(iNoOrden);
+                LimpiarCamposCronograma();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar: " + ex.Message);
+            }
+        }
 
         /* ---------------------------------- Métodos para el proceso de Ordenes de Producción ----------------------------*/
 
@@ -496,7 +681,7 @@ namespace Capa_Vista_Plan
 
         }
 
-            private void Cbo_Material_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cbo_Material_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Cbo_Material.SelectedItem == null)
                 return;
@@ -702,6 +887,7 @@ namespace Capa_Vista_Plan
                     "Pk_Id_Materiales";
 
                 Cbo_Material.SelectedIndex = -1;
+                pro_ObtenerOrdenesProduccion(idOrden);
             }
         }
 
@@ -717,9 +903,173 @@ namespace Capa_Vista_Plan
             }
             int cantidadSolicitada = Convert.ToInt32(cantidadDecimal);
             int totalDiasFabricacion = iLeadTimeProducto * cantidadSolicitada;
-            Txt_Fecha_Fin.Text = Dtp_Fecha_Inicio.Value.AddDays(totalDiasFabricacion).ToString("dd/MM/yyyy"); 
+            Txt_Fecha_Fin.Text = Dtp_Fecha_Inicio.Value.AddDays(totalDiasFabricacion).ToString("dd/MM/yyyy");
         }
-    }
 
+        private void Txt_Cantidad_Programada_TextChanged(object sender, EventArgs e)
+        {
+            if (iLeadTimeProducto == 0)
+                return;
+
+            decimal cantidadDecimal;
+
+            if (!decimal.TryParse(
+                Txt_Cantidad_Programada.Text,
+                out cantidadDecimal))
+            {
+                return;
+            }
+
+            int cantidadSolicitada =
+                Convert.ToInt32(cantidadDecimal);
+
+            int totalDiasFabricacion =
+                iLeadTimeProducto * cantidadSolicitada;
+
+            Txt_Fecha_Fin.Text =
+                Dtp_Fecha_Inicio.Value
+                .AddDays(totalDiasFabricacion)
+                .ToString("dd/MM/yyyy");
+        }
+
+        private void Dgv_Orden_Pro_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow fila =
+                Dgv_Orden_Pro.Rows[e.RowIndex];
+
+            iIndiceEditar = e.RowIndex;
+
+            iIdOrdenProduccionEditar =
+                Convert.ToInt32(
+                    fila.Cells["noOrden"].Value);
+
+            Cbo_Material.SelectedValue =
+                Convert.ToInt32(
+                    fila.Cells["idMaterial"].Value);
+
+            Cbo_Estado_Orden.SelectedValue =
+                Convert.ToInt32(
+                    fila.Cells["idEstado"].Value);
+
+            Txt_Cantidad_Programada.Text =
+                fila.Cells["cantidad"].Value.ToString();
+
+            Dtp_Fecha_Inicio.Value =
+                Convert.ToDateTime(
+                    fila.Cells["fechaInicio"].Value);
+
+            Txt_Fecha_Fin.Text =
+                Convert.ToDateTime(
+                    fila.Cells["fechaFin"].Value)
+                    .ToString("dd/MM/yyyy");
+        }
+
+        private void Btn_Actualizar_Orden_Click(object sender, EventArgs e)
+        {
+            if (iIdOrdenProduccionEditar == 0)
+            {
+                MessageBox.Show(
+                    "Seleccione una orden.");
+                return;
+            }
+
+            decimal cantidad;
+
+            if (!decimal.TryParse(
+                Txt_Cantidad_Programada.Text,
+                out cantidad))
+            {
+                MessageBox.Show(
+                    "Cantidad inválida.");
+                return;
+            }
+
+            DateTime fechaFin;
+
+            if (!DateTime.TryParse(
+                Txt_Fecha_Fin.Text,
+                out fechaFin))
+            {
+                MessageBox.Show(
+                    "Fecha fin inválida.");
+                return;
+            }
+
+            try
+            {
+                ordenes.modificarOrdenProduccion(
+                    iIdOrdenProduccionEditar,
+                    Convert.ToInt32(
+                        Cbo_Material.SelectedValue),
+                    Convert.ToInt32(
+                        Cbo_Estado_Orden.SelectedValue),
+                    cantidad,
+                    Dtp_Fecha_Inicio.Value,
+                    fechaFin);
+
+                int idOrden =
+                    Convert.ToInt32(
+                        Cbo_OrdenRecibida.SelectedValue);
+
+                pro_ObtenerOrdenesProduccion(idOrden);
+
+                limpiarCampos();
+
+                iIdOrdenProduccionEditar = 0;
+
+                MessageBox.Show(
+                    "Orden modificada correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al modificar: " +
+                    ex.Message);
+            }
+        }
+
+        private void Btn_imprimir_Click(object sender, EventArgs e)
+        {
+           Frm_Reporte_Plan reporte = new Frm_Reporte_Plan();
+            reporte.ShowDialog(); ;
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayuda_Plan_Producción",
+                "Ayuda_tipo.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "Cliente.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+
+    }
 }
+
   

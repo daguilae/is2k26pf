@@ -10,26 +10,52 @@ namespace Capa_Modelo_Expl_Mat
     {
         private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-        // Obtener todas las explosiones para el grid del encabezado
         public DataTable ObtenerExplosiones()
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
-                // El SELECT queda así en los 3 métodos:
                 string query = @"
             SELECT 
                 e.Pk_Id_Explosion                                AS No_Explosion,
-                e.Fk_Id_Orden_Recibida                         AS No_Orden,
+                o.Id_Externo_Logistica                           AS No_Orden,
                 DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
-                FROM Tbl_Explosion_Materiales e
-                ORDER BY e.Fecha_Explosion DESC";
+            FROM Tbl_Explosion_Materiales e
+            INNER JOIN Tbl_Orden_Recibida o
+                ON e.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+            ORDER BY e.Fecha_Explosion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.Fill(dt);
             }
             return dt;
         }
+
+        public DataTable FiltrarPorFechas(string fechaInicio, string fechaFin)
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT 
+                e.Pk_Id_Explosion                                AS No_Explosion,
+                o.Id_Externo_Logistica                           AS No_Orden,
+                DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
+            FROM Tbl_Explosion_Materiales e
+            INNER JOIN Tbl_Orden_Recibida o
+                ON e.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+            WHERE DATE(e.Fecha_Explosion) BETWEEN ? AND ?
+            ORDER BY e.Fecha_Explosion DESC";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
+                da.SelectCommand.Parameters.AddWithValue("?", fechaInicio);
+                da.SelectCommand.Parameters.AddWithValue("?", fechaFin);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
 
         // Filtrar por ID de explosión
         public DataTable FiltrarPorId(string idExplosion)
@@ -53,7 +79,8 @@ namespace Capa_Modelo_Expl_Mat
             return dt;
         }
 
-        public DataTable FiltrarPorFechas(string fechaInicio, string fechaFin)
+        // Filtrar por nombre de orden
+        public DataTable FiltrarPorNombre(string nombreOrden)
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
@@ -61,18 +88,51 @@ namespace Capa_Modelo_Expl_Mat
                 string query = @"
             SELECT 
                 e.Pk_Id_Explosion                                AS No_Explosion,
-                e.Fk_Id_Orden_Recibida                         AS No_Orden,
+                o.Id_Externo_Logistica                           AS No_Orden,
                 DATE_FORMAT(e.Fecha_Explosion, '%Y-%m-%d %H:%i') AS Fecha_Explosion
             FROM Tbl_Explosion_Materiales e
-            WHERE DATE(e.Fecha_Explosion) BETWEEN ? AND ?
+            INNER JOIN Tbl_Orden_Recibida o
+                ON e.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+            WHERE o.Id_Externo_Logistica LIKE ?
             ORDER BY e.Fecha_Explosion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("?", fechaInicio);
-                da.SelectCommand.Parameters.AddWithValue("?", fechaFin);
+                da.SelectCommand.Parameters.AddWithValue("?", "%" + nombreOrden + "%");
                 da.Fill(dt);
             }
             return dt;
+        }
+
+        // Eliminar explosión
+        public bool EliminarExplosion(int idExplosion)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                OdbcTransaction trans = conn.BeginTransaction();
+                try
+                {
+                    OdbcCommand cmdDetalle = new OdbcCommand(
+                        "DELETE FROM Tbl_Explosion_Materiales_Detalle WHERE Fk_Id_Explosion = ?", conn);
+                    cmdDetalle.Transaction = trans;
+                    cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idExplosion;
+                    cmdDetalle.ExecuteNonQuery();
+
+                    OdbcCommand cmdCabecera = new OdbcCommand(
+                        "DELETE FROM Tbl_Explosion_Materiales WHERE Pk_Id_Explosion = ?", conn);
+                    cmdCabecera.Transaction = trans;
+                    cmdCabecera.Parameters.Add("?", OdbcType.Int).Value = idExplosion;
+                    cmdCabecera.ExecuteNonQuery();
+
+                    trans.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    Console.WriteLine("Error eliminando: " + ex.Message);
+                    return false;
+                }
+            }
         }
 
 

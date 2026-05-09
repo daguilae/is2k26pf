@@ -41,12 +41,20 @@ namespace Capa_Modelo_Plan
         public DataTable fun_ObtenerOrdenesRecibidas()
         {
             DataTable tabla = new DataTable();
+
             try
             {
                 using (OdbcConnection con = conexion.conexion())
                 {
-                    string sConsultaPedidos = @"SELECT o.Pk_Id_Orden_Recibida AS NoOrdenRecibida, o.Id_Externo_Logistica as CodigoOrden
-                                            FROM Tbl_Orden_Recibida o";
+                    string sConsultaPedidos = @"SELECT o.Pk_Id_Orden_Recibida AS NoOrdenRecibida,
+                                                       o.Id_Externo_Logistica AS CodigoOrden
+                                                FROM Tbl_Orden_Recibida o
+                                                WHERE NOT EXISTS
+                                                (
+                                                    SELECT 1
+                                                    FROM Tbl_Plan_Produccion p
+                                                    WHERE p.Fk_Id_Orden_Recibida = o.Pk_Id_Orden_Recibida
+                                                )";
                     OdbcCommand cmd = new OdbcCommand(sConsultaPedidos, con);
                     OdbcDataAdapter da = new OdbcDataAdapter(cmd);
                     da.Fill(tabla);
@@ -54,11 +62,11 @@ namespace Capa_Modelo_Plan
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al obtener las ordenes recibidas " + ex.Message, ex);
+                throw new Exception("Error al obtener las órdenes recibidas " + ex.Message, ex);
             }
+
             return tabla;
         }
-
         public DataTable fun_EstadosPlan()
         {
             DataTable tabla = new DataTable();
@@ -252,5 +260,36 @@ namespace Capa_Modelo_Plan
             }
         }
 
+        public void pro_ActualizarCronograma(int iCodigoCronograma, DateTime fechaInicio, DateTime fechaFin, int iCantidadPersonal, int iEncargado, int iEstado)
+        {
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sActualizar = @"UPDATE Tbl_Cronograma_Fases_Produccion
+                                   SET Fecha_Inicio_Fase = ?,
+                                       Fecha_Fin_Fase = ?,
+                                       Horas_Hombres = ?,
+                                       Fk_Id_Encargado = ?,
+                                       Fk_Id_Estado_Fase = ?
+                                   WHERE Pk_Id_Cronograma_Fase = ?";
+
+                    OdbcCommand cmd = new OdbcCommand(sActualizar, con);
+
+                    cmd.Parameters.AddWithValue("", fechaInicio);
+                    cmd.Parameters.AddWithValue("", fechaFin);
+                    cmd.Parameters.AddWithValue("", iCantidadPersonal);
+                    cmd.Parameters.AddWithValue("", iEncargado);
+                    cmd.Parameters.AddWithValue("", iEstado);
+                    cmd.Parameters.AddWithValue("", iCodigoCronograma);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al actualizar cronograma: " + ex.Message);
+            }
+        }
     }
 }

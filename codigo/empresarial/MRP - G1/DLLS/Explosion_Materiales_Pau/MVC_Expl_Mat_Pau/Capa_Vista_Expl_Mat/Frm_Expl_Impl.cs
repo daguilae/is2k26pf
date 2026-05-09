@@ -110,8 +110,8 @@ namespace Capa_Vista_Expl_Mat
         // Filtro por ID (TextBox)
         private void Filtrar(object sender, EventArgs e)
         {
-            string idBusqueda = Txt_BuscarOrden.Text.Trim();
-            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorId(idBusqueda);
+            string busqueda = Txt_BuscarOrden.Text.Trim();
+            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorNombre(busqueda);
             ConfigurarGrid();
             AgregarBotonVer();
         }
@@ -172,6 +172,63 @@ namespace Capa_Vista_Expl_Mat
         {
             Frm_Expl_Mat frm = new Frm_Expl_Mat();
             frm.ShowDialog();
+            CargarGrid();
+        }
+
+        // Buscar por nombre de orden
+        private void Txt_BuscarOrden_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = Txt_BuscarOrden.Text.Trim();
+            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorNombre(busqueda);
+            ConfigurarGrid();
+            AgregarBotonVer();
+        }
+
+        // Eliminar explosión
+        private void Btn_eliminar_explo_Click(object sender, EventArgs e)
+        {
+            if (Dgv_InformacionExplosion.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una explosión para eliminar.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var valor = Dgv_InformacionExplosion
+                            .SelectedRows[0]
+                            .Cells["No_Explosion"].Value;
+
+            if (valor == null || valor == DBNull.Value) return;
+
+            int idExplosion = Convert.ToInt32(valor);
+
+            var confirm = MessageBox.Show(
+                $"¿Está seguro de eliminar la explosión No. {idExplosion}?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                bool ok = controlador.EliminarExplosion(idExplosion);
+                if (ok)
+                {
+                    MessageBox.Show("Explosión eliminada correctamente.",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrid();
+                }
+                else
+                    MessageBox.Show("Error al eliminar la explosión.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Refrescar encabezado
+        private void Btn_Ref_Click(object sender, EventArgs e)
+        {
+            Txt_BuscarOrden.Text = "";
+            dateTimePicker1.Checked = false;
+            dateTimePicker2.Checked = false;
             CargarGrid();
         }
 
@@ -318,11 +375,6 @@ namespace Capa_Vista_Expl_Mat
             {
                 Cmb_OrdenProduccion_SelectedIndexChanged(sender, e);
             }
-        }
-
-        private void Txt_BuscarOrden_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Btn_BuscarOtraOrden_Click(object sender, EventArgs e)

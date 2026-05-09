@@ -86,6 +86,144 @@ namespace Capa_Modelo_Prod
             return dt;
         }
 
+        // ############################ METODOS PARA MANO DE OBRA #############################################
+        // Mano de obra por orden de producción
+        public DataTable ObtenerManoObra(int idOrden)
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT 
+                m.Pk_Id_Mano_Obra                           AS Id,
+                CONCAT(e.Cmp_Nombres_Empleado, ' ', e.Cmp_Apellidos_Empleado) AS Empleado,
+                m.Hora_Trabajada_Mano_Obra                  AS Horas,
+                m.Costo_Hora_Mano_Obra                      AS CostoHora,
+                m.Subtotal_Mano_Obra                        AS Subtotal
+            FROM Tbl_Mano_Obra m
+            INNER JOIN Tbl_Empleado e ON m.Fk_Id_Empleado = e.Pk_Id_Empleado
+            WHERE m.Fk_Id_Orden_Produccion = ?";
+
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idOrden);
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public bool GuardarManoObra(int idOrden, int idEmpleado, decimal horas, decimal costoHora)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                try
+                {
+                    decimal subtotal = horas * costoHora;
+                    string query = @"
+                INSERT INTO Tbl_Mano_Obra 
+                    (Fk_Id_Orden_Produccion, Fk_Id_Empleado, Hora_Trabajada_Mano_Obra, Costo_Hora_Mano_Obra, Subtotal_Mano_Obra)
+                VALUES (?, ?, ?, ?, ?)";
+
+                    OdbcCommand cmd = new OdbcCommand(query, conn);
+                    cmd.Parameters.AddWithValue("?", idOrden);
+                    cmd.Parameters.AddWithValue("?", idEmpleado);
+                    cmd.Parameters.AddWithValue("?", horas);
+                    cmd.Parameters.AddWithValue("?", costoHora);
+                    cmd.Parameters.AddWithValue("?", subtotal);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error (GuardarManoObra): " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public bool EliminarManoObra(int idManoObra)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                try
+                {
+                    OdbcCommand cmd = new OdbcCommand(
+                        "DELETE FROM Tbl_Mano_Obra WHERE Pk_Id_Mano_Obra = ?", conn);
+                    cmd.Parameters.AddWithValue("?", idManoObra);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error (EliminarManoObra): " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public DataTable ObtenerCostosProduccion(int idOrden)
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT
+                COALESCE((
+                    SELECT SUM(om.Cantidad_Consumida_Orden_Material * i.Costo_Unitario)
+                    FROM Tbl_Orden_Material om
+                    INNER JOIN Tbl_Inventario i ON om.Fk_Id_Materiales = i.Fk_Id_Material
+                    WHERE om.Fk_Id_Orden_Produccion = ?
+                ), 0) AS CostoMateriales,
+
+                COALESCE((
+                    SELECT SUM(mo.Hora_Trabajada_Mano_Obra * mo.Costo_Hora_Mano_Obra)
+                    FROM Tbl_Mano_Obra mo
+                    WHERE mo.Fk_Id_Orden_Produccion = ?
+                ), 0) AS CostoManoObra,
+
+                COALESCE((
+                    SELECT SUM(ci.Monto_Costo_Indirecto_Produccion)
+                    FROM Tbl_Costo_Indirecto_Produccion ci
+                    WHERE ci.Fk_Id_Orden_Produccion = ?
+                ), 0) AS CostoIndirecto,
+
+                COALESCE((
+                    SELECT SUM(me.Cantidad_Merma * i.Costo_Unitario)
+                    FROM Tbl_Merma me
+                    INNER JOIN Tbl_Inventario i ON me.Fk_Id_Materiales = i.Fk_Id_Material
+                    WHERE me.Fk_Id_Orden_Produccion = ?
+                ), 0) AS CostoMermas";
+
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idOrden);
+                cmd.Parameters.AddWithValue("?", idOrden);
+                cmd.Parameters.AddWithValue("?", idOrden);
+                cmd.Parameters.AddWithValue("?", idOrden);
+                OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
+        public DataTable ObtenerEmpleados()
+        {
+            DataTable dt = new DataTable();
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT 
+                Pk_Id_Empleado AS IdEmpleado,
+                CONCAT(Cmp_Nombres_Empleado, ' ', Cmp_Apellidos_Empleado) AS NombreCompleto
+            FROM Tbl_Empleado
+            ORDER BY Cmp_Nombres_Empleado";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        // ############################ METODOS PARA MANO DE OBRA #############################################
 
 
     }

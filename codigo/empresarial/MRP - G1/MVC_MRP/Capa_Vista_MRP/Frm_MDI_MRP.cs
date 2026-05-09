@@ -233,7 +233,7 @@ namespace Capa_Vista_MRP
 
         private void planDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Frm_Plan_Produccion m = new Frm_Plan_Produccion();
+            Frm_Encabezado_Plan m = new Frm_Encabezado_Plan();
             m.MdiParent = this;
             m.Show();
         }
