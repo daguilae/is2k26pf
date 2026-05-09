@@ -67,10 +67,19 @@ namespace Capa_Vista_Orden_Material
             try
             {
                 DataTable dt = _controlador.ObtenerOrdenesCombo();
+                // ✅ AGREGA ESTO TEMPORALMENTE
+                MessageBox.Show("Filas obtenidas del combo: " + dt.Rows.Count.ToString());
+
                 Cmb_ID.DataSource = dt;
                 Cmb_ID.DisplayMember = "OrdenDescripcion";
                 Cmb_ID.ValueMember = "IdOrden";
                 Cmb_ID.SelectedIndex = -1;
+
+            }
+            catch (Exception ex)
+            {
+                // ✅ AGREGA ESTO TAMBIÉN
+                MessageBox.Show("Error en CargarComboOrdenes: " + ex.Message);
             }
             finally
             {
@@ -179,6 +188,10 @@ namespace Capa_Vista_Orden_Material
             Dgv_Materiales.Rows.Clear();
 
             DataTable dt = _controlador.ObtenerDetalleOrden(idOrden);
+
+            // ✅ AGREGA ESTO TEMPORALMENTE
+            MessageBox.Show("Filas de detalle para orden " + idOrden + ": " + dt.Rows.Count.ToString());
+
 
             foreach (DataRow row in dt.Rows)
             {
