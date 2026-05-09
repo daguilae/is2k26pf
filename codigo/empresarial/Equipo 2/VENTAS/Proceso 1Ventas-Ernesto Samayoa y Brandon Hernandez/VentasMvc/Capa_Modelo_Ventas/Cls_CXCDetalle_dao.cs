@@ -63,11 +63,10 @@ namespace Capa_Modelo_Ventas
                 Fk_Id_Tipo_Operacion,
                 Cmp_No_Documento,
                 Cmp_Fecha_Pago,
-                Cmp_Tipo_Pago,
                 Cmp_Monto_Pagado,
                 Cmp_Saldo_Pendiente
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+            VALUES (?, ?, ?, ?, ?, ?)";
 
                 using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
@@ -76,7 +75,7 @@ namespace Capa_Modelo_Ventas
                     cmd.Parameters.Add("idTipo", OdbcType.Int).Value = detalle.Fk_Id_Tipo_Operacion;
                     cmd.Parameters.Add("documento", OdbcType.VarChar, 50).Value = detalle.Cmp_No_Documento ?? "";
                     cmd.Parameters.Add("fechaPago", OdbcType.Date).Value = detalle.Cmp_Fecha_Pago.Date;
-                    cmd.Parameters.Add("tipoPago", OdbcType.VarChar, 50).Value = detalle.Cmp_Tipo_Pago;
+                    
                     cmd.Parameters.Add("montoPagado", OdbcType.Real).Value = detalle.Cmp_Monto_Pagado;
                     cmd.Parameters.Add("saldoPendiente", OdbcType.Real).Value = detalle.Cmp_Saldo_Pendiente;
 

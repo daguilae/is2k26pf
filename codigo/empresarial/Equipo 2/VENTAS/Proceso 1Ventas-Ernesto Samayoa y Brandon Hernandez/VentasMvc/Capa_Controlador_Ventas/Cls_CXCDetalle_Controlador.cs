@@ -69,7 +69,6 @@ namespace Capa_Controlador_Ventas
                     iFk_Id_Tipo_Operacion: idTipoOperacion,
                     sCmp_No_Documento: numeroDocumento ?? "",
                     dCmp_Fecha_Pago: DateTime.Now,
-                    sCmp_Tipo_Pago: tipoPago,
                     fCmp_Monto_Pagado: (float)montoPagado,
                     fCmp_Saldo_Pendiente: (float)saldoPendiente
                 );

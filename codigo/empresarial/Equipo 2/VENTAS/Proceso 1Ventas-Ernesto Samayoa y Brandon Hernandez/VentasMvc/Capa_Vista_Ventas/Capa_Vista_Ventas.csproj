@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_CXC_Detalle_NAV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CXC_Detalle_NAV.Designer.cs">
+      <DependentUpon>Frm_CXC_Detalle_NAV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cls_TipoOperacion.cs" />
     <Compile Include="Frm_Asignacion_Clientes.cs">
       <SubType>Form</SubType>
@@ -224,6 +230,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_CXC_Detalle_NAV.resx">
+      <DependentUpon>Frm_CXC_Detalle_NAV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Asignacion_Clientes.resx">
       <DependentUpon>Frm_Asignacion_Clientes.cs</DependentUpon>
     </EmbeddedResource>

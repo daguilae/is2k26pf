@@ -142,8 +142,9 @@ namespace Capa_Vista_Logista
                 {723, transportesToolStripMenuItem},
                 {726, inventarioToolStripMenuItem},
                 {727, sucursalesToolStripMenuItem},
-                {713, devoluconToolStripMenuItem}   
+                {713, devoluconToolStripMenuItem},
                 //{730, consultaDeInventariosToolStripMenuItem_Click},
+                {732,cuentasPorCobrarDetalleToolStripMenuItem}
             };
 
             foreach (var sub in mapaCatalogos.Values) sub.Enabled = false;
@@ -476,6 +477,14 @@ namespace Capa_Vista_Logista
             Frm_Politicas_Descuentos politicas_Descuentos = new Frm_Politicas_Descuentos();
             politicas_Descuentos.MdiParent = this;
             politicas_Descuentos.Show();
+        }
+
+        private void cuentasPorCobrarDetalleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_CXC_Detalle_NAV CXC_detalle = new Frm_CXC_Detalle_NAV();
+            CXC_detalle.MdiParent = this;
+            CXC_detalle.Show();
+
         }
     }
 }

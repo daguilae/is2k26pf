@@ -43,7 +43,7 @@ namespace Capa_Modelo_Ventas
         public int Fk_Id_Tipo_Operacion { get; set; }
         public string Cmp_No_Documento { get; set; }
         public DateTime Cmp_Fecha_Pago { get; set; }
-        public string Cmp_Tipo_Pago { get; set; }
+
         public float Cmp_Monto_Pagado { get; set; }
         public float Cmp_Saldo_Pendiente { get; set; }
 
@@ -55,7 +55,6 @@ namespace Capa_Modelo_Ventas
             int iFk_Id_Tipo_Operacion,
             string sCmp_No_Documento,
             DateTime dCmp_Fecha_Pago,
-            string sCmp_Tipo_Pago,
             float fCmp_Monto_Pagado,
             float fCmp_Saldo_Pendiente)
         {
@@ -64,7 +63,7 @@ namespace Capa_Modelo_Ventas
             Fk_Id_Tipo_Operacion = iFk_Id_Tipo_Operacion;
             Cmp_No_Documento = sCmp_No_Documento;
             Cmp_Fecha_Pago = dCmp_Fecha_Pago;
-            Cmp_Tipo_Pago = sCmp_Tipo_Pago;
+  
             Cmp_Monto_Pagado = fCmp_Monto_Pagado;
             Cmp_Saldo_Pendiente = fCmp_Saldo_Pendiente;
         }
