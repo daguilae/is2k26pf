@@ -145,7 +145,7 @@ namespace Capa_Modelo_Compras
                         dc.fk_inventario_id AS IdInventario,
                         i.nombre_prod AS Producto,
                         dc.cmp_cantidad AS CantidadComprada,
-                        dc.cmp_unidad AS Unidad,
+                        um.Nombre_Unidad AS Unidad,
                         dc.cmp_precio AS PrecioUnitario,
                         (dc.cmp_cantidad * dc.cmp_precio) AS Subtotal
                     FROM tbl_detalle_compra dc

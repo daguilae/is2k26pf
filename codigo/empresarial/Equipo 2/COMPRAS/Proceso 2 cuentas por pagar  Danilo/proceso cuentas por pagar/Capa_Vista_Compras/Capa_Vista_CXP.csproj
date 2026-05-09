@@ -66,6 +66,12 @@
     <Compile Include="Frm_Compras_CXP.Designer.cs">
       <DependentUpon>Frm_Compras_CXP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Compra_manual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Compra_manual.Designer.cs">
+      <DependentUpon>Frm_Compra_manual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Devoluciones_d.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Compras_CXP.resx">
       <DependentUpon>Frm_Compras_CXP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Compra_manual.resx">
+      <DependentUpon>Frm_Compra_manual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Devoluciones_d.resx">
       <DependentUpon>Frm_Devoluciones_d.cs</DependentUpon>

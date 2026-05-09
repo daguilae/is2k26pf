@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_vista_Factura;
+using Capa_Vista_CXP;
+using Capa_Vista_Compras;
+
 
 namespace Ejecución_Compras
 {
@@ -17,7 +20,7 @@ namespace Ejecución_Compras
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_factura());
+            Application.Run(new Frm_inicio_CXP());
         }
     }
 }
