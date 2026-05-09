@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_inicio_CXP));
-            this.button13 = new System.Windows.Forms.Button();
+            this.Btn_salir = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_refrescar = new System.Windows.Forms.Button();
+            this.Btn_imprimir = new System.Windows.Forms.Button();
+            this.Btn_consultar = new System.Windows.Forms.Button();
+            this.Btn_eliminar = new System.Windows.Forms.Button();
+            this.Btn_cancelar = new System.Windows.Forms.Button();
+            this.Btn_guardar = new System.Windows.Forms.Button();
+            this.Btn_modificar = new System.Windows.Forms.Button();
             this.Btn_ingresar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Lbl_compras = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Dgv_inicio = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_inicio)).BeginInit();
             this.SuspendLayout();
             // 
-            // button13
+            // Btn_salir
             // 
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button13.Image = global::Capa_Vista_Compras.Properties.Resources.sign_emergency_code_sos_61_icon_icons_com_57216;
-            this.button13.Location = new System.Drawing.Point(1051, 67);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(74, 87);
-            this.button13.TabIndex = 65;
-            this.button13.Text = "Fin";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button13.UseVisualStyleBackColor = true;
+            this.Btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_salir.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_salir.Image = global::Capa_Vista_Compras.Properties.Resources.sign_emergency_code_sos_61_icon_icons_com_57216;
+            this.Btn_salir.Location = new System.Drawing.Point(1051, 67);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(74, 87);
+            this.Btn_salir.TabIndex = 65;
+            this.Btn_salir.Text = "Fin";
+            this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_salir.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
@@ -128,96 +128,96 @@
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // Btn_refrescar
             // 
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button7.Image = global::Capa_Vista_Compras.Properties.Resources.refresh_page_arrow_button_icon_icons_com_53909;
-            this.button7.Location = new System.Drawing.Point(571, 67);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(74, 87);
-            this.button7.TabIndex = 59;
-            this.button7.Text = "Refrescar";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button7.UseVisualStyleBackColor = true;
+            this.Btn_refrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_refrescar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_refrescar.Image = global::Capa_Vista_Compras.Properties.Resources.refresh_page_arrow_button_icon_icons_com_53909;
+            this.Btn_refrescar.Location = new System.Drawing.Point(571, 67);
+            this.Btn_refrescar.Name = "Btn_refrescar";
+            this.Btn_refrescar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_refrescar.TabIndex = 59;
+            this.Btn_refrescar.Text = "Refrescar";
+            this.Btn_refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_refrescar.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // Btn_imprimir
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button6.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
-            this.button6.Location = new System.Drawing.Point(491, 67);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(74, 87);
-            this.button6.TabIndex = 58;
-            this.button6.Text = "Imprimir";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_imprimir.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_imprimir.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
+            this.Btn_imprimir.Location = new System.Drawing.Point(491, 67);
+            this.Btn_imprimir.Name = "Btn_imprimir";
+            this.Btn_imprimir.Size = new System.Drawing.Size(74, 87);
+            this.Btn_imprimir.TabIndex = 58;
+            this.Btn_imprimir.Text = "Imprimir";
+            this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_imprimir.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // Btn_consultar
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(411, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(74, 87);
-            this.button5.TabIndex = 57;
-            this.button5.Text = "Consultar";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
+            this.Btn_consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_consultar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_consultar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_consultar.Image")));
+            this.Btn_consultar.Location = new System.Drawing.Point(411, 67);
+            this.Btn_consultar.Name = "Btn_consultar";
+            this.Btn_consultar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_consultar.TabIndex = 57;
+            this.Btn_consultar.Text = "Consultar";
+            this.Btn_consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_consultar.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // Btn_eliminar
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button4.Image = global::Capa_Vista_Compras.Properties.Resources.delete_remove_trash_icon_177304;
-            this.button4.Location = new System.Drawing.Point(331, 67);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(74, 87);
-            this.button4.TabIndex = 56;
-            this.button4.Text = "Eliminar";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_eliminar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_eliminar.Image = global::Capa_Vista_Compras.Properties.Resources.delete_remove_trash_icon_177304;
+            this.Btn_eliminar.Location = new System.Drawing.Point(331, 67);
+            this.Btn_eliminar.Name = "Btn_eliminar";
+            this.Btn_eliminar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_eliminar.TabIndex = 56;
+            this.Btn_eliminar.Text = "Eliminar";
+            this.Btn_eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_eliminar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Btn_cancelar
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button3.Image = global::Capa_Vista_Compras.Properties.Resources.Cancel_icon_icons_com_73703;
-            this.button3.Location = new System.Drawing.Point(251, 67);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 87);
-            this.button3.TabIndex = 55;
-            this.button3.Text = "Cancelar";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cancelar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_cancelar.Image = global::Capa_Vista_Compras.Properties.Resources.Cancel_icon_icons_com_73703;
+            this.Btn_cancelar.Location = new System.Drawing.Point(251, 67);
+            this.Btn_cancelar.Name = "Btn_cancelar";
+            this.Btn_cancelar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_cancelar.TabIndex = 55;
+            this.Btn_cancelar.Text = "Cancelar";
+            this.Btn_cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_cancelar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Btn_guardar
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button2.Image = global::Capa_Vista_Compras.Properties.Resources.savetheapplication_guardar_2958;
-            this.button2.Location = new System.Drawing.Point(171, 67);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 87);
-            this.button2.TabIndex = 54;
-            this.button2.Text = "Guardar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.Btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_guardar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_guardar.Image = global::Capa_Vista_Compras.Properties.Resources.savetheapplication_guardar_2958;
+            this.Btn_guardar.Location = new System.Drawing.Point(171, 67);
+            this.Btn_guardar.Name = "Btn_guardar";
+            this.Btn_guardar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_guardar.TabIndex = 54;
+            this.Btn_guardar.Text = "Guardar";
+            this.Btn_guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_guardar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // Btn_modificar
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button1.Image = global::Capa_Vista_Compras.Properties.Resources.compose_edit_modify_icon_177770;
-            this.button1.Location = new System.Drawing.Point(91, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 87);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Modificar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_modificar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_modificar.Image = global::Capa_Vista_Compras.Properties.Resources.compose_edit_modify_icon_177770;
+            this.Btn_modificar.Location = new System.Drawing.Point(91, 67);
+            this.Btn_modificar.Name = "Btn_modificar";
+            this.Btn_modificar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_modificar.TabIndex = 53;
+            this.Btn_modificar.Text = "Modificar";
+            this.Btn_modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_modificar.UseVisualStyleBackColor = true;
             // 
             // Btn_ingresar
             // 
@@ -255,62 +255,62 @@
             this.Lbl_compras.TabIndex = 31;
             this.Lbl_compras.Text = "715-CUENTAS POR PAGAR";
             // 
-            // dataGridView1
+            // Dgv_inicio
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 176);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1114, 150);
-            this.dataGridView1.TabIndex = 66;
+            this.Dgv_inicio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_inicio.Location = new System.Drawing.Point(11, 200);
+            this.Dgv_inicio.Name = "Dgv_inicio";
+            this.Dgv_inicio.Size = new System.Drawing.Size(1137, 208);
+            this.Dgv_inicio.TabIndex = 66;
             // 
             // Frm_inicio_CXP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.Dgv_inicio);
+            this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_refrescar);
+            this.Controls.Add(this.Btn_imprimir);
+            this.Controls.Add(this.Btn_consultar);
+            this.Controls.Add(this.Btn_eliminar);
+            this.Controls.Add(this.Btn_cancelar);
+            this.Controls.Add(this.Btn_guardar);
+            this.Controls.Add(this.Btn_modificar);
             this.Controls.Add(this.Btn_ingresar);
             this.Controls.Add(this.panel1);
             this.Name = "Frm_inicio_CXP";
             this.Text = "inicio_CXP";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_inicio)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button Btn_salir;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_refrescar;
+        private System.Windows.Forms.Button Btn_imprimir;
+        private System.Windows.Forms.Button Btn_consultar;
+        private System.Windows.Forms.Button Btn_eliminar;
+        private System.Windows.Forms.Button Btn_cancelar;
+        private System.Windows.Forms.Button Btn_guardar;
+        private System.Windows.Forms.Button Btn_modificar;
         private System.Windows.Forms.Button Btn_ingresar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Lbl_compras;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Dgv_inicio;
     }
 }

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Vista_Compras">
+      <HintPath>..\..\..\..\Proceso 2 cuentas por pagar  Danilo\proceso cuentas por pagar\Capa_Vista_Compras\bin\Debug\Capa_Vista_Compras.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_vista_Factura">
       <HintPath>..\..\..\Frm_facturas\Capa_vista_Factura\bin\Debug\Capa_vista_Factura.dll</HintPath>
     </Reference>
