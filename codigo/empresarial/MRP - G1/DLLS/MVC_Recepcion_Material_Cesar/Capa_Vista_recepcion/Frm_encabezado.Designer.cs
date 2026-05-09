@@ -64,23 +64,23 @@ namespace Capa_Vista_recepcion
             this.Cmb_Id.Location = new System.Drawing.Point(121, 109);
             this.Cmb_Id.Margin = new System.Windows.Forms.Padding(4);
             this.Cmb_Id.Name = "Cmb_Id";
-            this.Cmb_Id.Size = new System.Drawing.Size(177, 21);
+            this.Cmb_Id.Size = new System.Drawing.Size(134, 21);
             this.Cmb_Id.TabIndex = 43;
             // 
             // Cmb_Estado
             // 
             this.Cmb_Estado.FormattingEnabled = true;
-            this.Cmb_Estado.Location = new System.Drawing.Point(405, 111);
+            this.Cmb_Estado.Location = new System.Drawing.Point(351, 109);
             this.Cmb_Estado.Margin = new System.Windows.Forms.Padding(4);
             this.Cmb_Estado.Name = "Cmb_Estado";
-            this.Cmb_Estado.Size = new System.Drawing.Size(177, 21);
+            this.Cmb_Estado.Size = new System.Drawing.Size(134, 21);
             this.Cmb_Estado.TabIndex = 42;
             // 
             // Lbl_Estado
             // 
             this.Lbl_Estado.AutoSize = true;
             this.Lbl_Estado.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Estado.Location = new System.Drawing.Point(328, 109);
+            this.Lbl_Estado.Location = new System.Drawing.Point(272, 107);
             this.Lbl_Estado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Estado.Name = "Lbl_Estado";
             this.Lbl_Estado.Size = new System.Drawing.Size(81, 23);
@@ -90,10 +90,10 @@ namespace Capa_Vista_recepcion
             // Btn_crear
             // 
             this.Btn_crear.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_crear.Location = new System.Drawing.Point(1461, 110);
+            this.Btn_crear.Location = new System.Drawing.Point(1224, 106);
             this.Btn_crear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_crear.Name = "Btn_crear";
-            this.Btn_crear.Size = new System.Drawing.Size(187, 30);
+            this.Btn_crear.Size = new System.Drawing.Size(137, 30);
             this.Btn_crear.TabIndex = 40;
             this.Btn_crear.Text = "Crear Nueva Receta";
             this.Btn_crear.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@ namespace Capa_Vista_recepcion
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Highlight;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(13, 46);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(11, 46);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1676, 12);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1364, 12);
             this.flowLayoutPanel2.TabIndex = 39;
             // 
             // Lbl_listado
@@ -115,25 +115,25 @@ namespace Capa_Vista_recepcion
             this.Lbl_listado.Location = new System.Drawing.Point(6, 7);
             this.Lbl_listado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_listado.Name = "Lbl_listado";
-            this.Lbl_listado.Size = new System.Drawing.Size(340, 29);
+            this.Lbl_listado.Size = new System.Drawing.Size(366, 29);
             this.Lbl_listado.TabIndex = 38;
-            this.Lbl_listado.Text = "Listado de Recetas Creadas";
+            this.Lbl_listado.Text = "Listado Recepcion Materiales";
             // 
             // Dg_BOM
             // 
             this.Dg_BOM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dg_BOM.Location = new System.Drawing.Point(13, 160);
+            this.Dg_BOM.Location = new System.Drawing.Point(11, 154);
             this.Dg_BOM.Margin = new System.Windows.Forms.Padding(4);
             this.Dg_BOM.Name = "Dg_BOM";
             this.Dg_BOM.RowHeadersWidth = 51;
-            this.Dg_BOM.Size = new System.Drawing.Size(1533, 481);
+            this.Dg_BOM.Size = new System.Drawing.Size(1289, 391);
             this.Dg_BOM.TabIndex = 37;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1099, 113);
+            this.label5.Location = new System.Drawing.Point(924, 109);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 23);
@@ -144,7 +144,7 @@ namespace Capa_Vista_recepcion
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(678, 112);
+            this.label4.Location = new System.Drawing.Point(573, 109);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 23);
@@ -153,25 +153,25 @@ namespace Capa_Vista_recepcion
             // 
             // Dtp_Ingreso
             // 
-            this.Dtp_Ingreso.Location = new System.Drawing.Point(1189, 114);
+            this.Dtp_Ingreso.Location = new System.Drawing.Point(1008, 112);
             this.Dtp_Ingreso.Margin = new System.Windows.Forms.Padding(4);
             this.Dtp_Ingreso.Name = "Dtp_Ingreso";
-            this.Dtp_Ingreso.Size = new System.Drawing.Size(265, 20);
+            this.Dtp_Ingreso.Size = new System.Drawing.Size(209, 20);
             this.Dtp_Ingreso.TabIndex = 34;
             // 
             // Dtp_Noti
             // 
-            this.Dtp_Noti.Location = new System.Drawing.Point(820, 112);
+            this.Dtp_Noti.Location = new System.Drawing.Point(707, 112);
             this.Dtp_Noti.Margin = new System.Windows.Forms.Padding(4);
             this.Dtp_Noti.Name = "Dtp_Noti";
-            this.Dtp_Noti.Size = new System.Drawing.Size(265, 20);
+            this.Dtp_Noti.Size = new System.Drawing.Size(210, 20);
             this.Dtp_Noti.TabIndex = 33;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(603, 111);
+            this.label3.Location = new System.Drawing.Point(498, 108);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 23);
@@ -182,19 +182,20 @@ namespace Capa_Vista_recepcion
             // 
             this.Btn_Limpiar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Limpiar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Limpiar.Image")));
-            this.Btn_Limpiar.Location = new System.Drawing.Point(1574, 251);
+            this.Btn_Limpiar.Location = new System.Drawing.Point(1307, 248);
             this.Btn_Limpiar.Name = "Btn_Limpiar";
-            this.Btn_Limpiar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_Limpiar.Size = new System.Drawing.Size(74, 71);
             this.Btn_Limpiar.TabIndex = 45;
-            this.Btn_Limpiar.Text = "limpiar";
+            this.Btn_Limpiar.Text = "Refrescar";
             this.Btn_Limpiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Limpiar.UseVisualStyleBackColor = true;
             this.Btn_Limpiar.Click += new System.EventHandler(this.Btn_Limpiar_Click);
             // 
             // Frm_encabezado
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1660, 707);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1388, 571);
             this.Controls.Add(this.Btn_Limpiar);
             this.Controls.Add(this.Lbl_id);
             this.Controls.Add(this.Cmb_Id);
