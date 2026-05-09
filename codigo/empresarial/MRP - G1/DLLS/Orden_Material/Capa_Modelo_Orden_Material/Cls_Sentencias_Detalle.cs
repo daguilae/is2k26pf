@@ -10,14 +10,10 @@ namespace Capa_Modelo_Orden_Material
     {
         private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-        // -------------------------------------------------------
-        // Obtener todas las órdenes de material para el ComboBox
-        // Muestra: ID Orden Material, Estado, Fecha Recibida, Fecha Solicitud
-        // -------------------------------------------------------
         public DataTable ObtenerOrdenesCombo()
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) // ✅ CORREGIDO
             {
                 string query = @"
                     SELECT 
@@ -42,13 +38,10 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener datos del encabezado de una orden por su ID
-        // -------------------------------------------------------
         public DataTable ObtenerOrdenPorId(int idOrden)
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) // ✅ CORREGIDO
             {
                 string query = @"
                     SELECT 
@@ -71,14 +64,10 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener el detalle (materiales) de una orden
-        // Columnas: Código, Nombre, Cant. Solicitada, Cant. Entregada, Cant. Pendiente
-        // -------------------------------------------------------
         public DataTable ObtenerDetalleOrden(int idOrden)
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) // ✅ CORREGIDO
             {
                 string query = @"
                     SELECT 
@@ -106,13 +95,10 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener catálogo de estados para el ComboBox
-        // -------------------------------------------------------
         public DataTable ObtenerEstadosOrden()
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) // ✅ CORREGIDO
             {
                 string query = @"
                     SELECT 
@@ -127,14 +113,12 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Modificar el encabezado de una orden de material
-        // Solo permite cambiar Estado y Fecha_Recibida
-        // -------------------------------------------------------
         public bool ModificarOrden(int idOrden, int idEstado, DateTime? fechaRecibida)
         {
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) // ✅ CORREGIDO
             {
+                conn.Open(); // ✅ AGREGADO — obligatorio para ExecuteNonQuery
+
                 string query = @"
                     UPDATE Encabezado_Orden_Material
                     SET 
@@ -144,7 +128,8 @@ namespace Capa_Modelo_Orden_Material
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
                 cmd.Parameters.AddWithValue("?", idEstado);
-                cmd.Parameters.AddWithValue("?", fechaRecibida.HasValue ? (object)fechaRecibida.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("?",
+                    fechaRecibida.HasValue ? (object)fechaRecibida.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("?", idOrden);
 
                 int filas = cmd.ExecuteNonQuery();

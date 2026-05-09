@@ -56,8 +56,8 @@ namespace Capa_Vista_Orden_Material
             this.label9 = new System.Windows.Forms.Label();
             this.Dgv_Materiales = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Dtp_Requerida = new System.Windows.Forms.DateTimePicker();
-            this.Dtp_Recepcion = new System.Windows.Forms.DateTimePicker();
+            this.Dtp_Recibida = new System.Windows.Forms.DateTimePicker();
+            this.Dtp_Solicitud = new System.Windows.Forms.DateTimePicker();
             this.Cmb_Estado = new System.Windows.Forms.ComboBox();
             this.Cmb_ID = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -119,6 +119,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_ayuda
             // 
@@ -143,6 +144,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_fin.Text = "Fin";
             this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_fin.UseVisualStyleBackColor = true;
+            this.Btn_fin.Click += new System.EventHandler(this.Btn_fin_Click);
             // 
             // Btn_sig
             // 
@@ -155,6 +157,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_sig.Text = "Siguiente";
             this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_sig.UseVisualStyleBackColor = true;
+            this.Btn_sig.Click += new System.EventHandler(this.Btn_sig_Click);
             // 
             // Btn_anterior
             // 
@@ -167,6 +170,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_anterior.Text = "Anterior";
             this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_anterior.UseVisualStyleBackColor = true;
+            this.Btn_anterior.Click += new System.EventHandler(this.Btn_anterior_Click);
             // 
             // Btn_inicio
             // 
@@ -179,6 +183,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_inicio.Text = "Inicio";
             this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_inicio.UseVisualStyleBackColor = true;
+            this.Btn_inicio.Click += new System.EventHandler(this.Btn_inicio_Click);
             // 
             // Btn_refrescar
             // 
@@ -191,6 +196,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_refrescar.Text = "Refrescar";
             this.Btn_refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_refrescar.UseVisualStyleBackColor = true;
+            this.Btn_refrescar.Click += new System.EventHandler(this.Btn_refrescar_Click);
             // 
             // Btn_imprimir
             // 
@@ -215,6 +221,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_consultar.Text = "Consultar";
             this.Btn_consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_consultar.UseVisualStyleBackColor = true;
+            this.Btn_consultar.Click += new System.EventHandler(this.Btn_consultar_Click);
             // 
             // Btn_eliminar
             // 
@@ -239,6 +246,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_cancelar.Text = "Cancelar";
             this.Btn_cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_cancelar.UseVisualStyleBackColor = true;
+            this.Btn_cancelar.Click += new System.EventHandler(this.Btn_cancelar_Click);
             // 
             // Btn_guardar
             // 
@@ -251,6 +259,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_guardar.Text = "Guardar";
             this.Btn_guardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_guardar.UseVisualStyleBackColor = true;
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Btn_modificar
             // 
@@ -264,6 +273,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_modificar.Text = "Modificar";
             this.Btn_modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_modificar.UseVisualStyleBackColor = true;
+            this.Btn_modificar.Click += new System.EventHandler(this.Btn_modificar_Click);
             // 
             // Btn_ingresar
             // 
@@ -377,8 +387,8 @@ namespace Capa_Vista_Orden_Material
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.Dtp_Requerida);
-            this.panel2.Controls.Add(this.Dtp_Recepcion);
+            this.panel2.Controls.Add(this.Dtp_Recibida);
+            this.panel2.Controls.Add(this.Dtp_Solicitud);
             this.panel2.Controls.Add(this.Cmb_Estado);
             this.panel2.Controls.Add(this.Cmb_ID);
             this.panel2.Controls.Add(this.label7);
@@ -391,19 +401,19 @@ namespace Capa_Vista_Orden_Material
             this.panel2.Size = new System.Drawing.Size(309, 493);
             this.panel2.TabIndex = 13;
             // 
-            // Dtp_Requerida
+            // Dtp_Recibida
             // 
-            this.Dtp_Requerida.Location = new System.Drawing.Point(18, 245);
-            this.Dtp_Requerida.Name = "Dtp_Requerida";
-            this.Dtp_Requerida.Size = new System.Drawing.Size(273, 20);
-            this.Dtp_Requerida.TabIndex = 25;
+            this.Dtp_Recibida.Location = new System.Drawing.Point(18, 245);
+            this.Dtp_Recibida.Name = "Dtp_Recibida";
+            this.Dtp_Recibida.Size = new System.Drawing.Size(273, 20);
+            this.Dtp_Recibida.TabIndex = 25;
             // 
-            // Dtp_Recepcion
+            // Dtp_Solicitud
             // 
-            this.Dtp_Recepcion.Location = new System.Drawing.Point(18, 196);
-            this.Dtp_Recepcion.Name = "Dtp_Recepcion";
-            this.Dtp_Recepcion.Size = new System.Drawing.Size(273, 20);
-            this.Dtp_Recepcion.TabIndex = 24;
+            this.Dtp_Solicitud.Location = new System.Drawing.Point(18, 196);
+            this.Dtp_Solicitud.Name = "Dtp_Solicitud";
+            this.Dtp_Solicitud.Size = new System.Drawing.Size(273, 20);
+            this.Dtp_Solicitud.TabIndex = 24;
             // 
             // Cmb_Estado
             // 
@@ -420,6 +430,8 @@ namespace Capa_Vista_Orden_Material
             this.Cmb_ID.Name = "Cmb_ID";
             this.Cmb_ID.Size = new System.Drawing.Size(273, 21);
             this.Cmb_ID.TabIndex = 22;
+            this.Cmb_ID.SelectionChangeCommitted += new System.EventHandler(this.Frm_Detalle_Orden_Material_Load);
+            this.Cmb_ID.Click += new System.EventHandler(this.Cmb_ID_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -537,8 +549,8 @@ namespace Capa_Vista_Orden_Material
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView Dgv_Materiales;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker Dtp_Requerida;
-        private System.Windows.Forms.DateTimePicker Dtp_Recepcion;
+        private System.Windows.Forms.DateTimePicker Dtp_Recibida;
+        private System.Windows.Forms.DateTimePicker Dtp_Solicitud;
         private System.Windows.Forms.ComboBox Cmb_Estado;
         private System.Windows.Forms.ComboBox Cmb_ID;
         private System.Windows.Forms.Label label7;
