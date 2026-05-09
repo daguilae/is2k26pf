@@ -57,13 +57,6 @@ namespace Capa_vista_orden_compra
             this.Txt_PrecioUnitario = new System.Windows.Forms.TextBox();
             this.Lbl_DetalleProductos = new System.Windows.Forms.Label();
             this.Dgv_DetalleProductos = new System.Windows.Forms.DataGridView();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Txt_total = new System.Windows.Forms.TextBox();
             this.Btn_Inicio = new System.Windows.Forms.Button();
@@ -83,6 +76,14 @@ namespace Capa_vista_orden_compra
             this.Btn_Siguiente = new System.Windows.Forms.Button();
             this.Btn_fin = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columnidunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -399,7 +400,8 @@ namespace Capa_vista_orden_compra
             this.ColumnCantidad,
             this.ColumnPrecioUnitario,
             this.ColumnSubtotal,
-            this.ColumnTotal});
+            this.ColumnTotal,
+            this.Columnidunidad});
             this.Dgv_DetalleProductos.Location = new System.Drawing.Point(47, 437);
             this.Dgv_DetalleProductos.Margin = new System.Windows.Forms.Padding(2);
             this.Dgv_DetalleProductos.Name = "Dgv_DetalleProductos";
@@ -407,41 +409,6 @@ namespace Capa_vista_orden_compra
             this.Dgv_DetalleProductos.RowTemplate.Height = 24;
             this.Dgv_DetalleProductos.Size = new System.Drawing.Size(883, 185);
             this.Dgv_DetalleProductos.TabIndex = 53;
-            // 
-            // ColumnCodigo
-            // 
-            this.ColumnCodigo.HeaderText = "Codigo";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            // 
-            // ColumnProducto
-            // 
-            this.ColumnProducto.HeaderText = "Producto";
-            this.ColumnProducto.Name = "ColumnProducto";
-            // 
-            // ColumnUnidad
-            // 
-            this.ColumnUnidad.HeaderText = "Unidad de Medida";
-            this.ColumnUnidad.Name = "ColumnUnidad";
-            // 
-            // ColumnCantidad
-            // 
-            this.ColumnCantidad.HeaderText = "Cantidad";
-            this.ColumnCantidad.Name = "ColumnCantidad";
-            // 
-            // ColumnPrecioUnitario
-            // 
-            this.ColumnPrecioUnitario.HeaderText = "Precio Unitario";
-            this.ColumnPrecioUnitario.Name = "ColumnPrecioUnitario";
-            // 
-            // ColumnSubtotal
-            // 
-            this.ColumnSubtotal.HeaderText = "Subtotal";
-            this.ColumnSubtotal.Name = "ColumnSubtotal";
-            // 
-            // ColumnTotal
-            // 
-            this.ColumnTotal.HeaderText = "Total";
-            this.ColumnTotal.Name = "ColumnTotal";
             // 
             // Lbl_Total
             // 
@@ -743,6 +710,47 @@ namespace Capa_vista_orden_compra
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
             // 
+            // ColumnCodigo
+            // 
+            this.ColumnCodigo.HeaderText = "Codigo";
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            // 
+            // ColumnProducto
+            // 
+            this.ColumnProducto.HeaderText = "Producto";
+            this.ColumnProducto.Name = "ColumnProducto";
+            // 
+            // ColumnUnidad
+            // 
+            this.ColumnUnidad.HeaderText = "Unidad de Medida";
+            this.ColumnUnidad.Name = "ColumnUnidad";
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.HeaderText = "Cantidad";
+            this.ColumnCantidad.Name = "ColumnCantidad";
+            // 
+            // ColumnPrecioUnitario
+            // 
+            this.ColumnPrecioUnitario.HeaderText = "Precio Unitario";
+            this.ColumnPrecioUnitario.Name = "ColumnPrecioUnitario";
+            // 
+            // ColumnSubtotal
+            // 
+            this.ColumnSubtotal.HeaderText = "Subtotal";
+            this.ColumnSubtotal.Name = "ColumnSubtotal";
+            // 
+            // ColumnTotal
+            // 
+            this.ColumnTotal.HeaderText = "Total";
+            this.ColumnTotal.Name = "ColumnTotal";
+            // 
+            // Columnidunidad
+            // 
+            this.Columnidunidad.HeaderText = "idunidad";
+            this.Columnidunidad.Name = "Columnidunidad";
+            this.Columnidunidad.Visible = false;
+            // 
             // Frm_detalle_orden_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,13 +833,6 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.ComboBox Cmb_bodega;
         private System.Windows.Forms.ComboBox Cmb_proveedor;
         private System.Windows.Forms.ComboBox Cmb_producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
         private System.Windows.Forms.Button Btn_Consultar;
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Imprimir;
@@ -840,5 +841,13 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.Button Btn_Siguiente;
         private System.Windows.Forms.Button Btn_fin;
         private System.Windows.Forms.Button Btn_Ayuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columnidunidad;
     }
 }
