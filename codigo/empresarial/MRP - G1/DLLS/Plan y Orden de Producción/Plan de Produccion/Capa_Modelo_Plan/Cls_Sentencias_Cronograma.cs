@@ -12,6 +12,31 @@ namespace Capa_Modelo_Plan
     public class Cls_Sentencias_Cronograma
     {
         Cls_Conexion conexion = new Cls_Conexion();
+        public DataTable fun_ObtenerDatosPlan(int iCodigoPlan)
+        {
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sConsultaPlan = @"SELECT p.Fk_Id_Orden_Recibida AS NoOrdenRecibida, p.Descripcion_Plan_Produccion AS Descripcion,
+                                            p.Fecha_Plan_Produccion AS Fecha,  e.Nombre_Estado_Plan_Produccion AS EstadoPlan
+                                            FROM Tbl_Plan_Produccion p
+                                            JOIN Tbl_Estado_Plan_Produccion e ON p.Fk_Id_Estado_Plan_Produccion = e.Pk_Id_Estado_Plan_Produccion
+                                            WHERE p.Pk_Id_Plan_Produccion = ?";
+                    OdbcCommand cmd = new OdbcCommand(sConsultaPlan, con);
+                    cmd.Parameters.AddWithValue("", iCodigoPlan);
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener datos del plan " + ex.Message, ex);
+            }
+            return tabla;
+        }
+
 
         public DataTable fun_ObtenerOrdenesRecibidas()
         {
@@ -181,7 +206,51 @@ namespace Capa_Modelo_Plan
             return tabla;
         }
 
+        public void pro_GuardarCronograma(int iCodigoOrden, List<(int iCodigoFase, int iEmpleado, DateTime FechaInicio,
+            DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)> cronogramaFases)
+        {
+            using (OdbcConnection con = conexion.conexion())
+            {
+                using (OdbcTransaction transaccion = con.BeginTransaction())
+                {
+                    try
+                    {
+                        // Guardar nuevas fases
+                        if (cronogramaFases != null && cronogramaFases.Count > 0)
+                        {
+                            string sIngresarCronograma = @"INSERT INTO Tbl_Cronograma_Fases_Produccion
+                                                     (Fk_Id_Orden_Produccion, Fk_Id_Fase_Producto, Fecha_Inicio_Fase, Fecha_Fin_Fase,
+                                                     Horas_Hombres, Fk_Id_Encargado, Fk_Id_Estado_Fase) 
+                                                     VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+                            OdbcCommand cmdGuardar = new OdbcCommand(sIngresarCronograma, con, transaccion);
+
+                            foreach (var fase in cronogramaFases)
+                            {
+                                cmdGuardar.Parameters.Clear();
+
+                                cmdGuardar.Parameters.AddWithValue("", iCodigoOrden);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iCodigoFase);
+                                cmdGuardar.Parameters.AddWithValue("", fase.FechaInicio);
+                                cmdGuardar.Parameters.AddWithValue("", fase.FechaFin);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iCantidadPersonal);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iEmpleado);
+                                cmdGuardar.Parameters.AddWithValue("", fase.iEstadoFase);
+
+                                cmdGuardar.ExecuteNonQuery();
+                            }
+                        }
+                        transaccion.Commit();
+                    }
+                    catch
+                    {
+                        transaccion.Rollback();
+                        throw;
+                    }
+
+                }
+            }
+        }
 
     }
 }
