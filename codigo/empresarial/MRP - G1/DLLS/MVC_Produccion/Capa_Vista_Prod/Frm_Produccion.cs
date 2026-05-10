@@ -23,6 +23,7 @@ namespace Capa_Vista_Prod
             {
                 ObtenerOrdenesProduccion();
                 CargarComboEmpleados();
+                CargarComboTiposMerma(); // este para el merma
             }
             catch (Exception ex)
             {
@@ -57,6 +58,9 @@ namespace Capa_Vista_Prod
             CargarCostosIndirectos(idOrden);
             CargarMaterialesConsumidos(idOrden);
             CargarCostos(idOrden);
+            // Metodos para mermas 
+            CargarMermas(idOrden);               
+            CargarComboMaterialesMerma(idOrden);
         }
 
         // ── Pestaña Mano de Obra ──────────────────────────────
@@ -64,6 +68,7 @@ namespace Capa_Vista_Prod
         {
             DataTable dt = controlador.ObtenerManoObra(idOrden);
             dgvManoObra.DataSource = dt;
+            Cls_Estilos_DGV.Aplicar(dgvManoObra);
 
             if (dgvManoObra.Columns.Count == 0) return;
             dgvManoObra.Columns["Id"].Visible = false;
@@ -133,6 +138,7 @@ namespace Capa_Vista_Prod
             desglose.Rows.Add("TOTAL", total);
 
             dgvCostos.DataSource = desglose;
+            Cls_Estilos_DGV.Aplicar(dgvCostos);
             dgvCostos.Columns["Categoria"].HeaderText = "Categoría";
             dgvCostos.Columns["Monto"].HeaderText = "Monto (Q)";
             dgvCostos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -207,6 +213,7 @@ namespace Capa_Vista_Prod
         {
             DataTable dt = controlador.ObtenerCostosIndirectos(idOrden);
             dgvCostosIndirectos.DataSource = dt;
+            Cls_Estilos_DGV.Aplicar(dgvCostosIndirectos);
 
             if (dgvCostosIndirectos.Columns.Count == 0) return;
             dgvCostosIndirectos.Columns["Id"].Visible = false;
@@ -292,6 +299,7 @@ namespace Capa_Vista_Prod
         {
             DataTable dt = controlador.ObtenerMaterialesConsumidos(idOrden);
             dgvMateriales.DataSource = dt;
+            Cls_Estilos_DGV.Aplicar(dgvMateriales);
 
             if (dgvMateriales.Columns.Count == 0) return;
             dgvMateriales.Columns["Id_Material"].Visible = false;
@@ -312,6 +320,297 @@ namespace Capa_Vista_Prod
 
             lblTotalMateriales.Text = $"Total materiales: Q {total:N2}";
         }
+
+        private void btn_consumir_Click(object sender, EventArgs e)
+        {
+            if (Cbo_Orden.SelectedValue == null || Cbo_Orden.SelectedValue is DataRowView)
+            {
+                MessageBox.Show("Seleccione una orden primero.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvMateriales.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay materiales para consumir.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "¿Confirmar el consumo de materiales del inventario?\nEsta acción no se puede deshacer.",
+                "Confirmar consumo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+
+                if (controlador.DescontarMateriales(idOrden))
+                {
+                    MessageBox.Show("Materiales descontados del inventario correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Refrescar la pestaña de materiales y costos
+                    CargarMaterialesConsumidos(idOrden);
+                    CargarCostos(idOrden);
+
+                    // Opcional: deshabilitar el botón para evitar doble consumo
+                    btn_consumir.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consumir materiales:\n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         // ###################### MATERIAL CONSUMIDO ##################################################
+
+
+        // ##################### MERMAS ###############################################################
+        private void CargarComboTiposMerma()
+        {
+            DataTable dt = controlador.ObtenerTiposMerma();
+            cboTipoMerma.DataSource = dt;
+            cboTipoMerma.DisplayMember = "Nombre";
+            cboTipoMerma.ValueMember = "IdTipo";
+            cboTipoMerma.SelectedIndex = -1;
+        }
+
+        private void CargarComboMaterialesMerma(int idOrden)
+        {
+            DataTable dt = controlador.ObtenerMaterialesPorOrden(idOrden);
+            cboMaterial.DataSource = dt;
+            cboMaterial.DisplayMember = "Nombre";
+            cboMaterial.ValueMember = "IdMaterial";
+            cboMaterial.SelectedIndex = -1;
+        }
+
+        private void CargarMermas(int idOrden)
+        {
+            DataTable dt = controlador.ObtenerMermas(idOrden);
+            dgvMermas.DataSource = dt;
+            Cls_Estilos_DGV.Aplicar(dgvMermas);
+
+            if (dgvMermas.Columns.Count == 0) return;
+
+            dgvMermas.Columns["Id"].Visible = false;
+            dgvMermas.Columns["Material"].HeaderText = "Material";
+            dgvMermas.Columns["Tipo"].HeaderText = "Tipo de Merma";
+            dgvMermas.Columns["Cantidad"].HeaderText = "Cantidad";
+            dgvMermas.Columns["CostoUnitario"].HeaderText = "Costo Unitario (Q)";
+            dgvMermas.Columns["Subtotal"].HeaderText = "Subtotal (Q)";
+            dgvMermas.Columns["Motivo"].HeaderText = "Motivo";
+            dgvMermas.Columns["Fecha"].HeaderText = "Fecha";
+            dgvMermas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMermas.ReadOnly = true;
+            dgvMermas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Total
+            decimal total = 0;
+            foreach (DataRow row in dt.Rows)
+                total += Convert.ToDecimal(row["Subtotal"]);
+
+            lblTotalMermas.Text = $"Total mermas: Q {total:N2}";
+        }
+
+        private void btnGuardarMerma_Click(object sender, EventArgs e)
+        {
+            if (Cbo_Orden.SelectedValue == null || Cbo_Orden.SelectedValue is DataRowView)
+            {
+                MessageBox.Show("Seleccione una orden primero.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboMaterial.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione un material.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboTipoMerma.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione el tipo de merma.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (nudCantidadMerma.Value <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor a 0.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtMotivoMerma.Text))
+            {
+                MessageBox.Show("Ingrese el motivo de la merma.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+            int idMaterial = Convert.ToInt32(cboMaterial.SelectedValue);
+            int idTipo = Convert.ToInt32(cboTipoMerma.SelectedValue);
+
+            bool exito = controlador.GuardarMerma(
+                idOrden, idMaterial, idTipo,
+                nudCantidadMerma.Value,
+                txtMotivoMerma.Text.Trim());
+
+            if (exito)
+            {
+                MessageBox.Show("Merma registrada correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos
+                cboMaterial.SelectedIndex = -1;
+                cboTipoMerma.SelectedIndex = -1;
+                nudCantidadMerma.Value = 0;
+                txtMotivoMerma.Text = "";
+
+                // Refrescar
+                CargarMermas(idOrden);
+                CargarCostos(idOrden); // actualiza la pestaña de costos también
+            }
+            else
+            {
+                MessageBox.Show("Error al registrar la merma.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminarMerma_Click(object sender, EventArgs e)
+        {
+            if (dgvMermas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un registro para eliminar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show("¿Eliminar esta merma?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(dgvMermas.SelectedRows[0].Cells["Id"].Value);
+
+                if (controlador.EliminarMerma(id))
+                {
+                    int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+                    CargarMermas(idOrden);
+                    CargarCostos(idOrden);
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        // ##################### MERMAS ###############################################################
+
+        // ######################## DISEÑO DE FORMULARIOS ##############################################
+        public static class Cls_Estilos_DGV
+        {
+            // Paleta de colores — cámbiala a tu gusto
+            private static readonly Color ColorEncabezado = Color.FromArgb(34, 74, 112);   // Azul oscuro
+            private static readonly Color ColorFilaImpar = Color.FromArgb(245, 248, 252);  // Blanco azulado
+            private static readonly Color ColorFilaPar = Color.White;
+            private static readonly Color ColorSeleccion = Color.FromArgb(173, 214, 255);  // Azul claro
+            private static readonly Color ColorTextoEncabezado = Color.White;
+            private static readonly Color ColorTextoCelda = Color.FromArgb(40, 40, 40);     // Casi negro
+            private static readonly Color ColorBorde = Color.FromArgb(210, 220, 235);
+
+            public static void Aplicar(DataGridView dgv)
+            {
+                // ── Comportamiento general ──────────────────────────────
+                dgv.BorderStyle = BorderStyle.None;
+                dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                dgv.GridColor = ColorBorde;
+                dgv.RowHeadersVisible = false;
+                dgv.AllowUserToResizeRows = false;
+                dgv.AllowUserToAddRows = false;
+                dgv.BackgroundColor = Color.White;
+
+                // ── Fuente general ──────────────────────────────────────
+                dgv.Font = new Font("Segoe UI", 9.5f, FontStyle.Regular);
+
+                // ── Encabezado ──────────────────────────────────────────
+                dgv.EnableHeadersVisualStyles = false;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = ColorEncabezado;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = ColorTextoEncabezado;
+                dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.5f, FontStyle.Bold);
+                dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgv.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
+                dgv.ColumnHeadersHeight = 38;
+                dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+
+                // ── Celdas ──────────────────────────────────────────────
+                dgv.DefaultCellStyle.ForeColor = ColorTextoCelda;
+                dgv.DefaultCellStyle.SelectionBackColor = ColorSeleccion;
+                dgv.DefaultCellStyle.SelectionForeColor = ColorTextoCelda;
+                dgv.DefaultCellStyle.Padding = new Padding(4, 0, 4, 0);
+                dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgv.RowTemplate.Height = 32;
+
+                // ── Filas alternadas ────────────────────────────────────
+                dgv.AlternatingRowsDefaultCellStyle.BackColor = ColorFilaImpar;
+                dgv.AlternatingRowsDefaultCellStyle.SelectionBackColor = ColorSeleccion;
+                dgv.RowsDefaultCellStyle.BackColor = ColorFilaPar;
+
+                // ── Evento para pintar filas en tiempo real ─────────────
+                dgv.RowPrePaint += (s, e) =>
+                {
+                    e.PaintParts &= ~DataGridViewPaintParts.Focus;
+                };
+            }
+
+            // Centra columnas específicas (para montos, cantidades, fechas)
+            public static void CentrarColumnas(DataGridView dgv, params string[] columnas)
+            {
+                foreach (string col in columnas)
+                {
+                    if (dgv.Columns.Contains(col))
+                        dgv.Columns[col].DefaultCellStyle.Alignment =
+                            DataGridViewContentAlignment.MiddleCenter;
+                }
+            }
+
+            // Alinea a la derecha (ideal para montos en Q)
+            public static void AlinearDerechaCols(DataGridView dgv, params string[] columnas)
+            {
+                foreach (string col in columnas)
+                {
+                    if (dgv.Columns.Contains(col))
+                        dgv.Columns[col].DefaultCellStyle.Alignment =
+                            DataGridViewContentAlignment.MiddleRight;
+                }
+            }
+        }
+
+        private void nudHoras_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // ######################## DISEÑO DE FORMULARIOS ##############################################
+
+
+
     }
+
+
 }

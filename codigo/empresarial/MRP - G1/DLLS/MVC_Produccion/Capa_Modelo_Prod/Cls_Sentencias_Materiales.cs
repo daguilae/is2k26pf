@@ -48,5 +48,79 @@ namespace Capa_Modelo_Prod
             }
             return dt;
         }
+
+        public bool DescontarMateriales(int idOrden)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                OdbcTransaction transaction = conn.BeginTransaction();
+                try
+                {
+                    // Primero verificamos que haya stock suficiente
+                    string queryVerificar = @"
+                SELECT 
+                    m.Nombre_Material,
+                    i.Cantidad_Disponible,
+                    emd.Cantidad_Real_Con_Merma
+                FROM Tbl_Orden_Produccion op
+                INNER JOIN Tbl_Plan_Produccion pp 
+                    ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+                INNER JOIN Tbl_Explosion_Materiales em 
+                    ON pp.Fk_Id_Orden_Recibida = em.Fk_Id_Orden_Recibida
+                INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
+                    ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+                INNER JOIN Tbl_Materiales m 
+                    ON emd.Fk_Id_Material = m.Pk_Id_Materiales
+                INNER JOIN Tbl_Inventario i
+                    ON emd.Fk_Id_Material = i.Fk_Id_Material
+                WHERE op.Pk_Id_Orden_Produccion = ?";
+
+                    OdbcCommand cmdVerificar = new OdbcCommand(queryVerificar, conn, transaction);
+                    cmdVerificar.Parameters.AddWithValue("?", idOrden);
+
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmdVerificar);
+                    DataTable dtVerificar = new DataTable();
+                    da.Fill(dtVerificar);
+
+                    // Revisamos si algún material no tiene stock suficiente
+                    foreach (DataRow row in dtVerificar.Rows)
+                    {
+                        decimal disponible = Convert.ToDecimal(row["Cantidad_Disponible"]);
+                        decimal necesaria = Convert.ToDecimal(row["Cantidad_Real_Con_Merma"]);
+                        string nombre = row["Nombre_Material"].ToString();
+
+                        if (disponible < necesaria)
+                            throw new Exception($"Stock insuficiente para: {nombre}\n" +
+                                                $"Disponible: {disponible}  |  Necesario: {necesaria}");
+                    }
+
+                    // Todo OK → descontamos
+                    string queryDescontar = @"
+                UPDATE Tbl_Inventario i
+                INNER JOIN Tbl_Explosion_Materiales_Detalle emd
+                    ON i.Fk_Id_Material = emd.Fk_Id_Material
+                INNER JOIN Tbl_Explosion_Materiales em
+                    ON emd.Fk_Id_Explosion = em.Pk_Id_Explosion
+                INNER JOIN Tbl_Plan_Produccion pp
+                    ON em.Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida
+                INNER JOIN Tbl_Orden_Produccion op
+                    ON pp.Pk_Id_Plan_Produccion = op.Fk_Id_Plan_Produccion
+                SET i.Cantidad_Disponible = i.Cantidad_Disponible - emd.Cantidad_Real_Con_Merma
+                WHERE op.Pk_Id_Orden_Produccion = ?";
+
+                    OdbcCommand cmdDescontar = new OdbcCommand(queryDescontar, conn, transaction);
+                    cmdDescontar.Parameters.AddWithValue("?", idOrden);
+                    cmdDescontar.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception(ex.Message); // lo relanzamos para mostrarlo en la vista
+                }
+            }
+        }
     }
 }
