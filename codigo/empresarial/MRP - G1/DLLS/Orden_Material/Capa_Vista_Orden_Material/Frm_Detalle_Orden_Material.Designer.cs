@@ -431,7 +431,6 @@ namespace Capa_Vista_Orden_Material
             this.Cmb_ID.Size = new System.Drawing.Size(273, 21);
             this.Cmb_ID.TabIndex = 22;
             this.Cmb_ID.SelectedIndexChanged += new System.EventHandler(this.Frm_Detalle_Orden_Material_Load);
-            this.Cmb_ID.SelectionChangeCommitted += new System.EventHandler(this.Frm_Detalle_Orden_Material_Load);
             this.Cmb_ID.Click += new System.EventHandler(this.Cmb_ID_SelectedIndexChanged);
             // 
             // label7

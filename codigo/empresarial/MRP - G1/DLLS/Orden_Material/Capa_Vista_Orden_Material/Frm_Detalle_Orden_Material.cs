@@ -5,7 +5,6 @@ using Capa_Controlador_Orden_Material;
 
 namespace Capa_Vista_Orden_Material
 {
-    // ------ LETICIA SONTAY - 9959-21-9664, 07/05/2026 --------
     public partial class Frm_Detalle_Orden_Material : Form
     {
         private readonly Cls_Controlador_Orden_Material _controlador
@@ -20,26 +19,34 @@ namespace Capa_Vista_Orden_Material
             InitializeComponent();
         }
 
-        // -------------------------------------------------------
-        // Carga del formulario
-        // -------------------------------------------------------
         private void Frm_Detalle_Orden_Material_Load(object sender, EventArgs e)
         {
-            CargarComboEstados();
-            CargarComboOrdenes();
-            InicializarColumnasDetalle();
-            EstadoControles(false);
+            _cargando = true; // ✅ bloquear ANTES de todo
+            try
+            {
+                InicializarColumnasDetalle();
+                CargarComboEstados();
+                CargarComboOrdenes();
+                EstadoControles(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _cargando = false; // ✅ desbloquear AL FINAL
+            }
         }
 
-        // -------------------------------------------------------
-        // Estado de controles
-        // -------------------------------------------------------
         private void EstadoControles(bool editando)
         {
             _modoEdicion = editando;
 
             Cmb_Estado.Enabled = editando;
             Dtp_Recibida.Enabled = editando;
+            Dtp_Solicitud.Enabled = false; // fecha solicitud nunca se edita
 
             Dgv_Materiales.ReadOnly = true;
 
@@ -54,51 +61,48 @@ namespace Capa_Vista_Orden_Material
             Btn_anterior.Enabled = !editando;
             Btn_sig.Enabled = !editando;
             Btn_fin.Enabled = !editando;
-
             Btn_salir.Enabled = true;
         }
 
-        // -------------------------------------------------------
-        // Cargar catálogos
-        // -------------------------------------------------------
         private void CargarComboOrdenes()
         {
-            _cargando = true;
+            _cargando = true; // ✅ bloquear el evento antes de tocar el combo
             try
             {
                 DataTable dt = _controlador.ObtenerOrdenesCombo();
-                // ✅ AGREGA ESTO TEMPORALMENTE
-                MessageBox.Show("Filas obtenidas del combo: " + dt.Rows.Count.ToString());
-
                 Cmb_ID.DataSource = dt;
                 Cmb_ID.DisplayMember = "OrdenDescripcion";
                 Cmb_ID.ValueMember = "IdOrden";
                 Cmb_ID.SelectedIndex = -1;
-
             }
             catch (Exception ex)
             {
-                // ✅ AGREGA ESTO TAMBIÉN
-                MessageBox.Show("Error en CargarComboOrdenes: " + ex.Message);
+                MessageBox.Show("Error cargando órdenes: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                _cargando = false;
+                _cargando = false; // ✅ desbloquear al terminar
             }
         }
 
         private void CargarComboEstados()
         {
-            DataTable dt = _controlador.ObtenerEstadosOrden();
-            Cmb_Estado.DataSource = dt;
-            Cmb_Estado.DisplayMember = "NombreEstado";
-            Cmb_Estado.ValueMember = "IdEstado";
-            Cmb_Estado.SelectedIndex = -1;
+            try
+            {
+                DataTable dt = _controlador.ObtenerEstadosOrden();
+                Cmb_Estado.DataSource = dt;
+                Cmb_Estado.DisplayMember = "NombreEstado";
+                Cmb_Estado.ValueMember = "IdEstado";
+                Cmb_Estado.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando estados: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // -------------------------------------------------------
-        // Inicializar columnas del DataGridView
-        // -------------------------------------------------------
         private void InicializarColumnasDetalle()
         {
             Dgv_Materiales.AutoGenerateColumns = false;
@@ -145,13 +149,14 @@ namespace Capa_Vista_Orden_Material
             });
         }
 
-        // -------------------------------------------------------
-        // Selección de orden en el ComboBox
-        // -------------------------------------------------------
+        // ✅ CLAVE: solo actúa si _cargando es false
         private void Cmb_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_cargando || Cmb_ID.SelectedValue == null || Cmb_ID.SelectedIndex < 0)
-                return;
+            MessageBox.Show("Evento disparado. _cargando=" + _cargando +
+                            " SelectedIndex=" + Cmb_ID.SelectedIndex);
+
+            if (_cargando) return;
+            if (Cmb_ID.SelectedValue == null || Cmb_ID.SelectedIndex < 0) return;
 
             _idOrdenActual = Convert.ToInt32(Cmb_ID.SelectedValue);
             CargarEncabezado(_idOrdenActual);
@@ -159,72 +164,75 @@ namespace Capa_Vista_Orden_Material
             EstadoControles(false);
         }
 
-        // -------------------------------------------------------
-        // Cargar encabezado
-        // -------------------------------------------------------
         private void CargarEncabezado(int idOrden)
         {
-            DataTable dt = _controlador.ObtenerOrdenPorId(idOrden);
-            if (dt.Rows.Count == 0) return;
-
-            DataRow row = dt.Rows[0];
-
-            Cmb_Estado.SelectedValue = row["IdEstado"];
-
-            if (row["FechaSolicitud"] != DBNull.Value)
-                Dtp_Solicitud.Value = Convert.ToDateTime(row["FechaSolicitud"]);
-
-            if (row["FechaRecibida"] != DBNull.Value)
-                Dtp_Recibida.Value = Convert.ToDateTime(row["FechaRecibida"]);
-            else
-                Dtp_Recibida.Value = DateTime.Today;
-        }
-
-        // -------------------------------------------------------
-        // Cargar detalle en el grid
-        // -------------------------------------------------------
-        private void CargarDetalle(int idOrden)
-        {
-            Dgv_Materiales.Rows.Clear();
-
-            DataTable dt = _controlador.ObtenerDetalleOrden(idOrden);
-
-            // ✅ AGREGA ESTO TEMPORALMENTE
-            MessageBox.Show("Filas de detalle para orden " + idOrden + ": " + dt.Rows.Count.ToString());
-
-
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                Dgv_Materiales.Rows.Add(
-                    row["CodigoMaterial"],
-                    row["NombreMaterial"],
-                    row["UnidadMedida"],       // ✅ columna agregada
-                    row["CantidadSolicitada"],
-                    row["CantidadEntregada"],
-                    row["CantidadPendiente"]
-                );
+                DataTable dt = _controlador.ObtenerOrdenPorId(idOrden);
+                if (dt.Rows.Count == 0) return;
+
+                DataRow row = dt.Rows[0];
+
+                // ✅ bloquear para que cambiar estado no dispare eventos
+                _cargando = true;
+                Cmb_Estado.SelectedValue = row["IdEstado"];
+                _cargando = false;
+
+                Dtp_Solicitud.Value = row["FechaSolicitud"] != DBNull.Value
+                    ? Convert.ToDateTime(row["FechaSolicitud"])
+                    : DateTime.Today;
+
+                Dtp_Recibida.Value = row["FechaRecibida"] != DBNull.Value
+                    ? Convert.ToDateTime(row["FechaRecibida"])
+                    : DateTime.Today;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando encabezado: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // -------------------------------------------------------
-        // Limpiar formulario
-        // -------------------------------------------------------
+        private void CargarDetalle(int idOrden)
+        {
+            try
+            {
+                Dgv_Materiales.Rows.Clear();
+
+                DataTable dt = _controlador.ObtenerDetalleOrden(idOrden);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    Dgv_Materiales.Rows.Add(
+                        row["CodigoMaterial"],
+                        row["NombreMaterial"],
+                        row["UnidadMedida"],
+                        row["CantidadSolicitada"],
+                        row["CantidadEntregada"],
+                        row["CantidadPendiente"]
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando detalle: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void LimpiarFormulario()
         {
             _idOrdenActual = 0;
             _cargando = true;
             Cmb_ID.SelectedIndex = -1;
+            Cmb_Estado.SelectedIndex = -1;
             _cargando = false;
 
-            Cmb_Estado.SelectedIndex = -1;
             Dtp_Solicitud.Value = DateTime.Today;
             Dtp_Recibida.Value = DateTime.Today;
             Dgv_Materiales.Rows.Clear();
         }
 
-        // -------------------------------------------------------
-        // Botón Modificar
-        // -------------------------------------------------------
         private void Btn_modificar_Click(object sender, EventArgs e)
         {
             if (_idOrdenActual <= 0)
@@ -233,14 +241,10 @@ namespace Capa_Vista_Orden_Material
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             EstadoControles(true);
             Cmb_ID.Enabled = false;
         }
 
-        // -------------------------------------------------------
-        // Botón Guardar
-        // -------------------------------------------------------
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
             try
@@ -262,12 +266,15 @@ namespace Capa_Vista_Orden_Material
                     MessageBox.Show("Orden actualizada correctamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    int idGuardado = _idOrdenActual;
                     CargarComboOrdenes();
 
+                    // ✅ reseleccionar la misma orden después de recargar
                     _cargando = true;
-                    Cmb_ID.SelectedValue = _idOrdenActual;
+                    Cmb_ID.SelectedValue = idGuardado;
                     _cargando = false;
 
+                    _idOrdenActual = idGuardado;
                     CargarEncabezado(_idOrdenActual);
                     CargarDetalle(_idOrdenActual);
 
@@ -287,9 +294,6 @@ namespace Capa_Vista_Orden_Material
             }
         }
 
-        // -------------------------------------------------------
-        // Botón Cancelar
-        // -------------------------------------------------------
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
             DialogResult resp = MessageBox.Show(
@@ -303,15 +307,11 @@ namespace Capa_Vista_Orden_Material
                     CargarEncabezado(_idOrdenActual);
                     CargarDetalle(_idOrdenActual);
                 }
-
                 Cmb_ID.Enabled = true;
                 EstadoControles(false);
             }
         }
 
-        // -------------------------------------------------------
-        // Botón Consultar
-        // -------------------------------------------------------
         private void Btn_consultar_Click(object sender, EventArgs e)
         {
             if (_idOrdenActual <= 0)
@@ -320,47 +320,33 @@ namespace Capa_Vista_Orden_Material
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
             CargarEncabezado(_idOrdenActual);
             CargarDetalle(_idOrdenActual);
         }
 
-        // -------------------------------------------------------
-        // Botón Refrescar
-        // -------------------------------------------------------
         private void Btn_refrescar_Click(object sender, EventArgs e)
         {
-            CargarComboOrdenes();
-            CargarComboEstados();
             LimpiarFormulario();
+            CargarComboEstados();
+            CargarComboOrdenes();
             InicializarColumnasDetalle();
             EstadoControles(false);
             MessageBox.Show("Catálogos actualizados.", "Información",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // -------------------------------------------------------
-        // Botón Imprimir
-        // -------------------------------------------------------
         private void Btn_imprimir_Click(object sender, EventArgs e)
         {
-            // TODO: conectar con tu reporteador cuando esté listo
             MessageBox.Show("Función de impresión en construcción.", "Información",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // -------------------------------------------------------
-        // Botón Ayuda
-        // -------------------------------------------------------
         private void Btn_ayuda_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ayuda del módulo Detalle de Orden de Material.", "Ayuda",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        // -------------------------------------------------------
-        // Navegación en el DataGridView
-        // -------------------------------------------------------
         private void Btn_inicio_Click(object sender, EventArgs e)
         {
             if (Dgv_Materiales.Rows.Count > 0)
@@ -406,13 +392,9 @@ namespace Capa_Vista_Orden_Material
             }
         }
 
-        // -------------------------------------------------------
-        // Botón Salir
-        // -------------------------------------------------------
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
     }
-    // ------ LETICIA SONTAY - 9959-21-9664, 07/05/2026 --------
 }
