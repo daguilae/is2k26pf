@@ -430,7 +430,7 @@ namespace Capa_Vista_Orden_Material
             this.Cmb_ID.Name = "Cmb_ID";
             this.Cmb_ID.Size = new System.Drawing.Size(273, 21);
             this.Cmb_ID.TabIndex = 22;
-            this.Cmb_ID.SelectedIndexChanged += new System.EventHandler(this.Frm_Detalle_Orden_Material_Load);
+            this.Cmb_ID.SelectedIndexChanged += new System.EventHandler(this.Cmb_ID_SelectedIndexChanged);
             this.Cmb_ID.Click += new System.EventHandler(this.Cmb_ID_SelectedIndexChanged);
             // 
             // label7
@@ -504,6 +504,7 @@ namespace Capa_Vista_Orden_Material
             this.Controls.Add(this.panel4);
             this.Name = "Frm_Detalle_Orden_Material";
             this.Text = "Detalle Orden de Materiales";
+            this.Shown += new System.EventHandler(this.Frm_Detalle_Orden_Material_Shown);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);

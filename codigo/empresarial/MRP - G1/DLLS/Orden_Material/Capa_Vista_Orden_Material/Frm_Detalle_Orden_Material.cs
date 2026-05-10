@@ -19,9 +19,16 @@ namespace Capa_Vista_Orden_Material
             InitializeComponent();
         }
 
+        // Este queda vacío o lo puedes borrar
         private void Frm_Detalle_Orden_Material_Load(object sender, EventArgs e)
         {
-            _cargando = true; // ✅ bloquear ANTES de todo
+
+        }
+
+        // ✅ Toda la carga va aquí
+        private void Frm_Detalle_Orden_Material_Shown(object sender, EventArgs e)
+        {
+            _cargando = true;
             try
             {
                 InicializarColumnasDetalle();
@@ -31,12 +38,12 @@ namespace Capa_Vista_Orden_Material
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el formulario: " + ex.Message, "Error",
+                MessageBox.Show("Error al cargar: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                _cargando = false; // ✅ desbloquear AL FINAL
+                _cargando = false;
             }
         }
 
@@ -152,11 +159,9 @@ namespace Capa_Vista_Orden_Material
         // ✅ CLAVE: solo actúa si _cargando es false
         private void Cmb_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Evento disparado. _cargando=" + _cargando +
-                            " SelectedIndex=" + Cmb_ID.SelectedIndex);
-
-            if (_cargando) return;
-            if (Cmb_ID.SelectedValue == null || Cmb_ID.SelectedIndex < 0) return;
+            if (_cargando) return;                                    // ✅ bloquea durante carga
+            if (Cmb_ID.SelectedValue == null) return;
+            if (Cmb_ID.SelectedIndex < 0) return;
 
             _idOrdenActual = Convert.ToInt32(Cmb_ID.SelectedValue);
             CargarEncabezado(_idOrdenActual);
