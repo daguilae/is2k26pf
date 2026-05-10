@@ -105,11 +105,39 @@ namespace Capa_Vista_Prod
             this.Lbl_Orden = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_consumir = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.btnEliminarMerma = new System.Windows.Forms.Button();
+            this.button37 = new System.Windows.Forms.Button();
+            this.btnGuardarMerma = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.cboMaterial = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboTipoMerma = new System.Windows.Forms.ComboBox();
+            this.nudCantidadMerma = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtMotivoMerma = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgvMermas = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblTotalMermas = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabMaterial.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).BeginInit();
+            this.tabMerma.SuspendLayout();
             this.tabCostosIndirectos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostosIndirectos)).BeginInit();
@@ -121,6 +149,9 @@ namespace Capa_Vista_Prod
             ((System.ComponentModel.ISupportInitialize)(this.dgvManoObra)).BeginInit();
             this.tabCostos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostos)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadMerma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMermas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -403,6 +434,18 @@ namespace Capa_Vista_Prod
             // 
             // tabMerma
             // 
+            this.tabMerma.Controls.Add(this.label12);
+            this.tabMerma.Controls.Add(this.lblTotalMermas);
+            this.tabMerma.Controls.Add(this.dgvMermas);
+            this.tabMerma.Controls.Add(this.label7);
+            this.tabMerma.Controls.Add(this.txtMotivoMerma);
+            this.tabMerma.Controls.Add(this.label6);
+            this.tabMerma.Controls.Add(this.nudCantidadMerma);
+            this.tabMerma.Controls.Add(this.label5);
+            this.tabMerma.Controls.Add(this.cboTipoMerma);
+            this.tabMerma.Controls.Add(this.label4);
+            this.tabMerma.Controls.Add(this.cboMaterial);
+            this.tabMerma.Controls.Add(this.panel3);
             this.tabMerma.Location = new System.Drawing.Point(4, 25);
             this.tabMerma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabMerma.Name = "tabMerma";
@@ -1064,6 +1107,317 @@ namespace Capa_Vista_Prod
             this.btn_consumir.UseVisualStyleBackColor = true;
             this.btn_consumir.Click += new System.EventHandler(this.btn_consumir_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.button27);
+            this.panel3.Controls.Add(this.button28);
+            this.panel3.Controls.Add(this.button29);
+            this.panel3.Controls.Add(this.button30);
+            this.panel3.Controls.Add(this.button31);
+            this.panel3.Controls.Add(this.button32);
+            this.panel3.Controls.Add(this.button33);
+            this.panel3.Controls.Add(this.button34);
+            this.panel3.Controls.Add(this.button35);
+            this.panel3.Controls.Add(this.btnEliminarMerma);
+            this.panel3.Controls.Add(this.button37);
+            this.panel3.Controls.Add(this.btnGuardarMerma);
+            this.panel3.Controls.Add(this.button39);
+            this.panel3.Controls.Add(this.button40);
+            this.panel3.Location = new System.Drawing.Point(3, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1632, 123);
+            this.panel3.TabIndex = 10;
+            // 
+            // button27
+            // 
+            this.button27.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button27.Image = ((System.Drawing.Image)(resources.GetObject("button27.Image")));
+            this.button27.Location = new System.Drawing.Point(1484, 17);
+            this.button27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(119, 89);
+            this.button27.TabIndex = 13;
+            this.button27.Text = "Salir";
+            this.button27.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button27.UseVisualStyleBackColor = true;
+            // 
+            // button28
+            // 
+            this.button28.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button28.Image = ((System.Drawing.Image)(resources.GetObject("button28.Image")));
+            this.button28.Location = new System.Drawing.Point(1360, 17);
+            this.button28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(119, 89);
+            this.button28.TabIndex = 12;
+            this.button28.Text = "Ayuda";
+            this.button28.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button28.UseVisualStyleBackColor = true;
+            // 
+            // button29
+            // 
+            this.button29.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button29.Image = ((System.Drawing.Image)(resources.GetObject("button29.Image")));
+            this.button29.Location = new System.Drawing.Point(1253, 17);
+            this.button29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(101, 89);
+            this.button29.TabIndex = 11;
+            this.button29.Text = "Fin";
+            this.button29.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button29.UseVisualStyleBackColor = true;
+            // 
+            // button30
+            // 
+            this.button30.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button30.Image = ((System.Drawing.Image)(resources.GetObject("button30.Image")));
+            this.button30.Location = new System.Drawing.Point(1141, 17);
+            this.button30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(107, 89);
+            this.button30.TabIndex = 10;
+            this.button30.Text = "Siguiente";
+            this.button30.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button30.UseVisualStyleBackColor = true;
+            // 
+            // button31
+            // 
+            this.button31.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button31.Image = ((System.Drawing.Image)(resources.GetObject("button31.Image")));
+            this.button31.Location = new System.Drawing.Point(1048, 17);
+            this.button31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(88, 89);
+            this.button31.TabIndex = 9;
+            this.button31.Text = "Anterior";
+            this.button31.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button31.UseVisualStyleBackColor = true;
+            // 
+            // button32
+            // 
+            this.button32.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button32.Image = ((System.Drawing.Image)(resources.GetObject("button32.Image")));
+            this.button32.Location = new System.Drawing.Point(949, 17);
+            this.button32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(93, 89);
+            this.button32.TabIndex = 8;
+            this.button32.Text = "Inicio";
+            this.button32.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button32.UseVisualStyleBackColor = true;
+            // 
+            // button33
+            // 
+            this.button33.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button33.Image = ((System.Drawing.Image)(resources.GetObject("button33.Image")));
+            this.button33.Location = new System.Drawing.Point(825, 17);
+            this.button33.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(119, 89);
+            this.button33.TabIndex = 7;
+            this.button33.Text = "Refrescar";
+            this.button33.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button33.UseVisualStyleBackColor = true;
+            // 
+            // button34
+            // 
+            this.button34.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button34.Image = ((System.Drawing.Image)(resources.GetObject("button34.Image")));
+            this.button34.Location = new System.Drawing.Point(701, 17);
+            this.button34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(119, 89);
+            this.button34.TabIndex = 6;
+            this.button34.Text = "Imprimir";
+            this.button34.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button34.UseVisualStyleBackColor = true;
+            // 
+            // button35
+            // 
+            this.button35.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button35.Image = ((System.Drawing.Image)(resources.GetObject("button35.Image")));
+            this.button35.Location = new System.Drawing.Point(592, 17);
+            this.button35.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(107, 89);
+            this.button35.TabIndex = 5;
+            this.button35.Text = "Consultar";
+            this.button35.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button35.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarMerma
+            // 
+            this.btnEliminarMerma.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarMerma.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarMerma.Image")));
+            this.btnEliminarMerma.Location = new System.Drawing.Point(491, 17);
+            this.btnEliminarMerma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarMerma.Name = "btnEliminarMerma";
+            this.btnEliminarMerma.Size = new System.Drawing.Size(96, 89);
+            this.btnEliminarMerma.TabIndex = 4;
+            this.btnEliminarMerma.Text = "Eliminar";
+            this.btnEliminarMerma.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminarMerma.UseVisualStyleBackColor = true;
+            this.btnEliminarMerma.Click += new System.EventHandler(this.btnEliminarMerma_Click);
+            // 
+            // button37
+            // 
+            this.button37.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.Image = ((System.Drawing.Image)(resources.GetObject("button37.Image")));
+            this.button37.Location = new System.Drawing.Point(367, 17);
+            this.button37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(119, 89);
+            this.button37.TabIndex = 3;
+            this.button37.Text = "Cancelar";
+            this.button37.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button37.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarMerma
+            // 
+            this.btnGuardarMerma.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarMerma.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarMerma.Image")));
+            this.btnGuardarMerma.Location = new System.Drawing.Point(255, 17);
+            this.btnGuardarMerma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardarMerma.Name = "btnGuardarMerma";
+            this.btnGuardarMerma.Size = new System.Drawing.Size(107, 89);
+            this.btnGuardarMerma.TabIndex = 2;
+            this.btnGuardarMerma.Text = "Guardar";
+            this.btnGuardarMerma.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardarMerma.UseVisualStyleBackColor = true;
+            this.btnGuardarMerma.Click += new System.EventHandler(this.btnGuardarMerma_Click);
+            // 
+            // button39
+            // 
+            this.button39.Enabled = false;
+            this.button39.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button39.Image = ((System.Drawing.Image)(resources.GetObject("button39.Image")));
+            this.button39.Location = new System.Drawing.Point(131, 17);
+            this.button39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(119, 89);
+            this.button39.TabIndex = 1;
+            this.button39.Text = "Modificar";
+            this.button39.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button39.UseVisualStyleBackColor = true;
+            // 
+            // button40
+            // 
+            this.button40.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button40.Image = ((System.Drawing.Image)(resources.GetObject("button40.Image")));
+            this.button40.Location = new System.Drawing.Point(7, 17);
+            this.button40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(119, 89);
+            this.button40.TabIndex = 0;
+            this.button40.Text = "Ingresar";
+            this.button40.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button40.UseVisualStyleBackColor = true;
+            // 
+            // cboMaterial
+            // 
+            this.cboMaterial.FormattingEnabled = true;
+            this.cboMaterial.Location = new System.Drawing.Point(107, 167);
+            this.cboMaterial.Name = "cboMaterial";
+            this.cboMaterial.Size = new System.Drawing.Size(176, 24);
+            this.cboMaterial.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 167);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Materiales:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(307, 170);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 17);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Tipo merma:";
+            // 
+            // cboTipoMerma
+            // 
+            this.cboTipoMerma.FormattingEnabled = true;
+            this.cboTipoMerma.Location = new System.Drawing.Point(400, 167);
+            this.cboTipoMerma.Name = "cboTipoMerma";
+            this.cboTipoMerma.Size = new System.Drawing.Size(176, 24);
+            this.cboTipoMerma.TabIndex = 13;
+            // 
+            // nudCantidadMerma
+            // 
+            this.nudCantidadMerma.Location = new System.Drawing.Point(676, 168);
+            this.nudCantidadMerma.Name = "nudCantidadMerma";
+            this.nudCantidadMerma.Size = new System.Drawing.Size(120, 22);
+            this.nudCantidadMerma.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(602, 173);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 17);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Cantidad:";
+            // 
+            // txtMotivoMerma
+            // 
+            this.txtMotivoMerma.Location = new System.Drawing.Point(893, 165);
+            this.txtMotivoMerma.Name = "txtMotivoMerma";
+            this.txtMotivoMerma.Size = new System.Drawing.Size(162, 22);
+            this.txtMotivoMerma.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(834, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Motivo:";
+            // 
+            // dgvMermas
+            // 
+            this.dgvMermas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMermas.Location = new System.Drawing.Point(27, 241);
+            this.dgvMermas.Name = "dgvMermas";
+            this.dgvMermas.RowHeadersWidth = 51;
+            this.dgvMermas.RowTemplate.Height = 24;
+            this.dgvMermas.Size = new System.Drawing.Size(1579, 280);
+            this.dgvMermas.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(499, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 17);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "label11";
+            // 
+            // lblTotalMermas
+            // 
+            this.lblTotalMermas.AutoSize = true;
+            this.lblTotalMermas.Location = new System.Drawing.Point(1379, 558);
+            this.lblTotalMermas.Name = "lblTotalMermas";
+            this.lblTotalMermas.Size = new System.Drawing.Size(54, 17);
+            this.lblTotalMermas.TabIndex = 20;
+            this.lblTotalMermas.Text = "label12";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1253, 558);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(98, 17);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "Total mermas:";
+            // 
             // Frm_Produccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1081,6 +1435,8 @@ namespace Capa_Vista_Prod
             this.tabMaterial.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).EndInit();
+            this.tabMerma.ResumeLayout(false);
+            this.tabMerma.PerformLayout();
             this.tabCostosIndirectos.ResumeLayout(false);
             this.tabCostosIndirectos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
@@ -1094,6 +1450,10 @@ namespace Capa_Vista_Prod
             ((System.ComponentModel.ISupportInitialize)(this.dgvManoObra)).EndInit();
             this.tabCostos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostos)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadMerma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMermas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1175,5 +1535,32 @@ namespace Capa_Vista_Prod
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button btn_consumir;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblTotalMermas;
+        private System.Windows.Forms.DataGridView dgvMermas;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtMotivoMerma;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown nudCantidadMerma;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboTipoMerma;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboMaterial;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button btnEliminarMerma;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.Button btnGuardarMerma;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
     }
 }

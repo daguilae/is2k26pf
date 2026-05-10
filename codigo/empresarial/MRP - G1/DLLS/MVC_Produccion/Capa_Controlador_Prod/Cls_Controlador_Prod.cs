@@ -15,7 +15,7 @@ namespace Capa_Controlador_Prod
         private readonly Cls_Sentencias_Prod sentenciasDetalle = new Cls_Sentencias_Prod();
         private readonly Cls_Sentencias_CI sentenciasCI = new Cls_Sentencias_CI();
         private readonly Cls_Sentencias_Materiales sentenciasM = new Cls_Sentencias_Materiales();
-
+        private readonly Cls_Sentencias_Merma sentenciasMerma = new Cls_Sentencias_Merma();
 
         public DataTable ObtenerOrdenesProduccion()
         {
@@ -66,9 +66,41 @@ namespace Capa_Controlador_Prod
             return sentenciasM.ObtenerMaterialesConsumidos(idOrden);
         }
 
+        // Empieza codigo hecho por: Maria Morales 0901-22-1226
+
+        // ---------------------- MERMAS ------------------------------
         public bool DescontarMateriales(int idOrden)
         {
             return sentenciasM.DescontarMateriales(idOrden);
         }
+
+        public DataTable ObtenerTiposMerma()
+        {
+            return sentenciasMerma.ObtenerTiposMerma();
+        }
+
+        public DataTable ObtenerMaterialesPorOrden(int idOrden)
+        {
+            return sentenciasMerma.ObtenerMaterialesPorOrden(idOrden);
+        }
+
+        public DataTable ObtenerMermas(int idOrden)
+        {
+            return sentenciasMerma.ObtenerMermas(idOrden);
+        }
+
+        public bool GuardarMerma(int idOrden, int idMaterial, int idTipo,
+                                  decimal cantidad, string motivo)
+        {
+            return sentenciasMerma.GuardarMerma(idOrden, idMaterial, idTipo, cantidad, motivo);
+        }
+
+        public bool EliminarMerma(int idMerma)
+        {
+            return sentenciasMerma.EliminarMerma(idMerma);
+        }
+
+
+        // Termina codigo hecho por: Maria Morales 0901-22-1226
     }
 }
