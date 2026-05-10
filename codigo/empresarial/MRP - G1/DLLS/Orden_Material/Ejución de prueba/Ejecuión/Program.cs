@@ -17,6 +17,7 @@ namespace Ejecuión
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Capa_Vista_Orden_Material.Frm_Encabezado_Orden_Material());
+            // Application.Run(new Capa_Vista_Orden_Material.Frm_Detalle_Orden_Material());
         }
     }
 }
