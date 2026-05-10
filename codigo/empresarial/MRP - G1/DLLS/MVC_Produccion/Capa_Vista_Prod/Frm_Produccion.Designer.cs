@@ -33,6 +33,24 @@ namespace Capa_Vista_Prod
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMaterial = new System.Windows.Forms.TabPage();
+            this.lblTotalMateriales = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.dgvMateriales = new System.Windows.Forms.DataGridView();
             this.tabMerma = new System.Windows.Forms.TabPage();
             this.tabCostosIndirectos = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
@@ -86,27 +104,12 @@ namespace Capa_Vista_Prod
             this.Lbl_Costos = new System.Windows.Forms.Label();
             this.Lbl_Orden = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dgvMateriales = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblTotalMateriales = new System.Windows.Forms.Label();
+            this.btn_consumir = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabMaterial.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).BeginInit();
             this.tabCostosIndirectos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostosIndirectos)).BeginInit();
@@ -118,8 +121,6 @@ namespace Capa_Vista_Prod
             ((System.ComponentModel.ISupportInitialize)(this.dgvManoObra)).BeginInit();
             this.tabCostos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
@@ -130,9 +131,10 @@ namespace Capa_Vista_Prod
             this.panel4.Controls.Add(this.Lbl_Costos);
             this.panel4.Controls.Add(this.Lbl_Orden);
             this.panel4.Controls.Add(this.flowLayoutPanel1);
-            this.panel4.Location = new System.Drawing.Point(10, 11);
+            this.panel4.Location = new System.Drawing.Point(13, 14);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1283, 625);
+            this.panel4.Size = new System.Drawing.Size(1709, 768);
             this.panel4.TabIndex = 7;
             // 
             // tabControl1
@@ -142,34 +144,270 @@ namespace Capa_Vista_Prod
             this.tabControl1.Controls.Add(this.tabCostosIndirectos);
             this.tabControl1.Controls.Add(this.tab_Produccion);
             this.tabControl1.Controls.Add(this.tabCostos);
-            this.tabControl1.Location = new System.Drawing.Point(21, 96);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(28, 118);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1245, 523);
+            this.tabControl1.Size = new System.Drawing.Size(1660, 644);
             this.tabControl1.TabIndex = 8;
             // 
             // tabMaterial
             // 
+            this.tabMaterial.Controls.Add(this.btn_consumir);
             this.tabMaterial.Controls.Add(this.lblTotalMateriales);
             this.tabMaterial.Controls.Add(this.label3);
             this.tabMaterial.Controls.Add(this.panel2);
             this.tabMaterial.Controls.Add(this.dgvMateriales);
-            this.tabMaterial.Location = new System.Drawing.Point(4, 22);
-            this.tabMaterial.Margin = new System.Windows.Forms.Padding(2);
+            this.tabMaterial.Location = new System.Drawing.Point(4, 25);
+            this.tabMaterial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabMaterial.Name = "tabMaterial";
-            this.tabMaterial.Size = new System.Drawing.Size(1237, 497);
+            this.tabMaterial.Size = new System.Drawing.Size(1652, 615);
             this.tabMaterial.TabIndex = 3;
             this.tabMaterial.Text = "Consumo de Materiales";
             this.tabMaterial.UseVisualStyleBackColor = true;
             // 
+            // lblTotalMateriales
+            // 
+            this.lblTotalMateriales.AutoSize = true;
+            this.lblTotalMateriales.Location = new System.Drawing.Point(1101, 534);
+            this.lblTotalMateriales.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalMateriales.Name = "lblTotalMateriales";
+            this.lblTotalMateriales.Size = new System.Drawing.Size(46, 17);
+            this.lblTotalMateriales.TabIndex = 12;
+            this.lblTotalMateriales.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1004, 534);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 17);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Costo Total: ";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button10);
+            this.panel2.Controls.Add(this.button12);
+            this.panel2.Controls.Add(this.button15);
+            this.panel2.Controls.Add(this.button16);
+            this.panel2.Controls.Add(this.button17);
+            this.panel2.Controls.Add(this.button18);
+            this.panel2.Controls.Add(this.button19);
+            this.panel2.Controls.Add(this.button20);
+            this.panel2.Controls.Add(this.button21);
+            this.panel2.Controls.Add(this.button22);
+            this.panel2.Controls.Add(this.button23);
+            this.panel2.Controls.Add(this.button24);
+            this.panel2.Controls.Add(this.button25);
+            this.panel2.Controls.Add(this.button26);
+            this.panel2.Location = new System.Drawing.Point(15, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1632, 123);
+            this.panel2.TabIndex = 10;
+            // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
+            this.button10.Location = new System.Drawing.Point(1484, 17);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(119, 89);
+            this.button10.TabIndex = 13;
+            this.button10.Text = "Salir";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
+            this.button12.Location = new System.Drawing.Point(1360, 17);
+            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(119, 89);
+            this.button12.TabIndex = 12;
+            this.button12.Text = "Ayuda";
+            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
+            this.button15.Location = new System.Drawing.Point(1253, 17);
+            this.button15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(101, 89);
+            this.button15.TabIndex = 11;
+            this.button15.Text = "Fin";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
+            this.button16.Location = new System.Drawing.Point(1141, 17);
+            this.button16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(107, 89);
+            this.button16.TabIndex = 10;
+            this.button16.Text = "Siguiente";
+            this.button16.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
+            this.button17.Location = new System.Drawing.Point(1048, 17);
+            this.button17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(88, 89);
+            this.button17.TabIndex = 9;
+            this.button17.Text = "Anterior";
+            this.button17.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.Image = ((System.Drawing.Image)(resources.GetObject("button18.Image")));
+            this.button18.Location = new System.Drawing.Point(949, 17);
+            this.button18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(93, 89);
+            this.button18.TabIndex = 8;
+            this.button18.Text = "Inicio";
+            this.button18.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // button19
+            // 
+            this.button19.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.Image = ((System.Drawing.Image)(resources.GetObject("button19.Image")));
+            this.button19.Location = new System.Drawing.Point(825, 17);
+            this.button19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(119, 89);
+            this.button19.TabIndex = 7;
+            this.button19.Text = "Refrescar";
+            this.button19.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.Image = ((System.Drawing.Image)(resources.GetObject("button20.Image")));
+            this.button20.Location = new System.Drawing.Point(701, 17);
+            this.button20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(119, 89);
+            this.button20.TabIndex = 6;
+            this.button20.Text = "Imprimir";
+            this.button20.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button20.UseVisualStyleBackColor = true;
+            // 
+            // button21
+            // 
+            this.button21.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
+            this.button21.Location = new System.Drawing.Point(592, 17);
+            this.button21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(107, 89);
+            this.button21.TabIndex = 5;
+            this.button21.Text = "Consultar";
+            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // button22
+            // 
+            this.button22.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button22.Image = ((System.Drawing.Image)(resources.GetObject("button22.Image")));
+            this.button22.Location = new System.Drawing.Point(491, 17);
+            this.button22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(96, 89);
+            this.button22.TabIndex = 4;
+            this.button22.Text = "Eliminar";
+            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // button23
+            // 
+            this.button23.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.Image = ((System.Drawing.Image)(resources.GetObject("button23.Image")));
+            this.button23.Location = new System.Drawing.Point(367, 17);
+            this.button23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(119, 89);
+            this.button23.TabIndex = 3;
+            this.button23.Text = "Cancelar";
+            this.button23.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button23.UseVisualStyleBackColor = true;
+            // 
+            // button24
+            // 
+            this.button24.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button24.Image = ((System.Drawing.Image)(resources.GetObject("button24.Image")));
+            this.button24.Location = new System.Drawing.Point(255, 17);
+            this.button24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(107, 89);
+            this.button24.TabIndex = 2;
+            this.button24.Text = "Guardar";
+            this.button24.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button24.UseVisualStyleBackColor = true;
+            // 
+            // button25
+            // 
+            this.button25.Enabled = false;
+            this.button25.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button25.Image = ((System.Drawing.Image)(resources.GetObject("button25.Image")));
+            this.button25.Location = new System.Drawing.Point(131, 17);
+            this.button25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(119, 89);
+            this.button25.TabIndex = 1;
+            this.button25.Text = "Modificar";
+            this.button25.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button25.UseVisualStyleBackColor = true;
+            // 
+            // button26
+            // 
+            this.button26.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button26.Image = ((System.Drawing.Image)(resources.GetObject("button26.Image")));
+            this.button26.Location = new System.Drawing.Point(7, 17);
+            this.button26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(119, 89);
+            this.button26.TabIndex = 0;
+            this.button26.Text = "Ingresar";
+            this.button26.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button26.UseVisualStyleBackColor = true;
+            // 
+            // dgvMateriales
+            // 
+            this.dgvMateriales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMateriales.Location = new System.Drawing.Point(28, 159);
+            this.dgvMateriales.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvMateriales.Name = "dgvMateriales";
+            this.dgvMateriales.RowHeadersWidth = 51;
+            this.dgvMateriales.Size = new System.Drawing.Size(1595, 319);
+            this.dgvMateriales.TabIndex = 0;
+            // 
             // tabMerma
             // 
-            this.tabMerma.Location = new System.Drawing.Point(4, 22);
-            this.tabMerma.Margin = new System.Windows.Forms.Padding(2);
+            this.tabMerma.Location = new System.Drawing.Point(4, 25);
+            this.tabMerma.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabMerma.Name = "tabMerma";
-            this.tabMerma.Padding = new System.Windows.Forms.Padding(2);
-            this.tabMerma.Size = new System.Drawing.Size(1237, 497);
+            this.tabMerma.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabMerma.Size = new System.Drawing.Size(1652, 615);
             this.tabMerma.TabIndex = 2;
             this.tabMerma.Text = "Mermas";
             this.tabMerma.UseVisualStyleBackColor = true;
@@ -184,9 +422,10 @@ namespace Capa_Vista_Prod
             this.tabCostosIndirectos.Controls.Add(this.txtConcepto);
             this.tabCostosIndirectos.Controls.Add(this.dgvCostosIndirectos);
             this.tabCostosIndirectos.Controls.Add(this.panel1);
-            this.tabCostosIndirectos.Location = new System.Drawing.Point(4, 22);
+            this.tabCostosIndirectos.Location = new System.Drawing.Point(4, 25);
+            this.tabCostosIndirectos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabCostosIndirectos.Name = "tabCostosIndirectos";
-            this.tabCostosIndirectos.Size = new System.Drawing.Size(1237, 497);
+            this.tabCostosIndirectos.Size = new System.Drawing.Size(1652, 615);
             this.tabCostosIndirectos.TabIndex = 4;
             this.tabCostosIndirectos.Text = "Costos Indirectos";
             this.tabCostosIndirectos.UseVisualStyleBackColor = true;
@@ -194,57 +433,65 @@ namespace Capa_Vista_Prod
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(474, 138);
+            this.label10.Location = new System.Drawing.Point(632, 170);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.Size = new System.Drawing.Size(82, 17);
             this.label10.TabIndex = 16;
             this.label10.Text = "Descripción";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(264, 137);
+            this.label9.Location = new System.Drawing.Point(352, 169);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.Size = new System.Drawing.Size(47, 17);
             this.label9.TabIndex = 15;
             this.label9.Text = "Monto";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 134);
+            this.label8.Location = new System.Drawing.Point(23, 165);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.Size = new System.Drawing.Size(68, 17);
             this.label8.TabIndex = 14;
             this.label8.Text = "Concepto";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(543, 135);
+            this.txtDescripcion.Location = new System.Drawing.Point(724, 166);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(100, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(132, 22);
             this.txtDescripcion.TabIndex = 13;
             // 
             // nudMonto
             // 
-            this.nudMonto.Location = new System.Drawing.Point(307, 135);
+            this.nudMonto.Location = new System.Drawing.Point(409, 166);
+            this.nudMonto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudMonto.Name = "nudMonto";
-            this.nudMonto.Size = new System.Drawing.Size(120, 20);
+            this.nudMonto.Size = new System.Drawing.Size(160, 22);
             this.nudMonto.TabIndex = 12;
             // 
             // txtConcepto
             // 
-            this.txtConcepto.Location = new System.Drawing.Point(76, 131);
+            this.txtConcepto.Location = new System.Drawing.Point(101, 161);
+            this.txtConcepto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtConcepto.Name = "txtConcepto";
-            this.txtConcepto.Size = new System.Drawing.Size(159, 20);
+            this.txtConcepto.Size = new System.Drawing.Size(211, 22);
             this.txtConcepto.TabIndex = 11;
             // 
             // dgvCostosIndirectos
             // 
             this.dgvCostosIndirectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCostosIndirectos.Location = new System.Drawing.Point(9, 222);
+            this.dgvCostosIndirectos.Location = new System.Drawing.Point(12, 273);
+            this.dgvCostosIndirectos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvCostosIndirectos.Name = "dgvCostosIndirectos";
-            this.dgvCostosIndirectos.Size = new System.Drawing.Size(1217, 261);
+            this.dgvCostosIndirectos.RowHeadersWidth = 51;
+            this.dgvCostosIndirectos.Size = new System.Drawing.Size(1623, 321);
             this.dgvCostosIndirectos.TabIndex = 10;
             // 
             // panel1
@@ -263,20 +510,20 @@ namespace Capa_Vista_Prod
             this.panel1.Controls.Add(this.BtnGuardarCostoIndirecto);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button14);
-            this.panel1.Location = new System.Drawing.Point(2, 12);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1224, 100);
+            this.panel1.Size = new System.Drawing.Size(1632, 123);
             this.panel1.TabIndex = 9;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1113, 14);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(1484, 17);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 72);
+            this.button1.Size = new System.Drawing.Size(119, 89);
             this.button1.TabIndex = 13;
             this.button1.Text = "Salir";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -286,10 +533,10 @@ namespace Capa_Vista_Prod
             // 
             this.button2.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(1020, 14);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(1360, 17);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 72);
+            this.button2.Size = new System.Drawing.Size(119, 89);
             this.button2.TabIndex = 12;
             this.button2.Text = "Ayuda";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -299,10 +546,10 @@ namespace Capa_Vista_Prod
             // 
             this.button3.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(940, 14);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(1253, 17);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(76, 72);
+            this.button3.Size = new System.Drawing.Size(101, 89);
             this.button3.TabIndex = 11;
             this.button3.Text = "Fin";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -312,10 +559,10 @@ namespace Capa_Vista_Prod
             // 
             this.button4.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(856, 14);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Location = new System.Drawing.Point(1141, 17);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 72);
+            this.button4.Size = new System.Drawing.Size(107, 89);
             this.button4.TabIndex = 10;
             this.button4.Text = "Siguiente";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -325,10 +572,10 @@ namespace Capa_Vista_Prod
             // 
             this.button5.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(786, 14);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Location = new System.Drawing.Point(1048, 17);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(66, 72);
+            this.button5.Size = new System.Drawing.Size(88, 89);
             this.button5.TabIndex = 9;
             this.button5.Text = "Anterior";
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -338,10 +585,10 @@ namespace Capa_Vista_Prod
             // 
             this.button6.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(712, 14);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Location = new System.Drawing.Point(949, 17);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(70, 72);
+            this.button6.Size = new System.Drawing.Size(93, 89);
             this.button6.TabIndex = 8;
             this.button6.Text = "Inicio";
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -351,10 +598,10 @@ namespace Capa_Vista_Prod
             // 
             this.button7.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(619, 14);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Location = new System.Drawing.Point(825, 17);
+            this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(89, 72);
+            this.button7.Size = new System.Drawing.Size(119, 89);
             this.button7.TabIndex = 7;
             this.button7.Text = "Refrescar";
             this.button7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -364,10 +611,10 @@ namespace Capa_Vista_Prod
             // 
             this.button8.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(526, 14);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Location = new System.Drawing.Point(701, 17);
+            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(89, 72);
+            this.button8.Size = new System.Drawing.Size(119, 89);
             this.button8.TabIndex = 6;
             this.button8.Text = "Imprimir";
             this.button8.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -377,10 +624,10 @@ namespace Capa_Vista_Prod
             // 
             this.button9.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(444, 14);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Location = new System.Drawing.Point(592, 17);
+            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(80, 72);
+            this.button9.Size = new System.Drawing.Size(107, 89);
             this.button9.TabIndex = 5;
             this.button9.Text = "Consultar";
             this.button9.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -390,10 +637,10 @@ namespace Capa_Vista_Prod
             // 
             this.BtnEliminarCostoIndirecto.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarCostoIndirecto.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarCostoIndirecto.Image")));
-            this.BtnEliminarCostoIndirecto.Location = new System.Drawing.Point(368, 14);
-            this.BtnEliminarCostoIndirecto.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnEliminarCostoIndirecto.Location = new System.Drawing.Point(491, 17);
+            this.BtnEliminarCostoIndirecto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminarCostoIndirecto.Name = "BtnEliminarCostoIndirecto";
-            this.BtnEliminarCostoIndirecto.Size = new System.Drawing.Size(72, 72);
+            this.BtnEliminarCostoIndirecto.Size = new System.Drawing.Size(96, 89);
             this.BtnEliminarCostoIndirecto.TabIndex = 4;
             this.BtnEliminarCostoIndirecto.Text = "Eliminar";
             this.BtnEliminarCostoIndirecto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -404,10 +651,10 @@ namespace Capa_Vista_Prod
             // 
             this.button11.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.Location = new System.Drawing.Point(275, 14);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Location = new System.Drawing.Point(367, 17);
+            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(89, 72);
+            this.button11.Size = new System.Drawing.Size(119, 89);
             this.button11.TabIndex = 3;
             this.button11.Text = "Cancelar";
             this.button11.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -417,10 +664,10 @@ namespace Capa_Vista_Prod
             // 
             this.BtnGuardarCostoIndirecto.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarCostoIndirecto.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuardarCostoIndirecto.Image")));
-            this.BtnGuardarCostoIndirecto.Location = new System.Drawing.Point(191, 14);
-            this.BtnGuardarCostoIndirecto.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnGuardarCostoIndirecto.Location = new System.Drawing.Point(255, 17);
+            this.BtnGuardarCostoIndirecto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnGuardarCostoIndirecto.Name = "BtnGuardarCostoIndirecto";
-            this.BtnGuardarCostoIndirecto.Size = new System.Drawing.Size(80, 72);
+            this.BtnGuardarCostoIndirecto.Size = new System.Drawing.Size(107, 89);
             this.BtnGuardarCostoIndirecto.TabIndex = 2;
             this.BtnGuardarCostoIndirecto.Text = "Guardar";
             this.BtnGuardarCostoIndirecto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -432,10 +679,10 @@ namespace Capa_Vista_Prod
             this.button13.Enabled = false;
             this.button13.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(98, 14);
-            this.button13.Margin = new System.Windows.Forms.Padding(2);
+            this.button13.Location = new System.Drawing.Point(131, 17);
+            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(89, 72);
+            this.button13.Size = new System.Drawing.Size(119, 89);
             this.button13.TabIndex = 1;
             this.button13.Text = "Modificar";
             this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -445,10 +692,10 @@ namespace Capa_Vista_Prod
             // 
             this.button14.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.Location = new System.Drawing.Point(5, 14);
-            this.button14.Margin = new System.Windows.Forms.Padding(2);
+            this.button14.Location = new System.Drawing.Point(7, 17);
+            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(89, 72);
+            this.button14.Size = new System.Drawing.Size(119, 89);
             this.button14.TabIndex = 0;
             this.button14.Text = "Ingresar";
             this.button14.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -464,11 +711,11 @@ namespace Capa_Vista_Prod
             this.tab_Produccion.Controls.Add(this.label1);
             this.tab_Produccion.Controls.Add(this.lblEmpleado);
             this.tab_Produccion.Controls.Add(this.dgvManoObra);
-            this.tab_Produccion.Location = new System.Drawing.Point(4, 22);
-            this.tab_Produccion.Margin = new System.Windows.Forms.Padding(2);
+            this.tab_Produccion.Location = new System.Drawing.Point(4, 25);
+            this.tab_Produccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tab_Produccion.Name = "tab_Produccion";
-            this.tab_Produccion.Padding = new System.Windows.Forms.Padding(2);
-            this.tab_Produccion.Size = new System.Drawing.Size(1237, 497);
+            this.tab_Produccion.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tab_Produccion.Size = new System.Drawing.Size(1652, 615);
             this.tab_Produccion.TabIndex = 0;
             this.tab_Produccion.Text = "Mano de Obra";
             this.tab_Produccion.UseVisualStyleBackColor = true;
@@ -476,10 +723,10 @@ namespace Capa_Vista_Prod
             // cboEmpleado
             // 
             this.cboEmpleado.FormattingEnabled = true;
-            this.cboEmpleado.Location = new System.Drawing.Point(86, 131);
-            this.cboEmpleado.Margin = new System.Windows.Forms.Padding(2);
+            this.cboEmpleado.Location = new System.Drawing.Point(115, 161);
+            this.cboEmpleado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboEmpleado.Name = "cboEmpleado";
-            this.cboEmpleado.Size = new System.Drawing.Size(92, 21);
+            this.cboEmpleado.Size = new System.Drawing.Size(121, 24);
             this.cboEmpleado.TabIndex = 9;
             // 
             // panel5
@@ -498,20 +745,20 @@ namespace Capa_Vista_Prod
             this.panel5.Controls.Add(this.BtnGuardarManoObra);
             this.panel5.Controls.Add(this.Btn_modificar);
             this.panel5.Controls.Add(this.Btn_ingresar);
-            this.panel5.Location = new System.Drawing.Point(4, 4);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Location = new System.Drawing.Point(5, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1224, 100);
+            this.panel5.Size = new System.Drawing.Size(1632, 123);
             this.panel5.TabIndex = 8;
             // 
             // Btn_salir
             // 
             this.Btn_salir.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_salir.Image")));
-            this.Btn_salir.Location = new System.Drawing.Point(1113, 14);
-            this.Btn_salir.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_salir.Location = new System.Drawing.Point(1484, 17);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(89, 72);
+            this.Btn_salir.Size = new System.Drawing.Size(119, 89);
             this.Btn_salir.TabIndex = 13;
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -521,10 +768,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_ayuda.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ayuda.Image")));
-            this.Btn_ayuda.Location = new System.Drawing.Point(1020, 14);
-            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_ayuda.Location = new System.Drawing.Point(1360, 17);
+            this.Btn_ayuda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_ayuda.Name = "Btn_ayuda";
-            this.Btn_ayuda.Size = new System.Drawing.Size(89, 72);
+            this.Btn_ayuda.Size = new System.Drawing.Size(119, 89);
             this.Btn_ayuda.TabIndex = 12;
             this.Btn_ayuda.Text = "Ayuda";
             this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -534,10 +781,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
-            this.Btn_fin.Location = new System.Drawing.Point(940, 14);
-            this.Btn_fin.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_fin.Location = new System.Drawing.Point(1253, 17);
+            this.Btn_fin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_fin.Name = "Btn_fin";
-            this.Btn_fin.Size = new System.Drawing.Size(76, 72);
+            this.Btn_fin.Size = new System.Drawing.Size(101, 89);
             this.Btn_fin.TabIndex = 11;
             this.Btn_fin.Text = "Fin";
             this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -547,10 +794,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_sig.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
-            this.Btn_sig.Location = new System.Drawing.Point(856, 14);
-            this.Btn_sig.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_sig.Location = new System.Drawing.Point(1141, 17);
+            this.Btn_sig.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_sig.Name = "Btn_sig";
-            this.Btn_sig.Size = new System.Drawing.Size(80, 72);
+            this.Btn_sig.Size = new System.Drawing.Size(107, 89);
             this.Btn_sig.TabIndex = 10;
             this.Btn_sig.Text = "Siguiente";
             this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -560,10 +807,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_anterior.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
-            this.Btn_anterior.Location = new System.Drawing.Point(786, 14);
-            this.Btn_anterior.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_anterior.Location = new System.Drawing.Point(1048, 17);
+            this.Btn_anterior.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_anterior.Name = "Btn_anterior";
-            this.Btn_anterior.Size = new System.Drawing.Size(66, 72);
+            this.Btn_anterior.Size = new System.Drawing.Size(88, 89);
             this.Btn_anterior.TabIndex = 9;
             this.Btn_anterior.Text = "Anterior";
             this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -573,10 +820,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_inicio.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
-            this.Btn_inicio.Location = new System.Drawing.Point(712, 14);
-            this.Btn_inicio.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_inicio.Location = new System.Drawing.Point(949, 17);
+            this.Btn_inicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_inicio.Name = "Btn_inicio";
-            this.Btn_inicio.Size = new System.Drawing.Size(70, 72);
+            this.Btn_inicio.Size = new System.Drawing.Size(93, 89);
             this.Btn_inicio.TabIndex = 8;
             this.Btn_inicio.Text = "Inicio";
             this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -586,10 +833,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_refrescar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_refrescar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_refrescar.Image")));
-            this.Btn_refrescar.Location = new System.Drawing.Point(619, 14);
-            this.Btn_refrescar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_refrescar.Location = new System.Drawing.Point(825, 17);
+            this.Btn_refrescar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_refrescar.Name = "Btn_refrescar";
-            this.Btn_refrescar.Size = new System.Drawing.Size(89, 72);
+            this.Btn_refrescar.Size = new System.Drawing.Size(119, 89);
             this.Btn_refrescar.TabIndex = 7;
             this.Btn_refrescar.Text = "Refrescar";
             this.Btn_refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -599,10 +846,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_imprimir.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_imprimir.Image")));
-            this.Btn_imprimir.Location = new System.Drawing.Point(526, 14);
-            this.Btn_imprimir.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_imprimir.Location = new System.Drawing.Point(701, 17);
+            this.Btn_imprimir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_imprimir.Name = "Btn_imprimir";
-            this.Btn_imprimir.Size = new System.Drawing.Size(89, 72);
+            this.Btn_imprimir.Size = new System.Drawing.Size(119, 89);
             this.Btn_imprimir.TabIndex = 6;
             this.Btn_imprimir.Text = "Imprimir";
             this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -612,10 +859,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_consultar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_consultar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_consultar.Image")));
-            this.Btn_consultar.Location = new System.Drawing.Point(444, 14);
-            this.Btn_consultar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_consultar.Location = new System.Drawing.Point(592, 17);
+            this.Btn_consultar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_consultar.Name = "Btn_consultar";
-            this.Btn_consultar.Size = new System.Drawing.Size(80, 72);
+            this.Btn_consultar.Size = new System.Drawing.Size(107, 89);
             this.Btn_consultar.TabIndex = 5;
             this.Btn_consultar.Text = "Consultar";
             this.Btn_consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -625,10 +872,10 @@ namespace Capa_Vista_Prod
             // 
             this.BtnEliminarManoObra.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarManoObra.Image = ((System.Drawing.Image)(resources.GetObject("BtnEliminarManoObra.Image")));
-            this.BtnEliminarManoObra.Location = new System.Drawing.Point(368, 14);
-            this.BtnEliminarManoObra.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnEliminarManoObra.Location = new System.Drawing.Point(491, 17);
+            this.BtnEliminarManoObra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnEliminarManoObra.Name = "BtnEliminarManoObra";
-            this.BtnEliminarManoObra.Size = new System.Drawing.Size(72, 72);
+            this.BtnEliminarManoObra.Size = new System.Drawing.Size(96, 89);
             this.BtnEliminarManoObra.TabIndex = 4;
             this.BtnEliminarManoObra.Text = "Eliminar";
             this.BtnEliminarManoObra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -638,10 +885,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_cancelar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_cancelar.Image")));
-            this.Btn_cancelar.Location = new System.Drawing.Point(275, 14);
-            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_cancelar.Location = new System.Drawing.Point(367, 17);
+            this.Btn_cancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_cancelar.Name = "Btn_cancelar";
-            this.Btn_cancelar.Size = new System.Drawing.Size(89, 72);
+            this.Btn_cancelar.Size = new System.Drawing.Size(119, 89);
             this.Btn_cancelar.TabIndex = 3;
             this.Btn_cancelar.Text = "Cancelar";
             this.Btn_cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -651,10 +898,10 @@ namespace Capa_Vista_Prod
             // 
             this.BtnGuardarManoObra.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarManoObra.Image = ((System.Drawing.Image)(resources.GetObject("BtnGuardarManoObra.Image")));
-            this.BtnGuardarManoObra.Location = new System.Drawing.Point(191, 14);
-            this.BtnGuardarManoObra.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnGuardarManoObra.Location = new System.Drawing.Point(255, 17);
+            this.BtnGuardarManoObra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnGuardarManoObra.Name = "BtnGuardarManoObra";
-            this.BtnGuardarManoObra.Size = new System.Drawing.Size(80, 72);
+            this.BtnGuardarManoObra.Size = new System.Drawing.Size(107, 89);
             this.BtnGuardarManoObra.TabIndex = 2;
             this.BtnGuardarManoObra.Text = "Guardar";
             this.BtnGuardarManoObra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -666,10 +913,10 @@ namespace Capa_Vista_Prod
             this.Btn_modificar.Enabled = false;
             this.Btn_modificar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_modificar.Image")));
-            this.Btn_modificar.Location = new System.Drawing.Point(98, 14);
-            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_modificar.Location = new System.Drawing.Point(131, 17);
+            this.Btn_modificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_modificar.Name = "Btn_modificar";
-            this.Btn_modificar.Size = new System.Drawing.Size(89, 72);
+            this.Btn_modificar.Size = new System.Drawing.Size(119, 89);
             this.Btn_modificar.TabIndex = 1;
             this.Btn_modificar.Text = "Modificar";
             this.Btn_modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -679,10 +926,10 @@ namespace Capa_Vista_Prod
             // 
             this.Btn_ingresar.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ingresar.Image")));
-            this.Btn_ingresar.Location = new System.Drawing.Point(5, 14);
-            this.Btn_ingresar.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_ingresar.Location = new System.Drawing.Point(7, 17);
+            this.Btn_ingresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_ingresar.Name = "Btn_ingresar";
-            this.Btn_ingresar.Size = new System.Drawing.Size(89, 72);
+            this.Btn_ingresar.Size = new System.Drawing.Size(119, 89);
             this.Btn_ingresar.TabIndex = 0;
             this.Btn_ingresar.Text = "Ingresar";
             this.Btn_ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -690,68 +937,66 @@ namespace Capa_Vista_Prod
             // 
             // nudCostoHora
             // 
-            this.nudCostoHora.Location = new System.Drawing.Point(393, 131);
-            this.nudCostoHora.Margin = new System.Windows.Forms.Padding(2);
+            this.nudCostoHora.Location = new System.Drawing.Point(524, 161);
+            this.nudCostoHora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudCostoHora.Name = "nudCostoHora";
-            this.nudCostoHora.Size = new System.Drawing.Size(90, 20);
+            this.nudCostoHora.Size = new System.Drawing.Size(120, 22);
             this.nudCostoHora.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(332, 135);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(443, 166);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Costo Hora";
             // 
             // nudHoras
             // 
-            this.nudHoras.Location = new System.Drawing.Point(224, 134);
-            this.nudHoras.Margin = new System.Windows.Forms.Padding(2);
+            this.nudHoras.Location = new System.Drawing.Point(299, 165);
+            this.nudHoras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nudHoras.Name = "nudHoras";
-            this.nudHoras.Size = new System.Drawing.Size(90, 20);
+            this.nudHoras.Size = new System.Drawing.Size(120, 22);
             this.nudHoras.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 137);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(248, 169);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Horas";
             // 
             // lblEmpleado
             // 
             this.lblEmpleado.AutoSize = true;
-            this.lblEmpleado.Location = new System.Drawing.Point(29, 133);
-            this.lblEmpleado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmpleado.Location = new System.Drawing.Point(39, 164);
             this.lblEmpleado.Name = "lblEmpleado";
-            this.lblEmpleado.Size = new System.Drawing.Size(54, 13);
+            this.lblEmpleado.Size = new System.Drawing.Size(71, 17);
             this.lblEmpleado.TabIndex = 2;
             this.lblEmpleado.Text = "Empleado";
             // 
             // dgvManoObra
             // 
             this.dgvManoObra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvManoObra.Location = new System.Drawing.Point(9, 158);
-            this.dgvManoObra.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvManoObra.Location = new System.Drawing.Point(12, 194);
+            this.dgvManoObra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvManoObra.Name = "dgvManoObra";
+            this.dgvManoObra.RowHeadersWidth = 51;
             this.dgvManoObra.RowTemplate.Height = 24;
-            this.dgvManoObra.Size = new System.Drawing.Size(1207, 327);
+            this.dgvManoObra.Size = new System.Drawing.Size(1609, 402);
             this.dgvManoObra.TabIndex = 0;
             // 
             // tabCostos
             // 
             this.tabCostos.Controls.Add(this.dgvCostos);
-            this.tabCostos.Location = new System.Drawing.Point(4, 22);
-            this.tabCostos.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCostos.Location = new System.Drawing.Point(4, 25);
+            this.tabCostos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabCostos.Name = "tabCostos";
-            this.tabCostos.Padding = new System.Windows.Forms.Padding(2);
-            this.tabCostos.Size = new System.Drawing.Size(1237, 497);
+            this.tabCostos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabCostos.Size = new System.Drawing.Size(1652, 615);
             this.tabCostos.TabIndex = 1;
             this.tabCostos.Text = "Costos de Producción";
             this.tabCostos.UseVisualStyleBackColor = true;
@@ -759,20 +1004,21 @@ namespace Capa_Vista_Prod
             // dgvCostos
             // 
             this.dgvCostos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCostos.Location = new System.Drawing.Point(14, 15);
-            this.dgvCostos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvCostos.Location = new System.Drawing.Point(19, 18);
+            this.dgvCostos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvCostos.Name = "dgvCostos";
+            this.dgvCostos.RowHeadersWidth = 51;
             this.dgvCostos.RowTemplate.Height = 24;
-            this.dgvCostos.Size = new System.Drawing.Size(1207, 461);
+            this.dgvCostos.Size = new System.Drawing.Size(1609, 567);
             this.dgvCostos.TabIndex = 0;
             // 
             // Cbo_Orden
             // 
             this.Cbo_Orden.FormattingEnabled = true;
-            this.Cbo_Orden.Location = new System.Drawing.Point(126, 71);
-            this.Cbo_Orden.Margin = new System.Windows.Forms.Padding(2);
+            this.Cbo_Orden.Location = new System.Drawing.Point(168, 87);
+            this.Cbo_Orden.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Cbo_Orden.Name = "Cbo_Orden";
-            this.Cbo_Orden.Size = new System.Drawing.Size(100, 21);
+            this.Cbo_Orden.Size = new System.Drawing.Size(132, 24);
             this.Cbo_Orden.TabIndex = 19;
             this.Cbo_Orden.SelectedIndexChanged += new System.EventHandler(this.Cbo_Orden_SelectedIndexChanged);
             // 
@@ -780,9 +1026,10 @@ namespace Capa_Vista_Prod
             // 
             this.Lbl_Costos.AutoSize = true;
             this.Lbl_Costos.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Costos.Location = new System.Drawing.Point(17, 11);
+            this.Lbl_Costos.Location = new System.Drawing.Point(23, 14);
+            this.Lbl_Costos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Costos.Name = "Lbl_Costos";
-            this.Lbl_Costos.Size = new System.Drawing.Size(269, 29);
+            this.Lbl_Costos.Size = new System.Drawing.Size(336, 38);
             this.Lbl_Costos.TabIndex = 11;
             this.Lbl_Costos.Text = "Costos de Producción";
             // 
@@ -790,258 +1037,40 @@ namespace Capa_Vista_Prod
             // 
             this.Lbl_Orden.AutoSize = true;
             this.Lbl_Orden.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Orden.Location = new System.Drawing.Point(21, 72);
+            this.Lbl_Orden.Location = new System.Drawing.Point(28, 89);
+            this.Lbl_Orden.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Orden.Name = "Lbl_Orden";
-            this.Lbl_Orden.Size = new System.Drawing.Size(87, 19);
+            this.Lbl_Orden.Size = new System.Drawing.Size(105, 22);
             this.Lbl_Orden.TabIndex = 18;
             this.Lbl_Orden.Text = "Orden No:";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(21, 40);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(28, 49);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(760, 11);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1013, 14);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
-            // dgvMateriales
+            // btn_consumir
             // 
-            this.dgvMateriales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMateriales.Location = new System.Drawing.Point(21, 129);
-            this.dgvMateriales.Name = "dgvMateriales";
-            this.dgvMateriales.Size = new System.Drawing.Size(1196, 259);
-            this.dgvMateriales.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button10);
-            this.panel2.Controls.Add(this.button12);
-            this.panel2.Controls.Add(this.button15);
-            this.panel2.Controls.Add(this.button16);
-            this.panel2.Controls.Add(this.button17);
-            this.panel2.Controls.Add(this.button18);
-            this.panel2.Controls.Add(this.button19);
-            this.panel2.Controls.Add(this.button20);
-            this.panel2.Controls.Add(this.button21);
-            this.panel2.Controls.Add(this.button22);
-            this.panel2.Controls.Add(this.button23);
-            this.panel2.Controls.Add(this.button24);
-            this.panel2.Controls.Add(this.button25);
-            this.panel2.Controls.Add(this.button26);
-            this.panel2.Location = new System.Drawing.Point(11, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1224, 100);
-            this.panel2.TabIndex = 10;
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.Location = new System.Drawing.Point(1113, 14);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(89, 72);
-            this.button10.TabIndex = 13;
-            this.button10.Text = "Salir";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.Location = new System.Drawing.Point(1020, 14);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(89, 72);
-            this.button12.TabIndex = 12;
-            this.button12.Text = "Ayuda";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
-            this.button15.Location = new System.Drawing.Point(940, 14);
-            this.button15.Margin = new System.Windows.Forms.Padding(2);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(76, 72);
-            this.button15.TabIndex = 11;
-            this.button15.Text = "Fin";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
-            this.button16.Location = new System.Drawing.Point(856, 14);
-            this.button16.Margin = new System.Windows.Forms.Padding(2);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(80, 72);
-            this.button16.TabIndex = 10;
-            this.button16.Text = "Siguiente";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            this.button17.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
-            this.button17.Location = new System.Drawing.Point(786, 14);
-            this.button17.Margin = new System.Windows.Forms.Padding(2);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(66, 72);
-            this.button17.TabIndex = 9;
-            this.button17.Text = "Anterior";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Image = ((System.Drawing.Image)(resources.GetObject("button18.Image")));
-            this.button18.Location = new System.Drawing.Point(712, 14);
-            this.button18.Margin = new System.Windows.Forms.Padding(2);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(70, 72);
-            this.button18.TabIndex = 8;
-            this.button18.Text = "Inicio";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Image = ((System.Drawing.Image)(resources.GetObject("button19.Image")));
-            this.button19.Location = new System.Drawing.Point(619, 14);
-            this.button19.Margin = new System.Windows.Forms.Padding(2);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(89, 72);
-            this.button19.TabIndex = 7;
-            this.button19.Text = "Refrescar";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Image = ((System.Drawing.Image)(resources.GetObject("button20.Image")));
-            this.button20.Location = new System.Drawing.Point(526, 14);
-            this.button20.Margin = new System.Windows.Forms.Padding(2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(89, 72);
-            this.button20.TabIndex = 6;
-            this.button20.Text = "Imprimir";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // button21
-            // 
-            this.button21.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
-            this.button21.Location = new System.Drawing.Point(444, 14);
-            this.button21.Margin = new System.Windows.Forms.Padding(2);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(80, 72);
-            this.button21.TabIndex = 5;
-            this.button21.Text = "Consultar";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Image = ((System.Drawing.Image)(resources.GetObject("button22.Image")));
-            this.button22.Location = new System.Drawing.Point(368, 14);
-            this.button22.Margin = new System.Windows.Forms.Padding(2);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(72, 72);
-            this.button22.TabIndex = 4;
-            this.button22.Text = "Eliminar";
-            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button23
-            // 
-            this.button23.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.Image = ((System.Drawing.Image)(resources.GetObject("button23.Image")));
-            this.button23.Location = new System.Drawing.Point(275, 14);
-            this.button23.Margin = new System.Windows.Forms.Padding(2);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(89, 72);
-            this.button23.TabIndex = 3;
-            this.button23.Text = "Cancelar";
-            this.button23.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button23.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.Image = ((System.Drawing.Image)(resources.GetObject("button24.Image")));
-            this.button24.Location = new System.Drawing.Point(191, 14);
-            this.button24.Margin = new System.Windows.Forms.Padding(2);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(80, 72);
-            this.button24.TabIndex = 2;
-            this.button24.Text = "Guardar";
-            this.button24.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // button25
-            // 
-            this.button25.Enabled = false;
-            this.button25.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Image = ((System.Drawing.Image)(resources.GetObject("button25.Image")));
-            this.button25.Location = new System.Drawing.Point(98, 14);
-            this.button25.Margin = new System.Windows.Forms.Padding(2);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(89, 72);
-            this.button25.TabIndex = 1;
-            this.button25.Text = "Modificar";
-            this.button25.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button25.UseVisualStyleBackColor = true;
-            // 
-            // button26
-            // 
-            this.button26.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button26.Image = ((System.Drawing.Image)(resources.GetObject("button26.Image")));
-            this.button26.Location = new System.Drawing.Point(5, 14);
-            this.button26.Margin = new System.Windows.Forms.Padding(2);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(89, 72);
-            this.button26.TabIndex = 0;
-            this.button26.Text = "Ingresar";
-            this.button26.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button26.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(753, 434);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Costo Total: ";
-            // 
-            // lblTotalMateriales
-            // 
-            this.lblTotalMateriales.AutoSize = true;
-            this.lblTotalMateriales.Location = new System.Drawing.Point(826, 434);
-            this.lblTotalMateriales.Name = "lblTotalMateriales";
-            this.lblTotalMateriales.Size = new System.Drawing.Size(35, 13);
-            this.lblTotalMateriales.TabIndex = 12;
-            this.lblTotalMateriales.Text = "label4";
+            this.btn_consumir.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_consumir.Location = new System.Drawing.Point(28, 509);
+            this.btn_consumir.Name = "btn_consumir";
+            this.btn_consumir.Size = new System.Drawing.Size(224, 42);
+            this.btn_consumir.TabIndex = 13;
+            this.btn_consumir.Text = "Confirmar consumo";
+            this.btn_consumir.UseVisualStyleBackColor = true;
+            this.btn_consumir.Click += new System.EventHandler(this.btn_consumir_Click);
             // 
             // Frm_Produccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1305, 648);
+            this.ClientSize = new System.Drawing.Size(1740, 798);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Frm_Produccion";
             this.Text = "Frm_Produccion";
             this.Load += new System.EventHandler(this.Frm_Prod_Load);
@@ -1050,6 +1079,8 @@ namespace Capa_Vista_Prod
             this.tabControl1.ResumeLayout(false);
             this.tabMaterial.ResumeLayout(false);
             this.tabMaterial.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).EndInit();
             this.tabCostosIndirectos.ResumeLayout(false);
             this.tabCostosIndirectos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMonto)).EndInit();
@@ -1063,8 +1094,6 @@ namespace Capa_Vista_Prod
             ((System.ComponentModel.ISupportInitialize)(this.dgvManoObra)).EndInit();
             this.tabCostos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMateriales)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1145,5 +1174,6 @@ namespace Capa_Vista_Prod
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button btn_consumir;
     }
 }

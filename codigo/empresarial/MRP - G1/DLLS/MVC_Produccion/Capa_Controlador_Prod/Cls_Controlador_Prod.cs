@@ -65,5 +65,10 @@ namespace Capa_Controlador_Prod
         {
             return sentenciasM.ObtenerMaterialesConsumidos(idOrden);
         }
+
+        public bool DescontarMateriales(int idOrden)
+        {
+            return sentenciasM.DescontarMateriales(idOrden);
+        }
     }
 }

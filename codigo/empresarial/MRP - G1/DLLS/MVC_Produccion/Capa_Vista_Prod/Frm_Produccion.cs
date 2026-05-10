@@ -312,6 +312,59 @@ namespace Capa_Vista_Prod
 
             lblTotalMateriales.Text = $"Total materiales: Q {total:N2}";
         }
+
+        private void btn_consumir_Click(object sender, EventArgs e)
+        {
+            if (Cbo_Orden.SelectedValue == null || Cbo_Orden.SelectedValue is DataRowView)
+            {
+                MessageBox.Show("Seleccione una orden primero.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvMateriales.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay materiales para consumir.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "¿Confirmar el consumo de materiales del inventario?\nEsta acción no se puede deshacer.",
+                "Confirmar consumo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+
+                if (controlador.DescontarMateriales(idOrden))
+                {
+                    MessageBox.Show("Materiales descontados del inventario correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Refrescar la pestaña de materiales y costos
+                    CargarMaterialesConsumidos(idOrden);
+                    CargarCostos(idOrden);
+
+                    // Opcional: deshabilitar el botón para evitar doble consumo
+                    btn_consumir.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al consumir materiales:\n" + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
         // ###################### MATERIAL CONSUMIDO ##################################################
     }
 }
