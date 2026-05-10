@@ -13,15 +13,15 @@ namespace Capa_Controlador_Prod
     {
         private readonly Cls_Sentencias_Prod sentencias = new Cls_Sentencias_Prod();
         private readonly Cls_Sentencias_Prod sentenciasDetalle = new Cls_Sentencias_Prod();
+        private readonly Cls_Sentencias_CI sentenciasCI = new Cls_Sentencias_CI();
 
 
-
-        public DataTable ObtenerOrdenesRecibidas()
+        public DataTable ObtenerOrdenesProduccion()
         {
-            return sentenciasDetalle.ObtenerOrdenesRecibidas();
+            return sentencias.ObtenerOrdenesProduccion();
         }
 
-        public DataTable ObtenerInfoOrdenRecibida(int idOrden)
+       /* public DataTable ObtenerInfoOrdenRecibida(int idOrden)
         {
             return sentenciasDetalle.ObtenerInfoOrdenRecibida(idOrden);
         }
@@ -29,7 +29,7 @@ namespace Capa_Controlador_Prod
         public DataTable ObtenerProductosOrdenRecibida(int idOrden)
         {
             return sentenciasDetalle.ObtenerProductosOrdenRecibida(idOrden);
-        }
+        }*/
 
         public DataTable ObtenerManoObra(int idOrden)
         {
@@ -53,6 +53,21 @@ namespace Capa_Controlador_Prod
         public DataTable ObtenerEmpleados()
         {
             return sentencias.ObtenerEmpleados();
+        }
+
+        public DataTable ObtenerCostosIndirectos(int idOrden)
+        {
+            return sentenciasCI.ObtenerCostosIndirectos(idOrden);
+        }
+
+        public bool GuardarCostoIndirecto(int idOrden, string concepto, decimal monto, string descripcion)
+        {
+            return sentenciasCI.GuardarCostoIndirecto(idOrden, concepto, monto, descripcion);
+        }
+
+        public bool EliminarCostoIndirecto(int idCosto)
+        {
+            return sentenciasCI.EliminarCostoIndirecto(idCosto);
         }
     }
 }

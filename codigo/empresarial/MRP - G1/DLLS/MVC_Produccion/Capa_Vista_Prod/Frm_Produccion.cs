@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Odbc;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,29 +18,30 @@ namespace Capa_Vista_Prod
         public Frm_Produccion()
         {
             InitializeComponent();
-            this.Load += Frm_Prod_Load;
-            ToolTip tip = new ToolTip();
-            tip.IsBalloon = true;
-            tip.ToolTipTitle = "Búsqueda de Órdenes";
-            tip.SetToolTip(Cbo_Orden, "Seleccione o escriba el número de orden para realizar la implosión.");
+
+            try
+            {
+                ObtenerOrdenesProduccion();
+                CargarComboEmpleados();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void Frm_Prod_Load(object sender, EventArgs e)
         {
-            // Configurar DateTimePickers igual que Kevin
             
-
-            ObtenerOrdenesRecibidas();
-            CargarComboEmpleados();
             
         }
 
-        private void ObtenerOrdenesRecibidas()
+        private void ObtenerOrdenesProduccion()
         {
-            DataTable dt = controlador.ObtenerOrdenesRecibidas();
+            DataTable dt = controlador.ObtenerOrdenesProduccion();
             Cbo_Orden.DataSource = dt;
-            Cbo_Orden.DisplayMember = "Id_Externo_Logistica";
-            Cbo_Orden.ValueMember = "Pk_Id_Orden_Recibida";
+            Cbo_Orden.DisplayMember = "Descripcion";
+            Cbo_Orden.ValueMember = "IdOrden";
             Cbo_Orden.SelectedIndex = -1;
         }
 
@@ -52,6 +54,7 @@ namespace Capa_Vista_Prod
 
             int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
             CargarManoObra(idOrden);
+            CargarCostosIndirectos(idOrden);
             CargarCostos(idOrden);
         }
 
@@ -101,6 +104,7 @@ namespace Capa_Vista_Prod
         private void CargarCostos(int idOrden)
         {
             DataTable dt = controlador.ObtenerCostosProduccion(idOrden);
+
             if (dt.Rows.Count == 0) return;
 
             DataRow row = dt.Rows[0];
@@ -111,15 +115,14 @@ namespace Capa_Vista_Prod
             decimal mermas = Convert.ToDecimal(row["CostoMermas"]);
             decimal total = materiales + manoObra + indirectos + mermas;
 
-            lblCostoMateriales.Text = $"Q {materiales:N2}";
+            /*lblCostoMateriales.Text = $"Q {materiales:N2}";
             lblCostoManoObra.Text = $"Q {manoObra:N2}";
             lblCostoIndirecto.Text = $"Q {indirectos:N2}";
             lblCostoMermas.Text = $"Q {mermas:N2}";
-            lblCostoTotal.Text = $"Q {total:N2}";
+            lblCostoTotal.Text = $"Q {total:N2}";*/
 
-            // 👇 Llenar el grid con el desglose
             DataTable desglose = new DataTable();
-            desglose.Columns.Add("Categoría", typeof(string));
+            desglose.Columns.Add("Categoria", typeof(string)); // 👈 sin acento
             desglose.Columns.Add("Monto", typeof(decimal));
 
             desglose.Rows.Add("Materiales", materiales);
@@ -129,7 +132,7 @@ namespace Capa_Vista_Prod
             desglose.Rows.Add("TOTAL", total);
 
             dgvCostos.DataSource = desglose;
-            dgvCostos.Columns["Categoría"].Width = 200;
+            dgvCostos.Columns["Categoria"].HeaderText = "Categoría";
             dgvCostos.Columns["Monto"].HeaderText = "Monto (Q)";
             dgvCostos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCostos.ReadOnly = true;
@@ -193,6 +196,91 @@ namespace Capa_Vista_Prod
             {
                 MessageBox.Show("Error al guardar.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        // ############### COSTOS INDIRECTOS #########################################
+
+        private void CargarCostosIndirectos(int idOrden)
+        {
+            DataTable dt = controlador.ObtenerCostosIndirectos(idOrden);
+            dgvCostosIndirectos.DataSource = dt;
+
+            if (dgvCostosIndirectos.Columns.Count == 0) return;
+            dgvCostosIndirectos.Columns["Id"].Visible = false;
+            dgvCostosIndirectos.Columns["Concepto"].HeaderText = "Concepto";
+            dgvCostosIndirectos.Columns["Monto"].HeaderText = "Monto (Q)";
+            dgvCostosIndirectos.Columns["Descripcion"].HeaderText = "Descripción";
+            dgvCostosIndirectos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCostosIndirectos.ReadOnly = true;
+            dgvCostosIndirectos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void BtnGuardarCostoIndirecto_Click(object sender, EventArgs e)
+        {
+            if (Cbo_Orden.SelectedValue == null || Cbo_Orden.SelectedValue is DataRowView)
+            {
+                MessageBox.Show("Seleccione una orden primero.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtConcepto.Text))
+            {
+                MessageBox.Show("Ingrese el concepto.");
+                return;
+            }
+
+            if (nudMonto.Value <= 0)
+            {
+                MessageBox.Show("El monto debe ser mayor a 0.");
+                return;
+            }
+
+            int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+
+            bool exito = controlador.GuardarCostoIndirecto(
+                idOrden,
+                txtConcepto.Text.Trim(),
+                nudMonto.Value,
+                txtDescripcion.Text.Trim());
+
+            
+
+            if (exito)
+            {
+                MessageBox.Show("Costo indirecto registrado correctamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtConcepto.Text = "";
+                nudMonto.Value = 0;
+                txtDescripcion.Text = "";
+                CargarCostosIndirectos(idOrden);
+                CargarCostos(idOrden);
+            }
+
+
+        }
+
+        private void BtnEliminarCostoIndirecto_Click(object sender, EventArgs e)
+        {
+            if (dgvCostosIndirectos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione un registro para eliminar.");
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show("¿Eliminar este registro?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(dgvCostosIndirectos.SelectedRows[0].Cells["Id"].Value);
+                if (controlador.EliminarCostoIndirecto(id))
+                {
+                    int idOrden = Convert.ToInt32(Cbo_Orden.SelectedValue);
+                    CargarCostosIndirectos(idOrden);
+                    CargarCostos(idOrden);
+                }
             }
         }
     }

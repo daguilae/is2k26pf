@@ -13,20 +13,20 @@ namespace Capa_Modelo_Prod
     {
         private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-        public DataTable ObtenerOrdenesRecibidas()
+        public DataTable ObtenerOrdenesProduccion()
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
             SELECT 
-                o.Pk_Id_Orden_Recibida,
-                CONCAT(o.Id_Externo_Logistica, ' | ', 
-                       DATE_FORMAT(o.Fecha_Requerida, '%Y-%m-%d')) AS Descripcion
-            FROM Tbl_Orden_Recibida o
-            INNER JOIN Tbl_Estado_Orden_Recibida e
-                ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida
-            ORDER BY o.Fecha_Recepcion DESC";
+                op.Pk_Id_Orden_Produccion AS IdOrden,
+                CONCAT(m.Nombre_Material, ' | ', 
+                       DATE_FORMAT(op.Fecha_Inicio_Orden_Produccion, '%Y-%m-%d'), ' - ',
+                       DATE_FORMAT(op.Fecha_Fin_Orden_Produccion, '%Y-%m-%d')) AS Descripcion
+            FROM Tbl_Orden_Produccion op
+            INNER JOIN Tbl_Materiales m ON op.Fk_Id_Material = m.Pk_Id_Materiales
+            ORDER BY op.Fecha_Inicio_Orden_Produccion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.Fill(dt);
@@ -35,7 +35,7 @@ namespace Capa_Modelo_Prod
         }
 
 
-        public DataTable ObtenerInfoOrdenRecibida(int idOrden)
+        /*public DataTable ObtenerInfoOrdenRecibida(int idOrden)
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
@@ -84,7 +84,7 @@ namespace Capa_Modelo_Prod
                 da.Fill(dt);
             }
             return dt;
-        }
+        }*/
 
         // ############################ METODOS PARA MANO DE OBRA #############################################
         // Mano de obra por orden de producción
