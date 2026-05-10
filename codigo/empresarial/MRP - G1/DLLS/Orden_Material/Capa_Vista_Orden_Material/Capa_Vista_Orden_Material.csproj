@@ -71,11 +71,23 @@
     <Compile Include="Frm_Reporte_Detalle.Designer.cs">
       <DependentUpon>Frm_Reporte_Detalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Reporte_Orden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Reporte_Orden.Designer.cs">
+      <DependentUpon>Frm_Reporte_Orden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporte_Detalle.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reporte_Detalle.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte_Orden.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_Orden.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -89,9 +101,16 @@
     <EmbeddedResource Include="Frm_Reporte_Detalle.resx">
       <DependentUpon>Frm_Reporte_Detalle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Reporte_Orden.resx">
+      <DependentUpon>Frm_Reporte_Orden.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte_Detalle.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Detalle.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Orden.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_Orden.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
