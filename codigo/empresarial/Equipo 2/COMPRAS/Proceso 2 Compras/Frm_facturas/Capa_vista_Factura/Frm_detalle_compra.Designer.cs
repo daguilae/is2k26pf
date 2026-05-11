@@ -61,6 +61,15 @@ namespace Capa_vista_Factura
             this.Txt_PrecioUnitario = new System.Windows.Forms.TextBox();
             this.Lbl_DetalleProductos = new System.Windows.Forms.Label();
             this.Dgv_DetalleProductos = new System.Windows.Forms.DataGridView();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Txt_total = new System.Windows.Forms.TextBox();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
@@ -80,15 +89,6 @@ namespace Capa_vista_Factura
             this.Btn_Grabar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -462,6 +462,53 @@ namespace Capa_vista_Factura
             this.Dgv_DetalleProductos.TabIndex = 47;
             this.Dgv_DetalleProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_DetalleProductos_CellContentClick);
             // 
+            // ColumnCodigo
+            // 
+            this.ColumnCodigo.HeaderText = "Codigo";
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            // 
+            // ColumnBodega
+            // 
+            this.ColumnBodega.HeaderText = "Bodega";
+            this.ColumnBodega.Name = "ColumnBodega";
+            // 
+            // ColumnProducto
+            // 
+            this.ColumnProducto.HeaderText = "Producto";
+            this.ColumnProducto.Name = "ColumnProducto";
+            // 
+            // ColumnUnidad
+            // 
+            this.ColumnUnidad.HeaderText = "Unidad de Medida";
+            this.ColumnUnidad.Name = "ColumnUnidad";
+            // 
+            // ColumnCantidad
+            // 
+            this.ColumnCantidad.HeaderText = "Cantidad";
+            this.ColumnCantidad.Name = "ColumnCantidad";
+            // 
+            // ColumnPrecio
+            // 
+            this.ColumnPrecio.HeaderText = "Precio Unitario";
+            this.ColumnPrecio.Name = "ColumnPrecio";
+            // 
+            // ColumnSubtotal
+            // 
+            this.ColumnSubtotal.HeaderText = "Subtotal";
+            this.ColumnSubtotal.Name = "ColumnSubtotal";
+            // 
+            // ColumnTotal
+            // 
+            this.ColumnTotal.HeaderText = "Total";
+            this.ColumnTotal.Name = "ColumnTotal";
+            // 
+            // ColumnIdUnidad
+            // 
+            this.ColumnIdUnidad.HeaderText = "idunidad";
+            this.ColumnIdUnidad.Name = "ColumnIdUnidad";
+            this.ColumnIdUnidad.ReadOnly = true;
+            this.ColumnIdUnidad.Visible = false;
+            // 
             // Txt_total
             // 
             this.Txt_total.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -578,6 +625,7 @@ namespace Capa_vista_Factura
             this.Btn_Imprimir.Text = "Imprimir";
             this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Imprimir.UseVisualStyleBackColor = false;
+            this.Btn_Imprimir.Click += new System.EventHandler(this.Btn_Imprimir_Click);
             // 
             // Btn_Eliminar
             // 
@@ -762,53 +810,6 @@ namespace Capa_vista_Factura
             this.Btn_Ingresar.Text = "Ingresar";
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
-            // 
-            // ColumnCodigo
-            // 
-            this.ColumnCodigo.HeaderText = "Codigo";
-            this.ColumnCodigo.Name = "ColumnCodigo";
-            // 
-            // ColumnBodega
-            // 
-            this.ColumnBodega.HeaderText = "Bodega";
-            this.ColumnBodega.Name = "ColumnBodega";
-            // 
-            // ColumnProducto
-            // 
-            this.ColumnProducto.HeaderText = "Producto";
-            this.ColumnProducto.Name = "ColumnProducto";
-            // 
-            // ColumnUnidad
-            // 
-            this.ColumnUnidad.HeaderText = "Unidad de Medida";
-            this.ColumnUnidad.Name = "ColumnUnidad";
-            // 
-            // ColumnCantidad
-            // 
-            this.ColumnCantidad.HeaderText = "Cantidad";
-            this.ColumnCantidad.Name = "ColumnCantidad";
-            // 
-            // ColumnPrecio
-            // 
-            this.ColumnPrecio.HeaderText = "Precio Unitario";
-            this.ColumnPrecio.Name = "ColumnPrecio";
-            // 
-            // ColumnSubtotal
-            // 
-            this.ColumnSubtotal.HeaderText = "Subtotal";
-            this.ColumnSubtotal.Name = "ColumnSubtotal";
-            // 
-            // ColumnTotal
-            // 
-            this.ColumnTotal.HeaderText = "Total";
-            this.ColumnTotal.Name = "ColumnTotal";
-            // 
-            // ColumnIdUnidad
-            // 
-            this.ColumnIdUnidad.HeaderText = "idunidad";
-            this.ColumnIdUnidad.Name = "ColumnIdUnidad";
-            this.ColumnIdUnidad.ReadOnly = true;
-            this.ColumnIdUnidad.Visible = false;
             // 
             // Frm_detalle_compra
             // 
