@@ -30,7 +30,11 @@ namespace Capa_Modelo_Prod
             INNER JOIN Tbl_Plan_Produccion pp 
                 ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
             INNER JOIN Tbl_Explosion_Materiales em 
-                ON pp.Fk_Id_Orden_Recibida = em.Fk_Id_Orden_Recibida
+                ON em.Pk_Id_Explosion = (
+                    SELECT MAX(Pk_Id_Explosion) 
+                    FROM Tbl_Explosion_Materiales 
+                    WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida
+                )
             INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
                 ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
             INNER JOIN Tbl_Materiales m 

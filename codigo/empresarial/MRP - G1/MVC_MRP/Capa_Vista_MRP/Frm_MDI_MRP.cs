@@ -30,6 +30,7 @@ using Capa_Vista_Cronograma;
 using Capa_vista_Orden;
 using Capa_Vista_DispoInve;
 using Capa_Vista_Prod;
+using Capa_Vista_Orden_Material;
 
 namespace Capa_Vista_MRP
 {
@@ -283,6 +284,13 @@ namespace Capa_Vista_MRP
         private void costosDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Produccion m = new Frm_Produccion();
+            m.MdiParent = this;
+            m.Show();
+        }
+
+        private void ordenDeMaterialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Encabezado_Orden_Material m = new Frm_Encabezado_Orden_Material();
             m.MdiParent = this;
             m.Show();
         }
