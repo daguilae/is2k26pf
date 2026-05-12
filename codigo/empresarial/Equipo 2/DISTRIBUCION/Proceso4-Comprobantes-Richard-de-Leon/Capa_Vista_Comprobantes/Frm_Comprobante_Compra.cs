@@ -458,7 +458,7 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             Dgv_Detalle_Entrega.Columns["Pk_ID_Entrega_Compra"].HeaderText = "No. Entrega";
-            Dgv_Detalle_Entrega.Columns["Fk_Id_OrdenCompra"].HeaderText = "Orden de Compra";
+            Dgv_Detalle_Entrega.Columns["Fk_Id_Compra"].HeaderText = "Orden de Compra";
             Dgv_Detalle_Entrega.Columns["Fk_Id_Transporte"].HeaderText = "Transporte Asignado";
             Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección de Entrega";
             Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Programada";
