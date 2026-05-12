@@ -38,6 +38,10 @@
     <Reference Include="Capa_Controlador_NavegadorTrs">
       <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_NavegadorTrs.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Controlador_Ventas">
       <HintPath>..\Capa_Controlador_Ventas\bin\Debug\Capa_Controlador_Ventas.dll</HintPath>
     </Reference>
@@ -65,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm_CXC_Detalle_NAV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_CXC_Detalle_NAV.Designer.cs">
+      <DependentUpon>Frm_CXC_Detalle_NAV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cls_TipoOperacion.cs" />
     <Compile Include="Frm_Asignacion_Clientes.cs">
       <SubType>Form</SubType>
@@ -210,8 +220,23 @@
       <DependentUpon>Rpt_Vendedores.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Rpt_Ventas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Ventas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_Ventas_Generales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rpt_Ventas_Generales.Designer.cs">
+      <DependentUpon>Rpt_Ventas_Generales.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Frm_CXC_Detalle_NAV.resx">
+      <DependentUpon>Frm_CXC_Detalle_NAV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Asignacion_Clientes.resx">
       <DependentUpon>Frm_Asignacion_Clientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +314,13 @@
     <EmbeddedResource Include="Rpt_Vendedores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_Vendedores.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Ventas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Ventas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Ventas_Generales.resx">
+      <DependentUpon>Rpt_Ventas_Generales.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

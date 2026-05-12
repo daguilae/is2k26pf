@@ -31,6 +31,7 @@ namespace Capa_Vista_OrdenProduccion
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_OrdenProduccion_Encabezado));
             this.Pnl_Botones = new System.Windows.Forms.Panel();
+            this.Btn_ActualizarEstado = new System.Windows.Forms.Button();
             this.Lbl_Estado = new System.Windows.Forms.Label();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Dgv_EncabezadoOrdenP = new System.Windows.Forms.DataGridView();
             this.Pnl_Titulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Btn_ActualizarEstado = new System.Windows.Forms.Button();
             this.Pnl_Botones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).BeginInit();
             this.Pnl_Titulo.SuspendLayout();
@@ -66,6 +66,17 @@ namespace Capa_Vista_OrdenProduccion
             this.Pnl_Botones.Size = new System.Drawing.Size(1366, 143);
             this.Pnl_Botones.TabIndex = 16;
             this.Pnl_Botones.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_Botones_Paint);
+            // 
+            // Btn_ActualizarEstado
+            // 
+            this.Btn_ActualizarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ActualizarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ActualizarEstado.Location = new System.Drawing.Point(1178, 48);
+            this.Btn_ActualizarEstado.Name = "Btn_ActualizarEstado";
+            this.Btn_ActualizarEstado.Size = new System.Drawing.Size(124, 62);
+            this.Btn_ActualizarEstado.TabIndex = 11;
+            this.Btn_ActualizarEstado.Text = "Actualizar Estado";
+            this.Btn_ActualizarEstado.UseVisualStyleBackColor = true;
             // 
             // Lbl_Estado
             // 
@@ -105,6 +116,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Editar.Text = "Editar";
             this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Editar.UseVisualStyleBackColor = true;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
             // 
             // Lbl_TituloEstado
             // 
@@ -188,11 +200,13 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Refrescar.Text = "Refrescar";
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = true;
+            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // Dgv_EncabezadoOrdenP
             // 
             this.Dgv_EncabezadoOrdenP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_EncabezadoOrdenP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Dgv_EncabezadoOrdenP.EnableHeadersVisualStyles = false;
             this.Dgv_EncabezadoOrdenP.Location = new System.Drawing.Point(0, 219);
             this.Dgv_EncabezadoOrdenP.Name = "Dgv_EncabezadoOrdenP";
             this.Dgv_EncabezadoOrdenP.RowHeadersWidth = 51;
@@ -221,17 +235,6 @@ namespace Capa_Vista_OrdenProduccion
             this.label1.TabIndex = 0;
             this.label1.Text = "730 - Ordenes de Producción - Encabezado";
             // 
-            // Btn_ActualizarEstado
-            // 
-            this.Btn_ActualizarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ActualizarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ActualizarEstado.Location = new System.Drawing.Point(1178, 48);
-            this.Btn_ActualizarEstado.Name = "Btn_ActualizarEstado";
-            this.Btn_ActualizarEstado.Size = new System.Drawing.Size(124, 62);
-            this.Btn_ActualizarEstado.TabIndex = 11;
-            this.Btn_ActualizarEstado.Text = "Actualizar Estado";
-            this.Btn_ActualizarEstado.UseVisualStyleBackColor = true;
-            // 
             // Frm_OrdenProduccion_Encabezado
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -241,6 +244,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Controls.Add(this.Dgv_EncabezadoOrdenP);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_OrdenProduccion_Encabezado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "730 - Ordenes de Producción";
             this.Load += new System.EventHandler(this.Frm_Ordenes_Encabezados_Load);
             this.Pnl_Botones.ResumeLayout(false);

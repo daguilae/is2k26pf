@@ -339,6 +339,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Ingresar.Text = "INGRESAR";
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = true;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Frm_Tipo_Transporte
             // 

@@ -17,7 +17,7 @@ namespace Ejecutable_Transporte
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Entrega_Produccion());
+            Application.Run(new Frm_Tipo_Transporte());
         }
     }
 }

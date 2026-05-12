@@ -721,6 +721,12 @@ namespace Capa_vista_Factura
         {
 
         }
+
+        private void Btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            Frm_reporte frm_Reporte = new Frm_reporte();
+            frm_Reporte.ShowDialog();
+        }
     }
 
 }

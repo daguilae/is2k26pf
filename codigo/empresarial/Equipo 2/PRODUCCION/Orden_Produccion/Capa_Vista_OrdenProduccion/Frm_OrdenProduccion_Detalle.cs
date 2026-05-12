@@ -15,47 +15,74 @@ namespace Capa_Vista_OrdenProduccion
     {
         private Cls_ControladorOrdenP oControlador = new Cls_ControladorOrdenP();
         private int _idOrdenEditar = 0;
+
+        // Variables para guardar el estado original si se cancela
+        private string _idVendedorOrig;
+        private DateTime _fechaEmiOrig;
+        private DateTime _fechaEstOrig;
+        private string _estadoOrig;
+
+        //estilo del dgv
+        private void AplicarEstilosDGV(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 10, FontStyle.Bold);
+            dgv.DefaultCellStyle.Font = new Font("Times New Roman", 10, FontStyle.Regular);
+            dgv.AllowUserToAddRows = false;
+        }
+
         public Frm_OrdenProduccion_Detalle()
         {
             InitializeComponent();
-
-            Dgv_DetalleOrdenProduccion.Columns.Add("IdProducto", "ID Producto");
-            Dgv_DetalleOrdenProduccion.Columns.Add("NombreProducto", "Producto");
-            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadSolicitada", "Cantidad Solicitada");
-            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadRecibida", "Cantidad Recibida");   
-            
+            ConfigurarColumnas();
             LlenarCombos();
+            AplicarEstilosDGV(Dgv_DetalleOrdenProduccion);
+
+            Txt_IDOrden.ReadOnly = true;
+            Txt_IDOrden.Text = "NUEVA ORDEN";
         }
 
-        public Frm_OrdenProduccion_Detalle(int idOrden, string idVendedor, DateTime fechaEmi, DateTime fechaEst, string estado)
+        public Frm_OrdenProduccion_Detalle(int idOrden, string idVendedor, DateTime fechaEmi, DateTime fechaEst, string estado, bool iniciarEnModoEdicion)
         {
             InitializeComponent();
-
-            Dgv_DetalleOrdenProduccion.Columns.Add("IdProducto", "ID Producto");
-            Dgv_DetalleOrdenProduccion.Columns.Add("NombreProducto", "Producto");
-            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadSolicitada", "Cantidad Solicitada");
-            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadRecibida", "Cantidad Recibida");
-
+            ConfigurarColumnas();
             LlenarCombos();
+            AplicarEstilosDGV(Dgv_DetalleOrdenProduccion);
 
             _idOrdenEditar = idOrden;
 
+            //Guarda la copia de seguridad
+            _idVendedorOrig = idVendedor;
+            _fechaEmiOrig = fechaEmi;
+            _fechaEstOrig = fechaEst;
+            _estadoOrig = estado;
+
             // Cargar datos al encabezado
+            Txt_IDOrden.ReadOnly = true; // Bloqueado
             Txt_IDOrden.Text = idOrden.ToString();
             Cmb_Vendedor.SelectedValue = idVendedor;
             Dtp_FechaEmision.Value = fechaEmi;
             Dtp_FechaEntrega.Value = fechaEst;
             Cmb_Estado.SelectedItem = estado;
 
-            // Cargar detalles al DataGridView
             CargarDetallesEnGrid(idOrden);
+            ActivarControles(iniciarEnModoEdicion);
 
-            //Activa/Desactiva controles
-            ActivarControles(false);
+            Btn_Editar.Enabled = !iniciarEnModoEdicion;
+        }
+
+        private void ConfigurarColumnas()
+        {
+            Dgv_DetalleOrdenProduccion.Columns.Add("IdProducto", "ID Producto");
+            Dgv_DetalleOrdenProduccion.Columns.Add("NombreProducto", "Producto");
+            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadSolicitada", "Cantidad Solicitada");
+            Dgv_DetalleOrdenProduccion.Columns.Add("CantidadRecibida", "Cantidad Recibida");
         }
 
         private void ActivarControles(bool activo)
         {
+
             // Controles del encabezado
             Cmb_Vendedor.Enabled = activo;
             Dtp_FechaEmision.Enabled = activo;
@@ -70,6 +97,7 @@ namespace Capa_Vista_OrdenProduccion
             Btn_Aceptar.Enabled = activo; 
             Btn_Quitar.Enabled = activo; 
             Btn_Grabar.Enabled = activo;
+            Btn_Cancelar.Enabled = activo;
         }
 
         private void LlenarCombos()
@@ -131,7 +159,7 @@ namespace Capa_Vista_OrdenProduccion
                     lDetalles.Add((sIdProd, sCant));
                 }
 
-                // Modo, si es editar o insertar
+                //si es editar o insertar
                 if (_idOrdenEditar == 0)
                 {
                     //Insertar
@@ -182,7 +210,7 @@ namespace Capa_Vista_OrdenProduccion
 
         private void Btn_Aceptar_Click(object sender, EventArgs e)
         {
-            // Validaciones visuales rápidas
+            // Validaciones
             if (Cmb_Producto.SelectedValue == null)
             {
                 MessageBox.Show("Seleccione un producto.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -196,10 +224,10 @@ namespace Capa_Vista_OrdenProduccion
                 return;
             }
 
-            // Agregar al dgv
+            // Agregar
             Dgv_DetalleOrdenProduccion.Rows.Add(Cmb_Producto.SelectedValue.ToString(), Cmb_Producto.Text, Txt_CantidadSolicitada.Text);
 
-            // Limpiar para el siguiente ingreso
+            // Limpiar
             Txt_CantidadSolicitada.Clear();
             Cmb_Producto.SelectedIndex = -1;
         }
@@ -207,7 +235,7 @@ namespace Capa_Vista_OrdenProduccion
         //Evita que el usuario ponga letras en Cantidad Solicitada
         private void txtCantidadSolicitada_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Solo permite números y la tecla de borrado (Backspace)
+            // Solo permite números
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
@@ -226,13 +254,9 @@ namespace Capa_Vista_OrdenProduccion
 
         private void Btn_Editar_Click(object sender, EventArgs e)
         {
-            // Verificamos que realmente haya una orden cargada para editar
             if (_idOrdenEditar > 0)
             {
-                // Desbloqueamos todos los textbox, combos y el botón Grabar
                 ActivarControles(true);
-
-                // Opcional: Bloqueamos el botón editar para que no lo vuelva a presionar
                 Btn_Editar.Enabled = false;
 
                 MessageBox.Show("Modo edición habilitado. Puede realizar sus cambios y presionar Grabar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -240,6 +264,38 @@ namespace Capa_Vista_OrdenProduccion
             else
             {
                 MessageBox.Show("No hay ninguna orden cargada para editar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Btn_Refrescar_Click(object sender, EventArgs e)
+        {
+            if (_idOrdenEditar > 0)
+            {
+                CargarDetallesEnGrid(_idOrdenEditar);
+            }
+        }
+
+        private void Btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            if (_idOrdenEditar > 0)
+            {
+                //restaura valores originales
+                Cmb_Vendedor.SelectedValue = _idVendedorOrig;
+                Dtp_FechaEmision.Value = _fechaEmiOrig;
+                Dtp_FechaEntrega.Value = _fechaEstOrig;
+                Cmb_Estado.SelectedItem = _estadoOrig;
+
+                CargarDetallesEnGrid(_idOrdenEditar);
+
+                ActivarControles(false);
+
+                Btn_Editar.Enabled = true;
+
+                MessageBox.Show("Se ha cancelado la edición. Los datos han vuelto a su estado original.", "Edición Cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                LimpiarFormulario();
             }
         }
     }

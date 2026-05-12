@@ -32,6 +32,7 @@ namespace Capa_Vista_Empresa_Transporte
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Entrega_Produccion));
             this.Dgv_Entrega_Produccion = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DTP_Fecha = new System.Windows.Forms.DateTimePicker();
             this.Txt_ID_Produccion = new System.Windows.Forms.TextBox();
             this.Cbo_Estado_Entrega = new System.Windows.Forms.ComboBox();
             this.Lbl_Tipo_Transporte = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.DTP_Fecha = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Entrega_Produccion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,6 +92,13 @@ namespace Capa_Vista_Empresa_Transporte
             this.groupBox1.TabIndex = 164;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de la Entrega";
+            // 
+            // DTP_Fecha
+            // 
+            this.DTP_Fecha.Location = new System.Drawing.Point(13, 132);
+            this.DTP_Fecha.Name = "DTP_Fecha";
+            this.DTP_Fecha.Size = new System.Drawing.Size(220, 27);
+            this.DTP_Fecha.TabIndex = 157;
             // 
             // Txt_ID_Produccion
             // 
@@ -308,13 +315,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Ingresar.Text = "INGRESAR";
             this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ingresar.UseVisualStyleBackColor = true;
-            // 
-            // DTP_Fecha
-            // 
-            this.DTP_Fecha.Location = new System.Drawing.Point(13, 132);
-            this.DTP_Fecha.Name = "DTP_Fecha";
-            this.DTP_Fecha.Size = new System.Drawing.Size(220, 27);
-            this.DTP_Fecha.TabIndex = 157;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
             // Frm_Entrega_Produccion
             // 

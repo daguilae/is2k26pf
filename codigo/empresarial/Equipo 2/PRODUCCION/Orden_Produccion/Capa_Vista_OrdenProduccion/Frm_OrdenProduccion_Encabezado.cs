@@ -17,39 +17,37 @@ namespace Capa_Vista_OrdenProduccion
         public Frm_OrdenProduccion_Encabezado()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void AplicarEstilosDGV(DataGridView dgv)
+        {
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Times New Roman", 10, FontStyle.Bold);
+            dgv.DefaultCellStyle.Font = new Font("Times New Roman", 10, FontStyle.Regular);
+            dgv.AllowUserToAddRows = false;
         }
 
         private void Frm_Ordenes_Encabezados_Load(object sender, EventArgs e)
         {
+            ActualizarTabla();
+            AplicarEstilosDGV(Dgv_EncabezadoOrdenP);
+        }
+
+        private void ActualizarTabla()
+        {
             Dgv_EncabezadoOrdenP.DataSource = oControlador.ObtenerEncabezados();
         }
 
-        // Evento de doble clic en el DataGridView
         private void dgvEncabezados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Evitar clic en los headers
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow fila = Dgv_EncabezadoOrdenP.Rows[e.RowIndex];
-
-                // Extraer datos de la fila seleccionada
-                int idOrden = Convert.ToInt32(fila.Cells["Pk_ID_OrdenProduccion"].Value);
-                string idVendedor = fila.Cells["Fk_ID_Vendedor"].Value.ToString();
-                DateTime fechaEmision = Convert.ToDateTime(fila.Cells["Cmp_Fecha_Emision"].Value);
-                DateTime fechaEstimada = Convert.ToDateTime(fila.Cells["Cmp_Fecha_Estimada_Entrega"].Value);
-                string estado = fila.Cells["Cmp_Estado"].Value.ToString();
-
-                // Llamar al formulario de detalles usando el constructor sobrecargado
-                Frm_OrdenProduccion_Detalle frmDetalles = new Frm_OrdenProduccion_Detalle(idOrden, idVendedor, fechaEmision, fechaEstimada, estado);
-
-                //bloquear controles
-                // frmDetalles.DeshabilitarControles(); 
-
-                frmDetalles.ShowDialog(); // ShowDialog lo abre como ventana modal
-
-                //Refrescar
-                Dgv_EncabezadoOrdenP.DataSource = oControlador.ObtenerEncabezados();
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = Dgv_EncabezadoOrdenP.Rows[e.RowIndex];
+                    AbrirDetalle(fila, false); //Modo Lectura
+                }
             }
         }
 
@@ -57,6 +55,7 @@ namespace Capa_Vista_OrdenProduccion
         {
             Frm_OrdenProduccion_Detalle FrmDetalle = new Frm_OrdenProduccion_Detalle();
             FrmDetalle.ShowDialog();
+            ActualizarTabla();
         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
@@ -98,6 +97,38 @@ namespace Capa_Vista_OrdenProduccion
         private void Pnl_Botones_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Btn_Refrescar_Click(object sender, EventArgs e)
+        {
+            ActualizarTabla();
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            if (Dgv_EncabezadoOrdenP.CurrentRow != null)
+            {
+                AbrirDetalle(Dgv_EncabezadoOrdenP.CurrentRow, true); // true = Modo Edición
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una orden de la lista para editar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void AbrirDetalle(DataGridViewRow fila, bool iniciarEnModoEdicion)
+        {
+            int idOrden = Convert.ToInt32(fila.Cells["Pk_ID_OrdenProduccion"].Value);
+            string idVendedor = fila.Cells["Fk_ID_Vendedor"].Value.ToString();
+            DateTime fechaEmision = Convert.ToDateTime(fila.Cells["Cmp_Fecha_Emision"].Value);
+            DateTime fechaEstimada = Convert.ToDateTime(fila.Cells["Cmp_Fecha_Estimada_Entrega"].Value);
+            string estado = fila.Cells["Cmp_Estado"].Value.ToString();
+
+            // Pasamos la variable booleana al final del constructor
+            Frm_OrdenProduccion_Detalle frmDetalles = new Frm_OrdenProduccion_Detalle(idOrden, idVendedor, fechaEmision, fechaEstimada, estado, iniciarEnModoEdicion);
+
+            frmDetalles.ShowDialog();
+            ActualizarTabla(); // Refrescar al cerrar
         }
     }
 }

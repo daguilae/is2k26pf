@@ -32,11 +32,14 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Frm_Entrega_Compra_Load(object sender, EventArgs e)
         {
+            fun_EstadoInicial();
             pro_CargarDatos2();
 
             Dgv_Entrega_Compra.Columns.Clear();
             Dgv_Entrega_Compra.Columns.Add("identregacompra", "ID Entrega de Compra");
-            Dgv_Entrega_Compra.Columns.Add("idordencompra", "ID Orden de Compra");
+            Dgv_Entrega_Compra.Columns.Add("idcompra", "ID de Compra");
+            Dgv_Entrega_Compra.Columns.Add("nombre_prod", "Producto");
+            Dgv_Entrega_Compra.Columns.Add("cmp_cantidad", "Cantidad");
             Dgv_Entrega_Compra.Columns.Add("idtransporte", "ID del Transporte");
             Dgv_Entrega_Compra.Columns.Add("direccion", "Direccion");
             Dgv_Entrega_Compra.Columns.Add("fecha", "Fecha");
@@ -74,7 +77,9 @@ namespace Capa_Vista_Empresa_Transporte
                     int iIndice = Dgv_Entrega_Compra.Rows.Add();
 
                     Dgv_Entrega_Compra.Rows[iIndice].Cells["identregacompra"].Value = fila["codigo"];
-                    Dgv_Entrega_Compra.Rows[iIndice].Cells["idordencompra"].Value = fila["compra"];
+                    Dgv_Entrega_Compra.Rows[iIndice].Cells["idcompra"].Value = fila["compra"];
+                    Dgv_Entrega_Compra.Rows[iIndice].Cells["nombre_prod"].Value = fila["producto"];
+                    Dgv_Entrega_Compra.Rows[iIndice].Cells["cmp_cantidad"].Value = fila["cantidad"];
                     Dgv_Entrega_Compra.Rows[iIndice].Cells["idtransporte"].Value = fila["transporte"];
                     Dgv_Entrega_Compra.Rows[iIndice].Cells["direccion"].Value = fila["direccion"];
                     Dgv_Entrega_Compra.Rows[iIndice].Cells["fecha"].Value = fila["fecha"];
@@ -89,15 +94,15 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            int iCodigoCompra = Convert.ToInt32(Txt_ID_Transporte.Text);
-            int iCodigoTransporte = Convert.ToInt32(Txt_ID_Compra.Text);
-            string sDireccion = Txt_Direccion.Text;
-            string sFecha = DTP_Fecha.Value.ToString("yyyy-MM-dd");
-            string sEstado = Cbo_Estado_Entrega.Text;
+            int iCodigoCompra;
+            int iCodigoTransporte;
+            string sDireccion;
+            string sFecha;
+            string sEstado;
 
             // 2. VALIDAR CAMPOS VACÍOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
-                    string.IsNullOrWhiteSpace(Txt_ID_Compra.Text) ||
+            if (string.IsNullOrWhiteSpace(Txt_ID_Compra.Text) ||
+                    string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
                     string.IsNullOrWhiteSpace(Txt_Direccion.Text) ||
                     Cbo_Estado_Entrega.SelectedIndex == -1)
             {
@@ -105,13 +110,13 @@ namespace Capa_Vista_Empresa_Transporte
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Transporte.Text, out iCodigoCompra))
+            if (!int.TryParse(Txt_ID_Compra.Text, out iCodigoCompra))
             {
                 MessageBox.Show("ID de Compra no es válido");
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Compra.Text, out iCodigoTransporte))
+            if (!int.TryParse(Txt_ID_Transporte.Text, out iCodigoTransporte))
             {
                 MessageBox.Show("ID de Transporte no es válido");
                 return;
@@ -203,6 +208,20 @@ namespace Capa_Vista_Empresa_Transporte
 
             // GUARDAR ID
             this.iCodigoEntrega = iCodigoEntrega;
+
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Compra.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = true;
+            Btn_Modificar.Enabled = true;
+            Btn_Eliminar.Enabled = true;
         }
 
         private void pro_Actualizar(int iCodigoCompra, int iCodigoTransporte, string sDireccion, string sFecha, string sEstado)
@@ -364,6 +383,56 @@ namespace Capa_Vista_Empresa_Transporte
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fun_EstadoInicial()
+        {
+            //Habilitados
+            Btn_Ingresar.Enabled = true;
+            Btn_Reporte.Enabled = true;
+            Btn_Ayuda.Enabled = true;
+            Btn_Salir.Enabled = true;
+
+            //Deshabilitados
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Guardar.Enabled = false;
+            Btn_Cancelar.Enabled = false;
+
+            //ComboBox bloqueados
+            Txt_ID_Transporte.Enabled = false;
+            Txt_ID_Compra.Enabled = false;
+            Txt_Direccion.Enabled = false;
+            DTP_Fecha.Enabled = false;
+            Cbo_Estado_Entrega.Enabled = false;
+        }
+
+        private void Btn_Ingresar_Click(object sender, EventArgs e)
+        {
+            Txt_ID_Transporte.Clear();
+            Txt_ID_Compra.Clear();
+            Txt_Direccion.Clear();
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
+            //Habilitar combos
+            Txt_ID_Transporte.Enabled = true;
+            Txt_ID_Compra.Enabled = true;
+            Txt_Direccion.Enabled = true;
+            DTP_Fecha.Enabled = true;
+            Cbo_Estado_Entrega.Enabled = true;
+
+            //Limpiar selección
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
+            Btn_Guardar.Enabled = true;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+
         }
     }
 }

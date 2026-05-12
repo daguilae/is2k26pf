@@ -32,16 +32,16 @@ namespace Capa_Vista_Ventas
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Ventas_Generales));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.Btn_buscar_Ventas = new System.Windows.Forms.Button();
-            this.Btn_Salir = new System.Windows.Forms.Button();
-            this.Btn_Reporte_Ventas = new System.Windows.Forms.Button();
-            this.Btn_Ayuda = new System.Windows.Forms.Button();
-            this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
             this.Dgv_Ventas_Generales = new System.Windows.Forms.DataGridView();
             this.Btn_inicio = new System.Windows.Forms.Button();
             this.Btn_anterior = new System.Windows.Forms.Button();
             this.Btn_sig = new System.Windows.Forms.Button();
             this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_buscar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_Salir = new System.Windows.Forms.Button();
+            this.Btn_Reporte_Ventas = new System.Windows.Forms.Button();
+            this.Btn_Ayuda = new System.Windows.Forms.Button();
+            this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Ventas_Generales)).BeginInit();
             this.SuspendLayout();
@@ -67,74 +67,6 @@ namespace Capa_Vista_Ventas
             this.label1.TabIndex = 1;
             this.label1.Text = "710 - Ventas";
             // 
-            // Btn_buscar_Ventas
-            // 
-            this.Btn_buscar_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_buscar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buscar_Ventas.Image")));
-            this.Btn_buscar_Ventas.Location = new System.Drawing.Point(201, 107);
-            this.Btn_buscar_Ventas.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_buscar_Ventas.Name = "Btn_buscar_Ventas";
-            this.Btn_buscar_Ventas.Size = new System.Drawing.Size(99, 107);
-            this.Btn_buscar_Ventas.TabIndex = 52;
-            this.Btn_buscar_Ventas.Text = "Buscar";
-            this.Btn_buscar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_buscar_Ventas.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Salir
-            // 
-            this.Btn_Salir.BackColor = System.Drawing.Color.White;
-            this.Btn_Salir.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(941, 108);
-            this.Btn_Salir.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(99, 107);
-            this.Btn_Salir.TabIndex = 51;
-            this.Btn_Salir.Text = "Salir";
-            this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Salir.UseVisualStyleBackColor = false;
-            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
-            // 
-            // Btn_Reporte_Ventas
-            // 
-            this.Btn_Reporte_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Reporte_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte_Ventas.Image")));
-            this.Btn_Reporte_Ventas.Location = new System.Drawing.Point(308, 107);
-            this.Btn_Reporte_Ventas.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Reporte_Ventas.Name = "Btn_Reporte_Ventas";
-            this.Btn_Reporte_Ventas.Size = new System.Drawing.Size(99, 107);
-            this.Btn_Reporte_Ventas.TabIndex = 49;
-            this.Btn_Reporte_Ventas.Text = "Imprimir";
-            this.Btn_Reporte_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Reporte_Ventas.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Ayuda
-            // 
-            this.Btn_Ayuda.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(834, 108);
-            this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(99, 107);
-            this.Btn_Ayuda.TabIndex = 48;
-            this.Btn_Ayuda.Text = "Ayuda";
-            this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Ayuda.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Agregar_Ventas
-            // 
-            this.Btn_Agregar_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Agregar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Agregar_Ventas.Image")));
-            this.Btn_Agregar_Ventas.Location = new System.Drawing.Point(94, 107);
-            this.Btn_Agregar_Ventas.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Agregar_Ventas.Name = "Btn_Agregar_Ventas";
-            this.Btn_Agregar_Ventas.Size = new System.Drawing.Size(99, 107);
-            this.Btn_Agregar_Ventas.TabIndex = 46;
-            this.Btn_Agregar_Ventas.Text = "Ingresar";
-            this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
-            this.Btn_Agregar_Ventas.Click += new System.EventHandler(this.Btn_Agregar_Ventas_Click);
-            // 
             // Dgv_Ventas_Generales
             // 
             this.Dgv_Ventas_Generales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -145,6 +77,7 @@ namespace Capa_Vista_Ventas
             this.Dgv_Ventas_Generales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Ventas_Generales.Size = new System.Drawing.Size(1067, 254);
             this.Dgv_Ventas_Generales.TabIndex = 167;
+            this.Dgv_Ventas_Generales.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.Dgv_Ventas_Generales_RowPostPaint);
             // 
             // Btn_inicio
             // 
@@ -197,6 +130,75 @@ namespace Capa_Vista_Ventas
             this.Btn_fin.Text = "Fin";
             this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_fin.UseVisualStyleBackColor = true;
+            // 
+            // Btn_buscar_Ventas
+            // 
+            this.Btn_buscar_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_buscar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buscar_Ventas.Image")));
+            this.Btn_buscar_Ventas.Location = new System.Drawing.Point(201, 107);
+            this.Btn_buscar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_buscar_Ventas.Name = "Btn_buscar_Ventas";
+            this.Btn_buscar_Ventas.Size = new System.Drawing.Size(99, 107);
+            this.Btn_buscar_Ventas.TabIndex = 52;
+            this.Btn_buscar_Ventas.Text = "Buscar";
+            this.Btn_buscar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_buscar_Ventas.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Salir
+            // 
+            this.Btn_Salir.BackColor = System.Drawing.Color.White;
+            this.Btn_Salir.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
+            this.Btn_Salir.Location = new System.Drawing.Point(941, 108);
+            this.Btn_Salir.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Salir.Name = "Btn_Salir";
+            this.Btn_Salir.Size = new System.Drawing.Size(99, 107);
+            this.Btn_Salir.TabIndex = 51;
+            this.Btn_Salir.Text = "Salir";
+            this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Salir.UseVisualStyleBackColor = false;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
+            // 
+            // Btn_Reporte_Ventas
+            // 
+            this.Btn_Reporte_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reporte_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte_Ventas.Image")));
+            this.Btn_Reporte_Ventas.Location = new System.Drawing.Point(308, 107);
+            this.Btn_Reporte_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Reporte_Ventas.Name = "Btn_Reporte_Ventas";
+            this.Btn_Reporte_Ventas.Size = new System.Drawing.Size(99, 107);
+            this.Btn_Reporte_Ventas.TabIndex = 49;
+            this.Btn_Reporte_Ventas.Text = "Imprimir";
+            this.Btn_Reporte_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Reporte_Ventas.UseVisualStyleBackColor = true;
+            this.Btn_Reporte_Ventas.Click += new System.EventHandler(this.Btn_Reporte_Ventas_Click);
+            // 
+            // Btn_Ayuda
+            // 
+            this.Btn_Ayuda.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
+            this.Btn_Ayuda.Location = new System.Drawing.Point(834, 108);
+            this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Ayuda.Name = "Btn_Ayuda";
+            this.Btn_Ayuda.Size = new System.Drawing.Size(99, 107);
+            this.Btn_Ayuda.TabIndex = 48;
+            this.Btn_Ayuda.Text = "Ayuda";
+            this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            // 
+            // Btn_Agregar_Ventas
+            // 
+            this.Btn_Agregar_Ventas.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Agregar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Agregar_Ventas.Image")));
+            this.Btn_Agregar_Ventas.Location = new System.Drawing.Point(94, 107);
+            this.Btn_Agregar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Agregar_Ventas.Name = "Btn_Agregar_Ventas";
+            this.Btn_Agregar_Ventas.Size = new System.Drawing.Size(99, 107);
+            this.Btn_Agregar_Ventas.TabIndex = 46;
+            this.Btn_Agregar_Ventas.Text = "Ingresar";
+            this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
+            this.Btn_Agregar_Ventas.Click += new System.EventHandler(this.Btn_Agregar_Ventas_Click);
             // 
             // Frm_Ventas_Generales
             // 

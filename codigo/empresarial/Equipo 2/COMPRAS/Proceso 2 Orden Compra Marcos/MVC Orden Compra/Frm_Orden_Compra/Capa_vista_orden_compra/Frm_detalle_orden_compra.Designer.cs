@@ -64,8 +64,13 @@ namespace Capa_vista_orden_compra
             this.ColumnPrecioUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columnidunidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lbl_Total = new System.Windows.Forms.Label();
             this.Txt_total = new System.Windows.Forms.TextBox();
+            this.Btn_Ayuda = new System.Windows.Forms.Button();
+            this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_Siguiente = new System.Windows.Forms.Button();
+            this.Btn_Anterior = new System.Windows.Forms.Button();
             this.Btn_Inicio = new System.Windows.Forms.Button();
             this.Btn_Imprimir = new System.Windows.Forms.Button();
             this.Btn_Consultar = new System.Windows.Forms.Button();
@@ -79,10 +84,6 @@ namespace Capa_vista_orden_compra
             this.Btn_Grabar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Btn_Anterior = new System.Windows.Forms.Button();
-            this.Btn_Siguiente = new System.Windows.Forms.Button();
-            this.Btn_fin = new System.Windows.Forms.Button();
-            this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -399,7 +400,8 @@ namespace Capa_vista_orden_compra
             this.ColumnCantidad,
             this.ColumnPrecioUnitario,
             this.ColumnSubtotal,
-            this.ColumnTotal});
+            this.ColumnTotal,
+            this.Columnidunidad});
             this.Dgv_DetalleProductos.Location = new System.Drawing.Point(47, 437);
             this.Dgv_DetalleProductos.Margin = new System.Windows.Forms.Padding(2);
             this.Dgv_DetalleProductos.Name = "Dgv_DetalleProductos";
@@ -443,6 +445,12 @@ namespace Capa_vista_orden_compra
             this.ColumnTotal.HeaderText = "Total";
             this.ColumnTotal.Name = "ColumnTotal";
             // 
+            // Columnidunidad
+            // 
+            this.Columnidunidad.HeaderText = "idunidad";
+            this.Columnidunidad.Name = "Columnidunidad";
+            this.Columnidunidad.Visible = false;
+            // 
             // Lbl_Total
             // 
             this.Lbl_Total.AutoSize = true;
@@ -462,6 +470,70 @@ namespace Capa_vista_orden_compra
             this.Txt_total.Name = "Txt_total";
             this.Txt_total.Size = new System.Drawing.Size(131, 23);
             this.Txt_total.TabIndex = 47;
+            // 
+            // Btn_Ayuda
+            // 
+            this.Btn_Ayuda.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Btn_Ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Ayuda.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ayuda.Image = global::Capa_vista_orden_compra.Properties.Resources.help_question_16768;
+            this.Btn_Ayuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Ayuda.Location = new System.Drawing.Point(1101, 20);
+            this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Ayuda.Name = "Btn_Ayuda";
+            this.Btn_Ayuda.Size = new System.Drawing.Size(71, 65);
+            this.Btn_Ayuda.TabIndex = 65;
+            this.Btn_Ayuda.Text = "Ayuda";
+            this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Ayuda.UseVisualStyleBackColor = false;
+            // 
+            // Btn_fin
+            // 
+            this.Btn_fin.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_fin.Image = global::Capa_vista_orden_compra.Properties.Resources.next_right_play_arrow_arrows_fast_forward_icon_250672;
+            this.Btn_fin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_fin.Location = new System.Drawing.Point(1026, 20);
+            this.Btn_fin.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_fin.Name = "Btn_fin";
+            this.Btn_fin.Size = new System.Drawing.Size(71, 65);
+            this.Btn_fin.TabIndex = 64;
+            this.Btn_fin.Text = "Fin";
+            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_fin.UseVisualStyleBackColor = false;
+            // 
+            // Btn_Siguiente
+            // 
+            this.Btn_Siguiente.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Btn_Siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Siguiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Siguiente.Image = global::Capa_vista_orden_compra.Properties.Resources.next_right_play_arrow_arrows_fast_forward_icon_250672;
+            this.Btn_Siguiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Siguiente.Location = new System.Drawing.Point(935, 20);
+            this.Btn_Siguiente.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Siguiente.Name = "Btn_Siguiente";
+            this.Btn_Siguiente.Size = new System.Drawing.Size(87, 65);
+            this.Btn_Siguiente.TabIndex = 63;
+            this.Btn_Siguiente.Text = "Siguiente";
+            this.Btn_Siguiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Siguiente.UseVisualStyleBackColor = false;
+            // 
+            // Btn_Anterior
+            // 
+            this.Btn_Anterior.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Btn_Anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Anterior.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Anterior.Image = global::Capa_vista_orden_compra.Properties.Resources.direction_play_backward_arrow_next_previous_back_icon_250674;
+            this.Btn_Anterior.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Anterior.Location = new System.Drawing.Point(849, 20);
+            this.Btn_Anterior.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Anterior.Name = "Btn_Anterior";
+            this.Btn_Anterior.Size = new System.Drawing.Size(82, 65);
+            this.Btn_Anterior.TabIndex = 62;
+            this.Btn_Anterior.Text = "Anterior";
+            this.Btn_Anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Anterior.UseVisualStyleBackColor = false;
             // 
             // Btn_Inicio
             // 
@@ -494,6 +566,7 @@ namespace Capa_vista_orden_compra
             this.Btn_Imprimir.Text = "Imprimir";
             this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Imprimir.UseVisualStyleBackColor = false;
+            this.Btn_Imprimir.Click += new System.EventHandler(this.Btn_Imprimir_Click);
             // 
             // Btn_Consultar
             // 
@@ -679,70 +752,6 @@ namespace Capa_vista_orden_compra
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
-            // Btn_Anterior
-            // 
-            this.Btn_Anterior.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Btn_Anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Anterior.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Anterior.Image = global::Capa_vista_orden_compra.Properties.Resources.direction_play_backward_arrow_next_previous_back_icon_250674;
-            this.Btn_Anterior.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Anterior.Location = new System.Drawing.Point(849, 20);
-            this.Btn_Anterior.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_Anterior.Name = "Btn_Anterior";
-            this.Btn_Anterior.Size = new System.Drawing.Size(82, 65);
-            this.Btn_Anterior.TabIndex = 62;
-            this.Btn_Anterior.Text = "Anterior";
-            this.Btn_Anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Anterior.UseVisualStyleBackColor = false;
-            // 
-            // Btn_Siguiente
-            // 
-            this.Btn_Siguiente.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Btn_Siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Siguiente.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Siguiente.Image = global::Capa_vista_orden_compra.Properties.Resources.next_right_play_arrow_arrows_fast_forward_icon_250672;
-            this.Btn_Siguiente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Siguiente.Location = new System.Drawing.Point(935, 20);
-            this.Btn_Siguiente.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_Siguiente.Name = "Btn_Siguiente";
-            this.Btn_Siguiente.Size = new System.Drawing.Size(87, 65);
-            this.Btn_Siguiente.TabIndex = 63;
-            this.Btn_Siguiente.Text = "Siguiente";
-            this.Btn_Siguiente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Siguiente.UseVisualStyleBackColor = false;
-            // 
-            // Btn_fin
-            // 
-            this.Btn_fin.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_fin.Image = global::Capa_vista_orden_compra.Properties.Resources.next_right_play_arrow_arrows_fast_forward_icon_250672;
-            this.Btn_fin.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_fin.Location = new System.Drawing.Point(1026, 20);
-            this.Btn_fin.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_fin.Name = "Btn_fin";
-            this.Btn_fin.Size = new System.Drawing.Size(71, 65);
-            this.Btn_fin.TabIndex = 64;
-            this.Btn_fin.Text = "Fin";
-            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_fin.UseVisualStyleBackColor = false;
-            // 
-            // Btn_Ayuda
-            // 
-            this.Btn_Ayuda.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Btn_Ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Ayuda.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ayuda.Image = global::Capa_vista_orden_compra.Properties.Resources.help_question_16768;
-            this.Btn_Ayuda.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Ayuda.Location = new System.Drawing.Point(1101, 20);
-            this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_Ayuda.Name = "Btn_Ayuda";
-            this.Btn_Ayuda.Size = new System.Drawing.Size(71, 65);
-            this.Btn_Ayuda.TabIndex = 65;
-            this.Btn_Ayuda.Text = "Ayuda";
-            this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Ayuda.UseVisualStyleBackColor = false;
-            // 
             // Frm_detalle_orden_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -825,13 +834,6 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.ComboBox Cmb_bodega;
         private System.Windows.Forms.ComboBox Cmb_proveedor;
         private System.Windows.Forms.ComboBox Cmb_producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
         private System.Windows.Forms.Button Btn_Consultar;
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Imprimir;
@@ -840,5 +842,13 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.Button Btn_Siguiente;
         private System.Windows.Forms.Button Btn_fin;
         private System.Windows.Forms.Button Btn_Ayuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrecioUnitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columnidunidad;
     }
 }

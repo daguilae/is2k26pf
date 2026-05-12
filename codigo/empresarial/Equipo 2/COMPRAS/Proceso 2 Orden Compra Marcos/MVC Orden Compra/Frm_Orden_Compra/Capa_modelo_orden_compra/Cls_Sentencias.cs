@@ -20,7 +20,7 @@ namespace Capa_modelo_orden_compra
         public DataTable obtenerDetalles()
         {
             DataTable dt = new DataTable();
-            // Combinamos las tablas para traer el nombre del producto en lugar de solo el ID
+
             string sql = @"SELECT 
     O.pk_id_orden_compra AS Orden,
     O.cmp_numero AS NumeroOrden,
@@ -30,35 +30,35 @@ namespace Capa_modelo_orden_compra
     O.cmp_tipo_pago AS TipoPago,
     O.cmp_estado AS Estado,
     I.nombre_prod AS Producto,
+    U.Nombre_Unidad AS Unidad,
     D.cmp_cantidad AS Cantidad,
     D.cmp_precio AS Precio,
     (D.cmp_cantidad * D.cmp_precio) AS Total
-FROM tbl_detalle_orden_compra D
+FROM tbl_detalle_compra D
 INNER JOIN tbl_orden_compra O
-    ON D.fk_id_orden_compra = O.pk_id_orden_compra
+    ON D.fk_id_compra = O.pk_id_orden_compra
 INNER JOIN tbl_inventario I
     ON D.fk_inventario_id = I.pk_inventario_id
+INNER JOIN tbl_unidad_de_medida U
+    ON D.fk_id_unidad = U.ID_Unidad
 INNER JOIN tbl_proveedores PR
     ON O.fk_id_proveedor = PR.pk_id_proveedor
-ORDER BY O.cmp_fecha DESC;";
+ORDER BY O.cmp_fecha DESC";
 
             OdbcConnection conn = cn.conexion();
+
             try
             {
-                OdbcDataAdapter dataTable = new OdbcDataAdapter(sql, conn);
-                dataTable.Fill(dt);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error en sentencia: " + ex.Message);
+                OdbcDataAdapter adapter = new OdbcDataAdapter(sql, conn);
+                adapter.Fill(dt);
             }
             finally
             {
                 cn.desconexion(conn);
             }
+
             return dt;
         }
-
 
 
 
@@ -87,10 +87,10 @@ ORDER BY O.cmp_fecha DESC;";
 
         public DataTable obtenerUnidadMedida()
         {
-            string sql = @"SELECT ID_Unidad, Nombre_Unidad
+            string sql = @"SELECT ID_Unidad, 
+                          CONCAT(ID_Unidad, '_', Abreviacion_Medida) AS Nombre_Unidad
                    FROM tbl_unidad_de_medida
                    WHERE Estado_Medida = 'Activo'";
-
             return cn.ObtenerDatos(sql);
         }
 
@@ -210,16 +210,21 @@ ORDER BY O.cmp_fecha DESC;";
         }
 
         //  Guardar  detalle
-        public void guardarDetalleOrdenCompra(int idOrden, int idInventario,
-                                               int cantidad, decimal precio)
+        public void guardarDetalleOrdenCompra(int idOrden,
+                                       int idInventario,
+                                       int idUnidad,
+                                       float cantidad,
+                                       decimal precio)
         {
+            string cantidadStr = cantidad.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
             string precioStr = precio.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
             string sql = $@"INSERT INTO tbl_detalle_orden_compra
-                   (fk_id_orden_compra, fk_inventario_id, cmp_cantidad, cmp_precio)
-                   VALUES ({idOrden}, {idInventario}, {cantidad}, {precioStr})";
+(fk_id_orden_compra, fk_inventario_id, fk_id_unidad, cmp_cantidad, cmp_precio) VALUES ({idOrden},{idInventario},{idUnidad},{cantidadStr},{precioStr})";
 
             OdbcConnection conn = cn.conexion();
+
             try
             {
                 OdbcCommand cmd = new OdbcCommand(sql, conn);
@@ -227,15 +232,14 @@ ORDER BY O.cmp_fecha DESC;";
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al guardar detalle: " + ex.Message + " | SQL: " + sql);
+                throw new Exception("Error al guardar detalle: " + ex.Message
+                                    + " | SQL: " + sql);
             }
             finally
             {
                 cn.desconexion(conn);
             }
         }
-
-
 
         public DataTable ObtenerDetalleOrden()
         {

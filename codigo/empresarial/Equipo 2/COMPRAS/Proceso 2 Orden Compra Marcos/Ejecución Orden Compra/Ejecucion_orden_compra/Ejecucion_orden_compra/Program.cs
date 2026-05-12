@@ -17,7 +17,7 @@ namespace Ejecucion_orden_compra
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_inicio_devoluciones_d());
+            Application.Run(new Frm_detalle_orden_compra());
         }
     }
 }

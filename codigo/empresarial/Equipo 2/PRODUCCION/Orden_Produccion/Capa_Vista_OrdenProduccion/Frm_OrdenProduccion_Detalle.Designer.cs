@@ -58,6 +58,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Pnl_Titulo = new System.Windows.Forms.Panel();
             this.Lbl_TituloForm = new System.Windows.Forms.Label();
+            this.Btn_Inventario = new System.Windows.Forms.Button();
             this.Gpo_Detalle.SuspendLayout();
             this.Gpo_Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleOrdenProduccion)).BeginInit();
@@ -265,6 +266,7 @@ namespace Capa_Vista_OrdenProduccion
             // Dgv_DetalleOrdenProduccion
             // 
             this.Dgv_DetalleOrdenProduccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_DetalleOrdenProduccion.EnableHeadersVisualStyles = false;
             this.Dgv_DetalleOrdenProduccion.Location = new System.Drawing.Point(14, 524);
             this.Dgv_DetalleOrdenProduccion.Name = "Dgv_DetalleOrdenProduccion";
             this.Dgv_DetalleOrdenProduccion.RowHeadersWidth = 51;
@@ -300,9 +302,11 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Refrescar.Text = "Refrescar";
             this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Refrescar.UseVisualStyleBackColor = true;
+            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // Btn_Cancelar
             // 
+            this.Btn_Cancelar.Enabled = false;
             this.Btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Cancelar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_cancelar;
@@ -314,6 +318,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Cancelar.Text = "Cancelar";
             this.Btn_Cancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Btn_Grabar
             // 
@@ -347,6 +352,7 @@ namespace Capa_Vista_OrdenProduccion
             // 
             // Btn_Ingresar
             // 
+            this.Btn_Ingresar.Enabled = false;
             this.Btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ingresar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_agregar1;
@@ -379,11 +385,23 @@ namespace Capa_Vista_OrdenProduccion
             this.Lbl_TituloForm.TabIndex = 0;
             this.Lbl_TituloForm.Text = "731 - Ordenes de Producción - Detalles";
             // 
+            // Btn_Inventario
+            // 
+            this.Btn_Inventario.Enabled = false;
+            this.Btn_Inventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Inventario.Location = new System.Drawing.Point(932, 648);
+            this.Btn_Inventario.Name = "Btn_Inventario";
+            this.Btn_Inventario.Size = new System.Drawing.Size(100, 71);
+            this.Btn_Inventario.TabIndex = 52;
+            this.Btn_Inventario.Text = "Actualizar Inventario";
+            this.Btn_Inventario.UseVisualStyleBackColor = true;
+            // 
             // Frm_OrdenProduccion_Detalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 823);
+            this.Controls.Add(this.Btn_Inventario);
             this.Controls.Add(this.Pnl_Titulo);
             this.Controls.Add(this.Gpo_Detalle);
             this.Controls.Add(this.Gpo_Encabezado);
@@ -398,6 +416,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Controls.Add(this.Btn_Ingresar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_OrdenProduccion_Detalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "731 - Ordenes de Producción - Detalles";
             this.Load += new System.EventHandler(this.Frm_OrdenProduccion_Detalle_Load);
             this.Gpo_Detalle.ResumeLayout(false);
@@ -442,5 +461,6 @@ namespace Capa_Vista_OrdenProduccion
         private System.Windows.Forms.Button Btn_Ingresar;
         private System.Windows.Forms.Panel Pnl_Titulo;
         private System.Windows.Forms.Label Lbl_TituloForm;
+        private System.Windows.Forms.Button Btn_Inventario;
     }
 }

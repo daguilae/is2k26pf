@@ -60,7 +60,7 @@ namespace Capa_Modelo_Ventas
 
 
         //NUEVO DE COMBOBOX DE ESTADO
-        private static readonly string SQL_ESTADOVENTA=
+        private static readonly string SQL_ESTADOVENTA =
         "SHOW COLUMNS FROM tbl_ventas LIKE 'Cmp_Estado_Venta'";
 
         //Nuevo agregado para Tipo operacion
@@ -102,7 +102,7 @@ namespace Capa_Modelo_Ventas
         FROM tbl_asignacion_clientes a
         INNER JOIN tbl_vendedor v ON a.Fk_Id_Vendedor = v.Pk_Id_Vendedor
         WHERE a.Fk_Id_Cliente = ?";
-        
+
         //AGREGANDO DESCUENTO POR TIPO CLIENTE
         private static readonly string SQL_DESCUENTO = @"
         SELECT 
@@ -548,10 +548,10 @@ namespace Capa_Modelo_Ventas
                                 detalleInventario
                             );
                         }
-                            
-                            // SUMAR SALDO AL CLIENTE
-                            using (OdbcCommand cmdUpdateCliente = new OdbcCommand(
-                            "UPDATE tbl_clientes SET Cmp_Saldo_Total = Cmp_Saldo_Total + ? WHERE Pk_Id_Cliente = ?", conn, trans))
+
+                        // SUMAR SALDO AL CLIENTE
+                        using (OdbcCommand cmdUpdateCliente = new OdbcCommand(
+                        "UPDATE tbl_clientes SET Cmp_Saldo_Total = Cmp_Saldo_Total + ? WHERE Pk_Id_Cliente = ?", conn, trans))
                         {
                             cmdUpdateCliente.Parameters.AddWithValue("?", fCmp_Saldo_Total);
                             cmdUpdateCliente.Parameters.AddWithValue("?", iFk_Id_Cliente);
@@ -583,50 +583,51 @@ namespace Capa_Modelo_Ventas
                 }
             }
         }
-            
-                public int ObtenerIdCXCPorVenta(int idVenta)
+
+
+        public int ObtenerIdCXCPorVenta(int idVenta)
+        {
+            Cls_ConexionBD conexionBD = new Cls_ConexionBD();
+            OdbcConnection conn = null;
+
+            try
             {
-                Cls_ConexionBD conexionBD = new Cls_ConexionBD();
-                OdbcConnection conn = null;
+                conn = conexionBD.AbrirConexion();
 
-                try
-                {
-                    conn = conexionBD.AbrirConexion();
-
-                    string query = @"
+                string query = @"
                     SELECT Pk_Id_Cuenta_Por_Cobrar 
                     FROM tbl_cuentas_por_cobrar 
                     WHERE Fk_Id_Venta = ?";
 
-                    using (OdbcCommand cmd = new OdbcCommand(query, conn))
-                    {
-                        cmd.Parameters.Add("@idVenta", OdbcType.Int).Value = idVenta;
-                        object resultado = cmd.ExecuteScalar();
-
-                        if (resultado != null && int.TryParse(resultado.ToString(), out int idCXC))
-                        {
-                            return idCXC;
-                        }
-                    }
-
-                    return 0; // Retorna 0 si no encuentra CXC
-                }
-                catch (Exception ex)
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
                 {
-                    // Solo registrar en consola, NO mostrar MessageBox aquí
-                    Console.WriteLine("Error en ObtenerIdCXCPorVenta: " + ex.Message);
-                    throw; // Relanza la excepción para que la vista la maneje
-                }
-                finally
-                {
-                    if (conn != null)
+                    cmd.Parameters.Add("@idVenta", OdbcType.Int).Value = idVenta;
+                    object resultado = cmd.ExecuteScalar();
+
+                    if (resultado != null && int.TryParse(resultado.ToString(), out int idCXC))
                     {
-                        conexionBD.desconexion(conn);
+                        return idCXC;
                     }
+                }
+
+                return 0; // Retorna 0 si no encuentra CXC
+            }
+            catch (Exception ex)
+            {
+                // Solo registrar en consola, NO mostrar MessageBox aquí
+                Console.WriteLine("Error en ObtenerIdCXCPorVenta: " + ex.Message);
+                throw; // Relanza la excepción para que la vista la maneje
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conexionBD.desconexion(conn);
                 }
             }
         }
+    }
 
-            }
+}
 
  

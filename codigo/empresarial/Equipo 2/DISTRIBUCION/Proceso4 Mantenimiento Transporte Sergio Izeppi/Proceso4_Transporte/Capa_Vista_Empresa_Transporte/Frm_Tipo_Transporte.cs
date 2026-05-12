@@ -34,6 +34,7 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Frm_Tipo_Transporte_Load(object sender, EventArgs e)
         {
+            fun_EstadoInicial();
             pro_CargarDatos();
             pro_CargarDatos2();
             Dgv_Tipo_Transporte.Columns.Clear();
@@ -256,6 +257,21 @@ namespace Capa_Vista_Empresa_Transporte
 
             // GUARDAR ID
             this.iCodigoTransporte = iCodigoTransporte;
+
+            Cbo_Empresa.Enabled = true;
+            Txt_TipoTransporte.Enabled = true;
+            Txt_Placa.Enabled = true;
+            Txt_Piloto.Enabled = true;
+            Txt_Capacidad.Enabled = true;
+
+            Cbo_Estado_Transporte.Enabled = true;
+
+            Btn_Guardar1.Enabled = false;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = true;
+            Btn_Modificar.Enabled = true;
+            Btn_Eliminar.Enabled = true;
         }
 
         private void Btn_Modificar_Click(object sender, EventArgs e)
@@ -430,6 +446,58 @@ namespace Capa_Vista_Empresa_Transporte
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_Ingresar_Click(object sender, EventArgs e)
+        {
+            Txt_TipoTransporte.Clear();
+            Txt_Placa.Clear();
+            Txt_Piloto.Clear();
+            Txt_Capacidad.Clear();
+
+            Cbo_Empresa.SelectedIndex = 0;
+            Cbo_Estado_Transporte.SelectedIndex = 0;
+
+            //Habilitar combos
+            Cbo_Empresa.Enabled = true;
+            Txt_TipoTransporte.Enabled = true;
+            Txt_Placa.Enabled = true;
+            Txt_Piloto.Enabled = true;
+            Txt_Capacidad.Enabled = true;
+
+            //Limpiar selección
+            Cbo_Estado_Transporte.SelectedIndex = 0;
+
+            Btn_Guardar1.Enabled = true;
+            Btn_Cancelar.Enabled = true;
+
+            Btn_Ingresar.Enabled = false;
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+
+        }
+
+        private void fun_EstadoInicial()
+        {
+            //Habilitados
+            Btn_Ingresar.Enabled = true;
+            Btn_Reporte.Enabled = true;
+            Btn_Ayuda.Enabled = true;
+            Btn_Salir.Enabled = true;
+
+            //Deshabilitados
+            Btn_Modificar.Enabled = false;
+            Btn_Eliminar.Enabled = false;
+            Btn_Guardar1.Enabled = false;
+            Btn_Cancelar.Enabled = false;
+
+            //ComboBox bloqueados
+            Cbo_Empresa.Enabled = false;
+            Txt_TipoTransporte.Enabled = false;
+            Txt_Placa.Enabled = false;
+            Txt_Piloto.Enabled = false;
+            Txt_Capacidad.Enabled = false;
+            Cbo_Estado_Transporte.Enabled = false;
         }
     }
 }
