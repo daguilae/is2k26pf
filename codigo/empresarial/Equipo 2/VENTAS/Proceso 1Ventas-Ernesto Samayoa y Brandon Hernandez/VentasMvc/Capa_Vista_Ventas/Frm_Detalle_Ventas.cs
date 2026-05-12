@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Controlador_Seguridad;
+
 
 using Capa_Controlador_Ventas;
 
@@ -370,6 +372,30 @@ namespace Capa_Vista_Ventas
              
                 if (resultado)
                 {
+                    // BITACORA
+                    Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                    string accionBitacora = "";
+
+                    if (sCmp_Tipo_Operacion == "Venta")
+                    {
+                        accionBitacora = "Se registró una venta";
+                    }
+                    else if (sCmp_Tipo_Operacion == "Pedido")
+                    {
+                        accionBitacora = "Se registró un pedido";
+                    }
+                    else if (sCmp_Tipo_Operacion == "Cotizacion")
+                    {
+                        accionBitacora = "Se generó una cotización";
+                    }
+
+                    bitacora.RegistrarAccion(
+                        Cls_Usuario_Conectado.iIdUsuario,
+                        710,
+                        accionBitacora,
+                        true
+                    );
                     MessageBox.Show("Registro guardado correctamente.");
                     fun_CargarInventario(); 
                     // LIMPIAR
