@@ -419,6 +419,12 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
+            Txt_ID_Produccion.Clear();
+            Txt_ID_Transporte.Clear();
+            Txt_Direccion.Clear();
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
             //Habilitar combos
             Txt_ID_Transporte.Enabled = true;
             Txt_ID_Produccion.Enabled = true;
