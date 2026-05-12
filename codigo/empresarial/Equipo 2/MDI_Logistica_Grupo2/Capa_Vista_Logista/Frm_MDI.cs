@@ -436,7 +436,7 @@ namespace Capa_Vista_Logista
 
         private void cuentasPorPagarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Frm_Compras_CXP cuentas_XP = new Frm_Compras_CXP();
+            Frm_inicio_CXP cuentas_XP = new Frm_inicio_CXP();
             cuentas_XP.MdiParent = this;
             cuentas_XP.Show();
         }
