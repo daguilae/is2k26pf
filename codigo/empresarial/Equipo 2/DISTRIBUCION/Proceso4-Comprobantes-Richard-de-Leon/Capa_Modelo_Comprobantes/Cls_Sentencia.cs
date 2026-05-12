@@ -262,7 +262,7 @@ namespace Capa_Modelo
                 string S_Query = @"
                     SELECT 
                         Pk_ID_Entrega_Compra,
-                        Fk_Id_OrdenCompra,
+                        Fk_Id_Compra,
                         Fk_Id_Transporte,
                         Cmp_Direccion,
                         Cmp_Fecha,
