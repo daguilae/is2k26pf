@@ -211,7 +211,7 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Guardar.Enabled = false;
             Btn_Cancelar.Enabled = true;
 
-            Btn_Ingresar.Enabled = false;
+            Btn_Ingresar.Enabled = true;
             Btn_Modificar.Enabled = true;
             Btn_Eliminar.Enabled = true;
 
@@ -403,6 +403,12 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
+            Txt_ID_Transporte.Clear();
+            Txt_ID_Venta.Clear();
+            Txt_Direccion.Clear();
+            DTP_Fecha.Value = DateTime.Now;
+            Cbo_Estado_Entrega.SelectedIndex = 0;
+
             //Habilitar combos
             Txt_ID_Transporte.Enabled = true;
             Txt_ID_Venta.Enabled = true;
@@ -420,6 +426,8 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Ingresar.Enabled = false;
             Btn_Modificar.Enabled = false;
             Btn_Eliminar.Enabled = false;
+
+
         }
     }
 }
