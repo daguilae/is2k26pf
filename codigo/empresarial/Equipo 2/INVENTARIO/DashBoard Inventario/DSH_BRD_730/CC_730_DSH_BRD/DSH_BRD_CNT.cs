@@ -7,11 +7,11 @@ public class DSH_BRD_CNT
     private DSH_BRD_MOD _modelo = new DSH_BRD_MOD();
 
     // ── ULTIMOS MOVIMIENTOS ──────────────────────────────
-    public DataTable ObtenerUltimosMovimientos()
+    public DataTable ObtenerUltimosMovimientos(DateTime fechaInicio, DateTime fechaFin)
     {
         try
         {
-            return _modelo.ObtenerUltimosMovimientos();
+            return _modelo.ObtenerUltimosMovimientos(fechaInicio, fechaFin);
         }
         catch (Exception ex)
         {
