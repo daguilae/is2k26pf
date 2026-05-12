@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Capa_Controlador_CXP;
 using Capa_Vista_CXP;
+using Capa_Vista_Compras;
 
 namespace Capa_Vista_Compras
 {
@@ -145,6 +146,14 @@ namespace Capa_Vista_Compras
                 return;
 
             AbrirCompraSeleccionada();
+        }
+
+        private void Btn_ingresar_Click_1(object sender, EventArgs e)
+        {
+            Frm_Compra_manual frm = new Frm_Compra_manual();
+            frm.ShowDialog();
+
+          
         }
     }
 }
