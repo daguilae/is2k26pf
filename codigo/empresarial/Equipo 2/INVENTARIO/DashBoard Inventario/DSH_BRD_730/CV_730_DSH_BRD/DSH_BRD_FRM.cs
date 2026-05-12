@@ -15,6 +15,9 @@ namespace CV_730_DSH_BRD
         // La Vista solo habla con el Controlador
         private DSH_BRD_CNT _controlador = new DSH_BRD_CNT();
 
+        // Bandera Cargar Todo Inicio
+        private bool _filtrarFechas = false;
+
         public DSH_BRD_FRM()
         {
             InitializeComponent();
@@ -38,7 +41,14 @@ namespace CV_730_DSH_BRD
         {
             try
             {
-                dgvMovimientos.DataSource = _controlador.ObtenerUltimosMovimientos();
+                DataTable dt;
+
+                if (_filtrarFechas)
+                    dt = _controlador.ObtenerUltimosMovimientos(dtpDesde.Value, dtpHasta.Value);
+                else
+                    dt = _controlador.ObtenerUltimosMovimientos(DateTime.MinValue, DateTime.MaxValue);
+
+                dgvMovimientos.DataSource = dt;
                 dgvMovimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvMovimientos.RowHeadersVisible = false;
                 dgvMovimientos.AllowUserToAddRows = false;
@@ -51,6 +61,8 @@ namespace CV_730_DSH_BRD
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
+           
 
         // ── STOCK CRITICO ────────────────────────────────────
         private void CargarStockCritico()
@@ -85,20 +97,24 @@ namespace CV_730_DSH_BRD
                 switch (row.Cells["Nivel"].Value.ToString())
                 {
                     case "SIN STOCK":
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 205, 210); // Rosa suave
-                        row.DefaultCellStyle.ForeColor = Color.FromArgb(183, 28, 28);  // Rojo oscuro
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 205, 210);
+                        row.DefaultCellStyle.ForeColor = Color.FromArgb(183, 28, 28);
                         break;
                     case "CRÍTICO":
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 224, 178); // Naranja suave
-                        row.DefaultCellStyle.ForeColor = Color.FromArgb(230, 81, 0);   // Naranja oscuro
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 224, 178);
+                        row.DefaultCellStyle.ForeColor = Color.FromArgb(230, 81, 0);
                         break;
                     case "BAJO":
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 249, 196); // Amarillo suave
-                        row.DefaultCellStyle.ForeColor = Color.FromArgb(130, 100, 0);  // Dorado oscuro
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(255, 249, 196);
+                        row.DefaultCellStyle.ForeColor = Color.FromArgb(130, 100, 0);
                         break;
                     case "MEDIO":
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(200, 230, 201); // Verde suave
-                        row.DefaultCellStyle.ForeColor = Color.FromArgb(27, 94, 32);   // Verde oscuro
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(200, 230, 201);
+                        row.DefaultCellStyle.ForeColor = Color.FromArgb(27, 94, 32);
+                        break;
+                    case "ALTO":
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(187, 222, 251);
+                        row.DefaultCellStyle.ForeColor = Color.FromArgb(13, 71, 161);
                         break;
                 }
             }
@@ -123,6 +139,17 @@ namespace CV_730_DSH_BRD
             this.Close();
         }
 
-        
+        // ── DATEPICKERS - FILTRO MANUAL ──────────────────────
+        private void dtpDesde_ValueChanged(object sender, EventArgs e)
+        {
+            _filtrarFechas = true; // Regresa a personalizado
+            CargarMovimientos();
+        }
+
+        private void dtpHasta_ValueChanged(object sender, EventArgs e)
+        {
+            _filtrarFechas = true; // Regresa a personalizado
+            CargarMovimientos();
+        }
     }
 }
