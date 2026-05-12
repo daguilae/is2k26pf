@@ -347,28 +347,52 @@ namespace Capa_Vista_Expl_Mat
                 Btn_GenerarOrdenLogistica.Enabled = false;
                 return;
             }
-        bool ok = controlador.GenerarOrdenMaterial(idOrden, _datosImplosion);
 
-        if (ok)
-        {
-            MessageBox.Show("Orden de material generada correctamente.",
-                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Btn_GenerarOrdenLogistica.Enabled = false;
-            Lbl_EstadoImplosion.Text = "✔ Orden generada. Esperando entrega.";
-        }
-        else
-        {
-            MessageBox.Show("Error al guardar la orden.",
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Arón Ricardo Esquit Silva 0901-22-13036 11/05/2026
+            RespuestaApiOrdenMaterial respuesta = controlador.GenerarYEnviarOrdenMaterialApi(idOrden, _datosImplosion);
+
+            if (respuesta.Exitoso)
+            {
+                MessageBox.Show(
+                    "Orden generada y enviada a Logística correctamente.\n\n" +
+                    "ID Orden Material: " + respuesta.IdOrdenMaterial + "\n" +
+                    "ID Venta Logística: " + respuesta.IdVentaLogistica,
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Btn_GenerarOrdenLogistica.Enabled = false;
+                Lbl_EstadoImplosion.Text = "Orden generada y enviada a Logística.";
+            }
+
+
+            else if (respuesta.IdOrdenMaterial > 0)
+            {
+                MessageBox.Show(
+                    "Orden guardada correctamente, pero no se pudo enviar a Logística.\n\n" +
+                    "Detalle: " + respuesta.Mensaje,
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                Btn_GenerarOrdenLogistica.Enabled = false;
+                Lbl_EstadoImplosion.Text = " Orden guardada. Pendiente de envío a Logística.";
+            }
+
+            else
+            {
+                MessageBox.Show(
+                    "Error al guardar la orden.\n\nDetalle: " + respuesta.Mensaje,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Lbl_EstadoImplosion.Text = "Error al generar la orden.";
+            }
         }
 
-        }
+
 
         private void Dgv_Implosion_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
+        
         private void Cmb_OrdenProduccion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (Cmb_OrdenProduccion.SelectedValue != null && Cmb_OrdenProduccion.ValueMember != "")
