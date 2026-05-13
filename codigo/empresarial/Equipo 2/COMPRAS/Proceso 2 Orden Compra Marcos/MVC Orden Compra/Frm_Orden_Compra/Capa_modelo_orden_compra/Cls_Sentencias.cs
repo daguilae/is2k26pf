@@ -356,7 +356,7 @@ ORDER BY O.cmp_fecha DESC";
 
 
 
-
+        //sentencias //
 
 
 
