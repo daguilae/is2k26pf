@@ -49,17 +49,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< DetalleFacturaLety
+    <Compile Include="Frm_Detalle_Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Detalle_Facturacion.Designer.cs">
+      <DependentUpon>Frm_Detalle_Facturacion.cs</DependentUpon>
+=======
     <Compile Include="Frms_Factura.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frms_Factura.Designer.cs">
       <DependentUpon>Frms_Factura.cs</DependentUpon>
+>>>>>>> main
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< DetalleFacturaLety
+    <EmbeddedResource Include="Frm_Detalle_Facturacion.resx">
+      <DependentUpon>Frm_Detalle_Facturacion.cs</DependentUpon>
+=======
     <EmbeddedResource Include="Frms_Factura.resx">
       <DependentUpon>Frms_Factura.cs</DependentUpon>
+>>>>>>> main
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
