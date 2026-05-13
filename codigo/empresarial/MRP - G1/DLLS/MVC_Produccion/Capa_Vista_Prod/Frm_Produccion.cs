@@ -659,20 +659,22 @@ namespace Capa_Vista_Prod
 
             if (confirm == DialogResult.Yes)
             {
-                bool exito = controlador.GenerarFactura(
-                    idOrdenRecibida, idOrdenProduccion,
-                    totalMateriales, totalManoObra, totalIndirectos,
-                    totalMermas, totalFases, totalFactura);
+                try
+                {
+                    bool exito = controlador.GenerarFactura(
+                        idOrdenRecibida, idOrdenProduccion,
+                        totalMateriales, totalManoObra, totalIndirectos,
+                        totalMermas, totalFases, totalFactura);
 
-                if (exito)
-                {
-                    MessageBox.Show("Factura generada correctamente.", "Éxito",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (exito)
+                    {
+                        MessageBox.Show("Factura generada correctamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error al generar la factura.", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error detallado: " + ex.Message);
                 }
             }
         }
