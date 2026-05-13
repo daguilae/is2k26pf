@@ -31,11 +31,8 @@ namespace Capa_Vista_OrdenProduccion
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_OrdenProduccion_Encabezado));
             this.Pnl_Botones = new System.Windows.Forms.Panel();
-            this.Btn_ActualizarEstado = new System.Windows.Forms.Button();
-            this.Lbl_Estado = new System.Windows.Forms.Label();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
-            this.Lbl_TituloEstado = new System.Windows.Forms.Label();
             this.Btn_Borrar = new System.Windows.Forms.Button();
             this.Btn_Filtrar = new System.Windows.Forms.Button();
             this.Btn_Imprimir = new System.Windows.Forms.Button();
@@ -44,6 +41,10 @@ namespace Capa_Vista_OrdenProduccion
             this.Dgv_EncabezadoOrdenP = new System.Windows.Forms.DataGridView();
             this.Pnl_Titulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_sig = new System.Windows.Forms.Button();
+            this.Btn_anterior = new System.Windows.Forms.Button();
+            this.Btn_inicio = new System.Windows.Forms.Button();
             this.Pnl_Botones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).BeginInit();
             this.Pnl_Titulo.SuspendLayout();
@@ -51,14 +52,15 @@ namespace Capa_Vista_OrdenProduccion
             // 
             // Pnl_Botones
             // 
-            this.Pnl_Botones.Controls.Add(this.Btn_ActualizarEstado);
-            this.Pnl_Botones.Controls.Add(this.Lbl_Estado);
+            this.Pnl_Botones.Controls.Add(this.Btn_fin);
             this.Pnl_Botones.Controls.Add(this.Btn_Ingresar);
             this.Pnl_Botones.Controls.Add(this.Btn_Editar);
-            this.Pnl_Botones.Controls.Add(this.Lbl_TituloEstado);
+            this.Pnl_Botones.Controls.Add(this.Btn_sig);
             this.Pnl_Botones.Controls.Add(this.Btn_Borrar);
             this.Pnl_Botones.Controls.Add(this.Btn_Filtrar);
+            this.Pnl_Botones.Controls.Add(this.Btn_anterior);
             this.Pnl_Botones.Controls.Add(this.Btn_Imprimir);
+            this.Pnl_Botones.Controls.Add(this.Btn_inicio);
             this.Pnl_Botones.Controls.Add(this.Btn_Salir);
             this.Pnl_Botones.Controls.Add(this.Btn_Refrescar);
             this.Pnl_Botones.Location = new System.Drawing.Point(0, 70);
@@ -66,27 +68,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Pnl_Botones.Size = new System.Drawing.Size(1366, 143);
             this.Pnl_Botones.TabIndex = 16;
             this.Pnl_Botones.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_Botones_Paint);
-            // 
-            // Btn_ActualizarEstado
-            // 
-            this.Btn_ActualizarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ActualizarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ActualizarEstado.Location = new System.Drawing.Point(1178, 48);
-            this.Btn_ActualizarEstado.Name = "Btn_ActualizarEstado";
-            this.Btn_ActualizarEstado.Size = new System.Drawing.Size(124, 62);
-            this.Btn_ActualizarEstado.TabIndex = 11;
-            this.Btn_ActualizarEstado.Text = "Actualizar Estado";
-            this.Btn_ActualizarEstado.UseVisualStyleBackColor = true;
-            // 
-            // Lbl_Estado
-            // 
-            this.Lbl_Estado.AutoSize = true;
-            this.Lbl_Estado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Estado.Location = new System.Drawing.Point(963, 83);
-            this.Lbl_Estado.Name = "Lbl_Estado";
-            this.Lbl_Estado.Size = new System.Drawing.Size(68, 24);
-            this.Lbl_Estado.TabIndex = 10;
-            this.Lbl_Estado.Text = "Estado";
             // 
             // Btn_Ingresar
             // 
@@ -117,16 +98,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Editar.UseVisualStyleBackColor = true;
             this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
-            // 
-            // Lbl_TituloEstado
-            // 
-            this.Lbl_TituloEstado.AutoSize = true;
-            this.Lbl_TituloEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_TituloEstado.Location = new System.Drawing.Point(928, 33);
-            this.Lbl_TituloEstado.Name = "Lbl_TituloEstado";
-            this.Lbl_TituloEstado.Size = new System.Drawing.Size(142, 24);
-            this.Lbl_TituloEstado.TabIndex = 9;
-            this.Lbl_TituloEstado.Text = "Estado de API";
             // 
             // Btn_Borrar
             // 
@@ -178,9 +149,9 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_salir;
             this.Btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Salir.Location = new System.Drawing.Point(713, 33);
+            this.Btn_Salir.Location = new System.Drawing.Point(1180, 35);
             this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(100, 77);
+            this.Btn_Salir.Size = new System.Drawing.Size(100, 73);
             this.Btn_Salir.TabIndex = 6;
             this.Btn_Salir.Text = "Salir";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -235,6 +206,66 @@ namespace Capa_Vista_OrdenProduccion
             this.label1.TabIndex = 0;
             this.label1.Text = "730 - Ordenes de Producción - Encabezado";
             // 
+            // Btn_fin
+            // 
+            this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
+            this.Btn_fin.Location = new System.Drawing.Point(1064, 34);
+            this.Btn_fin.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_fin.Name = "Btn_fin";
+            this.Btn_fin.Size = new System.Drawing.Size(107, 74);
+            this.Btn_fin.TabIndex = 39;
+            this.Btn_fin.Text = "Fin";
+            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_fin.UseVisualStyleBackColor = true;
+            this.Btn_fin.Click += new System.EventHandler(this.Btn_fin_Click);
+            // 
+            // Btn_sig
+            // 
+            this.Btn_sig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
+            this.Btn_sig.Location = new System.Drawing.Point(948, 34);
+            this.Btn_sig.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_sig.Name = "Btn_sig";
+            this.Btn_sig.Size = new System.Drawing.Size(107, 74);
+            this.Btn_sig.TabIndex = 38;
+            this.Btn_sig.Text = "Siguiente";
+            this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_sig.UseVisualStyleBackColor = true;
+            this.Btn_sig.Click += new System.EventHandler(this.Btn_sig_Click);
+            // 
+            // Btn_anterior
+            // 
+            this.Btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
+            this.Btn_anterior.Location = new System.Drawing.Point(832, 32);
+            this.Btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_anterior.Name = "Btn_anterior";
+            this.Btn_anterior.Size = new System.Drawing.Size(107, 77);
+            this.Btn_anterior.TabIndex = 37;
+            this.Btn_anterior.Text = "Anterior";
+            this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_anterior.UseVisualStyleBackColor = true;
+            this.Btn_anterior.Click += new System.EventHandler(this.Btn_anterior_Click);
+            // 
+            // Btn_inicio
+            // 
+            this.Btn_inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
+            this.Btn_inicio.Location = new System.Drawing.Point(713, 32);
+            this.Btn_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_inicio.Name = "Btn_inicio";
+            this.Btn_inicio.Size = new System.Drawing.Size(110, 77);
+            this.Btn_inicio.TabIndex = 36;
+            this.Btn_inicio.Text = "Inicio";
+            this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_inicio.UseVisualStyleBackColor = true;
+            this.Btn_inicio.Click += new System.EventHandler(this.Btn_inicio_Click);
+            // 
             // Frm_OrdenProduccion_Encabezado
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -248,7 +279,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Text = "730 - Ordenes de Producción";
             this.Load += new System.EventHandler(this.Frm_Ordenes_Encabezados_Load);
             this.Pnl_Botones.ResumeLayout(false);
-            this.Pnl_Botones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).EndInit();
             this.Pnl_Titulo.ResumeLayout(false);
             this.Pnl_Titulo.PerformLayout();
@@ -266,11 +296,12 @@ namespace Capa_Vista_OrdenProduccion
         private System.Windows.Forms.Button Btn_Salir;
         private System.Windows.Forms.Button Btn_Refrescar;
         private System.Windows.Forms.Panel Pnl_Botones;
-        private System.Windows.Forms.Label Lbl_Estado;
-        private System.Windows.Forms.Label Lbl_TituloEstado;
         private System.Windows.Forms.DataGridView Dgv_EncabezadoOrdenP;
         private System.Windows.Forms.Panel Pnl_Titulo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Btn_ActualizarEstado;
+        private System.Windows.Forms.Button Btn_fin;
+        private System.Windows.Forms.Button Btn_sig;
+        private System.Windows.Forms.Button Btn_anterior;
+        private System.Windows.Forms.Button Btn_inicio;
     }
 }

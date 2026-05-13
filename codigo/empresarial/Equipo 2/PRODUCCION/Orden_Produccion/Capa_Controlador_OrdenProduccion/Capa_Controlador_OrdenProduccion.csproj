@@ -31,10 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_controlador_orden_compra">
+      <HintPath>..\..\..\COMPRAS\Proceso 2 Orden Compra Marcos\MVC Orden Compra\Frm_Orden_Compra\Capa_controlador_orden_compra\bin\Debug\Capa_controlador_orden_compra.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Modelo_OrdenProduccion">
       <HintPath>..\Capa_Modelo_OrdenProduccion\bin\Debug\Capa_Modelo_OrdenProduccion.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,7 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cls_ControladorOrdenP.cs" />
+    <Compile Include="Cls_ServicioAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

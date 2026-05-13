@@ -14,7 +14,7 @@ namespace Capa_Modelo_OrdenProduccion
         private Cls_Conexion cConexion = new Cls_Conexion();
         private Cls_SentenciasSQL cSQL = new Cls_SentenciasSQL();
 
-        public int InsertarOrdenProduccion(int iIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(int iIdProducto, int iCantidadSolicitada)> lDetalles)
+        public int InsertarOrdenProduccion(int iIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(int iIdProducto, int iCantidadSolicitada, int iCantidadRecibida)> lDetalles)
         {
             int iIdOrdenGenerada = 0;
 
@@ -49,7 +49,7 @@ namespace Capa_Modelo_OrdenProduccion
                             cCmdDet.Parameters.Add("p1", OdbcType.Int).Value = iIdOrdenGenerada;
                             cCmdDet.Parameters.Add("p2", OdbcType.Int).Value = det.iIdProducto;
                             cCmdDet.Parameters.Add("p3", OdbcType.Int).Value = det.iCantidadSolicitada;
-                            cCmdDet.Parameters.Add("p4", OdbcType.Int).Value = 0;
+                            cCmdDet.Parameters.Add("p4", OdbcType.Int).Value = det.iCantidadRecibida;
 
                             cCmdDet.ExecuteNonQuery();
                         }
@@ -67,7 +67,7 @@ namespace Capa_Modelo_OrdenProduccion
         }
 
         //Actualizar
-        public void ActualizarOrdenProduccion(int idOrden, int iIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(int iIdProducto, int iCantidadSolicitada)> lDetalles)
+        public void ActualizarOrdenProduccion(int idOrden, int iIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(int iIdProducto, int iCantidadSolicitada, int iCantidadRecibida)> lDetalles)
         {
             using (OdbcConnection cConn = cConexion.AbrirConexion())
             using (OdbcTransaction cTrans = cConn.BeginTransaction())
@@ -100,7 +100,7 @@ namespace Capa_Modelo_OrdenProduccion
                             cCmdDet.Parameters.Add("p1", OdbcType.Int).Value = idOrden;
                             cCmdDet.Parameters.Add("p2", OdbcType.Int).Value = det.iIdProducto;
                             cCmdDet.Parameters.Add("p3", OdbcType.Int).Value = det.iCantidadSolicitada;
-                            cCmdDet.Parameters.Add("p4", OdbcType.Int).Value = 0; 
+                            cCmdDet.Parameters.Add("p4", OdbcType.Int).Value = det.iCantidadRecibida;
                             cCmdDet.ExecuteNonQuery();
                         }
                     }
