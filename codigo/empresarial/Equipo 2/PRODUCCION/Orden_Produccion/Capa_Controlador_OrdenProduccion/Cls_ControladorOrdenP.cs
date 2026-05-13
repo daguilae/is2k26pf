@@ -15,7 +15,7 @@ namespace Capa_Controlador_OrdenProduccion
         private Cls_ProduccionDAO oProduccionDAO = new Cls_ProduccionDAO();
 
         //Metodo para Insertar
-        public int InsertarOrdenProduccion(string sIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(string sIdProducto, string sCantidad)> lDetallesCrudos)
+        public int InsertarOrdenProduccion(string sIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(string sIdProducto, string sCantSolicitada, string sCantRecibida)> lDetallesCrudos)
         {
             //Validaciones de Encabezado
             if (string.IsNullOrWhiteSpace(sIdVendedor) || !int.TryParse(sIdVendedor, out int iIdVendedor) || iIdVendedor <= 0)
@@ -41,32 +41,39 @@ namespace Capa_Controlador_OrdenProduccion
                 throw new ArgumentException("Debe ingresar al menos un producto en el detalle de la orden.");
             }
 
-            List<(int iIdProducto, int iCantidadSolicitada)> lDetallesValidados = new List<(int, int)>();
+            List<(int iIdProducto, int iCantidadSolicitada, int iCantidadRecibida)> lDetallesValidados = new List<(int, int, int)>();
 
             foreach (var det in lDetallesCrudos)
             {
-                // Validar valores nulos
-                if (string.IsNullOrWhiteSpace(det.sIdProducto) || string.IsNullOrWhiteSpace(det.sCantidad))
+                //Validar nulos
+                if (string.IsNullOrWhiteSpace(det.sIdProducto) || string.IsNullOrWhiteSpace(det.sCantSolicitada) || string.IsNullOrWhiteSpace(det.sCantRecibida))
                     throw new ArgumentException("Existen campos vacíos en el detalle de productos.");
 
-                // Validar que el ID del producto sea un número válido
                 if (!int.TryParse(det.sIdProducto, out int iIdProd) || iIdProd <= 0)
                     throw new ArgumentException($"El producto con ID '{det.sIdProducto}' no es válido.");
 
-                // Validar Cantidad
-                if (!Regex.IsMatch(det.sCantidad, @"^\d+$"))
-                    throw new ArgumentException("La cantidad debe contener únicamente números enteros positivos.");
+                //Validar Cantidad Solicitada
+                if (!System.Text.RegularExpressions.Regex.IsMatch(det.sCantSolicitada, @"^\d+$"))
+                    throw new ArgumentException("La cantidad solicitada debe contener únicamente números enteros positivos.");
+                if (!int.TryParse(det.sCantSolicitada, out int iCantSol) || iCantSol <= 0)
+                    throw new ArgumentException("La cantidad solicitada debe ser mayor a cero.");
 
-                if (!int.TryParse(det.sCantidad, out int iCant) || iCant <= 0)
-                    throw new ArgumentException("La cantidad solicitada debe ser mayor a cero y no puede ser negativa.");
+                //Validar Cantidad Recibida
+                if (!System.Text.RegularExpressions.Regex.IsMatch(det.sCantRecibida, @"^\d+$"))
+                    throw new ArgumentException("La cantidad recibida debe contener únicamente números enteros.");
+                if (!int.TryParse(det.sCantRecibida, out int iCantRec) || iCantRec < 0)
+                    throw new ArgumentException("La cantidad recibida no puede ser menor a cero.");
 
-                lDetallesValidados.Add((iIdProd, iCant));
+                if (iCantRec > iCantSol)
+                    throw new ArgumentException($"Para el producto ID {iIdProd}, la cantidad recibida ({iCantRec}) no puede ser mayor a la solicitada ({iCantSol}).");
+
+                lDetallesValidados.Add((iIdProd, iCantSol, iCantRec));
             }
 
             // se inserta en DAO
             try
             {
-                return oProduccionDAO.InsertarOrdenProduccion(iIdVendedor, dFechaEmision, dFechaEstimada, sEstado, lDetallesValidados);
+                return oProduccionDAO.InsertarOrdenProduccion(Convert.ToInt32(sIdVendedor), dFechaEmision, dFechaEstimada, sEstado, lDetallesValidados);
             }
             catch (Exception ex)
             {
@@ -75,11 +82,11 @@ namespace Capa_Controlador_OrdenProduccion
         }
 
         // Método para Modificar
-        public void ModificarOrdenProduccion(int idOrden, string sIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(string sIdProducto, string sCantidad)> lDetallesCrudos)
+        public void ModificarOrdenProduccion(int idOrden, string sIdVendedor, DateTime dFechaEmision, DateTime dFechaEstimada, string sEstado, List<(string sIdProducto, string sCantSolicitada, string sCantRecibida)> lDetallesCrudos)
         {
             if (idOrden <= 0) throw new ArgumentException("ID de orden inválido.");
 
-            //Validaciones de Encabezado
+            // Validaciones encabezado
             if (string.IsNullOrWhiteSpace(sIdVendedor) || !int.TryParse(sIdVendedor, out int iIdVendedor) || iIdVendedor <= 0)
             {
                 throw new ArgumentException("El Vendedor seleccionado no es válido.");
@@ -97,32 +104,42 @@ namespace Capa_Controlador_OrdenProduccion
                 throw new ArgumentException("El Estado seleccionado no es válido en el sistema.");
             }
 
-            // Validaciones de Detalle
+            // Detalles validaciones
             if (lDetallesCrudos == null || lDetallesCrudos.Count == 0)
             {
                 throw new ArgumentException("Debe ingresar al menos un producto en el detalle de la orden.");
             }
 
-            List<(int iIdProducto, int iCantidadSolicitada)> lDetallesValidados = new List<(int, int)>();
+            List<(int iIdProducto, int iCantidadSolicitada, int iCantidadRecibida)> lDetallesValidados = new List<(int, int, int)>();
 
             foreach (var det in lDetallesCrudos)
             {
-                // Validar valores nulos
-                if (string.IsNullOrWhiteSpace(det.sIdProducto) || string.IsNullOrWhiteSpace(det.sCantidad))
+                //Validar valores nulos
+                if (string.IsNullOrWhiteSpace(det.sIdProducto) || string.IsNullOrWhiteSpace(det.sCantSolicitada) || string.IsNullOrWhiteSpace(det.sCantRecibida))
                     throw new ArgumentException("Existen campos vacíos en el detalle de productos.");
 
-                // Validar que el ID del producto sea un número válido
+                //Validar que el ID del producto sea un número válido
                 if (!int.TryParse(det.sIdProducto, out int iIdProd) || iIdProd <= 0)
                     throw new ArgumentException($"El producto con ID '{det.sIdProducto}' no es válido.");
 
-                // Validar Cantidad
-                if (!Regex.IsMatch(det.sCantidad, @"^\d+$"))
-                    throw new ArgumentException("La cantidad debe contener únicamente números enteros positivos.");
+                //Validar Cantidad Solicitada
+                if (!System.Text.RegularExpressions.Regex.IsMatch(det.sCantSolicitada, @"^\d+$"))
+                    throw new ArgumentException("La cantidad solicitada debe contener únicamente números enteros positivos.");
 
-                if (!int.TryParse(det.sCantidad, out int iCant) || iCant <= 0)
-                    throw new ArgumentException("La cantidad solicitada debe ser mayor a cero y no puede ser negativa.");
+                if (!int.TryParse(det.sCantSolicitada, out int iCantSol) || iCantSol <= 0)
+                    throw new ArgumentException("La cantidad solicitada debe ser mayor a cero.");
 
-                lDetallesValidados.Add((iIdProd, iCant));
+                //Validar Cantidad Recibida
+                if (!System.Text.RegularExpressions.Regex.IsMatch(det.sCantRecibida, @"^\d+$"))
+                    throw new ArgumentException("La cantidad recibida debe contener únicamente números enteros.");
+
+                if (!int.TryParse(det.sCantRecibida, out int iCantRec) || iCantRec < 0)
+                    throw new ArgumentException("La cantidad recibida no puede ser menor a cero.");
+
+                if (iCantRec > iCantSol)
+                    throw new ArgumentException($"Para el producto ID {iIdProd}, la cantidad recibida ({iCantRec}) no puede ser mayor a la solicitada ({iCantSol}).");
+
+                lDetallesValidados.Add((iIdProd, iCantSol, iCantRec));
             }
 
             try

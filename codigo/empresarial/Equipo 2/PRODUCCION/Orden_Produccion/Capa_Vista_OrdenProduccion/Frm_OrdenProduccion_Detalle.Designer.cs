@@ -31,6 +31,8 @@ namespace Capa_Vista_OrdenProduccion
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_OrdenProduccion_Detalle));
             this.Gpo_Detalle = new System.Windows.Forms.GroupBox();
+            this.Txt_CantidadRecibida = new System.Windows.Forms.TextBox();
+            this.Lbl_CantidadRecibida = new System.Windows.Forms.Label();
             this.Txt_CantidadSolicitada = new System.Windows.Forms.TextBox();
             this.Btn_Aceptar = new System.Windows.Forms.Button();
             this.Lbl_CantidadS = new System.Windows.Forms.Label();
@@ -58,7 +60,10 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Ingresar = new System.Windows.Forms.Button();
             this.Pnl_Titulo = new System.Windows.Forms.Panel();
             this.Lbl_TituloForm = new System.Windows.Forms.Label();
-            this.Btn_Inventario = new System.Windows.Forms.Button();
+            this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_sig = new System.Windows.Forms.Button();
+            this.Btn_anterior = new System.Windows.Forms.Button();
+            this.Btn_inicio = new System.Windows.Forms.Button();
             this.Gpo_Detalle.SuspendLayout();
             this.Gpo_Encabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleOrdenProduccion)).BeginInit();
@@ -67,6 +72,8 @@ namespace Capa_Vista_OrdenProduccion
             // 
             // Gpo_Detalle
             // 
+            this.Gpo_Detalle.Controls.Add(this.Txt_CantidadRecibida);
+            this.Gpo_Detalle.Controls.Add(this.Lbl_CantidadRecibida);
             this.Gpo_Detalle.Controls.Add(this.Txt_CantidadSolicitada);
             this.Gpo_Detalle.Controls.Add(this.Btn_Aceptar);
             this.Gpo_Detalle.Controls.Add(this.Lbl_CantidadS);
@@ -75,26 +82,45 @@ namespace Capa_Vista_OrdenProduccion
             this.Gpo_Detalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gpo_Detalle.Location = new System.Drawing.Point(13, 374);
             this.Gpo_Detalle.Name = "Gpo_Detalle";
-            this.Gpo_Detalle.Size = new System.Drawing.Size(1031, 115);
+            this.Gpo_Detalle.Size = new System.Drawing.Size(1275, 115);
             this.Gpo_Detalle.TabIndex = 50;
             this.Gpo_Detalle.TabStop = false;
             this.Gpo_Detalle.Text = "Detalle de la Producción";
             // 
+            // Txt_CantidadRecibida
+            // 
+            this.Txt_CantidadRecibida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_CantidadRecibida.Location = new System.Drawing.Point(834, 66);
+            this.Txt_CantidadRecibida.Name = "Txt_CantidadRecibida";
+            this.Txt_CantidadRecibida.Size = new System.Drawing.Size(246, 27);
+            this.Txt_CantidadRecibida.TabIndex = 35;
+            this.Txt_CantidadRecibida.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_CantidadRecibida_KeyPress);
+            // 
+            // Lbl_CantidadRecibida
+            // 
+            this.Lbl_CantidadRecibida.AutoSize = true;
+            this.Lbl_CantidadRecibida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CantidadRecibida.Location = new System.Drawing.Point(881, 32);
+            this.Lbl_CantidadRecibida.Name = "Lbl_CantidadRecibida";
+            this.Lbl_CantidadRecibida.Size = new System.Drawing.Size(145, 20);
+            this.Lbl_CantidadRecibida.TabIndex = 34;
+            this.Lbl_CantidadRecibida.Text = "Cantidad Recibida";
+            // 
             // Txt_CantidadSolicitada
             // 
             this.Txt_CantidadSolicitada.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_CantidadSolicitada.Location = new System.Drawing.Point(643, 66);
+            this.Txt_CantidadSolicitada.Location = new System.Drawing.Point(549, 66);
             this.Txt_CantidadSolicitada.Name = "Txt_CantidadSolicitada";
-            this.Txt_CantidadSolicitada.Size = new System.Drawing.Size(212, 27);
+            this.Txt_CantidadSolicitada.Size = new System.Drawing.Size(246, 27);
             this.Txt_CantidadSolicitada.TabIndex = 33;
             this.Txt_CantidadSolicitada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadSolicitada_KeyPress);
             // 
             // Btn_Aceptar
             // 
             this.Btn_Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Aceptar.Location = new System.Drawing.Point(919, 31);
+            this.Btn_Aceptar.Location = new System.Drawing.Point(1104, 32);
             this.Btn_Aceptar.Name = "Btn_Aceptar";
-            this.Btn_Aceptar.Size = new System.Drawing.Size(100, 62);
+            this.Btn_Aceptar.Size = new System.Drawing.Size(138, 62);
             this.Btn_Aceptar.TabIndex = 32;
             this.Btn_Aceptar.Text = "Aceptar";
             this.Btn_Aceptar.UseVisualStyleBackColor = true;
@@ -104,7 +130,7 @@ namespace Capa_Vista_OrdenProduccion
             // 
             this.Lbl_CantidadS.AutoSize = true;
             this.Lbl_CantidadS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_CantidadS.Location = new System.Drawing.Point(675, 31);
+            this.Lbl_CantidadS.Location = new System.Drawing.Point(596, 32);
             this.Lbl_CantidadS.Name = "Lbl_CantidadS";
             this.Lbl_CantidadS.Size = new System.Drawing.Size(153, 20);
             this.Lbl_CantidadS.TabIndex = 21;
@@ -114,7 +140,7 @@ namespace Capa_Vista_OrdenProduccion
             // 
             this.Lbl_CodigoCta.AutoSize = true;
             this.Lbl_CodigoCta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_CodigoCta.Location = new System.Drawing.Point(266, 31);
+            this.Lbl_CodigoCta.Location = new System.Drawing.Point(218, 32);
             this.Lbl_CodigoCta.Name = "Lbl_CodigoCta";
             this.Lbl_CodigoCta.Size = new System.Drawing.Size(81, 20);
             this.Lbl_CodigoCta.TabIndex = 22;
@@ -124,9 +150,9 @@ namespace Capa_Vista_OrdenProduccion
             // 
             this.Cmb_Producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cmb_Producto.FormattingEnabled = true;
-            this.Cmb_Producto.Location = new System.Drawing.Point(10, 66);
+            this.Cmb_Producto.Location = new System.Drawing.Point(30, 65);
             this.Cmb_Producto.Name = "Cmb_Producto";
-            this.Cmb_Producto.Size = new System.Drawing.Size(603, 28);
+            this.Cmb_Producto.Size = new System.Drawing.Size(487, 28);
             this.Cmb_Producto.TabIndex = 23;
             // 
             // Gpo_Encabezado
@@ -144,7 +170,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Gpo_Encabezado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Gpo_Encabezado.Location = new System.Drawing.Point(14, 182);
             this.Gpo_Encabezado.Name = "Gpo_Encabezado";
-            this.Gpo_Encabezado.Size = new System.Drawing.Size(1029, 182);
+            this.Gpo_Encabezado.Size = new System.Drawing.Size(1274, 182);
             this.Gpo_Encabezado.TabIndex = 49;
             this.Gpo_Encabezado.TabStop = false;
             this.Gpo_Encabezado.Text = "Encabezado Poliza";
@@ -153,7 +179,7 @@ namespace Capa_Vista_OrdenProduccion
             // 
             this.Lbl_FechaEntrega.AutoSize = true;
             this.Lbl_FechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_FechaEntrega.Location = new System.Drawing.Point(365, 98);
+            this.Lbl_FechaEntrega.Location = new System.Drawing.Point(555, 98);
             this.Lbl_FechaEntrega.Name = "Lbl_FechaEntrega";
             this.Lbl_FechaEntrega.Size = new System.Drawing.Size(216, 20);
             this.Lbl_FechaEntrega.TabIndex = 38;
@@ -162,9 +188,9 @@ namespace Capa_Vista_OrdenProduccion
             // Dtp_FechaEntrega
             // 
             this.Dtp_FechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtp_FechaEntrega.Location = new System.Drawing.Point(597, 93);
+            this.Dtp_FechaEntrega.Location = new System.Drawing.Point(787, 93);
             this.Dtp_FechaEntrega.Name = "Dtp_FechaEntrega";
-            this.Dtp_FechaEntrega.Size = new System.Drawing.Size(366, 27);
+            this.Dtp_FechaEntrega.Size = new System.Drawing.Size(420, 27);
             this.Dtp_FechaEntrega.TabIndex = 39;
             // 
             // Cmb_Vendedor
@@ -173,7 +199,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Cmb_Vendedor.FormattingEnabled = true;
             this.Cmb_Vendedor.Location = new System.Drawing.Point(92, 90);
             this.Cmb_Vendedor.Name = "Cmb_Vendedor";
-            this.Cmb_Vendedor.Size = new System.Drawing.Size(252, 28);
+            this.Cmb_Vendedor.Size = new System.Drawing.Size(388, 28);
             this.Cmb_Vendedor.TabIndex = 37;
             // 
             // Cmb_Estado
@@ -182,7 +208,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Cmb_Estado.FormattingEnabled = true;
             this.Cmb_Estado.Location = new System.Drawing.Point(92, 135);
             this.Cmb_Estado.Name = "Cmb_Estado";
-            this.Cmb_Estado.Size = new System.Drawing.Size(252, 28);
+            this.Cmb_Estado.Size = new System.Drawing.Size(388, 28);
             this.Cmb_Estado.TabIndex = 36;
             // 
             // Lbl_Vendedor
@@ -211,14 +237,14 @@ namespace Capa_Vista_OrdenProduccion
             this.Txt_IDOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txt_IDOrden.Location = new System.Drawing.Point(92, 44);
             this.Txt_IDOrden.Name = "Txt_IDOrden";
-            this.Txt_IDOrden.Size = new System.Drawing.Size(252, 27);
+            this.Txt_IDOrden.Size = new System.Drawing.Size(388, 27);
             this.Txt_IDOrden.TabIndex = 27;
             // 
             // Lbl_FechaEmision
             // 
             this.Lbl_FechaEmision.AutoSize = true;
             this.Lbl_FechaEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_FechaEmision.Location = new System.Drawing.Point(365, 47);
+            this.Lbl_FechaEmision.Location = new System.Drawing.Point(555, 47);
             this.Lbl_FechaEmision.Name = "Lbl_FechaEmision";
             this.Lbl_FechaEmision.Size = new System.Drawing.Size(143, 20);
             this.Lbl_FechaEmision.TabIndex = 28;
@@ -227,9 +253,9 @@ namespace Capa_Vista_OrdenProduccion
             // Dtp_FechaEmision
             // 
             this.Dtp_FechaEmision.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dtp_FechaEmision.Location = new System.Drawing.Point(597, 44);
+            this.Dtp_FechaEmision.Location = new System.Drawing.Point(787, 44);
             this.Dtp_FechaEmision.Name = "Dtp_FechaEmision";
-            this.Dtp_FechaEmision.Size = new System.Drawing.Size(366, 27);
+            this.Dtp_FechaEmision.Size = new System.Drawing.Size(420, 27);
             this.Dtp_FechaEmision.TabIndex = 33;
             // 
             // Lbl_Estado
@@ -255,9 +281,9 @@ namespace Capa_Vista_OrdenProduccion
             // Btn_Quitar
             // 
             this.Btn_Quitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Quitar.Location = new System.Drawing.Point(932, 524);
+            this.Btn_Quitar.Location = new System.Drawing.Point(1188, 524);
             this.Btn_Quitar.Name = "Btn_Quitar";
-            this.Btn_Quitar.Size = new System.Drawing.Size(100, 71);
+            this.Btn_Quitar.Size = new System.Drawing.Size(127, 71);
             this.Btn_Quitar.TabIndex = 47;
             this.Btn_Quitar.Text = "Quitar";
             this.Btn_Quitar.UseVisualStyleBackColor = true;
@@ -271,8 +297,9 @@ namespace Capa_Vista_OrdenProduccion
             this.Dgv_DetalleOrdenProduccion.Name = "Dgv_DetalleOrdenProduccion";
             this.Dgv_DetalleOrdenProduccion.RowHeadersWidth = 51;
             this.Dgv_DetalleOrdenProduccion.RowTemplate.Height = 24;
-            this.Dgv_DetalleOrdenProduccion.Size = new System.Drawing.Size(898, 285);
+            this.Dgv_DetalleOrdenProduccion.Size = new System.Drawing.Size(1153, 285);
             this.Dgv_DetalleOrdenProduccion.TabIndex = 46;
+            this.Dgv_DetalleOrdenProduccion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_DetalleOrdenProduccion_CellClick);
             // 
             // Btn_Salir
             // 
@@ -280,9 +307,9 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_salir1;
             this.Btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Salir.Location = new System.Drawing.Point(708, 82);
+            this.Btn_Salir.Location = new System.Drawing.Point(1174, 84);
             this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(114, 80);
+            this.Btn_Salir.Size = new System.Drawing.Size(114, 78);
             this.Btn_Salir.TabIndex = 45;
             this.Btn_Salir.Text = "Salir";
             this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -372,7 +399,7 @@ namespace Capa_Vista_OrdenProduccion
             this.Pnl_Titulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.Pnl_Titulo.Location = new System.Drawing.Point(0, 0);
             this.Pnl_Titulo.Name = "Pnl_Titulo";
-            this.Pnl_Titulo.Size = new System.Drawing.Size(1089, 64);
+            this.Pnl_Titulo.Size = new System.Drawing.Size(1327, 64);
             this.Pnl_Titulo.TabIndex = 51;
             // 
             // Lbl_TituloForm
@@ -385,30 +412,82 @@ namespace Capa_Vista_OrdenProduccion
             this.Lbl_TituloForm.TabIndex = 0;
             this.Lbl_TituloForm.Text = "731 - Ordenes de Producción - Detalles";
             // 
-            // Btn_Inventario
+            // Btn_fin
             // 
-            this.Btn_Inventario.Enabled = false;
-            this.Btn_Inventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Inventario.Location = new System.Drawing.Point(932, 648);
-            this.Btn_Inventario.Name = "Btn_Inventario";
-            this.Btn_Inventario.Size = new System.Drawing.Size(100, 71);
-            this.Btn_Inventario.TabIndex = 52;
-            this.Btn_Inventario.Text = "Actualizar Inventario";
-            this.Btn_Inventario.UseVisualStyleBackColor = true;
+            this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
+            this.Btn_fin.Location = new System.Drawing.Point(1060, 84);
+            this.Btn_fin.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_fin.Name = "Btn_fin";
+            this.Btn_fin.Size = new System.Drawing.Size(107, 77);
+            this.Btn_fin.TabIndex = 56;
+            this.Btn_fin.Text = "Fin";
+            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_fin.UseVisualStyleBackColor = true;
+            this.Btn_fin.Click += new System.EventHandler(this.Btn_fin_Click);
+            // 
+            // Btn_sig
+            // 
+            this.Btn_sig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
+            this.Btn_sig.Location = new System.Drawing.Point(944, 84);
+            this.Btn_sig.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_sig.Name = "Btn_sig";
+            this.Btn_sig.Size = new System.Drawing.Size(107, 77);
+            this.Btn_sig.TabIndex = 55;
+            this.Btn_sig.Text = "Siguiente";
+            this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_sig.UseVisualStyleBackColor = true;
+            this.Btn_sig.Click += new System.EventHandler(this.Btn_sig_Click);
+            // 
+            // Btn_anterior
+            // 
+            this.Btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
+            this.Btn_anterior.Location = new System.Drawing.Point(828, 82);
+            this.Btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_anterior.Name = "Btn_anterior";
+            this.Btn_anterior.Size = new System.Drawing.Size(107, 80);
+            this.Btn_anterior.TabIndex = 54;
+            this.Btn_anterior.Text = "Anterior";
+            this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_anterior.UseVisualStyleBackColor = true;
+            this.Btn_anterior.Click += new System.EventHandler(this.Btn_anterior_Click);
+            // 
+            // Btn_inicio
+            // 
+            this.Btn_inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
+            this.Btn_inicio.Location = new System.Drawing.Point(709, 82);
+            this.Btn_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_inicio.Name = "Btn_inicio";
+            this.Btn_inicio.Size = new System.Drawing.Size(110, 80);
+            this.Btn_inicio.TabIndex = 53;
+            this.Btn_inicio.Text = "Inicio";
+            this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_inicio.UseVisualStyleBackColor = true;
+            this.Btn_inicio.Click += new System.EventHandler(this.Btn_inicio_Click);
             // 
             // Frm_OrdenProduccion_Detalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 823);
-            this.Controls.Add(this.Btn_Inventario);
+            this.ClientSize = new System.Drawing.Size(1327, 823);
+            this.Controls.Add(this.Btn_fin);
+            this.Controls.Add(this.Btn_sig);
+            this.Controls.Add(this.Btn_anterior);
+            this.Controls.Add(this.Btn_inicio);
             this.Controls.Add(this.Pnl_Titulo);
             this.Controls.Add(this.Gpo_Detalle);
+            this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Gpo_Encabezado);
             this.Controls.Add(this.Lbl_DetalleMovimientos);
             this.Controls.Add(this.Btn_Quitar);
             this.Controls.Add(this.Dgv_DetalleOrdenProduccion);
-            this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Refrescar);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Grabar);
@@ -461,6 +540,11 @@ namespace Capa_Vista_OrdenProduccion
         private System.Windows.Forms.Button Btn_Ingresar;
         private System.Windows.Forms.Panel Pnl_Titulo;
         private System.Windows.Forms.Label Lbl_TituloForm;
-        private System.Windows.Forms.Button Btn_Inventario;
+        private System.Windows.Forms.Button Btn_fin;
+        private System.Windows.Forms.Button Btn_sig;
+        private System.Windows.Forms.Button Btn_anterior;
+        private System.Windows.Forms.Button Btn_inicio;
+        private System.Windows.Forms.TextBox Txt_CantidadRecibida;
+        private System.Windows.Forms.Label Lbl_CantidadRecibida;
     }
 }

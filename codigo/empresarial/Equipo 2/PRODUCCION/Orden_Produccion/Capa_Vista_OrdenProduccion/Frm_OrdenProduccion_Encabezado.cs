@@ -11,6 +11,7 @@ using Capa_Controlador_OrdenProduccion;
 
 namespace Capa_Vista_OrdenProduccion
 {
+    //Elaborado por Kenph Luna 9959-22-6326
     public partial class Frm_OrdenProduccion_Encabezado : Form
     {
         private Cls_ControladorOrdenP oControlador = new Cls_ControladorOrdenP();
@@ -124,11 +125,56 @@ namespace Capa_Vista_OrdenProduccion
             DateTime fechaEstimada = Convert.ToDateTime(fila.Cells["Cmp_Fecha_Estimada_Entrega"].Value);
             string estado = fila.Cells["Cmp_Estado"].Value.ToString();
 
-            // Pasamos la variable booleana al final del constructor
             Frm_OrdenProduccion_Detalle frmDetalles = new Frm_OrdenProduccion_Detalle(idOrden, idVendedor, fechaEmision, fechaEstimada, estado, iniciarEnModoEdicion);
 
             frmDetalles.ShowDialog();
             ActualizarTabla(); // Refrescar al cerrar
+        }
+
+        //navegación del Encabezado
+        private void NavegarGrid(string accion)
+        {
+            //Verificar que dgv tenga datos
+            if (Dgv_EncabezadoOrdenP.Rows.Count == 0) return;
+
+            // Fila actual y última
+            int indiceActual = Dgv_EncabezadoOrdenP.CurrentRow != null ? Dgv_EncabezadoOrdenP.CurrentRow.Index : 0;
+            int indiceFinal = Dgv_EncabezadoOrdenP.Rows.Count - 1;
+            int nuevoIndice = indiceActual;
+
+            if (accion == "Inicio")
+                nuevoIndice = 0;
+            else if (accion == "Anterior")
+                nuevoIndice = (indiceActual > 0) ? indiceActual - 1 : 0;
+            else if (accion == "Siguiente")
+                nuevoIndice = (indiceActual < indiceFinal) ? indiceActual + 1 : indiceFinal;
+            else if (accion == "Fin")
+                nuevoIndice = indiceFinal;
+
+            // Se mueve el puntero activo a la nueva fila
+            Dgv_EncabezadoOrdenP.CurrentCell = Dgv_EncabezadoOrdenP.Rows[nuevoIndice].Cells[0];
+            // se selecciona toda la fila
+            Dgv_EncabezadoOrdenP.Rows[nuevoIndice].Selected = true;
+        }
+
+        private void Btn_inicio_Click(object sender, EventArgs e)
+        {
+            NavegarGrid("Inicio");
+        }
+
+        private void Btn_anterior_Click(object sender, EventArgs e)
+        {
+            NavegarGrid("Anterior");
+        }
+
+        private void Btn_sig_Click(object sender, EventArgs e)
+        {
+            NavegarGrid("Siguiente");
+        }
+
+        private void Btn_fin_Click(object sender, EventArgs e)
+        {
+            NavegarGrid("Fin");
         }
     }
 }
