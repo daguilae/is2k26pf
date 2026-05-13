@@ -31,8 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa_Controlador_Factura">
+      <HintPath>..\Capa_Controlador_Factura\bin\Debug\Capa_Controlador_Factura.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Factura">
+      <HintPath>..\Capa_Modelo_Factura\bin\Debug\Capa_Modelo_Factura.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frms_Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms_Factura.Designer.cs">
+      <DependentUpon>Frms_Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frms_Factura.resx">
+      <DependentUpon>Frms_Factura.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
