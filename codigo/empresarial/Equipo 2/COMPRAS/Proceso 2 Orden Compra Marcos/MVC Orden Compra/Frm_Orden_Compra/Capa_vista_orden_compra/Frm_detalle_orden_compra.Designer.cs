@@ -192,6 +192,7 @@ namespace Capa_vista_orden_compra
             this.Dtp_fechaRegistro.Name = "Dtp_fechaRegistro";
             this.Dtp_fechaRegistro.Size = new System.Drawing.Size(185, 23);
             this.Dtp_fechaRegistro.TabIndex = 43;
+            this.Dtp_fechaRegistro.ValueChanged += new System.EventHandler(this.Dtp_fechaRegistro_ValueChanged);
             // 
             // Lbl_estado
             // 
@@ -327,6 +328,7 @@ namespace Capa_vista_orden_compra
             this.Cmb_unidad.Name = "Cmb_unidad";
             this.Cmb_unidad.Size = new System.Drawing.Size(116, 25);
             this.Cmb_unidad.TabIndex = 47;
+            this.Cmb_unidad.SelectedIndexChanged += new System.EventHandler(this.Cmb_unidad_SelectedIndexChanged);
             // 
             // Txt_Cantidad
             // 

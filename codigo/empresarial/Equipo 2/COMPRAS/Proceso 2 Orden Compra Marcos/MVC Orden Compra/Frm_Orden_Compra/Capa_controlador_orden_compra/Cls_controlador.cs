@@ -105,6 +105,69 @@ namespace Capa_controlador_orden_compra
             return sn.buscarOrdenPorNumero(numeroOrden);
         }
 
+        // Numero de Orden para MRP
+
+        public void mrp(
+    int idProveedor,
+    decimal subtotal,
+    decimal total,
+    List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles
+)
+        {
+            // Datos quemados 
+
+            int idBodega = 1;
+
+            DateTime fecha = DateTime.Now;
+
+            DateTime fechaEntrega = DateTime.Now.AddDays(7);
+
+            string tipoPago = "credito";
+
+            int diasCredito = 30;
+
+            
+
+            //Generar numero de Ornden compra
+
+            string numero = generarNumeroMRP();
+
+            //Encabezado 
+
+            int idOrden = sn.guardarOrdenCompra(idProveedor,idBodega,numero,fecha,fechaEntrega,tipoPago,diasCredito,subtotal,total);
+            
+            //detalle
+
+            foreach (var item in detalles)
+            {
+                sn.guardarDetalleOrdenCompra(idOrden,item.idInventario,item.idUnidad,item.cantidad,item.precio);
+            }
+        }
+
+
+        public string generarNumeroMRP()
+        {
+            string ultimoNumero = sn.obtenerUltimoNumeroMRP();
+
+            if (string.IsNullOrEmpty(ultimoNumero))
+            {
+                return "MRP-001";
+            }
+
+            string[] partes = ultimoNumero.Split('-');
+
+            int correlativo = 0;
+
+            if (partes.Length == 2)
+            {
+                int.TryParse(partes[1], out correlativo);
+            }
+
+            correlativo++;
+
+            return $"MRP-{correlativo:D3}";
+        }
+
 
     }
 }
