@@ -266,8 +266,7 @@ namespace Capa_Modelo_Prod
             catch (Exception ex)
             {
                 transaccion.Rollback();
-                Console.WriteLine("Error (GenerarFactura): " + ex.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             finally
             {
