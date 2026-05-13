@@ -329,12 +329,34 @@ ORDER BY O.cmp_fecha DESC";
         }
 
 
+        public string obtenerUltimoNumeroMRP()
+        {
+            string numero = "";
+
+            string consulta = @"
+        SELECT cmp_numero
+        FROM tbl_orden_compra
+        WHERE cmp_numero LIKE 'MRP-%'
+        ORDER BY pk_id_orden_compra DESC
+        LIMIT 1
+    ";
+
+            OdbcCommand cmd = new OdbcCommand(consulta, cn.conexion());
+
+            object resultado = cmd.ExecuteScalar();
+
+            if (resultado != null)
+            {
+                numero = resultado.ToString();
+            }
+
+            return numero;
+        }
 
 
 
 
-
-
+        //sentencias //
 
 
 
