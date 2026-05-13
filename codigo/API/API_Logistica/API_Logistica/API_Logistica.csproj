@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Data.Odbc" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_Ventas">
+      <HintPath>..\..\is2k26pf\codigo\empresarial\Equipo 2\VENTAS\Proceso 1Ventas-Ernesto Samayoa y Brandon Hernandez\VentasMvc\Capa_Controlador_Ventas\bin\Debug\Capa_Controlador_Ventas.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Modelo_Seguridad">
+      <HintPath>..\..\is2k26pf\codigo\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
