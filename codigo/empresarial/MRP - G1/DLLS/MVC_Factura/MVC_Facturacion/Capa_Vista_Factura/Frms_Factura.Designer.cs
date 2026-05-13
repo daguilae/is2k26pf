@@ -68,6 +68,7 @@ namespace Capa_Vista_Factura
             this.Txt_NoFactura.Name = "Txt_NoFactura";
             this.Txt_NoFactura.Size = new System.Drawing.Size(327, 23);
             this.Txt_NoFactura.TabIndex = 18;
+            this.Txt_NoFactura.TextChanged += new System.EventHandler(this.Txt_NoFactura_TextChanged);
             // 
             // Dtp_Emision
             // 
@@ -76,6 +77,7 @@ namespace Capa_Vista_Factura
             this.Dtp_Emision.Name = "Dtp_Emision";
             this.Dtp_Emision.Size = new System.Drawing.Size(327, 23);
             this.Dtp_Emision.TabIndex = 19;
+            this.Dtp_Emision.ValueChanged += new System.EventHandler(this.Dtp_Emision_ValueChanged);
             // 
             // label2
             // 
@@ -95,6 +97,7 @@ namespace Capa_Vista_Factura
             this.Cmb_OrdenRecibida.Name = "Cmb_OrdenRecibida";
             this.Cmb_OrdenRecibida.Size = new System.Drawing.Size(327, 24);
             this.Cmb_OrdenRecibida.TabIndex = 21;
+            this.Cmb_OrdenRecibida.SelectedIndexChanged += new System.EventHandler(this.Cmb_OrdenRecibida_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -125,6 +128,7 @@ namespace Capa_Vista_Factura
             this.Dgv_Facturas.RowTemplate.Height = 24;
             this.Dgv_Facturas.Size = new System.Drawing.Size(1279, 384);
             this.Dgv_Facturas.TabIndex = 25;
+            this.Dgv_Facturas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Facturas_CellContentClick);
             // 
             // Frms_Factura
             // 
