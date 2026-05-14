@@ -176,5 +176,43 @@ namespace Capa_Vista_OrdenProduccion
         {
             NavegarGrid("Fin");
         }
+
+        private void Btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                DataTable dtDatosReales = oControlador.ObtenerReporteOrdenes();
+
+                if (dtDatosReales == null || dtDatosReales.Rows.Count == 0)
+                {
+                    this.Cursor = Cursors.Default;
+                    MessageBox.Show("No hay datos para mostrar en el reporte.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                //se genera instancia del reporte
+                Rpt_OrdenesProduccion miReporte = new Rpt_OrdenesProduccion();
+
+                dtDatosReales.TableName = "Dt_Ordenes";
+                miReporte.SetDataSource(dtDatosReales);
+
+                Frm_VisorReporte frmVisor = new Frm_VisorReporte();
+
+                // Asignamos el reporte al control
+                frmVisor.crystalReportViewer1.ReportSource = miReporte;
+                frmVisor.crystalReportViewer1.Refresh();
+
+                //Mostrar la ventana del reporte al usuario
+                this.Cursor = Cursors.Default;
+                frmVisor.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show("Ocurrió un error al generar el reporte: \n" + ex.Message, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
