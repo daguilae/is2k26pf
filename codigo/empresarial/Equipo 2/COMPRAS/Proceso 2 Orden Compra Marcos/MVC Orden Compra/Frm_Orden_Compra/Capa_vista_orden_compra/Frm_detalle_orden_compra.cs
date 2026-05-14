@@ -40,7 +40,7 @@ namespace Capa_vista_orden_compra
 
             Txt_estado.Enabled = false;
 
-            Dtp_fechaRegistro.DateTime.now();
+            Dtp_fechaRegistro.Value = DateTime.Now;
 
 
 
