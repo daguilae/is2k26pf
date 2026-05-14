@@ -147,6 +147,27 @@ namespace Capa_Modelo_Empresa_Transporte
         }
 
         //Compra
+        public DataTable fun_ObtenerIdCompra()
+        {
+            Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sConsultaEmpresa = "SELECT pk_id_compra FROM tbl_compra ORDER BY pk_id_compra ASC";
+                    OdbcCommand cmd = new OdbcCommand(sConsultaEmpresa, con);
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los ID de Compras: " + ex.Message, ex);
+            }
+            return tabla;
+        }
+
         public DataTable fun_ObtenerCompra()
         {
             Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
@@ -162,7 +183,7 @@ namespace Capa_Modelo_Empresa_Transporte
                                                 dc.cmp_cantidad AS cantidad,
                                                 e.Fk_Id_Transporte AS transporte, 
                                                 e.Cmp_Direccion AS direccion, 
-                                                e.Cmp_Fecha AS fecha, 
+                                                DATE_FORMAT(e.Cmp_Fecha, '%d/%m/%Y') AS fecha, 
                                                 e.Cmp_Estado_Entrega AS estado
                                             FROM tbl_entrega_compra e
                                             INNER JOIN tbl_detalle_compra dc ON e.Fk_Id_Compra = dc.fk_id_compra
@@ -285,6 +306,27 @@ namespace Capa_Modelo_Empresa_Transporte
         }
 
         //Venta
+        public DataTable fun_ObtenerIdVenta()
+        {
+            Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sConsultaEmpresa = "SELECT Pk_Id_Ventas FROM tbl_ventas ORDER BY Pk_Id_Ventas ASC";
+                    OdbcCommand cmd = new OdbcCommand(sConsultaEmpresa, con);
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los ID Ventas: " + ex.Message, ex);
+            }
+            return tabla;
+        }
+
         public DataTable fun_ObtenerVenta()
         {
             Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
@@ -424,6 +466,27 @@ namespace Capa_Modelo_Empresa_Transporte
         }
 
         //Produccion
+        public DataTable fun_ObtenerIdProduccion()
+        {
+            Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sConsultaEmpresa = "SELECT Pk_ID_OrdenProduccion FROM tbl_orden_produccion_encabezado ORDER BY Pk_ID_OrdenProduccion ASC";
+                    OdbcCommand cmd = new OdbcCommand(sConsultaEmpresa, con);
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los ID Produccion: " + ex.Message, ex);
+            }
+            return tabla;
+        }
+
         public DataTable fun_ObtenerProduccion()
         {
             Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
@@ -439,7 +502,7 @@ namespace Capa_Modelo_Empresa_Transporte
                                                 dp.Cmp_Cantidad_Solicitada AS Cantidad,
                                                 p.Fk_Id_Transporte AS transporte, 
                                                 p.Cmp_Direccion AS direccion, 
-                                                p.Cmp_Fecha AS fecha, 
+                                                DATE_FORMAT(p.Cmp_Fecha, '%d/%m/%Y') AS fecha,
                                                 p.Cmp_Estado_Entrega AS estado
                                             FROM tbl_entrega_produccion p
                                             INNER JOIN tbl_orden_produccion_detalle dp ON p.Fk_Id_OrdenP = dp.Fk_ID_OrdenProduccion
@@ -560,6 +623,27 @@ namespace Capa_Modelo_Empresa_Transporte
             {
                 throw new Exception("Error al eliminar: " + ex.Message, ex);
             }
+        }
+
+        public DataTable fun_ObtenerIdTransporte()
+        {
+            Cls_Conexion_Emp_Transp conexion = new Cls_Conexion_Emp_Transp();
+            DataTable tabla = new DataTable();
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sConsultaEmpresa = "SELECT Pk_Id_Transporte FROM tbl_tipo_transporte ORDER BY Pk_Id_Transporte ASC";
+                    OdbcCommand cmd = new OdbcCommand(sConsultaEmpresa, con);
+                    OdbcDataAdapter da = new OdbcDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los ID de Transportes: " + ex.Message, ex);
+            }
+            return tabla;
         }
     }
 }

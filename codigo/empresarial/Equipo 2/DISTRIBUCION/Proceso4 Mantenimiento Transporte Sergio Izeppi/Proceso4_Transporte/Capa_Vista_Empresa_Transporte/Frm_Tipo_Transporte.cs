@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Emp_Transp;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Empresa_Transporte
 {
@@ -197,6 +198,16 @@ namespace Capa_Vista_Empresa_Transporte
                     sEstado
                 );
 
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    723,
+                    "Se guardo un transpore",
+                    true
+                );
+
                 MessageBox.Show("Transporte guardado correctamente");
 
                 // LIMPIAR CAMPOS
@@ -330,6 +341,16 @@ namespace Capa_Vista_Empresa_Transporte
                 iCapacidad,
                 sEstado
             );
+
+            // BITACORA
+            Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+            bitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                723,
+                "Se modificó un transporte",
+                true
+            );
         }
 
         private void pro_Actualizar(string sTipo, string sPlaca, string sPiloto, int iCapacidad, string sEstado)
@@ -414,7 +435,18 @@ namespace Capa_Vista_Empresa_Transporte
             try
             {
                 controlador.pro_EliminarTransporte(iCodigoTransporte);
-                MessageBox.Show("Dato eliminado correctamente");
+
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    721,
+                    "Se elimino un transporte",
+                    true
+                );
+
+                MessageBox.Show("Transporte eliminado correctamente");
                 Txt_TipoTransporte.Clear();
                 Txt_Placa.Clear();
                 Txt_Piloto.Clear();
@@ -499,5 +531,12 @@ namespace Capa_Vista_Empresa_Transporte
             Txt_Capacidad.Enabled = false;
             Cbo_Estado_Transporte.Enabled = false;
         }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Trans reporte = new Frm_Reporte_Trans();
+            reporte.ShowDialog();
+        }
+
     }
 }
