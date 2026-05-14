@@ -30,6 +30,7 @@ using Capa_vista_orden_compra;
 using CV_730_DSH_BRD;
 using System.Drawing.Imaging;
 using Capa_Vista_CXP;
+using Capa_Vista_Balance;
 
 
 namespace Capa_Vista_Logista
@@ -145,6 +146,7 @@ namespace Capa_Vista_Logista
                 {713, devoluconToolStripMenuItem},
                 //{730, consultaDeInventariosToolStripMenuItem_Click},
                 {732,cuentasPorCobrarDetalleToolStripMenuItem}
+
             };
 
             foreach (var sub in mapaCatalogos.Values) sub.Enabled = false;
@@ -485,6 +487,13 @@ namespace Capa_Vista_Logista
             CXC_detalle.MdiParent = this;
             CXC_detalle.Show();
 
+        }
+
+        private void balanceDeAntiguedadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Balance_Menu balance = new Frm_Balance_Menu();
+            balance.MdiParent = this;
+            balance.Show();
         }
     }
 }
