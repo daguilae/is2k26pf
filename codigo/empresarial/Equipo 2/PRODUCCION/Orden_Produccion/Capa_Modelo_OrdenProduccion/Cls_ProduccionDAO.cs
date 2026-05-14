@@ -181,6 +181,27 @@ namespace Capa_Modelo_OrdenProduccion
             return dt;
         }
 
+        public DataTable ObtenerReporteOrdenes()
+        {
+            DataTable dtReporte = new DataTable();
+            using (OdbcConnection cConn = cConexion.AbrirConexion())
+            {
+                try
+                {
+                    using (OdbcDataAdapter adaptador = new OdbcDataAdapter(Cls_SentenciasSQL.sReporteOrdenes, cConn))
+                    {
+                        adaptador.Fill(dtReporte);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener los datos para el reporte: " + ex.Message);
+                }
+            }
+
+            return dtReporte;
+        }
+
 
 
     }

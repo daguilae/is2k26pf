@@ -31,20 +31,20 @@ namespace Capa_Vista_OrdenProduccion
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_OrdenProduccion_Encabezado));
             this.Pnl_Botones = new System.Windows.Forms.Panel();
-            this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Btn_Editar = new System.Windows.Forms.Button();
-            this.Btn_Borrar = new System.Windows.Forms.Button();
-            this.Btn_Filtrar = new System.Windows.Forms.Button();
-            this.Btn_Imprimir = new System.Windows.Forms.Button();
-            this.Btn_Salir = new System.Windows.Forms.Button();
-            this.Btn_Refrescar = new System.Windows.Forms.Button();
             this.Dgv_EncabezadoOrdenP = new System.Windows.Forms.DataGridView();
             this.Pnl_Titulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_Ingresar = new System.Windows.Forms.Button();
+            this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_sig = new System.Windows.Forms.Button();
+            this.Btn_Borrar = new System.Windows.Forms.Button();
+            this.Btn_Filtrar = new System.Windows.Forms.Button();
             this.Btn_anterior = new System.Windows.Forms.Button();
+            this.Btn_Imprimir = new System.Windows.Forms.Button();
             this.Btn_inicio = new System.Windows.Forms.Button();
+            this.Btn_Salir = new System.Windows.Forms.Button();
+            this.Btn_Refrescar = new System.Windows.Forms.Button();
             this.Pnl_Botones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EncabezadoOrdenP)).BeginInit();
             this.Pnl_Titulo.SuspendLayout();
@@ -68,110 +68,6 @@ namespace Capa_Vista_OrdenProduccion
             this.Pnl_Botones.Size = new System.Drawing.Size(1366, 143);
             this.Pnl_Botones.TabIndex = 16;
             this.Pnl_Botones.Paint += new System.Windows.Forms.PaintEventHandler(this.Pnl_Botones_Paint);
-            // 
-            // Btn_Ingresar
-            // 
-            this.Btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ingresar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_agregar;
-            this.Btn_Ingresar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Ingresar.Location = new System.Drawing.Point(10, 33);
-            this.Btn_Ingresar.Name = "Btn_Ingresar";
-            this.Btn_Ingresar.Size = new System.Drawing.Size(116, 77);
-            this.Btn_Ingresar.TabIndex = 1;
-            this.Btn_Ingresar.Text = "Ingresar";
-            this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Ingresar.UseVisualStyleBackColor = true;
-            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
-            // 
-            // Btn_Editar
-            // 
-            this.Btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Editar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_modificar;
-            this.Btn_Editar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Editar.Location = new System.Drawing.Point(132, 33);
-            this.Btn_Editar.Name = "Btn_Editar";
-            this.Btn_Editar.Size = new System.Drawing.Size(109, 77);
-            this.Btn_Editar.TabIndex = 2;
-            this.Btn_Editar.Text = "Editar";
-            this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Editar.UseVisualStyleBackColor = true;
-            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
-            // 
-            // Btn_Borrar
-            // 
-            this.Btn_Borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Borrar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_eliminar;
-            this.Btn_Borrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Borrar.Location = new System.Drawing.Point(247, 33);
-            this.Btn_Borrar.Name = "Btn_Borrar";
-            this.Btn_Borrar.Size = new System.Drawing.Size(106, 77);
-            this.Btn_Borrar.TabIndex = 3;
-            this.Btn_Borrar.Text = "Borrar";
-            this.Btn_Borrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Borrar.UseVisualStyleBackColor = true;
-            this.Btn_Borrar.Click += new System.EventHandler(this.Btn_Borrar_Click);
-            // 
-            // Btn_Filtrar
-            // 
-            this.Btn_Filtrar.Enabled = false;
-            this.Btn_Filtrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Filtrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Filtrar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_buscar;
-            this.Btn_Filtrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Filtrar.Location = new System.Drawing.Point(607, 33);
-            this.Btn_Filtrar.Name = "Btn_Filtrar";
-            this.Btn_Filtrar.Size = new System.Drawing.Size(100, 77);
-            this.Btn_Filtrar.TabIndex = 7;
-            this.Btn_Filtrar.Text = "Filtrar";
-            this.Btn_Filtrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Filtrar.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Imprimir
-            // 
-            this.Btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Imprimir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_imprimir;
-            this.Btn_Imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Imprimir.Location = new System.Drawing.Point(489, 33);
-            this.Btn_Imprimir.Name = "Btn_Imprimir";
-            this.Btn_Imprimir.Size = new System.Drawing.Size(112, 77);
-            this.Btn_Imprimir.TabIndex = 4;
-            this.Btn_Imprimir.Text = "Imprimir";
-            this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Imprimir.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Salir
-            // 
-            this.Btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Salir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_salir;
-            this.Btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Salir.Location = new System.Drawing.Point(1180, 35);
-            this.Btn_Salir.Name = "Btn_Salir";
-            this.Btn_Salir.Size = new System.Drawing.Size(100, 73);
-            this.Btn_Salir.TabIndex = 6;
-            this.Btn_Salir.Text = "Salir";
-            this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Salir.UseVisualStyleBackColor = true;
-            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
-            // 
-            // Btn_Refrescar
-            // 
-            this.Btn_Refrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Refrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Refrescar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_refrescar;
-            this.Btn_Refrescar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Refrescar.Location = new System.Drawing.Point(359, 33);
-            this.Btn_Refrescar.Name = "Btn_Refrescar";
-            this.Btn_Refrescar.Size = new System.Drawing.Size(124, 77);
-            this.Btn_Refrescar.TabIndex = 5;
-            this.Btn_Refrescar.Text = "Refrescar";
-            this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Refrescar.UseVisualStyleBackColor = true;
-            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // Dgv_EncabezadoOrdenP
             // 
@@ -221,6 +117,36 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_fin.UseVisualStyleBackColor = true;
             this.Btn_fin.Click += new System.EventHandler(this.Btn_fin_Click);
             // 
+            // Btn_Ingresar
+            // 
+            this.Btn_Ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Ingresar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_agregar;
+            this.Btn_Ingresar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Ingresar.Location = new System.Drawing.Point(10, 33);
+            this.Btn_Ingresar.Name = "Btn_Ingresar";
+            this.Btn_Ingresar.Size = new System.Drawing.Size(116, 77);
+            this.Btn_Ingresar.TabIndex = 1;
+            this.Btn_Ingresar.Text = "Ingresar";
+            this.Btn_Ingresar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Ingresar.UseVisualStyleBackColor = true;
+            this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
+            // 
+            // Btn_Editar
+            // 
+            this.Btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Editar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_modificar;
+            this.Btn_Editar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Editar.Location = new System.Drawing.Point(132, 33);
+            this.Btn_Editar.Name = "Btn_Editar";
+            this.Btn_Editar.Size = new System.Drawing.Size(109, 77);
+            this.Btn_Editar.TabIndex = 2;
+            this.Btn_Editar.Text = "Editar";
+            this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Editar.UseVisualStyleBackColor = true;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
+            // 
             // Btn_sig
             // 
             this.Btn_sig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -235,6 +161,36 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_sig.UseVisualStyleBackColor = true;
             this.Btn_sig.Click += new System.EventHandler(this.Btn_sig_Click);
+            // 
+            // Btn_Borrar
+            // 
+            this.Btn_Borrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Borrar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_eliminar;
+            this.Btn_Borrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Borrar.Location = new System.Drawing.Point(247, 33);
+            this.Btn_Borrar.Name = "Btn_Borrar";
+            this.Btn_Borrar.Size = new System.Drawing.Size(106, 77);
+            this.Btn_Borrar.TabIndex = 3;
+            this.Btn_Borrar.Text = "Borrar";
+            this.Btn_Borrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Borrar.UseVisualStyleBackColor = true;
+            this.Btn_Borrar.Click += new System.EventHandler(this.Btn_Borrar_Click);
+            // 
+            // Btn_Filtrar
+            // 
+            this.Btn_Filtrar.Enabled = false;
+            this.Btn_Filtrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Filtrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Filtrar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_buscar;
+            this.Btn_Filtrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Filtrar.Location = new System.Drawing.Point(607, 33);
+            this.Btn_Filtrar.Name = "Btn_Filtrar";
+            this.Btn_Filtrar.Size = new System.Drawing.Size(100, 77);
+            this.Btn_Filtrar.TabIndex = 7;
+            this.Btn_Filtrar.Text = "Filtrar";
+            this.Btn_Filtrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Filtrar.UseVisualStyleBackColor = true;
             // 
             // Btn_anterior
             // 
@@ -251,6 +207,21 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_anterior.UseVisualStyleBackColor = true;
             this.Btn_anterior.Click += new System.EventHandler(this.Btn_anterior_Click);
             // 
+            // Btn_Imprimir
+            // 
+            this.Btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Imprimir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_imprimir;
+            this.Btn_Imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Imprimir.Location = new System.Drawing.Point(489, 33);
+            this.Btn_Imprimir.Name = "Btn_Imprimir";
+            this.Btn_Imprimir.Size = new System.Drawing.Size(112, 77);
+            this.Btn_Imprimir.TabIndex = 4;
+            this.Btn_Imprimir.Text = "Imprimir";
+            this.Btn_Imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Imprimir.UseVisualStyleBackColor = true;
+            this.Btn_Imprimir.Click += new System.EventHandler(this.Btn_Imprimir_Click);
+            // 
             // Btn_inicio
             // 
             this.Btn_inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -265,6 +236,36 @@ namespace Capa_Vista_OrdenProduccion
             this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_inicio.UseVisualStyleBackColor = true;
             this.Btn_inicio.Click += new System.EventHandler(this.Btn_inicio_Click);
+            // 
+            // Btn_Salir
+            // 
+            this.Btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Salir.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_salir;
+            this.Btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Salir.Location = new System.Drawing.Point(1180, 35);
+            this.Btn_Salir.Name = "Btn_Salir";
+            this.Btn_Salir.Size = new System.Drawing.Size(100, 73);
+            this.Btn_Salir.TabIndex = 6;
+            this.Btn_Salir.Text = "Salir";
+            this.Btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Salir.UseVisualStyleBackColor = true;
+            this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
+            // 
+            // Btn_Refrescar
+            // 
+            this.Btn_Refrescar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Refrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Refrescar.Image = global::Capa_Vista_OrdenProduccion.Properties.Resources.icono_refrescar;
+            this.Btn_Refrescar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Btn_Refrescar.Location = new System.Drawing.Point(359, 33);
+            this.Btn_Refrescar.Name = "Btn_Refrescar";
+            this.Btn_Refrescar.Size = new System.Drawing.Size(124, 77);
+            this.Btn_Refrescar.TabIndex = 5;
+            this.Btn_Refrescar.Text = "Refrescar";
+            this.Btn_Refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Refrescar.UseVisualStyleBackColor = true;
+            this.Btn_Refrescar.Click += new System.EventHandler(this.Btn_Refrescar_Click);
             // 
             // Frm_OrdenProduccion_Encabezado
             // 

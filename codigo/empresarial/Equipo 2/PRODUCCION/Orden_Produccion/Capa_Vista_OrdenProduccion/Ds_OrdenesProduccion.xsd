@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_OrdenesProduccion" targetNamespace="http://tempuri.org/Ds_OrdenesProduccion.xsd" xmlns:mstns="http://tempuri.org/Ds_OrdenesProduccion.xsd" xmlns="http://tempuri.org/Ds_OrdenesProduccion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_OrdenesProduccion" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_OrdenesProduccion" msprop:Generator_UserDSName="Ds_OrdenesProduccion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Dt_Ordenes" msprop:Generator_TableClassName="Dt_OrdenesDataTable" msprop:Generator_TableVarName="tableDt_Ordenes" msprop:Generator_TablePropName="Dt_Ordenes" msprop:Generator_RowDeletingName="Dt_OrdenesRowDeleting" msprop:Generator_RowChangingName="Dt_OrdenesRowChanging" msprop:Generator_RowEvHandlerName="Dt_OrdenesRowChangeEventHandler" msprop:Generator_RowDeletedName="Dt_OrdenesRowDeleted" msprop:Generator_UserTableName="Dt_Ordenes" msprop:Generator_RowChangedName="Dt_OrdenesRowChanged" msprop:Generator_RowEvArgName="Dt_OrdenesRowChangeEvent" msprop:Generator_RowClassName="Dt_OrdenesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Pk_ID_OrdenProduccion" msprop:Generator_ColumnVarNameInTable="columnPk_ID_OrdenProduccion" msprop:Generator_ColumnPropNameInRow="Pk_ID_OrdenProduccion" msprop:Generator_ColumnPropNameInTable="Pk_ID_OrdenProduccionColumn" msprop:Generator_UserColumnName="Pk_ID_OrdenProduccion" type="xs:int" minOccurs="0" />
+              <xs:element name="Fk_ID_Vendedor" msprop:Generator_ColumnVarNameInTable="columnFk_ID_Vendedor" msprop:Generator_ColumnPropNameInRow="Fk_ID_Vendedor" msprop:Generator_ColumnPropNameInTable="Fk_ID_VendedorColumn" msprop:Generator_UserColumnName="Fk_ID_Vendedor" type="xs:int" minOccurs="0" />
+              <xs:element name="Cmp_Fecha_Emision" msprop:Generator_ColumnVarNameInTable="columnCmp_Fecha_Emision" msprop:Generator_ColumnPropNameInRow="Cmp_Fecha_Emision" msprop:Generator_ColumnPropNameInTable="Cmp_Fecha_EmisionColumn" msprop:Generator_UserColumnName="Cmp_Fecha_Emision" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cmp_Estado" msprop:Generator_ColumnVarNameInTable="columnCmp_Estado" msprop:Generator_ColumnPropNameInRow="Cmp_Estado" msprop:Generator_ColumnPropNameInTable="Cmp_EstadoColumn" msprop:Generator_UserColumnName="Cmp_Estado" type="xs:string" minOccurs="0" />
+              <xs:element name="Cmp_Fecha_Estimada_Entrega" msprop:Generator_ColumnVarNameInTable="columnCmp_Fecha_Estimada_Entrega" msprop:Generator_ColumnPropNameInRow="Cmp_Fecha_Estimada_Entrega" msprop:Generator_ColumnPropNameInTable="Cmp_Fecha_Estimada_EntregaColumn" msprop:Generator_UserColumnName="Cmp_Fecha_Estimada_Entrega" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Fk_ID_Producto" msprop:Generator_ColumnVarNameInTable="columnFk_ID_Producto" msprop:Generator_ColumnPropNameInRow="Fk_ID_Producto" msprop:Generator_ColumnPropNameInTable="Fk_ID_ProductoColumn" msprop:Generator_UserColumnName="Fk_ID_Producto" type="xs:int" minOccurs="0" />
+              <xs:element name="Cmp_Cantidad_Solicitada" msprop:Generator_ColumnVarNameInTable="columnCmp_Cantidad_Solicitada" msprop:Generator_ColumnPropNameInRow="Cmp_Cantidad_Solicitada" msprop:Generator_ColumnPropNameInTable="Cmp_Cantidad_SolicitadaColumn" msprop:Generator_UserColumnName="Cmp_Cantidad_Solicitada" type="xs:int" minOccurs="0" />
+              <xs:element name="Cmp_Cantidad_Recibida" msprop:Generator_ColumnVarNameInTable="columnCmp_Cantidad_Recibida" msprop:Generator_ColumnPropNameInRow="Cmp_Cantidad_Recibida" msprop:Generator_ColumnPropNameInTable="Cmp_Cantidad_RecibidaColumn" msprop:Generator_UserColumnName="Cmp_Cantidad_Recibida" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -173,7 +173,7 @@ namespace Capa_Vista_OrdenProduccion
                 DateTime dEstimada = Dtp_FechaEntrega.Value;
                 string sEstado = Cmb_Estado.SelectedItem?.ToString();
 
-                //Preparar lista de detalle para guardar localmente (AHORA CON 3 DATOS)
+                //Preparar lista de detalle 
                 List<(string, string, string)> lDetalles = new List<(string, string, string)>();
                 foreach (DataGridViewRow fila in Dgv_DetalleOrdenProduccion.Rows)
                 {
@@ -188,16 +188,18 @@ namespace Capa_Vista_OrdenProduccion
 
                 if (_idOrdenEditar == 0)
                 {
-                    //Guardar primero en la BD local de Logística
-                    // (Asegúrate de que tu controlador ya no pida los datos de Orden de Compra)
+                    //Guardar primero en la bd local
                     int idOrdenGenerada = oControlador.InsertarOrdenProduccion(
                         sIdVendedor, dEmision, dEstimada, sEstado, lDetalles);
 
                     if (idOrdenGenerada > 0)
                     {
                         MessageBox.Show(
-                            $"¡Orden No. {idOrdenGenerada} guardada localmente!",
-                            "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            $"¡Se guardó la Orden de Producción No. {idOrdenGenerada} y se generó su respectiva Orden de Compra en el MRP exitosamente!",
+                            "Operación Completa",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                            );
 
                         //Sincronizar con la API del MRP
                         try

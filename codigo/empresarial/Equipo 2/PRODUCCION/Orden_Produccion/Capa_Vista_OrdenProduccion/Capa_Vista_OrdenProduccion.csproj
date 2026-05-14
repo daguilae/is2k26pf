@@ -34,12 +34,18 @@
     <Reference Include="Capa_Controlador_OrdenProduccion">
       <HintPath>..\Capa_Controlador_OrdenProduccion\bin\Debug\Capa_Controlador_OrdenProduccion.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,6 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cls_SentenciasSQL.cs" />
+    <Compile Include="Ds_OrdenesProduccion.cs">
+      <DependentUpon>Ds_OrdenesProduccion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Ds_OrdenesProduccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_OrdenesProduccion.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Frm_OrdenProduccion_Detalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,11 +76,23 @@
     <Compile Include="Frm_OrdenProduccion_Encabezado.Designer.cs">
       <DependentUpon>Frm_OrdenProduccion_Encabezado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_VisorReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_VisorReporte.Designer.cs">
+      <DependentUpon>Frm_VisorReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt_OrdenesProduccion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_OrdenesProduccion.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -75,12 +102,30 @@
     <EmbeddedResource Include="Frm_OrdenProduccion_Encabezado.resx">
       <DependentUpon>Frm_OrdenProduccion_Encabezado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_VisorReporte.resx">
+      <DependentUpon>Frm_VisorReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_OrdenesProduccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_OrdenesProduccion.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Ds_OrdenesProduccion.xsc">
+      <DependentUpon>Ds_OrdenesProduccion.xsd</DependentUpon>
+    </None>
+    <None Include="Ds_OrdenesProduccion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_OrdenesProduccion.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Ds_OrdenesProduccion.xss">
+      <DependentUpon>Ds_OrdenesProduccion.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Resources\icono_agregar.png" />
   </ItemGroup>
@@ -119,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icono_salir1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
