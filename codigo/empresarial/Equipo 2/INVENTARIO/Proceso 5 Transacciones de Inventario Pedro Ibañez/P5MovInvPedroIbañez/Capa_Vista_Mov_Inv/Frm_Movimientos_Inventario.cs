@@ -9,17 +9,44 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Mov_Inv;
 using Capa_Modelo_Mov_Inv;
+using Capa_Modelo_Seguridad;
+using CV_730_DSH_BRD;
 namespace Capa_Vista_Mov_Inv
 {
     public partial class Frm_Movimientos_Inventario : Form
     {
         Cls_Controlador_Encabezado ctrl = new Cls_Controlador_Encabezado();
-        
+
         public Frm_Movimientos_Inventario()
         {
             InitializeComponent();
             fun_CargarDGV();
+            Cls_Privilegios privilegios = new Cls_Privilegios();
+
+            Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
+            EstadoInicialBotones(permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario);
+
         }
+
+        private void EstadoInicialBotones(
+                  bool ingresar,
+                  //bool modificar,
+                  //bool guardar,
+                  bool eliminar,
+                  bool consultar,
+                  bool imprimir)
+        {
+            Btn_Ingresar.Enabled = ingresar;
+            Btn_Editar.Enabled = false;
+            Btn_Imprimir.Enabled = imprimir;
+            Btn_Filtrar.Enabled = consultar;
+
+         }
 
         private void Btn_Salir_Click(object sender, EventArgs e)
         {
@@ -89,6 +116,18 @@ namespace Capa_Vista_Mov_Inv
         private void Btn_Refrescar_Click(object sender, EventArgs e)
         {
             fun_CargarDGV();
+        }
+
+        private void Btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            Frm_ReporteMovimientoInventario reporte = new Frm_ReporteMovimientoInventario();
+            reporte.ShowDialog();
+        }
+
+        private void Btn_Filtrar_Click(object sender, EventArgs e)
+        {
+            DSH_BRD_FRM Consultas = new DSH_BRD_FRM();
+            Consultas.ShowDialog();
         }
     }
 }

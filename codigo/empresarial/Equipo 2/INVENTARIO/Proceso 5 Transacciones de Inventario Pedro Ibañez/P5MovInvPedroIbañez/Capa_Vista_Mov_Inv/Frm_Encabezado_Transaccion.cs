@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Mov_Inv;
 using Capa_Modelo_Mov_Inv;
+using Capa_Modelo_Seguridad;
 
 namespace Capa_Vista_Mov_Inv
 {
@@ -19,7 +20,17 @@ namespace Capa_Vista_Mov_Inv
             InitializeComponent();
             fun_cargar_combos();
             EstadoInicialControles();
-            EstadoInicialBotones();
+            Cls_Privilegios privilegios = new Cls_Privilegios();
+
+            Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
+            EstadoInicialBotones(
+                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
+                );
         }
 
         Cls_Mov_Inv_Controlador ctrl = new Cls_Mov_Inv_Controlador();
@@ -29,11 +40,20 @@ namespace Capa_Vista_Mov_Inv
         {
             InitializeComponent();
 
+            Cls_Privilegios privilegios = new Cls_Privilegios();
 
+            Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
 
             fun_cargar_combos();
             EstadoInicialControles();
-            EstadoInicialBotones();
+            EstadoInicialBotones(
+                permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario
+                );
             // Mapeo exacto con los controles del formulario
             Cbo_Id_Movimiento.SelectedValue = idMovimiento;       // ID Movimiento -> 1, 2, 3...
             CBO_ID_Tipo_Movimiento.SelectedValue = idTipo;        // ID Tipo -> 1, 2...
@@ -117,18 +137,25 @@ namespace Capa_Vista_Mov_Inv
             cbo_unidad_medida.Enabled = false;
         }
 
-        private void EstadoInicialBotones()
+        private void EstadoInicialBotones(
+                  bool ingresar,
+                  //bool modificar,
+                  //bool guardar,
+                  bool eliminar,
+                  bool consultar,
+                  bool imprimir
+            )
         {
-            Btn_Agregar_Movimiento.Enabled = true;
+            Btn_Agregar_Movimiento.Enabled = ingresar;
             Btn_Cancelar.Enabled = false;
-            Btn_Modificar.Enabled = true;
-            btn_buscar.Enabled = true;
+            Btn_Modificar.Enabled = false;
+            btn_buscar.Enabled = consultar;
             BTN_LIMPIAR_ENCABEZADO.Enabled = true;
-            Btn_Reporte.Enabled = true;
+            Btn_Reporte.Enabled = imprimir;
             Btn_Ayuda.Enabled = true;
             btn_Guardar.Enabled = false;
-            Btn_Agregar_Detalle.Enabled = false;
-            Btn_Remover_Detalle.Enabled = false;
+            Btn_Agregar_Detalle.Enabled = ingresar;
+            Btn_Remover_Detalle.Enabled = ingresar;
         }
 
         private void EstadoControlesUso()
@@ -153,8 +180,6 @@ namespace Capa_Vista_Mov_Inv
             Btn_Reporte.Enabled = false;
             Btn_Ayuda.Enabled = false;
             btn_Guardar.Enabled = true;
-            Btn_Agregar_Detalle.Enabled = true;
-            Btn_Remover_Detalle.Enabled = true;
         }
 
         private void LimpiarControlesEncabezado()
@@ -224,13 +249,23 @@ namespace Capa_Vista_Mov_Inv
         private void BTN_LIMPIAR_ENCABEZADO_Click(object sender, EventArgs e)
         {
             LimpiarControlesEncabezado();
+            DGV_DETALLE_MOVIMIENTO.Rows.Clear();
+            LimpiarControlesDetalle();
         }
 
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             EstadoInicialControles();
-            EstadoInicialBotones();
+
+            Cls_Privilegios privilegios = new Cls_Privilegios();
+            Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
+            EstadoInicialBotones(permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Imprimir_Permiso_Aplicacion_Usuario);
             LimpiarControlesEncabezado();
             DGV_DETALLE_MOVIMIENTO.Rows.Clear();
         }

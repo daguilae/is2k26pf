@@ -41,6 +41,10 @@
     <Reference Include="Capa_Modelo_Mov_Inv">
       <HintPath>..\Capa_Modelo_Mov_Inv\bin\Debug\Capa_Modelo_Mov_Inv.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Modelo_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaModelo\bin\Debug\Capa_Modelo_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
@@ -48,6 +52,9 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CV_730_DSH_BRD">
+      <HintPath>..\..\..\DashBoard Inventario\DSH_BRD_730\CV_730_DSH_BRD\bin\Debug\CV_730_DSH_BRD.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -92,11 +99,23 @@
     <Compile Include="Frm_Movimientos_Inventario.Designer.cs">
       <DependentUpon>Frm_Movimientos_Inventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_ReporteMovimientoInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ReporteMovimientoInventario.Designer.cs">
+      <DependentUpon>Frm_ReporteMovimientoInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteMovimientoInventarios.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteMovimientoInventarios.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Rpt_Tipo_Op_CxC.cs">
       <AutoGen>True</AutoGen>
@@ -121,9 +140,16 @@
     <EmbeddedResource Include="Frm_Movimientos_Inventario.resx">
       <DependentUpon>Frm_Movimientos_Inventario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ReporteMovimientoInventario.resx">
+      <DependentUpon>Frm_ReporteMovimientoInventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteMovimientoInventarios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteMovimientoInventarios.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Rpt_Tipo_Op_CxC.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
