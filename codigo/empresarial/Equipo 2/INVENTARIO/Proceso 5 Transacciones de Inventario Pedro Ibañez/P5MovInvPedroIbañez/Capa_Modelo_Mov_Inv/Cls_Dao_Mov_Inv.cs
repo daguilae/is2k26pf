@@ -104,21 +104,22 @@ namespace Capa_Modelo_Mov_Inv
                             d.fk_movimiento_id,
                             d.fk_inventario_id,
                             i.nombre_prod,
-                            e.fk_bodega_id,
+                            d.fk_bodega_id,                  -- ← viene del detalle, no de existencias
                             b.Cmp_Nombre_Bodega,
                             e.fk_id_unidad_medida,
                             u.Nombre_Unidad,
                             d.cantidad_transaccionada
-                          FROM tbl_movimiento_inventario_detalle d
-                          INNER JOIN tbl_inventario i 
-                                ON d.fk_inventario_id = i.pk_inventario_id
-                          INNER JOIN tbl_existencias e 
-                                ON d.fk_inventario_id = e.fk_inventario_id
-                          INNER JOIN tbl_bodega b 
-                                ON e.fk_bodega_id = b.Pk_Id_Bodega
-                          INNER JOIN tbl_unidad_de_medida u 
-                                ON e.fk_id_unidad_medida = u.ID_Unidad
-                          WHERE d.fk_movimiento_id = ?";
+                        FROM tbl_movimiento_inventario_detalle d
+                        INNER JOIN tbl_inventario i 
+                              ON d.fk_inventario_id = i.pk_inventario_id
+                        INNER JOIN tbl_existencias e 
+                              ON d.fk_inventario_id = e.fk_inventario_id
+                              AND d.fk_bodega_id    = e.fk_bodega_id     --  Agrega esta condición
+                        INNER JOIN tbl_bodega b 
+                              ON d.fk_bodega_id = b.Pk_Id_Bodega         --  Une desde detalle, no existencias
+                        INNER JOIN tbl_unidad_de_medida u 
+                              ON e.fk_id_unidad_medida = u.ID_Unidad
+                        WHERE d.fk_movimiento_id = ?";
 
                 using (OdbcConnection oConn = conexion.oConexion())
                 {
@@ -271,8 +272,8 @@ namespace Capa_Modelo_Mov_Inv
                                 VALUES (?, ?, ?)";
 
             string sQueryDetalle = @"INSERT INTO tbl_movimiento_inventario_detalle 
-                            (fk_movimiento_id, fk_inventario_id, cantidad_transaccionada) 
-                            VALUES (?, ?, ?)";
+                (fk_movimiento_id, fk_inventario_id, fk_bodega_id, cantidad_transaccionada)
+                VALUES (?, ?, ?, ?)";
 
             try
             {
@@ -308,6 +309,7 @@ namespace Capa_Modelo_Mov_Inv
                             {
                                 oCmdDet.Parameters.AddWithValue("?", idMovimientoGenerado);
                                 oCmdDet.Parameters.AddWithValue("?", item.idInventario);
+                                oCmdDet.Parameters.AddWithValue("?", item.idBodega);
                                 oCmdDet.Parameters.AddWithValue("?", item.cantidad);
                                 oCmdDet.ExecuteNonQuery();
                             }
