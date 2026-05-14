@@ -54,6 +54,11 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
+            this.Btn_buscar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_inicio = new System.Windows.Forms.Button();
+            this.Btn_anterior = new System.Windows.Forms.Button();
+            this.Btn_fin = new System.Windows.Forms.Button();
+            this.Btn_sig = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Tipo_Transporte)).BeginInit();
@@ -66,7 +71,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1119, 64);
+            this.panel1.Size = new System.Drawing.Size(1367, 64);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -84,7 +89,7 @@ namespace Capa_Vista_Empresa_Transporte
             // Txt_TipoTransporte
             // 
             this.Txt_TipoTransporte.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_TipoTransporte.Location = new System.Drawing.Point(347, 59);
+            this.Txt_TipoTransporte.Location = new System.Drawing.Point(544, 59);
             this.Txt_TipoTransporte.Name = "Txt_TipoTransporte";
             this.Txt_TipoTransporte.Size = new System.Drawing.Size(187, 27);
             this.Txt_TipoTransporte.TabIndex = 143;
@@ -93,7 +98,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Lbl_Tipo_Transporte.AutoSize = true;
             this.Lbl_Tipo_Transporte.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Tipo_Transporte.Location = new System.Drawing.Point(344, 35);
+            this.Lbl_Tipo_Transporte.Location = new System.Drawing.Point(541, 35);
             this.Lbl_Tipo_Transporte.Name = "Lbl_Tipo_Transporte";
             this.Lbl_Tipo_Transporte.Size = new System.Drawing.Size(158, 20);
             this.Lbl_Tipo_Transporte.TabIndex = 142;
@@ -113,7 +118,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Lbl_Estado_Transporte.AutoSize = true;
             this.Lbl_Estado_Transporte.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Estado_Transporte.Location = new System.Drawing.Point(681, 108);
+            this.Lbl_Estado_Transporte.Location = new System.Drawing.Point(1072, 108);
             this.Lbl_Estado_Transporte.Name = "Lbl_Estado_Transporte";
             this.Lbl_Estado_Transporte.Size = new System.Drawing.Size(181, 20);
             this.Lbl_Estado_Transporte.TabIndex = 146;
@@ -131,7 +136,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Lbl_Capacidad.AutoSize = true;
             this.Lbl_Capacidad.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Capacidad.Location = new System.Drawing.Point(344, 105);
+            this.Lbl_Capacidad.Location = new System.Drawing.Point(541, 105);
             this.Lbl_Capacidad.Name = "Lbl_Capacidad";
             this.Lbl_Capacidad.Size = new System.Drawing.Size(93, 20);
             this.Lbl_Capacidad.TabIndex = 148;
@@ -140,7 +145,7 @@ namespace Capa_Vista_Empresa_Transporte
             // Txt_Capacidad
             // 
             this.Txt_Capacidad.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_Capacidad.Location = new System.Drawing.Point(348, 128);
+            this.Txt_Capacidad.Location = new System.Drawing.Point(545, 128);
             this.Txt_Capacidad.Name = "Txt_Capacidad";
             this.Txt_Capacidad.Size = new System.Drawing.Size(187, 27);
             this.Txt_Capacidad.TabIndex = 151;
@@ -158,7 +163,7 @@ namespace Capa_Vista_Empresa_Transporte
             // Txt_Placa
             // 
             this.Txt_Placa.BackColor = System.Drawing.SystemColors.Window;
-            this.Txt_Placa.Location = new System.Drawing.Point(684, 59);
+            this.Txt_Placa.Location = new System.Drawing.Point(1075, 59);
             this.Txt_Placa.Name = "Txt_Placa";
             this.Txt_Placa.Size = new System.Drawing.Size(187, 27);
             this.Txt_Placa.TabIndex = 153;
@@ -167,7 +172,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Lbl_Placa.AutoSize = true;
             this.Lbl_Placa.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Placa.Location = new System.Drawing.Point(681, 35);
+            this.Lbl_Placa.Location = new System.Drawing.Point(1072, 35);
             this.Lbl_Placa.Name = "Lbl_Placa";
             this.Lbl_Placa.Size = new System.Drawing.Size(51, 20);
             this.Lbl_Placa.TabIndex = 152;
@@ -176,7 +181,7 @@ namespace Capa_Vista_Empresa_Transporte
             // Cbo_Estado_Transporte
             // 
             this.Cbo_Estado_Transporte.FormattingEnabled = true;
-            this.Cbo_Estado_Transporte.Location = new System.Drawing.Point(685, 132);
+            this.Cbo_Estado_Transporte.Location = new System.Drawing.Point(1076, 132);
             this.Cbo_Estado_Transporte.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Estado_Transporte.Name = "Cbo_Estado_Transporte";
             this.Cbo_Estado_Transporte.Size = new System.Drawing.Size(179, 28);
@@ -199,7 +204,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.groupBox1.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(30, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1042, 185);
+            this.groupBox1.Size = new System.Drawing.Size(1325, 185);
             this.groupBox1.TabIndex = 155;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Transporte";
@@ -225,7 +230,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.Dgv_Tipo_Transporte.ReadOnly = true;
             this.Dgv_Tipo_Transporte.RowHeadersWidth = 51;
             this.Dgv_Tipo_Transporte.RowTemplate.Height = 24;
-            this.Dgv_Tipo_Transporte.Size = new System.Drawing.Size(1042, 248);
+            this.Dgv_Tipo_Transporte.Size = new System.Drawing.Size(1315, 248);
             this.Dgv_Tipo_Transporte.TabIndex = 156;
             this.Dgv_Tipo_Transporte.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Tipo_Transporte_CellClick);
             // 
@@ -233,7 +238,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Btn_Eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Eliminar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.Image")));
-            this.Btn_Eliminar.Location = new System.Drawing.Point(574, 71);
+            this.Btn_Eliminar.Location = new System.Drawing.Point(455, 71);
             this.Btn_Eliminar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
             this.Btn_Eliminar.Size = new System.Drawing.Size(97, 82);
@@ -248,7 +253,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Guardar1.BackColor = System.Drawing.Color.White;
             this.Btn_Guardar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Guardar1.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar1.Image")));
-            this.Btn_Guardar1.Location = new System.Drawing.Point(336, 71);
+            this.Btn_Guardar1.Location = new System.Drawing.Point(242, 71);
             this.Btn_Guardar1.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Guardar1.Name = "Btn_Guardar1";
             this.Btn_Guardar1.Size = new System.Drawing.Size(101, 82);
@@ -263,7 +268,7 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Salir.BackColor = System.Drawing.Color.White;
             this.Btn_Salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Salir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Salir.Image")));
-            this.Btn_Salir.Location = new System.Drawing.Point(921, 71);
+            this.Btn_Salir.Location = new System.Drawing.Point(1247, 72);
             this.Btn_Salir.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Salir.Name = "Btn_Salir";
             this.Btn_Salir.Size = new System.Drawing.Size(97, 82);
@@ -277,7 +282,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Btn_Modificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(215, 71);
+            this.Btn_Modificar.Location = new System.Drawing.Point(130, 71);
             this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Modificar.Name = "Btn_Modificar";
             this.Btn_Modificar.Size = new System.Drawing.Size(111, 82);
@@ -291,7 +296,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Btn_Reporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
-            this.Btn_Reporte.Location = new System.Drawing.Point(692, 71);
+            this.Btn_Reporte.Location = new System.Drawing.Point(671, 71);
             this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(93, 82);
@@ -299,12 +304,13 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Reporte.Text = "REPORTE";
             this.Btn_Reporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Btn_Ayuda
             // 
             this.Btn_Ayuda.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ayuda.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayuda.Image")));
-            this.Btn_Ayuda.Location = new System.Drawing.Point(811, 71);
+            this.Btn_Ayuda.Location = new System.Drawing.Point(1156, 72);
             this.Btn_Ayuda.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Ayuda.Name = "Btn_Ayuda";
             this.Btn_Ayuda.Size = new System.Drawing.Size(90, 82);
@@ -317,7 +323,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Btn_Cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(453, 71);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(345, 71);
             this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(111, 82);
@@ -331,7 +337,7 @@ namespace Capa_Vista_Empresa_Transporte
             // 
             this.Btn_Ingresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Ingresar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ingresar.Image")));
-            this.Btn_Ingresar.Location = new System.Drawing.Point(98, 71);
+            this.Btn_Ingresar.Location = new System.Drawing.Point(28, 71);
             this.Btn_Ingresar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Ingresar.Name = "Btn_Ingresar";
             this.Btn_Ingresar.Size = new System.Drawing.Size(103, 82);
@@ -341,11 +347,81 @@ namespace Capa_Vista_Empresa_Transporte
             this.Btn_Ingresar.UseVisualStyleBackColor = true;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
+            // Btn_buscar_Ventas
+            // 
+            this.Btn_buscar_Ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_buscar_Ventas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_buscar_Ventas.Image")));
+            this.Btn_buscar_Ventas.Location = new System.Drawing.Point(552, 71);
+            this.Btn_buscar_Ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_buscar_Ventas.Name = "Btn_buscar_Ventas";
+            this.Btn_buscar_Ventas.Size = new System.Drawing.Size(120, 82);
+            this.Btn_buscar_Ventas.TabIndex = 209;
+            this.Btn_buscar_Ventas.Text = "CONSULTAR";
+            this.Btn_buscar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_buscar_Ventas.UseVisualStyleBackColor = true;
+            // 
+            // Btn_inicio
+            // 
+            this.Btn_inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
+            this.Btn_inicio.Location = new System.Drawing.Point(769, 72);
+            this.Btn_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_inicio.Name = "Btn_inicio";
+            this.Btn_inicio.Size = new System.Drawing.Size(83, 83);
+            this.Btn_inicio.TabIndex = 210;
+            this.Btn_inicio.Text = "INICIO";
+            this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_inicio.UseVisualStyleBackColor = true;
+            // 
+            // Btn_anterior
+            // 
+            this.Btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
+            this.Btn_anterior.Location = new System.Drawing.Point(853, 72);
+            this.Btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_anterior.Name = "Btn_anterior";
+            this.Btn_anterior.Size = new System.Drawing.Size(105, 83);
+            this.Btn_anterior.TabIndex = 211;
+            this.Btn_anterior.Text = "ANTERIOR";
+            this.Btn_anterior.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_anterior.UseVisualStyleBackColor = true;
+            // 
+            // Btn_fin
+            // 
+            this.Btn_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
+            this.Btn_fin.Location = new System.Drawing.Point(1066, 74);
+            this.Btn_fin.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_fin.Name = "Btn_fin";
+            this.Btn_fin.Size = new System.Drawing.Size(87, 81);
+            this.Btn_fin.TabIndex = 213;
+            this.Btn_fin.Text = "FIN";
+            this.Btn_fin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_fin.UseVisualStyleBackColor = true;
+            // 
+            // Btn_sig
+            // 
+            this.Btn_sig.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
+            this.Btn_sig.Location = new System.Drawing.Point(959, 72);
+            this.Btn_sig.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_sig.Name = "Btn_sig";
+            this.Btn_sig.Size = new System.Drawing.Size(104, 82);
+            this.Btn_sig.TabIndex = 212;
+            this.Btn_sig.Text = "SIGUIENTE";
+            this.Btn_sig.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_sig.UseVisualStyleBackColor = true;
+            // 
             // Frm_Tipo_Transporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1120, 639);
+            this.ClientSize = new System.Drawing.Size(1367, 639);
+            this.Controls.Add(this.Btn_inicio);
+            this.Controls.Add(this.Btn_anterior);
+            this.Controls.Add(this.Btn_fin);
+            this.Controls.Add(this.Btn_sig);
+            this.Controls.Add(this.Btn_buscar_Ventas);
             this.Controls.Add(this.Btn_Eliminar);
             this.Controls.Add(this.Btn_Guardar1);
             this.Controls.Add(this.Btn_Salir);
@@ -396,5 +472,10 @@ namespace Capa_Vista_Empresa_Transporte
         private System.Windows.Forms.Button Btn_Cancelar;
         private System.Windows.Forms.Button Btn_Ingresar;
         private System.Windows.Forms.ComboBox Cbo_Empresa;
+        private System.Windows.Forms.Button Btn_buscar_Ventas;
+        private System.Windows.Forms.Button Btn_inicio;
+        private System.Windows.Forms.Button Btn_anterior;
+        private System.Windows.Forms.Button Btn_fin;
+        private System.Windows.Forms.Button Btn_sig;
     }
 }

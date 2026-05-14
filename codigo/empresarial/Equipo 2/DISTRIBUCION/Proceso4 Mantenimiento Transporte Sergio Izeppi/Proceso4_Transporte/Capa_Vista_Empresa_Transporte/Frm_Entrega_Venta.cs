@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Emp_Transp;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Empresa_Transporte
 {
@@ -33,7 +34,9 @@ namespace Capa_Vista_Empresa_Transporte
         private void Frm_Entrega_Venta_Load(object sender, EventArgs e)
         {
             fun_EstadoInicial();
+            pro_CargarDatos();
             pro_CargarDatos2();
+            pro_CargarDatos3();
 
             Dgv_Entrega_Venta.Columns.Clear();
             Dgv_Entrega_Venta.Columns.Add("identregaventa", "ID Entrega de Venta");
@@ -49,6 +52,64 @@ namespace Capa_Vista_Empresa_Transporte
             Dgv_Entrega_Venta.AllowUserToAddRows = false;
 
             pro_DatosVentas();
+        }
+
+        private void pro_CargarDatos()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdVenta();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["Pk_Id_Ventas"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Venta.DataSource = datos;
+                    Cbo_ID_Venta.DisplayMember = "Pk_Id_Ventas";
+                    Cbo_ID_Venta.ValueMember = "Pk_Id_Ventas";
+                }
+                else
+                {
+                    Cbo_ID_Venta.DataSource = null;
+                    Cbo_ID_Venta.Items.Clear();
+                    Cbo_ID_Venta.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Venta.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar las ventas: " + ex.Message);
+            }
+        }
+
+        private void pro_CargarDatos3()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdTransporte();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["Pk_Id_Transporte"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Transporte.DataSource = datos;
+                    Cbo_ID_Transporte.DisplayMember = "Pk_Id_Transporte";
+                    Cbo_ID_Transporte.ValueMember = "Pk_Id_Transporte";
+                }
+                else
+                {
+                    Cbo_ID_Transporte.DataSource = null;
+                    Cbo_ID_Transporte.Items.Clear();
+                    Cbo_ID_Transporte.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Transporte.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los transportes: " + ex.Message);
+            }
         }
 
         private void pro_CargarDatos2()
@@ -101,8 +162,8 @@ namespace Capa_Vista_Empresa_Transporte
             string sFecha;
             string sEstado;
 
-            if (string.IsNullOrWhiteSpace(Txt_ID_Venta.Text) ||
-                string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Venta.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Direccion.Text) ||
                 Cbo_Estado_Entrega.SelectedIndex == -1)
             {
@@ -110,13 +171,13 @@ namespace Capa_Vista_Empresa_Transporte
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Venta.Text, out iCodigoVenta))
+            if (!int.TryParse(Cbo_ID_Venta.Text, out iCodigoVenta))
             {
                 MessageBox.Show("ID de Venta no es válido");
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Transporte.Text, out iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out iCodigoTransporte))
             {
                 MessageBox.Show("ID de Transporte no es válido");
                 return;
@@ -151,10 +212,20 @@ namespace Capa_Vista_Empresa_Transporte
                     sEstado
                 );
 
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    721,
+                    "Se registró una entrega de venta",
+                    true
+                );
+
                 MessageBox.Show("Entrega de venta registrada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Txt_ID_Venta.Clear();
-                Txt_ID_Transporte.Clear();
+                Cbo_ID_Venta.SelectedIndex = 0;
+                Cbo_ID_Transporte.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -184,8 +255,8 @@ namespace Capa_Vista_Empresa_Transporte
                 string sEstado = fila.Cells["estadoentrega"].Value?.ToString() ?? "";
 
                 //PASAR LOS DATOS A LOS CONTROLES
-                Txt_ID_Venta.Text = iCodigoVenta.ToString();
-                Txt_ID_Transporte.Text = iCodigoTransporte.ToString();
+                Cbo_ID_Venta.Text = iCodigoVenta.ToString();
+                Cbo_ID_Transporte.Text = iCodigoTransporte.ToString();
                 Txt_Direccion.Text = sDireccion;
 
                 DTP_Fecha.Text = sFecha;
@@ -202,8 +273,8 @@ namespace Capa_Vista_Empresa_Transporte
                 this.iCodigoEntrega = iCodigoEntrega;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Venta.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Venta.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -248,8 +319,8 @@ namespace Capa_Vista_Empresa_Transporte
                     MessageBox.Show("Entrega actualizada correctamente");
 
                     // LIMPIAR CAMPOS
-                    Txt_ID_Venta.Clear();
-                    Txt_ID_Transporte.Clear();
+                    Cbo_ID_Venta.SelectedIndex = 0;
+                    Cbo_ID_Transporte.SelectedIndex = 0;
                     Txt_Direccion.Clear();
                     DTP_Fecha.Value = DateTime.Now;
                     Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -285,8 +356,8 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // 3. VALIDAR CAMPOS VACÍOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Venta.Text) ||
-                string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Venta.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
                 string.IsNullOrWhiteSpace(sDireccion))
             {
                 MessageBox.Show("Debe completar todos los campos");
@@ -294,14 +365,14 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // 4. VALIDAR ID VENTA (Uso TryParse para evitar errores de formato)
-            if (!int.TryParse(Txt_ID_Venta.Text, out int iCodigoVenta))
+            if (!int.TryParse(Cbo_ID_Venta.Text, out int iCodigoVenta))
             {
                 MessageBox.Show("Ingrese un ID de venta válido.");
                 return;
             }
 
             // 5. VALIDAR ID TRANSPORTE
-            if (!int.TryParse(Txt_ID_Transporte.Text, out int iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out int iCodigoTransporte))
             {
                 MessageBox.Show("Ingrese un ID de transporte válido.");
                 return;
@@ -326,6 +397,16 @@ namespace Capa_Vista_Empresa_Transporte
                 sFecha,
                 sEstado
             );
+
+            // BITACORA
+            Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+            bitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                721,
+                "Se modificó la entrega de venta",
+                true
+            );
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
@@ -346,9 +427,19 @@ namespace Capa_Vista_Empresa_Transporte
             try
             {
                 controlador.pro_EliminarVenta(iCodigoEntrega);
+
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    721,
+                    "Se elimino la entrega de venta",
+                    true
+                );
                 MessageBox.Show("Dato eliminado correctamente");
-                Txt_ID_Transporte.Clear();
-                Txt_ID_Venta.Clear();
+                Cbo_ID_Transporte.SelectedIndex = 0;
+                Cbo_ID_Venta.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -367,8 +458,8 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Transporte.Clear();
-            Txt_ID_Venta.Clear();
+            Cbo_ID_Transporte.SelectedIndex = 0;
+            Cbo_ID_Venta.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -394,8 +485,8 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Cancelar.Enabled = false;
 
             //ComboBox bloqueados
-            Txt_ID_Transporte.Enabled = false;
-            Txt_ID_Venta.Enabled = false;
+            Cbo_ID_Transporte.Enabled = false;
+            Cbo_ID_Venta.Enabled = false;
             Txt_Direccion.Enabled = false;
             DTP_Fecha.Enabled = false;
             Cbo_Estado_Entrega.Enabled = false;
@@ -403,15 +494,15 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Transporte.Clear();
-            Txt_ID_Venta.Clear();
+            Cbo_ID_Transporte.SelectedIndex = 0;
+            Cbo_ID_Venta.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Venta.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Venta.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -428,6 +519,12 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Eliminar.Enabled = false;
 
 
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Venta reporte = new Frm_Reporte_Venta();
+            reporte.ShowDialog();
         }
     }
 }

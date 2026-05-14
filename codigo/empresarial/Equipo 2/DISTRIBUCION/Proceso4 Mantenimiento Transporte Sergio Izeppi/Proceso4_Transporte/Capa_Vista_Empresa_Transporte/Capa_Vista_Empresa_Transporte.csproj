@@ -38,6 +38,10 @@
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
     </Reference>
@@ -83,6 +87,30 @@
     <Compile Include="Frm_Entrega_Venta.Designer.cs">
       <DependentUpon>Frm_Entrega_Venta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Reporte_Compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Reporte_Compra.Designer.cs">
+      <DependentUpon>Frm_Reporte_Compra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Reporte_Produccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Reporte_Produccion.Designer.cs">
+      <DependentUpon>Frm_Reporte_Produccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Reporte_Trans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Reporte_Trans.Designer.cs">
+      <DependentUpon>Frm_Reporte_Trans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Reporte_Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Reporte_Venta.Designer.cs">
+      <DependentUpon>Frm_Reporte_Venta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Tipo_Transporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +129,30 @@
       <DependentUpon>Reporte_Empresas_Transporte.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte_EntComp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_EntComp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte_EntProd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reporte_EntProd.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_Reporte_EntVent.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Reporte_EntVent.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_Reporte_Transporte.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Reporte_Transporte.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Frm_Empresa_Transporte.resx">
@@ -115,6 +167,18 @@
     <EmbeddedResource Include="Frm_Entrega_Venta.resx">
       <DependentUpon>Frm_Entrega_Venta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Reporte_Compra.resx">
+      <DependentUpon>Frm_Reporte_Compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Reporte_Produccion.resx">
+      <DependentUpon>Frm_Reporte_Produccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Reporte_Trans.resx">
+      <DependentUpon>Frm_Reporte_Trans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Reporte_Venta.resx">
+      <DependentUpon>Frm_Reporte_Venta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Tipo_Transporte.resx">
       <DependentUpon>Frm_Tipo_Transporte.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +189,22 @@
     <EmbeddedResource Include="Reporte_Empresas_Transporte.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Reporte_Empresas_Transporte.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_EntComp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_EntComp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_EntProd.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reporte_EntProd.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Reporte_EntVent.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Reporte_EntVent.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_Reporte_Transporte.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Reporte_Transporte.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

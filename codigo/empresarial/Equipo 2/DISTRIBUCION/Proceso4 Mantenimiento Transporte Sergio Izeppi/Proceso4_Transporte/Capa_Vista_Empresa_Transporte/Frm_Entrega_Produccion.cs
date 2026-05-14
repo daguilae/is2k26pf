@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Emp_Transp;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Empresa_Transporte
 {
@@ -33,7 +34,9 @@ namespace Capa_Vista_Empresa_Transporte
         private void Frm_Entrega_Produccion_Load(object sender, EventArgs e)
         {
             fun_EstadoInicial();
+            pro_CargarDatos();
             pro_CargarDatos2();
+            pro_CargarDatos3();
 
             Dgv_Entrega_Produccion.Columns.Clear();
             Dgv_Entrega_Produccion.Columns.Add("identregaproduccion", "ID Entrega Produccion");
@@ -49,6 +52,64 @@ namespace Capa_Vista_Empresa_Transporte
             Dgv_Entrega_Produccion.AllowUserToAddRows = false;
 
             pro_DatosProduccion();
+        }
+
+        private void pro_CargarDatos()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdProduccion();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["Pk_ID_OrdenProduccion"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Produccion.DataSource = datos;
+                    Cbo_ID_Produccion.DisplayMember = "Pk_ID_OrdenProduccion";
+                    Cbo_ID_Produccion.ValueMember = "Pk_ID_OrdenProduccion";
+                }
+                else
+                {
+                    Cbo_ID_Produccion.DataSource = null;
+                    Cbo_ID_Produccion.Items.Clear();
+                    Cbo_ID_Produccion.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Produccion.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar las producciones: " + ex.Message);
+            }
+        }
+
+        private void pro_CargarDatos3()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdTransporte();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["Pk_Id_Transporte"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Transporte.DataSource = datos;
+                    Cbo_ID_Transporte.DisplayMember = "Pk_Id_Transporte";
+                    Cbo_ID_Transporte.ValueMember = "Pk_Id_Transporte";
+                }
+                else
+                {
+                    Cbo_ID_Transporte.DataSource = null;
+                    Cbo_ID_Transporte.Items.Clear();
+                    Cbo_ID_Transporte.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Transporte.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los transportes: " + ex.Message);
+            }
         }
 
         private void pro_CargarDatos2()
@@ -101,8 +162,8 @@ namespace Capa_Vista_Empresa_Transporte
             string sEstado;
 
             // 1. VALIDACIÓN DE CAMPOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Produccion.Text) ||
-                string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Produccion.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
                 string.IsNullOrWhiteSpace(Txt_Direccion.Text) ||
                 Cbo_Estado_Entrega.SelectedIndex == -1)
             {
@@ -111,13 +172,13 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // 2. PARSEO DE DATOS
-            if (!int.TryParse(Txt_ID_Produccion.Text, out iCodigoOrdenP))
+            if (!int.TryParse(Cbo_ID_Produccion.Text, out iCodigoOrdenP))
             {
                 MessageBox.Show("ID de Orden de Producción no es válido");
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Transporte.Text, out iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out iCodigoTransporte))
             {
                 MessageBox.Show("ID de Transporte no es válido");
                 return;
@@ -156,11 +217,21 @@ namespace Capa_Vista_Empresa_Transporte
                     sEstado
                 );
 
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    720,
+                    "Se registró una entrega de producción",
+                    true
+                );
+
                 MessageBox.Show("Entrega de producción registrada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // LIMPIAR CAMPOS
-                Txt_ID_Produccion.Clear();
-                Txt_ID_Transporte.Clear();
+                Cbo_ID_Produccion.SelectedIndex = 0;
+                Cbo_ID_Transporte.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -191,9 +262,9 @@ namespace Capa_Vista_Empresa_Transporte
             string sFecha = fila.Cells["fecha"].Value?.ToString() ?? "";
             string sEstado = fila.Cells["estadoentrega"].Value?.ToString() ?? "";
 
-            // 3. PASAR LOS DATOS A LOS CONTROLES (Usando Txt_ID_Produccion)
-            Txt_ID_Produccion.Text = iCodigoProduccion.ToString();
-            Txt_ID_Transporte.Text = iCodigoTransporte.ToString();
+            // 3. PASAR LOS DATOS A LOS CONTROLES (Usando Cbo_ID_Produccion)
+            Cbo_ID_Produccion.Text = iCodigoProduccion.ToString();
+            Cbo_ID_Transporte.Text = iCodigoTransporte.ToString();
             Txt_Direccion.Text = sDireccion;
 
             DTP_Fecha.Text = sFecha;
@@ -210,8 +281,8 @@ namespace Capa_Vista_Empresa_Transporte
             this.iCodigoEntrega = iCodigoEntrega;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Produccion.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Produccion.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -256,8 +327,8 @@ namespace Capa_Vista_Empresa_Transporte
                     MessageBox.Show("Entrega de producción actualizada correctamente");
 
                     // LIMPIAR CAMPOS (Con tus nombres de controles)
-                    Txt_ID_Produccion.Clear();
-                    Txt_ID_Transporte.Clear();
+                    Cbo_ID_Produccion.SelectedIndex = 0;
+                    Cbo_ID_Transporte.SelectedIndex = 0;
                     Txt_Direccion.Clear();
                     DTP_Fecha.Value = DateTime.Now;
                     Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -294,8 +365,8 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // 3. VALIDAR CAMPOS VACÍOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Produccion.Text) ||
-                string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Produccion.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
                 string.IsNullOrWhiteSpace(sDireccion))
             {
                 MessageBox.Show("Debe completar todos los campos obligatorios.");
@@ -303,14 +374,14 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // 4. VALIDAR ID ORDENP (Cambiado de iCodigoProduccion a iCodigoOrdenP)
-            if (!int.TryParse(Txt_ID_Produccion.Text, out int iCodigoOrdenP))
+            if (!int.TryParse(Cbo_ID_Produccion.Text, out int iCodigoOrdenP))
             {
                 MessageBox.Show("Ingrese un ID de orden de producción válido.");
                 return;
             }
 
             // 5. VALIDAR ID TRANSPORTE
-            if (!int.TryParse(Txt_ID_Transporte.Text, out int iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out int iCodigoTransporte))
             {
                 MessageBox.Show("Ingrese un ID de transporte válido.");
                 return;
@@ -336,6 +407,16 @@ namespace Capa_Vista_Empresa_Transporte
                 sFecha,
                 sEstado
             );
+
+            // BITACORA
+            Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+            bitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                720,
+                "Se modificó la entrega de producción",
+                true
+            );
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
@@ -360,11 +441,21 @@ namespace Capa_Vista_Empresa_Transporte
             {
                 // Llamada al método del controlador para Producción
                 controlador.pro_EliminarProduccion(iCodigoEntrega);
+
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    720,
+                    "Se eliminó una entrega de producción",
+                    true
+                );
+
                 MessageBox.Show("Dato eliminado correctamente");
 
                 // LIMPIAR CAMPOS (Usando tus nombres específicos)
-                Txt_ID_Produccion.Clear();
-                Txt_ID_Transporte.Clear();
+                Cbo_ID_Produccion.SelectedIndex = 0;
+                Cbo_ID_Transporte.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -383,8 +474,8 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Produccion.Clear();
-            Txt_ID_Transporte.Clear();
+            Cbo_ID_Produccion.SelectedIndex = 0;
+            Cbo_ID_Transporte.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -410,8 +501,8 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Cancelar.Enabled = false;
 
             //ComboBox bloqueados
-            Txt_ID_Transporte.Enabled = false;
-            Txt_ID_Produccion.Enabled = false;
+            Cbo_ID_Transporte.Enabled = false;
+            Cbo_ID_Produccion.Enabled = false;
             Txt_Direccion.Enabled = false;
             DTP_Fecha.Enabled = false;
             Cbo_Estado_Entrega.Enabled = false;
@@ -419,15 +510,15 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Produccion.Clear();
-            Txt_ID_Transporte.Clear();
+            Cbo_ID_Produccion.SelectedIndex = 0;
+            Cbo_ID_Transporte.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Produccion.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Produccion.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -442,6 +533,12 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Ingresar.Enabled = false;
             Btn_Modificar.Enabled = false;
             Btn_Eliminar.Enabled = false;
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Produccion reporte = new Frm_Reporte_Produccion();
+            reporte.ShowDialog();
         }
     }
 }

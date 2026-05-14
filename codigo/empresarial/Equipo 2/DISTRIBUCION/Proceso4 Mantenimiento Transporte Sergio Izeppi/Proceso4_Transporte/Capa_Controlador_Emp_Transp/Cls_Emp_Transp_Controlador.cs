@@ -37,6 +37,11 @@ namespace Capa_Controlador_Emp_Transp
             sentencias.pro_EliminarTransporte(iCodigoTransporte);
         }
 
+        public DataTable fun_DatosIdCompra()
+        {
+            return sentencias.fun_ObtenerIdCompra();
+        }
+
         public DataTable fun_DatosCompra()
         {
             return sentencias.fun_ObtenerCompra();
@@ -60,6 +65,11 @@ namespace Capa_Controlador_Emp_Transp
         public void pro_EliminarCompra(int iCodigoEntrega)
         {
             sentencias.pro_EliminarCompra(iCodigoEntrega);
+        }
+
+        public DataTable fun_DatosIdVenta()
+        {
+            return sentencias.fun_ObtenerIdVenta();
         }
 
         public DataTable fun_DatosVenta()
@@ -87,6 +97,11 @@ namespace Capa_Controlador_Emp_Transp
             sentencias.pro_EliminarVenta(iCodigoEntrega);
         }
 
+        public DataTable fun_DatosIdProduccion()
+        {
+            return sentencias.fun_ObtenerIdProduccion();
+        }
+
         public DataTable fun_DatosProduccion()
         {
             return sentencias.fun_ObtenerProduccion();
@@ -110,6 +125,11 @@ namespace Capa_Controlador_Emp_Transp
         public void pro_EliminarProduccion(int iCodigoEntrega)
         {
             sentencias.pro_EliminarProduccion(iCodigoEntrega);
+        }
+
+        public DataTable fun_DatosIdTransporte()
+        {
+            return sentencias.fun_ObtenerIdTransporte();
         }
     }
 }

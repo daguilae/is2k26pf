@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Emp_Transp;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Vista_Empresa_Transporte
 {
@@ -33,7 +34,9 @@ namespace Capa_Vista_Empresa_Transporte
         private void Frm_Entrega_Compra_Load(object sender, EventArgs e)
         {
             fun_EstadoInicial();
+            pro_CargarDatos();
             pro_CargarDatos2();
+            pro_CargarDatos3();
 
             Dgv_Entrega_Compra.Columns.Clear();
             Dgv_Entrega_Compra.Columns.Add("identregacompra", "ID Entrega de Compra");
@@ -49,6 +52,64 @@ namespace Capa_Vista_Empresa_Transporte
             Dgv_Entrega_Compra.AllowUserToAddRows = false;
 
             pro_DatosCompras();
+        }
+
+        private void pro_CargarDatos()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdCompra();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["pk_id_compra"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Compra.DataSource = datos;
+                    Cbo_ID_Compra.DisplayMember = "pk_id_compra";
+                    Cbo_ID_Compra.ValueMember = "pk_id_compra";
+                }
+                else
+                {
+                    Cbo_ID_Compra.DataSource = null;
+                    Cbo_ID_Compra.Items.Clear();
+                    Cbo_ID_Compra.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Compra.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar las compras: " + ex.Message);
+            }
+        }
+
+        private void pro_CargarDatos3()
+        {
+            try
+            {
+                DataTable datos = controlador.fun_DatosIdTransporte();
+                if (datos.Rows.Count > 0)
+                {
+                    DataRow fila = datos.NewRow();
+                    fila["Pk_Id_Transporte"] = 0;
+                    datos.Rows.InsertAt(fila, 0);
+
+                    Cbo_ID_Transporte.DataSource = datos;
+                    Cbo_ID_Transporte.DisplayMember = "Pk_Id_Transporte";
+                    Cbo_ID_Transporte.ValueMember = "Pk_Id_Transporte";
+                }
+                else
+                {
+                    Cbo_ID_Transporte.DataSource = null;
+                    Cbo_ID_Transporte.Items.Clear();
+                    Cbo_ID_Transporte.Items.Add("No hay empresas disponibles");
+                    Cbo_ID_Transporte.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al cargar los transportes: " + ex.Message);
+            }
         }
 
         private void pro_CargarDatos2()
@@ -101,8 +162,8 @@ namespace Capa_Vista_Empresa_Transporte
             string sEstado;
 
             // 2. VALIDAR CAMPOS VACÍOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Compra.Text) ||
-                    string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Compra.Text) ||
+                    string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
                     string.IsNullOrWhiteSpace(Txt_Direccion.Text) ||
                     Cbo_Estado_Entrega.SelectedIndex == -1)
             {
@@ -110,13 +171,13 @@ namespace Capa_Vista_Empresa_Transporte
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Compra.Text, out iCodigoCompra))
+            if (!int.TryParse(Cbo_ID_Compra.Text, out iCodigoCompra))
             {
                 MessageBox.Show("ID de Compra no es válido");
                 return;
             }
 
-            if (!int.TryParse(Txt_ID_Transporte.Text, out iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out iCodigoTransporte))
             {
                 MessageBox.Show("ID de Transporte no es válido");
                 return;
@@ -155,11 +216,21 @@ namespace Capa_Vista_Empresa_Transporte
                     sEstado
                 );
 
+                // BITACORA
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    722,
+                    "Se registró una entrega de compra",
+                    true
+                );
+
                 MessageBox.Show("Entrega registrada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // LIMPIAR CAMPOS
-                Txt_ID_Transporte.Clear();
-                Txt_ID_Compra.Clear();
+                Cbo_ID_Transporte.SelectedIndex = 0;
+                Cbo_ID_Compra.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -183,8 +254,7 @@ namespace Capa_Vista_Empresa_Transporte
 
             // OBTENER DATOS
             int iCodigoEntrega = Convert.ToInt32(fila.Cells["identregacompra"].Value);
-
-            int iCodigoCompra = Convert.ToInt32(fila.Cells["idordencompra"].Value);
+            int iCodigoCompra = Convert.ToInt32(fila.Cells["idcompra"].Value);
             int iCodigoTransporte = Convert.ToInt32(fila.Cells["idtransporte"].Value);
             string sDireccion = fila.Cells["direccion"].Value?.ToString() ?? "";
             string sFecha = fila.Cells["fecha"].Value?.ToString() ?? "";
@@ -192,8 +262,8 @@ namespace Capa_Vista_Empresa_Transporte
 
 
             // PASAR A CONTROLES
-            Txt_ID_Transporte.Text = iCodigoCompra.ToString();
-            Txt_ID_Compra.Text = iCodigoTransporte.ToString();
+            Cbo_ID_Transporte.Text = iCodigoTransporte.ToString();
+            Cbo_ID_Compra.Text = iCodigoCompra.ToString();
             Txt_Direccion.Text = sDireccion;
             DTP_Fecha.Text = sFecha;
 
@@ -210,8 +280,8 @@ namespace Capa_Vista_Empresa_Transporte
             this.iCodigoEntrega = iCodigoEntrega;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Compra.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Compra.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -254,8 +324,8 @@ namespace Capa_Vista_Empresa_Transporte
                     MessageBox.Show("Entrega actualizada correctamente");
 
                     // LIMPIAR CAMPOS
-                    Txt_ID_Transporte.Clear();
-                    Txt_ID_Compra.Clear();
+                    Cbo_ID_Transporte.SelectedIndex = 0;
+                    Cbo_ID_Compra.SelectedIndex = 0;
                     Txt_Direccion.Clear();
                     DTP_Fecha.Value = DateTime.Now;
                     Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -291,8 +361,8 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // VALIDAR CAMPOS
-            if (string.IsNullOrWhiteSpace(Txt_ID_Transporte.Text) ||
-                string.IsNullOrWhiteSpace(Txt_ID_Compra.Text) ||
+            if (string.IsNullOrWhiteSpace(Cbo_ID_Transporte.Text) ||
+                string.IsNullOrWhiteSpace(Cbo_ID_Compra.Text) ||
                 string.IsNullOrWhiteSpace(sDireccion))
             {
                 MessageBox.Show("Debe completar todos los campos");
@@ -300,14 +370,14 @@ namespace Capa_Vista_Empresa_Transporte
             }
 
             // VALIDAR ID COMPRA
-            if (!int.TryParse(Txt_ID_Compra.Text, out int iCodigoCompra))
+            if (!int.TryParse(Cbo_ID_Compra.Text, out int iCodigoCompra))
             {
                 MessageBox.Show("Ingrese un ID de compra válido");
                 return;
             }
 
             // VALIDAR ID TRANSPORTE
-            if (!int.TryParse(Txt_ID_Transporte.Text, out int iCodigoTransporte))
+            if (!int.TryParse(Cbo_ID_Transporte.Text, out int iCodigoTransporte))
             {
                 MessageBox.Show("Ingrese un ID de transporte válido");
                 return;
@@ -332,6 +402,16 @@ namespace Capa_Vista_Empresa_Transporte
                 sFecha,
                 sEstado
             );
+
+            // BITACORA
+            Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+            bitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                722,
+                "Se modificó la entrega de compra",
+                true
+            );
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)
@@ -352,9 +432,19 @@ namespace Capa_Vista_Empresa_Transporte
             try
             {
                 controlador.pro_EliminarCompra(iCodigoEntrega);
+
+                Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
+                bitacora.RegistrarAccion(
+                    Cls_Usuario_Conectado.iIdUsuario,
+                    722,
+                    "Se eliminó una entrega de compra",
+                    true
+                );
+
                 MessageBox.Show("Dato eliminado correctamente");
-                Txt_ID_Transporte.Clear();
-                Txt_ID_Compra.Clear();
+                Cbo_ID_Transporte.SelectedIndex = 0;
+                Cbo_ID_Compra.SelectedIndex = 0;
                 Txt_Direccion.Clear();
                 DTP_Fecha.Value = DateTime.Now;
                 Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -373,8 +463,8 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Transporte.Clear();
-            Txt_ID_Compra.Clear();
+            Cbo_ID_Transporte.SelectedIndex = 0;
+            Cbo_ID_Compra.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
@@ -400,8 +490,8 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Cancelar.Enabled = false;
 
             //ComboBox bloqueados
-            Txt_ID_Transporte.Enabled = false;
-            Txt_ID_Compra.Enabled = false;
+            Cbo_ID_Transporte.Enabled = false;
+            Cbo_ID_Compra.Enabled = false;
             Txt_Direccion.Enabled = false;
             DTP_Fecha.Enabled = false;
             Cbo_Estado_Entrega.Enabled = false;
@@ -409,15 +499,15 @@ namespace Capa_Vista_Empresa_Transporte
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
         {
-            Txt_ID_Transporte.Clear();
-            Txt_ID_Compra.Clear();
+            Cbo_ID_Transporte.SelectedIndex = 0;
+            Cbo_ID_Compra.SelectedIndex = 0;
             Txt_Direccion.Clear();
             DTP_Fecha.Value = DateTime.Now;
             Cbo_Estado_Entrega.SelectedIndex = 0;
 
             //Habilitar combos
-            Txt_ID_Transporte.Enabled = true;
-            Txt_ID_Compra.Enabled = true;
+            Cbo_ID_Transporte.Enabled = true;
+            Cbo_ID_Compra.Enabled = true;
             Txt_Direccion.Enabled = true;
             DTP_Fecha.Enabled = true;
             Cbo_Estado_Entrega.Enabled = true;
@@ -433,6 +523,12 @@ namespace Capa_Vista_Empresa_Transporte
             Btn_Modificar.Enabled = false;
             Btn_Eliminar.Enabled = false;
 
+        }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Compra reporte = new Frm_Reporte_Compra();
+            reporte.ShowDialog();
         }
     }
 }
