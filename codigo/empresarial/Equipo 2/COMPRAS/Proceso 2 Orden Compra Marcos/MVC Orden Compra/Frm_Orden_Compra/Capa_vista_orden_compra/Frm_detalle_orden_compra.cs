@@ -44,6 +44,7 @@ namespace Capa_vista_orden_compra
             Dtp_fechaRegistro.Value = DateTime.Now;
 
 
+
         }
 
         private void Gpo_Encabezado_Enter(object sender, EventArgs e)
