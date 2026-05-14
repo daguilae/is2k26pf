@@ -13,20 +13,20 @@ namespace Capa_Modelo_Prod
     {
         private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-        public DataTable ObtenerOrdenesRecibidas()
+        public DataTable ObtenerOrdenesProduccion()
         {
             DataTable dt = new DataTable();
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
             SELECT 
-                o.Pk_Id_Orden_Recibida,
-                CONCAT(o.Id_Externo_Logistica, ' | ', 
-                       DATE_FORMAT(o.Fecha_Requerida, '%Y-%m-%d')) AS Descripcion
-            FROM Tbl_Orden_Recibida o
-            INNER JOIN Tbl_Estado_Orden_Recibida e
-                ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida
-            ORDER BY o.Fecha_Recepcion DESC";
+                op.Pk_Id_Orden_Produccion AS IdOrden,
+                CONCAT(m.Nombre_Material, ' | ', 
+                       DATE_FORMAT(op.Fecha_Inicio_Orden_Produccion, '%Y-%m-%d'), ' - ',
+                       DATE_FORMAT(op.Fecha_Fin_Orden_Produccion, '%Y-%m-%d')) AS Descripcion
+            FROM Tbl_Orden_Produccion op
+            INNER JOIN Tbl_Materiales m ON op.Fk_Id_Material = m.Pk_Id_Materiales
+            ORDER BY op.Fecha_Inicio_Orden_Produccion DESC";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.Fill(dt);
@@ -35,56 +35,7 @@ namespace Capa_Modelo_Prod
         }
 
 
-        public DataTable ObtenerInfoOrdenRecibida(int idOrden)
-        {
-            DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
-            {
-                string query = @"
-            SELECT 
-                o.Id_Externo_Logistica          AS No_Orden,
-                e.Nombre_Estado_Orden_Recibida  AS Estado,
-                DATE_FORMAT(o.Fecha_Recepcion, '%Y-%m-%d')  AS Fecha_Recepcion,
-                DATE_FORMAT(o.Fecha_Requerida, '%Y-%m-%d')  AS Fecha_Requerida,
-                o.Observacion
-            FROM Tbl_Orden_Recibida o
-            INNER JOIN Tbl_Estado_Orden_Recibida e
-                ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida
-            WHERE o.Pk_Id_Orden_Recibida = ?";
-
-                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("?", idOrden);
-                da.Fill(dt);
-            }
-            return dt;
-        }
-
-        // Productos a fabricar (detalle de la orden recibida)
-        public DataTable ObtenerProductosOrdenRecibida(int idOrden)
-        {
-            DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
-            {
-                string query = @"
-            SELECT 
-                m.Codigo_Material                   AS Codigo,
-                m.Nombre_Material                   AS Producto,
-                d.Cantidad_Solicitada               AS Cantidad,
-                um.Abreviatura_Unidad_Medida        AS Unidad,
-                m.Lead_Time_Produccion_Dias         AS Lead_Time_Dias
-            FROM Tbl_Orden_Recibida_Detalle d
-            INNER JOIN Tbl_Materiales m 
-                ON d.Fk_Id_Material = m.Pk_Id_Materiales
-            INNER JOIN Tbl_Unidad_Medida um 
-                ON m.Fk_Id_Unidad_Medida = um.Pk_Id_Unidad_Medida
-            WHERE d.Fk_Id_Orden_Recibida = ?";
-
-                OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
-                da.SelectCommand.Parameters.AddWithValue("?", idOrden);
-                da.Fill(dt);
-            }
-            return dt;
-        }
+   
 
         // ############################ METODOS PARA MANO DE OBRA #############################################
         // Mano de obra por orden de producción
@@ -169,10 +120,21 @@ namespace Capa_Modelo_Prod
                 string query = @"
             SELECT
                 COALESCE((
-                    SELECT SUM(om.Cantidad_Consumida_Orden_Material * i.Costo_Unitario)
-                    FROM Tbl_Orden_Material om
-                    INNER JOIN Tbl_Inventario i ON om.Fk_Id_Materiales = i.Fk_Id_Material
-                    WHERE om.Fk_Id_Orden_Produccion = ?
+                    SELECT SUM(emd.Cantidad_Real_Con_Merma * i.Costo_Unitario)
+                    FROM Tbl_Orden_Produccion op
+                    INNER JOIN Tbl_Plan_Produccion pp 
+                        ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+                    INNER JOIN Tbl_Explosion_Materiales em 
+                        ON em.Pk_Id_Explosion = (
+                            SELECT MAX(Pk_Id_Explosion) 
+                            FROM Tbl_Explosion_Materiales 
+                            WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida
+                        )
+                    INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
+                        ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+                    INNER JOIN Tbl_Inventario i 
+                        ON emd.Fk_Id_Material = i.Fk_Id_Material
+                    WHERE op.Pk_Id_Orden_Produccion = ?
                 ), 0) AS CostoMateriales,
 
                 COALESCE((
@@ -192,9 +154,26 @@ namespace Capa_Modelo_Prod
                     FROM Tbl_Merma me
                     INNER JOIN Tbl_Inventario i ON me.Fk_Id_Materiales = i.Fk_Id_Material
                     WHERE me.Fk_Id_Orden_Produccion = ?
-                ), 0) AS CostoMermas";
+                ), 0) AS CostoMermas,
+
+                COALESCE((
+                    SELECT SUM(cf.Costo)
+                    FROM Tbl_Orden_Produccion op2
+                    INNER JOIN Tbl_Plan_Produccion pp 
+                        ON op2.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+                    INNER JOIN Tbl_Orden_Recibida_Detalle ord
+                        ON pp.Fk_Id_Orden_Recibida = ord.Fk_Id_Orden_Recibida
+                    INNER JOIN Tbl_BOM b
+                        ON b.Fk_Id_Material = ord.Fk_Id_Material
+                    INNER JOIN Tbl_Fases_Produccion fp
+                        ON fp.Fk_Id_BOM = b.Pk_Id_BOM
+                    INNER JOIN Tbl_Costo_Fase cf
+                        ON cf.Fk_Id_Fase_Producto = fp.Pk_Id_Fase_Producto
+                    WHERE op2.Pk_Id_Orden_Produccion = ?
+                ), 0) AS CostoFases";
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idOrden);
                 cmd.Parameters.AddWithValue("?", idOrden);
                 cmd.Parameters.AddWithValue("?", idOrden);
                 cmd.Parameters.AddWithValue("?", idOrden);
@@ -225,6 +204,75 @@ namespace Capa_Modelo_Prod
         }
         // ############################ METODOS PARA MANO DE OBRA #############################################
 
+        // ############################ Métodos para guardar factura ###########################################
+        public int ObtenerOrdenRecibidaPorOrdenProduccion(int idOrdenProduccion)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            SELECT pp.Fk_Id_Orden_Recibida
+            FROM Tbl_Orden_Produccion op
+            INNER JOIN Tbl_Plan_Produccion pp 
+                ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+            WHERE op.Pk_Id_Orden_Produccion = ?";
 
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idOrdenProduccion);
+                object result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        public bool GenerarFactura(int idOrdenRecibida, int idOrdenProduccion,
+            decimal totalMateriales, decimal totalManoObra, decimal totalIndirectos,
+            decimal totalMermas, decimal totalFases, decimal totalFactura)
+        {
+            OdbcConnection conn = conexion.AbrirConexion();
+            OdbcTransaction transaccion = conn.BeginTransaction();
+            try
+            {
+                // Insertar encabezado
+                OdbcCommand cmdEncabezado = new OdbcCommand(
+                    "INSERT INTO Tbl_Factura_Produccion (Fk_Id_Orden_Recibida, Total_Factura) VALUES (?, ?)",
+                    conn);
+                cmdEncabezado.Transaction = transaccion;
+                cmdEncabezado.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
+                cmdEncabezado.Parameters.Add("?", OdbcType.Double).Value = totalFactura;
+                cmdEncabezado.ExecuteNonQuery();
+
+                // Obtener ID generado
+                OdbcCommand cmdId = new OdbcCommand("SELECT LAST_INSERT_ID()", conn);
+                cmdId.Transaction = transaccion;
+                int idFactura = Convert.ToInt32(cmdId.ExecuteScalar());
+
+                // Insertar detalle
+                OdbcCommand cmdDetalle = new OdbcCommand(
+                    "INSERT INTO Tbl_Factura_Produccion_Detalle (Fk_Id_Factura, Fk_Id_Orden_Produccion, Total_Materiales, Total_Mano_Obra, Total_Costos_Indirectos, Total_Mermas, Total_Fases, Subtotal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    conn);
+                cmdDetalle.Transaction = transaccion;
+                cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idFactura;
+                cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idOrdenProduccion;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalMateriales;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalManoObra;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalIndirectos;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalMermas;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalFases;
+                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalFactura;
+                cmdDetalle.ExecuteNonQuery();
+
+                transaccion.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaccion.Rollback();
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        // ############################ Métodos para guardar factura ###########################################
     }
 }

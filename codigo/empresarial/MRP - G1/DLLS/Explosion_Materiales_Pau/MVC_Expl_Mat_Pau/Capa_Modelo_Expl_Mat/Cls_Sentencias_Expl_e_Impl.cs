@@ -237,5 +237,72 @@ namespace Capa_Modelo_Expl_Mat
 
 
         //DANIELA SALGUERO
+
+        // Arón Ricardo Esquit Silva 0901-22-13036 11/05/2026
+        public int GuardarOrdenMaterialApi(int idOrden, DataTable faltantes)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                OdbcTransaction tx = conn.BeginTransaction();
+                try
+                {
+                    string qEncabezado = @"
+                INSERT INTO Encabezado_Orden_Material 
+                    (Fk_Id_Orden_Recibida, Fk_Id_Estado_Orden_Material, Fecha_Solicitud)
+                VALUES (?, 2, NOW())";
+
+                    OdbcCommand cmdEnc = new OdbcCommand(qEncabezado, conn, tx);
+                    cmdEnc.Parameters.AddWithValue("?", idOrden);
+                    cmdEnc.ExecuteNonQuery();
+
+                    OdbcCommand cmdId = new OdbcCommand("SELECT LAST_INSERT_ID()", conn, tx);
+                    int idOrdenMaterial = Convert.ToInt32(cmdId.ExecuteScalar());
+
+                    string qDetalle = @"
+                INSERT INTO Detalle_Orden_Material 
+                    (Fk_Id_Orden_Material, Fk_Id_Materiales, Cantidad_Solicitada)
+                VALUES (?, ?, ?)";
+
+                    foreach (DataRow row in faltantes.Rows)
+                    {
+                        decimal faltante = Convert.ToDecimal(row["Faltante"]);
+                        if (faltante <= 0) continue;
+
+                        OdbcCommand cmdDet = new OdbcCommand(qDetalle, conn, tx);
+                        cmdDet.Parameters.AddWithValue("?", idOrdenMaterial);
+                        cmdDet.Parameters.AddWithValue("?", Convert.ToInt32(row["Id_Material"]));
+                        cmdDet.Parameters.AddWithValue("?", faltante);
+                        cmdDet.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                    return idOrdenMaterial;
+                }
+                catch (Exception ex)
+                {
+                    tx.Rollback();
+                    return 0;
+                }
+            }
+        }
+
+        public bool ActualizarEstadoOrdenMaterialEnviado(int idOrdenMaterial)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                string query = @"
+            UPDATE Encabezado_Orden_Material 
+            SET Fk_Id_Estado_Orden_Material = 1
+            WHERE Pk_Id_Orden_Material = ?";
+
+                OdbcCommand cmd = new OdbcCommand(query, conn);
+                cmd.Parameters.AddWithValue("?", idOrdenMaterial);
+                int filas = cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+        }
+
+
+
     }
-    }
+}

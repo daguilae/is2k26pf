@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Orden_Material;
+using Capa_Vista_Componente_Consultas;
+using System.IO;
 
 namespace Capa_Vista_Orden_Material
 {
@@ -62,6 +64,8 @@ namespace Capa_Vista_Orden_Material
             dtv_encabezado_orden_material.ReadOnly = true;
 
             dtv_encabezado_orden_material.AllowUserToAddRows = false;
+
+            Fun_Agregar_Boton_Ver();
         }
 
         private void FiltrarOrdenes()
@@ -314,6 +318,102 @@ namespace Capa_Vista_Orden_Material
         private void Btn_salir_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Fun_Agregar_Boton_Ver()
+        {
+            if (dtv_encabezado_orden_material.Columns.Contains("VerDetalle"))
+                return;
+
+            DataGridViewButtonColumn btnVer = new DataGridViewButtonColumn();
+            btnVer.Name = "VerDetalle";
+            btnVer.HeaderText = "Acciones";
+            btnVer.Text = "Ver";
+            btnVer.UseColumnTextForButtonValue = true;
+
+            dtv_encabezado_orden_material.Columns.Add(btnVer);
+        }
+
+        private void dtv_encabezado_orden_material_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 &&
+                dtv_encabezado_orden_material.Columns[e.ColumnIndex].Name == "VerDetalle")
+            {
+                int idOrden = Convert.ToInt32(
+                    dtv_encabezado_orden_material.Rows[e.RowIndex]
+                    .Cells["ID_Orden"].Value
+                );
+
+                Frm_Detalle_Orden_Material frmDetalle =
+                    new Frm_Detalle_Orden_Material(idOrden);
+
+                frmDetalle.ShowDialog();
+            }
+        }
+
+        private void Btn_detalle_Click(object sender, EventArgs e)
+        {
+            Frm_Detalle_Orden_Material frmDetalle =
+                new Frm_Detalle_Orden_Material();
+
+            frmDetalle.ShowDialog();
+        }
+
+        private void Btn_imprimir_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Orden frm = new Frm_Reporte_Orden();
+            frm.ShowDialog();
+        }
+
+        private void Btn_consultar_Click(object sender, EventArgs e)
+        {
+            string[] sArr = { "Encabezado_Orden_Material" };
+
+            using (var f = new Frm_Consulta_Simple(sArr))
+            {
+                this.Hide();
+                f.ShowDialog(this);
+                this.Show();
+            }
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                const string subRutaAyuda = @"DLLS\Orden_Material\Ayuda_Orden_Material\Encabezado Orden Material\Ayuda_EncOrdMat.chm";
+                string rutaEncontrada = null;
+
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+                string respaldo = @"C:\Users\arone\OneDrive\Escritorio\is2k26pf\codigo\empresarial\MRP - G1\DLLS\Orden_Material\Ayuda_Orden_Material\Encabezado Orden Material\Ayuda_EncOrdMat.chm";
+                if (rutaEncontrada == null && File.Exists(respaldo))
+                    rutaEncontrada = respaldo;
+
+                if (rutaEncontrada != null)
+                {
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, "index.html");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

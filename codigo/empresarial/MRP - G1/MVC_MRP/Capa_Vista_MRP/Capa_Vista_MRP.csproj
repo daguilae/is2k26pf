@@ -97,6 +97,9 @@
     <Reference Include="Capa_vista_Orden">
       <HintPath>..\..\DLLS\Plan y Orden de Producción\Orden de Produccion\Capa_vista_Orden\bin\Debug\Capa_vista_Orden.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Orden_Material">
+      <HintPath>..\..\DLLS\Orden_Material\Capa_Vista_Orden_Material\bin\Debug\Capa_Vista_Orden_Material.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Orden_Produccion">
       <HintPath>..\..\DLLS\Orden_produccion_Ruben\Orden_Produccion\Capa_Vista_Orden_Produccion\bin\Debug\Capa_Vista_Orden_Produccion.dll</HintPath>
     </Reference>

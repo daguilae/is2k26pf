@@ -21,6 +21,7 @@ namespace Capa_Vista_MRP
         public Frm_Login()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             txtContrasena.UseSystemPasswordChar = true;
             this.FormClosing += Frm_Login_FormClosing;
             this.AcceptButton = btnIniciarSesion; // ENTER = Iniciar sesión

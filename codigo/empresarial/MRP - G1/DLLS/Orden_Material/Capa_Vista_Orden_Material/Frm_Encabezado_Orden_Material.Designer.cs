@@ -63,6 +63,7 @@ namespace Capa_Vista_Orden_Material
             this.cbo_id_orden = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.Btn_detalle = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtv_encabezado_orden_material)).BeginInit();
@@ -116,6 +117,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_ayuda.Text = "Ayuda";
             this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // Btn_fin
             // 
@@ -199,6 +201,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_imprimir.Text = "Imprimir";
             this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_imprimir.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.Click += new System.EventHandler(this.Btn_imprimir_Click);
             // 
             // Btn_consultar
             // 
@@ -212,6 +215,7 @@ namespace Capa_Vista_Orden_Material
             this.Btn_consultar.Text = "Consultar";
             this.Btn_consultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_consultar.UseVisualStyleBackColor = true;
+            this.Btn_consultar.Click += new System.EventHandler(this.Btn_consultar_Click);
             // 
             // Btn_eliminar
             // 
@@ -349,6 +353,7 @@ namespace Capa_Vista_Orden_Material
             this.dtv_encabezado_orden_material.RowTemplate.Height = 24;
             this.dtv_encabezado_orden_material.Size = new System.Drawing.Size(1429, 534);
             this.dtv_encabezado_orden_material.TabIndex = 22;
+            this.dtv_encabezado_orden_material.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtv_encabezado_orden_material_CellContentClick);
             // 
             // label6
             // 
@@ -466,15 +471,29 @@ namespace Capa_Vista_Orden_Material
             this.label1.Location = new System.Drawing.Point(26, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(480, 38);
+            this.label1.Size = new System.Drawing.Size(557, 38);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Listado de Ordenes  Materiales";
+            this.label1.Text = "Listado de Ordenes  Materiales - 732";
+            // 
+            // Btn_detalle
+            // 
+            this.Btn_detalle.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_detalle.Location = new System.Drawing.Point(1339, 920);
+            this.Btn_detalle.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_detalle.Name = "Btn_detalle";
+            this.Btn_detalle.Size = new System.Drawing.Size(155, 33);
+            this.Btn_detalle.TabIndex = 39;
+            this.Btn_detalle.Text = "Ver detalles";
+            this.Btn_detalle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_detalle.UseVisualStyleBackColor = true;
+            this.Btn_detalle.Click += new System.EventHandler(this.Btn_detalle_Click);
             // 
             // Frm_Encabezado_Orden_Material
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1558, 936);
+            this.ClientSize = new System.Drawing.Size(1558, 966);
+            this.Controls.Add(this.Btn_detalle);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.groupBox1);
@@ -527,5 +546,6 @@ namespace Capa_Vista_Orden_Material
         private System.Windows.Forms.ComboBox cbo_id_orden;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Btn_detalle;
     }
 }
