@@ -13,7 +13,6 @@ namespace Capa_Vista_Factura
         public Frms_Factura()
         {
             InitializeComponent();
-            this.Load += Frms_Factura_Load;
         }
 
         private void Frms_Factura_Load(object sender, EventArgs e)
@@ -33,7 +32,6 @@ namespace Capa_Vista_Factura
             Txt_NoFactura.TextChanged += Txt_NoFactura_TextChanged;
             Dtp_Emision.ValueChanged += Dtp_Emision_ValueChanged;
             Cmb_OrdenRecibida.SelectedIndexChanged += Cmb_OrdenRecibida_SelectedIndexChanged;
-            Dgv_Facturas.CellContentClick += Dgv_Facturas_CellContentClick;
         }
 
         // ─── COMBO ÓRDENES ────────────────────────────────────────
@@ -152,7 +150,6 @@ namespace Capa_Vista_Factura
             }
         }
 
-        // ─── BOTÓN VER ────────────────────────────────────────────
         private void Dgv_Facturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -166,11 +163,16 @@ namespace Capa_Vista_Factura
                 if (valor != DBNull.Value && valor != null)
                 {
                     int idFactura = Convert.ToInt32(valor);
-                    // Frm_Detalle_Factura frm = new Frm_Detalle_Factura(idFactura);
+                    Frm_Detalle_Facturacion frm = new Frm_Detalle_Facturacion(idFactura);
+                    frm.ShowDialog();
+
                     // frm.ShowDialog();
                     // CargarGrid();
                 }
             }
         }
+
+        // ─── BOTÓN VER ────────────────────────────────────────────
+
     }
 }

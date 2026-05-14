@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cls_Sentencias_Detalle.cs" />
     <Compile Include="Cls_Sentencias_Encabezado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

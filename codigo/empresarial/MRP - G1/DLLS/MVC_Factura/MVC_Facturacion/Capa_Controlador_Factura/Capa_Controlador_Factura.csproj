@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cls_Controlador_Detalle.cs" />
     <Compile Include="Cls_Controlador_Fac.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
