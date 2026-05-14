@@ -23,9 +23,9 @@ namespace Capa_Controlador_Orden_Material
             return dao.Fun_Buscar_Encabezado_Orden_Material(iIdOrdenMaterial);
         }
 
-        public DataTable Fun_Filtrar_Por_Orden_Produccion(int iIdOrdenProduccion)
+        public DataTable Fun_Filtrar_Por_Orden_Recibida(int iIdOrdenRecibida)
         {
-            return dao.Fun_Filtrar_Por_Orden_Produccion(iIdOrdenProduccion);
+            return dao.Fun_Filtrar_Por_Orden_Recibida(iIdOrdenRecibida);
         }
 
         public DataTable Fun_Filtrar_Por_Estado(int iIdEstado)
@@ -38,9 +38,9 @@ namespace Capa_Controlador_Orden_Material
             return dao.Fun_Obtener_Estados_Orden_Material();
         }
 
-        public DataTable Fun_Obtener_Ordenes_Produccion()
+        public DataTable Fun_Obtener_Ordenes_Recibidas()
         {
-            return dao.Fun_Obtener_Ordenes_Produccion();
+            return dao.Fun_Obtener_Ordenes_Recibidas();
         }
 
         public bool Fun_Enviar_Logistica(int iIdOrdenMaterial)

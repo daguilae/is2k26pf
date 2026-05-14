@@ -419,12 +419,12 @@ namespace Capa_Vista_Orden_Material
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(324, 18);
+            this.label3.Location = new System.Drawing.Point(345, 18);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(231, 29);
+            this.label3.Size = new System.Drawing.Size(201, 29);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Orden Produccion";
+            this.label3.Text = "Orden Recibida";
             // 
             // cbo_orden_produccion
             // 

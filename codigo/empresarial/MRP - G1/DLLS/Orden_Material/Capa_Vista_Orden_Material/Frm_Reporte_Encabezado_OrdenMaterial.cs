@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Capa_Vista_Orden_Material
 {
-    public partial class Frm_Reporte_Orden : Form
+    public partial class Frm_Reporte_Encabezado_OrdenMaterial : Form
     {
-        public Frm_Reporte_Orden()
+        public Frm_Reporte_Encabezado_OrdenMaterial()
         {
             InitializeComponent();
         }

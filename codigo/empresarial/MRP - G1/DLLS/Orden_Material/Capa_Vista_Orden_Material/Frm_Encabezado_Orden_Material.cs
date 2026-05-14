@@ -93,10 +93,10 @@ namespace Capa_Vista_Orden_Material
 
             if (chk_orden_produccion.Checked && cbo_orden_produccion.SelectedValue is int)
             {
-                int idOrdenProduccion = Convert.ToInt32(cbo_orden_produccion.SelectedValue);
+                int idOrdenRecibida = Convert.ToInt32(cbo_orden_produccion.SelectedValue);
 
                 dtv_encabezado_orden_material.DataSource =
-                    controlador.Fun_Filtrar_Por_Orden_Produccion(idOrdenProduccion);
+                    controlador.Fun_Filtrar_Por_Orden_Recibida(idOrdenRecibida);
 
                 return;
             }
@@ -128,9 +128,9 @@ namespace Capa_Vista_Orden_Material
             cbo_estado.ValueMember = "Pk_Id_Estado_Orden_Material";
             cbo_estado.SelectedIndex = -1;
 
-            cbo_orden_produccion.DataSource = controlador.Fun_Obtener_Ordenes_Produccion();
-            cbo_orden_produccion.DisplayMember = "Orden_Produccion";
-            cbo_orden_produccion.ValueMember = "Pk_Id_Orden_Produccion";
+            cbo_orden_produccion.DataSource = controlador.Fun_Obtener_Ordenes_Recibidas();
+            cbo_orden_produccion.DisplayMember = "Orden_Recibida";
+            cbo_orden_produccion.ValueMember = "Pk_Id_Orden_Recibida";
             cbo_orden_produccion.SelectedIndex = -1;
 
             cargandoCombos = false;
@@ -361,13 +361,13 @@ namespace Capa_Vista_Orden_Material
 
         private void Btn_imprimir_Click(object sender, EventArgs e)
         {
-            Frm_Reporte_Orden frm = new Frm_Reporte_Orden();
+            Frm_Reporte_Encabezado_OrdenMaterial frm = new Frm_Reporte_Encabezado_OrdenMaterial();
             frm.ShowDialog();
         }
 
         private void Btn_consultar_Click(object sender, EventArgs e)
         {
-            string[] sArr = { "Encabezado_Orden_Material" };
+            string[] sArr = { "Tbl_Encabezado_Orden_Material" };
 
             using (var f = new Frm_Consulta_Simple(sArr))
             {

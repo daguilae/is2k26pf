@@ -418,7 +418,7 @@ namespace Capa_Vista_Orden_Material
 
         private void Btn_imprimir_Click_1(object sender, EventArgs e)
         {
-            Frm_Reporte_Detalle frm = new Frm_Reporte_Detalle();
+            Frm_Reporte_Detalle_OredenMaterial frm = new Frm_Reporte_Detalle_OredenMaterial();
             frm.ShowDialog();
         }
 
