@@ -1,7 +1,6 @@
-﻿
-namespace Capa_Vista_Orden_Material
+﻿namespace Capa_Vista_Orden_Material
 {
-    partial class Frm_Reporte_Detalle
+    partial class Frm_Reporte_Detalle_OredenMaterial
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +29,7 @@ namespace Capa_Vista_Orden_Material
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.Reporte_Detalle1 = new Capa_Vista_Orden_Material.Reporte_Detalle();
+            this.Reporte_Detalle_OrdenMaterial1 = new Capa_Vista_Orden_Material.Reporte_Detalle_OrdenMaterial();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -41,18 +40,18 @@ namespace Capa_Vista_Orden_Material
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.Reporte_Detalle1;
+            this.crystalReportViewer1.ReportSource = this.Reporte_Detalle_OrdenMaterial1;
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // Frm_Reporte_Detalle
+            // Frm_Reporte_Detalle_OredenMaterial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "Frm_Reporte_Detalle";
-            this.Text = "Frm_Reporte_Detalle";
+            this.Name = "Frm_Reporte_Detalle_OredenMaterial";
+            this.Text = "Frm_Reporte_Detalle_OredenMaterial";
             this.ResumeLayout(false);
 
         }
@@ -60,6 +59,6 @@ namespace Capa_Vista_Orden_Material
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private Reporte_Detalle Reporte_Detalle1;
+        private Reporte_Detalle_OrdenMaterial Reporte_Detalle_OrdenMaterial1;
     }
 }

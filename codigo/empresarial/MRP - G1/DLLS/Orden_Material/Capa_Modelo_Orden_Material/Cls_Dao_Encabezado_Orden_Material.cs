@@ -29,13 +29,13 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
                     SELECT 
                         eom.Pk_Id_Orden_Material AS ID_Orden,
-                        eom.Fk_Id_Orden_Produccion AS Orden_Produccion,
+                        eom.Fk_Id_Orden_Recibida AS Orden_Recibida,
                         eom.Fk_Id_Estado_Orden_Material AS ID_Estado,
                         teom.Nombre_Estado AS Estado,
                         eom.Fecha_Solicitud AS Fecha_Solicitud,
                         eom.Fecha_Recibida AS Fecha_Recibida
-                    FROM Encabezado_Orden_Material eom
-                    INNER JOIN Tipo_Estado_Orden_Material teom
+                    FROM Tbl_Encabezado_Orden_Material eom
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material teom
                         ON eom.Fk_Id_Estado_Orden_Material = teom.Pk_Id_Estado_Orden_Material
                     ORDER BY eom.Pk_Id_Orden_Material DESC;
                 ";
@@ -57,13 +57,13 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
                     SELECT 
                         eom.Pk_Id_Orden_Material AS ID_Orden,
-                        eom.Fk_Id_Orden_Produccion AS Orden_Produccion,
+                        eom.Fk_Id_Orden_Recibida AS Orden_Recibida,
                         eom.Fk_Id_Estado_Orden_Material AS ID_Estado,
                         teom.Nombre_Estado AS Estado,
                         eom.Fecha_Solicitud AS Fecha_Solicitud,
                         eom.Fecha_Recibida AS Fecha_Recibida
-                    FROM Encabezado_Orden_Material eom
-                    INNER JOIN Tipo_Estado_Orden_Material teom
+                    FROM Tbl_Encabezado_Orden_Material eom
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material teom
                         ON eom.Fk_Id_Estado_Orden_Material = teom.Pk_Id_Estado_Orden_Material
                     WHERE eom.Pk_Id_Orden_Material = ?;
                 ";
@@ -79,7 +79,7 @@ namespace Capa_Modelo_Orden_Material
         }
 
         // Filtrar por orden de producción
-        public DataTable Fun_Filtrar_Por_Orden_Produccion(int iIdOrdenProduccion)
+        public DataTable Fun_Filtrar_Por_Orden_Recibida(int iIdOrdenRecibida)
         {
             DataTable dt = new DataTable();
 
@@ -88,19 +88,19 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
                     SELECT 
                         eom.Pk_Id_Orden_Material AS ID_Orden,
-                        eom.Fk_Id_Orden_Produccion AS Orden_Produccion,
+                        eom.Fk_Id_Orden_Recibida AS Orden_Recibida,
                         eom.Fk_Id_Estado_Orden_Material AS ID_Estado,
                         teom.Nombre_Estado AS Estado,
                         eom.Fecha_Solicitud AS Fecha_Solicitud,
                         eom.Fecha_Recibida AS Fecha_Recibida
-                    FROM Encabezado_Orden_Material eom
-                    INNER JOIN Tipo_Estado_Orden_Material teom
+                    FROM Tbl_Encabezado_Orden_Material eom
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material teom
                         ON eom.Fk_Id_Estado_Orden_Material = teom.Pk_Id_Estado_Orden_Material
-                    WHERE eom.Fk_Id_Orden_Produccion = ?;
+                    WHERE eom.Fk_Id_Orden_Recibida = ?;
                 ";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@ordenProduccion", iIdOrdenProduccion);
+                cmd.Parameters.AddWithValue("@ordenRecibida", iIdOrdenRecibida);
 
                 OdbcDataAdapter da = new OdbcDataAdapter(cmd);
                 da.Fill(dt);
@@ -119,13 +119,13 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
                     SELECT 
                         eom.Pk_Id_Orden_Material AS ID_Orden,
-                        eom.Fk_Id_Orden_Produccion AS Orden_Produccion,
+                        eom.Fk_Id_Orden_Recibida AS Orden_Recibida,
                         eom.Fk_Id_Estado_Orden_Material AS ID_Estado,
                         teom.Nombre_Estado AS Estado,
                         eom.Fecha_Solicitud AS Fecha_Solicitud,
                         eom.Fecha_Recibida AS Fecha_Recibida
-                    FROM Encabezado_Orden_Material eom
-                    INNER JOIN Tipo_Estado_Orden_Material teom
+                    FROM Tbl_Encabezado_Orden_Material eom
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material teom
                         ON eom.Fk_Id_Estado_Orden_Material = teom.Pk_Id_Estado_Orden_Material
                     WHERE eom.Fk_Id_Estado_Orden_Material = ?;
                 ";
@@ -151,7 +151,7 @@ namespace Capa_Modelo_Orden_Material
                     SELECT 
                         Pk_Id_Estado_Orden_Material,
                         Nombre_Estado
-                    FROM Tipo_Estado_Orden_Material;
+                    FROM Tbl_Tipo_Estado_Orden_Material;
                 ";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
@@ -162,19 +162,20 @@ namespace Capa_Modelo_Orden_Material
         }
 
         // Combo de órdenes de producción
-        public DataTable Fun_Obtener_Ordenes_Produccion()
+        // Combo de órdenes recibidas
+        public DataTable Fun_Obtener_Ordenes_Recibidas()
         {
             DataTable dt = new DataTable();
 
             using (OdbcConnection conn = conexion.conexion())
             {
                 string sql = @"
-    SELECT 
-        Pk_Id_Orden_Produccion,
-        Pk_Id_Orden_Produccion AS Orden_Produccion
-    FROM Tbl_Orden_Produccion
-    ORDER BY Pk_Id_Orden_Produccion DESC;
-";
+            SELECT 
+                Pk_Id_Orden_Recibida,
+                Pk_Id_Orden_Recibida AS Orden_Recibida
+            FROM Tbl_Orden_Recibida
+            ORDER BY Pk_Id_Orden_Recibida DESC;
+        ";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conn);
                 da.Fill(dt);
@@ -189,7 +190,7 @@ namespace Capa_Modelo_Orden_Material
             using (OdbcConnection conn = conexion.conexion())
             {
                 string sql = @"
-                    UPDATE Encabezado_Orden_Material
+                    UPDATE Tbl_Encabezado_Orden_Material
                     SET Fk_Id_Estado_Orden_Material = 1
                     WHERE Pk_Id_Orden_Material = ?;
                 ";
@@ -210,7 +211,7 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
             SELECT 
                 Pk_Id_Orden_Material AS ID_Orden
-            FROM Encabezado_Orden_Material
+            FROM Tbl_Encabezado_Orden_Material
             ORDER BY Pk_Id_Orden_Material DESC;
         ";
 
@@ -230,13 +231,13 @@ namespace Capa_Modelo_Orden_Material
                 string sql = @"
             SELECT 
                 eom.Pk_Id_Orden_Material AS ID_Orden,
-                eom.Fk_Id_Orden_Produccion AS Orden_Produccion,
+                eom.Fk_Id_Orden_Recibida AS Orden_Recibida,
                 eom.Fk_Id_Estado_Orden_Material AS ID_Estado,
                 teom.Nombre_Estado AS Estado,
                 eom.Fecha_Solicitud AS Fecha_Solicitud,
                 eom.Fecha_Recibida AS Fecha_Recibida
-            FROM Encabezado_Orden_Material eom
-            INNER JOIN Tipo_Estado_Orden_Material teom
+            FROM Tbl_Encabezado_Orden_Material eom
+            INNER JOIN Tbl_Tipo_Estado_Orden_Material teom
                 ON eom.Fk_Id_Estado_Orden_Material =
                    teom.Pk_Id_Estado_Orden_Material
             WHERE DATE(eom.Fecha_Solicitud)
