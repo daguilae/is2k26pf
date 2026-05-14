@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AntiguedadSaldos" msprop:Generator_TableClassName="AntiguedadSaldosDataTable" msprop:Generator_TableVarName="tableAntiguedadSaldos" msprop:Generator_RowChangedName="AntiguedadSaldosRowChanged" msprop:Generator_TablePropName="AntiguedadSaldos" msprop:Generator_RowDeletingName="AntiguedadSaldosRowDeleting" msprop:Generator_RowChangingName="AntiguedadSaldosRowChanging" msprop:Generator_RowEvHandlerName="AntiguedadSaldosRowChangeEventHandler" msprop:Generator_RowDeletedName="AntiguedadSaldosRowDeleted" msprop:Generator_RowClassName="AntiguedadSaldosRow" msprop:Generator_UserTableName="AntiguedadSaldos" msprop:Generator_RowEvArgName="AntiguedadSaldosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Pk_Id_Cuenta_Por_Cobrar" msprop:Generator_ColumnVarNameInTable="columnPk_Id_Cuenta_Por_Cobrar" msprop:Generator_ColumnPropNameInRow="Pk_Id_Cuenta_Por_Cobrar" msprop:Generator_ColumnPropNameInTable="Pk_Id_Cuenta_Por_CobrarColumn" msprop:Generator_UserColumnName="Pk_Id_Cuenta_Por_Cobrar" type="xs:int" minOccurs="0" />
+              <xs:element name="NoVenta" msprop:Generator_ColumnVarNameInTable="columnNoVenta" msprop:Generator_ColumnPropNameInRow="NoVenta" msprop:Generator_ColumnPropNameInTable="NoVentaColumn" msprop:Generator_UserColumnName="NoVenta" type="xs:int" minOccurs="0" />
+              <xs:element name="Fk_Id_Cliente" msprop:Generator_ColumnVarNameInTable="columnFk_Id_Cliente" msprop:Generator_ColumnPropNameInRow="Fk_Id_Cliente" msprop:Generator_ColumnPropNameInTable="Fk_Id_ClienteColumn" msprop:Generator_UserColumnName="Fk_Id_Cliente" type="xs:int" minOccurs="0" />
+              <xs:element name="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_UserColumnName="Cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="Cmp_Fecha_Deuda" msprop:Generator_ColumnVarNameInTable="columnCmp_Fecha_Deuda" msprop:Generator_ColumnPropNameInRow="Cmp_Fecha_Deuda" msprop:Generator_ColumnPropNameInTable="Cmp_Fecha_DeudaColumn" msprop:Generator_UserColumnName="Cmp_Fecha_Deuda" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cmp_Fecha_Vencimiento" msprop:Generator_ColumnVarNameInTable="columnCmp_Fecha_Vencimiento" msprop:Generator_ColumnPropNameInRow="Cmp_Fecha_Vencimiento" msprop:Generator_ColumnPropNameInTable="Cmp_Fecha_VencimientoColumn" msprop:Generator_UserColumnName="Cmp_Fecha_Vencimiento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Cmp_Monto_Total" msprop:Generator_ColumnVarNameInTable="columnCmp_Monto_Total" msprop:Generator_ColumnPropNameInRow="Cmp_Monto_Total" msprop:Generator_ColumnPropNameInTable="Cmp_Monto_TotalColumn" msprop:Generator_UserColumnName="Cmp_Monto_Total" type="xs:double" minOccurs="0" />
+              <xs:element name="MontoPagado" msprop:Generator_ColumnVarNameInTable="columnMontoPagado" msprop:Generator_ColumnPropNameInRow="MontoPagado" msprop:Generator_ColumnPropNameInTable="MontoPagadoColumn" msprop:Generator_UserColumnName="MontoPagado" type="xs:double" minOccurs="0" />
+              <xs:element name="SaldoPendiente" msprop:Generator_ColumnVarNameInTable="columnSaldoPendiente" msprop:Generator_ColumnPropNameInRow="SaldoPendiente" msprop:Generator_ColumnPropNameInTable="SaldoPendienteColumn" msprop:Generator_UserColumnName="SaldoPendiente" type="xs:double" minOccurs="0" />
+              <xs:element name="DiasVencidos" msprop:Generator_ColumnVarNameInTable="columnDiasVencidos" msprop:Generator_ColumnPropNameInRow="DiasVencidos" msprop:Generator_ColumnPropNameInTable="DiasVencidosColumn" msprop:Generator_UserColumnName="DiasVencidos" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -35,6 +35,9 @@
     <Reference Include="Capa_Controlador_Seguridad">
       <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Balance">
+      <HintPath>..\..\VENTAS\BalanceAntiguedad\Capa_Vista_Balance\bin\Debug\Capa_Vista_Balance.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Bodegaa">
       <HintPath>..\..\DISTRIBUCION\Proceso4-Bodega-Richard-de-Leon\P4BodegaRichardDeLeon\Capa_Vista_Bodegaa\bin\Debug\Capa_Vista_Bodegaa.dll</HintPath>
     </Reference>
