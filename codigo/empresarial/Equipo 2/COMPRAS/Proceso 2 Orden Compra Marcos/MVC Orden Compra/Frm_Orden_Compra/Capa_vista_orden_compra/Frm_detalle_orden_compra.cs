@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_controlador_orden_compra;
 
+
 namespace Capa_vista_orden_compra
 {
     public partial class Frm_detalle_orden_compra : Form
