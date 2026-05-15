@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Odbc;
+using System.Data;
+
 namespace Capa_Modelo_Ventas
 {
     public class Cls_CXCDetalle_dao
@@ -276,6 +278,88 @@ namespace Capa_Modelo_Ventas
             {
                 Console.WriteLine("Error en ActualizarEstadoCXC: " + ex.Message);
                 throw;
+            }
+            finally
+            {
+                if (conn != null)
+                    conexionBD.desconexion(conn);
+            }
+        }
+        public DataTable ListarCxcActivasConSaldo()
+        {
+            Cls_ConexionBD conexionBD = new Cls_ConexionBD();
+            OdbcConnection conn = null;
+
+            try
+            {
+                conn = conexionBD.AbrirConexion();
+
+            
+                string query = @"
+            SELECT
+                cxc.Pk_Id_Cuenta_Por_Cobrar AS IdCxc,
+                cxc.FK_Id_Cliente          AS IdCliente,
+                CONCAT(cli.Cmp_Nombre, ' ', cli.Cmp_Apellido) AS Cliente,
+                cxc.Cmp_Monto_Total        AS MontoTotal,
+                COALESCE(
+                    (
+                        SELECT d.Cmp_Saldo_Pendiente
+                        FROM tbl_cuentas_por_cobrar_detalle d
+                        WHERE d.Fk_Id_Cuenta_Por_Cobrar = cxc.Pk_Id_Cuenta_Por_Cobrar
+                        ORDER BY d.Pk_Id_Cuenta_Por_Cobrar_Detalle DESC
+                        LIMIT 1
+                    ),
+                    cxc.Cmp_Monto_Total
+                ) AS SaldoPendiente
+            FROM tbl_cuentas_por_cobrar cxc
+            INNER JOIN tbl_clientes cli ON cli.Pk_Id_Cliente = cxc.FK_Id_Cliente
+            WHERE cxc.Cmp_Estado = 'Activo';";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                using (OdbcDataAdapter da = new OdbcDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+            finally
+            {
+                if (conn != null)
+                    conexionBD.desconexion(conn);
+            }
+        }
+        public decimal ObtenerSaldoPendienteActual(int idCuentaPorCobrar)
+        {
+            Cls_ConexionBD conexionBD = new Cls_ConexionBD();
+            OdbcConnection conn = null;
+
+            try
+            {
+                conn = conexionBD.AbrirConexion();
+
+                string query = @"
+            SELECT COALESCE(
+                (
+                    SELECT d.Cmp_Saldo_Pendiente
+                    FROM tbl_cuentas_por_cobrar_detalle d
+                    WHERE d.Fk_Id_Cuenta_Por_Cobrar = cxc.Pk_Id_Cuenta_Por_Cobrar
+                    ORDER BY d.Pk_Id_Cuenta_Por_Cobrar_Detalle DESC
+                    LIMIT 1
+                ),
+                cxc.Cmp_Monto_Total
+            ) AS SaldoPendiente
+            FROM tbl_cuentas_por_cobrar cxc
+            WHERE cxc.Pk_Id_Cuenta_Por_Cobrar = ?;";
+
+                using (OdbcCommand cmd = new OdbcCommand(query, conn))
+                {
+                    cmd.Parameters.Add("idCxc", OdbcType.Int).Value = idCuentaPorCobrar;
+
+                    object r = cmd.ExecuteScalar();
+                    if (r == null || r == DBNull.Value) return 0m;
+                    return Convert.ToDecimal(r);
+                }
             }
             finally
             {

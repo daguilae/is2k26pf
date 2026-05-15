@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Capa_Controlador_Ventas
     {
         private Cls_CXCDetalle_dao cxcDetalleDAO = new Cls_CXCDetalle_dao();
 
-        // ✅ Registrar pago completo CON CLIENTE
+        //Registrar pago completo CON CLIENTE
         public bool RegistrarPago(
             int idCuentaPorCobrar,
             int idCliente,
@@ -124,7 +125,7 @@ namespace Capa_Controlador_Ventas
             return RegistrarPago(idCuentaPorCobrar, idCliente, numeroDocumento, tipoPago, montoPagado, saldoPendiente);
         }
 
-        // ✅ Cambiar estado CXC
+        //  Cambiar estado CXC
         public bool CambiarEstadoCXC(int idCuentaPorCobrar, string nuevoEstado)
         {
             try
@@ -267,5 +268,16 @@ namespace Capa_Controlador_Ventas
 
             return resultado.ToString();
         }
+
+        public DataTable ListarCxcActivasConSaldo()
+        {
+            return cxcDetalleDAO.ListarCxcActivasConSaldo();
+        }
+
+        public decimal ObtenerSaldoPendienteActual(int idCuentaPorCobrar)
+        {
+            return cxcDetalleDAO.ObtenerSaldoPendienteActual(idCuentaPorCobrar);
+        }
     }
+    
 }
