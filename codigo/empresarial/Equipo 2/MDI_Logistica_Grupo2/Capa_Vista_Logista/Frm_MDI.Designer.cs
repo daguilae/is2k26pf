@@ -74,13 +74,14 @@
             this.politicasDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceDeAntiguedadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitacoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.balanceDeAntiguedadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagosVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -298,7 +299,8 @@
             this.asignaciónVendedorClientesToolStripMenuItem,
             this.ordenDeCompraToolStripMenuItem,
             this.devolucionesToolStripMenuItem,
-            this.politicasDescuentosToolStripMenuItem});
+            this.politicasDescuentosToolStripMenuItem,
+            this.pagosVentasToolStripMenuItem});
             this.procesosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
             this.procesosToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
@@ -485,6 +487,13 @@
             this.reporteadorToolStripMenuItem.Text = "Reporteador";
             this.reporteadorToolStripMenuItem.Click += new System.EventHandler(this.reporteadorToolStripMenuItem_Click);
             // 
+            // balanceDeAntiguedadToolStripMenuItem
+            // 
+            this.balanceDeAntiguedadToolStripMenuItem.Name = "balanceDeAntiguedadToolStripMenuItem";
+            this.balanceDeAntiguedadToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
+            this.balanceDeAntiguedadToolStripMenuItem.Text = "Balance de Antiguedad";
+            this.balanceDeAntiguedadToolStripMenuItem.Click += new System.EventHandler(this.balanceDeAntiguedadToolStripMenuItem_Click);
+            // 
             // asignacionesToolStripMenuItem
             // 
             this.asignacionesToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -534,12 +543,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
             this.toolStripStatusLabel.Text = "Estado";
             // 
-            // balanceDeAntiguedadToolStripMenuItem
+            // pagosVentasToolStripMenuItem
             // 
-            this.balanceDeAntiguedadToolStripMenuItem.Name = "balanceDeAntiguedadToolStripMenuItem";
-            this.balanceDeAntiguedadToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
-            this.balanceDeAntiguedadToolStripMenuItem.Text = "Balance de Antiguedad";
-            this.balanceDeAntiguedadToolStripMenuItem.Click += new System.EventHandler(this.balanceDeAntiguedadToolStripMenuItem_Click);
+            this.pagosVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosVentasToolStripMenuItem.Image")));
+            this.pagosVentasToolStripMenuItem.Name = "pagosVentasToolStripMenuItem";
+            this.pagosVentasToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.pagosVentasToolStripMenuItem.Text = "Pagos Ventas";
+            this.pagosVentasToolStripMenuItem.Click += new System.EventHandler(this.pagosVentasToolStripMenuItem_Click_1);
             // 
             // Frm_MDI
             // 
@@ -552,7 +562,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Pnl_Superior);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Frm_MDI";
             this.Load += new System.EventHandler(this.Frm_MDI_Load);
             this.Pnl_Superior.ResumeLayout(false);
@@ -626,5 +636,6 @@
         private System.Windows.Forms.ToolStripMenuItem politicasDescuentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasPorCobrarDetalleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem balanceDeAntiguedadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pagosVentasToolStripMenuItem;
     }
 }

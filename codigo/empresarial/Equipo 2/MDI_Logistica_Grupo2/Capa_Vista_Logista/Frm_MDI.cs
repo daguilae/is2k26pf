@@ -282,12 +282,7 @@ namespace Capa_Vista_Logista
             CXP.Show();
         }
 
-        /*private void pagosVentasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Frm_Pagos pagos = new Frm_Pagos();
-            pagos.MdiParent = this;
-            pagos.Show();
-        }*/
+     
 
         private void movimientoDeInventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -494,6 +489,13 @@ namespace Capa_Vista_Logista
             Frm_Balance_Menu balance = new Frm_Balance_Menu();
             balance.MdiParent = this;
             balance.Show();
+        }
+
+        private void pagosVentasToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Frm_Pagos pagos = new Frm_Pagos();
+            pagos.MdiParent = this;
+            pagos.Show();
         }
     }
 }

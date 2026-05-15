@@ -73,20 +73,20 @@ namespace Capa_Vista_Ventas
             this.Gbo_Cmpos.Controls.Add(this.Lbl_Folio);
             this.Gbo_Cmpos.Location = new System.Drawing.Point(12, 389);
             this.Gbo_Cmpos.Name = "Gbo_Cmpos";
-            this.Gbo_Cmpos.Size = new System.Drawing.Size(1062, 197);
+            this.Gbo_Cmpos.Size = new System.Drawing.Size(1129, 197);
             this.Gbo_Cmpos.TabIndex = 121;
             this.Gbo_Cmpos.TabStop = false;
             // 
             // Dtp_Fecha_Pago
             // 
-            this.Dtp_Fecha_Pago.Location = new System.Drawing.Point(108, 123);
+            this.Dtp_Fecha_Pago.Location = new System.Drawing.Point(202, 121);
             this.Dtp_Fecha_Pago.Name = "Dtp_Fecha_Pago";
             this.Dtp_Fecha_Pago.Size = new System.Drawing.Size(366, 22);
             this.Dtp_Fecha_Pago.TabIndex = 26;
             // 
             // Txt_Monto
             // 
-            this.Txt_Monto.Location = new System.Drawing.Point(685, 73);
+            this.Txt_Monto.Location = new System.Drawing.Point(767, 72);
             this.Txt_Monto.Name = "Txt_Monto";
             this.Txt_Monto.Size = new System.Drawing.Size(308, 22);
             this.Txt_Monto.TabIndex = 25;
@@ -94,7 +94,7 @@ namespace Capa_Vista_Ventas
             // Cbo_Estado
             // 
             this.Cbo_Estado.FormattingEnabled = true;
-            this.Cbo_Estado.Location = new System.Drawing.Point(684, 25);
+            this.Cbo_Estado.Location = new System.Drawing.Point(741, 25);
             this.Cbo_Estado.Name = "Cbo_Estado";
             this.Cbo_Estado.Size = new System.Drawing.Size(309, 24);
             this.Cbo_Estado.TabIndex = 24;
@@ -104,7 +104,7 @@ namespace Capa_Vista_Ventas
             this.Cbo_MetodoPago.FormattingEnabled = true;
             this.Cbo_MetodoPago.Location = new System.Drawing.Point(202, 73);
             this.Cbo_MetodoPago.Name = "Cbo_MetodoPago";
-            this.Cbo_MetodoPago.Size = new System.Drawing.Size(272, 24);
+            this.Cbo_MetodoPago.Size = new System.Drawing.Size(367, 24);
             this.Cbo_MetodoPago.TabIndex = 23;
             this.Cbo_MetodoPago.SelectedIndexChanged += new System.EventHandler(this.Cbo_MetodoPago_SelectedIndexChanged);
             // 
@@ -113,14 +113,15 @@ namespace Capa_Vista_Ventas
             this.Cbo_CXC.FormattingEnabled = true;
             this.Cbo_CXC.Location = new System.Drawing.Point(211, 21);
             this.Cbo_CXC.Name = "Cbo_CXC";
-            this.Cbo_CXC.Size = new System.Drawing.Size(293, 24);
+            this.Cbo_CXC.Size = new System.Drawing.Size(365, 24);
             this.Cbo_CXC.TabIndex = 22;
+            this.Cbo_CXC.SelectedIndexChanged += new System.EventHandler(this.Cbo_CXC_SelectedIndexChanged);
             // 
             // Lbl_Estado
             // 
             this.Lbl_Estado.AutoSize = true;
             this.Lbl_Estado.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Estado.Location = new System.Drawing.Point(544, 28);
+            this.Lbl_Estado.Location = new System.Drawing.Point(599, 24);
             this.Lbl_Estado.Name = "Lbl_Estado";
             this.Lbl_Estado.Size = new System.Drawing.Size(125, 21);
             this.Lbl_Estado.TabIndex = 21;
@@ -130,7 +131,7 @@ namespace Capa_Vista_Ventas
             // 
             this.Lbl_Monto.AutoSize = true;
             this.Lbl_Monto.Font = new System.Drawing.Font("Rockwell", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Monto.Location = new System.Drawing.Point(558, 76);
+            this.Lbl_Monto.Location = new System.Drawing.Point(613, 72);
             this.Lbl_Monto.Name = "Lbl_Monto";
             this.Lbl_Monto.Size = new System.Drawing.Size(121, 21);
             this.Lbl_Monto.TabIndex = 20;
@@ -334,7 +335,7 @@ namespace Capa_Vista_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 654);
+            this.ClientSize = new System.Drawing.Size(1153, 654);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
