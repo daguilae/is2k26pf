@@ -72,6 +72,7 @@
             this.ordenDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.politicasDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagosVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.balanceDeAntiguedadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,6 @@
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pagosVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Pnl_Superior.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -470,6 +470,14 @@
             this.politicasDescuentosToolStripMenuItem.Text = "Politicas Descuentos";
             this.politicasDescuentosToolStripMenuItem.Click += new System.EventHandler(this.politicasDescuentosToolStripMenuItem_Click);
             // 
+            // pagosVentasToolStripMenuItem
+            // 
+            this.pagosVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosVentasToolStripMenuItem.Image")));
+            this.pagosVentasToolStripMenuItem.Name = "pagosVentasToolStripMenuItem";
+            this.pagosVentasToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.pagosVentasToolStripMenuItem.Text = "Pagos Ventas";
+            this.pagosVentasToolStripMenuItem.Click += new System.EventHandler(this.pagosVentasToolStripMenuItem_Click_1);
+            // 
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -489,6 +497,7 @@
             // 
             // balanceDeAntiguedadToolStripMenuItem
             // 
+            this.balanceDeAntiguedadToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("balanceDeAntiguedadToolStripMenuItem.Image")));
             this.balanceDeAntiguedadToolStripMenuItem.Name = "balanceDeAntiguedadToolStripMenuItem";
             this.balanceDeAntiguedadToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
             this.balanceDeAntiguedadToolStripMenuItem.Text = "Balance de Antiguedad";
@@ -542,14 +551,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
             this.toolStripStatusLabel.Text = "Estado";
-            // 
-            // pagosVentasToolStripMenuItem
-            // 
-            this.pagosVentasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagosVentasToolStripMenuItem.Image")));
-            this.pagosVentasToolStripMenuItem.Name = "pagosVentasToolStripMenuItem";
-            this.pagosVentasToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
-            this.pagosVentasToolStripMenuItem.Text = "Pagos Ventas";
-            this.pagosVentasToolStripMenuItem.Click += new System.EventHandler(this.pagosVentasToolStripMenuItem_Click_1);
             // 
             // Frm_MDI
             // 
