@@ -147,10 +147,20 @@ namespace Capa_Vista_Logista
                 //{730, consultaDeInventariosToolStripMenuItem_Click},
                 {732,cuentasPorCobrarDetalleToolStripMenuItem}
 
+
             };
+            Dictionary<int, ToolStripMenuItem> mapaReportes = new Dictionary<int, ToolStripMenuItem>
+            {
+                {733, balanceDeAntiguedadToolStripMenuItem },
+               
+
+
+            };
+
 
             foreach (var sub in mapaCatalogos.Values) sub.Enabled = false;
             foreach (var sub in mapaProcesos.Values) sub.Enabled = false;
+            foreach (var sub in mapaReportes.Values) sub.Enabled = false;
             menuItems[MenuOpciones.Seguridad].Enabled = false;
 
             DataTable dtPermisosPerfil = controladorPermisosPerfil.datObtenerPermisosPorPerfil(iIdPerfil);
@@ -165,6 +175,8 @@ namespace Capa_Vista_Logista
                         mapaCatalogos[idAplicacion].Enabled = true;
                     if (mapaProcesos.ContainsKey(idAplicacion))
                         mapaProcesos[idAplicacion].Enabled = true;
+                    if (mapaReportes.ContainsKey(idAplicacion))
+                        mapaReportes[idAplicacion].Enabled = true;
                 }
 
                 if (idModulo == 4 && idAplicacion == 309)
@@ -185,6 +197,8 @@ namespace Capa_Vista_Logista
                         mapaCatalogos[idAplicacion].Enabled = true;
                     if (mapaProcesos.ContainsKey(idAplicacion))
                         mapaProcesos[idAplicacion].Enabled = true;
+                    if (mapaReportes.ContainsKey(idAplicacion))
+                        mapaReportes[idAplicacion].Enabled = true;
                 }
 
                 if (idModulo == 4 && idAplicacion == 309)
@@ -195,6 +209,7 @@ namespace Capa_Vista_Logista
 
             menuItems[MenuOpciones.Catalogos].Enabled = mapaCatalogos.Values.Any(m => m.Enabled);
             menuItems[MenuOpciones.Procesos].Enabled = mapaProcesos.Values.Any(m => m.Enabled);
+            menuItems[MenuOpciones.Reportes].Enabled = mapaProcesos.Values.Any(m => m.Enabled);
         }
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
