@@ -609,74 +609,7 @@ namespace Capa_Vista_Prod
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            if (Cbo_Orden.SelectedValue == null || Cbo_Orden.SelectedValue is DataRowView)
-            {
-                MessageBox.Show("Seleccione una orden primero.");
-                return;
-            }
-
-            int idOrdenProduccion = Convert.ToInt32(Cbo_Orden.SelectedValue);
-
-            /// En lugar de leer los labels, leer del DataGridView
-            decimal totalMateriales = 0, totalManoObra = 0, totalIndirectos = 0;
-            decimal totalMermas = 0, totalFases = 0, totalFactura = 0;
-
-            foreach (DataGridViewRow fila in dgvCostos.Rows)
-            {
-                if (fila.Cells["Categoria"].Value == null) continue;
-
-                string categoria = fila.Cells["Categoria"].Value.ToString();
-                decimal monto = Convert.ToDecimal(fila.Cells["Monto"].Value);
-
-                switch (categoria)
-                {
-                    case "Materiales": totalMateriales = monto; break;
-                    case "Mano de obra": totalManoObra = monto; break;
-                    case "Costos indirectos": totalIndirectos = monto; break;
-                    case "Mermas": totalMermas = monto; break;
-                    case "Fases": totalFases = monto; break;
-                    case "TOTAL": totalFactura = monto; break;
-                }
-            }
-
-            // Verificar que haya costos
-            if (totalFactura <= 0)
-            {
-                MessageBox.Show("La orden no tiene costos registrados.");
-                return;
-            }
-
-            // Obtener la orden recibida
-            int idOrdenRecibida = controlador.ObtenerOrdenRecibidaPorOrdenProduccion(idOrdenProduccion);
-            if (idOrdenRecibida == 0)
-            {
-                MessageBox.Show("No se encontró la orden recibida asociada.");
-                return;
-            }
-
-            DialogResult confirm = MessageBox.Show("¿Desea generar la factura para esta orden?",
-                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirm == DialogResult.Yes)
-            {
-                try
-                {
-                    bool exito = controlador.GenerarFactura(
-                        idOrdenRecibida, idOrdenProduccion,
-                        totalMateriales, totalManoObra, totalIndirectos,
-                        totalMermas, totalFases, totalFactura);
-
-                    if (exito)
-                    {
-                        MessageBox.Show("Factura generada correctamente.", "Éxito",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error detallado: " + ex.Message);
-                }
-            }
+            
         }
 
         // ######################## DISEÑO DE FORMULARIOS ##############################################

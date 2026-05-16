@@ -111,6 +111,188 @@ namespace Capa_Modelo_RO
 
         // ------ KEVIN NATARENO - 0901-21-635, 28/04/2026 --------
 
+        // ------ KEVIN NATARENO - 0901-21-635, 30/04/2026 --------
+        public bool GenerarFactura(int idOrdenRecibida)
+        {
+            OdbcConnection conn = conexion.AbrirConexion();
+            OdbcTransaction transaccion = conn.BeginTransaction();
+            try
+            {
+                OdbcCommand cmdOrdenes = new OdbcCommand(@"
+            SELECT op.Pk_Id_Orden_Produccion
+            FROM Tbl_Orden_Produccion op
+            INNER JOIN Tbl_Plan_Produccion pp 
+                ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+            WHERE pp.Fk_Id_Orden_Recibida = ?", conn);
+                cmdOrdenes.Transaction = transaccion;
+                cmdOrdenes.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
+
+                OdbcDataAdapter da = new OdbcDataAdapter(cmdOrdenes);
+                DataTable dtOrdenes = new DataTable();
+                da.Fill(dtOrdenes);
+
+                if (dtOrdenes.Rows.Count == 0)
+                    throw new Exception("No hay órdenes de producción para esta orden recibida.");
+
+                decimal totalFactura = 0;
+                DataTable dtCostos = new DataTable();
+                dtCostos.Columns.Add("IdOrden", typeof(int));
+                dtCostos.Columns.Add("Materiales", typeof(decimal));
+                dtCostos.Columns.Add("ManoObra", typeof(decimal));
+                dtCostos.Columns.Add("Indirectos", typeof(decimal));
+                dtCostos.Columns.Add("Mermas", typeof(decimal));
+                dtCostos.Columns.Add("Fases", typeof(decimal));
+                dtCostos.Columns.Add("Subtotal", typeof(decimal));
+
+                foreach (DataRow orden in dtOrdenes.Rows)
+                {
+                    int idOrden = Convert.ToInt32(orden["Pk_Id_Orden_Produccion"]);
+
+                    OdbcCommand cmdCostos = new OdbcCommand(@"
+                SELECT
+                    COALESCE((
+                        SELECT SUM(sub.monto)
+                        FROM (
+                            SELECT emd.Cantidad_Real_Con_Merma * i.Costo_Unitario AS monto
+                            FROM Tbl_Orden_Produccion op
+                            INNER JOIN Tbl_Plan_Produccion pp 
+                                ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+                            INNER JOIN Tbl_Explosion_Materiales em 
+                                ON em.Pk_Id_Explosion = (
+                                    SELECT MAX(Pk_Id_Explosion) 
+                                    FROM Tbl_Explosion_Materiales 
+                                    WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida)
+                            INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
+                                ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+                            INNER JOIN Tbl_BOM b 
+                                ON b.Fk_Id_Material = op.Fk_Id_Material
+                            INNER JOIN Tbl_BOM_Detalle bd 
+                                ON bd.Fk_Id_BOM = b.Pk_Id_BOM 
+                                AND bd.Fk_Id_Materiales = emd.Fk_Id_Material
+                            INNER JOIN Tbl_Inventario i 
+                                ON emd.Fk_Id_Material = i.Fk_Id_Material
+                            WHERE op.Pk_Id_Orden_Produccion = ?
+                            GROUP BY emd.Fk_Id_Material, i.Costo_Unitario
+                        ) sub
+                    ), 0) AS CostoMateriales,
+
+                    COALESCE((
+                        SELECT SUM(mo.Hora_Trabajada_Mano_Obra * mo.Costo_Hora_Mano_Obra)
+                        FROM Tbl_Mano_Obra mo
+                        WHERE mo.Fk_Id_Orden_Produccion = ?
+                    ), 0) AS CostoManoObra,
+
+                    COALESCE((
+                        SELECT SUM(ci.Monto_Costo_Indirecto_Produccion)
+                        FROM Tbl_Costo_Indirecto_Produccion ci
+                        WHERE ci.Fk_Id_Orden_Produccion = ?
+                    ), 0) AS CostoIndirecto,
+
+                    COALESCE((
+                        SELECT SUM(me.Cantidad_Merma * i.Costo_Unitario)
+                        FROM Tbl_Merma me
+                        INNER JOIN Tbl_Inventario i ON me.Fk_Id_Materiales = i.Fk_Id_Material
+                        WHERE me.Fk_Id_Orden_Produccion = ?
+                    ), 0) AS CostoMermas,
+
+                    COALESCE((
+                        SELECT SUM(cf.Costo)
+                        FROM Tbl_Orden_Produccion op2
+                        INNER JOIN Tbl_Plan_Produccion pp 
+                            ON op2.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
+                        INNER JOIN Tbl_Orden_Recibida_Detalle ord
+                            ON pp.Fk_Id_Orden_Recibida = ord.Fk_Id_Orden_Recibida
+                        INNER JOIN Tbl_BOM b ON b.Fk_Id_Material = ord.Fk_Id_Material
+                        INNER JOIN Tbl_Fases_Produccion fp ON fp.Fk_Id_BOM = b.Pk_Id_BOM
+                        INNER JOIN Tbl_Costo_Fase cf ON cf.Fk_Id_Fase_Producto = fp.Pk_Id_Fase_Producto
+                        WHERE op2.Pk_Id_Orden_Produccion = ?
+                    ), 0) AS CostoFases", conn);
+
+                    cmdCostos.Transaction = transaccion;
+                    cmdCostos.Parameters.Add("?", OdbcType.Int).Value = idOrden;
+                    cmdCostos.Parameters.Add("?", OdbcType.Int).Value = idOrden;
+                    cmdCostos.Parameters.Add("?", OdbcType.Int).Value = idOrden;
+                    cmdCostos.Parameters.Add("?", OdbcType.Int).Value = idOrden;
+                    cmdCostos.Parameters.Add("?", OdbcType.Int).Value = idOrden;
+
+                    OdbcDataAdapter daCostos = new OdbcDataAdapter(cmdCostos);
+                    DataTable dtCosto = new DataTable();
+                    daCostos.Fill(dtCosto);
+
+                    if (dtCosto.Rows.Count > 0)
+                    {
+                        DataRow r = dtCosto.Rows[0];
+                        decimal mat = Convert.ToDecimal(r["CostoMateriales"]);
+                        decimal mo = Convert.ToDecimal(r["CostoManoObra"]);
+                        decimal ind = Convert.ToDecimal(r["CostoIndirecto"]);
+                        decimal mer = Convert.ToDecimal(r["CostoMermas"]);
+                        decimal fas = Convert.ToDecimal(r["CostoFases"]);
+                        decimal sub = mat + mo + ind + mer + fas;
+                        totalFactura += sub;
+
+                        dtCostos.Rows.Add(idOrden, mat, mo, ind, mer, fas, sub);
+                    }
+                }
+
+                // Insertar encabezado
+                OdbcCommand cmdEncabezado = new OdbcCommand(
+                    "INSERT INTO Tbl_Factura_Produccion (Fk_Id_Orden_Recibida, Total_Factura) VALUES (?, ?)",
+                    conn);
+                cmdEncabezado.Transaction = transaccion;
+                cmdEncabezado.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
+                cmdEncabezado.Parameters.Add("?", OdbcType.Double).Value = totalFactura;
+                cmdEncabezado.ExecuteNonQuery();
+
+                OdbcCommand cmdId = new OdbcCommand("SELECT LAST_INSERT_ID()", conn);
+                cmdId.Transaction = transaccion;
+                int idFactura = Convert.ToInt32(cmdId.ExecuteScalar());
+
+                foreach (DataRow costo in dtCostos.Rows)
+                {
+                    OdbcCommand cmdDetalle = new OdbcCommand(@"
+                INSERT INTO Tbl_Factura_Produccion_Detalle 
+                    (Fk_Id_Factura, Fk_Id_Orden_Produccion, Total_Materiales, 
+                     Total_Mano_Obra, Total_Costos_Indirectos, Total_Mermas, Total_Fases, Subtotal)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)", conn);
+                    cmdDetalle.Transaction = transaccion;
+                    cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idFactura;
+                    cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = Convert.ToInt32(costo["IdOrden"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["Materiales"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["ManoObra"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["Indirectos"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["Mermas"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["Fases"]);
+                    cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = Convert.ToDecimal(costo["Subtotal"]);
+                    cmdDetalle.ExecuteNonQuery();
+                }
+
+                transaccion.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                transaccion.Rollback();
+                Console.WriteLine("Error (GenerarFactura): " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool ExisteFactura(int idOrdenRecibida)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                OdbcCommand cmd = new OdbcCommand(
+                    "SELECT COUNT(*) FROM Tbl_Factura_Produccion WHERE Fk_Id_Orden_Recibida = ?", conn);
+                cmd.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+        // ------ KEVIN NATARENO - 0901-21-635, 30/04/2026 --------
 
 
     }
