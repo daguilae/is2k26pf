@@ -27,7 +27,7 @@ namespace Capa_Vista_Comprobantes
         {
             Cbo_Id_Comprobante_Compra.DropDownStyle = ComboBoxStyle.DropDownList;
             Cbo_Id_Entrega_Comprobante_Compra.DropDownStyle = ComboBoxStyle.DropDownList;
-            Cbo_Id_Cliente.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cbo_Id_Proveedor.DropDownStyle = ComboBoxStyle.DropDownList;
             Cbo_Estado.DropDownStyle = ComboBoxStyle.DropDownList;
 
             fun_CargarCombos();
@@ -53,9 +53,9 @@ namespace Capa_Vista_Comprobantes
             Cbo_Id_Entrega_Comprobante_Compra.DisplayMember = "Pk_ID_Entrega_Compra";
             Cbo_Id_Entrega_Comprobante_Compra.ValueMember = "Pk_ID_Entrega_Compra";
 
-            Cbo_Id_Cliente.DataSource = controlador.fun_ObtenerIdCliente();
-            Cbo_Id_Cliente.DisplayMember = "Pk_Id_Cliente";
-            Cbo_Id_Cliente.ValueMember = "Pk_Id_Cliente";
+            Cbo_Id_Proveedor.DataSource = controlador.fun_ObtenerIdProveedor();
+            Cbo_Id_Proveedor.DisplayMember = "cmp_Nombre_Proveedor";
+            Cbo_Id_Proveedor.ValueMember = "pk_id_proveedor";
 
             Cbo_Estado.Items.Clear();
             Cbo_Estado.Items.Add("Pendiente");
@@ -64,7 +64,7 @@ namespace Capa_Vista_Comprobantes
 
             Cbo_Id_Comprobante_Compra.SelectedIndex = -1;
             Cbo_Id_Entrega_Comprobante_Compra.SelectedIndex = -1;
-            Cbo_Id_Cliente.SelectedIndex = -1;
+            Cbo_Id_Proveedor.SelectedIndex = -1;
             Cbo_Estado.SelectedIndex = -1;
 
             cargandoCombos = false;
@@ -74,7 +74,7 @@ namespace Capa_Vista_Comprobantes
         {
             Cbo_Id_Comprobante_Compra.Enabled = estado;
             Cbo_Id_Entrega_Comprobante_Compra.Enabled = estado;
-            Cbo_Id_Cliente.Enabled = estado;
+            Cbo_Id_Proveedor.Enabled = estado;
             Txt_Nombre_Receptor.Enabled = estado;
             Dtp_Fecha_Hora_Entrega.Enabled = estado;
             Cbo_Estado.Enabled = estado;
@@ -86,7 +86,7 @@ namespace Capa_Vista_Comprobantes
             // Combos
             Cbo_Id_Comprobante_Compra.SelectedIndex = -1;
             Cbo_Id_Entrega_Comprobante_Compra.SelectedIndex = -1;
-            Cbo_Id_Cliente.SelectedIndex = -1;
+            Cbo_Id_Proveedor.SelectedIndex = -1;
             Cbo_Estado.SelectedIndex = -1;
 
             // Textos
@@ -144,7 +144,7 @@ namespace Capa_Vista_Comprobantes
         private bool fun_ValidarCampos()
         {
             if (Cbo_Id_Entrega_Comprobante_Compra.SelectedIndex == -1 ||
-                Cbo_Id_Cliente.SelectedIndex == -1 ||
+                Cbo_Id_Proveedor.SelectedIndex == -1 ||
                 Txt_Nombre_Receptor.Text.Trim() == "" ||
                 Cbo_Estado.SelectedIndex == -1)
             {
@@ -161,7 +161,7 @@ namespace Capa_Vista_Comprobantes
 
             Cbo_Id_Comprobante_Compra.Enabled = false;
             Cbo_Id_Entrega_Comprobante_Compra.Enabled = true;
-            Cbo_Id_Cliente.Enabled = true;
+            Cbo_Id_Proveedor.Enabled = true;
             Txt_Nombre_Receptor.Enabled = true;
             Dtp_Fecha_Hora_Entrega.Enabled = true;
             Cbo_Estado.Enabled = true;
@@ -183,16 +183,18 @@ namespace Capa_Vista_Comprobantes
             }
 
             int fkIdEntregaCompra = Convert.ToInt32(Cbo_Id_Entrega_Comprobante_Compra.SelectedValue);
-            int fkIdCliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+            int fkIdProveedor = Convert.ToInt32(Cbo_Id_Proveedor.SelectedValue);
 
             string nombreReceptor = Txt_Nombre_Receptor.Text.Trim();
             DateTime fechaHoraEntrega = Dtp_Fecha_Hora_Entrega.Value;
             string observaciones = Txt_Observaciones.Text.Trim();
             string estado = Cbo_Estado.Text;
 
+
+
             bool resultado = controlador.InsertarComprobante(
                 fkIdEntregaCompra,
-                fkIdCliente,
+                fkIdProveedor,
                 nombreReceptor,
                 fechaHoraEntrega,
                 observaciones,
@@ -229,23 +231,24 @@ namespace Capa_Vista_Comprobantes
 
             int pkIdComprobante = Convert.ToInt32(Cbo_Id_Comprobante_Compra.SelectedValue);
             int fkIdEntregaCompra = Convert.ToInt32(Cbo_Id_Entrega_Comprobante_Compra.SelectedValue);
-            int fkIdCliente = Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+            int fkIdProveedor = Convert.ToInt32(Cbo_Id_Proveedor.SelectedValue);
 
             string nombreReceptor = Txt_Nombre_Receptor.Text.Trim();
             DateTime fechaHoraEntrega = Dtp_Fecha_Hora_Entrega.Value;
             string observaciones = Txt_Observaciones.Text.Trim();
             string estado = Cbo_Estado.Text;
 
+
+
             bool resultado = controlador.ActualizarComprobante(
                 pkIdComprobante,
                 fkIdEntregaCompra,
-                fkIdCliente,
+                fkIdProveedor,
                 nombreReceptor,
                 fechaHoraEntrega,
                 observaciones,
                 estado
             );
-
             if (resultado)
             {
                 MessageBox.Show("Comprobante modificado correctamente.");
@@ -303,7 +306,7 @@ namespace Capa_Vista_Comprobantes
                 DataRow fila = tabla.Rows[0];
 
                 Cbo_Id_Entrega_Comprobante_Compra.SelectedValue = fila["Fk_ID_Entrega_Compra"];
-                Cbo_Id_Cliente.SelectedValue = fila["Fk_ID_Cliente"];
+                Cbo_Id_Proveedor.SelectedValue = fila["Fk_ID_Proveedor"];
                 Txt_Nombre_Receptor.Text = fila["Cmp_Nombre_Receptor"].ToString();
 
                 if (fila["Cmp_Fecha_Hora_Entrega"] != DBNull.Value)
@@ -331,7 +334,7 @@ namespace Capa_Vista_Comprobantes
         {
             Cbo_Id_Comprobante_Compra.Enabled = false;
             Cbo_Id_Entrega_Comprobante_Compra.Enabled = false;
-            Cbo_Id_Cliente.Enabled = false;
+            Cbo_Id_Proveedor.Enabled = false;
             Txt_Nombre_Receptor.Enabled = false;
             Dtp_Fecha_Hora_Entrega.Enabled = false;
             Cbo_Estado.Enabled = false;
@@ -354,7 +357,6 @@ namespace Capa_Vista_Comprobantes
         {
             fun_LimpiarCampos();
         }
-
         private void fun_CargarDataGrid()
         {
             Dvg_Comprobante_Compra.DataSource = controlador.MostrarComprobantes();
@@ -368,12 +370,15 @@ namespace Capa_Vista_Comprobantes
             // NOMBRES VISUALES
             Dvg_Comprobante_Compra.Columns["Pk_ID_Comprobante_Compra"].HeaderText = "ID Comprobante";
             Dvg_Comprobante_Compra.Columns["Fk_ID_Entrega_Compra"].HeaderText = "ID Entrega";
-            Dvg_Comprobante_Compra.Columns["Fk_ID_Cliente"].HeaderText = "ID Cliente";
+            Dvg_Comprobante_Compra.Columns["Fk_ID_Proveedor"].HeaderText = "ID Proveedor";
+            Dvg_Comprobante_Compra.Columns["Proveedor"].HeaderText = "Proveedor";
             Dvg_Comprobante_Compra.Columns["Cmp_Nombre_Receptor"].HeaderText = "Nombre Receptor";
             Dvg_Comprobante_Compra.Columns["Cmp_Fecha_Hora_Entrega"].HeaderText = "Fecha de Entrega";
             Dvg_Comprobante_Compra.Columns["Cmp_Observaciones"].HeaderText = "Observaciones";
             Dvg_Comprobante_Compra.Columns["Cmp_Estado"].HeaderText = "Estado";
-            Dvg_Comprobante_Compra.Columns["Fk_ID_Cliente"].Visible = false;
+
+            // OCULTAR ID
+            Dvg_Comprobante_Compra.Columns["Fk_ID_Proveedor"].Visible = false;
         }
 
         private void Dvg_Comprobante_Compra_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -392,7 +397,7 @@ namespace Capa_Vista_Comprobantes
 
             Cbo_Id_Comprobante_Compra.SelectedValue = Convert.ToInt32(fila.Cells["Pk_ID_Comprobante_Compra"].Value);
             Cbo_Id_Entrega_Comprobante_Compra.SelectedValue = Convert.ToInt32(fila.Cells["Fk_ID_Entrega_Compra"].Value);
-            Cbo_Id_Cliente.SelectedValue = Convert.ToInt32(fila.Cells["Fk_ID_Cliente"].Value);
+            Cbo_Id_Proveedor.SelectedValue = Convert.ToInt32(fila.Cells["Fk_ID_Proveedor"].Value);
 
             Txt_Nombre_Receptor.Text = fila.Cells["Cmp_Nombre_Receptor"].Value.ToString();
 
@@ -517,7 +522,7 @@ namespace Capa_Vista_Comprobantes
         private void Limpiar_Comprobante()
         {
             Cbo_Id_Entrega_Comprobante_Compra.SelectedIndex = -1;
-            Cbo_Id_Cliente.SelectedIndex = -1;
+            Cbo_Id_Proveedor.SelectedIndex = -1;
             Txt_Nombre_Receptor.Clear();
             Txt_Observaciones.Clear();
             Dtp_Fecha_Hora_Entrega.Value = DateTime.Now;
@@ -541,6 +546,7 @@ namespace Capa_Vista_Comprobantes
 
             Dvg_Comprobante_Compra.EnableHeadersVisualStyles = false;
         }
+
 
     }
 }

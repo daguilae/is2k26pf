@@ -10,7 +10,7 @@ namespace Capa_Modelo
 
         public bool InsertarComprobanteCompra(
             int fkIdEntregaCompra,
-            int fkIdCliente,
+            int fkIdProveedor,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
             string observaciones,
@@ -21,7 +21,7 @@ namespace Capa_Modelo
                 string sql = @"INSERT INTO tbl_comprobante_compra
                 (
                     Fk_ID_Entrega_Compra,
-                    Fk_ID_Cliente,
+                    Fk_ID_Proveedor,
                     Cmp_Nombre_Receptor,
                     Cmp_Fecha_Hora_Entrega,
                     Cmp_Observaciones,
@@ -32,7 +32,7 @@ namespace Capa_Modelo
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
 
                 cmd.Parameters.AddWithValue("?", fkIdEntregaCompra);
-                cmd.Parameters.AddWithValue("?", fkIdCliente);
+                cmd.Parameters.AddWithValue("?", fkIdProveedor);
                 cmd.Parameters.AddWithValue("?", nombreReceptor);
                 cmd.Parameters.AddWithValue("?", fechaHoraEntrega);
                 cmd.Parameters.AddWithValue("?", observaciones);
@@ -53,7 +53,7 @@ namespace Capa_Modelo
         public bool ActualizarComprobanteCompra(
             int pkIdComprobanteCompra,
             int fkIdEntregaCompra,
-            int fkIdCliente,
+            int fkIdProveedor,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
             string observaciones,
@@ -63,7 +63,7 @@ namespace Capa_Modelo
             {
                 string sql = @"UPDATE tbl_comprobante_compra SET
                     Fk_ID_Entrega_Compra = ?,
-                    Fk_ID_Cliente = ?,
+                    Fk_ID_Proveedor = ?,
                     Cmp_Nombre_Receptor = ?,
                     Cmp_Fecha_Hora_Entrega = ?,
                     Cmp_Observaciones = ?,
@@ -73,7 +73,7 @@ namespace Capa_Modelo
                 OdbcCommand cmd = new OdbcCommand(sql, conexion.fun_AbrirConexion());
 
                 cmd.Parameters.AddWithValue("?", fkIdEntregaCompra);
-                cmd.Parameters.AddWithValue("?", fkIdCliente);
+                cmd.Parameters.AddWithValue("?", fkIdProveedor);
                 cmd.Parameters.AddWithValue("?", nombreReceptor);
                 cmd.Parameters.AddWithValue("?", fechaHoraEntrega);
                 cmd.Parameters.AddWithValue("?", observaciones);
@@ -121,19 +121,19 @@ namespace Capa_Modelo
             try
             {
                 string sql = @"
-                        SELECT 
-                            cc.Pk_ID_Comprobante_Compra,
-                            cc.Fk_ID_Entrega_Compra,
-                            cc.Fk_ID_Cliente,
-                            c.Cmp_Nombre AS Cliente,
-                            cc.Cmp_Nombre_Receptor,
-                            cc.Cmp_Fecha_Hora_Entrega,
-                            cc.Cmp_Observaciones,
-                            cc.Cmp_Estado
-                        FROM tbl_comprobante_compra cc
-                        INNER JOIN tbl_clientes c
-                            ON cc.Fk_ID_Cliente = c.Pk_Id_Cliente;
-                        ";
+                    SELECT 
+                        cc.Pk_ID_Comprobante_Compra,
+                        cc.Fk_ID_Entrega_Compra,
+                        cc.Fk_ID_Proveedor,
+                        p.cmp_Nombre_Proveedor AS Proveedor,
+                        cc.Cmp_Nombre_Receptor,
+                        cc.Cmp_Fecha_Hora_Entrega,
+                        cc.Cmp_Observaciones,
+                        cc.Cmp_Estado
+                    FROM tbl_comprobante_compra cc
+                    INNER JOIN tbl_proveedores p
+                        ON cc.Fk_ID_Proveedor = p.pk_id_proveedor;
+                ";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -158,7 +158,7 @@ namespace Capa_Modelo
                 string sql = @"SELECT 
                     Pk_ID_Comprobante_Compra,
                     Fk_ID_Entrega_Compra,
-                    Fk_ID_Cliente,
+                    Fk_ID_Proveedor,
                     Cmp_Nombre_Receptor,
                     Cmp_Fecha_Hora_Entrega,
                     Cmp_Observaciones,
@@ -212,7 +212,7 @@ namespace Capa_Modelo
 
             try
             {
-                string sql = @"SELECT Pk_ID_Entrega_Compra 
+                string sql = @"SELECT Pk_Id_Entrega_Compra 
                                FROM tbl_entrega_compra";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
@@ -229,14 +229,16 @@ namespace Capa_Modelo
             return tabla;
         }
 
-        public DataTable fun_ObtenerIdCliente()
+        public DataTable fun_ObtenerIdProveedor()
         {
             DataTable tabla = new DataTable();
 
             try
             {
-                string sql = @"SELECT Pk_Id_Cliente 
-                       FROM tbl_clientes";
+                string sql = @"SELECT 
+                                pk_id_proveedor,
+                                cmp_Nombre_Proveedor
+                               FROM tbl_proveedores";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(sql, conexion.fun_AbrirConexion());
                 da.Fill(tabla);
@@ -260,25 +262,25 @@ namespace Capa_Modelo
             try
             {
                 string S_Query = @"
-                            SELECT 
-                                e.Pk_ID_Entrega_Compra AS No_Entrega,
-                                e.Fk_Id_Compra AS Compra,
-                                i.nombre_prod AS Producto,
-                                dc.cmp_cantidad AS Cantidad,
-                                e.Fk_Id_Transporte AS Transporte,
-                                e.Cmp_Direccion AS Direccion,
-                                e.Cmp_Fecha AS Fecha,
-                                e.Cmp_Estado_Entrega AS Estado
-                            FROM tbl_entrega_compra e
-                            INNER JOIN tbl_detalle_compra dc 
-                                ON e.Fk_Id_Compra = dc.fk_id_compra
-                            INNER JOIN tbl_inventario i 
-                                ON dc.fk_inventario_id = i.pk_inventario_id
-                            WHERE e.Pk_ID_Entrega_Compra = ?;
-                        ";
+                    SELECT 
+                        e.Pk_Id_Entrega_Compra AS No_Entrega,
+                        e.Fk_Id_Compra AS Compra,
+                        i.nombre_prod AS Producto,
+                        dc.cmp_cantidad AS Cantidad,
+                        e.Fk_Id_Transporte AS Transporte,
+                        e.Cmp_Direccion AS Direccion,
+                        e.Cmp_Fecha AS Fecha,
+                        e.Cmp_Estado_Entrega AS Estado
+                    FROM tbl_entrega_compra e
+                    INNER JOIN tbl_detalle_compra dc 
+                        ON e.Fk_Id_Compra = dc.fk_id_compra
+                    INNER JOIN tbl_inventario i 
+                        ON dc.fk_inventario_id = i.pk_inventario_id
+                    WHERE e.Pk_Id_Entrega_Compra = ?;
+                ";
 
                 OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
-                Cmd.Parameters.AddWithValue("@Pk_ID_Entrega_Compra", I_Id_Entrega_Compra);
+                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Compra);
 
                 OdbcDataAdapter Da = new OdbcDataAdapter(Cmd);
                 Da.Fill(Dt_Datos);
@@ -302,9 +304,9 @@ namespace Capa_Modelo
             try
             {
                 string S_Query = @"
-            DELETE FROM tbl_comprobante_compra
-            WHERE Pk_ID_Comprobante_Compra = ?;
-        ";
+                    DELETE FROM tbl_comprobante_compra
+                    WHERE Pk_ID_Comprobante_Compra = ?;
+                ";
 
                 OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
                 Cmd.Parameters.AddWithValue("?", I_Id_Comprobante_Compra);

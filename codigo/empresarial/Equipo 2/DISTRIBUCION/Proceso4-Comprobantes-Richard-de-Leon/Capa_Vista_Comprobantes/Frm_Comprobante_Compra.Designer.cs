@@ -35,7 +35,7 @@ namespace Capa_Vista_Comprobantes
             this.Txt_Nombre_Receptor = new System.Windows.Forms.TextBox();
             this.Cbo_Estado = new System.Windows.Forms.ComboBox();
             this.Dtp_Fecha_Hora_Entrega = new System.Windows.Forms.DateTimePicker();
-            this.Cbo_Id_Cliente = new System.Windows.Forms.ComboBox();
+            this.Cbo_Id_Proveedor = new System.Windows.Forms.ComboBox();
             this.Cbo_Id_Comprobante_Compra = new System.Windows.Forms.ComboBox();
             this.Cbo_Id_Entrega_Comprobante_Compra = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,7 +82,7 @@ namespace Capa_Vista_Comprobantes
             this.GB_Ventas.Controls.Add(this.Txt_Nombre_Receptor);
             this.GB_Ventas.Controls.Add(this.Cbo_Estado);
             this.GB_Ventas.Controls.Add(this.Dtp_Fecha_Hora_Entrega);
-            this.GB_Ventas.Controls.Add(this.Cbo_Id_Cliente);
+            this.GB_Ventas.Controls.Add(this.Cbo_Id_Proveedor);
             this.GB_Ventas.Controls.Add(this.Cbo_Id_Comprobante_Compra);
             this.GB_Ventas.Controls.Add(this.Cbo_Id_Entrega_Comprobante_Compra);
             this.GB_Ventas.Controls.Add(this.label3);
@@ -138,15 +138,15 @@ namespace Capa_Vista_Comprobantes
             this.Dtp_Fecha_Hora_Entrega.Size = new System.Drawing.Size(128, 23);
             this.Dtp_Fecha_Hora_Entrega.TabIndex = 51;
             // 
-            // Cbo_Id_Cliente
+            // Cbo_Id_Proveedor
             // 
-            this.Cbo_Id_Cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cbo_Id_Cliente.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cbo_Id_Cliente.FormattingEnabled = true;
-            this.Cbo_Id_Cliente.Location = new System.Drawing.Point(440, 42);
-            this.Cbo_Id_Cliente.Name = "Cbo_Id_Cliente";
-            this.Cbo_Id_Cliente.Size = new System.Drawing.Size(122, 24);
-            this.Cbo_Id_Cliente.TabIndex = 50;
+            this.Cbo_Id_Proveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cbo_Id_Proveedor.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cbo_Id_Proveedor.FormattingEnabled = true;
+            this.Cbo_Id_Proveedor.Location = new System.Drawing.Point(440, 42);
+            this.Cbo_Id_Proveedor.Name = "Cbo_Id_Proveedor";
+            this.Cbo_Id_Proveedor.Size = new System.Drawing.Size(122, 24);
+            this.Cbo_Id_Proveedor.TabIndex = 50;
             // 
             // Cbo_Id_Comprobante_Compra
             // 
@@ -234,9 +234,9 @@ namespace Capa_Vista_Comprobantes
             this.label5.Font = new System.Drawing.Font("Rockwell", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(364, 49);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 14);
+            this.label5.Size = new System.Drawing.Size(67, 14);
             this.label5.TabIndex = 44;
-            this.label5.Text = "Id Cliente:";
+            this.label5.Text = "Proveedor";
             // 
             // panel1
             // 
@@ -438,7 +438,7 @@ namespace Capa_Vista_Comprobantes
         private System.Windows.Forms.TextBox Txt_Nombre_Receptor;
         private System.Windows.Forms.ComboBox Cbo_Estado;
         private System.Windows.Forms.DateTimePicker Dtp_Fecha_Hora_Entrega;
-        private System.Windows.Forms.ComboBox Cbo_Id_Cliente;
+        private System.Windows.Forms.ComboBox Cbo_Id_Proveedor;
         private System.Windows.Forms.ComboBox Cbo_Id_Comprobante_Compra;
         private System.Windows.Forms.ComboBox Cbo_Id_Entrega_Comprobante_Compra;
         private System.Windows.Forms.Label label3;
