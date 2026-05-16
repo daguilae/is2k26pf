@@ -130,6 +130,25 @@ namespace Capa_Vista_Plan
             try
             {
                 DataTable datos = cronograma.fun_OrdenesRecibidas();
+                if (iCodigoPlanExistente != 0)
+                {
+                    DataTable plan = cronograma.fun_OrdenesPlan(iCodigoPlanExistente);
+                    if (plan.Rows.Count > 0)
+                    {
+                        int idOrdenActual = Convert.ToInt32(plan.Rows[0]["NoOrdenRecibida"]);
+                        bool existe = datos.AsEnumerable().Any(r =>
+                                r.Field<int>("NoOrdenRecibida") == idOrdenActual);
+
+                        if (!existe)
+                        {
+                            DataRow nuevaFila = datos.NewRow();
+                            nuevaFila["NoOrdenRecibida"] = idOrdenActual;
+                            nuevaFila["CodigoOrden"] = "Orden Asociada";
+                            datos.Rows.Add(nuevaFila);
+                        }
+                    }
+                }
+
                 if (datos.Rows.Count > 0)
                 {
                     DataRow fila = datos.NewRow();
@@ -142,12 +161,13 @@ namespace Capa_Vista_Plan
                 }
                 else
                 {
-                    if(iCodigoPlanExistente == 0)
+                    if (iCodigoPlanExistente == 0)
                     {
                         Cbo_OrdenRecibida.DataSource = null;
                         Cbo_OrdenRecibida.Items.Clear();
                         Cbo_OrdenRecibida.Items.Add("No hay órdenes sin planificar");
                         Cbo_OrdenRecibida.SelectedIndex = 0;
+
                         MessageBox.Show(
                             "Todas las órdenes recibidas ya tienen un plan de producción asignado.",
                             "Información",
