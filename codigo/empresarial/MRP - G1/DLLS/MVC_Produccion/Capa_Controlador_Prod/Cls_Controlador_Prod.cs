@@ -70,13 +70,7 @@ namespace Capa_Controlador_Prod
             return sentencias.ObtenerOrdenRecibidaPorOrdenProduccion(idOrdenProduccion);
         }
 
-        public bool GenerarFactura(int idOrdenRecibida, int idOrdenProduccion,
-            decimal totalMateriales, decimal totalManoObra, decimal totalIndirectos,
-            decimal totalMermas, decimal totalFases, decimal totalFactura)
-        {
-            return sentencias.GenerarFactura(idOrdenRecibida, idOrdenProduccion,
-                totalMateriales, totalManoObra, totalIndirectos, totalMermas, totalFases, totalFactura);
-        }
+       
 
         // Empieza codigo hecho por: Maria Morales 0901-22-1226
 

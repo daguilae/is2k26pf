@@ -280,6 +280,18 @@ namespace Capa_Modelo_RO
                 conn.Close();
             }
         }
+
+        public bool ExisteFactura(int idOrdenRecibida)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                OdbcCommand cmd = new OdbcCommand(
+                    "SELECT COUNT(*) FROM Tbl_Factura_Produccion WHERE Fk_Id_Orden_Recibida = ?", conn);
+                cmd.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
         // ------ KEVIN NATARENO - 0901-21-635, 30/04/2026 --------
 
 

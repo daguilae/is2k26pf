@@ -224,56 +224,7 @@ namespace Capa_Modelo_Prod
             }
         }
 
-        public bool GenerarFactura(int idOrdenRecibida, int idOrdenProduccion,
-            decimal totalMateriales, decimal totalManoObra, decimal totalIndirectos,
-            decimal totalMermas, decimal totalFases, decimal totalFactura)
-        {
-            OdbcConnection conn = conexion.AbrirConexion();
-            OdbcTransaction transaccion = conn.BeginTransaction();
-            try
-            {
-                // Insertar encabezado
-                OdbcCommand cmdEncabezado = new OdbcCommand(
-                    "INSERT INTO Tbl_Factura_Produccion (Fk_Id_Orden_Recibida, Total_Factura) VALUES (?, ?)",
-                    conn);
-                cmdEncabezado.Transaction = transaccion;
-                cmdEncabezado.Parameters.Add("?", OdbcType.Int).Value = idOrdenRecibida;
-                cmdEncabezado.Parameters.Add("?", OdbcType.Double).Value = totalFactura;
-                cmdEncabezado.ExecuteNonQuery();
-
-                // Obtener ID generado
-                OdbcCommand cmdId = new OdbcCommand("SELECT LAST_INSERT_ID()", conn);
-                cmdId.Transaction = transaccion;
-                int idFactura = Convert.ToInt32(cmdId.ExecuteScalar());
-
-                // Insertar detalle
-                OdbcCommand cmdDetalle = new OdbcCommand(
-                    "INSERT INTO Tbl_Factura_Produccion_Detalle (Fk_Id_Factura, Fk_Id_Orden_Produccion, Total_Materiales, Total_Mano_Obra, Total_Costos_Indirectos, Total_Mermas, Total_Fases, Subtotal) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                    conn);
-                cmdDetalle.Transaction = transaccion;
-                cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idFactura;
-                cmdDetalle.Parameters.Add("?", OdbcType.Int).Value = idOrdenProduccion;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalMateriales;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalManoObra;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalIndirectos;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalMermas;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalFases;
-                cmdDetalle.Parameters.Add("?", OdbcType.Double).Value = totalFactura;
-                cmdDetalle.ExecuteNonQuery();
-
-                transaccion.Commit();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                transaccion.Rollback();
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        // ############################ Métodos para guardar factura ###########################################
+        
+        
     }
 }

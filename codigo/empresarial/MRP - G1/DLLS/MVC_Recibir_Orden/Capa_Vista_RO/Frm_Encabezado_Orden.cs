@@ -65,16 +65,20 @@ namespace Capa_Vista_RO
             dgvOrdenes.DataSource = controlador.FiltrarOrdenes(idExterno, idEstado);
             ConfigurarGrid();
             AgregarBotonVer();
+            MarcarFacturasExistentes();
         }
         private void CargarGrid()
         {
             var datos = controlador.ObtenerOrdenes();
-            dgvOrdenes.DataSource = controlador.ObtenerOrdenes();
+            dgvOrdenes.DataSource = null;
+            dgvOrdenes.Columns.Clear();
+            dgvOrdenes.DataSource = datos;
             ConfigurarGrid();
             AgregarBotonVer();
+            MarcarFacturasExistentes();
         }
 
-      
+
         private void ConfigurarGrid()
         {
             if (dgvOrdenes.Columns.Count == 0) return;
@@ -116,7 +120,7 @@ namespace Capa_Vista_RO
                 dgvOrdenes.Columns.Add(btnVer);
             }
 
-            if (!dgvOrdenes.Columns.Contains("Factura")) // 👈 agregar este
+            if (!dgvOrdenes.Columns.Contains("Factura"))
             {
                 DataGridViewButtonColumn btnFactura = new DataGridViewButtonColumn();
                 btnFactura.Name = "Factura";
@@ -124,6 +128,15 @@ namespace Capa_Vista_RO
                 btnFactura.Text = "Generar Factura";
                 btnFactura.UseColumnTextForButtonValue = true;
                 dgvOrdenes.Columns.Add(btnFactura);
+            }
+
+            if (!dgvOrdenes.Columns.Contains("EstadoFactura"))
+            {
+                DataGridViewTextBoxColumn colEstado = new DataGridViewTextBoxColumn();
+                colEstado.Name = "EstadoFactura";
+                colEstado.HeaderText = "Estado Factura";
+                colEstado.ReadOnly = true;
+                dgvOrdenes.Columns.Add(colEstado);
             }
         }
 
@@ -149,6 +162,35 @@ namespace Capa_Vista_RO
             }
             else if (dgvOrdenes.Columns[e.ColumnIndex].Name == "Factura")
             {
+                DialogResult confirm = MessageBox.Show(
+                    "¿Desea generar la factura para esta orden?", "Confirmar",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    if (controlador.GenerarFactura(idOrden))
+                    {
+                        MessageBox.Show("Factura generada correctamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al generar la factura.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else if (dgvOrdenes.Columns[e.ColumnIndex].Name == "Factura")
+            {
+                
+                if (dgvOrdenes.Rows[e.RowIndex].Cells["Factura"].Value.ToString() == "Facturada")
+                {
+                    MessageBox.Show("Esta orden ya fue facturada.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 DialogResult confirm = MessageBox.Show(
                     "¿Desea generar la factura para esta orden?", "Confirmar",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -202,6 +244,35 @@ namespace Capa_Vista_RO
             dgvOrdenes.DataSource = controlador.FiltrarOrdenesPorFecha(fechaInicio, fechaFin);
             ConfigurarGrid();
             AgregarBotonVer();
+            MarcarFacturasExistentes();
+        }
+
+        private void MarcarFacturasExistentes()
+        {
+            foreach (DataGridViewRow fila in dgvOrdenes.Rows)
+            {
+                if (fila.Cells["Pk_Id_Orden_Recibida"].Value == null) continue;
+                int idOrden = Convert.ToInt32(fila.Cells["Pk_Id_Orden_Recibida"].Value);
+
+               
+                if (controlador.ExisteFactura(idOrden))
+                {
+                    fila.Cells["EstadoFactura"].Value = "✓ Facturada";
+                    fila.Cells["EstadoFactura"].Style.BackColor = Color.LightGreen;
+                    fila.Cells["EstadoFactura"].Style.ForeColor = Color.DarkGreen;
+                }
+                else
+                {
+                    fila.Cells["EstadoFactura"].Value = "Pendiente";
+                    fila.Cells["EstadoFactura"].Style.BackColor = Color.LightYellow;
+                    fila.Cells["EstadoFactura"].Style.ForeColor = Color.DarkOrange;
+                }
+                dgvOrdenes.Refresh(); // 👈
+                dgvOrdenes.Update();  // 👈
+            }
         }
     }
+
+
+    
 }  // ------ KEVIN NATARENO - 0901-21-635, 28/04/2026 --------

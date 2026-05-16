@@ -125,7 +125,6 @@ namespace Capa_Vista_Prod
             this.lblEmpleado = new System.Windows.Forms.Label();
             this.dgvManoObra = new System.Windows.Forms.DataGridView();
             this.tabCostos = new System.Windows.Forms.TabPage();
-            this.btnFactura = new System.Windows.Forms.Button();
             this.dgvCostos = new System.Windows.Forms.DataGridView();
             this.Cbo_Orden = new System.Windows.Forms.ComboBox();
             this.Lbl_Costos = new System.Windows.Forms.Label();
@@ -1361,7 +1360,6 @@ namespace Capa_Vista_Prod
             // 
             // tabCostos
             // 
-            this.tabCostos.Controls.Add(this.btnFactura);
             this.tabCostos.Controls.Add(this.dgvCostos);
             this.tabCostos.Location = new System.Drawing.Point(4, 22);
             this.tabCostos.Margin = new System.Windows.Forms.Padding(2);
@@ -1371,16 +1369,6 @@ namespace Capa_Vista_Prod
             this.tabCostos.TabIndex = 1;
             this.tabCostos.Text = "Costos de Producción";
             this.tabCostos.UseVisualStyleBackColor = true;
-            // 
-            // btnFactura
-            // 
-            this.btnFactura.Location = new System.Drawing.Point(45, 376);
-            this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(156, 55);
-            this.btnFactura.TabIndex = 1;
-            this.btnFactura.Text = "Generar Factura";
-            this.btnFactura.UseVisualStyleBackColor = true;
-            this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
             // dgvCostos
             // 
@@ -1572,6 +1560,5 @@ namespace Capa_Vista_Prod
         private System.Windows.Forms.Button btnGuardarMerma;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button40;
-        private System.Windows.Forms.Button btnFactura;
     }
 }
