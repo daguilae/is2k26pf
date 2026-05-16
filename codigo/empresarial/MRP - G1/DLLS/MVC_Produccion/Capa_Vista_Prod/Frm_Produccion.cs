@@ -359,8 +359,7 @@ namespace Capa_Vista_Prod
                     CargarMaterialesConsumidos(idOrden);
                     CargarCostos(idOrden);
 
-                    // Opcional: deshabilitar el botón para evitar doble consumo
-                    btn_consumir.Enabled = false;
+           
                 }
             }
             catch (Exception ex)
