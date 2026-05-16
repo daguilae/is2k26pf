@@ -21,7 +21,7 @@ namespace Capa_Modelo_Prod
                 string query = @"
             SELECT 
                 op.Pk_Id_Orden_Produccion AS IdOrden,
-                CONCAT(m.Nombre_Material, ' | ', 
+                CONCAT('OP-', op.Pk_Id_Orden_Produccion, ' | ', m.Nombre_Material, ' | ', 
                        DATE_FORMAT(op.Fecha_Inicio_Orden_Produccion, '%Y-%m-%d'), ' - ',
                        DATE_FORMAT(op.Fecha_Fin_Orden_Produccion, '%Y-%m-%d')) AS Descripcion
             FROM Tbl_Orden_Produccion op
@@ -35,7 +35,7 @@ namespace Capa_Modelo_Prod
         }
 
 
-   
+
 
         // ############################ METODOS PARA MANO DE OBRA #############################################
         // Mano de obra por orden de producción
@@ -128,10 +128,14 @@ namespace Capa_Modelo_Prod
                         ON em.Pk_Id_Explosion = (
                             SELECT MAX(Pk_Id_Explosion) 
                             FROM Tbl_Explosion_Materiales 
-                            WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida
-                        )
+                            WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida)
                     INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
                         ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+                    INNER JOIN Tbl_BOM b 
+                        ON b.Fk_Id_Material = op.Fk_Id_Material
+                    INNER JOIN Tbl_BOM_Detalle bd 
+                        ON bd.Fk_Id_BOM = b.Pk_Id_BOM 
+                        AND bd.Fk_Id_Materiales = emd.Fk_Id_Material
                     INNER JOIN Tbl_Inventario i 
                         ON emd.Fk_Id_Material = i.Fk_Id_Material
                     WHERE op.Pk_Id_Orden_Produccion = ?
@@ -163,12 +167,9 @@ namespace Capa_Modelo_Prod
                         ON op2.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
                     INNER JOIN Tbl_Orden_Recibida_Detalle ord
                         ON pp.Fk_Id_Orden_Recibida = ord.Fk_Id_Orden_Recibida
-                    INNER JOIN Tbl_BOM b
-                        ON b.Fk_Id_Material = ord.Fk_Id_Material
-                    INNER JOIN Tbl_Fases_Produccion fp
-                        ON fp.Fk_Id_BOM = b.Pk_Id_BOM
-                    INNER JOIN Tbl_Costo_Fase cf
-                        ON cf.Fk_Id_Fase_Producto = fp.Pk_Id_Fase_Producto
+                    INNER JOIN Tbl_BOM b ON b.Fk_Id_Material = ord.Fk_Id_Material
+                    INNER JOIN Tbl_Fases_Produccion fp ON fp.Fk_Id_BOM = b.Pk_Id_BOM
+                    INNER JOIN Tbl_Costo_Fase cf ON cf.Fk_Id_Fase_Producto = fp.Pk_Id_Fase_Producto
                     WHERE op2.Pk_Id_Orden_Produccion = ?
                 ), 0) AS CostoFases";
 

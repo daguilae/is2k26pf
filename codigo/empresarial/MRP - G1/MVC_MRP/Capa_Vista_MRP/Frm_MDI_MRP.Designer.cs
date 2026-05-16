@@ -56,6 +56,7 @@ namespace Capa_Vista_MRP
             this.costosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.explosiónDeMaterialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.disponibilidadDeInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordenDeMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recepciónDeMaterialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planDeProducciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,12 +65,12 @@ namespace Capa_Vista_MRP
             this.materialesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordenDeMaterialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -250,7 +251,8 @@ namespace Capa_Vista_MRP
             this.ordenDeMaterialToolStripMenuItem,
             this.recepciónDeMaterialesToolStripMenuItem,
             this.produccionToolStripMenuItem,
-            this.entregaDeProductoTerminadoToolStripMenuItem});
+            this.entregaDeProductoTerminadoToolStripMenuItem,
+            this.facturasToolStripMenuItem});
             this.procesosMRPToolStripMenuItem.Name = "procesosMRPToolStripMenuItem";
             this.procesosMRPToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.procesosMRPToolStripMenuItem.Text = "Procesos MRP";
@@ -289,6 +291,13 @@ namespace Capa_Vista_MRP
             this.disponibilidadDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.disponibilidadDeInventarioToolStripMenuItem.Text = "Disponibilidad de inventario";
             this.disponibilidadDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.disponibilidadDeInventarioToolStripMenuItem_Click);
+            // 
+            // ordenDeMaterialToolStripMenuItem
+            // 
+            this.ordenDeMaterialToolStripMenuItem.Name = "ordenDeMaterialToolStripMenuItem";
+            this.ordenDeMaterialToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.ordenDeMaterialToolStripMenuItem.Text = "Orden de Material";
+            this.ordenDeMaterialToolStripMenuItem.Click += new System.EventHandler(this.ordenDeMaterialToolStripMenuItem_Click);
             // 
             // recepciónDeMaterialesToolStripMenuItem
             // 
@@ -351,13 +360,6 @@ namespace Capa_Vista_MRP
             this.movimientoInventarioToolStripMenuItem.Text = "Movimiento Inventario";
             this.movimientoInventarioToolStripMenuItem.Click += new System.EventHandler(this.movimientoInventarioToolStripMenuItem_Click);
             // 
-            // ordenDeMaterialToolStripMenuItem
-            // 
-            this.ordenDeMaterialToolStripMenuItem.Name = "ordenDeMaterialToolStripMenuItem";
-            this.ordenDeMaterialToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
-            this.ordenDeMaterialToolStripMenuItem.Text = "Orden de Material";
-            this.ordenDeMaterialToolStripMenuItem.Click += new System.EventHandler(this.ordenDeMaterialToolStripMenuItem_Click);
-            // 
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
@@ -386,6 +388,13 @@ namespace Capa_Vista_MRP
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            this.facturasToolStripMenuItem.Click += new System.EventHandler(this.facturasToolStripMenuItem_Click);
             // 
             // Frm_MDI_MRP
             // 
@@ -450,6 +459,7 @@ namespace Capa_Vista_MRP
         private System.Windows.Forms.ToolStripMenuItem tipoDeCostoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem costosDeProducciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenDeMaterialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
     }
 }
 

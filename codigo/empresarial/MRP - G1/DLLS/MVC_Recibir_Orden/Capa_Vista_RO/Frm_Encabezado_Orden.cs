@@ -103,7 +103,7 @@ namespace Capa_Vista_RO
             dgvOrdenes.MultiSelect = false;
         }
 
-        
+
         private void AgregarBotonVer()
         {
             if (!dgvOrdenes.Columns.Contains("Ver"))
@@ -113,8 +113,17 @@ namespace Capa_Vista_RO
                 btnVer.HeaderText = "Acciones";
                 btnVer.Text = "Ver";
                 btnVer.UseColumnTextForButtonValue = true;
-
                 dgvOrdenes.Columns.Add(btnVer);
+            }
+
+            if (!dgvOrdenes.Columns.Contains("Factura")) // 👈 agregar este
+            {
+                DataGridViewButtonColumn btnFactura = new DataGridViewButtonColumn();
+                btnFactura.Name = "Factura";
+                btnFactura.HeaderText = "Factura";
+                btnFactura.Text = "Generar Factura";
+                btnFactura.UseColumnTextForButtonValue = true;
+                dgvOrdenes.Columns.Add(btnFactura);
             }
         }
 
@@ -123,21 +132,40 @@ namespace Capa_Vista_RO
         {
             if (e.RowIndex < 0) return;
 
+            var valor = dgvOrdenes.Rows[e.RowIndex].Cells["Pk_Id_Orden_Recibida"].Value;
+            if (valor == DBNull.Value || valor == null)
+            {
+                MessageBox.Show("La celda está vacía o no existe");
+                return;
+            }
+
+            int idOrden = Convert.ToInt32(valor);
+
             if (dgvOrdenes.Columns[e.ColumnIndex].Name == "Ver")
             {
-                var valor = dgvOrdenes.Rows[e.RowIndex].Cells["Pk_Id_Orden_Recibida"].Value;
+                Frm_Detalle_Orden frm = new Frm_Detalle_Orden(idOrden);
+                frm.ShowDialog();
+                CargarGrid();
+            }
+            else if (dgvOrdenes.Columns[e.ColumnIndex].Name == "Factura")
+            {
+                DialogResult confirm = MessageBox.Show(
+                    "¿Desea generar la factura para esta orden?", "Confirmar",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (valor != DBNull.Value && valor != null)
+                if (confirm == DialogResult.Yes)
                 {
-                    int idOrden = Convert.ToInt32(valor);
-
-                    Frm_Detalle_Orden frm = new Frm_Detalle_Orden(idOrden); 
-                    frm.ShowDialog();
-                    CargarGrid();
-                }
-                else
-                {
-                    MessageBox.Show("La celda está vacía o no existe");
+                    if (controlador.GenerarFactura(idOrden))
+                    {
+                        MessageBox.Show("Factura generada correctamente.", "Éxito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al generar la factura.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

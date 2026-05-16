@@ -180,5 +180,10 @@ namespace Capa_Controlador_RO
             );
         }
 
+        public bool GenerarFactura(int idOrdenRecibida)
+        {
+            return modelo.GenerarFactura(idOrdenRecibida);
+        }
+
     }
 }
