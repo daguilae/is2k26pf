@@ -457,12 +457,14 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.AllowUserToAddRows = false;
             Dgv_Detalle_Entrega.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            Dgv_Detalle_Entrega.Columns["Pk_ID_Entrega_Compra"].HeaderText = "No. Entrega";
-            Dgv_Detalle_Entrega.Columns["Fk_Id_Compra"].HeaderText = "Orden de Compra";
-            Dgv_Detalle_Entrega.Columns["Fk_Id_Transporte"].HeaderText = "Transporte Asignado";
-            Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección de Entrega";
-            Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Programada";
-            Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado de Entrega";
+            Dgv_Detalle_Entrega.Columns["No_Entrega"].HeaderText = "No. Entrega";
+            Dgv_Detalle_Entrega.Columns["Compra"].HeaderText = "Orden de Compra";
+            Dgv_Detalle_Entrega.Columns["Producto"].HeaderText = "Producto";
+            Dgv_Detalle_Entrega.Columns["Cantidad"].HeaderText = "Cantidad";
+            Dgv_Detalle_Entrega.Columns["Transporte"].HeaderText = "Transporte Asignado";
+            Dgv_Detalle_Entrega.Columns["Direccion"].HeaderText = "Dirección de Entrega";
+            Dgv_Detalle_Entrega.Columns["Fecha"].HeaderText = "Fecha Programada";
+            Dgv_Detalle_Entrega.Columns["Estado"].HeaderText = "Estado de Entrega";
         }
 
         private void Btn_Eliminar_Click(object sender, EventArgs e)

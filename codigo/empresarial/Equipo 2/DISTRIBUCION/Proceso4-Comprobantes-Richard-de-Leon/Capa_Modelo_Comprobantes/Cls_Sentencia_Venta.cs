@@ -267,21 +267,32 @@ namespace Capa_Modelo
             try
             {
                 string S_Query = @"
-                    SELECT 
-                        Pk_ID_Entrega_Venta,
-                        Fk_Id_Venta,
-                        Cmp_Direccion,
-                        Cmp_Fecha,
-                        Cmp_Estado_Entrega
-                    FROM tbl_entrega_venta
-                    WHERE Pk_ID_Entrega_Venta = ?;
-                ";
+            SELECT 
+                v.Pk_Id_Entrega_Venta AS No_Entrega,
+                v.Fk_Id_Venta AS Venta,
+                i.nombre_prod AS Producto,
+                dv.Cmp_Cantidad_Producto AS Cantidad,
+                v.Fk_Id_Transporte AS Transporte,
+                v.Cmp_Direccion AS Direccion,
+                v.Cmp_Fecha AS Fecha,
+                v.Cmp_Estado_Entrega AS Estado
+            FROM tbl_entrega_venta v
+            INNER JOIN tbl_detalle_ventas dv 
+                ON v.Fk_Id_Venta = dv.Fk_Id_Ventas
+            INNER JOIN tbl_inventario i 
+                ON dv.Fk_Id_Inventario = i.pk_inventario_id
+            WHERE v.Pk_Id_Entrega_Venta = ?;
+        ";
 
                 OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
-                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Venta);
+                Cmd.Parameters.AddWithValue("@Pk_Id_Entrega_Venta", I_Id_Entrega_Venta);
 
                 OdbcDataAdapter Da = new OdbcDataAdapter(Cmd);
                 Da.Fill(Dt_Datos);
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error al obtener detalle de entrega venta: " + Ex.Message);
             }
             finally
             {

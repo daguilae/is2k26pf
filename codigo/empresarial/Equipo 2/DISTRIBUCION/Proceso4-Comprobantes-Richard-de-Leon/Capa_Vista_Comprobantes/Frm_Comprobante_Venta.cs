@@ -324,13 +324,18 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Dgv_Detalle_Entrega.ReadOnly = true;
             Dgv_Detalle_Entrega.AllowUserToAddRows = false;
-            Dgv_Detalle_Entrega.Columns["Pk_ID_Entrega_Venta"].HeaderText = "No. Entrega";
-            Dgv_Detalle_Entrega.Columns["Fk_Id_Venta"].HeaderText = "ID Venta";
-            Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección";
-            Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Entrega";
-            Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado";
+            Dgv_Detalle_Entrega.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            //Fuente
+            Dgv_Detalle_Entrega.Columns["No_Entrega"].HeaderText = "No. Entrega";
+            Dgv_Detalle_Entrega.Columns["Venta"].HeaderText = "ID Venta";
+            Dgv_Detalle_Entrega.Columns["Producto"].HeaderText = "Producto";
+            Dgv_Detalle_Entrega.Columns["Cantidad"].HeaderText = "Cantidad";
+            Dgv_Detalle_Entrega.Columns["Transporte"].HeaderText = "Transporte";
+            Dgv_Detalle_Entrega.Columns["Direccion"].HeaderText = "Dirección";
+            Dgv_Detalle_Entrega.Columns["Fecha"].HeaderText = "Fecha Entrega";
+            Dgv_Detalle_Entrega.Columns["Estado"].HeaderText = "Estado";
+
+            // Fuente
             AplicarEstiloDGVDetalle();
         }
 

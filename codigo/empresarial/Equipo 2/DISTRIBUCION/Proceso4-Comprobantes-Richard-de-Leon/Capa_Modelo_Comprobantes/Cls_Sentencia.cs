@@ -260,19 +260,25 @@ namespace Capa_Modelo
             try
             {
                 string S_Query = @"
-                    SELECT 
-                        Pk_ID_Entrega_Compra,
-                        Fk_Id_Compra,
-                        Fk_Id_Transporte,
-                        Cmp_Direccion,
-                        Cmp_Fecha,
-                        Cmp_Estado_Entrega
-                    FROM tbl_entrega_compra
-                    WHERE Pk_ID_Entrega_Compra = ?;
-                ";
+                            SELECT 
+                                e.Pk_ID_Entrega_Compra AS No_Entrega,
+                                e.Fk_Id_Compra AS Compra,
+                                i.nombre_prod AS Producto,
+                                dc.cmp_cantidad AS Cantidad,
+                                e.Fk_Id_Transporte AS Transporte,
+                                e.Cmp_Direccion AS Direccion,
+                                e.Cmp_Fecha AS Fecha,
+                                e.Cmp_Estado_Entrega AS Estado
+                            FROM tbl_entrega_compra e
+                            INNER JOIN tbl_detalle_compra dc 
+                                ON e.Fk_Id_Compra = dc.fk_id_compra
+                            INNER JOIN tbl_inventario i 
+                                ON dc.fk_inventario_id = i.pk_inventario_id
+                            WHERE e.Pk_ID_Entrega_Compra = ?;
+                        ";
 
                 OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
-                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Compra);
+                Cmd.Parameters.AddWithValue("@Pk_ID_Entrega_Compra", I_Id_Entrega_Compra);
 
                 OdbcDataAdapter Da = new OdbcDataAdapter(Cmd);
                 Da.Fill(Dt_Datos);
