@@ -271,8 +271,63 @@ namespace Capa_Vista_RO
                 dgvOrdenes.Update();  // 👈
             }
         }
+
+        // Maria Morales 0901-22-1226 16/05/2026
+        private void btn_eliminar_orden_Click(object sender, EventArgs e)
+        {
+            if (dgvOrdenes.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una orden para eliminar.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var valor = dgvOrdenes.SelectedRows[0].Cells["Pk_Id_Orden_Recibida"].Value;
+            if (valor == null || valor == DBNull.Value)
+            {
+                MessageBox.Show("No se pudo obtener el ID de la orden.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int idOrden = Convert.ToInt32(valor);
+
+            // Verificar si ya tiene factura — no se debería eliminar
+            if (controlador.ExisteFactura(idOrden))
+            {
+                MessageBox.Show("No se puede eliminar una orden que ya tiene factura generada.", "Aviso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirm = MessageBox.Show(
+                "¿Está seguro que desea eliminar esta orden?", "Confirmar eliminación",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                if (controlador.BorrarOrden(idOrden))
+                {
+                    MessageBox.Show("Orden eliminada correctamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la orden.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_refrescar_grid_Click(object sender, EventArgs e)
+        {
+            CargarGrid();
+        }
+        // Maria Morales 0901-22-1226 16/05/2026
+
     }
 
 
-    
+
 }  // ------ KEVIN NATARENO - 0901-21-635, 28/04/2026 --------
