@@ -121,6 +121,9 @@
     <Reference Include="Capa_Vista_RO">
       <HintPath>..\..\DLLS\MVC_Recibir_Orden\Capa_Vista_RO\bin\Debug\Capa_Vista_RO.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaVista\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_TipoInve">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>
     </Reference>
