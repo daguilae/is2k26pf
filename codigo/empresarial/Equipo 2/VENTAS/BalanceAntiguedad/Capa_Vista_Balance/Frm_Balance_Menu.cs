@@ -11,6 +11,7 @@ using Capa_Controlador_Balance;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Windows.Forms;
 using Capa_Controlador_Seguridad;
+using System.IO;
 
 namespace Capa_Vista_Balance
 {
@@ -28,6 +29,48 @@ namespace Capa_Vista_Balance
         {
 
         }
+
+        private void Btn_Ayudas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Ventas\balance antiguedades\balance_antiguedad.chm";
+
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+                if(rutaEncontrada != null)
+
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"balance_antiguedad_ayuda.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+  
 
         public Frm_Balance_Menu()
         {

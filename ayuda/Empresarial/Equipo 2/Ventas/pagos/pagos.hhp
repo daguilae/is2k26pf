@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=pagos.chm
+Contents file=Table of Contents.hhc
+Default Window=ayudas Pagos
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+ayudas Pagos=,"Table of Contents.hhc",,"pagos.html","pagos.html","pago_transferencia.html",,"pagos_cheques.html",,0x2120,,0xc387e,,,,,,,,0
+
+
+[FILES]
+pago_transferencia.html
+pagos.html
+pagos_cheques.html
+pagos_efecivo.html
+pagos_tarjeta.html
+
+[INFOTYPES]
+
