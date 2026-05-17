@@ -354,6 +354,7 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Reporte.Text = "REPORTE";
             this.Btn_Reporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Btn_Ayuda
             // 
@@ -390,7 +391,7 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Crear_Comprobante.UseVisualStyleBackColor = true;
             this.Btn_Crear_Comprobante.Click += new System.EventHandler(this.Btn_Crear_Comprobante_Click);
             // 
-            // Form_Comprobante_Venta
+            // Frm_Comprobante_Venta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -407,7 +408,7 @@ namespace Capa_Vista_Comprobantes
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Cancelar);
             this.Controls.Add(this.Btn_Crear_Comprobante);
-            this.Name = "Form_Comprobante_Venta";
+            this.Name = "Frm_Comprobante_Venta";
             this.Text = "Form_Comprobante_Venta";
             this.Gb_Detalle_Entrega.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Detalle_Entrega)).EndInit();

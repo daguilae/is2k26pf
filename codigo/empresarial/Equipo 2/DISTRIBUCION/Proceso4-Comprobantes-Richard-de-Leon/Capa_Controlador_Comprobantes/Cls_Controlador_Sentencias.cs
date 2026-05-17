@@ -10,7 +10,7 @@ namespace Capa_Controlador
 
         public bool InsertarComprobante(
             int fkIdEntregaCompra,
-            int fkIdCliente,
+            int fkIdProveedor,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
             string observaciones,
@@ -18,7 +18,7 @@ namespace Capa_Controlador
         {
             return modelo.InsertarComprobanteCompra(
                 fkIdEntregaCompra,
-                fkIdCliente,
+                fkIdProveedor,
                 nombreReceptor,
                 fechaHoraEntrega,
                 observaciones,
@@ -29,7 +29,7 @@ namespace Capa_Controlador
         public bool ActualizarComprobante(
             int pkIdComprobante,
             int fkIdEntregaCompra,
-            int fkIdCliente,
+            int fkIdProveedor,
             string nombreReceptor,
             DateTime fechaHoraEntrega,
             string observaciones,
@@ -38,7 +38,7 @@ namespace Capa_Controlador
             return modelo.ActualizarComprobanteCompra(
                 pkIdComprobante,
                 fkIdEntregaCompra,
-                fkIdCliente,
+                fkIdProveedor,
                 nombreReceptor,
                 fechaHoraEntrega,
                 observaciones,
@@ -71,10 +71,11 @@ namespace Capa_Controlador
             return modelo.fun_ObtenerIdEntregaCompra();
         }
 
-        public DataTable fun_ObtenerIdCliente()
+        public DataTable fun_ObtenerIdProveedor()
         {
-            return modelo.fun_ObtenerIdCliente();
+            return modelo.fun_ObtenerIdProveedor();
         }
+
         public DataTable Fun_Obtener_Detalle_Entrega_Compra(int I_Id_Entrega_Compra)
         {
             return modelo.Fun_Obtener_Detalle_Entrega_Compra(I_Id_Entrega_Compra);

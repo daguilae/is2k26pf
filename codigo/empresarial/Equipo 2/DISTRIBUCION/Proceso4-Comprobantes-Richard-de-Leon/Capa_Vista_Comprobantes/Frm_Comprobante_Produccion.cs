@@ -307,7 +307,6 @@ namespace Capa_Vista_Comprobantes
 
         private void Btn_Ver_Detalle_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (I_Id_Entrega_Seleccionada == 0)
@@ -322,13 +321,16 @@ namespace Capa_Vista_Comprobantes
                 Dgv_Detalle_Entrega.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 Dgv_Detalle_Entrega.ReadOnly = true;
                 Dgv_Detalle_Entrega.AllowUserToAddRows = false;
+                Dgv_Detalle_Entrega.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-                Dgv_Detalle_Entrega.Columns["Pk_Id_Entrega_Produccion"].HeaderText = "No. Entrega";
-                Dgv_Detalle_Entrega.Columns["Fk_Id_OrdenP"].HeaderText = "Orden Producción";
-                Dgv_Detalle_Entrega.Columns["Fk_Id_Transporte"].HeaderText = "Transporte";
-                Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección";
-                Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Entrega";
-                Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado";
+                Dgv_Detalle_Entrega.Columns["No_Entrega"].HeaderText = "No. Entrega";
+                Dgv_Detalle_Entrega.Columns["Produccion"].HeaderText = "Orden Producción";
+                Dgv_Detalle_Entrega.Columns["Producto"].HeaderText = "Producto";
+                Dgv_Detalle_Entrega.Columns["Cantidad"].HeaderText = "Cantidad";
+                Dgv_Detalle_Entrega.Columns["Transporte"].HeaderText = "Transporte";
+                Dgv_Detalle_Entrega.Columns["Direccion"].HeaderText = "Dirección";
+                Dgv_Detalle_Entrega.Columns["Fecha"].HeaderText = "Fecha Entrega";
+                Dgv_Detalle_Entrega.Columns["Estado"].HeaderText = "Estado";
 
                 AplicarEstiloDGVDetalle();
             }
@@ -374,10 +376,11 @@ namespace Capa_Vista_Comprobantes
             this.Close();
         }
 
-        private void AplicarEstiloDGV() { 
-            Dvg_Comprobante_Produccion.DefaultCellStyle.Font = new Font("Rockwell", 9); 
-            Dvg_Comprobante_Produccion.ColumnHeadersDefaultCellStyle.Font = new Font("Rockwell", 9, FontStyle.Bold); 
-            Dvg_Comprobante_Produccion.EnableHeadersVisualStyles = false; 
+        private void AplicarEstiloDGV()
+        {
+            Dvg_Comprobante_Produccion.DefaultCellStyle.Font = new Font("Rockwell", 9);
+            Dvg_Comprobante_Produccion.ColumnHeadersDefaultCellStyle.Font = new Font("Rockwell", 9, FontStyle.Bold);
+            Dvg_Comprobante_Produccion.EnableHeadersVisualStyles = false;
         }
 
         private void AplicarEstiloDGVDetalle()
@@ -393,5 +396,11 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.RowTemplate.Height = 28;
         }
 
+
+        private void Btn_Reporte_Click_1(object sender, EventArgs e)
+        {
+            Frm_Reporte_Comprobante_Produccion reporte = new Frm_Reporte_Comprobante_Produccion();
+            reporte.Show();
+        }
     }
 }
