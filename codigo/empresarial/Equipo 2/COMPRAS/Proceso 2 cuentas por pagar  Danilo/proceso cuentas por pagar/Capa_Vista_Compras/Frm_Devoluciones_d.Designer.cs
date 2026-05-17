@@ -37,7 +37,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Btn_imprimir = new System.Windows.Forms.Button();
             this.Btn_refrescar = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -177,18 +177,18 @@
             this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // Btn_imprimir
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button6.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
-            this.button6.Location = new System.Drawing.Point(492, 66);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(74, 87);
-            this.button6.TabIndex = 43;
-            this.button6.Text = "Imprimir";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_imprimir.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_imprimir.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
+            this.Btn_imprimir.Location = new System.Drawing.Point(492, 66);
+            this.Btn_imprimir.Name = "Btn_imprimir";
+            this.Btn_imprimir.Size = new System.Drawing.Size(74, 87);
+            this.Btn_imprimir.TabIndex = 43;
+            this.Btn_imprimir.Text = "Imprimir";
+            this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_imprimir.UseVisualStyleBackColor = true;
             // 
             // Btn_refrescar
             // 
@@ -534,7 +534,7 @@
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.Btn_refrescar);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.Btn_imprimir);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -565,7 +565,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Btn_imprimir;
         private System.Windows.Forms.Button Btn_refrescar;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;

@@ -148,6 +148,13 @@ namespace Capa_Vista_Compras
             AbrirCompraSeleccionada();
         }
 
+        private void Btn_imprimir_Click(object sender, EventArgs e)
+        {
+         
+            Frm_Seleccion_Reporte_CXP frm = new Frm_Seleccion_Reporte_CXP();
+            frm.ShowDialog();
+        
+        }
         private void Btn_ingresar_Click_1(object sender, EventArgs e)
         {
             Frm_Compra_manual frm = new Frm_Compra_manual();
@@ -155,5 +162,7 @@ namespace Capa_Vista_Compras
 
           
         }
+
+       
     }
 }

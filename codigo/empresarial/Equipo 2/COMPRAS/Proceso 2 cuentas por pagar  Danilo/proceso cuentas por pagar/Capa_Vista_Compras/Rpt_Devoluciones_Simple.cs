@@ -16,14 +16,14 @@ namespace Capa_Vista_Compras {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class Rpt_Devoluciones_Simple : ReportClass {
         
-        public CrystalReport1() {
+        public Rpt_Devoluciones_Simple() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "Rpt_Devoluciones_Simple.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Capa_Vista_Compras {
         
         public override string FullResourceName {
             get {
-                return "Capa_Vista_Compras.CrystalReport1.rpt";
+                return "Capa_Vista_Compras.Rpt_Devoluciones_Simple.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace Capa_Vista_Compras {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace Capa_Vista_Compras {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,49 @@ namespace Capa_Vista_Compras {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+            get {
+                return this.ReportDefinition.Sections[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[8];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedRpt_Devoluciones_Simple : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedRpt_Devoluciones_Simple() {
         }
         
         [Browsable(false)]
@@ -129,7 +161,7 @@ namespace Capa_Vista_Compras {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            Rpt_Devoluciones_Simple rpt = new Rpt_Devoluciones_Simple();
             rpt.Site = this.Site;
             return rpt;
         }
