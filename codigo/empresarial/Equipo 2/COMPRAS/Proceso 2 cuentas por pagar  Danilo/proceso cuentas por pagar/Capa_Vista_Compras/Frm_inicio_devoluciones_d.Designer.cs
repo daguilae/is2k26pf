@@ -36,12 +36,12 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.Btn_refrescar = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Btn_imprimir = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_modificar = new System.Windows.Forms.Button();
             this.Btn_ingresar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Lbl_compras = new System.Windows.Forms.Label();
@@ -141,18 +141,18 @@
             this.Btn_refrescar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_refrescar.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // Btn_imprimir
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button6.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
-            this.button6.Location = new System.Drawing.Point(492, 67);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(74, 87);
-            this.button6.TabIndex = 58;
-            this.button6.Text = "Imprimir";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
+            this.Btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_imprimir.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_imprimir.Image = global::Capa_Vista_Compras.Properties.Resources.print_black_printer_tool_symbol_icon_icons_com_54467;
+            this.Btn_imprimir.Location = new System.Drawing.Point(492, 67);
+            this.Btn_imprimir.Name = "Btn_imprimir";
+            this.Btn_imprimir.Size = new System.Drawing.Size(74, 87);
+            this.Btn_imprimir.TabIndex = 58;
+            this.Btn_imprimir.Text = "Imprimir";
+            this.Btn_imprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_imprimir.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -206,18 +206,18 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // Btn_modificar
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Rockwell", 9.75F);
-            this.button1.Image = global::Capa_Vista_Compras.Properties.Resources.compose_edit_modify_icon_177770;
-            this.button1.Location = new System.Drawing.Point(92, 67);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 87);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Modificar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.Btn_modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_modificar.Font = new System.Drawing.Font("Rockwell", 9.75F);
+            this.Btn_modificar.Image = global::Capa_Vista_Compras.Properties.Resources.compose_edit_modify_icon_177770;
+            this.Btn_modificar.Location = new System.Drawing.Point(92, 67);
+            this.Btn_modificar.Name = "Btn_modificar";
+            this.Btn_modificar.Size = new System.Drawing.Size(74, 87);
+            this.Btn_modificar.TabIndex = 53;
+            this.Btn_modificar.Text = "Modificar";
+            this.Btn_modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_modificar.UseVisualStyleBackColor = true;
             // 
             // Btn_ingresar
             // 
@@ -276,12 +276,12 @@
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.Btn_refrescar);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.Btn_imprimir);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_modificar);
             this.Controls.Add(this.Btn_ingresar);
             this.Controls.Add(this.panel1);
             this.Name = "Frm_inicio_devoluciones_d";
@@ -302,12 +302,12 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button Btn_refrescar;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Btn_imprimir;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_modificar;
         private System.Windows.Forms.Button Btn_ingresar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Lbl_compras;
