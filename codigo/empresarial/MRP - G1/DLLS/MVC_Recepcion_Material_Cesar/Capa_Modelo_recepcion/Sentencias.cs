@@ -226,6 +226,101 @@ namespace Capa_Modelo_recepcion
             }
         }
 
+        // Cesar Santizo 0901-22-5215
+        public void actualizarInventario(int idMaterial, int idAlmacen,
+                                         decimal cantidad, decimal costo)
+        {
+            using (OdbcConnection conn = conexion.AbrirConexion())
+            {
+                
+                string sqlBuscar = @"
+        SELECT Pk_Id_Inventario, Cantidad_Disponible
+        FROM Tbl_Inventario
+        WHERE Fk_Id_Tipo_Inventario = 1
+          AND Fk_Id_Material = ?
+          AND Fk_Id_Almacen = ?;";
+
+                OdbcCommand cmdBuscar = new OdbcCommand(sqlBuscar, conn);
+
+                cmdBuscar.Parameters.AddWithValue("@material", idMaterial);
+                cmdBuscar.Parameters.AddWithValue("@almacen", idAlmacen);
+
+                OdbcDataReader reader = cmdBuscar.ExecuteReader();
+
+               
+                if (reader.Read())
+                {
+                    int idInventario =
+                        Convert.ToInt32(reader["Pk_Id_Inventario"]);
+
+                    decimal cantidadActual =
+                        Convert.ToDecimal(reader["Cantidad_Disponible"]);
+
+                    reader.Close();
+
+                    decimal nuevaCantidad =
+                        cantidadActual + cantidad;
+
+                    string sqlUpdate = @"
+            UPDATE Tbl_Inventario
+            SET
+                Cantidad_Disponible = ?,
+                Costo_Unitario = ?
+            WHERE Pk_Id_Inventario = ?;";
+
+                    OdbcCommand cmdUpdate =
+                        new OdbcCommand(sqlUpdate, conn);
+
+                    cmdUpdate.Parameters.AddWithValue("@cantidad",
+                                                      nuevaCantidad);
+
+                    cmdUpdate.Parameters.AddWithValue("@costo",
+                                                      costo);
+
+                    cmdUpdate.Parameters.AddWithValue("@id",
+                                                      idInventario);
+
+                    cmdUpdate.ExecuteNonQuery();
+                }
+                else
+                {
+                    reader.Close();
+
+                   
+                    string sqlInsert = @"
+            INSERT INTO Tbl_Inventario
+            (
+                Fk_Id_Tipo_Inventario,
+                Fk_Id_Material,
+                Fk_Id_Almacen,
+                Cantidad_Disponible,
+                Costo_Unitario
+            )
+            VALUES (?, ?, ?, ?, ?);";
+
+                    OdbcCommand cmdInsert =
+                        new OdbcCommand(sqlInsert, conn);
+
+                   
+                    cmdInsert.Parameters.AddWithValue("@tipo", 1);
+
+                    cmdInsert.Parameters.AddWithValue("@material",
+                                                      idMaterial);
+
+                    cmdInsert.Parameters.AddWithValue("@almacen",
+                                                      idAlmacen);
+
+                    cmdInsert.Parameters.AddWithValue("@cantidad",
+                                                      cantidad);
+
+                    cmdInsert.Parameters.AddWithValue("@costo",
+                                                      costo);
+
+                    cmdInsert.ExecuteNonQuery();
+                }
+            }
+        }
+
         //Diego Monterroso 0901-22-1369
         public void modificarRecepcionEncabezado(int idRecepcion, string idExterno, int almacen, int estado, DateTime notificacion, DateTime ingreso, string observacion)
         {

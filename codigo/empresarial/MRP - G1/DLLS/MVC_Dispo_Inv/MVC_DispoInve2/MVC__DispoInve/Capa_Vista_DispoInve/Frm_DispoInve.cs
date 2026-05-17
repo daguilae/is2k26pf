@@ -104,16 +104,40 @@ namespace Capa_Vista_DispoInve
             cmbAlmacen.SelectedIndex = 0;
         }
 
+        private void dgvInventario_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvInventario.Rows)
+            {
+                var item = (Inventario)fila.DataBoundItem;
+                if (item != null && item.BajoStock)
+                {
+                    fila.DefaultCellStyle.BackColor = Color.FromArgb(255, 204, 204);
+                    fila.DefaultCellStyle.ForeColor = Color.DarkRed;
+                }
+            }
+        }
 
         private void Consultar()
         {
+            // 1. ESCUDO: Si los combos aún no tienen una selección válida, salimos sin hacer nada
+            if (cmbTipo.SelectedItem == null || cmbAlmacen.SelectedItem == null)
+            {
+                return;
+            }
+
             try
             {
                 int tipo = ((ComboItem)cmbTipo.SelectedItem).Id;
                 int almacen = ((ComboItem)cmbAlmacen.SelectedItem).Id;
-                string busqueda = txtBusqueda.Text.Trim();
+                string busqueda = txtBusqueda.Text?.Trim() ?? ""; // Evita nulls en el texto
 
                 var lista = _crl.ConsultarDisponibilidad(tipo, almacen, busqueda);
+
+                // Si el controlador llega a devolver null en vez de una lista vacía
+                if (lista == null)
+                {
+                    lista = new List<Inventario>();
+                }
 
                 dgvInventario.DataSource = null;
                 dgvInventario.DataSource = lista;
@@ -162,6 +186,21 @@ namespace Capa_Vista_DispoInve
         private void dgvInventario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Consultar();
+        }
+
+        private void cmbAlmacen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Consultar();
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            Consultar();
         }
     }
     internal class ComboItem

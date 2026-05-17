@@ -11,13 +11,25 @@ namespace Capa_Controlador_Costo_Fase
     {
         Cls_Sentencias sentencias = new Cls_Sentencias();
 
-        
-        public List<Cls_Datos_Fase> ObtenerFases()
+
+        public bool ValidarExisteCosto(int idFase, int idTipoCosto)
         {
-            return sentencias.fun_ObtenerFases();
+           
+            return sentencias.fun_ExisteCostoFase(idFase, idTipoCosto);
+        }
+
+        public List<Cls_Datos_Material> ObtenerMateriales()
+        {
+            return sentencias.fun_ObtenerMateriales();
         }
 
         
+        public List<Cls_Datos_Fase> ObtenerFasesPorMaterial(int idMaterial)
+        {
+            return sentencias.fun_ObtenerFasesPorMaterial(idMaterial);
+        }
+
+
         public List<Cls_Datos_Tipo_Costo> ObtenerTiposCosto()
         {
             return sentencias.fun_ObtenerTiposCosto();

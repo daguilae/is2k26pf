@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Usuario - Detalle Orden de Materiales 733</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base:          #f4f5f7;
+            --bg-surface:       #ffffff;
+            --bg-hover:         #f9f9fb;
+            --border:           #e0e0e0;
+            --accent:           #1e1e1e;
+            --text-primary:     #1a1a1a;
+            --text-muted:       #999999;
+            --text-white:       #ffffff;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-base);
+            padding: 2.5rem 1.5rem;
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .manual-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* ── HEADER ── */
+        .header-manual {
+            background: #ffffff;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 1.4rem 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-area img {
+            max-height: 56px;
+            width: auto;
+            display: block;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .header-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #888888;
+        }
+
+        .header-manual h1 {
+            color: #111111;
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+
+        /* ── INTRO ── */
+        .intro {
+            background: #f0f0f0;
+            padding: 0.85rem 2.2rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.88rem;
+            color: #555555;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intro::before {
+            content: '//';
+            color: #999999;
+            font-weight: 600;
+        }
+
+        /* ── STEP ── */
+        .step {
+            padding: 2rem 2.2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            transition: background 0.15s ease;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step:hover {
+            background: var(--bg-hover);
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .step:hover::before {
+            opacity: 1;
+        }
+
+        /* ── STEP TITLE ── */
+        .step-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .step-number {
+            background: #1e1e1e;
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        /* ── STEP DESCRIPTION ── */
+        .step-description {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 1.6rem;
+            line-height: 1.7;
+            background: #f7f7f7;
+            padding: 14px 18px;
+            border-radius: 2px;
+            border-left: 3px solid #333333;
+        }
+
+        /* ── BADGE ── */
+        .mock-badge {
+            background: #eeeeee;
+            border: 1px solid #cccccc;
+            padding: 2px 10px;
+            border-radius: 2px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #222222;
+            display: inline-block;
+            margin: 0 2px;
+            vertical-align: middle;
+        }
+
+        /* ── STEP IMAGE ── */
+        .step-image {
+            text-align: center;
+            background: #f4f4f4;
+            padding: 1.5rem;
+            border-radius: 2px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .step-image::before,
+        .step-image::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: #bbbbbb;
+            border-style: solid;
+        }
+
+        .step-image::before {
+            top: 6px;
+            left: 6px;
+            border-width: 1px 0 0 1px;
+        }
+
+        .step-image::after {
+            bottom: 6px;
+            right: 6px;
+            border-width: 0 1px 1px 0;
+        }
+
+        .step-image img {
+            max-width: 100%;
+            max-height: 460px;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-label {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111111;
+            border-top: 1px solid #333333;
+            padding: 1rem 2.2rem;
+            text-align: right;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: #666666;
+            letter-spacing: 0.08em;
+        }
+
+        @media (max-width: 680px) {
+            body { padding: 1rem 0.5rem; }
+            .step { padding: 1.5rem 1.2rem; }
+            .header-manual { padding: 1rem 1.2rem; }
+            .step-title { font-size: 0.9rem; }
+            .step-image img { max-height: 320px; }
+        }
+    </style>
+</head>
+<body>
+<div class="manual-container">
+
+    <div class="header-manual">
+        <div class="logo-area">
+            <img src="logo.png" alt="Logo del sistema"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%2060%22%3E%3Crect%20width%3D%22120%22%20height%3D%2260%22%20fill%3D%22%231e1e1e%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%20dy%3D%22.35em%22%20font-family%3D%22monospace%22%20font-size%3D%2214%22%3ELOGO%3C%2Ftext%3E%3C%2Fsvg%3E';">
+        </div>
+        <div class="header-meta">
+            <h1>Detalle Orden de Materiales 733</h1>
+        </div>
+    </div>
+
+
+    <!-- PASO 1 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">01</span>Boton CONSULTAR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Consultar</span> el sistema recarga los datos del encabezado 
+            (estado, fecha de solicitud y fecha recibida) y la tabla de materiales correspondientes 
+            a la orden actualmente seleccionada en el combo <span class="mock-badge">ID Orden</span>.
+            Solo esta disponible cuando no se esta en modo edicion.
+        </div>
+        <div class="step-image">
+            <img src="1.png" alt="Paso 1 - Boton Consultar"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E1.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">1.png — Boton Consultar activo</div>
+        </div>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">02</span>Boton IMPRIMIR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Imprimir</span> se abre el formulario 
+            <strong>Frm_Reporte_Detalle</strong> en una ventana emergente, mostrando el reporte 
+            imprimible del detalle de la orden activa. Solo esta habilitado cuando hay una orden 
+            cargada y no se esta editando.
+        </div>
+        <div class="step-image">
+            <img src="2.png" alt="Paso 2 - Boton Imprimir"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E2.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">2.png — Reporte de detalle</div>
+        </div>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">03</span>Boton REFRESCAR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Refrescar</span> el sistema limpia completamente 
+            el formulario (vacia el combo de orden, el estado, las fechas y la tabla de materiales) 
+            y vuelve a cargar los catalogos de ordenes y estados desde la base de datos. 
+            Muestra un aviso de confirmacion al finalizar. Siempre esta disponible.
+        </div>
+        <div class="step-image">
+            <img src="3.png" alt="Paso 3 - Boton Refrescar"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E3.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">3.png — Formulario limpio tras refrescar</div>
+        </div>
+    </div>
+
+    <!-- PASO 4 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">04</span>Navegacion por filas: Inicio / Anterior / Siguiente / Fin</div>
+        <div class="step-description">
+            Estos botones permiten moverse por las filas de la tabla <strong>Materiales de la Orden</strong>:<br>
+            <span class="mock-badge">Inicio</span> Selecciona la <strong>primera fila</strong> de la tabla.<br>
+            <span class="mock-badge">Anterior</span> Sube una fila respecto a la fila actual.<br>
+            <span class="mock-badge">Siguiente</span> Baja una fila respecto a la fila actual.<br>
+            <span class="mock-badge">Fin</span> Selecciona la <strong>ultima fila</strong> de la tabla.<br>
+            Todos estos botones se deshabilitan automaticamente cuando el formulario entra en modo edicion.
+        </div>
+        <div class="step-image">
+            <img src="4.png" alt="Paso 4 - Botones navegacion"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E4.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">4.png — Navegacion entre filas de materiales</div>
+        </div>
+    </div>
+
+    <!-- PASO 5 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">05</span>Boton SALIR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Salir</span> se cierra el formulario actual. 
+            Siempre esta disponible, tanto en modo lectura como en modo edicion.
+        </div>
+        <div class="step-image">
+            <img src="5.png" alt="Paso 5 - Boton Salir"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E5.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">5.png — Cerrar formulario</div>
+        </div>
+    </div>
+
+    <!-- PASO 6 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">06</span>Combo ID Orden</div>
+        <div class="step-description">
+            Al seleccionar una orden del combo <span class="mock-badge">ID Orden</span> el sistema 
+            carga automaticamente el encabezado (estado y fechas) y la tabla de materiales de esa orden. 
+            Si el formulario fue abierto desde otro modulo con un ID preseleccionado, el combo 
+            apuntara directamente a esa orden al abrirse.
+        </div>
+        <div class="step-image">
+            <img src="6.png" alt="Paso 6 - Combo ID Orden"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E6.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">6.png — Seleccion de orden desde el combo</div>
+        </div>
+    </div>
+
+    <!-- PASO 7 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">07</span>Campo ESTADO</div>
+        <div class="step-description">
+            Muestra el estado actual de la orden seleccionada (ej: Enviado, Pendiente, Finalizado). 
+            Este campo <strong>solo se puede editar</strong> cuando el formulario esta en 
+            modo edicion (tras presionar <span class="mock-badge">Modificar</span>). 
+            En modo lectura permanece bloqueado.
+        </div>
+        <div class="step-image">
+            <img src="7.png" alt="Paso 7 - Campo Estado"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E7.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">7.png — Campo Estado editable en modo edicion</div>
+        </div>
+    </div>
+
+    <!-- PASO 8 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">08</span>Campo FECHA DE SOLICITUD</div>
+        <div class="step-description">
+            Muestra la fecha en que se creo la orden. Este campo es <strong>siempre de solo lectura</strong>; 
+            no puede modificarse en ningun modo. Refleja la fecha original registrada en la base de datos.
+        </div>
+        <div class="step-image">
+            <img src="8.png" alt="Paso 8 - Fecha de Solicitud"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E8.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">8.png — Fecha de Solicitud bloqueada</div>
+        </div>
+    </div>
+
+    <!-- PASO 9 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">09</span>Campo FECHA RECIBIDA</div>
+        <div class="step-description">
+            Muestra la fecha en que se recibio la orden. Este campo <strong>solo se puede editar</strong> 
+            cuando el formulario esta en modo edicion. Su nuevo valor se guarda junto al estado 
+            al confirmar con <span class="mock-badge">Guardar</span>.
+        </div>
+        <div class="step-image">
+            <img src="9.png" alt="Paso 9 - Fecha Recibida"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E9.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">9.png — Fecha Recibida editable en modo edicion</div>
+        </div>
+    </div>
+
+    <!-- PASO 10 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">10</span>Tabla MATERIALES DE LA ORDEN</div>
+        <div class="step-description">
+            Muestra el listado de materiales asociados a la orden seleccionada con las columnas: 
+            <strong>Codigo, Material, Unidad, Cant. Solicitada, Cant. Entregada</strong> y 
+            <strong>Cant. Pendiente</strong>. La tabla es siempre de solo lectura; 
+            los datos no se pueden modificar directamente desde esta vista.
+        </div>
+        <div class="step-image">
+            <img src="10.png" alt="Paso 10 - Tabla de materiales"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E10.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">10.png — Tabla de materiales de la orden</div>
+        </div>
+    </div>
+
+    <!-- PASO 11 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">11</span>Boton MODIFICAR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Modificar</span> el formulario entra en 
+            <strong>modo edicion</strong>: se habilitan los campos de <strong>Estado</strong> y 
+            <strong>Fecha Recibida</strong>, y se bloquea el combo de ID Orden para evitar 
+            cambios accidentales de registro. Solo esta disponible cuando hay una orden cargada 
+            y no se esta editando.
+        </div>
+        <div class="step-image">
+            <img src="11.png" alt="Paso 11 - Boton Modificar"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E11.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">11.png — Formulario en modo edicion</div>
+        </div>
+    </div>
+
+    <!-- PASO 12 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">12</span>Boton GUARDAR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Guardar</span> el sistema valida que se haya 
+            seleccionado un estado y luego actualiza en base de datos el <strong>Estado</strong> 
+            y la <strong>Fecha Recibida</strong> de la orden. Si la operacion es exitosa muestra 
+            un mensaje de confirmacion, recarga los datos y vuelve al modo lectura. 
+            Solo esta habilitado en modo edicion.
+        </div>
+        <div class="step-image">
+            <img src="12.png" alt="Paso 12 - Boton Guardar"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E12.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">12.png — Confirmacion de guardado</div>
+        </div>
+    </div>
+
+    <!-- PASO 13 -->
+    <div class="step">
+        <div class="step-title"><span class="step-number">13</span>Boton CANCELAR</div>
+        <div class="step-description">
+            Al presionar <span class="mock-badge">Cancelar</span> aparece un dialogo de confirmacion 
+            preguntando si desea descartar los cambios. Si el usuario confirma, el sistema restaura 
+            los datos originales de la orden, desbloquea el combo de ID Orden y regresa al 
+            modo lectura sin guardar ningun cambio. Solo esta habilitado en modo edicion.
+        </div>
+        <div class="step-image">
+            <img src="13.png" alt="Paso 13 - Boton Cancelar"
+                 onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22700%22%20height%3D%22260%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23aaaaaa%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-size%3D%2216%22%20font-family%3D%22monospace%22%3E13.png%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <div class="img-label">13.png — Dialogo de cancelacion de edicion</div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

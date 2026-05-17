@@ -17,7 +17,7 @@ namespace Ejecutable_plan_del_prod
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Plan_Produccion());
+            Application.Run(new Frm_Encabezado_Plan());
         }
     }
 }

@@ -604,7 +604,8 @@ namespace Capa_Vista_recepcion
             // 
             // Frm_Detalle_Recepcion
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 813);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);

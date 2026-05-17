@@ -110,8 +110,8 @@ namespace Capa_Vista_Expl_Mat
         // Filtro por ID (TextBox)
         private void Filtrar(object sender, EventArgs e)
         {
-            string idBusqueda = Txt_BuscarOrden.Text.Trim();
-            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorId(idBusqueda);
+            string busqueda = Txt_BuscarOrden.Text.Trim();
+            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorNombre(busqueda);
             ConfigurarGrid();
             AgregarBotonVer();
         }
@@ -172,6 +172,63 @@ namespace Capa_Vista_Expl_Mat
         {
             Frm_Expl_Mat frm = new Frm_Expl_Mat();
             frm.ShowDialog();
+            CargarGrid();
+        }
+
+        // Buscar por nombre de orden
+        private void Txt_BuscarOrden_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = Txt_BuscarOrden.Text.Trim();
+            Dgv_InformacionExplosion.DataSource = controlador.FiltrarPorNombre(busqueda);
+            ConfigurarGrid();
+            AgregarBotonVer();
+        }
+
+        // Eliminar explosión
+        private void Btn_eliminar_explo_Click(object sender, EventArgs e)
+        {
+            if (Dgv_InformacionExplosion.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una explosión para eliminar.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var valor = Dgv_InformacionExplosion
+                            .SelectedRows[0]
+                            .Cells["No_Explosion"].Value;
+
+            if (valor == null || valor == DBNull.Value) return;
+
+            int idExplosion = Convert.ToInt32(valor);
+
+            var confirm = MessageBox.Show(
+                $"¿Está seguro de eliminar la explosión No. {idExplosion}?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                bool ok = controlador.EliminarExplosion(idExplosion);
+                if (ok)
+                {
+                    MessageBox.Show("Explosión eliminada correctamente.",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarGrid();
+                }
+                else
+                    MessageBox.Show("Error al eliminar la explosión.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Refrescar encabezado
+        private void Btn_Ref_Click(object sender, EventArgs e)
+        {
+            Txt_BuscarOrden.Text = "";
+            dateTimePicker1.Checked = false;
+            dateTimePicker2.Checked = false;
             CargarGrid();
         }
 
@@ -290,39 +347,58 @@ namespace Capa_Vista_Expl_Mat
                 Btn_GenerarOrdenLogistica.Enabled = false;
                 return;
             }
-        bool ok = controlador.GenerarOrdenMaterial(idOrden, _datosImplosion);
 
-        if (ok)
-        {
-            MessageBox.Show("Orden de material generada correctamente.",
-                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Btn_GenerarOrdenLogistica.Enabled = false;
-            Lbl_EstadoImplosion.Text = "✔ Orden generada. Esperando entrega.";
-        }
-        else
-        {
-            MessageBox.Show("Error al guardar la orden.",
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Arón Ricardo Esquit Silva 0901-22-13036 11/05/2026
+            RespuestaApiOrdenMaterial respuesta = controlador.GenerarYEnviarOrdenMaterialApi(idOrden, _datosImplosion);
+
+            if (respuesta.Exitoso)
+            {
+                MessageBox.Show(
+                    "Orden generada y enviada a Logística correctamente.\n\n" +
+                    "ID Orden Material: " + respuesta.IdOrdenMaterial + "\n" +
+                    "ID Venta Logística: " + respuesta.IdVentaLogistica,
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Btn_GenerarOrdenLogistica.Enabled = false;
+                Lbl_EstadoImplosion.Text = "Orden generada y enviada a Logística.";
+            }
+
+
+            else if (respuesta.IdOrdenMaterial > 0)
+            {
+                MessageBox.Show(
+                    "Orden guardada correctamente, pero no se pudo enviar a Logística.\n\n" +
+                    "Detalle: " + respuesta.Mensaje,
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                Btn_GenerarOrdenLogistica.Enabled = false;
+                Lbl_EstadoImplosion.Text = " Orden guardada. Pendiente de envío a Logística.";
+            }
+
+            else
+            {
+                MessageBox.Show(
+                    "Error al guardar la orden.\n\nDetalle: " + respuesta.Mensaje,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Lbl_EstadoImplosion.Text = "Error al generar la orden.";
+            }
         }
 
-        }
+
 
         private void Dgv_Implosion_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
+        
         private void Cmb_OrdenProduccion_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (Cmb_OrdenProduccion.SelectedValue != null && Cmb_OrdenProduccion.ValueMember != "")
             {
                 Cmb_OrdenProduccion_SelectedIndexChanged(sender, e);
             }
-        }
-
-        private void Txt_BuscarOrden_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Btn_BuscarOtraOrden_Click(object sender, EventArgs e)

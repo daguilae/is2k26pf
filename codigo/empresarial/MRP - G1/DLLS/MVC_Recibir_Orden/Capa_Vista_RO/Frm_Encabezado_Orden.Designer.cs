@@ -40,6 +40,8 @@
             this.dgvOrdenes = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Btn_CrearOrdenN = new System.Windows.Forms.Button();
+            this.btn_eliminar_orden = new System.Windows.Forms.Button();
+            this.btn_refrescar_grid = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,11 +164,35 @@
             this.Btn_CrearOrdenN.UseVisualStyleBackColor = true;
             this.Btn_CrearOrdenN.Click += new System.EventHandler(this.Btn_CrearOrdenN_Click);
             // 
+            // btn_eliminar_orden
+            // 
+            this.btn_eliminar_orden.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btn_eliminar_orden.Location = new System.Drawing.Point(1206, 652);
+            this.btn_eliminar_orden.Name = "btn_eliminar_orden";
+            this.btn_eliminar_orden.Size = new System.Drawing.Size(203, 30);
+            this.btn_eliminar_orden.TabIndex = 12;
+            this.btn_eliminar_orden.Text = "Eliminar Orden";
+            this.btn_eliminar_orden.UseVisualStyleBackColor = true;
+            this.btn_eliminar_orden.Click += new System.EventHandler(this.btn_eliminar_orden_Click);
+            // 
+            // btn_refrescar_grid
+            // 
+            this.btn_refrescar_grid.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btn_refrescar_grid.Location = new System.Drawing.Point(1415, 652);
+            this.btn_refrescar_grid.Name = "btn_refrescar_grid";
+            this.btn_refrescar_grid.Size = new System.Drawing.Size(165, 30);
+            this.btn_refrescar_grid.TabIndex = 13;
+            this.btn_refrescar_grid.Text = "Refrescar";
+            this.btn_refrescar_grid.UseVisualStyleBackColor = true;
+            this.btn_refrescar_grid.Click += new System.EventHandler(this.btn_refrescar_grid_Click);
+            // 
             // Frm_Encabezado_Orden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1591, 798);
+            this.Controls.Add(this.btn_refrescar_grid);
+            this.Controls.Add(this.btn_eliminar_orden);
             this.Controls.Add(this.Btn_CrearOrdenN);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvOrdenes);
@@ -202,5 +228,7 @@
         private System.Windows.Forms.DataGridView dgvOrdenes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button Btn_CrearOrdenN;
+        private System.Windows.Forms.Button btn_eliminar_orden;
+        private System.Windows.Forms.Button btn_refrescar_grid;
     }
 }

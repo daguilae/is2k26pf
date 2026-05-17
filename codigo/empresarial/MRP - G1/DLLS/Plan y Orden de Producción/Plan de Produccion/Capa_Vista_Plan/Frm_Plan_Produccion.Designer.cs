@@ -115,6 +115,7 @@ namespace Capa_Vista_Plan
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_salir.UseVisualStyleBackColor = true;
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_ayuda
             // 
@@ -262,6 +263,7 @@ namespace Capa_Vista_Plan
             this.Btn_modificar.Text = "Modificar";
             this.Btn_modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_modificar.UseVisualStyleBackColor = true;
+            this.Btn_modificar.Click += new System.EventHandler(this.Btn_modificar_Click);
             // 
             // Btn_ingresar
             // 
@@ -525,6 +527,7 @@ namespace Capa_Vista_Plan
             this.Btn_Actualizar.Size = new System.Drawing.Size(43, 46);
             this.Btn_Actualizar.TabIndex = 31;
             this.Btn_Actualizar.UseVisualStyleBackColor = false;
+            this.Btn_Actualizar.Click += new System.EventHandler(this.Btn_Actualizar_Click);
             // 
             // Dtp_FechaFin
             // 
@@ -719,6 +722,7 @@ namespace Capa_Vista_Plan
             this.Dgv_Cronograma.RowTemplate.Height = 24;
             this.Dgv_Cronograma.Size = new System.Drawing.Size(808, 240);
             this.Dgv_Cronograma.TabIndex = 3;
+            this.Dgv_Cronograma.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Cronograma_CellClick);
             // 
             // panel2
             // 

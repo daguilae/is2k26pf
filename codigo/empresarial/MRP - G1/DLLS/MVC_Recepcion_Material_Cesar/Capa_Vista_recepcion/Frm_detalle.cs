@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_recepcion;
-using System.IO; 
+using System.IO;
 namespace Capa_Vista_recepcion
 {
     public partial class Frm_Detalle_Recepcion : Form
-    {       
+    {
         //cesar santizo 0901-22-5215
 
         public Frm_Detalle_Recepcion()
@@ -37,7 +37,7 @@ namespace Capa_Vista_recepcion
             Btn_cancelar.Click += Btn_cancelar_Click;
             Btn_eliminar.Click += Btn_eliminar_Click;
             Btn_consultar.Click += Btn_consultar_Click;
-      
+
 
         }
 
@@ -64,7 +64,7 @@ namespace Capa_Vista_recepcion
 
         private void Btn_agregarMat_Click(object sender, EventArgs e)
         {
-            // Validaciones
+           
             if (Cbo_Materiales.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione un material");
@@ -77,10 +77,10 @@ namespace Capa_Vista_recepcion
                 return;
             }
 
-            // Obtener datos
+           
             int idMaterial = Convert.ToInt32(Cbo_Materiales.SelectedValue);
             string nombreMaterial = Cbo_Materiales.Text;
-            decimal cantidad = Nud_Cantidad.Value; // 👈 aquí cambia
+            decimal cantidad = Nud_Cantidad.Value; 
             decimal costo = Convert.ToDecimal(Txt_Costo.Text);
 
 
@@ -94,12 +94,12 @@ namespace Capa_Vista_recepcion
                 }
             }
 
-            // Agregar fila
+            
             Dgv_Materiales.Rows.Add(idMaterial, nombreMaterial, cantidad, costo);
 
-            // Limpiar campos
+          
             Cbo_Materiales.SelectedIndex = -1;
-            Nud_Cantidad.Value = 0; 
+            Nud_Cantidad.Value = 0;
             Txt_Costo.Clear();
         }
         //cesar santizo 0901-22-5215
@@ -175,15 +175,27 @@ namespace Capa_Vista_recepcion
             }
 
             string idExterno = Txt_Id.Text.Trim();
-            int almacen = Convert.ToInt32(Cbo_Almacen.SelectedValue);
-            int estado = Convert.ToInt32(Cbo_estado.SelectedValue);
-            DateTime notificacion = Dtp_Notificacion.Value.Date;
-            DateTime ingreso = Dtp_Ingreso.Value.Date;
-            string observacion = Rtxt_Observaciones.Text.Trim();
 
+            int almacen =
+                Convert.ToInt32(Cbo_Almacen.SelectedValue);
+
+            int estado =
+                Convert.ToInt32(Cbo_estado.SelectedValue);
+
+            DateTime notificacion =
+                Dtp_Notificacion.Value.Date;
+
+            DateTime ingreso =
+                Dtp_Ingreso.Value.Date;
+
+            string observacion =
+                Rtxt_Observaciones.Text.Trim();
+
+           
             if (modoModificar)
             {
-                int idRecepcion = Convert.ToInt32(Txt_Id.Tag);
+                int idRecepcion =
+                    Convert.ToInt32(Txt_Id.Tag);
 
                 con.modificarRecepcionEncabezado(
                     idRecepcion,
@@ -199,46 +211,103 @@ namespace Capa_Vista_recepcion
 
                 foreach (DataGridViewRow fila in Dgv_Materiales.Rows)
                 {
-                    if (fila.IsNewRow) continue;
+                    if (fila.IsNewRow)
+                        continue;
 
-                    int idMaterial = Convert.ToInt32(fila.Cells["idMaterial"].Value);
-                    decimal cantidad = Convert.ToDecimal(fila.Cells["cantidad"].Value);
-                    decimal costo = Convert.ToDecimal(fila.Cells["costo"].Value);
+                    int idMaterial =
+                        Convert.ToInt32(
+                            fila.Cells["idMaterial"].Value
+                        );
 
-                    con.guardarRecepcionDetalle(idRecepcion, idMaterial, cantidad, costo);
+                    decimal cantidad =
+                        Convert.ToDecimal(
+                            fila.Cells["cantidad"].Value
+                        );
+
+                    decimal costo =
+                        Convert.ToDecimal(
+                            fila.Cells["costo"].Value
+                        );
+
+                    con.guardarRecepcionDetalle(
+                        idRecepcion,
+                        idMaterial,
+                        cantidad,
+                        costo
+                    );
+
+                    con.actualizarInventario(
+                        idMaterial,
+                        almacen,
+                        cantidad,
+                        costo
+                    );
                 }
 
-                MessageBox.Show("Recepción modificada correctamente.");
+                MessageBox.Show(
+                    "Recepción modificada correctamente."
+                );
             }
+
+           
             else
             {
-                int idRecepcion = con.guardarRecepcionEncabezado(
-                    idExterno,
-                    almacen,
-                    estado,
-                    notificacion,
-                    ingreso,
-                    observacion
-                );
+                
+                int idRecepcion =
+                    con.guardarRecepcionEncabezado(
+                        idExterno,
+                        almacen,
+                        estado,
+                        notificacion,
+                        ingreso,
+                        observacion
+                    );
 
+                
                 foreach (DataGridViewRow fila in Dgv_Materiales.Rows)
                 {
-                    if (fila.IsNewRow) continue;
+                    if (fila.IsNewRow)
+                        continue;
 
-                    int idMaterial = Convert.ToInt32(fila.Cells["idMaterial"].Value);
-                    decimal cantidad = Convert.ToDecimal(fila.Cells["cantidad"].Value);
-                    decimal costo = Convert.ToDecimal(fila.Cells["costo"].Value);
+                    int idMaterial =
+                        Convert.ToInt32(
+                            fila.Cells["idMaterial"].Value
+                        );
 
-                    con.guardarRecepcionDetalle(idRecepcion, idMaterial, cantidad, costo);
+                    decimal cantidad =
+                        Convert.ToDecimal(
+                            fila.Cells["cantidad"].Value
+                        );
+
+                    decimal costo =
+                        Convert.ToDecimal(
+                            fila.Cells["costo"].Value
+                        );
+
+                    con.guardarRecepcionDetalle(
+                        idRecepcion,
+                        idMaterial,
+                        cantidad,
+                        costo
+                    );
+
+                   
+                    con.actualizarInventario(
+                        idMaterial,
+                        almacen,
+                        cantidad,
+                        costo
+                    );
                 }
 
-                MessageBox.Show("Recepción guardada correctamente.");
+                MessageBox.Show(
+                    "Recepción guardada correctamente."
+                );
             }
 
             limpiarCampos();
             habilitarCampos(false);
         }
-
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
             limpiarCampos();
@@ -355,6 +424,8 @@ namespace Capa_Vista_recepcion
         {
             idRecepcion = id;
 
+            Txt_Id.Tag = id;
+
             DataTable encabezado = con.obtenerRecepcionPorId(id);
 
             if (encabezado.Rows.Count > 0)
@@ -394,9 +465,5 @@ namespace Capa_Vista_recepcion
             }
         }
     }
-
-
-
-
-
 }
+

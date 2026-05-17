@@ -127,6 +127,7 @@ namespace Capa_Vista_DispoInve
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(1035, 27);
             this.txtBusqueda.TabIndex = 7;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
             // 
             // cmbAlmacen
             // 
@@ -136,6 +137,7 @@ namespace Capa_Vista_DispoInve
             this.cmbAlmacen.Name = "cmbAlmacen";
             this.cmbAlmacen.Size = new System.Drawing.Size(276, 28);
             this.cmbAlmacen.TabIndex = 10;
+            this.cmbAlmacen.SelectedIndexChanged += new System.EventHandler(this.cmbAlmacen_SelectedIndexChanged);
             // 
             // cmbTipo
             // 
@@ -145,6 +147,7 @@ namespace Capa_Vista_DispoInve
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(276, 28);
             this.cmbTipo.TabIndex = 11;
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // label6
             // 

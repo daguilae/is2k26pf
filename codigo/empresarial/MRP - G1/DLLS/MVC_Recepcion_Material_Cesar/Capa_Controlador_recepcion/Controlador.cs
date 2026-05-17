@@ -37,6 +37,19 @@ namespace Capa_Controlador_recepcion
             return sen.obtenerListadoRecepciones();
         }
 
+        // Cesar Santizo 0901-22-5215
+        public void actualizarInventario(int idMaterial,
+                                 int idAlmacen,
+                                 decimal cantidad,
+                                 decimal costo)
+        {
+            sen.actualizarInventario(idMaterial,
+                                     idAlmacen,
+                                     cantidad,
+                                     costo);
+        }
+
+
         public DataTable filtrarListadoRecepciones(string id, string estado, DateTime desde, DateTime hasta)
         {
             return sen.filtrarListadoRecepciones(id, estado, desde, hasta);

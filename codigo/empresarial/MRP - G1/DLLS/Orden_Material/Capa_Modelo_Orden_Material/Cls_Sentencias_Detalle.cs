@@ -10,14 +10,10 @@ namespace Capa_Modelo_Orden_Material
     {
         private readonly Cls_Conexion conexion = new Cls_Conexion();
 
-        // -------------------------------------------------------
-        // Obtener todas las órdenes de material para el ComboBox
-        // Muestra: ID Orden Material, Estado, Fecha Recibida, Fecha Solicitud
-        // -------------------------------------------------------
         public DataTable ObtenerOrdenesCombo()
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) 
             {
                 string query = @"
                     SELECT 
@@ -31,8 +27,8 @@ namespace Capa_Modelo_Orden_Material
                             ' | ', t.Nombre_Estado,
                             ' | Sol: ', DATE_FORMAT(e.Fecha_Solicitud, '%d/%m/%Y')
                         )                                   AS OrdenDescripcion
-                    FROM Encabezado_Orden_Material e
-                    INNER JOIN Tipo_Estado_Orden_Material t
+                    FROM Tbl_Encabezado_Orden_Material e
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material t
                         ON e.Fk_Id_Estado_Orden_Material = t.Pk_Id_Estado_Orden_Material
                     ORDER BY e.Pk_Id_Orden_Material DESC";
 
@@ -42,24 +38,21 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener datos del encabezado de una orden por su ID
-        // -------------------------------------------------------
         public DataTable ObtenerOrdenPorId(int idOrden)
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) 
             {
                 string query = @"
                     SELECT 
                         e.Pk_Id_Orden_Material              AS IdOrden,
-                        e.Fk_Id_Orden_Produccion            AS IdOrdenProduccion,
+                        e.Fk_Id_Orden_Recibida              AS IdOrdenRecibida,
                         e.Fk_Id_Estado_Orden_Material       AS IdEstado,
                         t.Nombre_Estado                     AS NombreEstado,
                         e.Fecha_Solicitud                   AS FechaSolicitud,
                         e.Fecha_Recibida                    AS FechaRecibida
-                    FROM Encabezado_Orden_Material e
-                    INNER JOIN Tipo_Estado_Orden_Material t
+                    FROM Tbl_Encabezado_Orden_Material e
+                    INNER JOIN Tbl_Tipo_Estado_Orden_Material t
                         ON e.Fk_Id_Estado_Orden_Material = t.Pk_Id_Estado_Orden_Material
                     WHERE e.Pk_Id_Orden_Material = ?";
 
@@ -71,14 +64,10 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener el detalle (materiales) de una orden
-        // Columnas: Código, Nombre, Cant. Solicitada, Cant. Entregada, Cant. Pendiente
-        // -------------------------------------------------------
         public DataTable ObtenerDetalleOrden(int idOrden)
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) 
             {
                 string query = @"
                     SELECT 
@@ -90,7 +79,7 @@ namespace Capa_Modelo_Orden_Material
                         d.Cantidad_Solicitada               AS CantidadSolicitada,
                         d.Cantidad_Entregada                AS CantidadEntregada,
                         d.Cantidad_Pendiente                AS CantidadPendiente
-                    FROM Detalle_Orden_Material d
+                    FROM Tbl_Detalle_Orden_Material d
                     INNER JOIN Tbl_Materiales m
                         ON d.Fk_Id_Materiales = m.Pk_Id_Materiales
                     INNER JOIN Tbl_Unidad_Medida u
@@ -106,19 +95,16 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Obtener catálogo de estados para el ComboBox
-        // -------------------------------------------------------
         public DataTable ObtenerEstadosOrden()
         {
             DataTable dt = new DataTable();
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) 
             {
                 string query = @"
                     SELECT 
                         t.Pk_Id_Estado_Orden_Material       AS IdEstado,
                         t.Nombre_Estado                     AS NombreEstado
-                    FROM Tipo_Estado_Orden_Material t
+                    FROM Tbl_Tipo_Estado_Orden_Material t
                     ORDER BY t.Nombre_Estado";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
@@ -127,16 +113,14 @@ namespace Capa_Modelo_Orden_Material
             return dt;
         }
 
-        // -------------------------------------------------------
-        // Modificar el encabezado de una orden de material
-        // Solo permite cambiar Estado y Fecha_Recibida
-        // -------------------------------------------------------
         public bool ModificarOrden(int idOrden, int idEstado, DateTime? fechaRecibida)
         {
-            using (OdbcConnection conn = conexion.AbrirConexion())
+            using (OdbcConnection conn = conexion.AbrirConexion()) 
             {
+                conn.Open(); 
+
                 string query = @"
-                    UPDATE Encabezado_Orden_Material
+                    UPDATE Tbl_Encabezado_Orden_Material
                     SET 
                         Fk_Id_Estado_Orden_Material = ?,
                         Fecha_Recibida              = ?
@@ -144,7 +128,8 @@ namespace Capa_Modelo_Orden_Material
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
                 cmd.Parameters.AddWithValue("?", idEstado);
-                cmd.Parameters.AddWithValue("?", fechaRecibida.HasValue ? (object)fechaRecibida.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("?",
+                    fechaRecibida.HasValue ? (object)fechaRecibida.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("?", idOrden);
 
                 int filas = cmd.ExecuteNonQuery();
