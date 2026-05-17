@@ -403,5 +403,254 @@ namespace Capa_modelo_factura
 
 
 
+
+        // buscar compra
+        public DataTable buscarCompraCompletaPorNumero(string numeroFactura)
+        {
+            DataTable dt = new DataTable();
+
+            string sql = $@"
+        SELECT 
+            c.pk_id_compra,
+            c.cmp_serie_factura,
+            c.cmp_numero_factura,
+            c.cmp_fecha,
+            c.cmp_fecha_vencimiento,
+            c.fk_id_proveedor,
+            c.fk_id_bodega,
+            c.fk_id_orden_compra,
+            c.cmp_tipo_compra,
+            c.cmp_dias_credito,
+            c.cmp_subtotal,
+            c.cmp_total,
+            c.cmp_estado,
+            dc.fk_inventario_id,
+            dc.fk_id_unidad,
+            dc.cmp_cantidad,
+            dc.cmp_precio,
+            (dc.cmp_cantidad * dc.cmp_precio) AS cmp_subtotal_linea,
+            i.nombre_prod,
+            CONCAT(u.ID_Unidad, '_', u.Abreviacion_Medida) AS Nombre_Unidad,
+            p.cmp_Nombre_Proveedor,
+            b.Cmp_Nombre_Bodega,
+            oc.cmp_numero AS numero_orden
+        FROM tbl_compra c
+        LEFT JOIN tbl_detalle_compra dc
+            ON c.pk_id_compra = dc.fk_id_compra
+        LEFT JOIN tbl_inventario i
+            ON dc.fk_inventario_id = i.pk_inventario_id
+        LEFT JOIN tbl_unidad_de_medida u
+            ON dc.fk_id_unidad = u.ID_Unidad
+        LEFT JOIN tbl_proveedores p
+            ON c.fk_id_proveedor = p.pk_id_proveedor
+        LEFT JOIN tbl_bodega b
+            ON c.fk_id_bodega = b.Pk_Id_Bodega
+        LEFT JOIN tbl_orden_compra oc
+            ON c.fk_id_orden_compra = oc.pk_id_orden_compra
+        WHERE c.cmp_numero_factura LIKE '%{numeroFactura}%'
+        ORDER BY dc.pk_id_detalle_compra ASC";
+
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcDataAdapter adapter = new OdbcDataAdapter(sql, conn);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar compra: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+
+            return dt;
+        }
+
+        // eliminar compra
+        public void eliminarCompra(string numeroFactura)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_compra FROM tbl_compra " +
+                    $"WHERE cmp_numero_factura = '{numeroFactura}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la compra para eliminar.");
+
+                int idCompra = Convert.ToInt32(resultado);
+
+                // Primero eliminar detalle
+                OdbcCommand cmdDetalle = new OdbcCommand(
+                    $"DELETE FROM tbl_detalle_compra WHERE fk_id_compra = {idCompra}", conn);
+                cmdDetalle.ExecuteNonQuery();
+
+                // Luego eliminar encabezado
+                OdbcCommand cmdEncabezado = new OdbcCommand(
+                    $"DELETE FROM tbl_compra WHERE pk_id_compra = {idCompra}", conn);
+                cmdEncabezado.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar compra: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
+
+        // editar solo encabezado 
+        public void editarSoloEncabezadoCompra(string numeroFactura, int idProveedor,
+                                                int idBodega, int idOrdenCompra,
+                                                string serieFactura, DateTime fecha,
+                                                DateTime fechaVencimiento, string tipoCompra,
+                                                int diasCredito, decimal subtotal, decimal total)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_compra FROM tbl_compra " +
+                    $"WHERE cmp_numero_factura = '{numeroFactura}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la compra.");
+
+                int idCompra = Convert.ToInt32(resultado);
+                string fechaStr = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaVencStr = fechaVencimiento.ToString("yyyy-MM-dd HH:mm:ss");
+                string pagoLimpio = tipoCompra.Trim().ToLower();
+                string subtotalStr = subtotal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string totalStr = total.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string diasStr = (pagoLimpio == "credito" && diasCredito > 0)
+                                         ? diasCredito.ToString() : "0";
+
+                string sqlUpdate = $@"UPDATE tbl_compra 
+            SET
+                fk_id_proveedor      = {idProveedor},
+                fk_id_bodega         = {idBodega},
+                fk_id_orden_compra   = {idOrdenCompra},
+                cmp_serie_factura    = '{serieFactura}',
+                cmp_fecha            = '{fechaStr}',
+                cmp_fecha_vencimiento = '{fechaVencStr}',
+                cmp_tipo_compra      = '{pagoLimpio}',
+                cmp_dias_credito     = {diasStr},
+                cmp_subtotal         = {subtotalStr},
+                cmp_total            = {totalStr}
+            WHERE pk_id_compra = {idCompra}";
+
+                OdbcCommand cmdUpdate = new OdbcCommand(sqlUpdate, conn);
+                int filasAfectadas = cmdUpdate.ExecuteNonQuery();
+
+                if (filasAfectadas == 0)
+                    throw new Exception($"El UPDATE no afectó ninguna fila. ID: {idCompra}");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al editar encabezado compra: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
+
+        //  Editar toda la compra
+        public void editarCompra(string numeroFactura, int idProveedor,
+                                  int idBodega, int idOrdenCompra,
+                                  string serieFactura, DateTime fecha,
+                                  DateTime fechaVencimiento, string tipoCompra,
+                                  int diasCredito, decimal subtotal, decimal total,
+                                  List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_compra FROM tbl_compra " +
+                    $"WHERE cmp_numero_factura = '{numeroFactura}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la compra para editar.");
+
+                int idCompra = Convert.ToInt32(resultado);
+                string fechaStr = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaVencStr = fechaVencimiento.ToString("yyyy-MM-dd HH:mm:ss");
+                string pagoLimpio = tipoCompra.Trim().ToLower();
+                string subtotalStr = subtotal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string totalStr = total.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string diasStr = (pagoLimpio == "credito" && diasCredito > 0)
+                                         ? diasCredito.ToString() : "0";
+
+                // ── Actualizar encabezado ──
+                string sqlUpdate = $@"UPDATE tbl_compra 
+            SET
+                fk_id_proveedor       = {idProveedor},
+                fk_id_bodega          = {idBodega},
+                fk_id_orden_compra    = {idOrdenCompra},
+                cmp_serie_factura     = '{serieFactura}',
+                cmp_fecha             = '{fechaStr}',
+                cmp_fecha_vencimiento = '{fechaVencStr}',
+                cmp_tipo_compra       = '{pagoLimpio}',
+                cmp_dias_credito      = {diasStr},
+                cmp_subtotal          = {subtotalStr},
+                cmp_total             = {totalStr}
+            WHERE pk_id_compra = {idCompra}";
+
+                OdbcCommand cmdUpdate = new OdbcCommand(sqlUpdate, conn);
+                int filasAfectadas = cmdUpdate.ExecuteNonQuery();
+
+                if (filasAfectadas == 0)
+                    throw new Exception($"El UPDATE no afectó ninguna fila. ID: {idCompra}");
+
+                // ── Eliminar detalle anterior ──
+                OdbcCommand cmdBorrar = new OdbcCommand(
+                    $"DELETE FROM tbl_detalle_compra WHERE fk_id_compra = {idCompra}", conn);
+                cmdBorrar.ExecuteNonQuery();
+
+                // ── Insertar nuevo detalle ──
+                foreach (var item in detalles)
+                {
+                    string cantidadStr = item.cantidad.ToString(
+                        System.Globalization.CultureInfo.InvariantCulture);
+                    string precioStr = item.precio.ToString(
+                        System.Globalization.CultureInfo.InvariantCulture);
+
+                    string sqlDetalle = $@"INSERT INTO tbl_detalle_compra
+                (fk_id_compra, fk_inventario_id, fk_id_unidad,
+                 cmp_cantidad, cmp_precio)
+                VALUES ({idCompra}, {item.idInventario}, {item.idUnidad},
+                        {cantidadStr}, {precioStr})";
+
+                    OdbcCommand cmdDetalle = new OdbcCommand(sqlDetalle, conn);
+                    cmdDetalle.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al editar compra: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
+
+
+
     }
 }

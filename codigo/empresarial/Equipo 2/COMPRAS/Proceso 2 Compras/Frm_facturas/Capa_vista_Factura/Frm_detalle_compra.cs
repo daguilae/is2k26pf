@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ namespace Capa_vista_Factura
         Cls_controlador cont = new Cls_controlador();
 
         int idCompraSeleccionada = -1;
-
+        bool registroBuscado = false;
+        string numeroFacturaActual = "";
+        bool cargandoDatos = false;
 
         private void Frm_detalle_compra_Load(object sender, EventArgs e)
         {
@@ -302,7 +305,7 @@ namespace Capa_vista_Factura
             foreach (DataColumn col in dt.Columns)
                 columnas += col.ColumnName + "\n";
 
-            MessageBox.Show("Columnas encontradas:\n" + columnas, "Info");
+            
 
             // Asignar en el orden correcto: primero DataSource, luego los members
             Cmb_unidad.DataSource = null;
@@ -511,162 +514,228 @@ namespace Capa_vista_Factura
         private void Btn_Buscar_Click(object sender, EventArgs e)
         {
 
-            
-            string busqueda = Txt_NumeroFactura.Text.Trim();
+            string numeroBusqueda = Txt_NumeroFactura.Text.Trim();
 
-            if (string.IsNullOrEmpty(busqueda))
+            if (string.IsNullOrEmpty(numeroBusqueda))
             {
-                MessageBox.Show("Por favor, ingrese el número de factura.");
-                return;
-            }
-
-            
-            DataTable resultado = cont.buscarCompra(busqueda);
-
-            if (resultado != null && resultado.Rows.Count > 0)
-            {
-                DataRow fila = resultado.Rows[0];
-
-                
-                idCompraSeleccionada = Convert.ToInt32(fila["pk_id_compra"]);
-
-                // 4. Llenar campos de cabecera
-                Txt_serieFactura.Text = fila["cmp_serie_factura"].ToString();
-                string tipoPago = fila["cmp_tipo_compra"].ToString().ToLower().Trim();
-                Cmb_tipo.Text = tipoPago;
-
-                if (tipoPago == "credito")
-                {
-                    Txt_diascredito.Text = fila["cmp_dias_credito"].ToString();
-                    Lbl_diascredito.Enabled = true;
-                    Txt_diascredito.Enabled = true;
-                }
-
-                
-                Btn_limpiar.Enabled = true;
-                Btn_remover.Enabled = true;
-                Btn_Agregar.Enabled = true;
-
-                
-                DataTable detalle = cont.obtenerDetalle(idCompraSeleccionada);
-
-                if (detalle != null && detalle.Rows.Count > 0)
-                {
-                    Dgv_DetalleProductos.AutoGenerateColumns = false;
-
-                   
-                    Dgv_DetalleProductos.Columns["ColumnProducto"].DataPropertyName = "Producto";
-                    Dgv_DetalleProductos.Columns["ColumnUnidad"].DataPropertyName = "Unidad";
-                    Dgv_DetalleProductos.Columns["ColumnCantidad"].DataPropertyName = "Cantidad";
-                    Dgv_DetalleProductos.Columns["ColumnPrecio"].DataPropertyName = "Precio";
-                    Dgv_DetalleProductos.Columns["ColumnSubtotal"].DataPropertyName = "Subtotal";
-                    Dgv_DetalleProductos.Columns["Columntotal"].DataPropertyName = "Total";
-
-                    Dgv_DetalleProductos.DataSource = detalle;
-
-                    decimal totalCalculado = cont.calcularTotalCompra(detalle);
-                    Txt_total.Text = totalCalculado.ToString("N2");
-                }
-                else
-                {
-                    Dgv_DetalleProductos.DataSource = null;
-                    Txt_total.Text = "0.00";
-                    MessageBox.Show("La factura existe pero no tiene productos detallados.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se encontró ninguna factura con el número: " + busqueda);
-                idCompraSeleccionada = -1;
-            }
-        }
-
-             private void Btn_Editar_Click(object sender, EventArgs e)
-            {
-
-           /*
-            if (idCompraSeleccionada <= 0)
-            {
-                MessageBox.Show("Debe buscar y seleccionar una factura antes de intentar editarla.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            //  Validaciones de campos 
-            if (string.IsNullOrWhiteSpace(Txt_serieFactura.Text) || string.IsNullOrWhiteSpace(Txt_NumeroFactura.Text))
-            {
-                MessageBox.Show("La serie y el número de factura son obligatorios.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un número de factura para buscar.",
+                                "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                
-                int idProveedor = Convert.ToInt32(Cmb_proveedor.SelectedValue);
-                int idOrdenCompra = Convert.ToInt32(Cmb_ordencompra.SelectedValue);
-                string serie = Txt_serieFactura.Text.Trim();
-                string numero = Txt_NumeroFactura.Text.Trim();
-                DateTime fechaFactura = Dtp_fechaCompra.Value; 
+                DataTable resultado = cont.buscarCompraCompletaPorNumero(numeroBusqueda);
 
-                // Obtenemos el texto limpio para el ENUM ('contado' o 'credito')
-                string tipoPago = Cmb_tipo.SelectedItem.ToString().Trim().ToLower();
-
-                int diasCredito = 0;
-                DateTime? fechaVencimiento = null;
-
-                if (tipoPago == "credito")
+                if (resultado.Rows.Count == 0)
                 {
-                    int.TryParse(Txt_diascredito.Text, out diasCredito);
-                   
-                    fechaVencimiento = fechaFactura.AddDays(diasCredito);
+                    MessageBox.Show("No se encontró ninguna compra con ese número.",
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
-           
-                decimal totalFinal = 0;
-                foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
+                cargandoDatos = true;
+                Dgv_DetalleProductos.Rows.Clear();
+
+                // ── Encabezado ──
+                DataRow cab = resultado.Rows[0];
+
+                Txt_serieFactura.Text = cab["cmp_serie_factura"].ToString();
+                Txt_NumeroFactura.Text = cab["cmp_numero_factura"].ToString();
+                Txt_estado.Text = cab["cmp_estado"].ToString();
+
+                if (cab["cmp_fecha"] != DBNull.Value)
+                    Dtp_fechaCompra.Value = Convert.ToDateTime(cab["cmp_fecha"]);
+
+                if (cab["cmp_fecha_vencimiento"] != DBNull.Value)
+                    Dtp_FechaVencimiento.Value = Convert.ToDateTime(cab["cmp_fecha_vencimiento"]);
+
+                if (cab["cmp_total"] != DBNull.Value)
+                    Txt_total.Text = Convert.ToDecimal(cab["cmp_total"]).ToString("0.00");
+
+                string tipoCompra = cab["cmp_tipo_compra"].ToString().Trim().ToLower();
+                Cmb_tipo.SelectedItem = tipoCompra == "credito" ? "Credito" : "Contado";
+                Txt_diascredito.Text = cab["cmp_dias_credito"].ToString();
+
+                if (cab["fk_id_proveedor"] != DBNull.Value)
+                    Cmb_proveedor.SelectedValue = Convert.ToInt32(cab["fk_id_proveedor"]);
+
+                if (cab["fk_id_bodega"] != DBNull.Value)
+                    Cmb_bodega.SelectedValue = Convert.ToInt32(cab["fk_id_bodega"]);
+
+                if (cab["fk_id_orden_compra"] != DBNull.Value)
+                    Cmb_ordencompra.SelectedValue = Convert.ToInt32(cab["fk_id_orden_compra"]);
+
+                // ── Detalle ──
+                foreach (DataRow fila in resultado.Rows)
                 {
-                    if (fila.IsNewRow) continue;
-                    totalFinal += Convert.ToDecimal(fila.Cells["ColumnSubtotal"].Value);
+                    if (fila["fk_inventario_id"] == DBNull.Value) continue;
+                    if (fila["cmp_cantidad"] == DBNull.Value) continue;
+                    if (fila["cmp_precio"] == DBNull.Value) continue;
+
+                    decimal cantidad = Convert.ToDecimal(fila["cmp_cantidad"]);
+                    decimal precio = Convert.ToDecimal(fila["cmp_precio"]);
+                    decimal subtotal = cantidad * precio;
+
+                    int index = Dgv_DetalleProductos.Rows.Add();
+
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCodigo"].Value = fila["fk_inventario_id"];
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnProducto"].Value = fila["nombre_prod"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnUnidad"].Value = fila["Nombre_Unidad"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCantidad"].Value = cantidad;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnPrecio"].Value = precio;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnSubtotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnTotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnIdUnidad"].Value = fila["fk_id_unidad"] ?? 0;
                 }
 
-                cont.actualizarCompra(idCompraSeleccionada, idProveedor, idOrdenCompra, serie, numero,
-                                       fechaFactura, tipoPago, totalFinal, totalFinal,
-                                       diasCredito, fechaVencimiento);
+                CalcularTotal();
 
-               
-                cont.eliminarDetalleCompra(idCompraSeleccionada);
+                cargandoDatos = false;
+                registroBuscado = true;
+                numeroFacturaActual = numeroBusqueda;
 
-                
-                foreach (DataGridViewRow filaGrid in Dgv_DetalleProductos.Rows)
-                {
-                    if (filaGrid.IsNewRow) continue;
-
-                    // Extraer valores de las celdas
-                    string nombreProducto = filaGrid.Cells["ColumnProducto"].Value.ToString();
-                    int idInventario = cont.obtenerIdInventario(nombreProducto);
-                    string unidad = filaGrid.Cells["ColumnUniad"].Value.ToString();
-                    int cantidad = Convert.ToInt32(filaGrid.Cells["ColumnCantidad"].Value);
-                    decimal precio = Convert.ToDecimal(filaGrid.Cells["ColumnPrecio"].Value);
-
-                    // Guardar línea por línea
-                    cont.guardarDetalleCompra(idCompraSeleccionada, idInventario, cantidad, unidad, precio);
-                }
-
-                MessageBox.Show("Factura y detalles actualizados exitosamente.", "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-              
-                Btn_Refrescar_Click(null, null);
-
+                MessageBox.Show("Compra cargada correctamente.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                
-                MessageBox.Show("No se pudo actualizar la factura: " + ex.Message, "Error de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cargandoDatos = false;
+                MessageBox.Show("Error al buscar:\n\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
+        }
 
-            
-            */
+             private void Btn_Editar_Click(object sender, EventArgs e)
+            {
+
+            if (!registroBuscado || string.IsNullOrEmpty(numeroFacturaActual))
+            {
+                MessageBox.Show("Debe buscar un registro primero antes de editar.",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Está seguro que desea editar la compra '{numeroFacturaActual}'?\n\n" +
+                "Se actualizarán el encabezado y todo el detalle.",
+                "Confirmar edición",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                // ── Validaciones ──
+                if (Cmb_proveedor.SelectedValue == null)
+                    throw new Exception("Seleccione un proveedor.");
+
+                if (Cmb_bodega.SelectedValue == null)
+                    throw new Exception("Seleccione una bodega.");
+
+                if (Cmb_tipo.SelectedIndex <= 0)
+                    throw new Exception("Seleccione el tipo de compra.");
+
+                // ── Encabezado ──
+                int idProveedor = Convert.ToInt32(Cmb_proveedor.SelectedValue);
+                int idBodega = Convert.ToInt32(Cmb_bodega.SelectedValue);
+                int idOrdenCompra = Cmb_ordencompra.SelectedValue != null
+                                           ? Convert.ToInt32(Cmb_ordencompra.SelectedValue) : 0;
+                string serieFactura = Txt_serieFactura.Text.Trim();
+                DateTime fecha = Dtp_fechaCompra.Value;
+                DateTime fechaVenc = Dtp_FechaVencimiento.Value;
+                string tipoCompra = Cmb_tipo.SelectedItem.ToString().Trim().ToLower();
+
+                int diasCredito = 0;
+                if (tipoCompra == "credito")
+                {
+                    if (!int.TryParse(Txt_diascredito.Text, out diasCredito))
+                        throw new Exception("Los días de crédito deben ser numéricos.");
+                }
+
+                // ── Detalle ──
+                var detalles = new List<(int idInventario, int idUnidad, float cantidad, decimal precio)>();
+                decimal subtotal = 0;
+                int contadorFila = 1;
+
+                foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
+                {
+                    if (fila.IsNewRow) continue;
+
+                    var valCodigo = fila.Cells["ColumnCodigo"].Value;
+                    var valUnidad = fila.Cells["ColumnIdUnidad"].Value;
+                    var valCantidad = fila.Cells["ColumnCantidad"].Value;
+                    var valPrecio = fila.Cells["ColumnPrecio"].Value;
+
+                    if (valCodigo == null || valCodigo.ToString() == "") continue;
+                    if (valUnidad == null || valUnidad.ToString() == "") continue;
+                    if (valCantidad == null || valCantidad.ToString() == "") continue;
+                    if (valPrecio == null || valPrecio.ToString() == "") continue;
+
+                    try
+                    {
+                        int idInventario = Convert.ToInt32(valCodigo);
+                        int idUnidad = Convert.ToInt32(valUnidad);
+                        float cantidad = float.Parse(valCantidad.ToString(),
+                                               System.Globalization.CultureInfo.InvariantCulture);
+                        decimal precio = decimal.Parse(valPrecio.ToString(),
+                                               System.Globalization.CultureInfo.InvariantCulture);
+
+                        subtotal += Convert.ToDecimal(cantidad) * precio;
+                        detalles.Add((idInventario, idUnidad, cantidad, precio));
+                    }
+                    catch (Exception exFila)
+                    {
+                        throw new Exception($"Error en fila {contadorFila}: " + exFila.Message);
+                    }
+
+                    contadorFila++;
+                }
+
+                decimal total = subtotal;
+
+                // ── Una sola llamada ──
+                if (detalles.Count == 0)
+                {
+                    cont.editarSoloEncabezadoCompra(
+                        numeroFacturaActual, idProveedor, idBodega, idOrdenCompra,
+                        serieFactura, fecha, fechaVenc, tipoCompra,
+                        diasCredito, subtotal, total);
+                }
+                else
+                {
+                    cont.editarCompra(
+                        numeroFacturaActual, idProveedor, idBodega, idOrdenCompra,
+                        serieFactura, fecha, fechaVenc, tipoCompra,
+                        diasCredito, subtotal, total, detalles);
+                }
+
+                MessageBox.Show($"La compra '{numeroFacturaActual}' fue editada correctamente.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ── Limpiar ──
+                Dgv_DetalleProductos.Rows.Clear();
+                Txt_serieFactura.Clear();
+                Txt_NumeroFactura.Clear();
+                Txt_total.Text = "0.00";
+                Txt_diascredito.Clear();
+                Txt_estado.Clear();
+                Txt_NumeroFactura.Clear();
+                Cmb_tipo.SelectedIndex = 0;
+
+                registroBuscado = false;
+                numeroFacturaActual = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar:\n\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
 
@@ -726,6 +795,96 @@ namespace Capa_vista_Factura
         {
             Frm_reporte frm_Reporte = new Frm_reporte();
             frm_Reporte.ShowDialog();
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+
+            if (!registroBuscado || string.IsNullOrEmpty(numeroFacturaActual))
+            {
+                MessageBox.Show("Debe buscar un registro primero antes de eliminar.",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Está seguro que desea eliminar la compra '{numeroFacturaActual}'?\n\n" +
+                "Esta acción también eliminará todo el detalle y no se puede deshacer.",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                cont.eliminarCompra(numeroFacturaActual);
+
+                MessageBox.Show($"La compra '{numeroFacturaActual}' fue eliminada correctamente.",
+                                "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Dgv_DetalleProductos.Rows.Clear();
+                Txt_serieFactura.Clear();
+                Txt_NumeroFactura.Clear();
+                Txt_total.Text = "0.00";
+                Txt_diascredito.Clear();
+                Txt_estado.Clear();
+                Txt_NumeroFactura.Clear();
+                Cmb_tipo.SelectedIndex = 0;
+
+                registroBuscado = false;
+                numeroFacturaActual = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar:\n\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string rutaAyuda = Path.Combine(
+                    Application.StartupPath,
+                    @"Ayuda Compras.chm"
+                );
+
+                MessageBox.Show("Buscando:\n" + rutaAyuda);
+
+                if (File.Exists(rutaAyuda))
+                {
+                    Help.ShowHelp(
+                        this,
+                        rutaAyuda,
+                        HelpNavigator.Topic,
+                        "Compras-Ayudas.html"
+                    );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "No se encontró el archivo de ayuda.",
+                        "Advertencia",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al abrir la ayuda:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
         }
     }
 
