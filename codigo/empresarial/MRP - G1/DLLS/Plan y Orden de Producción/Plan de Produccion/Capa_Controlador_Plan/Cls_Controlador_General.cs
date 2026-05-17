@@ -28,5 +28,10 @@ namespace Capa_Controlador_Plan
         {
             return sentencias.fun_ObtenerDatosPlan(iCodigoPlan, iEstadoPlan, fechaInicio, fechaFin);
         }
+
+        public void pro_ModificarPlan(int iCodigoPlan, string sDescripcion, int iEstado, DateTime fechaPlan)
+        {
+            sentencias.pro_ModificarPlan(iCodigoPlan, sDescripcion, iEstado, fechaPlan);
+        }
     }
 }

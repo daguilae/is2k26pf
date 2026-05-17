@@ -160,6 +160,31 @@ namespace Capa_Modelo_Plan
             return tabla;
         }
 
+        public void pro_ModificarPlan(int iCodigoPlan, string sDescripcion, int iEstado, DateTime fechaPlan)
+        {
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sActualizar = @"UPDATE Tbl_Plan_Produccion
+                                   SET Fk_Id_Estado_Plan_Produccion = ?,
+                                       Fecha_Plan_Produccion = ?,
+                                       Descripcion_Plan_Produccion = ?
+                                   WHERE Pk_Id_Plan_Produccion = ?";
+                    OdbcCommand cmd = new OdbcCommand(sActualizar, con);
+                    cmd.Parameters.AddWithValue("", iEstado);
+                    cmd.Parameters.AddWithValue("", fechaPlan);
+                    cmd.Parameters.AddWithValue("", sDescripcion);
+                    cmd.Parameters.AddWithValue("", iCodigoPlan);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar el plan: " + ex.Message);
+            }
+        }
+
 
     }
 }
