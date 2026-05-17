@@ -1,0 +1,53 @@
+/* Estilos globales - Estilo clásico de documentación */
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #333333;
+    margin: 15px;
+    background-color: #FFFFFF;
+}
+
+/* Encabezados */
+h1 {
+    font-size: 16pt;
+    color: #0033aa;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 5px;
+}
+
+h2 {
+    font-size: 12pt;
+    color: #0055cc;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+/* Párrafos */
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/* Imágenes (Capturas de pantalla) */
+img {
+    display: block;
+    margin: 10px 0 20px 0;
+    border: 1px solid #999999;
+    max-width: 100%;
+    /* Compatibilidad para evitar que se estiren en visores viejos */
+    height: auto; 
+}
+#Captura-final{
+    /* Centrar la imagen (compatible con visores antiguos) */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Si quieres que esta captura sea más chica que las demás, ajusta este valor */
+    width: 100px;
+    max-width: 100%;
+    height: auto;
+}
