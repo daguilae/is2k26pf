@@ -20,7 +20,7 @@ namespace Ejecución_Compras
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_inicio_CXP());
+            Application.Run(new Frm_detalle_compra());
         }
     }
 }

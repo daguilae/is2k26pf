@@ -26,7 +26,8 @@ namespace CV_730_DSH_BRD
         // ── AL CARGAR EL FORMULARIO ──────────────────────────
         private void DSH_BRD_FRM_Load(object sender, EventArgs e)
         {
-            CargarDatos();  
+            CargarDatos();
+            CargarComboBoxes();
         }
 
         // ── CARGA AMBAS PESTAÑAS ─────────────────────────────
@@ -36,17 +37,34 @@ namespace CV_730_DSH_BRD
             CargarStockCritico();
         }
 
+        // ── CARGA COMBOBOXES ─────────────────────────────────
+        private void CargarComboBoxes()
+        {
+            cmbNombre.Items.Clear();
+            cmbNombre.Items.Add("-- Todos --");
+            foreach (DataRow row in _controlador.ObtenerNombresProductos().Rows)
+                cmbNombre.Items.Add(row["nombre_prod"].ToString());
+            cmbNombre.SelectedIndex = 0;
+
+            cmbTipoMov.Items.Clear();
+            cmbTipoMov.Items.Add("-- Todos --");
+            foreach (DataRow row in _controlador.ObtenerTiposMovimiento().Rows)
+                cmbTipoMov.Items.Add(row["nombre_tipo_inv"].ToString());
+            cmbTipoMov.SelectedIndex = 0;
+        }
+
         // ── ULTIMOS MOVIMIENTOS ──────────────────────────────
         private void CargarMovimientos()
         {
             try
             {
-                DataTable dt;
+                string nombre = cmbNombre.SelectedIndex > 0 ? cmbNombre.SelectedItem.ToString() : null;
+                string tipoMov = cmbTipoMov.SelectedIndex > 0 ? cmbTipoMov.SelectedItem.ToString() : null;
 
-                if (_filtrarFechas)
-                    dt = _controlador.ObtenerUltimosMovimientos(dtpDesde.Value, dtpHasta.Value);
-                else
-                    dt = _controlador.ObtenerUltimosMovimientos(DateTime.MinValue, DateTime.MaxValue);
+                DateTime desde = _filtrarFechas ? dtpDesde.Value : DateTime.MinValue;
+                DateTime hasta = _filtrarFechas ? dtpHasta.Value : DateTime.MaxValue;
+
+                DataTable dt = _controlador.ObtenerUltimosMovimientos(desde, hasta, nombre, tipoMov);
 
                 dgvMovimientos.DataSource = dt;
                 dgvMovimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -61,8 +79,8 @@ namespace CV_730_DSH_BRD
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
-           
+
+
 
         // ── STOCK CRITICO ────────────────────────────────────
         private void CargarStockCritico()
@@ -118,6 +136,11 @@ namespace CV_730_DSH_BRD
                         break;
                 }
             }
+        }
+
+        private void cmbFiltro_Changed(object sender, EventArgs e)
+        {
+            CargarMovimientos();
         }
 
         // ── BOTONES ──────────────────────────────────────────
