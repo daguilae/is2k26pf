@@ -3,21 +3,12 @@ using System.Data;
 
 public class DSH_BRD_CNT
 {
-    // Instancia del Modelo
     private DSH_BRD_MOD _modelo = new DSH_BRD_MOD();
 
     // ── ULTIMOS MOVIMIENTOS ──────────────────────────────
-    public DataTable ObtenerUltimosMovimientos(DateTime fechaInicio, DateTime fechaFin)
-    {
-        try
-        {
-            return _modelo.ObtenerUltimosMovimientos(fechaInicio, fechaFin);
-        }
-        catch (Exception ex)
-        {
-            throw new Exception("Controlador - Movimientos: " + ex.Message);
-        }
-    }
+    public DataTable ObtenerUltimosMovimientos(DateTime desde, DateTime hasta,
+                                                string nombre = null, string tipoMov = null)
+        => _modelo.ObtenerUltimosMovimientos(desde, hasta, nombre, tipoMov);
 
     // ── STOCK CRITICO ────────────────────────────────────
     public DataTable ObtenerStockCritico()
@@ -31,4 +22,11 @@ public class DSH_BRD_CNT
             throw new Exception("Controlador - Stock Crítico: " + ex.Message);
         }
     }
+
+    // ── COMBOBOXES ───────────────────────────────────────
+    public DataTable ObtenerNombresProductos()
+        => _modelo.ObtenerNombresProductos();
+
+    public DataTable ObtenerTiposMovimiento()
+        => _modelo.ObtenerTiposMovimiento();
 }

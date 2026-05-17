@@ -9,16 +9,23 @@ public class DSH_BRD_MOD
     //         tbl_movimiento_inventario_detalle    (det)
     //         tbl_inventario                       (inv)
     //         tbl_tipo_movimiento_inventario       (tip)
-    public DataTable ObtenerUltimosMovimientos(DateTime fechaInicio, DateTime fechaFin)
+    // ── ULTIMOS MOVIMIENTOS CON FILTROS COMPLETOS ───────
+    public DataTable ObtenerUltimosMovimientos(DateTime fechaInicio, DateTime fechaFin,
+                                                string nombre = null, string tipoMov = null)
     {
         DataTable dt = new DataTable();
         try
         {
             using (OdbcConnection con = CNX.ObtenerConexion())
             {
-                // Si fechaInicio es MinValue trae todo sin filtro
                 string filtroFecha = fechaInicio == DateTime.MinValue ? "" :
                     $"AND DATE(enc.fecha_transaccion) BETWEEN '{fechaInicio:yyyy-MM-dd}' AND '{fechaFin:yyyy-MM-dd}'";
+
+                string filtroNombre = string.IsNullOrEmpty(nombre) ? "" :
+                    $"AND inv.nombre_prod = '{nombre}'";
+
+                string filtroTipo = string.IsNullOrEmpty(tipoMov) ? "" :
+                    $"AND tip.nombre_tipo_inv = '{tipoMov}'";
 
                 string sql = $@"
                 SELECT 
@@ -37,6 +44,8 @@ public class DSH_BRD_MOD
                     ON enc.fk_tipo_movimiento_id = tip.pk_tipo_movimiento_id
                 WHERE 1=1
                 {filtroFecha}
+                {filtroNombre}
+                {filtroTipo}
                 ORDER BY enc.fecha_transaccion DESC
                 LIMIT 100";
 
@@ -95,4 +104,53 @@ public class DSH_BRD_MOD
         }
         return dt;
     }
+    // ── NOMBRES DE PRODUCTOS PARA COMBOBOX ──────────────
+    public DataTable ObtenerNombresProductos()
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            using (OdbcConnection con = CNX.ObtenerConexion())
+            {
+                string sql = @"
+                SELECT DISTINCT inv.nombre_prod
+                FROM tbl_inventario inv
+                WHERE inv.estado_producto = 'ACTIVO'
+                ORDER BY inv.nombre_prod ASC";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, con);
+                da.Fill(dt);
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener productos: " + ex.Message);
+        }
+        return dt;
+    }
+
+    // ── TIPOS DE MOVIMIENTO PARA COMBOBOX ───────────────
+    public DataTable ObtenerTiposMovimiento()
+    {
+        DataTable dt = new DataTable();
+        try
+        {
+            using (OdbcConnection con = CNX.ObtenerConexion())
+            {
+                string sql = @"
+                SELECT nombre_tipo_inv
+                FROM tbl_tipo_movimiento_inventario
+                ORDER BY nombre_tipo_inv ASC";
+
+                OdbcDataAdapter da = new OdbcDataAdapter(sql, con);
+                da.Fill(dt);
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error al obtener tipos de movimiento: " + ex.Message);
+        }
+        return dt;
+    }
+
 }
