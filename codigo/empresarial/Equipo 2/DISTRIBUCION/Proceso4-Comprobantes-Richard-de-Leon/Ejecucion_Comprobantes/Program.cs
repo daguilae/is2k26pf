@@ -17,7 +17,7 @@ namespace Ejecucion_Comprobantes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Comprobante_Compra());
+            Application.Run(new Frm_Comprobante_Produccion());
         }
     }
 }

@@ -547,6 +547,10 @@ namespace Capa_Vista_Comprobantes
             Dvg_Comprobante_Compra.EnableHeadersVisualStyles = false;
         }
 
-
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Comprobante_Compra reporte = new Frm_Reporte_Comprobante_Compra();
+            reporte.Show();
+        }
     }
 }

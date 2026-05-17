@@ -376,10 +376,11 @@ namespace Capa_Vista_Comprobantes
             this.Close();
         }
 
-        private void AplicarEstiloDGV() { 
-            Dvg_Comprobante_Produccion.DefaultCellStyle.Font = new Font("Rockwell", 9); 
-            Dvg_Comprobante_Produccion.ColumnHeadersDefaultCellStyle.Font = new Font("Rockwell", 9, FontStyle.Bold); 
-            Dvg_Comprobante_Produccion.EnableHeadersVisualStyles = false; 
+        private void AplicarEstiloDGV()
+        {
+            Dvg_Comprobante_Produccion.DefaultCellStyle.Font = new Font("Rockwell", 9);
+            Dvg_Comprobante_Produccion.ColumnHeadersDefaultCellStyle.Font = new Font("Rockwell", 9, FontStyle.Bold);
+            Dvg_Comprobante_Produccion.EnableHeadersVisualStyles = false;
         }
 
         private void AplicarEstiloDGVDetalle()
@@ -395,5 +396,11 @@ namespace Capa_Vista_Comprobantes
             Dgv_Detalle_Entrega.RowTemplate.Height = 28;
         }
 
+
+        private void Btn_Reporte_Click_1(object sender, EventArgs e)
+        {
+            Frm_Reporte_Comprobante_Produccion reporte = new Frm_Reporte_Comprobante_Produccion();
+            reporte.Show();
+        }
     }
 }

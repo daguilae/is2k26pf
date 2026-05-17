@@ -383,5 +383,11 @@ namespace Capa_Vista_Comprobantes
 
             Dgv_Detalle_Entrega.RowTemplate.Height = 28;
         }
+
+        private void Btn_Reporte_Click(object sender, EventArgs e)
+        {
+            Frm_Reporte_Comprobante_Venta reporte = new Frm_Reporte_Comprobante_Venta();
+            reporte.Show();
+        }
     }
 }

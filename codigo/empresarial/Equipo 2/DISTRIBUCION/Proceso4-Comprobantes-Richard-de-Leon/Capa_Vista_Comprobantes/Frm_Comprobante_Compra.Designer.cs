@@ -304,6 +304,7 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Reporte.Text = "REPORTE";
             this.Btn_Reporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Reporte.UseVisualStyleBackColor = true;
+            this.Btn_Reporte.Click += new System.EventHandler(this.Btn_Reporte_Click);
             // 
             // Btn_Ayuda
             // 
