@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Capa_Modelo_Mov_Inv;
-
+using Capa_Controlador_Seguridad;
 namespace Capa_Controlador_Mov_Inv
 {
     public class Cls_Mov_Inv_Controlador
     {
         Cls_Dao_Mov_Inv Dao = new Cls_Dao_Mov_Inv();
+        private Cls_BitacoraControlador gCtrlBitacora = new Cls_BitacoraControlador();
 
         public DataTable fun_CargarIdsMovimiento()
         {
@@ -146,6 +147,14 @@ namespace Capa_Controlador_Mov_Inv
                 bool resultadoExistencias = fun_Actualizar_Existencias(idTipoMovimiento, detalle);
                 if (!resultadoExistencias) return false; // Si falla el stock, retornar false
 
+                //Bitacora          
+                gCtrlBitacora.RegistrarAccion(
+                  Capa_Controlador_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                  728,
+                  $"Insertó un nuevo registro en la tabla movimiento de inventario la gestion fue: {idTipoMovimiento}",
+                  true
+              );
+
                 return true; //Todo salió bien
             }
             catch (Exception ex)
@@ -168,6 +177,14 @@ namespace Capa_Controlador_Mov_Inv
                 // Actualizar existencias
                 bool resultadoExistencias = fun_CreacionApartadoExistencias(idTipoMovimiento, detalle);
                 if (!resultadoExistencias) return false; // Si falla el stock, retornar false
+
+                //Bitacora          
+                gCtrlBitacora.RegistrarAccion(
+                  Capa_Controlador_Seguridad.Cls_Usuario_Conectado.iIdUsuario,
+                  728,
+                  $"se aparto stock en la tabla movimiento de inventario la gestion fue: {idTipoMovimiento}",
+                  true
+              );
 
                 return true; //Todo salió bien
             }

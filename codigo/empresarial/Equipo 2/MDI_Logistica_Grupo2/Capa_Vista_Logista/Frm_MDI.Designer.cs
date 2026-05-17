@@ -56,7 +56,6 @@
             this.ordenDeProduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasPorPagarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.detalleOrdenDeProduccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasPorCobrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasPorCobrarDetalleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devoluconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +71,7 @@
             this.ordenDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devolucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.politicasDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceDeAntiguedadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -284,7 +284,6 @@
             this.ordenDeProduccionToolStripMenuItem,
             this.facturasToolStripMenuItem,
             this.cuentasPorPagarToolStripMenuItem1,
-            this.detalleOrdenDeProduccionToolStripMenuItem,
             this.cuentasPorCobrarToolStripMenuItem,
             this.cuentasPorCobrarDetalleToolStripMenuItem,
             this.devoluconToolStripMenuItem,
@@ -296,7 +295,8 @@
             this.asignaciónVendedorClientesToolStripMenuItem,
             this.ordenDeCompraToolStripMenuItem,
             this.devolucionesToolStripMenuItem,
-            this.politicasDescuentosToolStripMenuItem});
+            this.politicasDescuentosToolStripMenuItem,
+            this.balanceDeAntiguedadToolStripMenuItem});
             this.procesosToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
             this.procesosToolStripMenuItem.Size = new System.Drawing.Size(79, 21);
@@ -345,13 +345,6 @@
             this.cuentasPorPagarToolStripMenuItem1.Size = new System.Drawing.Size(270, 26);
             this.cuentasPorPagarToolStripMenuItem1.Text = "Cuentas por Pagar";
             this.cuentasPorPagarToolStripMenuItem1.Click += new System.EventHandler(this.cuentasPorPagarToolStripMenuItem1_Click);
-            // 
-            // detalleOrdenDeProduccionToolStripMenuItem
-            // 
-            this.detalleOrdenDeProduccionToolStripMenuItem.Name = "detalleOrdenDeProduccionToolStripMenuItem";
-            this.detalleOrdenDeProduccionToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
-            this.detalleOrdenDeProduccionToolStripMenuItem.Text = "Detalle Orden de produccion";
-            this.detalleOrdenDeProduccionToolStripMenuItem.Click += new System.EventHandler(this.detalleOrdenDeProduccionToolStripMenuItem_Click);
             // 
             // cuentasPorCobrarToolStripMenuItem
             // 
@@ -464,6 +457,13 @@
             this.politicasDescuentosToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.politicasDescuentosToolStripMenuItem.Text = "Politicas Descuentos";
             this.politicasDescuentosToolStripMenuItem.Click += new System.EventHandler(this.politicasDescuentosToolStripMenuItem_Click);
+            // 
+            // balanceDeAntiguedadToolStripMenuItem
+            // 
+            this.balanceDeAntiguedadToolStripMenuItem.Name = "balanceDeAntiguedadToolStripMenuItem";
+            this.balanceDeAntiguedadToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.balanceDeAntiguedadToolStripMenuItem.Text = "balanceDeAntiguedad";
+            this.balanceDeAntiguedadToolStripMenuItem.Click += new System.EventHandler(this.balanceDeAntiguedadToolStripMenuItem_Click_1);
             // 
             // herramientasToolStripMenuItem
             // 
@@ -585,7 +585,6 @@
         private System.Windows.Forms.ToolStripMenuItem ordenDeProduccionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem detalleOrdenDeProduccionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasPorCobrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem devoluconToolStripMenuItem;
 
@@ -614,5 +613,6 @@
         private System.Windows.Forms.ToolStripMenuItem tipoDeClientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem politicasDescuentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cuentasPorCobrarDetalleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem balanceDeAntiguedadToolStripMenuItem;
     }
 }

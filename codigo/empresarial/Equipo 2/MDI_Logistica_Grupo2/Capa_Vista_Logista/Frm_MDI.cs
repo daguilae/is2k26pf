@@ -132,7 +132,7 @@ namespace Capa_Vista_Logista
                 {729, facturasToolStripMenuItem},
                 //{714, comprasToolStripMenuItem},
                 {715, cuentasPorPagarToolStripMenuItem1},
-                {716, detalleOrdenDeProduccionToolStripMenuItem},
+                //{716, detalleOrdenDeProduccionToolStripMenuItem},
                 {711, cuentasPorCobrarToolStripMenuItem},
                 {717, comprobanteCompraToolStripMenuItem},
                 {718, comprobanteVentaToolStripMenuItem},
@@ -341,13 +341,6 @@ namespace Capa_Vista_Logista
             factura.Show();
         }
 
-        private void detalleOrdenDeProduccionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Frm_Orden_Produccion_Detalle OrdenProd = new Frm_Orden_Produccion_Detalle();
-            OrdenProd.MdiParent = this;
-            OrdenProd.Show();
-        }
-
         private void cuentasPorCobrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_CXC_NAV CXC = new Frm_CXC_NAV();
@@ -511,6 +504,13 @@ namespace Capa_Vista_Logista
             Frm_Pagos pagos = new Frm_Pagos();
             pagos.MdiParent = this;
             pagos.Show();
+        }
+
+        private void balanceDeAntiguedadToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Frm_Balance_Menu Balance = new Frm_Balance_Menu();
+            Balance.MdiParent = this;
+            Balance.Show();
         }
     }
 }
