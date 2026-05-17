@@ -545,6 +545,7 @@ namespace Capa_vista_Factura
             this.Btn_Ayuda.Text = "Ayuda";
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = false;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
             // Btn_fin
             // 
@@ -642,6 +643,7 @@ namespace Capa_vista_Factura
             this.Btn_Eliminar.Text = "Eliminar";
             this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Btn_Consultar
             // 

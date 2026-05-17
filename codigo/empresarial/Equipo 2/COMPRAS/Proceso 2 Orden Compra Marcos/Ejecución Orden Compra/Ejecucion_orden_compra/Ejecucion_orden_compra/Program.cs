@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_vista_orden_compra;
-using Capa_Vista_Compras;
 namespace Ejecucion_orden_compra
 {
     static class Program

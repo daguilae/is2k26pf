@@ -359,6 +359,285 @@ ORDER BY O.cmp_fecha DESC";
         //sentencias //
 
 
+        // Obtener precio unitario para orden de MRP//
+
+
+        public decimal obtenerPrecioProducto(int idProducto)
+        {
+            decimal precio = 0;
+
+            string sql = $@"
+    SELECT precio_unitario
+    FROM tbl_inventario
+    WHERE pk_inventario_id = {idProducto}
+    AND estado_producto = 'ACTIVO'
+    ";
+
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcCommand cmd = new OdbcCommand(sql, conn);
+
+                object resultado = cmd.ExecuteScalar();
+
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    precio = Convert.ToDecimal(resultado);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener precio: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+
+            return precio;
+        }
+
+
+
+        // Busqueda
+
+
+        public DataTable buscarOrdenCompletaPorNumero(string numeroOrden)
+        {
+            DataTable dt = new DataTable();
+
+            string sql = $@"
+    SELECT 
+        oc.pk_id_orden_compra,
+        oc.cmp_numero,
+        oc.cmp_fecha,
+        oc.cmp_fecha_entrega,
+        oc.fk_id_proveedor,
+        oc.fk_id_bodega,
+        oc.cmp_tipo_pago,
+        oc.cmp_dias_credito,
+        oc.cmp_subtotal,
+        oc.cmp_total,
+        oc.cmp_estado,
+        doc.fk_inventario_id,
+        doc.fk_id_unidad,
+        doc.cmp_cantidad,
+        doc.cmp_precio,
+        (doc.cmp_cantidad * doc.cmp_precio) AS cmp_subtotal_linea,
+        i.nombre_prod,
+        CONCAT(u.ID_Unidad, '_', u.Abreviacion_Medida) AS Nombre_Unidad,
+        p.cmp_Nombre_Proveedor,
+        b.Cmp_Nombre_Bodega
+    FROM tbl_orden_compra oc
+    LEFT JOIN tbl_detalle_orden_compra doc
+        ON oc.pk_id_orden_compra = doc.fk_id_orden_compra
+    LEFT JOIN tbl_inventario i
+        ON doc.fk_inventario_id = i.pk_inventario_id
+    LEFT JOIN tbl_unidad_de_medida u
+        ON doc.fk_id_unidad = u.ID_Unidad
+    LEFT JOIN tbl_proveedores p
+        ON oc.fk_id_proveedor = p.pk_id_proveedor
+    LEFT JOIN tbl_bodega b
+        ON oc.fk_id_bodega = b.Pk_Id_Bodega
+    WHERE oc.cmp_numero LIKE '%{numeroOrden}%'
+    ORDER BY doc.pk_id_detalle_orden_compra ASC";
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcDataAdapter adapter = new OdbcDataAdapter(sql, conn);
+                
+               
+               
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar orden completa: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+
+            return dt;
+        }
+
+
+
+        // Eliminar orden de compra
+
+
+        public void eliminarOrdenCompra(string numeroOrden)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                // Primero obtenemos el ID de la orden
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_orden_compra FROM tbl_orden_compra WHERE cmp_numero = '{numeroOrden}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la orden para eliminar.");
+
+                int idOrden = Convert.ToInt32(resultado);
+
+                // Primero eliminamos el detalle (por la llave foránea)
+                OdbcCommand cmdDetalle = new OdbcCommand(
+                    $"DELETE FROM tbl_detalle_orden_compra WHERE fk_id_orden_compra = {idOrden}", conn);
+                cmdDetalle.ExecuteNonQuery();
+
+                // Luego eliminamos el encabezado
+                OdbcCommand cmdEncabezado = new OdbcCommand(
+                    $"DELETE FROM tbl_orden_compra WHERE pk_id_orden_compra = {idOrden}", conn);
+                cmdEncabezado.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar orden: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
+
+
+
+        // Editar orden de Compra
+
+
+
+        public void editarOrdenCompra(string numeroOrden, int idProveedor, int idBodega,
+                               DateTime fecha, DateTime fechaEntrega,
+                               string tipoPago, int diasCredito,
+                               decimal subtotal, decimal total,
+                               List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                // Obtener ID de la orden
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_orden_compra FROM tbl_orden_compra WHERE cmp_numero = '{numeroOrden}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la orden para editar.");
+
+                int idOrden = Convert.ToInt32(resultado);
+
+                string fechaStr = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaEntregaStr = fechaEntrega.ToString("yyyy-MM-dd HH:mm:ss");
+                string pagoLimpio = tipoPago.Trim().ToLower();
+                string subtotalStr = subtotal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string totalStr = total.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string diasStr = (pagoLimpio == "credito" && diasCredito > 0)
+                                         ? diasCredito.ToString() : "0";
+
+                // Actualizar encabezado
+                string sqlUpdate = $@"UPDATE tbl_orden_compra 
+    SET
+        fk_id_proveedor   = {idProveedor},
+        fk_id_bodega      = {idBodega},
+        cmp_fecha         = '{fechaStr}',
+        cmp_fecha_entrega = '{fechaEntregaStr}',
+        cmp_tipo_pago     = '{pagoLimpio}',
+        cmp_dias_credito  = {diasStr},
+        cmp_subtotal      = {subtotalStr},
+        cmp_total         = {totalStr}
+    WHERE pk_id_orden_compra = {idOrden}";
+
+                OdbcCommand cmdUpdate = new OdbcCommand(sqlUpdate, conn);
+                cmdUpdate.ExecuteNonQuery();
+
+                // Eliminar detalle anterior
+                OdbcCommand cmdBorrarDetalle = new OdbcCommand(
+                    $"DELETE FROM tbl_detalle_orden_compra WHERE fk_id_orden_compra = {idOrden}", conn);
+                cmdBorrarDetalle.ExecuteNonQuery();
+
+                // Insertar nuevo detalle
+                foreach (var item in detalles)
+                {
+                    string cantidadStr = item.cantidad.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    string precioStr = item.precio.ToString(System.Globalization.CultureInfo.InvariantCulture);
+
+                    string sqlDetalle = $@"INSERT INTO tbl_detalle_orden_compra
+                (fk_id_orden_compra, fk_inventario_id, fk_id_unidad, cmp_cantidad, cmp_precio)
+                VALUES ({idOrden}, {item.idInventario}, {item.idUnidad}, {cantidadStr}, {precioStr})";
+
+                    OdbcCommand cmdDetalle = new OdbcCommand(sqlDetalle, conn);
+                    cmdDetalle.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al editar orden: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
+
+
+
+        public void editarSoloEncabezado(string numeroOrden, int idProveedor, int idBodega,
+                                  DateTime fecha, DateTime fechaEntrega,
+                                  string tipoPago, int diasCredito,
+                                  decimal subtotal, decimal total)
+        {
+            OdbcConnection conn = cn.conexion();
+
+            try
+            {
+                OdbcCommand cmdId = new OdbcCommand(
+                    $"SELECT pk_id_orden_compra FROM tbl_orden_compra WHERE cmp_numero = '{numeroOrden}'", conn);
+
+                object resultado = cmdId.ExecuteScalar();
+
+                if (resultado == null || resultado == DBNull.Value)
+                    throw new Exception("No se encontró la orden.");
+
+                int idOrden = Convert.ToInt32(resultado);
+                string fechaStr = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaEntregaStr = fechaEntrega.ToString("yyyy-MM-dd HH:mm:ss");
+                string pagoLimpio = tipoPago.Trim().ToLower();
+                string subtotalStr = subtotal.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string totalStr = total.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                string diasStr = (pagoLimpio == "credito" && diasCredito > 0)
+                                         ? diasCredito.ToString() : "0";
+
+                string sqlUpdate = $@"UPDATE tbl_orden_compra 
+            SET
+                fk_id_proveedor   = {idProveedor},
+                fk_id_bodega      = {idBodega},
+                cmp_fecha         = '{fechaStr}',
+                cmp_fecha_entrega = '{fechaEntregaStr}',
+                cmp_tipo_pago     = '{pagoLimpio}',
+                cmp_dias_credito  = {diasStr},
+                cmp_subtotal      = {subtotalStr},
+                cmp_total         = {totalStr}
+            WHERE pk_id_orden_compra = {idOrden}";
+
+                OdbcCommand cmdUpdate = new OdbcCommand(sqlUpdate, conn);
+                cmdUpdate.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al editar encabezado: " + ex.Message);
+            }
+            finally
+            {
+                cn.desconexion(conn);
+            }
+        }
 
 
 

@@ -16,6 +16,9 @@ namespace Capa_vista_orden_compra
     {
         Cls_controlador cont = new Cls_controlador();
 
+        bool registroBuscado = false;
+        string numeroOrdenActual = "";
+        bool cargandoDatos = false;
         public Frm_detalle_orden_compra()
         {
             InitializeComponent();
@@ -403,6 +406,7 @@ namespace Capa_vista_orden_compra
         //Cargar los poroveedores
         private void cargarProveedores()
         {
+            if (cargandoDatos) return;
             Cmb_proveedor.DataSource = cont.getProveedores();
             Cmb_proveedor.DisplayMember = "cmp_Nombre_Proveedor";
             Cmb_proveedor.ValueMember = "pk_id_proveedor";
@@ -410,7 +414,11 @@ namespace Capa_vista_orden_compra
 
 
         private void cargarUnidadMedida()
+
+
         {
+
+            if (cargandoDatos) return;
             DataTable dt = cont.obtenerUnidadMedida();
 
             // DIAGNÓSTICO - Borrar después de confirmar que funciona
@@ -446,6 +454,7 @@ namespace Capa_vista_orden_compra
 
         private void cargarProductos()
         {
+            if (cargandoDatos) return;
             Cmb_producto.DataSource = cont.getProductos();
             Cmb_producto.DisplayMember = "nombre_prod";
             Cmb_producto.ValueMember = "pk_inventario_id";
@@ -454,6 +463,7 @@ namespace Capa_vista_orden_compra
 
         void cargarBodegas()
         {
+            if (cargandoDatos) return ;
 
             Cmb_bodega.DataSource = cont.llenarComboBodega();
 
@@ -463,6 +473,10 @@ namespace Capa_vista_orden_compra
 
         private void Cmb_tipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (cargandoDatos) return;
+           
+
             string tipo = Cmb_tipoPago.SelectedItem?.ToString().Trim().ToLower();
 
             if (tipo == "contado")
@@ -551,27 +565,103 @@ namespace Capa_vista_orden_compra
 
         private void Btn_Consultar_Click(object sender, EventArgs e)
         {
-           /* string numeroBusqueda = Txt_Buscar.Text.Trim(); // tu TextBox de búsqueda
+
+            string numeroBusqueda = Txt_buscar.Text.Trim();
 
             if (string.IsNullOrEmpty(numeroBusqueda))
             {
-                // Si está vacío, cargar todos los registros
-                Dgv_DetalleProductos.DataSource = cont.llenarTblDetalle();
+                MessageBox.Show("Ingrese un número de orden para buscar.",
+                                "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DataTable resultado = cont.buscarOrdenPorNumero(numeroBusqueda);
-
-            if (resultado.Rows.Count == 0)
+            try
             {
-                MessageBox.Show("No se encontró ninguna orden con ese número.",
-                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Dgv_DetalleProductos.DataSource = null;
-                return;
+                DataTable resultado = cont.buscarOrdenCompletaPorNumero(numeroBusqueda);
+
+                if (resultado.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontró ninguna orden con ese número.",
+                                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Activar bandera para evitar que eventos recarguen datos
+                cargandoDatos = true;
+
+                // ══════════════ LIMPIAR DETALLE ANTES DE CARGAR ══════════════
+                Dgv_DetalleProductos.Rows.Clear();
+
+                // ══════════════ ENCABEZADO ══════════════
+                DataRow cab = resultado.Rows[0];
+
+                Txt_NumeroOrden.Text = cab["cmp_numero"].ToString();
+
+                if (cab["cmp_fecha"] != DBNull.Value)
+                    Dtp_fechaRegistro.Value = Convert.ToDateTime(cab["cmp_fecha"]);
+
+                if (cab["cmp_fecha_entrega"] != DBNull.Value)
+                    Dtp_fecha_entrega.Value = Convert.ToDateTime(cab["cmp_fecha_entrega"]);
+
+                Txt_estado.Text = cab["cmp_estado"].ToString();
+
+                if (cab["cmp_total"] != DBNull.Value)
+                    Txt_total.Text = Convert.ToDecimal(cab["cmp_total"]).ToString("0.00");
+
+                // Tipo pago
+                string tipoPago = cab["cmp_tipo_pago"].ToString().Trim().ToLower();
+                Cmb_tipoPago.SelectedItem = tipoPago == "credito" ? "Credito" : "Contado";
+                Txt_diascredito.Text = cab["cmp_dias_credito"].ToString();
+
+                // Proveedor
+                if (cab["fk_id_proveedor"] != DBNull.Value)
+                    Cmb_proveedor.SelectedValue = Convert.ToInt32(cab["fk_id_proveedor"]);
+
+                // Bodega
+                if (cab["fk_id_bodega"] != DBNull.Value)
+                    Cmb_bodega.SelectedValue = Convert.ToInt32(cab["fk_id_bodega"]);
+
+                // ══════════════ DETALLE ══════════════
+                foreach (DataRow fila in resultado.Rows)
+                {
+                    if (fila["fk_inventario_id"] == DBNull.Value) continue;
+                    if (fila["cmp_cantidad"] == DBNull.Value) continue;
+                    if (fila["cmp_precio"] == DBNull.Value) continue;
+
+                    decimal cantidad = Convert.ToDecimal(fila["cmp_cantidad"]);
+                    decimal precio = Convert.ToDecimal(fila["cmp_precio"]);
+                    decimal subtotal = cantidad * precio;
+
+                    int index = Dgv_DetalleProductos.Rows.Add();
+
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCodigo"].Value = fila["fk_inventario_id"];
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnProducto"].Value = fila["nombre_prod"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnUnidad"].Value = fila["Nombre_Unidad"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCantidad"].Value = cantidad;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnPrecioUnitario"].Value = precio;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnSubtotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnTotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnIdUnidad"].Value = fila["fk_id_unidad"] ?? 0;
+                }
+
+                CalcularTotal();
+
+                // Desactivar bandera
+                cargandoDatos = false;
+                registroBuscado = true;
+                numeroOrdenActual = numeroBusqueda;
+
+                MessageBox.Show("Orden cargada correctamente.",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                cargandoDatos = false;
+                MessageBox.Show("Error al buscar:\n\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
-            Dgv_DetalleProductos.DataSource = resultado; */
         }
 
         private void Btn_Imprimir_Click(object sender, EventArgs e)
@@ -587,6 +677,194 @@ namespace Capa_vista_orden_compra
 
         private void Dtp_fechaRegistro_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+
+            // Verificar que se haya buscado primero
+            if (!registroBuscado || string.IsNullOrEmpty(numeroOrdenActual))
+            {
+                MessageBox.Show(
+                    "Debe buscar un registro primero antes de eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Confirmar eliminación
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Está seguro que desea eliminar la orden '{numeroOrdenActual}'?\n\n" +
+                "Esta acción también eliminará todo el detalle y no se puede deshacer.",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                cont.eliminarOrdenCompra(numeroOrdenActual);
+
+                MessageBox.Show(
+                    $"La orden '{numeroOrdenActual}' fue eliminada correctamente.",
+                    "Eliminado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                // Limpiar el formulario
+                Dgv_DetalleProductos.Rows.Clear();
+                Txt_NumeroOrden.Text = cont.generarNumeroOrden();
+                Txt_buscar.Clear();
+                Txt_total.Text = "0.00";
+                Txt_diascredito.Clear();
+                Txt_estado.Clear();
+                Cmb_tipoPago.SelectedIndex = 0;
+
+                // Resetear variables de control
+                registroBuscado = false;
+                numeroOrdenActual = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al eliminar:\n\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+
+            if (!registroBuscado || string.IsNullOrEmpty(numeroOrdenActual))
+            {
+                MessageBox.Show("Debe buscar un registro primero antes de editar.",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Está seguro que desea editar la orden '{numeroOrdenActual}'?\n\n" +
+                "Se actualizarán el encabezado y todo el detalle.",
+                "Confirmar edición",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                // ══════════════ VALIDACIONES ══════════════
+                if (Cmb_proveedor.SelectedValue == null)
+                    throw new Exception("Seleccione un proveedor.");
+
+                if (Cmb_bodega.SelectedValue == null)
+                    throw new Exception("Seleccione una bodega.");
+
+                if (Cmb_tipoPago.SelectedIndex <= 0)
+                    throw new Exception("Seleccione el tipo de pago.");
+
+                // ══════════════ ENCABEZADO ══════════════
+                int idProveedor = Convert.ToInt32(Cmb_proveedor.SelectedValue);
+                int idBodega = Convert.ToInt32(Cmb_bodega.SelectedValue);
+                DateTime fecha = Dtp_fechaRegistro.Value;
+                DateTime fechaEntrega = Dtp_fecha_entrega.Value;
+
+                string tipoPago = Cmb_tipoPago.SelectedItem
+                                               .ToString().Trim().ToLower();
+                int diasCredito = 0;
+                if (tipoPago == "credito")
+                {
+                    if (!int.TryParse(Txt_diascredito.Text, out diasCredito))
+                        throw new Exception("Los días de crédito deben ser numéricos.");
+                }
+
+                // ══════════════ DETALLE ══════════════
+                var detalles = new List<(int idInventario, int idUnidad, float cantidad, decimal precio)>();
+                decimal subtotal = 0;
+                int contadorFila = 1;
+
+                foreach (DataGridViewRow fila in Dgv_DetalleProductos.Rows)
+                {
+                    if (fila.IsNewRow) continue;
+
+                    var valCodigo = fila.Cells["ColumnCodigo"].Value;
+                    var valUnidad = fila.Cells["ColumnIdUnidad"].Value;
+                    var valCantidad = fila.Cells["ColumnCantidad"].Value;
+                    var valPrecio = fila.Cells["ColumnPrecioUnitario"].Value;
+
+                    if (valCodigo == null || valCodigo.ToString() == "") continue;
+                    if (valUnidad == null || valUnidad.ToString() == "") continue;
+                    if (valCantidad == null || valCantidad.ToString() == "") continue;
+                    if (valPrecio == null || valPrecio.ToString() == "") continue;
+
+                    try
+                    {
+                        int idInventario = Convert.ToInt32(valCodigo);
+                        int idUnidad = Convert.ToInt32(valUnidad);
+                        float cantidad = float.Parse(valCantidad.ToString(),
+                                               System.Globalization.CultureInfo.InvariantCulture);
+                        decimal precio = decimal.Parse(valPrecio.ToString(),
+                                               System.Globalization.CultureInfo.InvariantCulture);
+
+                        subtotal += Convert.ToDecimal(cantidad) * precio;
+                        detalles.Add((idInventario, idUnidad, cantidad, precio));
+                    }
+                    catch (Exception exFila)
+                    {
+                        throw new Exception($"Error en fila {contadorFila}: " + exFila.Message);
+                    }
+
+                    contadorFila++;
+                }
+
+                decimal total = subtotal;
+
+                // ══════════════ UNA SOLA LLAMADA ══════════════
+                if (detalles.Count == 0)
+                {
+                    cont.editarSoloEncabezado(
+                        numeroOrdenActual, idProveedor, idBodega,
+                        fecha, fechaEntrega, tipoPago, diasCredito,
+                        subtotal, total);
+                }
+                else
+                {
+                    cont.editarOrdenCompra(
+                        numeroOrdenActual, idProveedor, idBodega,
+                        fecha, fechaEntrega, tipoPago, diasCredito,
+                        subtotal, total, detalles);
+                }
+
+                // ══════════════ MENSAJE Y LIMPIAR ══════════════
+                MessageBox.Show(
+                    $"La orden '{numeroOrdenActual}' fue editada correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Dgv_DetalleProductos.Rows.Clear();
+                Txt_NumeroOrden.Text = cont.generarNumeroOrden();
+                Txt_buscar.Clear();
+                Txt_total.Text = "0.00";
+                Txt_diascredito.Clear();
+                Txt_estado.Clear();
+                Cmb_tipoPago.SelectedIndex = 0;
+
+                registroBuscado = false;
+                numeroOrdenActual = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar:\n\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
     }

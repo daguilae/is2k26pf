@@ -14,6 +14,7 @@ namespace Capa_controlador_orden_compra
 
         Cls_Sentencias sn = new Cls_Sentencias();
 
+       
         public DataTable llenarTblDetalle()
         {
             // Podrías agregar lógica de validación aquí si fuera necesario
@@ -108,13 +109,11 @@ namespace Capa_controlador_orden_compra
         // Numero de Orden para MRP
 
         public void mrp(
-    int idProveedor,
-    decimal subtotal,
-    decimal total,
-    List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles
-)
+      int idProveedor,
+      List<(int idInventario, int idUnidad, float cantidad)> detalles
+  )
         {
-            // Datos quemados 
+            //Datos quemados 
 
             int idBodega = 1;
 
@@ -126,25 +125,54 @@ namespace Capa_controlador_orden_compra
 
             int diasCredito = 30;
 
-            
-
-            //Generar numero de Ornden compra
+           // generar numor de MRP
 
             string numero = generarNumeroMRP();
 
-            //Encabezado 
+            // calculo de total y subtotal 
 
-            int idOrden = sn.guardarOrdenCompra(idProveedor,idBodega,numero,fecha,fechaEntrega,tipoPago,diasCredito,subtotal,total);
-            
-            //detalle
+            decimal subtotal = 0;
 
             foreach (var item in detalles)
             {
-                sn.guardarDetalleOrdenCompra(idOrden,item.idInventario,item.idUnidad,item.cantidad,item.precio);
+                decimal precio = sn.obtenerPrecioProducto(item.idInventario);
+
+                subtotal += Convert.ToDecimal(item.cantidad) * precio;
+            }
+
+            decimal iva = subtotal * 0.12m;
+
+            decimal total = subtotal + iva;
+
+            // registro encabezado 
+
+            int idOrden = sn.guardarOrdenCompra(
+                idProveedor,
+                idBodega,
+                numero,
+                fecha,
+                fechaEntrega,
+                tipoPago,
+                diasCredito,
+                subtotal,
+                total
+            );
+
+            // registro detalles 
+
+            foreach (var item in detalles)
+            {
+                decimal precio = sn.obtenerPrecioProducto(item.idInventario);
+
+                sn.guardarDetalleOrdenCompra(
+                    idOrden,
+                    item.idInventario,
+                    item.idUnidad,
+                    item.cantidad,
+                    precio
+                );
             }
         }
-
-
         public string generarNumeroMRP()
         {
             string ultimoNumero = sn.obtenerUltimoNumeroMRP();
@@ -166,6 +194,53 @@ namespace Capa_controlador_orden_compra
             correlativo++;
 
             return $"MRP-{correlativo:D3}";
+        }
+
+
+
+        public decimal obtenerPrecioProducto(int idProducto)
+        {
+            return sn.obtenerPrecioProducto(idProducto);
+        }
+
+
+
+        public DataTable buscarOrdenCompletaPorNumero(string numeroOrden)
+        {
+            return sn.buscarOrdenCompletaPorNumero(numeroOrden);
+        }
+
+
+
+        public void eliminarOrdenCompra(string numeroOrden)
+        {
+            sn.eliminarOrdenCompra(numeroOrden);
+        }
+
+
+        //  Editar Ornde de Compra
+
+
+        public void editarOrdenCompra(string numeroOrden, int idProveedor, int idBodega,
+                               DateTime fecha, DateTime fechaEntrega,
+                               string tipoPago, int diasCredito,
+                               decimal subtotal, decimal total,
+                               List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles)
+        {
+            sn.editarOrdenCompra(numeroOrden, idProveedor, idBodega,
+                                 fecha, fechaEntrega, tipoPago, diasCredito,
+                                 subtotal, total, detalles);
+        }
+
+
+        public void editarSoloEncabezado(string numeroOrden, int idProveedor, int idBodega,
+                                  DateTime fecha, DateTime fechaEntrega,
+                                  string tipoPago, int diasCredito,
+                                  decimal subtotal, decimal total)
+        {
+            sn.editarSoloEncabezado(numeroOrden, idProveedor, idBodega,
+                                     fecha, fechaEntrega, tipoPago,
+                                     diasCredito, subtotal, total);
         }
 
 

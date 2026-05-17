@@ -2,8 +2,10 @@
 using System.Data;
 using Capa_modelo_factura;
 using System.Linq;
-using Capa_Controlador_CXP;
+//using Capa_Controlador_CXP;
 using Capa_Controlador_Mov_Inv;
+using System.Collections.Generic;
+
 namespace Capa_controlador_Facturas
 {
     public class Cls_controlador
@@ -15,7 +17,7 @@ namespace Capa_controlador_Facturas
         /*----------Cuentas por pagar-----------*/
 
 
-        Cls_Compras_Controlador cxp = new Cls_Compras_Controlador();
+     //   Cls_Compras_Controlador cxp = new Cls_Compras_Controlador();
 
         public DataTable llenarTblDetalle()
         {
@@ -153,6 +155,42 @@ namespace Capa_controlador_Facturas
             return sn.obtenerBodegas();
         }
 
+
+
+
+        public DataTable buscarCompraCompletaPorNumero(string numeroFactura)
+        {
+            return sn.buscarCompraCompletaPorNumero(numeroFactura);
+        }
+
+        public void eliminarCompra(string numeroFactura)
+        {
+            sn.eliminarCompra(numeroFactura);
+        }
+
+        public void editarSoloEncabezadoCompra(string numeroFactura, int idProveedor,
+                                                int idBodega, int idOrdenCompra,
+                                                string serieFactura, DateTime fecha,
+                                                DateTime fechaVencimiento, string tipoCompra,
+                                                int diasCredito, decimal subtotal, decimal total)
+        {
+            sn.editarSoloEncabezadoCompra(numeroFactura, idProveedor, idBodega,
+                                           idOrdenCompra, serieFactura, fecha,
+                                           fechaVencimiento, tipoCompra,
+                                           diasCredito, subtotal, total);
+        }
+
+        public void editarCompra(string numeroFactura, int idProveedor,
+                                  int idBodega, int idOrdenCompra,
+                                  string serieFactura, DateTime fecha,
+                                  DateTime fechaVencimiento, string tipoCompra,
+                                  int diasCredito, decimal subtotal, decimal total,
+                                  List<(int idInventario, int idUnidad, float cantidad, decimal precio)> detalles)
+        {
+            sn.editarCompra(numeroFactura, idProveedor, idBodega, idOrdenCompra,
+                            serieFactura, fecha, fechaVencimiento, tipoCompra,
+                            diasCredito, subtotal, total, detalles);
+        }
 
 
 

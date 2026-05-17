@@ -84,6 +84,9 @@ namespace Capa_vista_orden_compra
             this.Btn_Grabar = new System.Windows.Forms.Button();
             this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Ingresar = new System.Windows.Forms.Button();
+            this.Lbl_buscar = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.Gpo_Encabezado.SuspendLayout();
             this.Gpo_Detalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_DetalleProductos)).BeginInit();
@@ -602,6 +605,7 @@ namespace Capa_vista_orden_compra
             this.Btn_Eliminar.Text = "Eliminar";
             this.Btn_Eliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Eliminar.UseVisualStyleBackColor = false;
+            this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
             // 
             // Btn_remover
             // 
@@ -736,6 +740,7 @@ namespace Capa_vista_orden_compra
             this.Btn_Editar.Text = "Editar";
             this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Editar.UseVisualStyleBackColor = false;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
             // 
             // Btn_Ingresar
             // 
@@ -754,11 +759,45 @@ namespace Capa_vista_orden_compra
             this.Btn_Ingresar.UseVisualStyleBackColor = false;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
+            // Lbl_buscar
+            // 
+            this.Lbl_buscar.AutoSize = true;
+            this.Lbl_buscar.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_buscar.Location = new System.Drawing.Point(1080, 135);
+            this.Lbl_buscar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl_buscar.Name = "Lbl_buscar";
+            this.Lbl_buscar.Size = new System.Drawing.Size(170, 17);
+            this.Lbl_buscar.TabIndex = 52;
+            this.Lbl_buscar.Text = "Ingrese el No. de Orden ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1080, 160);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 17);
+            this.label2.TabIndex = 67;
+            this.label2.Text = " para buscar:";
+            // 
+            // Txt_buscar
+            // 
+            this.Txt_buscar.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_buscar.Location = new System.Drawing.Point(1083, 211);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(2);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.Size = new System.Drawing.Size(162, 23);
+            this.Txt_buscar.TabIndex = 52;
+            // 
             // Frm_detalle_orden_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1288, 696);
+            this.Controls.Add(this.Txt_buscar);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Lbl_buscar);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_fin);
             this.Controls.Add(this.Btn_Siguiente);
@@ -852,5 +891,8 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Columnidunidad;
+        private System.Windows.Forms.Label Lbl_buscar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox Txt_buscar;
     }
 }
