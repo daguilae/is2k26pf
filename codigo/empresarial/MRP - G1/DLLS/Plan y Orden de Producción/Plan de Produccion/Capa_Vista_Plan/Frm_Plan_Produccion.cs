@@ -30,6 +30,10 @@ namespace Capa_Vista_Plan
         int iIndiceEditar = -1;
         int iIdOrdenProduccionEditar = 0;
 
+        string sDescripcionOriginal = "";
+        int iEstadoOriginal = 0;
+        DateTime fechaOriginalPlan;
+
         private List<Cls_Sentencia_OrdenTemp> listaOrdenes = new List<Cls_Sentencia_OrdenTemp>();
 
         public Frm_Plan_Produccion(int codigoPlan)
@@ -118,6 +122,10 @@ namespace Capa_Vista_Plan
                 Cbo_OrdenRecibida.SelectedValue = Convert.ToInt32(fila["NoOrdenRecibida"]);
                 Dtp_Fecha.Value = Convert.ToDateTime(fila["Fecha"]);
                 Cbo_EstadoPlan.Text = fila["EstadoPlan"].ToString();
+
+                sDescripcionOriginal = fila["Descripcion"].ToString();
+                fechaOriginalPlan = Convert.ToDateTime(fila["Fecha"]);
+                iEstadoOriginal = Convert.ToInt32(Cbo_EstadoPlan.SelectedValue);
             }
             if(iCodigoPlanExistente != 0)
             {
@@ -1088,7 +1096,56 @@ namespace Capa_Vista_Plan
             }
         }
 
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.FindForm()?.Close();
+        }
 
+        private void Btn_modificar_Click(object sender, EventArgs e)
+        {
+            string sDescripcionModificada =
+                Txt_DescripcionPlan.Text.Trim();
+
+            int iEstadoModificado =
+                Convert.ToInt32(Cbo_EstadoPlan.SelectedValue);
+
+            DateTime fechaModificada =
+                Dtp_Fecha.Value.Date;
+
+            // VALIDAR SI HUBO CAMBIOS
+            bool hayCambios =
+                sDescripcionModificada != sDescripcionOriginal ||
+                iEstadoModificado != iEstadoOriginal ||
+                fechaModificada != fechaOriginalPlan.Date;
+
+            if (!hayCambios)
+            {
+                MessageBox.Show(
+                    "No se realizaron cambios.",
+                    "Información",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            try
+            {
+                controladorGeneral.pro_ModificarPlan(iCodigoPlanExistente, sDescripcionModificada, iEstadoModificado, fechaModificada);
+
+                MessageBox.Show("Plan modificado correctamente.");
+
+                // ACTUALIZAR VALORES ORIGINALES
+                sDescripcionOriginal = sDescripcionModificada;
+                iEstadoOriginal = iEstadoModificado;
+                fechaOriginalPlan = fechaModificada;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al modificar: " + ex.Message);
+            }
+        }
     }
 }
 
