@@ -351,6 +351,7 @@ namespace Capa_Vista_MRP
             contrasena.MdiParent = this;
             contrasena.StartPosition = FormStartPosition.CenterScreen;
             contrasena.Show();
+            //
         }
     }
     
