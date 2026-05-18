@@ -18,24 +18,28 @@ namespace Capa_Modelo_RO
         public DataTable ObtenerOrdenes()
         {
             DataTable dt = new DataTable();
-
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
-                    SELECT 
-                        o.Pk_Id_Orden_Recibida,
-                        o.Id_Externo_Logistica AS Orden,
-                        o.Fecha_Recepcion,
-                        o.Fecha_Requerida,
-                        e.Nombre_Estado_Orden_Recibida AS Estado
-                    FROM Tbl_Orden_Recibida o
-                    INNER JOIN Tbl_Estado_Orden_Recibida e 
-                        ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida";
+            SELECT 
+                o.Pk_Id_Orden_Recibida,
+                o.Id_Externo_Logistica AS Orden,
+                o.Fecha_Recepcion,
+                o.Fecha_Requerida,
+                e.Nombre_Estado_Orden_Recibida AS Estado,
+                CASE WHEN f.Pk_Id_Factura IS NOT NULL 
+                     THEN 'Facturada' 
+                     ELSE 'Pendiente' 
+                END AS Estado_Factura
+            FROM Tbl_Orden_Recibida o
+            INNER JOIN Tbl_Estado_Orden_Recibida e 
+                ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida
+            LEFT JOIN Tbl_Factura_Produccion f
+                ON o.Pk_Id_Orden_Recibida = f.Fk_Id_Orden_Recibida";
 
                 OdbcDataAdapter da = new OdbcDataAdapter(query, conn);
                 da.Fill(dt);
             }
-
             return dt;
         }
         public DataTable ObtenerEstados()
@@ -63,10 +67,16 @@ namespace Capa_Modelo_RO
                 o.Id_Externo_Logistica AS Orden,
                 o.Fecha_Recepcion,
                 o.Fecha_Requerida,
-                e.Nombre_Estado_Orden_Recibida AS Estado
+                e.Nombre_Estado_Orden_Recibida AS Estado,
+                CASE WHEN f.Pk_Id_Factura IS NOT NULL 
+                     THEN 'Facturada' 
+                     ELSE 'Pendiente' 
+                END AS Estado_Factura
             FROM Tbl_Orden_Recibida o
             INNER JOIN Tbl_Estado_Orden_Recibida e 
                 ON o.Fk_Id_Estado_Orden_Recibida = e.Pk_Id_Estado_Orden_Recibida
+            LEFT JOIN Tbl_Factura_Produccion f
+                ON o.Pk_Id_Orden_Recibida = f.Fk_Id_Orden_Recibida
             WHERE (o.Id_Externo_Logistica LIKE ? OR ? = '')
               AND (o.Fk_Id_Estado_Orden_Recibida = ? OR ? = 0)";
 
