@@ -23,7 +23,6 @@ namespace Capa_Vista_RO
         }
         private void Frm_Encabezado_Orden_Load(object sender, EventArgs e)
         {
-            // Arón Ricardo Esquit - 0901-22-13036 - 01/05/26
             dateTimePicker1.ShowCheckBox = true;
             dateTimePicker2.ShowCheckBox = true;
             dateTimePicker1.Value = new DateTime(2026, 4, 1);
@@ -39,13 +38,52 @@ namespace Capa_Vista_RO
             cmbEstado.SelectedIndexChanged += Filtrar;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
+
+            txtID.Text = "";
+            txtID.ForeColor = Color.Gray;
+            txtID.Tag = "Buscar por ID";
+            txtID.Enter += (s, ev) =>
+            {
+                if (txtID.Text == (string)txtID.Tag)
+                {
+                    txtID.Text = "";
+                    txtID.ForeColor = Color.Black;
+                }
+            };
+            txtID.Leave += (s, ev) =>
+            {
+                if (string.IsNullOrWhiteSpace(txtID.Text))
+                {
+                    txtID.Text = (string)txtID.Tag;
+                    txtID.ForeColor = Color.Gray;
+                }
+            };
+
+            
+            dgvOrdenes.CellFormatting += (s, ev) =>
+            {
+                if (ev.ColumnIndex < 0 || ev.RowIndex < 0) return;
+                if (dgvOrdenes.Columns[ev.ColumnIndex].Name != "Estado_Factura") return;
+                if (ev.Value == null) return;
+
+                if (ev.Value.ToString() == "Facturada")
+                {
+                    ev.CellStyle.BackColor = Color.LightGreen;
+                    ev.CellStyle.ForeColor = Color.DarkGreen;
+                }
+                else
+                {
+                    ev.CellStyle.BackColor = Color.LightYellow;
+                    ev.CellStyle.ForeColor = Color.DarkOrange;
+                }
+            };
         }
 
         private void CargarEstadosCombo()
         {
             var estados = controlador.ObtenerEstados();
 
-            // Agregar opción "Todos" al inicio
+            
             DataRow todos = estados.NewRow();
             todos["Pk_Id_Estado_Orden_Recibida"] = 0;
             todos["Nombre_Estado_Orden_Recibida"] = "Todos";
@@ -59,23 +97,18 @@ namespace Capa_Vista_RO
 
         private void Filtrar(object sender, EventArgs e)
         {
-            string idExterno = txtID.Text.Trim();
+            string idExterno = txtID.Text.Trim() == "Buscar por ID" ? "" : txtID.Text.Trim();
             int idEstado = Convert.ToInt32(cmbEstado.SelectedValue);
 
             dgvOrdenes.DataSource = controlador.FiltrarOrdenes(idExterno, idEstado);
             ConfigurarGrid();
             AgregarBotonVer();
-            MarcarFacturasExistentes();
         }
         private void CargarGrid()
         {
-            var datos = controlador.ObtenerOrdenes();
-            dgvOrdenes.DataSource = null;
-            dgvOrdenes.Columns.Clear();
-            dgvOrdenes.DataSource = datos;
+            dgvOrdenes.DataSource = controlador.ObtenerOrdenes();
             ConfigurarGrid();
             AgregarBotonVer();
-            MarcarFacturasExistentes();
         }
 
 
@@ -83,11 +116,9 @@ namespace Capa_Vista_RO
         {
             if (dgvOrdenes.Columns.Count == 0) return;
 
-            // Ocultar ID interno
             if (dgvOrdenes.Columns.Contains("Pk_Id_Orden_Recibida"))
                 dgvOrdenes.Columns["Pk_Id_Orden_Recibida"].Visible = false;
 
-            // Cambiar nombres
             if (dgvOrdenes.Columns.Contains("Orden"))
                 dgvOrdenes.Columns["Orden"].HeaderText = "Orden";
 
@@ -100,7 +131,11 @@ namespace Capa_Vista_RO
             if (dgvOrdenes.Columns.Contains("Estado"))
                 dgvOrdenes.Columns["Estado"].HeaderText = "Estado";
 
-           
+            if (dgvOrdenes.Columns.Contains("Estado_Factura"))
+            {
+                dgvOrdenes.Columns["Estado_Factura"].HeaderText = "Estado Factura";
+            }
+
             dgvOrdenes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvOrdenes.ReadOnly = true;
             dgvOrdenes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -130,14 +165,8 @@ namespace Capa_Vista_RO
                 dgvOrdenes.Columns.Add(btnFactura);
             }
 
-            if (!dgvOrdenes.Columns.Contains("EstadoFactura"))
-            {
-                DataGridViewTextBoxColumn colEstado = new DataGridViewTextBoxColumn();
-                colEstado.Name = "EstadoFactura";
-                colEstado.HeaderText = "Estado Factura";
-                colEstado.ReadOnly = true;
-                dgvOrdenes.Columns.Add(colEstado);
-            }
+            if (dgvOrdenes.Columns.Contains("Estado_Factura"))
+                dgvOrdenes.Columns["Estado_Factura"].DisplayIndex = dgvOrdenes.Columns.Count - 1;
         }
 
 
@@ -168,16 +197,18 @@ namespace Capa_Vista_RO
 
                 if (confirm == DialogResult.Yes)
                 {
-                    if (controlador.GenerarFactura(idOrden))
+                    try
                     {
-                        MessageBox.Show("Factura generada correctamente.", "Éxito",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarGrid();
+                        if (controlador.GenerarFactura(idOrden))
+                        {
+                            controlador.CambiarEstadoOrden(idOrden, 3);
+                            MessageBox.Show("Factura generada correctamente.");
+                            CargarGrid();
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Error al generar la factura.", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -199,6 +230,7 @@ namespace Capa_Vista_RO
                 {
                     if (controlador.GenerarFactura(idOrden))
                     {
+                        controlador.CambiarEstadoOrden(idOrden, 3);
                         MessageBox.Show("Factura generada correctamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarGrid();
@@ -267,8 +299,8 @@ namespace Capa_Vista_RO
                     fila.Cells["EstadoFactura"].Style.BackColor = Color.LightYellow;
                     fila.Cells["EstadoFactura"].Style.ForeColor = Color.DarkOrange;
                 }
-                dgvOrdenes.Refresh(); // 👈
-                dgvOrdenes.Update();  // 👈
+                dgvOrdenes.Refresh(); 
+                dgvOrdenes.Update();  
             }
         }
 
