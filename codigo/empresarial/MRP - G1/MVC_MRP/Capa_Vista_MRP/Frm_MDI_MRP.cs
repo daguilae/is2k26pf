@@ -342,7 +342,7 @@ namespace Capa_Vista_MRP
             bitacora.MdiParent = this;
             bitacora.StartPosition = FormStartPosition.CenterScreen;
             bitacora.Show();
-
+            //
         }
 
         private void cambiarContraseñaToolStripMenuItem_Click_1(object sender, EventArgs e)
