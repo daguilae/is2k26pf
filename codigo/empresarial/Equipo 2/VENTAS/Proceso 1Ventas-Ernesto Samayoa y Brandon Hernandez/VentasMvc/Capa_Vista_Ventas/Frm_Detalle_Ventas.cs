@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Seguridad;
-
-
 using Capa_Controlador_Ventas;
 
 namespace Capa_Vista_Ventas
@@ -672,7 +670,7 @@ namespace Capa_Vista_Ventas
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 } 
-                // ✅ El controlador ya maneja los errores y mensajes
+                // El controlador ya maneja los errores y mensajes
                 int idCXC = controlador.ObtenerIdCXCPorVenta(idVenta);
 
                 if (idCXC == 0)
@@ -680,7 +678,7 @@ namespace Capa_Vista_Ventas
                     return; // El controlador ya mostró el mensaje
                 }
 
-                // ✅ SOLO 2 PARÁMETROS (como tu constructor)
+                // SOLO 2 PARÁMETROS (como tu constructor)
                 using (var frmPagos = new Frm_Pagos(idCXC, (decimal)_montoTotal))
                 {
                     frmPagos.StartPosition = FormStartPosition.CenterParent;

@@ -49,6 +49,8 @@
     <Compile Include="Cls_ConexionBD.cs" />
     <Compile Include="Cls_CXCDetalle_dao.cs" />
     <Compile Include="Cls_CXC_Detalle.cs" />
+    <Compile Include="Cls_Devolucion_Ventas.cs" />
+    <Compile Include="Cls_Devolucion_VentasDAO.cs" />
     <Compile Include="Cls_Ventas.cs" />
     <Compile Include="Cls_VentasDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

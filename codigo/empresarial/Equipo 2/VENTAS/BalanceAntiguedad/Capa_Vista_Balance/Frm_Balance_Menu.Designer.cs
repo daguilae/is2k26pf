@@ -38,30 +38,27 @@ namespace Capa_Vista_Balance
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Btn_Reporte = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.Btn_Ayudas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Dtp_Inicio
             // 
             this.Dtp_Inicio.Location = new System.Drawing.Point(23, 96);
-            this.Dtp_Inicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dtp_Inicio.Name = "Dtp_Inicio";
-            this.Dtp_Inicio.Size = new System.Drawing.Size(249, 22);
+            this.Dtp_Inicio.Size = new System.Drawing.Size(250, 22);
             this.Dtp_Inicio.TabIndex = 0;
             // 
             // Dtp_Final
             // 
             this.Dtp_Final.Location = new System.Drawing.Point(325, 96);
-            this.Dtp_Final.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dtp_Final.Name = "Dtp_Final";
-            this.Dtp_Final.Size = new System.Drawing.Size(249, 22);
+            this.Dtp_Final.Size = new System.Drawing.Size(250, 22);
             this.Dtp_Final.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 257);
+            this.label1.Location = new System.Drawing.Point(122, 257);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 2;
@@ -90,7 +87,6 @@ namespace Capa_Vista_Balance
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Btn_Ayudas);
             this.groupBox1.Controls.Add(this.Btn_Reporte);
             this.groupBox1.Controls.Add(this.Lbl_Fecha_Inicio);
             this.groupBox1.Controls.Add(this.Lbl_Fecha_Final);
@@ -98,20 +94,17 @@ namespace Capa_Vista_Balance
             this.groupBox1.Controls.Add(this.Dtp_Inicio);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(1492, 161);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Btn_Reporte
             // 
             this.Btn_Reporte.Font = new System.Drawing.Font("Rockwell", 9.75F);
             this.Btn_Reporte.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Reporte.Image")));
             this.Btn_Reporte.Location = new System.Drawing.Point(609, 33);
-            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_Reporte.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Reporte.Name = "Btn_Reporte";
             this.Btn_Reporte.Size = new System.Drawing.Size(99, 102);
             this.Btn_Reporte.TabIndex = 67;
@@ -127,26 +120,10 @@ namespace Capa_Vista_Balance
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 161);
-            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(1492, 638);
             this.crystalReportViewer1.TabIndex = 67;
             this.crystalReportViewer1.ToolPanelWidth = 489;
-            this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
-            // 
-            // Btn_Ayudas
-            // 
-            this.Btn_Ayudas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Ayudas.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Ayudas.Image")));
-            this.Btn_Ayudas.Location = new System.Drawing.Point(735, 33);
-            this.Btn_Ayudas.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Ayudas.Name = "Btn_Ayudas";
-            this.Btn_Ayudas.Size = new System.Drawing.Size(111, 98);
-            this.Btn_Ayudas.TabIndex = 133;
-            this.Btn_Ayudas.Text = "AYUDA";
-            this.Btn_Ayudas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Ayudas.UseVisualStyleBackColor = true;
-            this.Btn_Ayudas.Click += new System.EventHandler(this.Btn_Ayudas_Click);
             // 
             // Frm_Balance_Menu
             // 
@@ -156,7 +133,6 @@ namespace Capa_Vista_Balance
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Frm_Balance_Menu";
             this.Text = "Frm_Balance_Menu";
             this.groupBox1.ResumeLayout(false);
@@ -176,6 +152,5 @@ namespace Capa_Vista_Balance
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button Btn_Reporte;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        private System.Windows.Forms.Button Btn_Ayudas;
     }
 }

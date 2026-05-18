@@ -88,6 +88,18 @@
     <Compile Include="Frm_Clientes.Designer.cs">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Detalle_Devoluciones_Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Detalle_Devoluciones_Ventas.Designer.cs">
+      <DependentUpon>Frm_Detalle_Devoluciones_Ventas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Devoluciones_Generales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Devoluciones_Generales.Designer.cs">
+      <DependentUpon>Frm_Devoluciones_Generales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Politicas_Descuentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Clientes.resx">
       <DependentUpon>Frm_Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Detalle_Devoluciones_Ventas.resx">
+      <DependentUpon>Frm_Detalle_Devoluciones_Ventas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Devoluciones_Generales.resx">
+      <DependentUpon>Frm_Devoluciones_Generales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Politicas_Descuentos.resx">
       <DependentUpon>Frm_Politicas_Descuentos.cs</DependentUpon>
