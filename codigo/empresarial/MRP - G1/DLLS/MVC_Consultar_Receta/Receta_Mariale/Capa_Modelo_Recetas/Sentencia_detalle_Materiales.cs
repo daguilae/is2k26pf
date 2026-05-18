@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Data.Odbc;
 using Capa_Modelo_Seguridad;
+
+
 namespace Capa_Modelo_Recetas
 {
     public class Sentencia_detalle_Materiales

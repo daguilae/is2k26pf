@@ -38,10 +38,10 @@ namespace Capa_Vista_Materiales
                         "Fk_Id_Categoria",
                         "Fk_Id_Unidad_Medida",
                         "Stock_Minimo",
-                        "Stock_Seguridad",
                         "Lote_Minimo_Compra",
                         "Lead_Time_Produccion_Dias",
-                        "Activo"
+                        "Activo",
+                        "Imagen_Material"
             };
 
             string[] sEtiquetas = {
@@ -52,10 +52,10 @@ namespace Capa_Vista_Materiales
                         "Nombre de la categoria del material",
                         "Unidad de medida",
                         "Stock mínimo",
-                        "Stock de seguridad",
                         "Lote mínimo compra",
                         "Tiempo de producción en días",
-                        "Estado"
+                        "Estado",
+                        "Imagen"
                      };
 
             // ─── CONFIGURACIÓN FK ────────────────────────────────────────────────
