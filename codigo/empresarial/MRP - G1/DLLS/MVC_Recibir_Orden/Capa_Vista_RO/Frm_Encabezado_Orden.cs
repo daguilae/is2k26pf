@@ -172,7 +172,9 @@ namespace Capa_Vista_RO
                     {
                         if (controlador.GenerarFactura(idOrden))
                         {
+                            controlador.CambiarEstadoOrden(idOrden, 3);
                             MessageBox.Show("Factura generada correctamente.");
+                            CargarGrid();
                         }
                     }
                     catch (Exception ex)
