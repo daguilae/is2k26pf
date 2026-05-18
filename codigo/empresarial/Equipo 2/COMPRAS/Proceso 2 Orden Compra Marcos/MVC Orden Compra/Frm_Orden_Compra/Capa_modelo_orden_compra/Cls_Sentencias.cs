@@ -13,37 +13,26 @@ namespace Capa_modelo_orden_compra
     {
 
 
-        // Instancia de tu clase de conexión (suponiendo que se llama Cls_Conexion)
+        
         Cls_Conexion cn = new Cls_Conexion();
 
-
-        public DataTable obtenerDetalles()
+        public DataTable obtenerDetalles(object numeroOrden)
         {
             DataTable dt = new DataTable();
 
-            string sql = @"SELECT 
-    O.pk_id_orden_compra AS Orden,
-    O.cmp_numero AS NumeroOrden,
-    O.cmp_fecha AS Fecha,
-    O.cmp_fecha_entrega AS FechaEntrega,
-    PR.cmp_Nombre_Proveedor AS Proveedor,
-    O.cmp_tipo_pago AS TipoPago,
-    O.cmp_estado AS Estado,
-    I.nombre_prod AS Producto,
-    U.Nombre_Unidad AS Unidad,
-    D.cmp_cantidad AS Cantidad,
-    D.cmp_precio AS Precio,
-    (D.cmp_cantidad * D.cmp_precio) AS Total
-FROM tbl_detalle_compra D
-INNER JOIN tbl_orden_compra O
-    ON D.fk_id_compra = O.pk_id_orden_compra
-INNER JOIN tbl_inventario I
-    ON D.fk_inventario_id = I.pk_inventario_id
-INNER JOIN tbl_unidad_de_medida U
-    ON D.fk_id_unidad = U.ID_Unidad
-INNER JOIN tbl_proveedores PR
-    ON O.fk_id_proveedor = PR.pk_id_proveedor
-ORDER BY O.cmp_fecha DESC";
+            string sql = $@"SELECT 
+        O.pk_id_orden_compra AS id_orden,
+        O.cmp_numero AS numero_orden,
+        O.cmp_fecha AS fecha,
+        PR.cmp_Nombre_Proveedor AS proveedor,
+        O.cmp_tipo_pago AS tipo_pago,
+        O.cmp_estado AS estado,
+        O.cmp_total AS total                  
+    FROM tbl_orden_compra O
+    INNER JOIN tbl_proveedores PR 
+        ON O.fk_id_proveedor = PR.pk_id_proveedor
+    WHERE O.cmp_numero LIKE '%{numeroOrden}%'
+    ORDER BY O.pk_id_orden_compra DESC;";
 
             OdbcConnection conn = cn.conexion();
 
@@ -244,24 +233,29 @@ ORDER BY O.cmp_fecha DESC";
         public DataTable ObtenerDetalleOrden()
         {
             DataTable tabla = new DataTable();
+            // Modificamos el SQL para agrupar por orden y consolidar los montos
             string sql = @"
-    SELECT 
-        oc.pk_id_orden_compra AS id_orden,
-        oc.cmp_fecha AS fecha,
-        p.cmp_Nombre_Proveedor AS proveedor,
-        oc.cmp_tipo_pago AS tipo_pago,
-        oc.cmp_estado AS estado,
-        i.nombre_prod AS producto,
-        doc.cmp_cantidad AS cantidad,
-        doc.cmp_precio AS precio,
-        (doc.cmp_cantidad * doc.cmp_precio) AS total
-    FROM tbl_orden_compra oc
-    INNER JOIN tbl_detalle_orden_compra doc
-        ON oc.pk_id_orden_compra = doc.fk_id_orden_compra
-    INNER JOIN tbl_proveedores p
-        ON oc.fk_id_proveedor = p.pk_id_proveedor
-    INNER JOIN tbl_inventario i
-        ON doc.fk_inventario_id = i.pk_inventario_id";
+        SELECT 
+            oc.pk_id_orden_compra AS id_orden,
+            oc.cmp_numero AS numero_orden, -- Agregamos el número de orden para identificarlo
+            oc.cmp_fecha AS fecha,
+            p.cmp_Nombre_Proveedor AS proveedor,
+            oc.cmp_tipo_pago AS tipo_pago,
+            oc.cmp_estado AS estado,
+            SUM(doc.cmp_cantidad * doc.cmp_precio) AS total -- Suma el subtotal de todas sus líneas
+        FROM tbl_orden_compra oc
+        INNER JOIN tbl_detalle_orden_compra doc
+            ON oc.pk_id_orden_compra = doc.fk_id_orden_compra
+        INNER JOIN tbl_proveedores p
+            ON oc.fk_id_proveedor = p.pk_id_proveedor
+        GROUP BY 
+            oc.pk_id_orden_compra, 
+            oc.cmp_numero,
+            oc.cmp_fecha, 
+            p.cmp_Nombre_Proveedor, 
+            oc.cmp_tipo_pago, 
+            oc.cmp_estado
+        ORDER BY oc.pk_id_orden_compra DESC;";
 
             OdbcConnection conn = cn.conexion();
 
@@ -290,26 +284,18 @@ ORDER BY O.cmp_fecha DESC";
         {
             DataTable dt = new DataTable();
             string sql = $@"SELECT 
-        O.pk_id_orden_compra AS Orden,
-        O.cmp_numero AS NumeroOrden,
-        O.cmp_fecha AS Fecha,
-        O.cmp_fecha_entrega AS FechaEntrega,
-        PR.cmp_Nombre_Proveedor AS Proveedor,
-        O.cmp_tipo_pago AS TipoPago,
-        O.cmp_estado AS Estado,
-        I.nombre_prod AS Producto,
-        D.cmp_cantidad AS Cantidad,
-        D.cmp_precio AS Precio,
-        (D.cmp_cantidad * D.cmp_precio) AS Total
-    FROM tbl_detalle_orden_compra D
-    INNER JOIN tbl_orden_compra O
-        ON D.fk_id_orden_compra = O.pk_id_orden_compra
-    INNER JOIN tbl_inventario I
-        ON D.fk_inventario_id = I.pk_inventario_id
-    INNER JOIN tbl_proveedores PR
+        O.pk_id_orden_compra AS id_orden,
+        O.cmp_numero AS numero_orden,
+        O.cmp_fecha AS fecha,
+        PR.cmp_Nombre_Proveedor AS proveedor,
+        O.cmp_tipo_pago AS tipo_pago,
+        O.cmp_estado AS estado,
+        O.cmp_total AS total                  -- Mostramos el total único de la orden
+    FROM tbl_orden_compra O
+    INNER JOIN tbl_proveedores PR 
         ON O.fk_id_proveedor = PR.pk_id_proveedor
     WHERE O.cmp_numero LIKE '%{numeroOrden}%'
-    ORDER BY O.cmp_fecha DESC";
+    ORDER BY O.pk_id_orden_compra DESC;";
 
             OdbcConnection conn = cn.conexion();
             try

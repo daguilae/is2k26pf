@@ -5,6 +5,7 @@ using System.Linq;
 //using Capa_Controlador_CXP;
 using Capa_Controlador_Mov_Inv;
 using System.Collections.Generic;
+using Capa_modelo_orden_compra;
 
 namespace Capa_controlador_Facturas
 {
@@ -13,11 +14,14 @@ namespace Capa_controlador_Facturas
 
         Capa_modelo_factura.Cls_Sentencias sn = new Capa_modelo_factura.Cls_Sentencias();
 
+        Capa_modelo_orden_compra.Cls_Sentencias snOrden = new Capa_modelo_orden_compra.Cls_Sentencias();
 
         /*----------Cuentas por pagar-----------*/
 
 
-     //   Cls_Compras_Controlador cxp = new Cls_Compras_Controlador();
+        //   Cls_Compras_Controlador cxp = new Cls_Compras_Controlador();
+
+
 
         public DataTable llenarTblDetalle()
         {
@@ -192,6 +196,12 @@ namespace Capa_controlador_Facturas
                             diasCredito, subtotal, total, detalles);
         }
 
+
+
+        public DataTable buscarDetallesPorOrden(string numeroOrden)
+        {
+            return snOrden.buscarOrdenCompletaPorNumero(numeroOrden);
+        }
 
 
     }

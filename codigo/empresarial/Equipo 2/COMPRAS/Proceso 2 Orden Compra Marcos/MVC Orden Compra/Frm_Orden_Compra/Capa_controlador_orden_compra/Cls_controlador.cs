@@ -17,8 +17,8 @@ namespace Capa_controlador_orden_compra
        
         public DataTable llenarTblDetalle()
         {
-            // Podrías agregar lógica de validación aquí si fuera necesario
-            return sn.obtenerDetalles();
+           
+            return sn.ObtenerDetalleOrden();
         }
 
 

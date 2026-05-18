@@ -16,7 +16,7 @@ namespace Ejecucion_orden_compra
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_inicio_CXP());
+            Application.Run(new Frm_ordencompra());
         }
     }
 }

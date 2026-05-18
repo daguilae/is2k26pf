@@ -96,8 +96,6 @@ namespace Capa_vista_Factura
             // 
             // Gpo_Encabezado
             // 
-            this.Gpo_Encabezado.Controls.Add(this.Cmb_bodega);
-            this.Gpo_Encabezado.Controls.Add(this.Lbl_bodega);
             this.Gpo_Encabezado.Controls.Add(this.Lbl_diascredito);
             this.Gpo_Encabezado.Controls.Add(this.Txt_diascredito);
             this.Gpo_Encabezado.Controls.Add(this.Cmb_ordencompra);
@@ -121,7 +119,7 @@ namespace Capa_vista_Factura
             this.Gpo_Encabezado.Margin = new System.Windows.Forms.Padding(2);
             this.Gpo_Encabezado.Name = "Gpo_Encabezado";
             this.Gpo_Encabezado.Padding = new System.Windows.Forms.Padding(2);
-            this.Gpo_Encabezado.Size = new System.Drawing.Size(966, 188);
+            this.Gpo_Encabezado.Size = new System.Drawing.Size(1070, 188);
             this.Gpo_Encabezado.TabIndex = 45;
             this.Gpo_Encabezado.TabStop = false;
             this.Gpo_Encabezado.Text = "Encabezado Compra";
@@ -129,7 +127,7 @@ namespace Capa_vista_Factura
             // Cmb_bodega
             // 
             this.Cmb_bodega.FormattingEnabled = true;
-            this.Cmb_bodega.Location = new System.Drawing.Point(720, 78);
+            this.Cmb_bodega.Location = new System.Drawing.Point(850, 50);
             this.Cmb_bodega.Margin = new System.Windows.Forms.Padding(2);
             this.Cmb_bodega.Name = "Cmb_bodega";
             this.Cmb_bodega.Size = new System.Drawing.Size(177, 25);
@@ -139,7 +137,7 @@ namespace Capa_vista_Factura
             // 
             this.Lbl_bodega.AutoSize = true;
             this.Lbl_bodega.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_bodega.Location = new System.Drawing.Point(574, 89);
+            this.Lbl_bodega.Location = new System.Drawing.Point(909, 18);
             this.Lbl_bodega.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_bodega.Name = "Lbl_bodega";
             this.Lbl_bodega.Size = new System.Drawing.Size(57, 17);
@@ -188,7 +186,7 @@ namespace Capa_vista_Factura
             // 
             // Dtp_FechaVencimiento
             // 
-            this.Dtp_FechaVencimiento.Location = new System.Drawing.Point(722, 117);
+            this.Dtp_FechaVencimiento.Location = new System.Drawing.Point(720, 89);
             this.Dtp_FechaVencimiento.Margin = new System.Windows.Forms.Padding(2);
             this.Dtp_FechaVencimiento.Name = "Dtp_FechaVencimiento";
             this.Dtp_FechaVencimiento.Size = new System.Drawing.Size(175, 23);
@@ -216,7 +214,7 @@ namespace Capa_vista_Factura
             // 
             this.Lbl_estado.AutoSize = true;
             this.Lbl_estado.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_estado.Location = new System.Drawing.Point(574, 164);
+            this.Lbl_estado.Location = new System.Drawing.Point(574, 128);
             this.Lbl_estado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_estado.Name = "Lbl_estado";
             this.Lbl_estado.Size = new System.Drawing.Size(51, 17);
@@ -226,7 +224,7 @@ namespace Capa_vista_Factura
             // Txt_estado
             // 
             this.Txt_estado.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_estado.Location = new System.Drawing.Point(722, 158);
+            this.Txt_estado.Location = new System.Drawing.Point(720, 128);
             this.Txt_estado.Margin = new System.Windows.Forms.Padding(2);
             this.Txt_estado.Name = "Txt_estado";
             this.Txt_estado.Size = new System.Drawing.Size(175, 23);
@@ -237,7 +235,7 @@ namespace Capa_vista_Factura
             // 
             this.Lbl_fechavencimiento.AutoSize = true;
             this.Lbl_fechavencimiento.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_fechavencimiento.Location = new System.Drawing.Point(574, 123);
+            this.Lbl_fechavencimiento.Location = new System.Drawing.Point(574, 89);
             this.Lbl_fechavencimiento.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lbl_fechavencimiento.Name = "Lbl_fechavencimiento";
             this.Lbl_fechavencimiento.Size = new System.Drawing.Size(131, 17);
@@ -330,7 +328,9 @@ namespace Capa_vista_Factura
             // 
             // Gpo_Detalle
             // 
+            this.Gpo_Detalle.Controls.Add(this.Cmb_bodega);
             this.Gpo_Detalle.Controls.Add(this.Cmb_producto);
+            this.Gpo_Detalle.Controls.Add(this.Lbl_bodega);
             this.Gpo_Detalle.Controls.Add(this.label1);
             this.Gpo_Detalle.Controls.Add(this.Cmb_unidad);
             this.Gpo_Detalle.Controls.Add(this.Txt_Cantidad);
@@ -343,7 +343,7 @@ namespace Capa_vista_Factura
             this.Gpo_Detalle.Margin = new System.Windows.Forms.Padding(2);
             this.Gpo_Detalle.Name = "Gpo_Detalle";
             this.Gpo_Detalle.Padding = new System.Windows.Forms.Padding(2);
-            this.Gpo_Detalle.Size = new System.Drawing.Size(966, 93);
+            this.Gpo_Detalle.Size = new System.Drawing.Size(1070, 93);
             this.Gpo_Detalle.TabIndex = 46;
             this.Gpo_Detalle.TabStop = false;
             this.Gpo_Detalle.Text = "Detalle de Compra";

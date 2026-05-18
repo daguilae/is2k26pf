@@ -16,9 +16,13 @@ namespace Capa_vista_orden_compra
     {
         Cls_controlador cont = new Cls_controlador();
 
+        public string NumeroOrdenACargar { get; set; }
+
         bool registroBuscado = false;
         string numeroOrdenActual = "";
         bool cargandoDatos = false;
+
+       
         public Frm_detalle_orden_compra()
         {
             InitializeComponent();
@@ -46,9 +50,16 @@ namespace Capa_vista_orden_compra
 
             Dtp_fechaRegistro.Value = DateTime.Now;
 
+            
+
+            
 
 
         }
+
+
+
+    
 
         private void Gpo_Encabezado_Enter(object sender, EventArgs e)
         {
@@ -553,7 +564,7 @@ namespace Capa_vista_orden_compra
             Txt_total.Text = total.ToString("0.00");
         }
 
-        private void Txt_NumeroOrden_TextChanged(object sender, EventArgs e)
+        public void Txt_NumeroOrden_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -563,7 +574,7 @@ namespace Capa_vista_orden_compra
             Txt_estado.Text = "Pendiente";
         }
 
-        private void Btn_Consultar_Click(object sender, EventArgs e)
+        public void Btn_Consultar_Click(object sender, EventArgs e)
         {
 
             string numeroBusqueda = Txt_buscar.Text.Trim();
@@ -865,6 +876,81 @@ namespace Capa_vista_orden_compra
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+        }
+
+
+
+
+        //-----------------------------------------------//
+
+
+        private void cargarDatosPorNumeroOrden(string numeroOrden)
+        {
+            try
+            {
+                DataTable resultado = cont.buscarOrdenCompletaPorNumero(numeroOrden);
+                if (resultado == null || resultado.Rows.Count == 0) return;
+
+                DataRow cab = resultado.Rows[0];
+
+                // Cargar encabezado
+                Txt_NumeroOrden.Text = cab["cmp_numero"].ToString();
+                Txt_estado.Text = cab["cmp_estado"].ToString();
+
+                if (cab["fk_id_proveedor"] != DBNull.Value)
+                    Cmb_proveedor.SelectedValue = Convert.ToInt32(cab["fk_id_proveedor"]);
+
+                if (cab["fk_id_bodega"] != DBNull.Value)
+                    Cmb_bodega.SelectedValue = Convert.ToInt32(cab["fk_id_bodega"]);
+
+                // Cargar detalle en el grid
+                Dgv_DetalleProductos.Rows.Clear();
+
+                foreach (DataRow fila in resultado.Rows)
+                {
+                    if (fila["fk_inventario_id"] == DBNull.Value) continue;
+
+                    decimal cantidad = Convert.ToDecimal(fila["cmp_cantidad"]);
+                    decimal precio = Convert.ToDecimal(fila["cmp_precio"]);
+                    decimal subtotal = cantidad * precio;
+
+                    int index = Dgv_DetalleProductos.Rows.Add();
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCodigo"].Value = fila["fk_inventario_id"];
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnProducto"].Value = fila["nombre_prod"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnUnidad"].Value = fila["Nombre_Unidad"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnIdUnidad"].Value = fila["fk_id_unidad"] ?? 0;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCantidad"].Value = cantidad;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnPrecioUnitario"].Value = precio;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnSubtotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnTotal"].Value = subtotal;
+                }
+
+                CalcularTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar orden:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Frm_detalle_orden_compra_Load(object sender, EventArgs e)
+        {
+            
+
+            if (!string.IsNullOrEmpty(NumeroOrdenACargar))
+            {
+            
+                cargarDatosPorNumeroOrden(NumeroOrdenACargar);
+                registroBuscado = true;
+                numeroOrdenActual = NumeroOrdenACargar;
+            
+            }
+            else
+            {
+               
+            }
 
         }
     }
