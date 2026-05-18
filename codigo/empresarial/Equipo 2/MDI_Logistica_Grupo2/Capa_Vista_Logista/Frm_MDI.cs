@@ -506,18 +506,19 @@ namespace Capa_Vista_Logista
             pagos.Show();
         }
 
-        private void balanceDeAntiguedadToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            Frm_Balance_Menu Balance = new Frm_Balance_Menu();
-            Balance.MdiParent = this;
-            Balance.Show();
-        }
 
         private void devolucionesVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Devoluciones_Generales Dv = new Frm_Devoluciones_Generales();
             Dv.MdiParent = this;
             Dv.Show();
+        }
+
+        private void balanceDeAntiguedadToolStripMenuItem_Click_2(object sender, EventArgs e)
+        {
+            Frm_Balance_Menu Balance = new Frm_Balance_Menu();
+            Balance.MdiParent = this;
+            Balance.Show();
         }
     }
 }
