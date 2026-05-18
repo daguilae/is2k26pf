@@ -31,6 +31,7 @@ namespace Capa_Vista_Ventas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Pago_Cheque));
             this.Gbo_Cmpos = new System.Windows.Forms.GroupBox();
+            this.Cbo_Bancos = new System.Windows.Forms.ComboBox();
             this.Txt_Monto_Pagar = new System.Windows.Forms.TextBox();
             this.Lbl_Monto_Pagar = new System.Windows.Forms.Label();
             this.Txt_Monto_Total = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@ namespace Capa_Vista_Ventas
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Agregar_Ventas = new System.Windows.Forms.Button();
-            this.Cbo_Bancos = new System.Windows.Forms.ComboBox();
             this.Gbo_Cmpos.SuspendLayout();
             this.Gbo_Pago_Con_Cheque.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -84,6 +84,14 @@ namespace Capa_Vista_Ventas
             this.Gbo_Cmpos.Size = new System.Drawing.Size(1161, 387);
             this.Gbo_Cmpos.TabIndex = 135;
             this.Gbo_Cmpos.TabStop = false;
+            // 
+            // Cbo_Bancos
+            // 
+            this.Cbo_Bancos.FormattingEnabled = true;
+            this.Cbo_Bancos.Location = new System.Drawing.Point(212, 87);
+            this.Cbo_Bancos.Name = "Cbo_Bancos";
+            this.Cbo_Bancos.Size = new System.Drawing.Size(280, 24);
+            this.Cbo_Bancos.TabIndex = 138;
             // 
             // Txt_Monto_Pagar
             // 
@@ -251,7 +259,7 @@ namespace Capa_Vista_Ventas
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "710 - Pagos ";
+            this.label1.Text = "734 - Pagos ";
             // 
             // Btn_Salir
             // 
@@ -280,6 +288,7 @@ namespace Capa_Vista_Ventas
             this.button3.Text = "AYUDA";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Btn_Cancelar_Ventas
             // 
@@ -321,14 +330,6 @@ namespace Capa_Vista_Ventas
             this.Btn_Agregar_Ventas.Text = "INGRESAR";
             this.Btn_Agregar_Ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Agregar_Ventas.UseVisualStyleBackColor = true;
-            // 
-            // Cbo_Bancos
-            // 
-            this.Cbo_Bancos.FormattingEnabled = true;
-            this.Cbo_Bancos.Location = new System.Drawing.Point(212, 87);
-            this.Cbo_Bancos.Name = "Cbo_Bancos";
-            this.Cbo_Bancos.Size = new System.Drawing.Size(280, 24);
-            this.Cbo_Bancos.TabIndex = 138;
             // 
             // Frm_Pago_Cheque
             // 
