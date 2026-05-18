@@ -20,6 +20,9 @@ namespace Capa_vista_Factura
             actualizardatagridview();
             this.Load += Frm_factura_Load;
 
+
+
+
         }
 
         public Frm_factura()
@@ -49,7 +52,8 @@ namespace Capa_vista_Factura
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Frm_reporte frm_Reporte = new Frm_reporte();
+            frm_Reporte.ShowDialog();
         }
 
         private void Btn_Ingresar_Click(object sender, EventArgs e)
@@ -86,6 +90,10 @@ namespace Capa_vista_Factura
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+
+
+
 
         }
 
@@ -140,6 +148,35 @@ namespace Capa_vista_Factura
             }
         }
 
-       
+
+
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            // Verifica el nombre exacto de la columna con el número de factura
+            string numeroFactura = dataGridView1.Rows[e.RowIndex].Cells["NoFactura"].Value?.ToString();
+
+            if (string.IsNullOrEmpty(numeroFactura)) return;
+
+            Frm_detalle_compra frmDetalle = new Frm_detalle_compra();
+            frmDetalle.NumeroFacturaACargar = numeroFactura;
+            frmDetalle.ShowDialog();
+
+            actualizardatagridview(); // refresca al cerrar
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            Frm_detalle_compra frmDetalleCompra = new Frm_detalle_compra();
+            frmDetalleCompra.ShowDialog();
+        }
+
+        private void Btn_Grabar_Click(object sender, EventArgs e)
+        {
+            Frm_detalle_compra frmDetalleCompra = new Frm_detalle_compra();
+            frmDetalleCompra.ShowDialog();
+        }
     }
 }

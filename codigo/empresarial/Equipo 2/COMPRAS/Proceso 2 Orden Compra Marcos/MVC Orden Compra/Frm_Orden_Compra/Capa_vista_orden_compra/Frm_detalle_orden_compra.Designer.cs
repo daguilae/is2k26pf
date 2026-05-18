@@ -824,6 +824,7 @@ namespace Capa_vista_orden_compra
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_detalle_orden_compra";
             this.Text = "Detalle Orden de Compra";
+            this.Load += new System.EventHandler(this.Frm_detalle_orden_compra_Load);
             this.Gpo_Encabezado.ResumeLayout(false);
             this.Gpo_Encabezado.PerformLayout();
             this.Gpo_Detalle.ResumeLayout(false);
@@ -850,7 +851,6 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.Label Lbl_tipoPago;
         private System.Windows.Forms.Label Lbl_FechaEntrega;
         private System.Windows.Forms.Label Lbl_fechaIngreso;
-        private System.Windows.Forms.TextBox Txt_NumeroOrden;
         private System.Windows.Forms.Label Lbl_numeroOrden;
         private System.Windows.Forms.Label Lbl_Proveedor;
         private System.Windows.Forms.GroupBox Gpo_Detalle;
@@ -894,5 +894,6 @@ namespace Capa_vista_orden_compra
         private System.Windows.Forms.Label Lbl_buscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Txt_buscar;
+        public System.Windows.Forms.TextBox Txt_NumeroOrden;
     }
 }

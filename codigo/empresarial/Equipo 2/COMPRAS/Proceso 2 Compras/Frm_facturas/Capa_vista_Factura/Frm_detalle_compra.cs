@@ -17,6 +17,9 @@ namespace Capa_vista_Factura
 
         Cls_controlador cont = new Cls_controlador();
 
+
+        public string NumeroFacturaACargar { get; set; }
+
         int idCompraSeleccionada = -1;
         bool registroBuscado = false;
         string numeroFacturaActual = "";
@@ -45,10 +48,16 @@ namespace Capa_vista_Factura
             Lbl_fechavencimiento.Enabled = false;
             Txt_diascredito.Enabled = false;
             Dtp_FechaVencimiento.Enabled = false;
-
-
-
             Txt_estado.Enabled = false;
+
+
+            if (!string.IsNullOrEmpty(NumeroFacturaACargar))
+            {
+                cargarDatosPorNumeroFactura(NumeroFacturaACargar);
+                registroBuscado = true;
+                numeroFacturaActual = NumeroFacturaACargar;
+            }
+
         }
         public Frm_detalle_compra()
         {
@@ -253,6 +262,49 @@ namespace Capa_vista_Factura
 
         private void Cmb_ordencompra_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            if (cargandoDatos) return;
+            if (Cmb_ordencompra.SelectedValue == null) return;
+
+            string numeroOrden = Cmb_ordencompra.Text.Trim();
+            if (string.IsNullOrEmpty(numeroOrden)) return;
+
+            try
+            {
+                DataTable resultado = cont.buscarDetallesPorOrden(numeroOrden);
+
+                if (resultado == null || resultado.Rows.Count == 0) return;
+
+                Dgv_DetalleProductos.Rows.Clear();
+
+                foreach (DataRow fila in resultado.Rows)
+                {
+                    if (fila["fk_inventario_id"] == DBNull.Value) continue;
+
+                    decimal cantidad = fila["cmp_cantidad"] != DBNull.Value
+                                       ? Convert.ToDecimal(fila["cmp_cantidad"]) : 0;
+                    decimal precio = fila["cmp_precio"] != DBNull.Value
+                                       ? Convert.ToDecimal(fila["cmp_precio"]) : 0;
+                    decimal subtotal = cantidad * precio;
+
+                    int index = Dgv_DetalleProductos.Rows.Add();
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCodigo"].Value = fila["fk_inventario_id"];
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnProducto"].Value = fila["nombre_prod"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnUnidad"].Value = fila["Nombre_Unidad"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnIdUnidad"].Value = fila["fk_id_unidad"] ?? 0;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCantidad"].Value = cantidad;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnPrecio"].Value = precio;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnSubtotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnTotal"].Value = subtotal;
+                }
+
+                CalcularTotal();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar detalle de orden:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -886,6 +938,104 @@ namespace Capa_vista_Factura
             }
 
         }
+
+
+
+
+
+
+        private void cargarDatosPorNumeroFactura(string numeroFactura)
+        {
+            try
+            {
+                DataTable resultado = cont.buscarCompraCompletaPorNumero(numeroFactura);
+                if (resultado == null || resultado.Rows.Count == 0) return;
+
+                cargandoDatos = true;
+                Dgv_DetalleProductos.Rows.Clear();
+
+                DataRow cab = resultado.Rows[0];
+
+                Txt_serieFactura.Text = cab["cmp_serie_factura"].ToString();
+                Txt_NumeroFactura.Text = cab["cmp_numero_factura"].ToString();
+                Txt_estado.Text = cab["cmp_estado"].ToString();
+
+                if (cab["cmp_fecha"] != DBNull.Value)
+                    Dtp_fechaCompra.Value = Convert.ToDateTime(cab["cmp_fecha"]);
+
+                if (cab["cmp_fecha_vencimiento"] != DBNull.Value)
+                    Dtp_FechaVencimiento.Value = Convert.ToDateTime(cab["cmp_fecha_vencimiento"]);
+
+                if (cab["cmp_total"] != DBNull.Value)
+                    Txt_total.Text = Convert.ToDecimal(cab["cmp_total"]).ToString("0.00");
+
+                string tipoCompra = cab["cmp_tipo_compra"].ToString().Trim().ToLower();
+                Cmb_tipo.SelectedItem = tipoCompra == "credito" ? "credito" : "contado";
+                Txt_diascredito.Text = cab["cmp_dias_credito"].ToString();
+
+                if (cab["fk_id_proveedor"] != DBNull.Value)
+                    Cmb_proveedor.SelectedValue = Convert.ToInt32(cab["fk_id_proveedor"]);
+
+                if (cab["fk_id_bodega"] != DBNull.Value)
+                    Cmb_bodega.SelectedValue = Convert.ToInt32(cab["fk_id_bodega"]);
+
+                if (cab["fk_id_orden_compra"] != DBNull.Value)
+                    Cmb_ordencompra.SelectedValue = Convert.ToInt32(cab["fk_id_orden_compra"]);
+
+                foreach (DataRow fila in resultado.Rows)
+                {
+                    if (fila["fk_inventario_id"] == DBNull.Value) continue;
+                    if (fila["cmp_cantidad"] == DBNull.Value) continue;
+                    if (fila["cmp_precio"] == DBNull.Value) continue;
+
+                    decimal cantidad = Convert.ToDecimal(fila["cmp_cantidad"]);
+                    decimal precio = Convert.ToDecimal(fila["cmp_precio"]);
+                    decimal subtotal = cantidad * precio;
+
+                    int index = Dgv_DetalleProductos.Rows.Add();
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCodigo"].Value = fila["fk_inventario_id"];
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnProducto"].Value = fila["nombre_prod"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnUnidad"].Value = fila["Nombre_Unidad"] ?? "";
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnIdUnidad"].Value = fila["fk_id_unidad"] ?? 0;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnCantidad"].Value = cantidad;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnPrecio"].Value = precio;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnSubtotal"].Value = subtotal;
+                    Dgv_DetalleProductos.Rows[index].Cells["ColumnTotal"].Value = subtotal;
+                }
+
+                CalcularTotal();
+                cargandoDatos = false;
+            }
+            catch (Exception ex)
+            {
+                cargandoDatos = false;
+                MessageBox.Show("Error al cargar compra:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 }

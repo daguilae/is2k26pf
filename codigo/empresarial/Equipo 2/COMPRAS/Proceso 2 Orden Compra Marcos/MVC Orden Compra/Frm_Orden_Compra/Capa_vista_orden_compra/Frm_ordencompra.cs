@@ -20,7 +20,7 @@ namespace Capa_vista_orden_compra
         {
          
             llenarDataGridView();
-            Dgv_orden.DataSource = cont.MostrarDetalleOrden();
+            
 
         }
 
@@ -84,10 +84,64 @@ namespace Capa_vista_orden_compra
                     MessageBox.Show("PASO EXTRA: Ocurrió una excepción: " + ex.Message + "\n\nStack: " + ex.StackTrace);
                 }
             }
-       
 
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+
+
+            Frm_detalle_orden_compra frmDetalleorden = new Frm_detalle_orden_compra();
+            frmDetalleorden.ShowDialog();
 
         }
+
+        private void Btn_Grabar_Click(object sender, EventArgs e)
+        {
+            Frm_detalle_orden_compra frmDetalleorden = new Frm_detalle_orden_compra();
+            frmDetalleorden.ShowDialog();
+        }
+
+        private void Btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            Frm_reporte frmreporteorden = new Frm_reporte();
+            frmreporteorden.ShowDialog();
+        }
+
+        private void Dgv_orden_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+
+
+
+        private void Dgv_orden_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            
+
+            if (e.RowIndex < 0) return;
+
+            
+            string columnas = "";
+            foreach (DataGridViewColumn col in Dgv_orden.Columns)
+                columnas += col.Name + "\n";
+            
+            var valorCelda = Dgv_orden.Rows[e.RowIndex].Cells["numero_orden"].Value;
+            
+
+            string numeroOrden = valorCelda?.ToString();
+            if (string.IsNullOrEmpty(numeroOrden))
+            {
+                
+                return;
+            }
+
+            Frm_detalle_orden_compra frmDetalle = new Frm_detalle_orden_compra();
+            frmDetalle.NumeroOrdenACargar = numeroOrden;
+            frmDetalle.ShowDialog();
+        }
+
+    }
        
     }
 

@@ -83,8 +83,8 @@ namespace Capa_Controlador_OrdenProduccion
                 Capa_controlador_orden_compra.Cls_controlador oCompras = new Capa_controlador_orden_compra.Cls_controlador();
 
                 int idProveedorQuemado = 1010;
-                decimal subtotalQuemado = 0m;
-                decimal totalQuemado = 0m;
+               // decimal subtotalQuemado = 0m;
+               // decimal totalQuemado = 0m;
 
                 oCompras.mrp(idProveedorQuemado, detallesParaCompras);
 

@@ -19,25 +19,19 @@ namespace Capa_modelo_factura
         public DataTable obtenerDetalles()
         {
             DataTable dt = new DataTable();
-            // MODIFICADO: Agregamos JOIN con tbl_unidad_de_medida para traer el nombre
+
             string sql = @"SELECT  
                 C.pk_id_compra AS Compra,
                 C.cmp_fecha AS Fecha,
+                C.cmp_serie_factura AS Serie,
+                C.cmp_numero_factura AS NoFactura,
                 PR.cmp_Nombre_Proveedor AS Proveedor,
                 C.cmp_tipo_compra AS TipoPago, 
                 C.cmp_estado AS Estado,
-                I.nombre_prod AS Producto, 
-                D.cmp_cantidad AS Cantidad, 
-                U.Nombre_Unidad AS Unidad, -- Ahora traemos el nombre de la unidad
-                D.cmp_precio AS Precio,
-                (D.cmp_cantidad * D.cmp_precio) AS Total
-            FROM tbl_detalle_compra D
-            INNER JOIN tbl_compra C ON D.fk_id_compra = C.pk_id_compra
-            INNER JOIN tbl_inventario I ON D.fk_inventario_id = I.pk_inventario_id
+                C.cmp_total AS Total -- Usamos el total acumulado en el encabezado
+            FROM tbl_compra C
             INNER JOIN tbl_proveedores PR ON C.fk_id_proveedor = PR.pk_id_proveedor
-            INNER JOIN tbl_unidad_de_medida U ON D.fk_id_unidad = U.ID_Unidad -- Nuevo JOIN
-            ORDER BY C.cmp_fecha DESC;";
-
+            ORDER BY C.pk_id_compra DESC;";
             OdbcConnection conn = cn.conexion();
             try
             {
@@ -184,6 +178,11 @@ namespace Capa_modelo_factura
             {
                 cn.desconexion(conn);
             }
+        }
+
+        public DataTable buscarOrdenCompletaPorNumero(string numeroOrden)
+        {
+            throw new NotImplementedException();
         }
 
 

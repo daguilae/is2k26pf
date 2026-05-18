@@ -52,9 +52,10 @@ namespace Capa_vista_Factura
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(849, 222);
+            this.dataGridView1.Size = new System.Drawing.Size(955, 222);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Btn_Imprimir
             // 
@@ -117,6 +118,7 @@ namespace Capa_vista_Factura
             this.Btn_Grabar.Text = "Grabar";
             this.Btn_Grabar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Grabar.UseVisualStyleBackColor = true;
+            this.Btn_Grabar.Click += new System.EventHandler(this.Btn_Grabar_Click);
             // 
             // Btn_Editar
             // 
@@ -132,6 +134,7 @@ namespace Capa_vista_Factura
             this.Btn_Editar.Text = "Editar";
             this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Editar.UseVisualStyleBackColor = true;
+            this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
             // 
             // Btn_Ingresar
             // 
@@ -195,7 +198,7 @@ namespace Capa_vista_Factura
             this.panel1.Location = new System.Drawing.Point(1, -2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(893, 60);
+            this.panel1.Size = new System.Drawing.Size(980, 60);
             this.panel1.TabIndex = 33;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -203,7 +206,7 @@ namespace Capa_vista_Factura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 436);
+            this.ClientSize = new System.Drawing.Size(982, 436);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.Btn_ayuda);
             this.Controls.Add(this.Btn_Imprimir);
