@@ -145,7 +145,8 @@ namespace Capa_Vista_Logista
                 {727, sucursalesToolStripMenuItem},
                 {713, devoluconToolStripMenuItem},
                 //{730, consultaDeInventariosToolStripMenuItem_Click},
-                {732,cuentasPorCobrarDetalleToolStripMenuItem}
+                {732,cuentasPorCobrarDetalleToolStripMenuItem},
+                {734,pagosVentaToolStripMenuItem }
 
 
             };
@@ -499,12 +500,7 @@ namespace Capa_Vista_Logista
             balance.Show();
         }
 
-        private void pagosVentasToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            Frm_Pagos pagos = new Frm_Pagos();
-            pagos.MdiParent = this;
-            pagos.Show();
-        }
+
 
 
         private void devolucionesVentasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -519,6 +515,13 @@ namespace Capa_Vista_Logista
             Frm_Balance_Menu Balance = new Frm_Balance_Menu();
             Balance.MdiParent = this;
             Balance.Show();
+        }
+
+        private void pagosVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Pagos pagos = new Frm_Pagos();
+            pagos.MdiParent = this;
+            pagos.Show();
         }
     }
 }
