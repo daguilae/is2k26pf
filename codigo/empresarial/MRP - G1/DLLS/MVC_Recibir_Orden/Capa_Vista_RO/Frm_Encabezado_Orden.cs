@@ -168,16 +168,16 @@ namespace Capa_Vista_RO
 
                 if (confirm == DialogResult.Yes)
                 {
-                    if (controlador.GenerarFactura(idOrden))
+                    try
                     {
-                        MessageBox.Show("Factura generada correctamente.", "Éxito",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        CargarGrid();
+                        if (controlador.GenerarFactura(idOrden))
+                        {
+                            MessageBox.Show("Factura generada correctamente.");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Error al generar la factura.", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -199,6 +199,7 @@ namespace Capa_Vista_RO
                 {
                     if (controlador.GenerarFactura(idOrden))
                     {
+                        controlador.CambiarEstadoOrden(idOrden, 3);
                         MessageBox.Show("Factura generada correctamente.", "Éxito",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarGrid();
@@ -267,8 +268,8 @@ namespace Capa_Vista_RO
                     fila.Cells["EstadoFactura"].Style.BackColor = Color.LightYellow;
                     fila.Cells["EstadoFactura"].Style.ForeColor = Color.DarkOrange;
                 }
-                dgvOrdenes.Refresh(); // 👈
-                dgvOrdenes.Update();  // 👈
+                dgvOrdenes.Refresh(); 
+                dgvOrdenes.Update();  
             }
         }
 
