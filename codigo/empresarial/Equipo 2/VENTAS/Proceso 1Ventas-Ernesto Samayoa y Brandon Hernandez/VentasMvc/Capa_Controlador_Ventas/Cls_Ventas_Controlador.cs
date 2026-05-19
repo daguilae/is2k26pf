@@ -45,10 +45,10 @@ namespace Capa_Controlador_Ventas
         }
 
         //OBTENER ESTADOVENTA PARA COMBOBOX
-        public DataTable ObtenerEstadoVenta()
+        /*public DataTable ObtenerEstadoVenta()
         {
             return dao.ObtenerEstadoVenta();
-        }
+        }*/
 
         //OBTENER Tipo operacion PARA COMBOBOX
         public DataTable ObtenerTipoOperacion()
@@ -129,6 +129,47 @@ namespace Capa_Controlador_Ventas
         {
             return dao.ObtenerBodegasPorProducto(pk_inventario_id);
         }
+
+
+
+
+        //NUevo
+        public DataTable ObtenerVentaPorId(int idVenta)
+        {
+            return dao.ObtenerVentaPorId(idVenta);
+        }
+
+        //NUevos cambios 18 de mayo
+        public bool ActualizarVenta(int iPk_Id_Venta, DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,
+        string sCmp_Estado_Venta, string sCmp_Tipo_Operacion, float fCmp_Saldo_Total, bool convertirAVenta, DataTable detalle)
+        {
+            return dao.ActualizarVenta(iPk_Id_Venta, dCmp_Fecha_Venta, iFk_Id_Cliente, iFk_Id_Sucursal, sCmp_Estado_Venta,
+                sCmp_Tipo_Operacion, fCmp_Saldo_Total, convertirAVenta, detalle);
+        }
+
+        public DataTable ObtenerDetalleVenta(int idVenta)
+        {
+            return dao.ObtenerDetalleVenta(idVenta);
+        }
+
+
+        public bool ExisteCuentaPorCobrar(int idVenta)
+        {
+            return dao.ExisteCuentaPorCobrar(idVenta);
+        }
+
+        public DataTable ObtenerDetalleOriginal(int idVenta)
+        {
+            return dao.ObtenerDetalleOriginal(idVenta);
+        }
+
+
+
+
+
+
+
+
 
         //GUARDAR VENTA-COTIZACION-PEDIDO
         public bool GuardarVenta(DateTime dCmp_Fecha_Venta, int iFk_Id_Cliente, int iFk_Id_Sucursal,

@@ -77,6 +77,7 @@ namespace Capa_Vista_Ventas
             this.Dgv_Ventas_Generales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Ventas_Generales.Size = new System.Drawing.Size(1067, 254);
             this.Dgv_Ventas_Generales.TabIndex = 167;
+            this.Dgv_Ventas_Generales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Ventas_Generales_CellContentClick);
             this.Dgv_Ventas_Generales.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.Dgv_Ventas_Generales_RowPostPaint);
             // 
             // Btn_inicio

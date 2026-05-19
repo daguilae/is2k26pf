@@ -157,7 +157,7 @@ namespace Capa_Vista_Ventas
             {
                 if (!texto.All(char.IsDigit) || texto.Length > 4)
                 {
-                    MessageBox.Show("CVC debe contener 3 o 4 d ígitos.", "Validación",
+                    MessageBox.Show("CVC debe contener 3 o 4 dígitos.", "Validación",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Txt_Cvc.Clear();
                 }
