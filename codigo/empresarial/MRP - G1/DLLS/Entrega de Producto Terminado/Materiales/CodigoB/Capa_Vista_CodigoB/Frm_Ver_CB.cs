@@ -101,11 +101,9 @@ namespace Capa_Vista_CodigoB
 
                 conexion.Open();
 
-                string sql = @"SELECT Imagen_Codigo_Barras
-                               FROM tbl_codigo_barras_material
-                               WHERE Fk_Id_Materiales = ?
-                               ORDER BY Pk_Id_Codigo_Barras DESC
-                               LIMIT 1";
+                string sql = @"SELECT Imagen_Material
+                       FROM tbl_materiales
+                       WHERE Pk_Id_Materiales = ?";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion);
                 cmd.Parameters.Add("@id", OdbcType.Int).Value = idMaterial;
