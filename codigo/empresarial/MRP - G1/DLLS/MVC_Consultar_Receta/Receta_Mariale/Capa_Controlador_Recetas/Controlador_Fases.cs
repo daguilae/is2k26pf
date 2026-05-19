@@ -15,5 +15,10 @@ namespace Capa_Controlador_Recetas
         {
             return sentencias.fun_ObtenerFasesProducción(iCodigoBOM);
         }
+
+        public void eliminarFase(int iCodigoFase)
+        {
+            sentencias.fun_EliminarFase(iCodigoFase);
+        }
     }
 }

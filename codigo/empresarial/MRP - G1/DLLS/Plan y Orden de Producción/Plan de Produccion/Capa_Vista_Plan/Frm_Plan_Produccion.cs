@@ -11,6 +11,7 @@ using Capa_Modelo_Plan;
 using System.Data.Odbc;
 using System.IO;
 using Capa_Controlador_Plan;
+using Capa_Controlador_Seguridad;
 
 
 namespace Capa_Vista_Plan
@@ -20,6 +21,7 @@ namespace Capa_Vista_Plan
         Cls_Controlador_Ordenes ordenes = new Cls_Controlador_Ordenes();
         Cls_Controlador_Cronograma cronograma = new Cls_Controlador_Cronograma();
         Cls_Controlador_General controladorGeneral = new Cls_Controlador_General();
+        Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
 
         int iCodigoPlan = 0;
         int iNoOrden = 0;
@@ -255,6 +257,7 @@ namespace Capa_Vista_Plan
                     iCodigoPlan = controladorGeneral.pro_GuardarPlanCompleto(iNoPedido, sDescripcionPlan, iCodigoEstadoPlan, fechaPlan,
                         listaOrdenes);
                     iCodigoPlanExistente = iCodigoPlan;
+                    bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 718, "Ingreso de nuevo plan de producción", true);
                     MessageBox.Show("Plan y Órdenes de Producción guardados correctamente");
                     pro_ObtenerOrdenes(iCodigoPlan);
                     pro_DatosPlan(iCodigoPlan);
@@ -265,6 +268,7 @@ namespace Capa_Vista_Plan
                 {
                     cronograma.proGuardarCronograma(iNoOrden, cronogramaFases);
                     MessageBox.Show("Cronograma de Fases Guardado Correctamente");
+                    bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 718, "Ingreso de Cronograma de fases de producción", true);
                     cronogramaFases.Clear();
                     Dgv_Cronograma.Rows.Clear();
                 }
@@ -692,6 +696,7 @@ namespace Capa_Vista_Plan
                     iCodigoEncargado, iCodigoEstado);
 
                 MessageBox.Show("Cronograma actualizado correctamente.");
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 718, "Actualización de cronograma", true);
 
                 pro_ObtenerCronograma(iNoOrden);
                 LimpiarCamposCronograma();
@@ -1047,7 +1052,7 @@ namespace Capa_Vista_Plan
                 limpiarCampos();
 
                 iIdOrdenProduccionEditar = 0;
-
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 718, "Actualización de datos de orden de producción", true);
                 MessageBox.Show(
                     "Orden modificada correctamente.");
             }
@@ -1134,6 +1139,7 @@ namespace Capa_Vista_Plan
                 controladorGeneral.pro_ModificarPlan(iCodigoPlanExistente, sDescripcionModificada, iEstadoModificado, fechaModificada);
 
                 MessageBox.Show("Plan modificado correctamente.");
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 718, "Actualización de datos de plan de producción", true);
 
                 // ACTUALIZAR VALORES ORIGINALES
                 sDescripcionOriginal = sDescripcionModificada;
