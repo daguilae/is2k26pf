@@ -137,43 +137,6 @@ namespace Capa_Vista_CVRecetas
         //boton de guardar cesar santizo 0901-22-5215 (para guardar receta)
         private void Btn_guardar_Click_1(object sender, EventArgs e)
         {
-            //Ruben Lopez 0901-20-4620
-            //Validacion de datos de la consulta
-            if (Cbo_producto.SelectedValue == null || Cbo_estado.SelectedValue == null ||
-                string.IsNullOrWhiteSpace(Txt_descripcion.Text) || string.IsNullOrWhiteSpace(Txt_versionBOM.Text))
-            {
-                MessageBox.Show("Debe completar todos los campos de la pestaña 'Datos de la consulta'.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            //Ruben Lopez 0901-20-4620
-            //Validacion de detalle BOM
-            int filasRealesMateriales = 0;
-            foreach (DataGridViewRow row in Dgv_Recetas.Rows)
-            {
-                if (!row.IsNewRow) filasRealesMateriales++;
-            }
-            if (filasRealesMateriales == 0)
-            {
-                MessageBox.Show("No puede guardar una receta sin materiales. Agregue al menos un material en 'Detalle BOM'.", "Detalle Vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (fasesNuevas.Count == 0 && Dgv_Fases.Rows.Count == 0)
-            {
-                MessageBox.Show("No puede guardar una receta sin fases de producción.", "Fases Vacías", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            //Ruben Lopez 0901-20-4620
-            //Validacion fases de produccion
-            if (Dgv_Fases.Rows.Count == 0)
-            {
-                MessageBox.Show("No puede guardar una receta sin fases de producción. Agregue al menos una fase.", "Fases Vacías", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             int idProducto = Convert.ToInt32(Cbo_producto.SelectedValue);
             string descripcion = Txt_descripcion.Text;
             string version = Txt_versionBOM.Text;
@@ -182,32 +145,61 @@ namespace Capa_Vista_CVRecetas
 
             //Ruben Lopez 0901-20-4620
             // Extraer los materiales de Dgv_Recetas
-            List<(int idMaterial, int idUnidad, decimal cantidad)> detallesNuevos = new List<(int, int, decimal)>();
-            foreach (DataGridViewRow row in Dgv_Recetas.Rows)
-            {
-                if (!row.IsNewRow)
-                {
-                    int idMat = Convert.ToInt32(row.Cells["idMaterial"].Value);
-                    int idUni = Convert.ToInt32(row.Cells["idUnidad"].Value);
-                    decimal cant = Convert.ToDecimal(row.Cells["cantidad"].Value);
-                    detallesNuevos.Add((idMat, idUni, cant));
-                }
-            }
-
             try
             {
                 // Verificar si idBomExistente es igual a 0
                 // Si es igual a 0, se debe crear el BOM completo
                 if (idBOMExistente == 0)
                 {
-                    con.guardarBOMCompleto(descripcion, version, fecha, estado, idProducto, detallesNuevos, fasesNuevas);
+                    //Ruben Lopez 0901-20-4620
+                    //Validacion de datos de la consulta
+                    if (Cbo_producto.SelectedValue == null || Cbo_estado.SelectedValue == null ||
+                        string.IsNullOrWhiteSpace(Txt_descripcion.Text) || string.IsNullOrWhiteSpace(Txt_versionBOM.Text))
+                    {
+                        MessageBox.Show("Debe completar todos los campos de la pestaña 'Datos de la consulta'.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+
+                    //Ruben Lopez 0901-20-4620
+                    //Validacion de detalle BOM
+                    int filasRealesMateriales = 0;
+                    foreach (DataGridViewRow row in Dgv_Recetas.Rows)
+                    {
+                        if (!row.IsNewRow) filasRealesMateriales++;
+                    }
+                    if (filasRealesMateriales == 0)
+                    {
+                        MessageBox.Show("No puede guardar una receta sin materiales. Agregue al menos un material en 'Detalle BOM'.", "Detalle Vacío", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (fasesNuevas.Count == 0 && Dgv_Fases.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No puede guardar una receta sin fases de producción.", "Fases Vacías", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    //Ruben Lopez 0901-20-4620
+                    //Validacion fases de produccion
+                    if (Dgv_Fases.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No puede guardar una receta sin fases de producción. Agregue al menos una fase.", "Fases Vacías", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    con.guardarBOMCompleto(descripcion, version, fecha, estado, idProducto, materialesNuevos, fasesNuevas);
                     MessageBox.Show("Receta guardada correctamente");
+                    materialesNuevos.Clear();
+                    fasesNuevas.Clear();
                 }
                 // En caso contrario, se guardan solo datos nuevos de detalle o fases
                 else
                 {
-                    con.guardarDatosNuevos(idBOMExistente, detallesNuevos, fasesNuevas);
+                    con.guardarDatosNuevos(idBOMExistente, materialesNuevos, fasesNuevas);
                     MessageBox.Show("Receta guardada correctamente");
+                    materialesNuevos.Clear();
+                    fasesNuevas.Clear();
                 }
             }
             catch (Exception ex)
@@ -336,6 +328,7 @@ namespace Capa_Vista_CVRecetas
 
         List<(string nombre, string descripcion, int horas)> datosFases = new List<(string, string, int)>();
         List<(string sFase, string sDescripcion, int iHoras)> fasesNuevas = new List<(string, string, int)>();
+        List<(int idMaterial, int idUnidad, decimal cantidad)> materialesNuevos = new List<(int, int, decimal)>();
 
         private void pro_ObtenerFases(int iCodigoBOM)
         {
@@ -388,20 +381,52 @@ namespace Capa_Vista_CVRecetas
                 return;
             }
 
-            // Validar que la hora ingresada sea valida
+            // Validar horas
             int iHoras;
+
             if (!int.TryParse(sHorasTexto, out iHoras) || iHoras <= 0)
             {
-                MessageBox.Show("El campo Horas debe ser un número entero positivo mayor a 0.");
+                MessageBox.Show(
+                    "El campo Horas debe ser un número entero positivo mayor a 0.");
+
                 return;
             }
 
-            fasesNuevas.Add((sFase, sDescripcion, iHoras));
+            // VALIDAR FASE REPETIDA
+            foreach (DataGridViewRow row in Dgv_Fases.Rows)
+            {
+                if (row.IsNewRow)
+                    continue;
+
+                string faseExistente =
+                    row.Cells["faseProduccion"].Value?.ToString().Trim() ?? "";
+
+                if (faseExistente.Equals(
+                    sFase,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show(
+                        "Esa fase ya fue agregada.",
+                        "Duplicado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+            }
+
+            // Agregar a lista
+            fasesNuevas.Add(
+                (sFase, sDescripcion, iHoras)
+            );
+
+            // Limpiar campos
             Txt_Fase.Clear();
             Txt_Descripcion_fases.Clear();
             Txt_Horas.Clear();
-            ActualizarGridFases();
 
+            // Actualizar grid
+            ActualizarGridFases();
         }
 
         private void Dgv_Fases_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -421,7 +446,90 @@ namespace Capa_Vista_CVRecetas
 
         private void btn_eliminar_fases_Click(object sender, EventArgs e)
         {
+            // Verificar selección
+            if (Dgv_Fases.CurrentRow == null)
+            {
+                MessageBox.Show(
+                    "Seleccione una fase para eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
+                return;
+            }
+
+            DataGridViewRow fila =
+                Dgv_Fases.CurrentRow;
+
+            DialogResult resultado =
+                MessageBox.Show(
+                    "¿Desea eliminar la fase seleccionada?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+            if (resultado != DialogResult.Yes)
+                return;
+
+            try
+            {
+                // CASO 1:
+                // BOM NUEVO
+                if (idBOMExistente == 0)
+                {
+                    string sFase =
+                        fila.Cells["faseProduccion"]
+                        .Value?.ToString() ?? "";
+
+                    // Eliminar de lista temporal
+                    fasesNuevas.RemoveAll(
+                        f => f.sFase.Equals(
+                            sFase,
+                            StringComparison.OrdinalIgnoreCase
+                        )
+                    );
+
+                    // Eliminar del grid
+                    Dgv_Fases.Rows.Remove(fila);
+
+                    MessageBox.Show(
+                        "Fase eliminada correctamente."
+                    );
+                }
+                // CASO 2:
+                // BOM EXISTENTE
+                else
+                {
+                    int iCodigoFase =
+                        Convert.ToInt32(
+                            fila.Cells["idFase"].Value
+                        );
+
+                    // Eliminar de BD
+                    controlador.eliminarFase(
+                        iCodigoFase
+                    );
+
+                    // Eliminar visualmente
+                    Dgv_Fases.Rows.Remove(fila);
+
+                    MessageBox.Show(
+                        "Fase eliminada correctamente."
+                    );
+                }
+
+                // Limpiar campos
+                Txt_Fase.Clear();
+                Txt_Descripcion_fases.Clear();
+                Txt_Horas.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al eliminar la fase: " +
+                    ex.Message
+                );
+            }
         }
 
         // Diego Monterroso - Boton Ayuda
@@ -460,31 +568,83 @@ namespace Capa_Vista_CVRecetas
         //Ruben Lopez 0901-20-4620
         private void Btn_agregarMat_Click(object sender, EventArgs e)
         {
-            //Validar que no haya campos vacios
-            if (Cbo_Material.SelectedValue == null || Cbo_Unidad.SelectedValue == null || string.IsNullOrWhiteSpace(Cbo_Cantridad.Text))
+            // Validar campos vacíos
+            if (Cbo_Material.SelectedValue == null ||
+                Cbo_Unidad.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(Cbo_Cantridad.Text))
             {
-                MessageBox.Show("Por favor, seleccione un Material, una Unidad y digite la Cantidad.", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Por favor, seleccione un Material, una Unidad y digite la Cantidad.",
+                    "Faltan datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
-            // Extraer los datos de los controles
             int idMaterial = Convert.ToInt32(Cbo_Material.SelectedValue);
             string nombreMaterial = Cbo_Material.Text;
             int idUnidad = Convert.ToInt32(Cbo_Unidad.SelectedValue);
             string nombreUnidad = Cbo_Unidad.Text;
+            decimal cantidad;
 
-            decimal cantidad = Convert.ToDecimal(Cbo_Cantridad.Text);
-
-            if (cantidad <= 0)
+            if (!decimal.TryParse(Cbo_Cantridad.Text, out cantidad))
             {
-                MessageBox.Show("La cantidad debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Cantidad inválida.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
-            //Agregar la fila al DataGridView
-            Dgv_Recetas.Rows.Add(idMaterial, nombreMaterial, idUnidad, nombreUnidad, cantidad);
+            if (cantidad <= 0)
+            {
+                MessageBox.Show(
+                    "La cantidad debe ser mayor a cero.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
-            //Limpiar los controles para el siguiente ingreso
+                return;
+            }
+
+            // VALIDAR DUPLICADOS EN EL GRID
+            foreach (DataGridViewRow row in Dgv_Recetas.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                int idExistente =
+                    Convert.ToInt32(row.Cells["idMaterial"].Value);
+
+                if (idExistente == idMaterial)
+                {
+                    MessageBox.Show(
+                        "Ese material ya fue agregado.",
+                        "Duplicado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+            }
+
+            // Agregar al grid
+            Dgv_Recetas.Rows.Add(
+                idMaterial,
+                nombreMaterial,
+                idUnidad,
+                nombreUnidad,
+                cantidad
+            );
+
+            // GUARDAR SOLO LOS NUEVOS
+            materialesNuevos.Add(
+                (idMaterial, idUnidad, cantidad)
+            );
+
+            // Limpiar controles
             Cbo_Material.SelectedIndex = -1;
             Cbo_Unidad.SelectedIndex = -1;
             Cbo_Cantridad.Text = "0";

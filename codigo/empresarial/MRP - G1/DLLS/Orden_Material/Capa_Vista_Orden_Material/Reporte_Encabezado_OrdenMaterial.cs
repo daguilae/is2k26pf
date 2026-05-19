@@ -16,14 +16,14 @@ namespace Capa_Vista_Orden_Material {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Reporte_Orden : ReportClass {
+    public class Reporte_Encabezado_OrdenMaterial : ReportClass {
         
-        public Reporte_Orden() {
+        public Reporte_Encabezado_OrdenMaterial() {
         }
         
         public override string ResourceName {
             get {
-                return "Reporte_Orden.rpt";
+                return "Reporte_Encabezado_OrdenMaterial.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Capa_Vista_Orden_Material {
         
         public override string FullResourceName {
             get {
-                return "Capa_Vista_Orden_Material.Reporte_Orden.rpt";
+                return "Capa_Vista_Orden_Material.Reporte_Encabezado_OrdenMaterial.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Capa_Vista_Orden_Material {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporte_Orden : Component, ICachedReport {
+    public class CachedReporte_Encabezado_OrdenMaterial : Component, ICachedReport {
         
-        public CachedReporte_Orden() {
+        public CachedReporte_Encabezado_OrdenMaterial() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Capa_Vista_Orden_Material {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Reporte_Orden rpt = new Reporte_Orden();
+            Reporte_Encabezado_OrdenMaterial rpt = new Reporte_Encabezado_OrdenMaterial();
             rpt.Site = this.Site;
             return rpt;
         }

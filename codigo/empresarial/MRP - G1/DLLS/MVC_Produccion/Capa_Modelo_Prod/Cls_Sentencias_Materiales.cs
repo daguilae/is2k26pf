@@ -18,14 +18,14 @@ namespace Capa_Modelo_Prod
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
-            SELECT 
+                        SELECT 
                 m.Pk_Id_Materiales              AS Id_Material,
                 m.Nombre_Material               AS Material,
                 u.Abreviatura_Unidad_Medida     AS Unidad,
-                emd.Cantidad_Total              AS Cantidad_Necesaria,
-                emd.Cantidad_Real_Con_Merma     AS Cantidad_Con_Merma,
+                SUM(emd.Cantidad_Total)         AS Cantidad_Necesaria,
+                SUM(emd.Cantidad_Real_Con_Merma) AS Cantidad_Con_Merma,
                 i.Costo_Unitario                AS Costo_Unitario,
-                (emd.Cantidad_Real_Con_Merma * i.Costo_Unitario) AS Subtotal
+                SUM(emd.Cantidad_Real_Con_Merma * i.Costo_Unitario) AS Subtotal
             FROM Tbl_Orden_Produccion op
             INNER JOIN Tbl_Plan_Produccion pp 
                 ON op.Fk_Id_Plan_Produccion = pp.Pk_Id_Plan_Produccion
@@ -33,20 +33,26 @@ namespace Capa_Modelo_Prod
                 ON em.Pk_Id_Explosion = (
                     SELECT MAX(Pk_Id_Explosion) 
                     FROM Tbl_Explosion_Materiales 
-                    WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida
-                )
+                    WHERE Fk_Id_Orden_Recibida = pp.Fk_Id_Orden_Recibida)
             INNER JOIN Tbl_Explosion_Materiales_Detalle emd 
                 ON em.Pk_Id_Explosion = emd.Fk_Id_Explosion
+            INNER JOIN Tbl_BOM b 
+                ON b.Fk_Id_Material = op.Fk_Id_Material
+            INNER JOIN Tbl_BOM_Detalle bd 
+                ON bd.Fk_Id_BOM = b.Pk_Id_BOM 
+                AND bd.Fk_Id_Materiales = emd.Fk_Id_Material
             INNER JOIN Tbl_Materiales m 
                 ON emd.Fk_Id_Material = m.Pk_Id_Materiales
             INNER JOIN Tbl_Unidad_Medida u
                 ON m.Fk_Id_Unidad_Medida = u.Pk_Id_Unidad_Medida
             INNER JOIN Tbl_Inventario i
                 ON emd.Fk_Id_Material = i.Fk_Id_Material
-            WHERE op.Pk_Id_Orden_Produccion = ?";
+            WHERE op.Pk_Id_Orden_Produccion = ?
+            GROUP BY m.Pk_Id_Materiales, m.Nombre_Material, u.Abreviatura_Unidad_Medida, i.Costo_Unitario
+            ORDER BY m.Nombre_Material";
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
-                cmd.Parameters.AddWithValue("?", idOrden);
+                cmd.Parameters.AddWithValue(" ? ", idOrden);
                 OdbcDataAdapter da = new OdbcDataAdapter(cmd);
                 da.Fill(dt);
             }

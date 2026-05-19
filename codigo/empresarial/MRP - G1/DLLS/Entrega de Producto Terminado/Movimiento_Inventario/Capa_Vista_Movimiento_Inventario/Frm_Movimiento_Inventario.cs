@@ -38,7 +38,7 @@ namespace Capa_Vista_Movimiento_Inventario
                         "Fk_Id_Almacen_Origen",
                         "Fk_Id_Almacen_Destino",
                         "Fk_Orden_Produccion",
-                        "Fk_Id_Recepcion_Material",
+                        "Fk_Id_Recepcion_Detalle",
                         "Fecha_Movimiento_Inventarios",
                         "Observacion_Movimiento_Inventarios"
                      };
@@ -51,7 +51,7 @@ namespace Capa_Vista_Movimiento_Inventario
                         "Nombre Almacen Origen",
                         "Almacen Destino",
                         "Cantidad producida",
-                        "Costo Unitario Recibido",
+                        "Fk Recepcion Detalle",
                         "Fecha Movimiento Inventario",
                         "Observacion Movimiento Inventario"
                      };
@@ -103,10 +103,10 @@ namespace Capa_Vista_Movimiento_Inventario
 
                     new Cls_ConfiguracionFK
                     {
-                        CampoFK         = "Fk_Id_Recepcion_Material",
-                        TablaReferencia = "tbl_recepcion_material",
-                        CampoPK         = "Pk_Id_Recepcion_Material",
-                        CampoMostrar    = "Costo_Unitario_Recibido"
+                        CampoFK         = "Fk_Id_Recepcion_Detalle",
+                        TablaReferencia = "tbl_recepcion_detalle",
+                        CampoPK         = "Pk_Id_Recepcion_Detalle",
+                        CampoMostrar    = "Pk_Id_Recepcion_Detalle"
                     }
 
                 };

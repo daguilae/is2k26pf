@@ -64,6 +64,9 @@
     <Reference Include="Capa_Vista_Expl_Mat">
       <HintPath>..\..\DLLS\Explosion_Materiales_Pau\MVC_Expl_Mat_Pau\Capa_Vista_Expl_Mat\bin\Debug\Capa_Vista_Expl_Mat.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Factura">
+      <HintPath>..\..\DLLS\MVC_Factura\MVC_Facturacion\Capa_Vista_Factura\bin\Debug\Capa_Vista_Factura.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Fases">
       <HintPath>..\..\DLLS\Plan y Orden de Producción\Fases de Produccion\Capa_Vista_Fases\bin\Debug\Capa_Vista_Fases.dll</HintPath>
     </Reference>
@@ -117,6 +120,9 @@
     </Reference>
     <Reference Include="Capa_Vista_RO">
       <HintPath>..\..\DLLS\MVC_Recibir_Orden\Capa_Vista_RO\bin\Debug\Capa_Vista_RO.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaVista\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
     </Reference>
     <Reference Include="Capa_Vista_TipoInve">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Tipo_Inventario\Mantenimiento_Tipo_Inventario\Capa_Vista_TipoInve\bin\Debug\Capa_Vista_TipoInve.dll</HintPath>

@@ -5,12 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Capa_Modelo_Plan;
+using Capa_Controlador_Seguridad;
 
 namespace Capa_Controlador_Plan
 {
     public class Cls_Controlador_Cronograma
     {
         Cls_Sentencias_Cronograma sentenciasCronograma = new Cls_Sentencias_Cronograma();
+
+        //Arón Ricardo Esquit Silva 0901-22-13036  17/5/26
+        private Cls_BitacoraControlador gCtrlBitacora = new Cls_BitacoraControlador();
 
         public DataTable fun_OrdenesPlan(int iCodigoPlan)
         {
@@ -53,16 +57,40 @@ namespace Capa_Controlador_Plan
             return sentenciasCronograma.fun_ObtenerCronograma(iCodigoOrden);
         }
 
+
+        //Arón Ricardo Esquit Silva 0901-22-13036  17/5/26
         public void proGuardarCronograma(int iCodigoOrden, List<(int iCodigoFase, int iEmpleado, DateTime FechaInicio,
-                    DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)> cronogramaFases)
+            DateTime FechaFin, int iCantidadPersonal, int iEstadoFase)> cronogramaFases)
         {
             sentenciasCronograma.pro_GuardarCronograma(iCodigoOrden, cronogramaFases);
+
+            gCtrlBitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                730,
+                $"Registró cronograma de producción para la orden '{iCodigoOrden}'",
+                true
+            );
         }
 
-        public void proActualizarCronograma(int iCodigoCronograma, DateTime fechaInicio, DateTime fechaFin, int iCantidadPersonal, 
-            int iEncargado, int iEstado)
+
+        //Arón Ricardo Esquit Silva 0901-22-13036  17/5/26
+        public void proActualizarCronograma(int iCodigoCronograma, DateTime fechaInicio, DateTime fechaFin,
+            int iCantidadPersonal, int iEncargado, int iEstado)
         {
-            sentenciasCronograma.pro_ActualizarCronograma(iCodigoCronograma, fechaInicio, fechaFin, iCantidadPersonal, iEncargado, iEstado);
+            sentenciasCronograma.pro_ActualizarCronograma(
+                iCodigoCronograma,
+                fechaInicio,
+                fechaFin,
+                iCantidadPersonal,
+                iEncargado,
+                iEstado);
+
+            gCtrlBitacora.RegistrarAccion(
+                Cls_Usuario_Conectado.iIdUsuario,
+                730,
+                $"Actualizó el cronograma '{iCodigoCronograma}'",
+                true
+            );
         }
     }
 }

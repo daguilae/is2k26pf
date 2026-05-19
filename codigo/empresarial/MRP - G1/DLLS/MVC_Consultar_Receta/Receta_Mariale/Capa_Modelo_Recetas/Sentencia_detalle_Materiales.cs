@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Data.Odbc;
 using Capa_Modelo_Seguridad;
+
+
 namespace Capa_Modelo_Recetas
 {
     public class Sentencia_detalle_Materiales
@@ -209,6 +211,37 @@ namespace Capa_Modelo_Recetas
             }
             return tabla;
         }
+
+        public void fun_EliminarFase(int iCodigoFase)
+        {
+            try
+            {
+                using (OdbcConnection con = conexion.conexion())
+                {
+                    string sEliminar = @"
+                DELETE FROM Tbl_Fases_Produccion
+                WHERE Pk_Id_Fase_Producto = ?";
+
+                    OdbcCommand cmd =
+                        new OdbcCommand(sEliminar, con);
+
+                    cmd.Parameters.AddWithValue(
+                        "",
+                        iCodigoFase
+                    );
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    "Error al eliminar la fase: " +
+                    ex.Message
+                );
+            }
+        }
+
         // ------------------- Sentencias para realizar una sola transacción en la base de datos ----------------- //
     }
 }

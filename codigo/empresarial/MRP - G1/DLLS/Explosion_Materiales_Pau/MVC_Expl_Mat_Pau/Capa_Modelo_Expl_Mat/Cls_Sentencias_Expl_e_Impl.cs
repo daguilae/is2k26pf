@@ -179,7 +179,7 @@ namespace Capa_Modelo_Expl_Mat
                 try
                 {
                     string qEncabezado = @"
-                INSERT INTO Encabezado_Orden_Material 
+                INSERT INTO Tbl_Encabezado_Orden_Material 
                     (Fk_Id_Orden_Recibida, Fk_Id_Estado_Orden_Material, Fecha_Solicitud)
                 VALUES (?, 2, NOW())";
 
@@ -192,7 +192,7 @@ namespace Capa_Modelo_Expl_Mat
                     int idOrdenMaterial = Convert.ToInt32(cmdId.ExecuteScalar());
 
                     string qDetalle = @"
-                INSERT INTO Detalle_Orden_Material 
+                INSERT INTO Tbl_Detalle_Orden_Material 
                     (Fk_Id_Orden_Material, Fk_Id_Materiales, Cantidad_Solicitada)
                 VALUES (?, ?, ?)";
 
@@ -225,7 +225,7 @@ namespace Capa_Modelo_Expl_Mat
             {
                 string query = @"
             SELECT COUNT(*) 
-            FROM Encabezado_Orden_Material 
+            FROM Tbl_Encabezado_Orden_Material 
             WHERE Fk_Id_Orden_Recibida = ?";
 
                 OdbcCommand cmd = new OdbcCommand(query, conn);
@@ -247,7 +247,7 @@ namespace Capa_Modelo_Expl_Mat
                 try
                 {
                     string qEncabezado = @"
-                INSERT INTO Encabezado_Orden_Material 
+                INSERT INTO Tbl_Encabezado_Orden_Material 
                     (Fk_Id_Orden_Recibida, Fk_Id_Estado_Orden_Material, Fecha_Solicitud)
                 VALUES (?, 2, NOW())";
 
@@ -259,7 +259,7 @@ namespace Capa_Modelo_Expl_Mat
                     int idOrdenMaterial = Convert.ToInt32(cmdId.ExecuteScalar());
 
                     string qDetalle = @"
-                INSERT INTO Detalle_Orden_Material 
+                INSERT INTO Tbl_Detalle_Orden_Material 
                     (Fk_Id_Orden_Material, Fk_Id_Materiales, Cantidad_Solicitada)
                 VALUES (?, ?, ?)";
 
@@ -291,7 +291,7 @@ namespace Capa_Modelo_Expl_Mat
             using (OdbcConnection conn = conexion.AbrirConexion())
             {
                 string query = @"
-            UPDATE Encabezado_Orden_Material 
+            UPDATE Tbl_Encabezado_Orden_Material 
             SET Fk_Id_Estado_Orden_Material = 1
             WHERE Pk_Id_Orden_Material = ?";
 
