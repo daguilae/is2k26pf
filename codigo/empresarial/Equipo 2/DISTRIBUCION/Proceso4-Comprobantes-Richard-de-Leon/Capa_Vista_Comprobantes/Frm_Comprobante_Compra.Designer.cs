@@ -316,6 +316,7 @@ namespace Capa_Vista_Comprobantes
             this.Btn_Ayuda.Text = "AYUDA";
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
             // Btn_Cancelar
             // 

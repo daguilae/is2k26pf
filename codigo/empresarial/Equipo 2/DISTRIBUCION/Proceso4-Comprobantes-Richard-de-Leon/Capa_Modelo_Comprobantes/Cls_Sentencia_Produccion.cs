@@ -294,5 +294,34 @@ namespace Capa_Modelo
 
             return Dt_Datos;
         }
+
+        public bool Fun_Actualizar_Estado_Entrega_Produccion(int I_Id_Entrega_Produccion, string S_Estado)
+        {
+            OdbcConnection Cn = conexion.fun_AbrirConexion();
+
+            try
+            {
+                string S_Query = @"
+            UPDATE tbl_entrega_produccion
+            SET Cmp_Estado_Entrega = ?
+            WHERE Pk_Id_Entrega_Produccion = ?;
+        ";
+
+                OdbcCommand Cmd = new OdbcCommand(S_Query, Cn);
+                Cmd.Parameters.AddWithValue("?", S_Estado);
+                Cmd.Parameters.AddWithValue("?", I_Id_Entrega_Produccion);
+
+                int filas = Cmd.ExecuteNonQuery();
+                return filas > 0;
+            }
+            catch (Exception Ex)
+            {
+                throw new Exception("Error al actualizar estado de entrega producción: " + Ex.Message);
+            }
+            finally
+            {
+                conexion.fun_CerrarConexion();
+            }
+        }
     }
 }

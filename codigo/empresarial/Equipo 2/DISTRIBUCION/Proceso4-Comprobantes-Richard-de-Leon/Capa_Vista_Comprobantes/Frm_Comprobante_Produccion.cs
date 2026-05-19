@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador;
 using System.Drawing;
+using System.IO;
 
 namespace Capa_Vista_Comprobantes
 {
@@ -315,6 +316,13 @@ namespace Capa_Vista_Comprobantes
                     return;
                 }
 
+                string S_Estado_Comprobante = Cbo_Estado.Text;
+
+                controlador.Fun_Actualizar_Estado_Entrega_Produccion(
+                    I_Id_Entrega_Seleccionada,
+                    S_Estado_Comprobante
+                );
+
                 Dgv_Detalle_Entrega.DataSource =
                     controlador.Fun_Obtener_Detalle_Entrega_Produccion(I_Id_Entrega_Seleccionada);
 
@@ -362,12 +370,12 @@ namespace Capa_Vista_Comprobantes
 
         private void Dgv_Detalle_Entrega_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Dgv_Detalle_Entrega.Columns["Pk_Id_Entrega_Produccion"].HeaderText = "No. Entrega";
+/*            Dgv_Detalle_Entrega.Columns["Pk_Id_Entrega_Produccion"].HeaderText = "No. Entrega";
             Dgv_Detalle_Entrega.Columns["Fk_Id_OrdenP"].HeaderText = "Orden Producción";
             Dgv_Detalle_Entrega.Columns["Fk_Id_Transporte"].HeaderText = "Transporte";
             Dgv_Detalle_Entrega.Columns["Cmp_Direccion"].HeaderText = "Dirección";
             Dgv_Detalle_Entrega.Columns["Cmp_Fecha"].HeaderText = "Fecha Entrega";
-            Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado";
+            Dgv_Detalle_Entrega.Columns["Cmp_Estado_Entrega"].HeaderText = "Estado";*/
 
         }
 
@@ -401,6 +409,51 @@ namespace Capa_Vista_Comprobantes
         {
             Frm_Reporte_Comprobante_Produccion reporte = new Frm_Reporte_Comprobante_Produccion();
             reporte.Show();
+        }
+
+        private void Configurar_Dgv_Detalle_Entrega()
+        {
+            if (Dgv_Detalle_Entrega.Columns["No_Entrega"] != null)
+                Dgv_Detalle_Entrega.Columns["No_Entrega"].HeaderText = "No. Entrega";
+
+            if (Dgv_Detalle_Entrega.Columns["Orden_Produccion"] != null)
+                Dgv_Detalle_Entrega.Columns["Orden_Produccion"].HeaderText = "Orden Producción";
+
+            if (Dgv_Detalle_Entrega.Columns["Transporte"] != null)
+                Dgv_Detalle_Entrega.Columns["Transporte"].HeaderText = "Transporte";
+
+            if (Dgv_Detalle_Entrega.Columns["Direccion"] != null)
+                Dgv_Detalle_Entrega.Columns["Direccion"].HeaderText = "Dirección";
+
+            if (Dgv_Detalle_Entrega.Columns["Fecha"] != null)
+                Dgv_Detalle_Entrega.Columns["Fecha"].HeaderText = "Fecha Entrega";
+
+            if (Dgv_Detalle_Entrega.Columns["Estado"] != null)
+                Dgv_Detalle_Entrega.Columns["Estado"].HeaderText = "Estado";
+        }
+
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rutaAyuda = Path.Combine(Application.StartupPath, "Ayuda_Com_Compra", "Ayuda_Com_Compra.chm");
+
+                if (File.Exists(rutaAyuda))
+                {
+                    Help.ShowHelp(this, rutaAyuda);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.",
+                                    "Ayuda",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda: " + ex.Message);
+            }
         }
     }
 }
