@@ -35,6 +35,9 @@
     <Reference Include="Capa_Controlador_Costo_Fase">
       <HintPath>..\Capa_Controlador_Costo_Fase\bin\Debug\Capa_Controlador_Costo_Fase.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Modelo_Costo_Fase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Capa_Modelo_Costo_Fase\bin\Debug\Capa_Modelo_Costo_Fase.dll</HintPath>

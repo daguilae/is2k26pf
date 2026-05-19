@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Costo_Fase;
 using Capa_Modelo_Costo_Fase;
 using System.IO;
+using Capa_Controlador_Seguridad;
 using CrystalDecisions;
 
 
@@ -18,6 +19,7 @@ namespace Capa_Vista_Costo_Fase
     public partial class Frm_Costo_Fases : Form
     {
         Cls_Controlador controlador = new Cls_Controlador();
+        Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
         int idSeleccionado = 0;
 
         int idFaseOriginal;
@@ -167,6 +169,7 @@ namespace Capa_Vista_Costo_Fase
                 controlador.InsertarCostoFase(idFase, idTipoCosto, valorDinero);
 
                 MessageBox.Show("Costo asignado exitosamente.", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 740, "Costo Fase guardado", true);
 
                 CargarGrid();
                 LimpiarCampos();
@@ -218,6 +221,7 @@ namespace Capa_Vista_Costo_Fase
                 controlador.ModificarCostoFase(idSeleccionado, idFase, idTipoCosto, nuevoCosto);
 
                 MessageBox.Show("Registro actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 740, " Costo Fase Actualizado", true);
 
                 CargarGrid();
                 LimpiarCampos();
