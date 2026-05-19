@@ -32,7 +32,7 @@ using Capa_Vista_DispoInve;
 using Capa_Vista_Prod;
 using Capa_Vista_Orden_Material;
 using Capa_Vista_Factura;
-
+using Capa_Vista_CodigoB;
 namespace Capa_Vista_MRP
 {
     public partial class Frm_MDI_MRP : Form
@@ -352,6 +352,15 @@ namespace Capa_Vista_MRP
             contrasena.StartPosition = FormStartPosition.CenterScreen;
             contrasena.Show();
             //
+        }
+
+        private void codigoDeBarrasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_CodigoB.Frm_CodigoB m = new Capa_Vista_CodigoB.Frm_CodigoB();
+
+            m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
+            m.Show();
         }
     }
     
