@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Odbc;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -609,6 +610,130 @@ namespace Capa_Vista_Prod
         private void btnFactura_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayudas_Produccion",
+                "AyudaProduccion.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "index.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayudas_Produccion",
+                "AyudaProduccion.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "index.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayudas_Produccion",
+                "AyudaProduccion.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "index.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayudas_Produccion",
+                "AyudaProduccion.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "index.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
         }
 
         // ######################## DISEÑO DE FORMULARIOS ##############################################
