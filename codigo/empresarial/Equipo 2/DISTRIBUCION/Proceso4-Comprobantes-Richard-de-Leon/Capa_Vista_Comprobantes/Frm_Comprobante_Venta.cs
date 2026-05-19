@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using Capa_Controlador;
 using System.Drawing;
+using System.IO;
 
 namespace Capa_Vista_Comprobantes
 {
@@ -317,6 +318,12 @@ namespace Capa_Vista_Comprobantes
                 MessageBox.Show("Seleccione un comprobante para ver su detalle.");
                 return;
             }
+            string S_Estado_Comprobante = Cbo_Estado.Text;
+
+            controlador.Fun_Actualizar_Estado_Entrega_Venta(
+                I_Id_Entrega_Seleccionada,
+                S_Estado_Comprobante
+            );
 
             Dgv_Detalle_Entrega.DataSource =
                 controlador.Fun_Obtener_Detalle_Entrega_Venta(I_Id_Entrega_Seleccionada);
@@ -388,6 +395,30 @@ namespace Capa_Vista_Comprobantes
         {
             Frm_Reporte_Comprobante_Venta reporte = new Frm_Reporte_Comprobante_Venta();
             reporte.Show();
+        }
+
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rutaAyuda = Path.Combine(Application.StartupPath, "Ayuda_Com_Compra", "Ayuda_Com_Compra.chm");
+
+                if (File.Exists(rutaAyuda))
+                {
+                    Help.ShowHelp(this, rutaAyuda);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.",
+                                    "Ayuda",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda: " + ex.Message);
+            }
         }
     }
 }

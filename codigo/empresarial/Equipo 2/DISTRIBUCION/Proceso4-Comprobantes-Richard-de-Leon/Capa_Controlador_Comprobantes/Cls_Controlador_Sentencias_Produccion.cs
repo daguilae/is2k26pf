@@ -85,5 +85,9 @@ namespace Capa_Controlador
         {
             return modelo.EliminarComprobanteProduccion(I_Id_Comprobante_Produccion);
         }
+        public bool Fun_Actualizar_Estado_Entrega_Produccion(int I_Id_Entrega_Produccion, string S_Estado)
+        {
+            return modelo.Fun_Actualizar_Estado_Entrega_Produccion(I_Id_Entrega_Produccion, S_Estado);
+        }
     }
 }

@@ -85,5 +85,10 @@ namespace Capa_Controlador
         {
             return modelo.EliminarComprobanteVenta(I_Id_Comprobante_Venta);
         }
+
+        public bool Fun_Actualizar_Estado_Entrega_Venta(int I_Id_Entrega_Venta, string S_Estado)
+        {
+            return modelo.Fun_Actualizar_Estado_Entrega_Venta(I_Id_Entrega_Venta, S_Estado);
+        }
     }
 }
