@@ -43,6 +43,7 @@ namespace Capa_Vista_MRP
         public Frm_MDI_MRP()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
 
 
             this.IsMdiContainer = true; // <- activa MDI container
@@ -76,6 +77,7 @@ namespace Capa_Vista_MRP
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Cambiar_Contrasena ventana = new Frm_Cambiar_Contrasena(Capa_Controlador_Seguridad.Cls_Usuario_Conectado.iIdUsuario);
+            ventana.StartPosition = FormStartPosition.CenterScreen;
             ventana.Show();
         }
 
@@ -83,6 +85,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Mantenimiento_Tipo_Material m = new Frm_Mantenimiento_Tipo_Material();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -90,6 +93,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Categoria_Material m = new Frm_Categoria_Material();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -97,6 +101,7 @@ namespace Capa_Vista_MRP
         {
             Frm_UDM m = new Frm_UDM();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -104,6 +109,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Mantenimiento_Almacen m = new Frm_Mantenimiento_Almacen();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -111,6 +117,7 @@ namespace Capa_Vista_MRP
         {
             Capa_Vista_Mant_Kevin.Frm_Materiales m = new Capa_Vista_Mant_Kevin.Frm_Materiales();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -118,6 +125,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Tipo_Merma m = new Frm_Tipo_Merma();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -125,6 +133,7 @@ namespace Capa_Vista_MRP
         {
             Frm_produccion m = new Frm_produccion();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -132,6 +141,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Tipo_de_movimineto_inventario m = new Frm_Tipo_de_movimineto_inventario();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -139,6 +149,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Bom m = new Frm_Bom();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -146,6 +157,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Estado_Plan_Produccion m = new Frm_Estado_Plan_Produccion();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -153,6 +165,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Mantenimiento_Estado_OP m = new Frm_Mantenimiento_Estado_OP();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -160,6 +173,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Estado_Orden_Recibida m = new Frm_Estado_Orden_Recibida();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -167,6 +181,7 @@ namespace Capa_Vista_MRP
         {
             Frm_estado_recepcion_material m = new Frm_estado_recepcion_material();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -174,6 +189,7 @@ namespace Capa_Vista_MRP
         {
             Frm_TipoInve m = new Frm_TipoInve();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -187,6 +203,7 @@ namespace Capa_Vista_MRP
         {
             Capa_Vista_Materiales.Frm_Materiales m = new Capa_Vista_Materiales.Frm_Materiales();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -194,6 +211,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Inventario_EntregaPT m = new Frm_Inventario_EntregaPT();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -201,6 +219,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Movimiento_Inventario m = new Frm_Movimiento_Inventario();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -208,6 +227,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Encabezado_Orden m = new Frm_Encabezado_Orden();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -215,6 +235,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Encabezado_BOM m = new Frm_Encabezado_BOM();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -222,6 +243,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Expl_Impl m = new Frm_Expl_Impl();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
 
         }
@@ -230,6 +252,7 @@ namespace Capa_Vista_MRP
         {
             Frm_encabezado m = new Frm_encabezado();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -237,6 +260,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Encabezado_Plan m = new Frm_Encabezado_Plan();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -244,13 +268,15 @@ namespace Capa_Vista_MRP
         {
             Frm_Cronograma_Fases m = new Frm_Cronograma_Fases();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
         private void fasesDeProducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frm_Fases_Produccion m = new Frm_Fases_Produccion();
-            m.MdiParent = this; 
+            m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -258,6 +284,7 @@ namespace Capa_Vista_MRP
         {
             Capa_vista_Orden.Frm_Orden_Produccion m = new Capa_vista_Orden.Frm_Orden_Produccion();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -265,6 +292,7 @@ namespace Capa_Vista_MRP
         {
             Frm_DispoInve m = new Frm_DispoInve();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -272,6 +300,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Costo_Fases m = new Frm_Costo_Fases();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -279,6 +308,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Tipo_Costo m = new Frm_Tipo_Costo();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -286,6 +316,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Produccion m = new Frm_Produccion();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -293,6 +324,7 @@ namespace Capa_Vista_MRP
         {
             Frm_Encabezado_Orden_Material m = new Frm_Encabezado_Orden_Material();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
         }
 
@@ -300,7 +332,26 @@ namespace Capa_Vista_MRP
         {
             Frms_Factura  m = new Frms_Factura();
             m.MdiParent = this;
+            m.StartPosition = FormStartPosition.CenterScreen;
             m.Show();
+        }
+
+        private void bitacorasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Seguridad.Frm_Bitacora bitacora = new Capa_Vista_Seguridad.Frm_Bitacora();
+            bitacora.MdiParent = this;
+            bitacora.StartPosition = FormStartPosition.CenterScreen;
+            bitacora.Show();
+            //
+        }
+
+        private void cambiarContraseñaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Capa_Vista_Seguridad.Frm_cambiar_contrasena contrasena = new Capa_Vista_Seguridad.Frm_cambiar_contrasena(Capa_Controlador_Seguridad.Cls_Usuario_Conectado.iIdUsuario);
+            contrasena.MdiParent = this;
+            contrasena.StartPosition = FormStartPosition.CenterScreen;
+            contrasena.Show();
+            //
         }
     }
     

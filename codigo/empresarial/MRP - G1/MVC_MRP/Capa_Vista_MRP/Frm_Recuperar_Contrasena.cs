@@ -19,6 +19,7 @@ namespace Capa_Vista_MRP
         public Frm_Recuperar_Contrasena()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             // Configuración inicial
             Txt_Mostrar_Token.ReadOnly = true;

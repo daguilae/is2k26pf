@@ -49,77 +49,68 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(460, 38);
+            this.label1.Size = new System.Drawing.Size(367, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Listado de Ordenes Recibidas";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(17, 93);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtID.Location = new System.Drawing.Point(13, 76);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(172, 22);
+            this.txtID.Size = new System.Drawing.Size(130, 20);
             this.txtID.TabIndex = 1;
-            this.txtID.Text = "Buscar por ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(201, 88);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(151, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 29);
+            this.label2.Size = new System.Drawing.Size(81, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Estado:";
             // 
             // cmbEstado
             // 
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(306, 93);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.Location = new System.Drawing.Point(230, 76);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(177, 24);
+            this.cmbEstado.Size = new System.Drawing.Size(134, 21);
             this.cmbEstado.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(514, 90);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(386, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 29);
+            this.label3.Size = new System.Drawing.Size(67, 23);
             this.label3.TabIndex = 4;
             this.label3.Text = "Fecha";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(720, 94);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker1.Location = new System.Drawing.Point(540, 76);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 5;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1102, 94);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker2.Location = new System.Drawing.Point(826, 76);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(612, 91);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(459, 74);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 29);
+            this.label4.Size = new System.Drawing.Size(81, 23);
             this.label4.TabIndex = 7;
             this.label4.Text = "Desde: ";
             // 
@@ -127,38 +118,36 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1008, 90);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(756, 73);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 29);
+            this.label5.Size = new System.Drawing.Size(70, 23);
             this.label5.TabIndex = 8;
             this.label5.Text = "Hasta:";
             // 
             // dgvOrdenes
             // 
             this.dgvOrdenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrdenes.Location = new System.Drawing.Point(17, 153);
-            this.dgvOrdenes.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvOrdenes.Location = new System.Drawing.Point(13, 124);
             this.dgvOrdenes.Name = "dgvOrdenes";
             this.dgvOrdenes.RowHeadersWidth = 51;
-            this.dgvOrdenes.Size = new System.Drawing.Size(1563, 481);
+            this.dgvOrdenes.Size = new System.Drawing.Size(1172, 391);
             this.dgvOrdenes.TabIndex = 9;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 50);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(17, 41);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1542, 10);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1156, 8);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // Btn_CrearOrdenN
             // 
             this.Btn_CrearOrdenN.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_CrearOrdenN.Location = new System.Drawing.Point(1400, 91);
+            this.Btn_CrearOrdenN.Location = new System.Drawing.Point(1050, 74);
+            this.Btn_CrearOrdenN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Btn_CrearOrdenN.Name = "Btn_CrearOrdenN";
-            this.Btn_CrearOrdenN.Size = new System.Drawing.Size(165, 29);
+            this.Btn_CrearOrdenN.Size = new System.Drawing.Size(124, 24);
             this.Btn_CrearOrdenN.TabIndex = 11;
             this.Btn_CrearOrdenN.Text = "Crear Orden Nueva";
             this.Btn_CrearOrdenN.UseVisualStyleBackColor = true;
@@ -167,9 +156,10 @@
             // btn_eliminar_orden
             // 
             this.btn_eliminar_orden.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btn_eliminar_orden.Location = new System.Drawing.Point(1206, 652);
+            this.btn_eliminar_orden.Location = new System.Drawing.Point(904, 530);
+            this.btn_eliminar_orden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_eliminar_orden.Name = "btn_eliminar_orden";
-            this.btn_eliminar_orden.Size = new System.Drawing.Size(203, 30);
+            this.btn_eliminar_orden.Size = new System.Drawing.Size(152, 24);
             this.btn_eliminar_orden.TabIndex = 12;
             this.btn_eliminar_orden.Text = "Eliminar Orden";
             this.btn_eliminar_orden.UseVisualStyleBackColor = true;
@@ -178,9 +168,10 @@
             // btn_refrescar_grid
             // 
             this.btn_refrescar_grid.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btn_refrescar_grid.Location = new System.Drawing.Point(1415, 652);
+            this.btn_refrescar_grid.Location = new System.Drawing.Point(1061, 530);
+            this.btn_refrescar_grid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_refrescar_grid.Name = "btn_refrescar_grid";
-            this.btn_refrescar_grid.Size = new System.Drawing.Size(165, 30);
+            this.btn_refrescar_grid.Size = new System.Drawing.Size(124, 24);
             this.btn_refrescar_grid.TabIndex = 13;
             this.btn_refrescar_grid.Text = "Refrescar";
             this.btn_refrescar_grid.UseVisualStyleBackColor = true;
@@ -188,9 +179,9 @@
             // 
             // Frm_Encabezado_Orden
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1591, 798);
+            this.ClientSize = new System.Drawing.Size(1193, 648);
             this.Controls.Add(this.btn_refrescar_grid);
             this.Controls.Add(this.btn_eliminar_orden);
             this.Controls.Add(this.Btn_CrearOrdenN);
@@ -205,7 +196,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Encabezado_Orden";
             this.Text = "Ordenes Recibidas - 714";
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).EndInit();

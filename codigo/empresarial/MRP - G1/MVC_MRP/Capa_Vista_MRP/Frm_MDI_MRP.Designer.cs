@@ -65,12 +65,14 @@ namespace Capa_Vista_MRP
             this.materialesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitacorasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +86,7 @@ namespace Capa_Vista_MRP
             this.catálogosSecundariosToolStripMenuItem,
             this.procesosMRPToolStripMenuItem,
             this.herramientasToolStripMenuItem,
+            this.bitacorasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -180,63 +183,63 @@ namespace Capa_Vista_MRP
             // estadoDeProducciónToolStripMenuItem
             // 
             this.estadoDeProducciónToolStripMenuItem.Name = "estadoDeProducciónToolStripMenuItem";
-            this.estadoDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoDeProducciónToolStripMenuItem.Text = "Estado de Producción";
             this.estadoDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoDeProducciónToolStripMenuItem_Click);
             // 
             // tipoDeMovimientoDeInventarioToolStripMenuItem
             // 
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Name = "tipoDeMovimientoDeInventarioToolStripMenuItem";
-            this.tipoDeMovimientoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.tipoDeMovimientoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Text = "Tipo de Movimiento de Inventario";
             this.tipoDeMovimientoDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeMovimientoDeInventarioToolStripMenuItem_Click);
             // 
             // estadoBOMToolStripMenuItem
             // 
             this.estadoBOMToolStripMenuItem.Name = "estadoBOMToolStripMenuItem";
-            this.estadoBOMToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoBOMToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoBOMToolStripMenuItem.Text = "Estado BOM";
             this.estadoBOMToolStripMenuItem.Click += new System.EventHandler(this.estadoBOMToolStripMenuItem_Click);
             // 
             // estadoPlanDeProducciónToolStripMenuItem
             // 
             this.estadoPlanDeProducciónToolStripMenuItem.Name = "estadoPlanDeProducciónToolStripMenuItem";
-            this.estadoPlanDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoPlanDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoPlanDeProducciónToolStripMenuItem.Text = "Estado Plan de Producción";
             this.estadoPlanDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoPlanDeProducciónToolStripMenuItem_Click);
             // 
             // estadoOrdenDeProducciónToolStripMenuItem
             // 
             this.estadoOrdenDeProducciónToolStripMenuItem.Name = "estadoOrdenDeProducciónToolStripMenuItem";
-            this.estadoOrdenDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoOrdenDeProducciónToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoOrdenDeProducciónToolStripMenuItem.Text = "Estado Orden de Producción";
             this.estadoOrdenDeProducciónToolStripMenuItem.Click += new System.EventHandler(this.estadoOrdenDeProducciónToolStripMenuItem_Click);
             // 
             // estadoOrdenRecibidaToolStripMenuItem
             // 
             this.estadoOrdenRecibidaToolStripMenuItem.Name = "estadoOrdenRecibidaToolStripMenuItem";
-            this.estadoOrdenRecibidaToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoOrdenRecibidaToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoOrdenRecibidaToolStripMenuItem.Text = "Estado Orden Recibida";
             this.estadoOrdenRecibidaToolStripMenuItem.Click += new System.EventHandler(this.estadoOrdenRecibidaToolStripMenuItem_Click);
             // 
             // estadoRecepciónMaterialToolStripMenuItem
             // 
             this.estadoRecepciónMaterialToolStripMenuItem.Name = "estadoRecepciónMaterialToolStripMenuItem";
-            this.estadoRecepciónMaterialToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.estadoRecepciónMaterialToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.estadoRecepciónMaterialToolStripMenuItem.Text = "Estado Recepción Material";
             this.estadoRecepciónMaterialToolStripMenuItem.Click += new System.EventHandler(this.estadoRecepciónMaterialToolStripMenuItem_Click);
             // 
             // tipoDeInventarioToolStripMenuItem
             // 
             this.tipoDeInventarioToolStripMenuItem.Name = "tipoDeInventarioToolStripMenuItem";
-            this.tipoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.tipoDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.tipoDeInventarioToolStripMenuItem.Text = "Tipo de Inventario";
             this.tipoDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.tipoDeInventarioToolStripMenuItem_Click);
             // 
             // tipoDeCostoToolStripMenuItem
             // 
             this.tipoDeCostoToolStripMenuItem.Name = "tipoDeCostoToolStripMenuItem";
-            this.tipoDeCostoToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.tipoDeCostoToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.tipoDeCostoToolStripMenuItem.Text = "Tipo de Costo";
             this.tipoDeCostoToolStripMenuItem.Click += new System.EventHandler(this.tipoDeCostoToolStripMenuItem_Click);
             // 
@@ -360,8 +363,17 @@ namespace Capa_Vista_MRP
             this.movimientoInventarioToolStripMenuItem.Text = "Movimiento Inventario";
             this.movimientoInventarioToolStripMenuItem.Click += new System.EventHandler(this.movimientoInventarioToolStripMenuItem_Click);
             // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            this.facturasToolStripMenuItem.Click += new System.EventHandler(this.facturasToolStripMenuItem_Click);
+            // 
             // herramientasToolStripMenuItem
             // 
+            this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cambiarContraseñaToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.herramientasToolStripMenuItem.Text = "Herramientas";
@@ -389,12 +401,19 @@ namespace Capa_Vista_MRP
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // facturasToolStripMenuItem
+            // cambiarContraseñaToolStripMenuItem
             // 
-            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
-            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
-            this.facturasToolStripMenuItem.Text = "Facturas";
-            this.facturasToolStripMenuItem.Click += new System.EventHandler(this.facturasToolStripMenuItem_Click);
+            this.cambiarContraseñaToolStripMenuItem.Name = "cambiarContraseñaToolStripMenuItem";
+            this.cambiarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarContraseñaToolStripMenuItem.Text = "Cambiar contraseña";
+            this.cambiarContraseñaToolStripMenuItem.Click += new System.EventHandler(this.cambiarContraseñaToolStripMenuItem_Click_1);
+            // 
+            // bitacorasToolStripMenuItem
+            // 
+            this.bitacorasToolStripMenuItem.Name = "bitacorasToolStripMenuItem";
+            this.bitacorasToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.bitacorasToolStripMenuItem.Text = "Bitacoras";
+            this.bitacorasToolStripMenuItem.Click += new System.EventHandler(this.bitacorasToolStripMenuItem_Click);
             // 
             // Frm_MDI_MRP
             // 
@@ -460,6 +479,8 @@ namespace Capa_Vista_MRP
         private System.Windows.Forms.ToolStripMenuItem costosDeProducciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenDeMaterialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitacorasToolStripMenuItem;
     }
 }
 
