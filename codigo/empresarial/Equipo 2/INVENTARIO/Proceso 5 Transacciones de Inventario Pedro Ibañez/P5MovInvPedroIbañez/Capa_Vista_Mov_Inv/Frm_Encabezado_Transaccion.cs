@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Capa_Controlador_Mov_Inv;
 using Capa_Modelo_Mov_Inv;
 using Capa_Modelo_Seguridad;
+using System.IO;
 
 namespace Capa_Vista_Mov_Inv
 {
@@ -25,7 +26,7 @@ namespace Capa_Vista_Mov_Inv
             Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
             EstadoInicialBotones(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
-                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
                 //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
@@ -48,7 +49,7 @@ namespace Capa_Vista_Mov_Inv
             EstadoInicialControles();
             EstadoInicialBotones(
                 permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
-                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
                 //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
@@ -139,7 +140,7 @@ namespace Capa_Vista_Mov_Inv
 
         private void EstadoInicialBotones(
                   bool ingresar,
-                  //bool modificar,
+                  bool modificar,
                   //bool guardar,
                   bool eliminar,
                   bool consultar,
@@ -148,7 +149,7 @@ namespace Capa_Vista_Mov_Inv
         {
             Btn_Agregar_Movimiento.Enabled = ingresar;
             Btn_Cancelar.Enabled = false;
-            Btn_Modificar.Enabled = false;
+            Btn_Apartar_Stock.Enabled = false;
             btn_buscar.Enabled = consultar;
             BTN_LIMPIAR_ENCABEZADO.Enabled = true;
             Btn_Reporte.Enabled = imprimir;
@@ -173,8 +174,8 @@ namespace Capa_Vista_Mov_Inv
         private void EstadoBotonesUso()
         {
             Btn_Agregar_Movimiento.Enabled = false;
+            Btn_Apartar_Stock.Enabled = true;
             Btn_Cancelar.Enabled = true;
-            Btn_Modificar.Enabled = false;
             btn_buscar.Enabled = false;
             BTN_LIMPIAR_ENCABEZADO.Enabled = true;
             Btn_Reporte.Enabled = false;
@@ -261,7 +262,7 @@ namespace Capa_Vista_Mov_Inv
             Cls_Privilegios privilegios = new Cls_Privilegios();
             Cls_Permiso_Aplicacion_Usuario permisos = privilegios.VerificarPermisos(728, 44);
             EstadoInicialBotones(permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
-                //permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
+                permisos.Cmp_Modificar_Permiso_Aplicacion_Usuario,
                 //permisos.Cmp_Ingresar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Eliminar_Permiso_Aplicacion_Usuario,
                 permisos.Cmp_Consultar_Permiso_Aplicacion_Usuario,
@@ -412,6 +413,99 @@ namespace Capa_Vista_Mov_Inv
         private void BTN_LIMPIAR_DETALE_Click(object sender, EventArgs e)
         {
             LimpiarControlesDetalle();
+        }
+
+        private void Btn_Apartar_Stock_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                verificar_controles();
+
+                int idTipoMovimiento = Convert.ToInt32(CBO_ID_Tipo_Movimiento.SelectedValue);
+                DateTime fechaMovimiento = DTP_FECHA_Movimiento.Value;
+                string descripcion = txt_descripcion.Text.Trim();
+
+                // Capturar detalle del DGV en una lista
+                List<(int idInventario, int idBodega, float cantidad, int idUnidad)> detalle = new List<(int, int, float, int)>();
+                foreach (DataGridViewRow fila in DGV_DETALLE_MOVIMIENTO.Rows)
+                {
+                    // Ignora la fila vacía del DGV (la que tiene *)
+                    if (fila.IsNewRow) continue;
+
+                    // También verifica que las celdas no sean null
+                    if (fila.Cells[0].Value == null || fila.Cells[2].Value == null || fila.Cells[4].Value == null || fila.Cells[6].Value == null) continue;
+
+                    int idInventario = Convert.ToInt32(fila.Cells[0].Value);   // Celda 0 = ID Producto
+                    int idUnidad = Convert.ToInt32(fila.Cells[2].Value);
+                    int idBodega = Convert.ToInt32(fila.Cells[4].Value);   // Celda 4 = ID Bodega
+                    float cantidad = Convert.ToSingle(fila.Cells[6].Value);     // Celda 6 = Cantidad
+                    detalle.Add((idInventario, idBodega, cantidad, idUnidad));
+                }
+
+                bool resultado = ctrl.fun_ApartarStock(idTipoMovimiento, fechaMovimiento, descripcion, detalle);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Stock apartado correctamente", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimpiarControlesEncabezado();
+                    LimpiarControlesDetalle();
+                    DGV_DETALLE_MOVIMIENTO.Rows.Clear();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Errores de validación o stock insuficiente desde cualquier capa
+                MessageBox.Show(ex.Message, "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                // Errores de BD o conexión desde DAO o Controlador
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Btn_Ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Inventario\Ayuda_Encabezado_Mov_Inv.chm";
+
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+                if (rutaEncontrada != null)
+
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"Ayuda_Transaccion_MOv_Inv1.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
     }

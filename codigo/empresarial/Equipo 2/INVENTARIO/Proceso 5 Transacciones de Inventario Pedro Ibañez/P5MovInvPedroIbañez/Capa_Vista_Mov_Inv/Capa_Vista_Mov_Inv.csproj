@@ -38,6 +38,9 @@
     <Reference Include="Capa_Controlador_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Controlador_NavegadorTrs">
+      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_NavegadorTrs.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Modelo_Mov_Inv">
       <HintPath>..\Capa_Modelo_Mov_Inv\bin\Debug\Capa_Modelo_Mov_Inv.dll</HintPath>
     </Reference>
@@ -47,6 +50,9 @@
     </Reference>
     <Reference Include="Capa_Vista_Navegador">
       <HintPath>..\..\..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_NavegadorTrs">
+      <HintPath>..\..\..\..\NavegadorTransaccionalMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_NavegadorTrs.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />

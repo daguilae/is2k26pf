@@ -11,6 +11,7 @@ using Capa_Controlador_Mov_Inv;
 using Capa_Modelo_Mov_Inv;
 using Capa_Modelo_Seguridad;
 using CV_730_DSH_BRD;
+using System.IO;
 namespace Capa_Vista_Mov_Inv
 {
     public partial class Frm_Movimientos_Inventario : Form
@@ -42,7 +43,7 @@ namespace Capa_Vista_Mov_Inv
                   bool imprimir)
         {
             Btn_Ingresar.Enabled = ingresar;
-            Btn_Editar.Enabled = false;
+            //Btn_Editar.Enabled = false;
             Btn_Imprimir.Enabled = imprimir;
             Btn_Filtrar.Enabled = consultar;
 
@@ -128,6 +129,47 @@ namespace Capa_Vista_Mov_Inv
         {
             DSH_BRD_FRM Consultas = new DSH_BRD_FRM();
             Consultas.ShowDialog();
+        }
+
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Inventario\Ayuda_Encabezado_Mov_Inv.chm";
+
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+                if (rutaEncontrada != null)
+
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"Ayuda_Encabezado_Mov_Inv1.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

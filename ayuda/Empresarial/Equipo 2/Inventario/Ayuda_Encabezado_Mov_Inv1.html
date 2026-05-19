@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Usuario — 728 Movimiento de Inventario</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue:    #1d4ed8;
+    --blue-lt: #eff6ff;
+    --blue-md: #bfdbfe;
+    --gray1:   #f8f9fa;
+    --gray2:   #e9ecef;
+    --gray3:   #adb5bd;
+    --gray4:   #495057;
+    --gray5:   #212529;
+    --amber:   #d97706;
+    --amber-lt:#fffbeb;
+    --green:   #15803d;
+    --green-lt:#f0fdf4;
+    --red:     #dc2626;
+    --red-lt:  #fef2f2;
+    --font-h:  'Lora', serif;
+    --font-b:  'Source Sans 3', sans-serif;
+  }
+
+  body {
+    background: #e5e7eb;
+    font-family: var(--font-b);
+    font-size: 14px;
+    color: var(--gray5);
+    padding: 32px 16px;
+    scroll-behavior: smooth;
+  }
+
+  /* ─────────────────────────────
+     DOCUMENTO CONTINUO
+  ───────────────────────────── */
+  .page {
+    background: #fff;
+    width: min(1200px, 95%);
+    margin: 0 auto 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    display: flex !important;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .page-header {
+    background: var(--blue);
+    color: white;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  .page-header .title {
+    font-family: var(--font-h);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .page-header .pnum {
+    font-size: 11px;
+    opacity: 0.75;
+  }
+
+  .page-footer {
+    border-top: 1px solid var(--gray2);
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: var(--gray3);
+    flex-shrink: 0;
+  }
+
+  /* ─────────────────────────────
+     NAV PILLS
+  ───────────────────────────── */
+  .nav-bar {
+    width: min(1200px, 95%);
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: sticky;
+    top: 12px;
+    z-index: 20;
+  }
+
+  .nav-pill {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-family: var(--font-b);
+    font-weight: 600;
+    cursor: pointer;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    color: var(--gray4);
+    border: 1px solid var(--gray2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.18s ease;
+    user-select: none;
+  }
+
+  .nav-pill:hover,
+  .nav-pill.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+    transform: translateY(-1px);
+  }
+
+  /* ─────────────────────────────
+     CONTENT
+  ───────────────────────────── */
+  .page-body {
+    flex: 1;
+    padding: 36px 40px;
+  }
+
+  .section-title {
+    font-family: var(--font-h);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray5);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    font-size: 13px;
+    font-family: var(--font-b);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .lead {
+    font-size: 13.5px;
+    color: var(--gray4);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .subsection {
+    font-weight: 600;
+    color: var(--gray5);
+    margin: 20px 0 10px;
+    font-size: 13.5px;
+  }
+
+  /* ─────────────────────────────
+     TABLES
+  ───────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+
+  thead tr {
+    background: var(--gray5);
+    color: white;
+  }
+
+  th {
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--gray2);
+    color: var(--gray4);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background: var(--gray1);
+  }
+
+  /* ─────────────────────────────
+     CALLOUTS
+  ───────────────────────────── */
+  .callout {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 14px 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .callout.info {
+    background: var(--blue-lt);
+    border-left: 3px solid var(--blue);
+  }
+
+  .callout.warn {
+    background: var(--amber-lt);
+    border-left: 3px solid var(--amber);
+  }
+
+  .callout.success {
+    background: var(--green-lt);
+    border-left: 3px solid var(--green);
+  }
+
+  .callout.danger {
+    background: var(--red-lt);
+    border-left: 3px solid var(--red);
+  }
+
+  .callout .ci {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--gray5);
+  }
+
+  .callout p {
+    color: var(--gray4);
+  }
+
+  /* ─────────────────────────────
+     FAQ
+  ───────────────────────────── */
+  .faq {
+    border: 1px solid var(--gray2);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 12px 16px;
+    background: var(--gray1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .faq-q:hover {
+    background: var(--blue-lt);
+  }
+
+  .faq-a {
+    display: none;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    color: var(--gray4);
+    line-height: 1.65;
+    border-top: 1px solid var(--gray2);
+  }
+
+  .faq.open .faq-a {
+    display: block;
+  }
+
+  .faq-arr {
+    color: var(--gray3);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .faq.open .faq-arr {
+    transform: rotate(90deg);
+  }
+
+  /* ─────────────────────────────
+     PRINT
+  ───────────────────────────── */
+  @media print {
+
+    body {
+      background: white;
+      padding: 0;
+    }
+
+    .nav-bar {
+      display: none;
+    }
+
+    .page {
+      width: 100%;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+      page-break-after: auto;
+    }
+
+    .page-header {
+      position: relative;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <div class="nav-pill active" onclick="goTo(0)">📄 Portada</div>
+  <div class="nav-pill" onclick="goTo(1)">🖥️ Interfaz</div>
+  <div class="nav-pill" onclick="goTo(2)">🎛️ Botones</div>
+  <div class="nav-pill" onclick="goTo(3)">📊 Columnas</div>
+  <div class="nav-pill" onclick="goTo(4)">⚙️ Operaciones</div>
+  <div class="nav-pill" onclick="goTo(5)">🔐 Permisos</div>
+  <div class="nav-pill" onclick="goTo(6)">❓ FAQ</div>
+</div>
+
+<!-- PÁGINA 1 — PORTADA -->
+<div class="page active" id="p0">
+  <div class="page-header">
+    <span class="title">Manual de Usuario — Sistema de Inventario</span>
+    <span class="pnum">Página 1 de 7</span>
+  </div>
+  <div class="cover-body">
+    <div class="cover-badge">📦 Módulo de Inventario</div>
+    <div class="cover-title">728 — Movimiento<br>de Inventario</div>
+    <div class="cover-sub">Manual de Usuario</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cmi"><div class="cml">Identificador</div><div class="cmv">728</div></div>
+      <div class="cmi"><div class="cml">Módulo padre</div><div class="cmv">44</div></div>
+      <div class="cmi"><div class="cml">Versión</div><div class="cmv">1.0</div></div>
+    </div>
+    <div class="toc">
+      <div class="toc-title">Contenido</div>
+      <div class="toc-item" onclick="goTo(1)"><span class="tn">1. Vista de la Interfaz</span><span class="tp">Pág. 2</span></div>
+      <div class="toc-item" onclick="goTo(2)"><span class="tn">2. Botones y Controles</span><span class="tp">Pág. 3</span></div>
+      <div class="toc-item" onclick="goTo(3)"><span class="tn">3. Columnas del Listado</span><span class="tp">Pág. 4</span></div>
+      <div class="toc-item" onclick="goTo(4)"><span class="tn">4. Operaciones Comunes</span><span class="tp">Pág. 5</span></div>
+      <div class="toc-item" onclick="goTo(5)"><span class="tn">5. Permisos y Acceso</span><span class="tp">Pág. 6</span></div>
+      <div class="toc-item" onclick="goTo(6)"><span class="tn">6. Preguntas Frecuentes</span><span class="tp">Pág. 7</span></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Manual de Usuario v1.0</span></div>
+</div>
+
+<!-- PÁGINA 2 — INTERFAZ -->
+<div class="page" id="p1">
+  <div class="page-header"><span class="title">Vista de la Interfaz</span><span class="pnum">Página 2 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">1</span> Vista de la Interfaz</div>
+    <p class="lead">El formulario <strong>Frm_Movimientos_Inventario</strong> es la pantalla principal del módulo. Al abrirse, carga automáticamente todos los movimientos desde la base de datos y los muestra en una tabla.</p>
+
+    <div class="winform">
+      <div class="wf-tb"><span>Encabezado Movimientos Inventario</span><div class="wf-ctrl"><span>_</span><span>□</span><span>✕</span></div></div>
+      <div class="wf-band">728 - MOVIMIENTO DE INVENTARIO</div>
+      <div class="wf-bar">
+        <div class="wf-btn"><span class="ico">➕</span>Ingresar</div>
+        <div class="wf-btn"><span class="ico">🔄</span>Refrescar</div>
+        <div class="wf-btn"><span class="ico">🖨️</span>Imprimir</div>
+        <div class="wf-btn"><span class="ico">📊</span>DashBoard</div>
+        <div class="wf-btn"><span class="ico">⏮</span>Inicio</div>
+        <div class="wf-btn"><span class="ico">◀</span>Anterior</div>
+        <div class="wf-btn"><span class="ico">▶</span>Siguiente</div>
+        <div class="wf-btn"><span class="ico">⏭</span>Fin</div>
+        <div class="wf-btn"><span class="ico">❓</span>Ayuda</div>
+        <div class="wf-btn"><span class="ico">🚪</span>Salir</div>
+      </div>
+      <div class="wf-gh"><div></div><div>ID Movimiento ▲</div><div>ID Tipo</div><div>Tipo Movimiento</div><div>Fecha</div><div>Descripción</div></div>
+      <div class="wf-gr sel"><div>▶</div><div>1</div><div>1</div><div>BONIFICACION</div><div>1/10/2025 8:00 AM</div><div>Compra inicial de inventario</div></div>
+      <div class="wf-gr"><div></div><div>2</div><div>2</div><div>Compra</div><div>1/11/2025 10:30 AM</div><div>Venta a cliente mayorista</div></div>
+      <div class="wf-gr"><div></div><div>3</div><div>1</div><div>BONIFICACION</div><div>1/12/2025 9:15 AM</div><div>Reabastecimiento bodega norte</div></div>
+      <div class="wf-gr"><div></div><div>4</div><div>3</div><div>Venta</div><div>1/13/2025 2:00 PM</div><div>Devolución de producto dañado</div></div>
+      <div class="wf-gr"><div></div><div>5</div><div>5</div><div>Ajuste entrada</div><div>1/14/2025 4:45 PM</div><div>Ajuste por merma</div></div>
+      <div class="wf-gr"><div></div><div>6</div><div>4</div><div>Devolución</div><div>4/21/2026 9:07 AM</div><div>Inserción</div></div>
+      <div class="wf-gr"><div></div><div>7</div><div>3</div><div>Venta</div><div>4/21/2026 9:35 AM</div><div>Descripcion</div></div>
+    </div>
+
+    <div class="callout info"><span class="ci">ℹ️</span><div><strong>Carga automática</strong><p>Al iniciar el formulario se ejecuta <code>fun_CargarMovimientos()</code> y la tabla se puebla automáticamente.</p></div></div>
+    <div class="callout success"><span class="ci">✅</span><div><strong>Doble clic para ver detalle</strong><p>Haga doble clic en cualquier fila para abrir <code>Frm_Encabezado_Transaccion</code> con los datos precargados. Al cerrarlo, el listado se actualiza solo.</p></div></div>
+    <div class="callout warn"><span class="ci">⚠️</span><div><strong>La tabla es de solo lectura</strong><p>No es posible editar celdas directamente. Toda modificación se realiza desde el formulario de detalle.</p></div></div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Página 2 de 7</span></div>
+</div>
+
+<!-- PÁGINA 3 — BOTONES -->
+<div class="page" id="p2">
+  <div class="page-header"><span class="title">Botones y Controles</span><span class="pnum">Página 3 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">2</span> Botones y Controles</div>
+    <p class="lead">La barra de herramientas contiene los controles de acción. Algunos se habilitan o deshabilitan automáticamente según los permisos asignados al usuario activo.</p>
+    <div class="btn-grid">
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico bl">➕</div><div><div class="btn-name">Ingresar</div><div class="btn-perm">Requiere: permiso INGRESAR</div></div></div>
+        <p>Abre <code>Frm_Encabezado_Transaccion</code> en modo creación para registrar un nuevo movimiento desde cero.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico cy">🔄</div><div><div class="btn-name">Refrescar</div><div class="btn-perm">Siempre disponible</div></div></div>
+        <p>Recarga el listado ejecutando <code>fun_CargarMovimientos()</code> nuevamente. Útil si otro usuario realizó cambios.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico am">🖨️</div><div><div class="btn-name">Imprimir</div><div class="btn-perm">Requiere: permiso IMPRIMIR</div></div></div>
+        <p>Abre <code>Frm_ReporteMovimientoInventario</code> para generar un informe impreso del listado.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico pu">📊</div><div><div class="btn-name">DashBoard / Filtrar</div><div class="btn-perm">Requiere: permiso CONSULTAR</div></div></div>
+        <p>Abre el panel de consultas avanzadas <code>DSH_BRD_FRM</code> para filtrar y analizar movimientos.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico gn">⏮◀▶⏭</div><div><div class="btn-name">Navegación</div><div class="btn-perm">Siempre disponible</div></div></div>
+        <p>Botones <em>Inicio, Anterior, Siguiente, Fin</em>: permiten desplazarse entre los registros del listado.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico gr">❓</div><div><div class="btn-name">Ayuda</div><div class="btn-perm">Siempre disponible</div></div></div>
+        <p>Muestra la ayuda contextual del formulario. Funcionalidad configurable según la implementación del sistema.</p>
+      </div>
+      <div class="btn-card">
+        <div class="btn-card-head"><div class="btn-ico rd">🚪</div><div><div class="btn-name">Salir</div><div class="btn-perm">Siempre disponible</div></div></div>
+        <p>Cierra el formulario ejecutando <code>this.Close()</code>. No solicita confirmación previa al usuario.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Página 3 de 7</span></div>
+</div>
+
+<!-- PÁGINA 4 — COLUMNAS -->
+<div class="page" id="p3">
+  <div class="page-header"><span class="title">Columnas del Listado</span><span class="pnum">Página 4 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">3</span> Columnas del Listado</div>
+    <p class="lead">El <code>DataGridView</code> principal muestra las siguientes columnas. Está configurado en modo solo lectura con ajuste automático del ancho de columnas (<code>AutoSizeColumnsMode = Fill</code>).</p>
+
+    <table>
+      <thead><tr><th>Columna (UI)</th><th>Campo en BD</th><th>Tipo</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ID Movimiento</strong></td><td><code>ID</code></td><td><span class="tag int">INT</span></td><td>Identificador único del encabezado del movimiento. Clave primaria de la transacción.</td></tr>
+        <tr><td><strong>ID Tipo</strong></td><td><code>ID_Tipo</code></td><td><span class="tag int">INT</span></td><td>Identificador numérico del tipo de movimiento. Se usa para clasificación interna.</td></tr>
+        <tr><td><strong>Tipo Movimiento</strong></td><td><code>Tipo_Movimiento</code></td><td><span class="tag str">VARCHAR</span></td><td>Descripción del tipo: <em>Compra, Venta, Devolución, Ajuste entrada, BONIFICACION</em>, etc.</td></tr>
+        <tr><td><strong>Fecha</strong></td><td><code>Fecha</code></td><td><span class="tag dt">DATETIME</span></td><td>Fecha y hora del registro. Formato: <em>M/D/AAAA H:MM AM/PM</em>.</td></tr>
+        <tr><td><strong>Descripción</strong></td><td><code>Descripcion</code></td><td><span class="tag str">VARCHAR</span></td><td>Texto libre que describe el motivo o contexto del movimiento.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout info" style="margin-top:20px;">
+      <span class="ci">ℹ️</span>
+      <div><strong>Configuración del DataGridView</strong>
+      <p>Propiedades activas: <code>AllowUserToAddRows = false</code> · <code>ReadOnly = true</code> · <code>AutoSizeColumnsMode = Fill</code> · <code>SelectionMode = FullRowSelect</code>.</p></div>
+    </div>
+    <div class="callout warn" style="margin-top:12px;">
+      <span class="ci">⚠️</span>
+      <div><strong>Datos enviados al formulario hijo</strong>
+      <p>Al hacer doble clic, se extraen exactamente los campos <code>ID</code>, <code>ID_Tipo</code>, <code>Tipo_Movimiento</code>, <code>Fecha</code> y <code>Descripcion</code> y se pasan como parámetros a <code>Frm_Encabezado_Transaccion</code>.</p></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Página 4 de 7</span></div>
+</div>
+
+<!-- PÁGINA 5 — OPERACIONES -->
+<div class="page" id="p4">
+  <div class="page-header"><span class="title">Operaciones Comunes</span><span class="pnum">Página 5 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">4</span> Operaciones Comunes</div>
+
+    <p style="font-weight:600; color:var(--gray5); margin-bottom:10px; font-size:13.5px;">▸ Registrar un nuevo movimiento</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Verificar que "Ingresar" esté habilitado</h4><p>Si aparece deshabilitado (gris), su usuario no tiene el permiso <em>Ingresar</em>. Contacte al administrador del sistema.</p></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Hacer clic en "Ingresar"</h4><p>Se abrirá <code>Frm_Encabezado_Transaccion</code> en modo creación. Complete los campos: tipo de movimiento, fecha y descripción.</p></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-b"><h4>Guardar y presionar "Refrescar"</h4><p>Al guardar, el formulario hijo se cierra. Presione <strong>Refrescar</strong> en el listado para ver el nuevo registro.</p></div></div>
+    </div>
+
+    <p style="font-weight:600; color:var(--gray5); margin:20px 0 10px; font-size:13.5px;">▸ Consultar o editar un movimiento existente</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Localizar el registro</h4><p>Desplácese con scroll, use los botones de navegación, o use <strong>Filtrar / DashBoard</strong> para búsquedas avanzadas.</p></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Hacer doble clic sobre la fila</h4><p>El sistema extrae los datos y los envía al formulario de detalle <code>Frm_Encabezado_Transaccion</code>.</p></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-b"><h4>Cerrar el formulario de detalle</h4><p>Al cerrarlo, el listado principal se recarga automáticamente con los cambios.</p></div></div>
+    </div>
+
+    <p style="font-weight:600; color:var(--gray5); margin:20px 0 10px; font-size:13.5px;">▸ Generar reporte impreso</p>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Clic en "Imprimir"</h4><p>Se abre <code>Frm_ReporteMovimientoInventario</code>. Configure los parámetros del reporte si es necesario.</p></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Vista previa y envío</h4><p>Desde el visor puede previsualizar, exportar a PDF o enviar directamente a la impresora configurada.</p></div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Página 5 de 7</span></div>
+</div>
+
+<!-- PÁGINA 6 — PERMISOS -->
+<div class="page" id="p5">
+  <div class="page-header"><span class="title">Permisos y Acceso</span><span class="pnum">Página 6 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">5</span> Permisos y Acceso</div>
+    <p class="lead">Al cargar el formulario, el sistema llama a <code>Cls_Privilegios.VerificarPermisos(728, 44)</code> para obtener los permisos del usuario sobre la aplicación <strong>728</strong> en el módulo <strong>44</strong>.</p>
+
+    <table>
+      <thead><tr><th>Permiso requerido</th><th>Función / Botón</th><th>Sin permiso</th></tr></thead>
+      <tbody>
+        <tr><td><code>Cmp_Ingresar_Permiso_Aplicacion_Usuario</code></td><td><strong>Btn_Ingresar</strong> — Registrar nuevo movimiento</td><td><span class="badge no">✕ Deshabilitado</span></td></tr>
+        <tr><td><code>Cmp_Imprimir_Permiso_Aplicacion_Usuario</code></td><td><strong>Btn_Imprimir</strong> — Generar reporte</td><td><span class="badge no">✕ Deshabilitado</span></td></tr>
+        <tr><td><code>Cmp_Consultar_Permiso_Aplicacion_Usuario</code></td><td><strong>Btn_Filtrar</strong> — Abrir DashBoard</td><td><span class="badge no">✕ Deshabilitado</span></td></tr>
+        <tr><td><em>Sin restricción</em></td><td>Refrescar, Salir, Navegación, Ayuda</td><td><span class="badge yes">✓ Siempre activo</span></td></tr>
+        <tr><td><em>Sin restricción</em></td><td>Doble clic — Ver detalle del movimiento</td><td><span class="badge yes">✓ Siempre activo</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn" style="margin-top:20px;">
+      <span class="ci">⚠️</span>
+      <div><strong>Permisos de Eliminar y Modificar</strong>
+      <p>En la versión actual, estos permisos están comentados en el código y no controlan ningún botón visible. No existe opción de eliminación directa en este formulario.</p></div>
+    </div>
+    <div class="callout info" style="margin-top:12px;">
+      <span class="ci">ℹ️</span>
+      <div><strong>¿Cómo solicitar acceso?</strong>
+      <p>Contacte al administrador del sistema para que le asigne el rol correspondiente en el módulo de seguridad.</p></div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Página 6 de 7</span></div>
+</div>
+
+<!-- PÁGINA 7 — FAQ -->
+<div class="page" id="p6">
+  <div class="page-header"><span class="title">Preguntas Frecuentes</span><span class="pnum">Página 7 de 7</span></div>
+  <div class="page-body">
+    <div class="section-title"><span class="num">6</span> Preguntas Frecuentes</div>
+    <p class="lead">Respuestas a los casos más comunes que pueden surgir al usar este formulario.</p>
+
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">¿Por qué el botón "Ingresar" aparece deshabilitado? <span class="faq-arr">›</span></div>
+      <div class="faq-a">Su usuario no tiene el permiso <strong>Ingresar</strong> para la aplicación 728. Contacte al administrador del sistema para que le otorgue el acceso desde el módulo de seguridad.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">Ingresé un movimiento pero no aparece en el listado <span class="faq-arr">›</span></div>
+      <div class="faq-a">El listado no se recarga automáticamente al crear registros. Presione <strong>Refrescar</strong> para volver a cargar los datos desde la base de datos.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">¿Cómo puedo ver el detalle completo de un movimiento? <span class="faq-arr">›</span></div>
+      <div class="faq-a">Haga <strong>doble clic</strong> sobre la fila. Se abrirá <code>Frm_Encabezado_Transaccion</code> con todos los datos precargados. Al cerrarlo, el listado se actualiza automáticamente.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">¿Puedo editar los datos directamente en la tabla? <span class="faq-arr">›</span></div>
+      <div class="faq-a">No. La cuadrícula tiene <code>ReadOnly = true</code>. Toda modificación debe realizarse abriendo el formulario de detalle con doble clic.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">¿Qué hace el botón DashBoard / Filtrar? <span class="faq-arr">›</span></div>
+      <div class="faq-a">Abre <code>DSH_BRD_FRM</code>, un panel de análisis con filtros avanzados para buscar movimientos por rango de fechas, tipo u otros criterios. Requiere el permiso <em>Consultar</em>.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">El sistema muestra un error al abrir el formulario <span class="faq-arr">›</span></div>
+      <div class="faq-a">Un <code>MessageBox</code> de error al iniciar generalmente indica un problema de conexión a la base de datos. Verifique que el servidor esté disponible y reporte el mensaje exacto al administrador de sistemas.</div>
+    </div>
+    <div class="faq" onclick="this.classList.toggle('open')">
+      <div class="faq-q">¿Cómo genero un reporte de los movimientos? <span class="faq-arr">›</span></div>
+      <div class="faq-a">Haga clic en <strong>Imprimir</strong> (requiere permiso). Se abrirá <code>Frm_ReporteMovimientoInventario</code> donde podrá configurar parámetros, previsualizar y exportar o imprimir el informe.</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>728 — Movimiento de Inventario</span><span>Manual de Usuario v1.0</span></div>
+</div>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  const pills  = document.querySelectorAll('.nav-pill');
+  function goTo(i) {
+    pages.forEach((p,idx) => p.classList.toggle('active', idx===i));
+    pills.forEach((p,idx) => p.classList.toggle('active', idx===i));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+</script>
+</body>
+</html>

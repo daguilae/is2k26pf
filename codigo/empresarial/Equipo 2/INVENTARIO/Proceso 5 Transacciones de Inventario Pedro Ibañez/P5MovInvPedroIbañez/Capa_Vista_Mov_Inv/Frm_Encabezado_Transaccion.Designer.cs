@@ -32,7 +32,7 @@ namespace Capa_Vista_Mov_Inv
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Encabezado_Transaccion));
             this.BTN_LIMPIAR_ENCABEZADO = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
-            this.Btn_Modificar = new System.Windows.Forms.Button();
+            this.Btn_Apartar_Stock = new System.Windows.Forms.Button();
             this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
@@ -106,16 +106,17 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Salir.UseVisualStyleBackColor = false;
             this.Btn_Salir.Click += new System.EventHandler(this.Btn_Salir_Click);
             // 
-            // Btn_Modificar
+            // Btn_Apartar_Stock
             // 
-            this.Btn_Modificar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Modificar.Image")));
-            this.Btn_Modificar.Location = new System.Drawing.Point(295, 99);
-            this.Btn_Modificar.Name = "Btn_Modificar";
-            this.Btn_Modificar.Size = new System.Drawing.Size(86, 80);
-            this.Btn_Modificar.TabIndex = 25;
-            this.Btn_Modificar.Text = "MODIFICAR";
-            this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Modificar.UseVisualStyleBackColor = true;
+            this.Btn_Apartar_Stock.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Apartar_Stock.Image")));
+            this.Btn_Apartar_Stock.Location = new System.Drawing.Point(203, 100);
+            this.Btn_Apartar_Stock.Name = "Btn_Apartar_Stock";
+            this.Btn_Apartar_Stock.Size = new System.Drawing.Size(86, 80);
+            this.Btn_Apartar_Stock.TabIndex = 25;
+            this.Btn_Apartar_Stock.Text = "APARTAR STOCK";
+            this.Btn_Apartar_Stock.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.Btn_Apartar_Stock.UseVisualStyleBackColor = true;
+            this.Btn_Apartar_Stock.Click += new System.EventHandler(this.Btn_Apartar_Stock_Click);
             // 
             // Btn_Reporte
             // 
@@ -138,11 +139,12 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Ayuda.Text = "AYUDA";
             this.Btn_Ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_Ayuda.UseVisualStyleBackColor = true;
+            this.Btn_Ayuda.Click += new System.EventHandler(this.Btn_Ayuda_Click);
             // 
             // Btn_Cancelar
             // 
             this.Btn_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.Image")));
-            this.Btn_Cancelar.Location = new System.Drawing.Point(203, 99);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(293, 99);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(86, 80);
             this.Btn_Cancelar.TabIndex = 22;
@@ -562,7 +564,7 @@ namespace Capa_Vista_Mov_Inv
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BTN_LIMPIAR_ENCABEZADO);
             this.Controls.Add(this.Btn_Salir);
-            this.Controls.Add(this.Btn_Modificar);
+            this.Controls.Add(this.Btn_Apartar_Stock);
             this.Controls.Add(this.Btn_Reporte);
             this.Controls.Add(this.Btn_Ayuda);
             this.Controls.Add(this.Btn_Cancelar);
@@ -588,7 +590,7 @@ namespace Capa_Vista_Mov_Inv
 
         private System.Windows.Forms.Button BTN_LIMPIAR_ENCABEZADO;
         private System.Windows.Forms.Button Btn_Salir;
-        private System.Windows.Forms.Button Btn_Modificar;
+        private System.Windows.Forms.Button Btn_Apartar_Stock;
         private System.Windows.Forms.Button Btn_Reporte;
         private System.Windows.Forms.Button Btn_Ayuda;
         private System.Windows.Forms.Button Btn_Cancelar;

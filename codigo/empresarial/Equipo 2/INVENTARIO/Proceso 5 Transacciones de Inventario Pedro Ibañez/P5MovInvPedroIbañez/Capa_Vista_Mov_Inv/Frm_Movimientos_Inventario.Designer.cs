@@ -31,7 +31,6 @@ namespace Capa_Vista_Mov_Inv
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Movimientos_Inventario));
             this.Btn_Ingresar = new System.Windows.Forms.Button();
-            this.Btn_Editar = new System.Windows.Forms.Button();
             this.Btn_Filtrar = new System.Windows.Forms.Button();
             this.Btn_Imprimir = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
@@ -43,6 +42,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_sig = new System.Windows.Forms.Button();
             this.Btn_anterior = new System.Windows.Forms.Button();
             this.Btn_inicio = new System.Windows.Forms.Button();
+            this.btn_ayuda = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Encabezado_Movimiento_Inventarios)).BeginInit();
             this.SuspendLayout();
@@ -63,21 +63,6 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Ingresar.UseVisualStyleBackColor = true;
             this.Btn_Ingresar.Click += new System.EventHandler(this.Btn_Ingresar_Click);
             // 
-            // Btn_Editar
-            // 
-            this.Btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Editar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Editar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Editar.Image")));
-            this.Btn_Editar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Editar.Location = new System.Drawing.Point(106, 86);
-            this.Btn_Editar.Margin = new System.Windows.Forms.Padding(2);
-            this.Btn_Editar.Name = "Btn_Editar";
-            this.Btn_Editar.Size = new System.Drawing.Size(82, 63);
-            this.Btn_Editar.TabIndex = 12;
-            this.Btn_Editar.Text = "Editar";
-            this.Btn_Editar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.Btn_Editar.UseVisualStyleBackColor = true;
-            // 
             // Btn_Filtrar
             // 
             this.Btn_Filtrar.Enabled = false;
@@ -85,7 +70,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Filtrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Filtrar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Filtrar.Image")));
             this.Btn_Filtrar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Filtrar.Location = new System.Drawing.Point(379, 86);
+            this.Btn_Filtrar.Location = new System.Drawing.Point(292, 86);
             this.Btn_Filtrar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Filtrar.Name = "Btn_Filtrar";
             this.Btn_Filtrar.Size = new System.Drawing.Size(97, 63);
@@ -101,7 +86,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Imprimir.Image")));
             this.Btn_Imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Imprimir.Location = new System.Drawing.Point(291, 86);
+            this.Btn_Imprimir.Location = new System.Drawing.Point(204, 86);
             this.Btn_Imprimir.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Imprimir.Name = "Btn_Imprimir";
             this.Btn_Imprimir.Size = new System.Drawing.Size(84, 63);
@@ -133,7 +118,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_Refrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Refrescar.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Refrescar.Image")));
             this.Btn_Refrescar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Btn_Refrescar.Location = new System.Drawing.Point(193, 86);
+            this.Btn_Refrescar.Location = new System.Drawing.Point(106, 86);
             this.Btn_Refrescar.Margin = new System.Windows.Forms.Padding(2);
             this.Btn_Refrescar.Name = "Btn_Refrescar";
             this.Btn_Refrescar.Size = new System.Drawing.Size(94, 63);
@@ -183,7 +168,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_fin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_fin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_fin.Image = ((System.Drawing.Image)(resources.GetObject("Btn_fin.Image")));
-            this.Btn_fin.Location = new System.Drawing.Point(746, 86);
+            this.Btn_fin.Location = new System.Drawing.Point(659, 86);
             this.Btn_fin.Name = "Btn_fin";
             this.Btn_fin.Size = new System.Drawing.Size(81, 63);
             this.Btn_fin.TabIndex = 39;
@@ -197,7 +182,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_sig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_sig.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_sig.Image = ((System.Drawing.Image)(resources.GetObject("Btn_sig.Image")));
-            this.Btn_sig.Location = new System.Drawing.Point(659, 86);
+            this.Btn_sig.Location = new System.Drawing.Point(572, 86);
             this.Btn_sig.Name = "Btn_sig";
             this.Btn_sig.Size = new System.Drawing.Size(81, 63);
             this.Btn_sig.TabIndex = 38;
@@ -211,7 +196,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_anterior.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_anterior.Image = ((System.Drawing.Image)(resources.GetObject("Btn_anterior.Image")));
-            this.Btn_anterior.Location = new System.Drawing.Point(572, 86);
+            this.Btn_anterior.Location = new System.Drawing.Point(485, 86);
             this.Btn_anterior.Name = "Btn_anterior";
             this.Btn_anterior.Size = new System.Drawing.Size(81, 63);
             this.Btn_anterior.TabIndex = 37;
@@ -225,7 +210,7 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_inicio.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_inicio.Image = ((System.Drawing.Image)(resources.GetObject("Btn_inicio.Image")));
-            this.Btn_inicio.Location = new System.Drawing.Point(483, 86);
+            this.Btn_inicio.Location = new System.Drawing.Point(396, 86);
             this.Btn_inicio.Name = "Btn_inicio";
             this.Btn_inicio.Size = new System.Drawing.Size(83, 63);
             this.Btn_inicio.TabIndex = 36;
@@ -233,11 +218,27 @@ namespace Capa_Vista_Mov_Inv
             this.Btn_inicio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_inicio.UseVisualStyleBackColor = false;
             // 
+            // btn_ayuda
+            // 
+            this.btn_ayuda.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_ayuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ayuda.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ayuda.Image = ((System.Drawing.Image)(resources.GetObject("btn_ayuda.Image")));
+            this.btn_ayuda.Location = new System.Drawing.Point(746, 86);
+            this.btn_ayuda.Name = "btn_ayuda";
+            this.btn_ayuda.Size = new System.Drawing.Size(81, 63);
+            this.btn_ayuda.TabIndex = 40;
+            this.btn_ayuda.Text = "Ayuda";
+            this.btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_ayuda.UseVisualStyleBackColor = false;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            // 
             // Frm_Movimientos_Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 595);
+            this.Controls.Add(this.btn_ayuda);
             this.Controls.Add(this.Btn_fin);
             this.Controls.Add(this.Btn_sig);
             this.Controls.Add(this.Btn_anterior);
@@ -245,14 +246,13 @@ namespace Capa_Vista_Mov_Inv
             this.Controls.Add(this.Dgv_Encabezado_Movimiento_Inventarios);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Btn_Ingresar);
-            this.Controls.Add(this.Btn_Editar);
             this.Controls.Add(this.Btn_Filtrar);
             this.Controls.Add(this.Btn_Imprimir);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Refrescar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Movimientos_Inventario";
-            this.Text = "Frm_Movimientos_Inventario";
+            this.Text = "Encabezado Movimientos Inventario";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Encabezado_Movimiento_Inventarios)).EndInit();
@@ -262,7 +262,6 @@ namespace Capa_Vista_Mov_Inv
 
         #endregion
         private System.Windows.Forms.Button Btn_Ingresar;
-        private System.Windows.Forms.Button Btn_Editar;
         private System.Windows.Forms.Button Btn_Filtrar;
         private System.Windows.Forms.Button Btn_Imprimir;
         private System.Windows.Forms.Button Btn_Salir;
@@ -274,5 +273,6 @@ namespace Capa_Vista_Mov_Inv
         private System.Windows.Forms.Button Btn_sig;
         private System.Windows.Forms.Button Btn_anterior;
         private System.Windows.Forms.Button Btn_inicio;
+        private System.Windows.Forms.Button btn_ayuda;
     }
 }

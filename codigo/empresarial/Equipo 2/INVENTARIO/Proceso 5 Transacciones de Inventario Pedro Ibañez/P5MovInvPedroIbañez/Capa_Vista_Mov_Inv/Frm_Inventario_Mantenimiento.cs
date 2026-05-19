@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Mov_Inv;
 using Capa_Modelo_Mov_Inv;
+using Capa_Controlador_NavegadorTrs;
 
 namespace Capa_Vista_Mov_Inv
 {
@@ -17,50 +18,101 @@ namespace Capa_Vista_Mov_Inv
         public Frm_Inventario_Mantenimiento()
         {
             InitializeComponent();
-            fun_cargar_combos();
-        }
 
-        Cls_Controlador_Inv ctrl = new Cls_Controlador_Inv();
+            //navegadorTrs1.Load += (s, e) => 
+            //    navegadorTrs1.BotonesEstadoCRUD(true, true, true, true, true);
 
+            // ─────────────────────────────────────────────────────────────────
+            // CONFIGURACIÓN DEL DATAGRIDVIEW
+            // ─────────────────────────────────────────────────────────────────
+            Capa_Controlador_NavegadorTrs.Cls_ConfiguracionDataGridView config =
+                new Capa_Controlador_NavegadorTrs.Cls_ConfiguracionDataGridView
+                {
+                    Ancho = 1100,
+                    Alto = 250,
+                    PosX = 10,
+                    PosY = 300,
+                    ColorFondo = Color.AliceBlue,
+                    TipoScrollBars = ScrollBars.Both,
+                    Nombre = "dgv_inventario"
+                };
 
-                    //Cargar ComBoBoxes
-        private void fun_cargar_combos()
-        {
-            DataTable dtIDInv = ctrl.fun_CargarInventarios();
-            Cbo_Id_Inventario.DataSource = dtIDInv;
-            Cbo_Id_Inventario.DisplayMember = "INVENTARIO";
-            Cbo_Id_Inventario.ValueMember = "pk_inventario_id";
-            Cbo_Id_Inventario.SelectedIndex = -1;
+            // ─────────────────────────────────────────────────────────────────
+            // COLUMNAS DE tbl_inventario
+            // ─────────────────────────────────────────────────────────────────
+            string[] columnas =
+            {
+    "tbl_inventario",
+    "pk_inventario_id",
+    "fk_linea_id",
+    "fk_marca_id",
+    "nombre_prod",
+    "descripcion",
+    "precio_unitario",
+    "tipo_producto",
+    "estado_producto"
+};
 
-            DataTable dtIdLine = ctrl.fun_CargarLinea();
-            Cbo_Linea.DataSource = dtIdLine;
-            Cbo_Linea.DisplayMember = "LINEA";
-            Cbo_Linea.ValueMember = "pk_id_linea";
-            Cbo_Linea.SelectedIndex = -1;
+            // ─────────────────────────────────────────────────────────────────
+            // ETIQUETAS
+            // ─────────────────────────────────────────────────────────────────
+            string[] sEtiquetas =
+            {
+    "ID Inventario",
+    "Línea",
+    "Marca",
+    "Nombre Producto",
+    "Descripción",
+    "Precio Unitario",
+    "Tipo Producto",
+    "Estado Producto"
+};
 
-            DataTable dtIdmarc = ctrl.fun_CargarMarca();
-            Cbo_Marca.DataSource = dtIdmarc;
-            Cbo_Marca.DisplayMember = "MARCA";
-            Cbo_Marca.ValueMember = "ID_Marca";
-            Cbo_Marca.SelectedIndex = -1;
+            // ─────────────────────────────────────────────────────────────────
+            // CONFIGURACIÓN FK
+            // ─────────────────────────────────────────────────────────────────
+            List<Cls_ConfiguracionFK> fks = new List<Cls_ConfiguracionFK>
+{
+    // ============================================================
+    // FK → tbl_linea_producto
+    // ============================================================
+    new Cls_ConfiguracionFK
+    {
+        CampoFK         = "fk_linea_id",
+        TablaReferencia = "tbl_linea_producto",
+        CampoPK         = "pk_id_linea",
+        CampoMostrar    = "cmp_nombre_linea",
+    },
 
+    // ============================================================
+    // FK → tbl_marca
+    // ============================================================
+    new Cls_ConfiguracionFK
+    {
+        CampoFK         = "fk_marca_id",
+        TablaReferencia = "tbl_marca",
+        CampoPK         = "ID_Marca",
+        CampoMostrar    = "Nombre_Marca",
+    }
+};
 
-            DataTable dttipProd = ctrl.fun_CargarTipoProd();
-            Cbo_MPoPF.DataSource = dttipProd;
-            Cbo_MPoPF.DisplayMember = "TipoVis";
-            Cbo_MPoPF.ValueMember = "Tipo";
-            Cbo_MPoPF.SelectedIndex = -1;
+            // ─────────────────────────────────────────────────────────────────
+            // CONFIGURACIÓN DEL NAVEGADOR
+            // ─────────────────────────────────────────────────────────────────
+            int id_aplicacion = 726;
+            int id_modulo = 44;
 
-            DataTable dtestado = ctrl.fun_CargarEstado();
-            Cbo_EstadoProducto.DataSource = dtestado;
-            Cbo_EstadoProducto.DisplayMember = "STATE";
-            Cbo_EstadoProducto.ValueMember = "STATE";
-            Cbo_EstadoProducto.SelectedIndex = -1;
-        }
+            navegadorTrs1.IPkId_Aplicacion = id_aplicacion;
+            navegadorTrs1.IPkId_Modulo = id_modulo;
 
-        private void btn_Guardar_Click(object sender, EventArgs e)
-        {
+            navegadorTrs1.configurarDataGridView(config);
 
+            navegadorTrs1.SNombreTabla = columnas[0];
+            navegadorTrs1.SAlias = columnas;
+            navegadorTrs1.SEtiquetas = sEtiquetas;
+            navegadorTrs1.SConfiguracionFK = fks;
+
+            navegadorTrs1.mostrarDatos();
         }
     }
 }
