@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_recepcion;
+using Capa_Controlador_Seguridad;
 using System.IO;
 namespace Capa_Vista_recepcion
 {
     public partial class Frm_Detalle_Recepcion : Form
+
     {
         //cesar santizo 0901-22-5215
 
@@ -22,6 +24,8 @@ namespace Capa_Vista_recepcion
             inicializarColumnas();
         }
         Controlador con = new Controlador();
+        Cls_BitacoraControlador bitacora = new Cls_BitacoraControlador();
+
         private int idRecepcion = 0;
         private void inicializarColumnas()
         {
@@ -302,7 +306,9 @@ namespace Capa_Vista_recepcion
 
                 MessageBox.Show(
                     "Recepción guardada correctamente."
+
                 );
+                bitacora.RegistrarAccion(Cls_Usuario_Conectado.iIdUsuario, 715, "Guardado de recepción material", true);
             }
 
             limpiarCampos();
