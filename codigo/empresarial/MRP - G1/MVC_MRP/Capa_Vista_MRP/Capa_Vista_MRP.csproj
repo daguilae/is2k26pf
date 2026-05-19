@@ -43,6 +43,9 @@
     <Reference Include="Capa_Vista_Bom">
       <HintPath>..\..\Mantenimientos\Mantenimiento_Mariale_Bom\Capa_Vista_Bom\bin\Debug\Capa_Vista_Bom.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_CodigoB">
+      <HintPath>..\..\DLLS\Entrega de Producto Terminado\Materiales\CodigoB\Capa_Vista_CodigoB\bin\Debug\Capa_Vista_CodigoB.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Costo_Fase">
       <HintPath>..\..\DLLS\Plan y Orden de Producción\Costo Fase\Capa_Vista_Costo_Fase\bin\Debug\Capa_Vista_Costo_Fase.dll</HintPath>
     </Reference>
