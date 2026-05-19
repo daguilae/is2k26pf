@@ -270,6 +270,7 @@ namespace Capa_Vista_Expl_Mat
             this.Btn_ayuda.Text = "Ayuda";
             this.Btn_ayuda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Btn_ayuda.UseVisualStyleBackColor = true;
+            this.Btn_ayuda.Click += new System.EventHandler(this.Btn_ayuda_Click);
             // 
             // Btn_salir
             // 
