@@ -2,6 +2,8 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 using Capa_Controlador_Expl_Mat;
 
 // Paula Daniela Leonardo Paredes - 0901-22-9580
@@ -324,5 +326,36 @@ namespace Capa_Vista_Expl_Mat
         private void Lbl_ConStock_Click(object sender, EventArgs e) { }
         private void Lbl_ConDeficit_Click(object sender, EventArgs e) { }
         private void Lbl_Factibilidad_Click(object sender, EventArgs e) { }
+
+        private void Btn_ayuda_Click(object sender, EventArgs e)
+        {
+            string carpeta = Application.StartupPath;
+
+            while (!Directory.Exists(Path.Combine(carpeta, "ayuda")) &&
+                   Directory.GetParent(carpeta) != null)
+            {
+                carpeta = Directory.GetParent(carpeta).FullName;
+            }
+
+            string rutaAyuda = Path.Combine(
+                carpeta,
+                "ayuda",
+                "MRP",
+                "Ayudas_Explosion",
+                "AyudaExplosion.chm"
+            );
+
+            if (File.Exists(rutaAyuda))
+            {
+                Help.ShowHelp(this, rutaAyuda, "index.html");
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el archivo de ayuda:\n" + rutaAyuda,
+                                "Ayuda",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+            }
+        }
     }
 }
