@@ -260,7 +260,7 @@ namespace Capa_Vista_Ventas
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "734 - Pagos ";
+            this.label1.Text = "710 - Pagos ";
             // 
             // Btn_Guardar
             // 
@@ -330,7 +330,6 @@ namespace Capa_Vista_Ventas
             this.button3.Text = "AYUDA";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Frm_Pagos
             // 

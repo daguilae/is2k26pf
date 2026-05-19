@@ -36,6 +36,21 @@ namespace Capa_Vista_Ventas
             Dgv_Ventas_Generales.Columns["TipoCliente"].HeaderText = "Tipo Cliente";
             Dgv_Ventas_Generales.Columns["TipoOperacion"].HeaderText = "Tipo Operacion";
             Dgv_Ventas_Generales.Columns["Total"].HeaderText = "Total";
+            // ==========================================
+            // BOTON DETALLE
+            // ==========================================
+            if (!Dgv_Ventas_Generales.Columns.Contains("Detalle"))
+            {
+                DataGridViewButtonColumn btnDetalle =
+                    new DataGridViewButtonColumn();
+
+                btnDetalle.Name = "Detalle";
+                btnDetalle.HeaderText = "Acción";
+                btnDetalle.Text = "Ver";
+                btnDetalle.UseColumnTextForButtonValue = true;
+
+                Dgv_Ventas_Generales.Columns.Add(btnDetalle);
+            }
         }
 
         private void Btn_Agregar_Ventas_Click(object sender, EventArgs e)
@@ -103,6 +118,45 @@ namespace Capa_Vista_Ventas
         {
             Rpt_Ventas_Generales rpt = new Rpt_Ventas_Generales();
             rpt.Show();
+        }
+
+        private void Dgv_Ventas_Generales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // EVITAR HEADER
+                if (e.RowIndex < 0)
+                    return;
+
+                // CLICK EN BOTON DETALLE
+                if (Dgv_Ventas_Generales.Columns[e.ColumnIndex].Name
+                    == "Detalle")
+                {
+                    int idVenta = Convert.ToInt32(
+                        Dgv_Ventas_Generales.Rows[e.RowIndex]
+                        .Cells["IdVenta"].Value
+                    );
+
+                    Frm_Detalle_Ventas frm = new Frm_Detalle_Ventas(idVenta);
+
+                    frm.MdiParent = this.MdiParent;
+                    frm.StartPosition =
+                        FormStartPosition.CenterParent;
+
+                    // RECARGAR GRID AL GUARDAR
+                    frm.VentaGuardada += () =>
+                    {
+                        fun_CargarVentas();
+                    };
+
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error: " + ex.Message);
+            }
         }
     }
 }

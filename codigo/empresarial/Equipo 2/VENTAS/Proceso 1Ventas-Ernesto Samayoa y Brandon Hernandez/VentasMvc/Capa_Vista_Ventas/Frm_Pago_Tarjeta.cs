@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -157,52 +156,11 @@ namespace Capa_Vista_Ventas
             {
                 if (!texto.All(char.IsDigit) || texto.Length > 4)
                 {
-                    MessageBox.Show("CVC debe contener 3 o 4 d ígitos.", "Validación",
+                    MessageBox.Show("CVC debe contener 3 o 4 dígitos.", "Validación",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     Txt_Cvc.Clear();
                 }
             }
             }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
-                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Ventas\pagos\pagos.chm";
-
-                string rutaEncontrada = null;
-                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-                // Busca la carpeta hacia arriba (10 niveles)
-                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
-                {
-                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
-                    if (File.Exists(candidata))
-                    {
-                        rutaEncontrada = candidata;
-                        break;
-                    }
-                }
-                if (rutaEncontrada != null)
-
-                {
-                    // Esta es la ruta INTERNA del archivo dentro del CHM
-                    string rutaInterna = @"pagos_tarjeta.html";
-
-                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 }

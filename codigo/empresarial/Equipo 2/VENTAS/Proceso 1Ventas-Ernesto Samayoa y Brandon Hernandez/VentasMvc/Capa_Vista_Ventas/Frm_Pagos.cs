@@ -8,9 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Ventas;
-using Capa_Controlador_Seguridad;
-using System.IO;
-
 namespace Capa_Vista_Ventas
 {
     public partial class Frm_Pagos : Form
@@ -24,7 +21,6 @@ namespace Capa_Vista_Ventas
         private DateTime _fechaVencimiento;
         private readonly Cls_CXCDetalle_Controlador _cxcControlador = new Cls_CXCDetalle_Controlador();
         private DataTable _dtCxc = null;
-        private bool _canIngresar, _canConsultar, _canModificar, _canEliminar, _canImprimir;
 
         public Frm_Pagos(int idCuentaPorCobrar, decimal monto)
         {
@@ -36,8 +32,8 @@ namespace Capa_Vista_Ventas
 
             fun_CargarMetodosPago();
             fun_CargarEstadosPago();
-            fun_PrecargarDesdVentas();
-
+           fun_PrecargarDesdVentas();
+           
         }
         public Frm_Pagos()
         {
@@ -46,121 +42,12 @@ namespace Capa_Vista_Ventas
             _idCuentaPorCobrar = 0;
             _monto = 0;
             _motivo = string.Empty;
-            fun_AplicarPermisos();
 
             fun_CargarMetodosPago();
             fun_CargarEstadosPago();
             fun_CargarCXC();
         }
-        private void fun_AplicarPermisos()
-        {
-            try
-            {
-                int idUsuario = Cls_Usuario_Conectado.iIdUsuario;
 
-                var usuarioCtrl = new Cls_Usuario_Controlador();
-
-                var permisoUsuario =
-                    new Cls_Permiso_Usuario_Controlador();
-
-                int idAplicacion =
-                    permisoUsuario.ObtenerIdAplicacionPorNombre("Pagos");
-
-                if (idAplicacion <= 0)
-                    idAplicacion = 734;
-
-
-
-                int idModulo = 44;
-                    permisoUsuario.ObtenerIdModuloPorNombre("Logistica");
-
-                int idPerfil =
-                    usuarioCtrl.ObtenerIdPerfilDeUsuario(idUsuario);
-
-                var permisos =
-                    Cls_Aplicacion_Permisos
-                    .ObtenerPermisosCombinados(
-                        idUsuario,
-                        idAplicacion,
-                        idModulo,
-                        idPerfil);
-
-                _canIngresar = permisos.ingresar;
-                _canConsultar = permisos.consultar;
-                _canModificar = permisos.modificar;
-                _canEliminar = permisos.eliminar;
-                _canImprimir = permisos.imprimir;
-
-                if (!_canIngresar &&
-                    !_canConsultar &&
-                    !_canModificar &&
-                    !_canEliminar &&
-                    !_canImprimir)
-                {
-                    MessageBox.Show(
-                        "El usuario no tiene permisos asignados para esta aplicación.",
-                        "Permisos",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
-                    DeshabilitarTodo();
-
-                    return;
-                }
-
-                AplicarControles();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "Error al cargar permisos:\n" + ex.Message);
-
-                DeshabilitarTodo();
-            }
-        }
-
-        private void AplicarControles()
-        {
-            bool puedeEditar =
-                (_canIngresar || _canModificar);
-
-            if (Btn_Guardar != null)
-                Btn_Guardar.Enabled = _canIngresar;
-
-            if (Cbo_CXC != null)
-                Cbo_CXC.Enabled =
-                    _canConsultar ||
-                    _canIngresar ||
-                    _canModificar;
-
-            if (Cbo_Estado != null)
-                Cbo_Estado.Enabled = puedeEditar;
-
-            if (Txt_Monto != null)
-                Txt_Monto.Enabled = puedeEditar;
-        }
-
-        private void DeshabilitarTodo()
-        {
-            if (Btn_Guardar != null)
-                Btn_Guardar.Enabled = false;
-
-            if (Cbo_CXC != null)
-                Cbo_CXC.Enabled = false;
-
-            if (Cbo_Estado != null)
-                Cbo_Estado.Enabled = false;
-
-            if (Txt_Monto != null)
-                Txt_Monto.Enabled = false;
-
-            if (Cbo_MetodoPago != null)
-                Cbo_MetodoPago.Enabled = false;
-        }
-
-        // ==========================
-        // CARGAR CXC
-        // ==========================
         private void fun_CargarCXC()
         {
             _dtCxc = _cxcControlador.ListarCxcActivasConSaldo();
@@ -228,7 +115,7 @@ namespace Capa_Vista_Ventas
             Txt_Monto.Text = $"Q:{_monto.ToString("F2")}";
             Txt_Monto.ReadOnly = true;
 
-
+           
 
         }
 
@@ -279,7 +166,7 @@ namespace Capa_Vista_Ventas
                     new Frm_Pago_Tarjeta(idCxc, saldoPendienteActual, idCxc).ShowDialog();
                     fun_LimpiarCampos();
                     break;
-
+                 
                 case "Efectivo":
                     new Frm_pago_efectivo(idCxc, saldoPendienteActual, idCxc).ShowDialog();
                     fun_LimpiarCampos();
@@ -292,47 +179,6 @@ namespace Capa_Vista_Ventas
                     new Frm_Pago_Cheque(idCxc, saldoPendienteActual, idCxc).ShowDialog();
                     fun_LimpiarCampos();
                     break;
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
-                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Ventas\pagos\pagos.chm";
-
-                string rutaEncontrada = null;
-                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
-
-                // Busca la carpeta hacia arriba (10 niveles)
-                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
-                {
-                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
-                    if (File.Exists(candidata))
-                    {
-                        rutaEncontrada = candidata;
-                        break;
-                    }
-                }
-                if (rutaEncontrada != null)
-
-                {
-                    // Esta es la ruta INTERNA del archivo dentro del CHM
-                    string rutaInterna = @"pagos.html";
-
-                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -395,7 +241,7 @@ namespace Capa_Vista_Ventas
             AbrirSubformulario(sMet, _idCuentaPorCobrar, _saldoPendiente);
         }
 
-
+    
 
         private void Cbo_CXC_SelectedIndexChanged(object sender, EventArgs e)
         {

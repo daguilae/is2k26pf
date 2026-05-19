@@ -20,6 +20,9 @@ namespace Capa_Vista_Ventas
         private int _idCliente = 0;
         private decimal _montoTotal = 0;
 
+        private bool _modoEdicion = false;
+        private string _tipoOperacionOriginal = "";
+        private bool _soloConsulta = false;
 
         DataTable dtDetalle = new DataTable();
         float totalGeneral = 0;
@@ -33,9 +36,20 @@ namespace Capa_Vista_Ventas
 
         }
 
+        public Frm_Detalle_Ventas(int idVenta)
+        {
+            InitializeComponent();
+
+            this.StartPosition =
+                FormStartPosition.CenterScreen;
+
+            _idVenta = idVenta;
+            _modoEdicion = true;
+        }
+
+
         private void Frm_Detalle_Ventas_Load(object sender, EventArgs e)
         {
-            fun_EstadoInicial();
             fun_CargarClientes();
             fun_CargarSucursales();
             fun_CargarInventario();
@@ -46,11 +60,31 @@ namespace Capa_Vista_Ventas
             fun_CargarEstadoVenta();
             //nuevo para tipo operacion
             fun_CargarTipoOperacion();
-            fun_CargarIdVenta();
+            //fun_CargarIdVenta();
             //Cbo_Id_Cliente.SelectedIndexChanged += Cbo_Id_Cliente_SelectedIndexChanged;
             Lbl_Fecha_Cotizacion_pedido.Visible = false;
             Dtp_fecha_cotizacion_pedido.Visible = false;
             Btn_Pagar.Enabled = false;
+
+            //nueva forma de hacer la consulta hoy 18 de mayo
+            if (_modoEdicion)
+            {
+                Btn_Ingresar_Ventas.Enabled = false;
+                // MOSTRAR ID REAL
+                Cbo_Id_Venta.Items.Clear();
+                Cbo_Id_Venta.Items.Add(_idVenta);
+                Cbo_Id_Venta.SelectedIndex = 0;
+
+                fun_CargarVentaEdicion();
+                MessageBox.Show(
+                    "Modo edición venta: " + _idVenta);
+            }
+            else
+            {
+                fun_EstadoInicial();
+                // NUEVA VENTA
+                fun_CargarIdVenta();
+            }
 
         }
 
@@ -176,14 +210,23 @@ namespace Capa_Vista_Ventas
         {
             try
             {
-                Cbo_Estado.Items.Clear();
-                Cbo_Estado.Items.Add("Activo");
-                Cbo_Estado.Items.Add("Inactivo");
+                DataTable dt = new DataTable();
+
+                dt.Columns.Add("Estado");
+
+                dt.Rows.Add("Activo");
+                dt.Rows.Add("Inactivo");
+
+                Cbo_Estado.DataSource = dt;
+                Cbo_Estado.DisplayMember = "Estado";
+                Cbo_Estado.ValueMember = "Estado";
+
                 Cbo_Estado.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar estado: " + ex.Message);
+                MessageBox.Show(
+                    "Error al cargar estado: " + ex.Message);
             }
         }
         //NUEVO Tipo de operacion
@@ -302,6 +345,154 @@ namespace Capa_Vista_Ventas
             Btn_Eliminar.Enabled = false;
             Btn_buscar_Ventas.Enabled = false;
         }
+
+
+
+        //nuevo hoy 18 de mayo
+        private void fun_CargarVentaEdicion()
+        {
+            try
+            {
+                DataTable dt =
+                    controlador.ObtenerVentaPorId(_idVenta);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "No se encontró la venta.");
+
+                    return;
+                }
+
+                DataRow row = dt.Rows[0];
+                //ENCABEZADO
+                // FECHA
+                Dtp_Fecha_Venta.Value =
+                    Convert.ToDateTime(row["Cmp_Fecha_Venta"]);
+
+                // CLIENTE
+                Cbo_Id_Cliente.SelectedValue =
+                    Convert.ToInt32(row["Fk_Id_Cliente"]);
+
+                // SUCURSAL
+                Cbo_Id_Sucursal.SelectedValue =
+                    Convert.ToInt32(row["Fk_Id_Sucursal"]);
+
+                // ESTADO
+                string estado =
+                    row["Cmp_Estado_Venta"].ToString().Trim();
+
+                if (estado == "0")
+                {
+                    estado = "Activo";
+                }
+
+                Cbo_Estado.Text = estado;
+
+                // TIPO OPERACION
+                string tipoOperacion =
+                    row["Cmp_Tipo_Operacion"].ToString();
+
+                Cbo_Tipo_Operacion.SelectedValue = tipoOperacion;
+
+                _tipoOperacionOriginal = tipoOperacion;
+
+                // SI YA ES VENTA
+                if (tipoOperacion == "Venta")
+                {
+                    _soloConsulta = true;
+
+                    MessageBox.Show(
+                        "Esta venta ya fue finalizada.\n" +
+                        "Modo solo consulta.");
+                }
+
+                // TOTAL
+                Txt_Saldo_Total.Text =
+                    row["Cmp_Saldo_Total"].ToString();
+
+                //CARGAR DETALLE
+                dtDetalle.Clear();
+
+                DataTable dtDetalleBD =
+                    controlador.ObtenerDetalleVenta(_idVenta);
+
+                foreach (DataRow item in dtDetalleBD.Rows)
+                {
+                    dtDetalle.Rows.Add(
+                        item["IdProducto"],
+                        item["Producto"],
+                        item["Descripcion"],
+
+                        item["IdBodega"],
+                        item["Bodega"],
+
+                        item["IdUnidad"],
+                        item["UnidadMedida"],
+
+                        item["Precio"],
+                        item["Cantidad"],
+
+                        item["Descuento"],
+                        item["TipoCliente"],
+
+                        item["Subtotal"]
+                    );
+                }
+
+                // =====================================
+                // RECALCULAR TOTAL
+                // =====================================
+
+                totalGeneral =
+                    controlador.CalcularTotal(dtDetalle);
+
+                Txt_Saldo_Total.Text =
+                    "Q " + totalGeneral.ToString("0.00");
+
+                Dgv_Detalle_Venta.DataSource =
+                    dtDetalle;
+                // SOLO CONSULTA
+                // =====================================
+
+                if (_soloConsulta)
+                {
+                    // BLOQUEAR TODO
+                    Cbo_Id_Cliente.Enabled = false;
+                    Cbo_Id_Sucursal.Enabled = false;
+                    Cbo_Estado.Enabled = false;
+                    Cbo_Tipo_Operacion.Enabled = false;
+
+                    Cbo_Id_Inventario.Enabled = false;
+                    Cbo_Id_Bodega.Enabled = false;
+                    Cbo_Unidad_Medida.Enabled = false;
+
+                    Nud_Cant_Prod.Enabled = false;
+
+                    Btn_Agregar_Detalle_Ventas.Enabled = false;
+                    Btn_Remover_Detalle_Ventas.Enabled = false;
+                    Btn_Limpiar_Detalle_Ventas.Enabled = false;
+
+                    Btn_Guardar_Ventas.Enabled = false;
+                    Btn_Cancelar_Ventas.Enabled = false;
+                    Btn_Modificar_Ventas.Enabled = false;
+
+                    Dgv_Detalle_Venta.ReadOnly = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error cargar venta: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
         private void Dgv_Detalle_Venta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -309,7 +500,31 @@ namespace Capa_Vista_Ventas
 
         private void Btn_Modificar_Ventas_Click(object sender, EventArgs e)
         {
+            if (!_modoEdicion)
+            {
+                MessageBox.Show(
+                    "Primero abra una venta desde el listado.");
+                return;
+            }
 
+            MessageBox.Show("Modo edición activado.");
+
+            // HABILITAR CONTROLES
+            Cbo_Id_Cliente.Enabled = true;
+            Cbo_Id_Sucursal.Enabled = true;
+            Cbo_Estado.Enabled = true;
+            Cbo_Tipo_Operacion.Enabled = true;
+
+            Cbo_Id_Inventario.Enabled = true;
+            Cbo_Id_Bodega.Enabled = true;
+            Cbo_Unidad_Medida.Enabled = true;
+
+            Nud_Cant_Prod.Enabled = true;
+
+            Btn_Agregar_Detalle_Ventas.Enabled = true;
+            Btn_Remover_Detalle_Ventas.Enabled = true;
+
+            Btn_Guardar_Ventas.Enabled = true;
         }
 
         private void Btn_Guardar_Ventas_Click(object sender, EventArgs e)
@@ -353,21 +568,56 @@ namespace Capa_Vista_Ventas
                 DateTime dCmp_Fecha_Vencimiento = dCmp_Fecha_Venta.AddDays(30);
                    _idVenta = Convert.ToInt32(Cbo_Id_Venta.SelectedItem ?? 0);
                 _montoTotal = Convert.ToDecimal(fSaldo_total);
-                // GUARDAR
-                bool resultado = controlador.GuardarVenta(
-                    dCmp_Fecha_Venta,
-                    iFk_Id_Cliente,
-                    iFk_Id_Sucursal,
-                    sCmp_Estado_Venta,
-                    sCmp_Tipo_Operacion,
-                    fSaldo_total,
-                    dtDetalle,
-                    dFecha_Especial,         // ← Para tbl_ventas (entrega/cotización)
-                    dCmp_Fecha_Vencimiento,  // ← Para cuenta por cobrar
-                    bEsVenta
-                );
-              
-             
+
+                //NUevo agregado 18 de mayo
+
+                // VALIDAR SI SE CONVIERTE A VENTA
+                bool convertirAVenta = false;
+
+                if (_modoEdicion)
+                {
+                    if ((_tipoOperacionOriginal == "Cotizacion"
+                        || _tipoOperacionOriginal == "Pedido")
+                        &&
+                        sCmp_Tipo_Operacion == "Venta")
+                    {
+                        convertirAVenta = true;
+                    }
+                }
+
+                // GUARDAR O ACTUALIZAR
+                bool resultado = false;
+
+                if (_modoEdicion)
+                {
+                    resultado = controlador.ActualizarVenta(
+                        _idVenta,
+                        dCmp_Fecha_Venta,
+                        iFk_Id_Cliente,
+                        iFk_Id_Sucursal,
+                        sCmp_Estado_Venta,
+                        sCmp_Tipo_Operacion,
+                        fSaldo_total,
+                        convertirAVenta,
+                        dtDetalle
+                    );
+                }
+                else
+                {
+                    resultado = controlador.GuardarVenta(
+                        dCmp_Fecha_Venta,
+                        iFk_Id_Cliente,
+                        iFk_Id_Sucursal,
+                        sCmp_Estado_Venta,
+                        sCmp_Tipo_Operacion,
+                        fSaldo_total,
+                        dtDetalle,
+                        dFecha_Especial,
+                        dCmp_Fecha_Vencimiento,
+                        bEsVenta
+                    );
+                }
+
                 if (resultado)
                 {
                     // BITACORA
