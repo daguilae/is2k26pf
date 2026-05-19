@@ -302,22 +302,24 @@ namespace Capa_Vista_CodigoB
 
                 conexion.Open();
 
-                string sql = @"INSERT INTO tbl_codigo_barras_material
-                               (Fk_Id_Materiales, Codigo_Barras, Tipo_Codigo_Barras, Imagen_Codigo_Barras)
-                               VALUES (?, ?, ?, ?)";
+                string sql = @"UPDATE tbl_materiales
+               SET Codigo_Barras = ?,
+                   Tipo_Codigo_Barras = ?,
+                   Imagen_Material = ?
+               WHERE Pk_Id_Materiales = ?";
 
                 OdbcCommand cmd = new OdbcCommand(sql, conexion);
 
-                cmd.Parameters.Add("@idMaterial", OdbcType.Int).Value = idMaterial;
                 cmd.Parameters.Add("@codigo", OdbcType.VarChar).Value = codigoGenerado;
                 cmd.Parameters.Add("@tipo", OdbcType.VarChar).Value = Cmb_Tipo.Text;
                 cmd.Parameters.Add("@imagen", OdbcType.Binary).Value = imagenABytes(imagenFinalCodigo);
+                cmd.Parameters.Add("@idMaterial", OdbcType.Int).Value = idMaterial;
 
                 cmd.ExecuteNonQuery();
 
                 conexion.Close();
 
-                MessageBox.Show("Código guardado correctamente.");
+                MessageBox.Show("Código guardado correctamente en el material.");
             }
             catch (Exception ex)
             {

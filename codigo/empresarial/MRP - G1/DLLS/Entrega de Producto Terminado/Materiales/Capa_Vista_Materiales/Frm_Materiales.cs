@@ -41,7 +41,9 @@ namespace Capa_Vista_Materiales
                         "Lote_Minimo_Compra",
                         "Lead_Time_Produccion_Dias",
                         "Activo",
-                        "Imagen_Material"
+                        "Imagen_Material",
+                        "Codigo_Barras",
+                        "Tipo_Codigo_Barras"
             };
 
             string[] sEtiquetas = {
@@ -55,7 +57,9 @@ namespace Capa_Vista_Materiales
                         "Lote mínimo compra",
                         "Tiempo de producción en días",
                         "Estado",
-                        "Imagen"
+                        "Imagen",
+                        "Código de barras",
+                        "Tipo de código"
                      };
 
             // ─── CONFIGURACIÓN FK ────────────────────────────────────────────────
