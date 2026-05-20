@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaTipoDeMerma.chm
+Contents file=AyudaTiposDeMerma.hhc
+Default Window=AyudaTipoMerma
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaTipoMerma="Capacitación Mantenimiento Tipo de Merma","AyudaTiposDeMerma.hhc",,"TipoDeMerma_ayuda.html","TipoDeMerma_ayuda.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+TipoDeMerma_ayuda.html
+
+[INFOTYPES]
+

@@ -1,0 +1,34 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Unificada.chm
+Contents file=Ayuda_U.hhc
+Default Window=Ayudas
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+Ayudas=,"Ayuda_U.hhc",,,,,,,,0x23520,,0x306e,,0x1830000,,,,,,0
+
+
+[FILES]
+Ayuda Tipo de movimiento inventario\ayuda_tipo_MI.html
+Ayuda_Costo\Ayuda\Cliente.html
+Ayuda_Plan_Producción\Plan_Produccion.html
+Ayudas_BOM\Ayuda_CrearBom\Crear_Bom.html
+Ayudas_BOM\Ayuda_Recepcion_Materiales\Recepcion_Materiales.html
+Ayudas_Explosion\Explosion_ayuda.html
+Ayudas_Facturacion\facturacion.html
+Ayudas_Produccion\Produccion.html
+Ayudas_Tipo_Costo\Tipo_Costo.html
+AyudasMantenimientos\Ayuda_Tipo_Inventario\Tipo_Inventario.html
+AyudasMantenimientos\Ayuda-Gerber\Plan_Produccion.html
+AyudasMantenimientos\Ayudas Mantenimiento\ayudaEstadoFase.html
+AyudasMantenimientos\Ayudas Mantenimiento\ayudaEstadoOrden.html
+AyudasMantenimientos\AyudasCategoriaMaterial\CategoriaMaterial.html
+AyudasMantenimientos\AyudasMantenimientoEstadoBOM\Estado_BOM_Ayuda.html
+AyudasMantenimientos\AyudasMantenimientoTipoDeMerma\TipoDeMerma_ayuda.html
+AyudasMantenimientos\AyudasMantenimientoUDM\UnidadesDeMedida_ayuda.html
+AyudasMantenimientos\RecepcionMaterial\Recepcion_Material.html
+
+[INFOTYPES]
+

@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_tipo.chm
+Contents file=Ayudatipo.hhc
+Default Window=Ayudatipo
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+Ayudatipo="Ayuda para tipo de costos","Ayudatipo.hhc",,"Cliente.html","Cliente.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Cliente.html
+
+[INFOTYPES]
+
