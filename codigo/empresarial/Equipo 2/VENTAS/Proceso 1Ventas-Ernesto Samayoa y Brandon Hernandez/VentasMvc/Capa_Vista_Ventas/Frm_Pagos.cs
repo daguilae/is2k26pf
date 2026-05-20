@@ -72,7 +72,7 @@ namespace Capa_Vista_Ventas
 
 
                 int idModulo = 44;
-                    permisoUsuario.ObtenerIdModuloPorNombre("Logistica");
+                permisoUsuario.ObtenerIdModuloPorNombre("Logistica");
 
                 int idPerfil =
                     usuarioCtrl.ObtenerIdPerfilDeUsuario(idUsuario);
@@ -189,20 +189,17 @@ namespace Capa_Vista_Ventas
         }
         private void fun_PrecargarDesdVentas()
         {
-            // Precargar CXC
+            // Asignar saldo pendiente real desde la BD
+            _saldoPendiente = _cxcControlador.ObtenerSaldoPendienteActual(_idCuentaPorCobrar);
+
             Cbo_CXC.Text = _idCuentaPorCobrar.ToString();
             Cbo_CXC.Enabled = false;
 
-            // Precargar Monto
             Txt_Monto.Text = _monto.ToString("F2");
             Txt_Monto.ReadOnly = true;
 
-            // Fecha por defecto
             Dtp_Fecha_Pago.Value = DateTime.Now;
-
-            // Estado por defecto = Pendiente
             Cbo_Estado.SelectedIndex = 0;
-
             Cbo_MetodoPago.Focus();
         }
 
@@ -349,6 +346,7 @@ namespace Capa_Vista_Ventas
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
+
             string sMet = Cbo_MetodoPago.SelectedItem?.ToString();
 
             if (string.IsNullOrEmpty(sMet))
@@ -364,7 +362,7 @@ namespace Capa_Vista_Ventas
                 return;
             }
 
-            if (!Txt_Monto.ReadOnly)
+            if (!Txt_Monto.ReadOnly) // Flujo MDI: abono libre
             {
                 if (!decimal.TryParse(Txt_Monto.Text, out decimal abono) || abono <= 0)
                 {
@@ -388,12 +386,15 @@ namespace Capa_Vista_Ventas
                     return;
                 }
 
-
-                AbrirSubformulario(sMet, _idCuentaPorCobrar, _saldoPendiente);
+                AbrirSubformulario(sMet, _idCuentaPorCobrar, abono); // ← pasa el abono digitado
                 return;
             }
-            AbrirSubformulario(sMet, _idCuentaPorCobrar, _saldoPendiente);
+
+            // Flujo Ventas/Devolución: monto fijo precargado
+            AbrirSubformulario(sMet, _idCuentaPorCobrar, _monto); // ← pasa _monto, no _saldoPendiente
         }
+    
+
 
 
 
