@@ -474,6 +474,47 @@ namespace Capa_Vista_OrdenProduccion
             Dgv_DetalleOrdenProduccion.Rows[nuevoIndice].Selected = true;
         }
 
+        //nuevo 
+        public void CargarDesdeVentas(
+    int vendedor,
+    DateTime fechaVenta,
+    DateTime fechaEntrega,
+    DataTable dtVentas
+)
+        {
+            try
+            {
+                // VENDEDOR
+                Cmb_Vendedor.SelectedValue = vendedor;
+
+                // FECHA
+                Dtp_FechaEmision.Value = fechaVenta;
+                Dtp_FechaEntrega.Value = fechaEntrega;
+
+                // LIMPIAR GRID
+                Dgv_DetalleOrdenProduccion.Rows.Clear();
+
+                // RECORRER DATATABLE DE VENTAS
+                foreach (DataRow row in dtVentas.Rows)
+                {
+                    Dgv_DetalleOrdenProduccion.Rows.Add(
+                        row["IdProducto"].ToString(), // ID PRODUCTO
+                        row["Producto"].ToString(),  // NOMBRE
+                        row["Cantidad"].ToString(), // CANTIDAD SOLICITADA
+                        "0"                         // CANTIDAD RECIBIDA
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar datos de ventas: " + ex.Message
+                );
+            }
+        }
+
+
+
         private void Btn_inicio_Click(object sender, EventArgs e)
         {
             NavegarGridDetalle("Inicio");

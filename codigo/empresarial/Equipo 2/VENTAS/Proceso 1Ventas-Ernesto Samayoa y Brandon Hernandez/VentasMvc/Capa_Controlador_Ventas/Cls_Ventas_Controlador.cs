@@ -65,17 +65,23 @@ namespace Capa_Controlador_Ventas
         }
 
         //Validar la asignaciones de vendedores cliente
-        public (bool tieneVendedor, string Cmp_NombreVendedor) ValidarClienteVendedor(int iFk_Id_Cliente)
+        public (bool tieneVendedor, int idVendedor, string nombreVendedor)
+            ValidarClienteVendedor(int iFk_Id_Cliente)
         {
             DataTable dt = dao.ObtenerVendedorDeCliente(iFk_Id_Cliente);
 
             if (dt.Rows.Count > 0)
             {
-                string Cmp_NombreVendedor = dt.Rows[0]["Vendedor"].ToString();
-                return (true, Cmp_NombreVendedor);
+                int idVendedor =
+                    Convert.ToInt32(dt.Rows[0]["Pk_Id_Vendedor"]);
+
+                string nombreVendedor =
+                    dt.Rows[0]["Vendedor"].ToString();
+
+                return (true, idVendedor, nombreVendedor);
             }
 
-            return (false, "");
+            return (false, 0, "");
         }
 
         //PARA VENTAS GENERALES

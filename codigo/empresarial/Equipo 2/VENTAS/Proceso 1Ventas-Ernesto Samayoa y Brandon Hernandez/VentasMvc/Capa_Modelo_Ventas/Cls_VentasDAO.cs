@@ -26,25 +26,26 @@ namespace Capa_Modelo_Ventas
          FROM tbl_sucursales";
 
         private static readonly string SQL_INVENTARIO = @"
-        SELECT
-        i.pk_inventario_id,              
-        i.nombre_prod,
-        i.descripcion,
-        i.precio_unitario,
-        e.stock,
-        e.fk_bodega_id,
-        CONCAT(i.pk_inventario_id, ' - ', i.nombre_prod, ' (Stock: ', e.stock, ')') AS Producto
-        FROM tbl_inventario i
-        INNER JOIN tbl_existencias e ON i.pk_inventario_id = e.fk_inventario_id
-        WHERE i.estado_producto = 'ACTIVO' AND e.stock > 0";
+SELECT DISTINCT
+    i.pk_inventario_id,
+    i.nombre_prod,
+    i.descripcion,
+    i.precio_unitario,
+    CONCAT(i.pk_inventario_id, ' - ', i.nombre_prod) AS Producto
+FROM tbl_inventario i
+WHERE i.estado_producto = 'ACTIVO'";
 
         private static readonly string SQL_BODEGAS = @"
-        SELECT 
+SELECT
+    Pk_Id_Bodega,
+    Cmp_Nombre_Bodega,
+    CONCAT(
         Pk_Id_Bodega,
-        Cmp_Nombre_Bodega,
-        CONCAT(Pk_Id_Bodega, ' - ', Cmp_Nombre_Bodega) AS NombreBodega
-        FROM tbl_bodega
-        WHERE Cmp_Estado_Bodega = 'Activo'";
+        ' - ',
+        Cmp_Nombre_Bodega
+    ) AS NombreBodega
+FROM tbl_bodega
+WHERE Cmp_Estado_Bodega = 'Activo'";
 
 
         //NUEVO UNIDAD DE MEDIDA PARA LLAMAR EN COMBOBOX
@@ -135,12 +136,22 @@ namespace Capa_Modelo_Ventas
         //bodegas que contengan ciertos productos
         private static readonly string SQL_BODEGAS_POR_PRODUCTO = @"
         SELECT 
-        b.Pk_Id_Bodega,
-        b.Cmp_Nombre_Bodega,
-        CONCAT(b.Pk_Id_Bodega, ' - ', b.Cmp_Nombre_Bodega) AS NombreBodega
+            b.Pk_Id_Bodega,
+            b.Cmp_Nombre_Bodega,
+            e.stock,
+            CONCAT(
+                b.Pk_Id_Bodega,
+                ' - ',
+                b.Cmp_Nombre_Bodega,
+                ' (Stock: ',
+                e.stock,
+                ')'
+            ) AS NombreBodega
         FROM tbl_existencias e
-        INNER JOIN tbl_bodega b ON e.fk_bodega_id = b.Pk_Id_Bodega
-        WHERE e.fk_inventario_id = ? AND e.stock > 0";
+        INNER JOIN tbl_bodega b
+            ON e.fk_bodega_id = b.Pk_Id_Bodega
+        WHERE e.fk_inventario_id = ?
+        AND e.stock > 0";
 
 
         //NUEVO DE UNIDAD DE MEDIDA Y PRODUCTO
