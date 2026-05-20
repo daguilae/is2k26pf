@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaProduccion.chm
+Contents file=AyudaProduccion.hhc
+Default Window=AyudaProduccion
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+AyudaProduccion="Archivo de ayudas - Produccion","AyudaProduccion.hhc",,"index.html","index.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+index.html
+
+[INFOTYPES]
+

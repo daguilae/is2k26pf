@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Ayuda Costo">
+		<param name="Local" value="Ayuda_Costo.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Ayuda Estado">
+		<param name="Local" value="Ayuda_Estado.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Movimiento Inventario">
+		<param name="Local" value="ayuda_tipo_MI.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Fase de Produccion">
+		<param name="Local" value="ayudaEstadoFase.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Orden Produccion">
+		<param name="Local" value="ayudaEstadoOrden.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Plan Produccion">
+		<param name="Local" value="AyudaPlanProduccion.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Ayuda Produccion">
+		<param name="Local" value="AyudaProduccion.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Categoria Material">
+		<param name="Local" value="CategoriaMaterial.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Crear BOM">
+		<param name="Local" value="Crear_Bom.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Estado BOM">
+		<param name="Local" value="Estado_BOM_Ayuda.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Explosion Ayuda">
+		<param name="Local" value="Explosion_ayuda.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Facturacion">
+		<param name="Local" value="facturacion.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Plan de Produccion">
+		<param name="Local" value="Plan_Produccion.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Recepcion Materiales">
+		<param name="Local" value="Recepcion_Materiales.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tipo Inventario">
+		<param name="Local" value="tipo_inventario.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tipo de Merma">
+		<param name="Local" value="TipoDeMerma_ayuda.html">
+		</OBJECT></LI>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Unidades de Medida">
+		<param name="Local" value="UnidadesDeMedida_ayuda.html">
+		</OBJECT></LI>
+</UL>
+</BODY></HTML>

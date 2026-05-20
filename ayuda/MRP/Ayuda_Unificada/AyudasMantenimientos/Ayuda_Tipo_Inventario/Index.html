@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ayuda - Gestión de Tipos de Inventario</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 20px auto; padding: 20px; background-color: #f4f7f6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .toolbar-desc { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        .icon-box { display: inline-block; width: 25px; text-align: center; font-weight: bold; color: #e74c3c; }
+        .db-info { background: #e8f4fd; border-left: 5px solid #3498db; padding: 10px; margin: 20px 0; font-family: monospace; }
+        kbd { background: #eee; border-radius: 3px; padding: 2px 5px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <h1>Guía de Uso: Navegador de Producción</h1>
+    <p>Este módulo permite administrar los <strong>Tipos de Inventario</strong>. A continuación, se detalla la función de cada botón de la barra de herramientas superior.</p>
+
+    <section class="toolbar-desc">
+        <h3>Funciones de los Botones</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Acción</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Ingresar / Nuevo</strong></td>
+                    <td>Habilita los campos para registrar un nuevo tipo de inventario (ej. Materia Prima).</td>
+                </tr>
+                <tr>
+                    <td><strong>Modificar</strong></td>
+                    <td>Permite editar el nombre del registro seleccionado actualmente.</td>
+                </tr>
+                <tr>
+                    <td><strong>Guardar</strong></td>
+                    <td>Confirma y almacena los cambios realizados en la base de datos.</td>
+                </tr>
+                <tr>
+                    <td><strong>Cancelar</strong></td>
+                    <td>Anula la operación actual y bloquea la edición de campos.</td>
+                </tr>
+                <tr>
+                    <td><strong>Eliminar</strong></td>
+                    <td>Borra permanentemente el registro seleccionado de la tabla.</td>
+                </tr>
+                <tr>
+                    <td><strong>Consultar</strong></td>
+                    <td>Abre la búsqueda para localizar un ID o Nombre específico.</td>
+                </tr>
+                <tr>
+                    <td><strong>Imprimir / Reporte</strong></td>
+                    <td>Genera un documento PDF o vista de impresión de los tipos de inventario.</td>
+                </tr>
+                <tr>
+                    <td><strong>Navegación</strong></td>
+                    <td>Usa los botones <kbd>Inicio</kbd>, <kbd>Anterior</kbd>, <kbd>Siguiente</kbd> y <kbd>Fin</kbd> para moverte entre los registros existentes.</td>
+                </tr>
+                <tr>
+                    <td><strong>Salir</strong></td>
+                    <td>Cierra el formulario y regresa al menú principal.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <h3>Estructura de Datos (Tbl_Tipo_Inventario)</h3>
+    <p>El sistema gestiona los siguientes campos de forma automática o manual:</p>
+    <ul>
+        <li><strong>Pk_Id_Tipo_Inventario:</strong> Código único e incremental del registro.</li>
+        <li><strong>Nombre_Tipo_Inventario:</strong> Descripción del inventario. Los valores permitidos son:
+            <ul>
+                <li><em>Materia Prima</em></li>
+                <li><em>En Producción</em></li>
+                <li><em>Producto Final</em></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="db-info">
+        <strong>Nota técnica:</strong> El motor de búsqueda utiliza <code>InnoDB</code> para asegurar la integridad referencial de los datos de inventario.
+    </div>
+
+</body>
+</html>

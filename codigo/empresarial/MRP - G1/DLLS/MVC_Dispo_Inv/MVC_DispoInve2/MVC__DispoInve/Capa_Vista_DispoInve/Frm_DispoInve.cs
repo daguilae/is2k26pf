@@ -142,6 +142,8 @@ namespace Capa_Vista_DispoInve
                 dgvInventario.DataSource = null;
                 dgvInventario.DataSource = lista;
 
+
+
                 // Marcar en rojo filas con stock bajo mínimo
                 foreach (DataGridViewRow fila in dgvInventario.Rows)
                 {
