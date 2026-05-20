@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_Controlador_Seguridad;
 using Capa_Controlador_Ventas;
+using Capa_Vista_OrdenProduccion;
 
 namespace Capa_Vista_Ventas
 {
@@ -65,7 +66,7 @@ namespace Capa_Vista_Ventas
             Lbl_Fecha_Cotizacion_pedido.Visible = false;
             Dtp_fecha_cotizacion_pedido.Visible = false;
             Btn_Pagar.Enabled = false;
-
+            Btn_OrdenP.Enabled = false;
             //nueva forma de hacer la consulta hoy 18 de mayo
             if (_modoEdicion)
             {
@@ -963,7 +964,7 @@ namespace Capa_Vista_Ventas
 
                 if (resultado.tieneVendedor)
                 {
-                    MessageBox.Show("Cliente atendido por el vendedor: " + resultado.Cmp_NombreVendedor);
+                    MessageBox.Show("Cliente atendido por el vendedor: " + resultado.nombreVendedor);
 
                     Cbo_Id_Sucursal.Enabled = true;
                     Cbo_Estado.Enabled = true;
@@ -1103,6 +1104,7 @@ namespace Capa_Vista_Ventas
                     Lbl_Fecha_Cotizacion_pedido.Visible = true;
                     Dtp_fecha_cotizacion_pedido.Visible = true;
                     Btn_Pagar.Enabled = false;
+                    Btn_OrdenP.Enabled = false;
                     break;
 
                 case "Pedido":
@@ -1110,14 +1112,74 @@ namespace Capa_Vista_Ventas
                     Lbl_Fecha_Cotizacion_pedido.Visible = true;
                     Dtp_fecha_cotizacion_pedido.Visible = true;
                     Btn_Pagar.Enabled = false;
+
+                    Btn_OrdenP.Enabled = true;
                     break;
                 case "Venta":
                     Lbl_Fecha_Cotizacion_pedido.Visible = false;
                     Dtp_fecha_cotizacion_pedido.Visible = false;
                     Btn_Pagar.Enabled = true;
+                    Btn_OrdenP.Enabled = false;
                     break;
             }
         }
+
+        private void Btn_OrdenP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // VALIDAR PRODUCTOS
+                if (dtDetalle.Rows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "Debe agregar productos antes de generar la orden."
+                    );
+                    return;
+                }
+
+                int iFk_Id_Cliente =
+                    Convert.ToInt32(Cbo_Id_Cliente.SelectedValue);
+
+                var resultado =
+                    controlador.ValidarClienteVendedor(iFk_Id_Cliente);
+
+                // VALIDAR VENDEDOR
+                if (!resultado.tieneVendedor)
+                {
+                    MessageBox.Show(
+                        "El cliente no tiene vendedor asignado."
+                    );
+                    return;
+                }
+
+                // OBTENER DATOS
+                int idVendedor = resultado.idVendedor;
+
+                // FECHA
+                DateTime fechaVenta = Dtp_Fecha_Venta.Value;
+                DateTime fechaEntrega = Dtp_fecha_cotizacion_pedido.Value;
+                // FORMULARIO
+                Frm_OrdenProduccion_Detalle frm =
+                    new Frm_OrdenProduccion_Detalle();
+
+                // ENVIAR DATOS
+                frm.CargarDesdeVentas(
+                    idVendedor,
+                    fechaVenta,
+                    fechaEntrega,
+                    dtDetalle
+                );
+
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al abrir orden de producción: " + ex.Message
+                );
+            }
+        }
+
     }
     //Brandon Hernandez  -- Seleccion de cotizacion y pedidos 
 }

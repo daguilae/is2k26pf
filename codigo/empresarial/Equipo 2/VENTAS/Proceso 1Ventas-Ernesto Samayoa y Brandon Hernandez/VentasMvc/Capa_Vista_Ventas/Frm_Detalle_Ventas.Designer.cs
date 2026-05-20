@@ -76,6 +76,7 @@ namespace Capa_Vista_Ventas
             this.Btn_Ayuda = new System.Windows.Forms.Button();
             this.Btn_Cancelar_Ventas = new System.Windows.Forms.Button();
             this.Btn_Modificar_Ventas = new System.Windows.Forms.Button();
+            this.Btn_OrdenP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.GB_Ventas.SuspendLayout();
             this.GB_Detalle_Ventas.SuspendLayout();
@@ -304,6 +305,7 @@ namespace Capa_Vista_Ventas
             // 
             // GB_Detalle_Ventas
             // 
+            this.GB_Detalle_Ventas.Controls.Add(this.Btn_OrdenP);
             this.GB_Detalle_Ventas.Controls.Add(this.Cbo_Unidad_Medida);
             this.GB_Detalle_Ventas.Controls.Add(this.label4);
             this.GB_Detalle_Ventas.Controls.Add(this.Btn_Limpiar_Detalle_Ventas);
@@ -332,7 +334,7 @@ namespace Capa_Vista_Ventas
             // Cbo_Unidad_Medida
             // 
             this.Cbo_Unidad_Medida.FormattingEnabled = true;
-            this.Cbo_Unidad_Medida.Location = new System.Drawing.Point(858, 95);
+            this.Cbo_Unidad_Medida.Location = new System.Drawing.Point(802, 95);
             this.Cbo_Unidad_Medida.Margin = new System.Windows.Forms.Padding(4);
             this.Cbo_Unidad_Medida.Name = "Cbo_Unidad_Medida";
             this.Cbo_Unidad_Medida.Size = new System.Drawing.Size(199, 30);
@@ -342,7 +344,7 @@ namespace Capa_Vista_Ventas
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(693, 101);
+            this.label4.Location = new System.Drawing.Point(637, 101);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 20);
@@ -425,7 +427,7 @@ namespace Capa_Vista_Ventas
             // 
             // Nud_Cant_Prod
             // 
-            this.Nud_Cant_Prod.Location = new System.Drawing.Point(860, 44);
+            this.Nud_Cant_Prod.Location = new System.Drawing.Point(817, 44);
             this.Nud_Cant_Prod.Margin = new System.Windows.Forms.Padding(4);
             this.Nud_Cant_Prod.Maximum = new decimal(new int[] {
             5000,
@@ -450,7 +452,7 @@ namespace Capa_Vista_Ventas
             // 
             this.Lbl_Cantidad.AutoSize = true;
             this.Lbl_Cantidad.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Cantidad.Location = new System.Drawing.Point(692, 48);
+            this.Lbl_Cantidad.Location = new System.Drawing.Point(649, 48);
             this.Lbl_Cantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_Cantidad.Name = "Lbl_Cantidad";
             this.Lbl_Cantidad.Size = new System.Drawing.Size(160, 20);
@@ -668,6 +670,20 @@ namespace Capa_Vista_Ventas
             this.Btn_Modificar_Ventas.UseVisualStyleBackColor = true;
             this.Btn_Modificar_Ventas.Click += new System.EventHandler(this.Btn_Modificar_Ventas_Click);
             // 
+            // Btn_OrdenP
+            // 
+            this.Btn_OrdenP.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_OrdenP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_OrdenP.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Btn_OrdenP.Location = new System.Drawing.Point(969, 41);
+            this.Btn_OrdenP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_OrdenP.Name = "Btn_OrdenP";
+            this.Btn_OrdenP.Size = new System.Drawing.Size(230, 39);
+            this.Btn_OrdenP.TabIndex = 175;
+            this.Btn_OrdenP.Text = "Orden Producción";
+            this.Btn_OrdenP.UseVisualStyleBackColor = false;
+            this.Btn_OrdenP.Click += new System.EventHandler(this.Btn_OrdenP_Click);
+            // 
             // Frm_Detalle_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -755,5 +771,6 @@ namespace Capa_Vista_Ventas
         private System.Windows.Forms.Label Lbl_Fecha_Cotizacion_pedido;
         private System.Windows.Forms.ComboBox Cbo_Unidad_Medida;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Btn_OrdenP;
     }
 }

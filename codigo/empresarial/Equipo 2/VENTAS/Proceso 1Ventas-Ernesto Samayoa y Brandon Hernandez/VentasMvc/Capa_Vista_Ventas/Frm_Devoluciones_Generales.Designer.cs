@@ -65,7 +65,7 @@ namespace Capa_Vista_Ventas
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(380, 35);
             this.label1.TabIndex = 1;
-            this.label1.Text = "733 - Devoluciones Ventas";
+            this.label1.Text = "735 - Devoluciones Ventas";
             // 
             // Dgv_Ventas_Generales
             // 
