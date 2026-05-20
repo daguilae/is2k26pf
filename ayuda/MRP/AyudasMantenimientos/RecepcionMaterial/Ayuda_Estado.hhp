@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Estado.chm
+Contents file=ayuda.hhc
+Default Window=Ayuda_estado_recepcion
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+Ayuda_estado_recepcion="Ayuda para el usuario","ayuda.hhc",,"Cliente.html",,,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Cliente.html
+
+[INFOTYPES]
+

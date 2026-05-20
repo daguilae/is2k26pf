@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Facturación</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --bg:        #f5f4f0;
+      --surface:   #ffffff;
+      --border:    #e2dfd8;
+      --accent:    #1a5c96;
+      --accent-lt: #eaf1f8;
+      --accent-dk: #113e68;
+      --text:      #1e1e1e;
+      --muted:     #6b6860;
+      --step-dot:  #1a5c96;
+      --shadow:    0 2px 16px rgba(0,0,0,0.07);
+      --radius:    12px;
+    }
+
+    /* ── Reset / Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--accent-dk);
+      color: #fff;
+      padding: 48px 40px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    header .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--accent-dk);
+      margin: 56px 0 24px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-title:first-of-type { margin-top: 0; }
+
+    /* ── Step card ── */
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .step:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--accent-lt);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-header h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-dk);
+    }
+
+    .step-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ── Description text ── */
+    .step-desc {
+      font-size: 14.5px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* ── Image placeholder ── */
+    .img-wrap {
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      background: #fafaf8;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* placeholder state (when img is missing) */
+    .img-wrap .placeholder-icon {
+      font-size: 36px;
+      opacity: 0.25;
+    }
+
+    .img-wrap .placeholder-text {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* hide placeholder children once image loads */
+    .img-wrap img ~ .placeholder-icon,
+    .img-wrap img ~ .placeholder-text { display: none; }
+
+    /* ── Note / tip ── */
+    .note {
+      background: #fff8e6;
+      border-left: 3px solid #e6a817;
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      font-size: 13.5px;
+      color: #7a5a0a;
+    }
+
+    .note strong { color: #5c4000; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { padding: 36px 20px 32px; }
+      main { padding: 32px 16px 60px; }
+      .step-body { padding: 16px; }
+      .step-header { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="label">Manual de usuario</div>
+    <h1>Guía de Facturación</h1>
+    <p>Sigue los pasos a continuación para generar, revisar y gestionar facturas dentro del sistema.</p>
+  </header>
+
+  <main>
+
+    <!-- ══ SECCIÓN 1: Generar factura ══ -->
+    <h3 class="section-title">Generación de Facturas</h3>
+
+    <!-- Paso 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <h2>Generar factura desde orden recibida</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          Una vez recibida una orden en el sistema, se puede generar la factura correspondiente
+          directamente desde esa orden. Este paso inicia el proceso de facturación.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact0.png" alt="Generar factura desde orden recibida"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact0.png</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECCIÓN 2: Formulario ══ -->
+    <h3 class="section-title">Formulario de Facturación</h3>
+
+    <!-- Paso 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <h2>Formulario de facturación</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          Este es el formulario principal de facturación. Aquí se capturan o verifican
+          los datos necesarios antes de emitir la factura.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact1.png" alt="Formulario de facturación"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact1.png</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <h2>Número de factura</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          El campo de número de factura identifica de forma única cada documento generado.
+          Este número se asigna automáticamente o puede configurarse según la numeración interna.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact2.png" alt="Número de factura"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact2.png</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 4 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <h2>Fecha de emisión</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          La fecha de emisión indica cuándo fue generada oficialmente la factura.
+          Verifica que la fecha sea correcta antes de confirmar la emisión.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact3.png" alt="Fecha de emisión"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact3.png</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SECCIÓN 3: Listado y detalle ══ -->
+    <h3 class="section-title">Consulta y Detalle de Facturas</h3>
+
+    <!-- Paso 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <h2>Filtro para ver las órdenes</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          Utiliza el filtro disponible para buscar y visualizar las órdenes según criterios
+          como fecha, estado o cliente. Esto facilita encontrar facturas específicas.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact4.png" alt="Filtro para ver las órdenes"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact4.png</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 6 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">6</div>
+        <h2>Botón para ver detalle</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          Cada factura en el listado cuenta con un botón de detalle. Al pulsarlo,
+          podrás acceder a la información completa de esa factura.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact5.png" alt="Botón para ver detalle"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact5.png</span>
+        </div>
+        <div class="note">
+          <strong>Tip:</strong> El botón de detalle suele estar en la columna de acciones al final de cada fila en el listado.
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 7 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">7</div>
+        <h2>Detalle de cada factura</h2>
+      </div>
+      <div class="step-body">
+        <p class="step-desc">
+          En la vista de detalle encontrarás toda la información desglosada de la factura:
+          líneas de productos o servicios, subtotales, impuestos y el total final.
+        </p>
+        <div class="img-wrap">
+          <img src="img/fact6.png" alt="Detalle de cada factura"
+               onerror="this.style.display='none'" />
+          <span class="placeholder-icon">🖼</span>
+          <span class="placeholder-text">img/fact6.png</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    Guía de Facturación &mdash; Manual de usuario interno
+  </footer>
+
+</body>
+</html>

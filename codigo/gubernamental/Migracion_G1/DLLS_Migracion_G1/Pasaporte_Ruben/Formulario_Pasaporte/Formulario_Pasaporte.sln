@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36631.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Pasaporte", "Capa_Vista_Pasaporte\Capa_Vista_Pasaporte.csproj", "{355299E9-7F3E-4EDA-8FBB-735EB4EE2D04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Modelo_Pasaporte", "Capa_Modelo_Pasaporte\Capa_Modelo_Pasaporte.csproj", "{EAF589E8-516B-4630-879D-765EE68CE939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Controlador_Pasaporte", "Capa_Controlador_Pasaporte\Capa_Controlador_Pasaporte.csproj", "{3433E90B-3A68-41FA-9045-201B1E46E408}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{355299E9-7F3E-4EDA-8FBB-735EB4EE2D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355299E9-7F3E-4EDA-8FBB-735EB4EE2D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355299E9-7F3E-4EDA-8FBB-735EB4EE2D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355299E9-7F3E-4EDA-8FBB-735EB4EE2D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF589E8-516B-4630-879D-765EE68CE939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF589E8-516B-4630-879D-765EE68CE939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF589E8-516B-4630-879D-765EE68CE939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF589E8-516B-4630-879D-765EE68CE939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3433E90B-3A68-41FA-9045-201B1E46E408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3433E90B-3A68-41FA-9045-201B1E46E408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3433E90B-3A68-41FA-9045-201B1E46E408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3433E90B-3A68-41FA-9045-201B1E46E408}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F20A9E-ADD7-43A4-A4D0-162B5AFBAC65}
+	EndGlobalSection
+EndGlobal

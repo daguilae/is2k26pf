@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayuda Estado Fase de Producción</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+        color: #222;
+      }
+      .container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+      .brand img {
+        width: 60px;
+        height: auto;
+        display: block;
+        margin: 0;
+      }
+      .brand h1 {
+        font-size: 1.6rem;
+        margin: 0;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 22px;
+      }
+      .intro {
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .field-info {
+        border-left: 3px solid #8a9cb2;
+        background: #f7f8fa;
+        padding: 14px 16px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      .field-info h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+      .field-info p {
+        margin: 0 0 8px;
+        line-height: 1.6;
+      }
+      .field-info .note {
+        font-size: 0.95rem;
+        color: #555;
+      }
+      .example {
+        margin-top: 6px;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: #eef0f3;
+        color: #333;
+        font-family: Consolas, 'Courier New', monospace;
+      }
+      .footer {
+        margin-top: 24px;
+        font-size: 0.95rem;
+        color: #444;
+      }
+      .content-image {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="brand">
+        <img src="Logo.jpeg" alt="Logo" />
+        <h1>Ayuda: Registrar Fases de Produccion</h1>
+      </header>
+
+      <main class="card">
+        <p class="intro">
+          En este formulario se registran las fases de producción de un producto.
+          Cada campo debe llenarse con información válida para que el registro se guarde correctamente.
+        </p>
+        <img class="content-image" src="Formulario Fases.png" alt="Fases de producción">
+
+        <section class="field-info">
+          <h3>1. Proceso para guardar</h3>
+          <p>
+            Para guardar una fase de producción debe seguir el proceso en orden:
+          </p>
+          <ol>
+            <li>Seleccione un producto del listado de opciones.</li>
+            <li>Escriba el nombre de la fase.</li>
+            <li>Escriba la descripción de la fase.</li>
+            <li>Ingrese la cantidad de horas hombre.</li>
+            <li>Oprima el botón de guardar para almacenar el registro.</li>
+          </ol>
+          <p class="note">
+            Debe llenar todos los campos para que el sistema permita guardar la fase de producción.
+            El nombre y la descripción deben ser cadenas de texto. Las horas hombre deben ser un número entero mayor a 0.
+          </p>
+          <div class="example">Ejemplo: Fase "Montaje", Descripción "Fase de armado de componentes", Horas "8".</div>
+        </section>
+
+        <section class="field-info">
+          <h3>2. Proceso para actualizar</h3>
+          <p>
+            Para actualizar una fase de producción debe seguir estos pasos:
+          </p>
+          <ol>
+            <li>Seleccione un producto del listado de opciones.</li>
+            <li>Revise la tabla con las fases de producción registradas para ese producto.</li>
+            <li>Seleccione la fila del registro que desea actualizar para que la información aparezca en los campos de texto.</li>
+            <li>Modifique el nombre, la descripción o la cantidad de horas hombre.</li>
+            <li>Presione el botón de modificar y confirme la actualización de los datos.</li>
+            <li>La tabla se recargará para mostrar los datos actualizados.</li>
+          </ol>
+          <p class="note">
+            El nombre y la descripción deben ser cadenas de texto. Las horas hombre deben ser un número entero mayor a 0.
+          </p>
+        </section>
+
+        <section class="field-info">
+          <h3>3. Proceso para eliminar</h3>
+          <p>
+            Para eliminar una fase de producción debe seguir estos pasos:
+          </p>
+          <ol>
+            <li>Seleccione un producto del listado de opciones.</li>
+            <li>Revise la tabla con las fases de producción registradas para ese producto.</li>
+            <li>Seleccione la fila del registro que desea eliminar para que la información aparezca en los campos de texto.</li>
+            <li>Presione el botón de eliminar y confirme la eliminación del registro.</li>
+            <li>La tabla se recargará para mostrar los datos actualizados.</li>
+          </ol>
+        </section>
+        <div class="footer">
+          Asegúrese de revisar el proceso antes de guardar, actualizar o eliminar. Nombre y descripción deben ser texto, y horas hombre deben ser un entero positivo.
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

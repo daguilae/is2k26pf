@@ -1,0 +1,2945 @@
+Commit: 0d86630
+Autor: Natareno2124
+Fecha: 2026-05-19
+Mensaje: Merge pull request #185 from Natareno2124/DiegoMonterrosoCodigoBarrass
+------------------------
+Commit: c704cf9
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-19
+Mensaje: Arreglando la tabla materiales para el codigo de barras
+------------------------
+Commit: 338192e
+Autor: Natareno2124
+Fecha: 2026-05-19
+Mensaje: Merge pull request #184 from Natareno2124/DiegoMonterrosoCodigoBarrass
+------------------------
+Commit: ea051f1
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-18
+Mensaje: Codigo De Barras incluido
+------------------------
+Commit: 1d7dcc8
+Autor: Paula Leonardo
+Fecha: 2026-05-18
+Mensaje: Merge pull request #183 from Natareno2124/Rama_Rpt_Ayuda_Expl
+------------------------
+Commit: 7dfa5f2
+Autor: IngPau
+Fecha: 2026-05-18
+Mensaje: Explosión Cambio en ayudas
+------------------------
+Commit: 848ae71
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #182 from Natareno2124/Rama_Ajustes_Finales_Kevin
+------------------------
+Commit: f74e501
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #181 from Natareno2124/Maria_Morales_Ayudas_Factura
+------------------------
+Commit: a2b1ac9
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #180 from GerberAsturias/main
+------------------------
+Commit: 753c4c2
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Ayudas de produccion
+------------------------
+Commit: 006f7d2
+Autor: mariamoralesg42
+Fecha: 2026-05-18
+Mensaje: Creacion de archivo ayudas para facturacion
+------------------------
+Commit: 4d28ea3
+Autor: GerberAsturias
+Fecha: 2026-05-18
+Mensaje: Merge pull request #10 from GerberAsturias/Implementacion_bitacora
+------------------------
+Commit: b3c09c3
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-18
+Mensaje: Se implementó bitacora en costos fases y recepcion material
+------------------------
+Commit: aa4c52a
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #179 from anderson22t/main
+------------------------
+Commit: 741972d
+Autor: anderson22t
+Fecha: 2026-05-18
+Mensaje: Merge pull request #16 from anderson22t/BitacoraPlan
+------------------------
+Commit: 74d5925
+Autor: Anderson
+Fecha: 2026-05-18
+Mensaje: Se agrego bitacora
+------------------------
+Commit: 47b84e8
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #178 from Natareno2124/Rama_Factura_Kevin
+------------------------
+Commit: 68a1c05
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Merge pull request #177 from Natareno2124/bitacota_en_transaccionales
+------------------------
+Commit: b3f08dd
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Arreglando filtrar ordenes
+------------------------
+Commit: c5c2e12
+Autor: Natareno2124
+Fecha: 2026-05-18
+Mensaje: Ajustes en metodo para cambiar estado de orden
+------------------------
+Commit: 7dab650
+Autor: Natareno2124
+Fecha: 2026-05-17
+Mensaje: Metodo para cambiar estado de orden recibida
+------------------------
+Commit: 87f649f
+Autor: Aron Esquit
+Fecha: 2026-05-17
+Mensaje: Agregue la bitacora a los Frm transaccionales
+------------------------
+Commit: 1b52982
+Autor: Natareno2124
+Fecha: 2026-05-17
+Mensaje: Merge pull request #176 from Natareno2124/ruben-lopez-frmBitacoras-centrarFRM
+------------------------
+Commit: e88ad84
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-05-17
+Mensaje: Agregando frm de bitacoras, cambiar contrasena y centrando todos los frms y MDI
+------------------------
+Commit: 0d1c407
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-05-17
+Mensaje: Agregando frm de bitacoras, cambiar contrasena y centrando todos los frms de MDI
+------------------------
+Commit: 8db82a8
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-05-17
+Mensaje: Agregando frm de bitacoras, cambiar contrasena y centrando todos los frms de MDI
+------------------------
+Commit: a5ef969
+Autor: Natareno2124
+Fecha: 2026-05-17
+Mensaje: Merge pull request #175 from GerberAsturias/main
+------------------------
+Commit: 03ca530
+Autor: GerberAsturias
+Fecha: 2026-05-16
+Mensaje: Merge pull request #9 from GerberAsturias/Correcion_costo_fase
+------------------------
+Commit: c60dffc
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-16
+Mensaje: Correccion del formulario de costo fase
+------------------------
+Commit: 51ceb6f
+Autor: Natareno2124
+Fecha: 2026-05-16
+Mensaje: Merge pull request #174 from Natareno2124/Maria_Morales_Botones
+------------------------
+Commit: 8ca3b0c
+Autor: Natareno2124
+Fecha: 2026-05-16
+Mensaje: Merge pull request #173 from Natareno2124/Pro1OrRe_Dani
+------------------------
+Commit: 85c960d
+Autor: mariamoralesg42
+Fecha: 2026-05-16
+Mensaje: Agregado de boton eliminar orden y boton refrescar grid
+------------------------
+Commit: 248792f
+Autor: mariamoralesg42
+Fecha: 2026-05-16
+Mensaje: Boton consumir habilitado siempre
+------------------------
+Commit: c5e5b13
+Autor: VennusAmery
+Fecha: 2026-05-16
+Mensaje: Cambio en el grid de disponibilidad de inventario
+------------------------
+Commit: e2622c9
+Autor: Natareno2124
+Fecha: 2026-05-15
+Mensaje: Merge pull request #172 from Natareno2124/Rama_Factura_Kevin
+------------------------
+Commit: 7fa1c1e
+Autor: Natareno2124
+Fecha: 2026-05-15
+Mensaje: Validacion de facturas ya generadas
+------------------------
+Commit: 246a3b6
+Autor: Natareno2124
+Fecha: 2026-05-15
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Factura_Kevin
+------------------------
+Commit: 401ca67
+Autor: Natareno2124
+Fecha: 2026-05-15
+Mensaje: Merge pull request #171 from anderson22t/main
+------------------------
+Commit: b9d5810
+Autor: Natareno2124
+Fecha: 2026-05-15
+Mensaje: Arreglando Generacion de Factura
+------------------------
+Commit: 5c768cb
+Autor: anderson22t
+Fecha: 2026-05-15
+Mensaje: Merge pull request #15 from anderson22t/CambiosPlanProduccion
+------------------------
+Commit: 726bfc6
+Autor: Anderson
+Fecha: 2026-05-15
+Mensaje: Mejora para cargar orden recibida
+------------------------
+Commit: 737eed7
+Autor: Paula Leonardo
+Fecha: 2026-05-15
+Mensaje: Merge pull request #170 from Natareno2124/Rama_Rpt_Ayuda_Expl
+------------------------
+Commit: 7c46ec6
+Autor: IngPau
+Fecha: 2026-05-15
+Mensaje: Ayudas Explosión de Materiales
+------------------------
+Commit: 00a4e4d
+Autor: IngPau
+Fecha: 2026-05-15
+Mensaje: Reporte Explosión en Carpeta de Reportes
+------------------------
+Commit: a1a3060
+Autor: IngPau
+Fecha: 2026-05-15
+Mensaje: Reporte Explosión
+------------------------
+Commit: 3957bf7
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #169 from Natareno2124/Implosion_y_OrdenMaterial_Corregido
+------------------------
+Commit: ea53894
+Autor: Aron Esquit
+Fecha: 2026-05-13
+Mensaje: Implosion y Orden Material con la nueva tabla
+------------------------
+Commit: 00052bc
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #168 from anderson22t/main
+------------------------
+Commit: f3b703d
+Autor: anderson22t
+Fecha: 2026-05-13
+Mensaje: Merge pull request #14 from anderson22t/DetalleFactura
+------------------------
+Commit: 5b88a3e
+Autor: Anderson
+Fecha: 2026-05-13
+Mensaje: Programación de detalle factura
+------------------------
+Commit: 6b1cfce
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #167 from CesarEduardoSantizo/Nuevos_cambios
+------------------------
+Commit: 5ec024c
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-13
+Mensaje: actulizacion de inventario
+------------------------
+Commit: 9b6293e
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #166 from Natareno2124/Rama_EncabezadoFacturaPau
+------------------------
+Commit: 5d46c88
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #165 from Natareno2124/Rama_Factura_Kevin
+------------------------
+Commit: 67786c7
+Autor: IngPau
+Fecha: 2026-05-13
+Mensaje: Funcionamiento Encabezado de Factura
+------------------------
+Commit: 1ebee4c
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Boton de guardar factura funcional en formulario de produccion
+------------------------
+Commit: e3a89a3
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #164 from Natareno2124/Rama_Factura_Kevin
+------------------------
+Commit: 18b56cb
+Autor: IngPau
+Fecha: 2026-05-13
+Mensaje: Agregando Referencias, Clases y Inicio de MVC
+------------------------
+Commit: 89f41dd
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Corrgiendo errores de compilacion
+------------------------
+Commit: e58f41c
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge pull request #162 from Natareno2124/DetalleFacturaLety
+------------------------
+Commit: 8efe8fd
+Autor: Natareno2124
+Fecha: 2026-05-13
+Mensaje: Merge branch 'main' into DetalleFacturaLety
+------------------------
+Commit: f19bc62
+Autor: Bárbara Saldaña
+Fecha: 2026-05-13
+Mensaje: Merge pull request #163 from Natareno2124/Pro1OrRe_Dani
+------------------------
+Commit: 5fcaa53
+Autor: VennusAmery
+Fecha: 2026-05-13
+Mensaje: hola encabezado de facturacion
+------------------------
+Commit: b05ee15
+Autor: Leticia Sontay
+Fecha: 2026-05-12
+Mensaje: Se realiza estandarizacion de componentes
+------------------------
+Commit: 7837563
+Autor: Leticia Sontay
+Fecha: 2026-05-12
+Mensaje: Se trabaja parte visual de detalle facturacion
+------------------------
+Commit: 446f323
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge pull request #161 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 63a4c14
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: 96f7e83
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge pull request #160 from Natareno2124/Pro1OrRe_Dani
+------------------------
+Commit: 02365e6
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge pull request #159 from Natareno2124/ruben-lopez-manuales_api_tecnico_usr
+------------------------
+Commit: bbbfed9
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Métodos para guardar factura no funcionales
+------------------------
+Commit: e68425b
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Aagregando costo de fases
+------------------------
+Commit: 976c28d
+Autor: VennusAmery
+Fecha: 2026-05-12
+Mensaje: hola encabezado de facturacion
+------------------------
+Commit: dbb251c
+Autor: ruben0901204620
+Fecha: 2026-05-12
+Mensaje: Agregando manuales tecnico y usuario
+------------------------
+Commit: 408f1fe
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge pull request #158 from Natareno2124/Implosion_con_API
+------------------------
+Commit: ab05580
+Autor: Aron Esquit
+Fecha: 2026-05-12
+Mensaje: Agregue el metodo para conectarse a la API de logistica
+------------------------
+Commit: aacf4da
+Autor: Natareno2124
+Fecha: 2026-05-12
+Mensaje: Merge pull request #157 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 431f5c5
+Autor: Natareno2124
+Fecha: 2026-05-11
+Mensaje: Corrección de query para cargar materiales consumidos, ajustes del MDI
+------------------------
+Commit: b6480f5
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Acoplando Orden de material al MDI
+------------------------
+Commit: 8272ad1
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge pull request #156 from Natareno2124/ruben-lopez-API-corregido
+------------------------
+Commit: 212a404
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-05-10
+Mensaje: Error coregido de id aplicacion error 500 solucionado
+------------------------
+Commit: 4d77554
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge pull request #155 from Natareno2124/OrdenMaterial_Completo
+------------------------
+Commit: 06f09bd
+Autor: Aron Esquit
+Fecha: 2026-05-10
+Mensaje: Se termino ambos frm de orden material. La carpeta de ayuda esta dentro de la carpeta de orden material debiado a que había un pr sin aceptar
+------------------------
+Commit: 8758007
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge pull request #154 from Natareno2124/Maria_Morales_P7
+------------------------
+Commit: 623712a
+Autor: RICARDO
+Fecha: 2026-05-10
+Mensaje: Merge pull request #153 from Natareno2124/DetalleOrdenMaterialLety
+------------------------
+Commit: 0a41794
+Autor: mariamoralesg42
+Fecha: 2026-05-10
+Mensaje: diseño actualizado de pestañas
+------------------------
+Commit: 203d1dc
+Autor: mariamoralesg42
+Fecha: 2026-05-10
+Mensaje: Pestaña Mermas funcional
+------------------------
+Commit: 2036059
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: Se modifica para evitar conflictos en ejecucion
+------------------------
+Commit: 4bf2e11
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: Se agrega reporte de orden de material
+------------------------
+Commit: 5131253
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: Se agrega reporte de detalle
+------------------------
+Commit: 65be931
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: Se hacen modificaciones finales al codigo
+------------------------
+Commit: be9c80f
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: Se configura codigo y se vuelve funcional detalle
+------------------------
+Commit: 13f3885
+Autor: mariamoralesg42
+Fecha: 2026-05-10
+Mensaje: Boton para consumir materiales y descontar inventario
+------------------------
+Commit: 0db39c0
+Autor: Leticia Sontay
+Fecha: 2026-05-10
+Mensaje: se hacen modificaciones, aun no muncional
+------------------------
+Commit: d9b5c28
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge pull request #152 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: b111375
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: afdd456
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Pestaña de materiales consumidos funcional
+------------------------
+Commit: f50122f
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Merge pull request #151 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 7b974cd
+Autor: Natareno2124
+Fecha: 2026-05-10
+Mensaje: Ajustando tamaño de formulario de costos, costos indirectos y mano de obra funcionales
+------------------------
+Commit: 9ea90cc
+Autor: Natareno2124
+Fecha: 2026-05-09
+Mensaje: Merge pull request #150 from anderson22t/main
+------------------------
+Commit: 735aecf
+Autor: anderson22t
+Fecha: 2026-05-09
+Mensaje: Merge pull request #13 from anderson22t/ListadoPlanProduccion
+------------------------
+Commit: d959212
+Autor: Anderson
+Fecha: 2026-05-09
+Mensaje: Programacion de Listado de Planes de Produccion
+------------------------
+Commit: 20b1cd9
+Autor: Natareno2124
+Fecha: 2026-05-09
+Mensaje: Merge pull request #149 from GerberAsturias/main
+------------------------
+Commit: c6f799f
+Autor: Natareno2124
+Fecha: 2026-05-09
+Mensaje: Merge pull request #148 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: 5093945
+Autor: Natareno2124
+Fecha: 2026-05-09
+Mensaje: Merge pull request #147 from CesarEduardoSantizo/vista_formulario
+------------------------
+Commit: 5ed6c7b
+Autor: GerberAsturias
+Fecha: 2026-05-09
+Mensaje: Merge pull request #8 from GerberAsturias/Encabezado_Plan_Produccion
+------------------------
+Commit: fe0c6e1
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-09
+Mensaje: Encabezado, reportes y ayudas
+------------------------
+Commit: 173ea9c
+Autor: Leticia Sontay
+Fecha: 2026-05-08
+Mensaje: Se agregan codigo para hacer pruebas
+------------------------
+Commit: f802b1e
+Autor: Leticia Sontay
+Fecha: 2026-05-08
+Mensaje: Se agrega funcionalidad, aun para realizar pruebas
+------------------------
+Commit: 32418af
+Autor: IngPau
+Fecha: 2026-05-08
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_ExplosionPau
+------------------------
+Commit: f69847d
+Autor: IngPau
+Fecha: 2026-05-08
+Mensaje: Eliminación de Explosión y Cambios Visuales
+------------------------
+Commit: 0e2af12
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-08
+Mensaje: ajuste de vista
+------------------------
+Commit: be950f0
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-08
+Mensaje: Merge branch 'Natareno2124:main' into main
+------------------------
+Commit: 7dc0bef
+Autor: Natareno2124
+Fecha: 2026-05-08
+Mensaje: Merge pull request #146 from Natareno2124/ruben-lopez-API-Orden_Produccion
+------------------------
+Commit: 4604855
+Autor: ruben0901204620
+Fecha: 2026-05-08
+Mensaje: Proyecto API orden produccion desde logistica
+------------------------
+Commit: 02a7881
+Autor: Natareno2124
+Fecha: 2026-05-08
+Mensaje: Merge pull request #145 from Natareno2124/OrdenMaterial_Frm_Encabezado
+------------------------
+Commit: 70080d5
+Autor: Natareno2124
+Fecha: 2026-05-08
+Mensaje: Merge pull request #144 from GerberAsturias/main
+------------------------
+Commit: a7552ae
+Autor: Aron Esquit
+Fecha: 2026-05-07
+Mensaje: Se agrego el 90% de la funcionalidad del Frm_Encabezado
+------------------------
+Commit: 95da3a2
+Autor: GerberAsturias
+Fecha: 2026-05-07
+Mensaje: Merge pull request #7 from GerberAsturias/Plan_produccion_fechas_modificaciones
+------------------------
+Commit: 13d5c9a
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-07
+Mensaje: Validaciones y calculo de fechas para plan de produccion
+------------------------
+Commit: 9215cc4
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #143 from Natareno2124/DetalleOrdenMaterialLety
+------------------------
+Commit: 4eb6cf6
+Autor: Leticia Sontay
+Fecha: 2026-05-07
+Mensaje: Se hacen modificaciones en frm y se agregan clases en modelo y controlador
+------------------------
+Commit: 6b78711
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #142 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 6b35953
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: 2f24076
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Mano de obra y costos no funcionales
+------------------------
+Commit: 73b27b1
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #141 from anderson22t/main
+------------------------
+Commit: ead28d3
+Autor: anderson22t
+Fecha: 2026-05-07
+Mensaje: Merge pull request #12 from anderson22t/FuncionalidadGuardar
+------------------------
+Commit: d8a33b4
+Autor: Anderson
+Fecha: 2026-05-07
+Mensaje: Programación de función de guardar
+------------------------
+Commit: 277e34d
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #140 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 3222fd9
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #139 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: b694a07
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: cambiando nombres de tabs
+------------------------
+Commit: 861f9aa
+Autor: Leticia Sontay
+Fecha: 2026-05-07
+Mensaje: Se agrega formulario no funcional de detalle orden de material
+------------------------
+Commit: 81d0709
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: Cambios para ver Orden
+------------------------
+Commit: 6ad9269
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #138 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 7a0eea9
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: 94456bd
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Métodos para cargar orden en el combobox, se añade pestaña de consumo de materiales
+------------------------
+Commit: b7c67f1
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #137 from GerberAsturias/main
+------------------------
+Commit: af440cd
+Autor: GerberAsturias
+Fecha: 2026-05-07
+Mensaje: Merge pull request #6 from GerberAsturias/Ordenes_de_Produccion
+------------------------
+Commit: d5d9eac
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-07
+Mensaje: Diseño y funcionalidad de orden de produccion
+------------------------
+Commit: 84fcdbf
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: c6cffcf
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: 68065eb
+Autor: Paula Leonardo
+Fecha: 2026-05-07
+Mensaje: Merge pull request #136 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: e1a3c19
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: MVC cambiosV3
+------------------------
+Commit: 70a06ee
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: a283621
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Llamado de formularios desde el MDI
+------------------------
+Commit: 071e3a5
+Autor: Paula Leonardo
+Fecha: 2026-05-07
+Mensaje: Merge pull request #135 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: 3eea212
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: MVC cambiosV2
+------------------------
+Commit: 0e76984
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Produccion_Kevin
+------------------------
+Commit: 870c58f
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Merge pull request #134 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: ee7a073
+Autor: Natareno2124
+Fecha: 2026-05-07
+Mensaje: Acoplando formulario de produccion al MDI
+------------------------
+Commit: 8cbbb08
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: MVC cambios
+------------------------
+Commit: 4f7c39c
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_ExplosionPau
+------------------------
+Commit: b8ab34b
+Autor: IngPau
+Fecha: 2026-05-07
+Mensaje: Cambio Metodos y Mysql
+------------------------
+Commit: 8576fac
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #133 from Natareno2124/Maria_Morales_P7
+------------------------
+Commit: da283c7
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-06
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: cd3b2b6
+Autor: mariamoralesg42
+Fecha: 2026-05-06
+Mensaje: Diseño de formulario produccion
+------------------------
+Commit: 980bce6
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #132 from anderson22t/main
+------------------------
+Commit: da56a74
+Autor: anderson22t
+Fecha: 2026-05-06
+Mensaje: Merge pull request #11 from anderson22t/FuncionalidadCronogramaYPlan
+------------------------
+Commit: ce796aa
+Autor: Anderson
+Fecha: 2026-05-06
+Mensaje: Programación de plan y cronograma de fases
+------------------------
+Commit: 100deac
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #131 from Natareno2124/Pro1OrRe_Dani
+------------------------
+Commit: 937f3ed
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #130 from Natareno2124/DiegoMonterrosoRecepcionM
+------------------------
+Commit: a7bdbef
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-06
+Mensaje: Boton de guardar del navegador, filtro y ayuda funcionales
+------------------------
+Commit: 7547855
+Autor: VennusAmery
+Fecha: 2026-05-06
+Mensaje: Implosion finiconal x2
+------------------------
+Commit: 6bb60b0
+Autor: VennusAmery
+Fecha: 2026-05-06
+Mensaje: Implosion finiconal?
+------------------------
+Commit: 86d2e8e
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #128 from Natareno2124/Vista_OrdenMaterial
+------------------------
+Commit: 72d1026
+Autor: Aron Esquit
+Fecha: 2026-05-06
+Mensaje: Agregue las 3 capas de Orden Material
+------------------------
+Commit: 2ef0c33
+Autor: Paula Leonardo
+Fecha: 2026-05-06
+Mensaje: Merge pull request #127 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: 41bbee3
+Autor: IngPau
+Fecha: 2026-05-06
+Mensaje: V3 Explosión de Metateriales
+------------------------
+Commit: dbf8794
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #126 from Natareno2124/Rama_ExplosionPau
+------------------------
+Commit: 9766f3b
+Autor: IngPau
+Fecha: 2026-05-06
+Mensaje: Funcionalidad Explosión de Materiales V2
+------------------------
+Commit: 1461f01
+Autor: IngPau
+Fecha: 2026-05-06
+Mensaje: Funcionalidad Explosión de Materiales
+------------------------
+Commit: f102e02
+Autor: Natareno2124
+Fecha: 2026-05-06
+Mensaje: Merge pull request #125 from CesarEduardoSantizo/proceso_5
+------------------------
+Commit: ac29845
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-06
+Mensaje: Merge pull request #4 from CesarEduardoSantizo/proceso_5
+------------------------
+Commit: 26a5b6c
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-06
+Mensaje: Proceso 5
+------------------------
+Commit: 554a619
+Autor: IngPau
+Fecha: 2026-05-05
+Mensaje: Creación de Encabezado Explosión y Detalle Explosión Diseño
+------------------------
+Commit: a4adbc7
+Autor: Natareno2124
+Fecha: 2026-05-05
+Mensaje: Merge pull request #124 from Natareno2124/Rama_Produccion_Kevin
+------------------------
+Commit: 8019f19
+Autor: Natareno2124
+Fecha: 2026-05-05
+Mensaje: Merge pull request #123 from anderson22t/main
+------------------------
+Commit: 27a9981
+Autor: Natareno2124
+Fecha: 2026-05-05
+Mensaje: MVC para proceso de producción y referencias
+------------------------
+Commit: ff29908
+Autor: anderson22t
+Fecha: 2026-05-05
+Mensaje: Merge pull request #10 from anderson22t/DisenoPlanProduccion
+------------------------
+Commit: 7f1cb83
+Autor: Anderson
+Fecha: 2026-05-05
+Mensaje: Actualización de Diseño de Plan de Produccion
+------------------------
+Commit: 11c1851
+Autor: Natareno2124
+Fecha: 2026-05-05
+Mensaje: Merge pull request #122 from Natareno2124/RecibirOrdenDetalle_Per_Bit
+------------------------
+Commit: e4c9121
+Autor: IngPau
+Fecha: 2026-05-05
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: 0f5f9bd
+Autor: Aron Esquit
+Fecha: 2026-05-04
+Mensaje: Se agrego bitacora y permisos a detalle orden recibida
+------------------------
+Commit: cfad907
+Autor: Natareno2124
+Fecha: 2026-05-04
+Mensaje: Corrigiendo conflictos en archivos
+------------------------
+Commit: f8e3162
+Autor: Natareno2124
+Fecha: 2026-05-04
+Mensaje: Merge local con repositorio principal, corrigiendo conflictos
+------------------------
+Commit: a644dc4
+Autor: Natareno2124
+Fecha: 2026-05-03
+Mensaje: Merge pull request #120 from Natareno2124/Ajustes_Orden_BOM_Kevin
+------------------------
+Commit: bb1e2bb
+Autor: Natareno2124
+Fecha: 2026-05-03
+Mensaje: Ajustando referencias del MDI, boton de reporte de Orden recibida
+------------------------
+Commit: b14ad79
+Autor: Natareno2124
+Fecha: 2026-05-03
+Mensaje: Merge pull request #119 from Natareno2124/DiegoMonterrooFiltroP2
+------------------------
+Commit: f7fc7f3
+Autor: Natareno2124
+Fecha: 2026-05-03
+Mensaje: Merge pull request #118 from Natareno2124/DiegooMonterrosoReporeP2
+------------------------
+Commit: 7b2dcd5
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-03
+Mensaje: Filtro agregado del proceso 2
+------------------------
+Commit: 3fc63e1
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-03
+Mensaje: Reporte Del proceso 2 agregado al navegador
+------------------------
+Commit: a3797bd
+Autor: Natareno2124
+Fecha: 2026-05-03
+Mensaje: Merge pull request #117 from GerberAsturias/Costos_fase
+------------------------
+Commit: b5f80b3
+Autor: GerberAsturias
+Fecha: 2026-05-03
+Mensaje: Merge pull request #5 from GerberAsturias/Costos_fase
+------------------------
+Commit: 722b9a6
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-03
+Mensaje: Implementación de costos
+------------------------
+Commit: 5474125
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-05-03
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: 6e2da2f
+Autor: Natareno2124
+Fecha: 2026-05-02
+Mensaje: Merge pull request #116 from Natareno2124/Maria-Morales-ListaRecetas
+------------------------
+Commit: a957e6c
+Autor: mariamoralesg42
+Fecha: 2026-05-02
+Mensaje: reemplazo del .bat
+------------------------
+Commit: 023d9ce
+Autor: mariamoralesg42
+Fecha: 2026-05-02
+Mensaje: Cambio visual del encabezado BOM
+------------------------
+Commit: 34ad523
+Autor: mariamoralesg42
+Fecha: 2026-05-02
+Mensaje: Ver recetas y boton ver detalle agregados
+------------------------
+Commit: 21315fb
+Autor: Natareno2124
+Fecha: 2026-05-02
+Mensaje: Merge pull request #115 from Natareno2124/funcionalidad_detalle_bom_unificado-ruben-lopez
+------------------------
+Commit: f5359e0
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-05-02
+Mensaje: funcionalidad para el detalle materiales, guardar, agregar, editar y validaciones antes de guardar.
+------------------------
+Commit: b30ca12
+Autor: Natareno2124
+Fecha: 2026-05-02
+Mensaje: Merge pull request #114 from Natareno2124/DiegooMonterrosoAyuda_BOM
+------------------------
+Commit: 16f4706
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-05-02
+Mensaje: Boton de ayudas agregado en el proceso 2
+------------------------
+Commit: 0bbe34f
+Autor: Natareno2124
+Fecha: 2026-05-02
+Mensaje: Merge pull request #113 from Natareno2124/RecibirOrden_FiltrarPorFecha
+------------------------
+Commit: 6d3904a
+Autor: Aron Esquit
+Fecha: 2026-05-01
+Mensaje: Se agrego el filtrado por fechas en recibir orden
+------------------------
+Commit: f9fdbd2
+Autor: Natareno2124
+Fecha: 2026-05-01
+Mensaje: Merge pull request #112 from anderson22t/main
+------------------------
+Commit: 50f494e
+Autor: anderson22t
+Fecha: 2026-05-01
+Mensaje: Merge pull request #8 from anderson22t/GuardarBOM
+------------------------
+Commit: 5bb55a9
+Autor: Anderson
+Fecha: 2026-05-01
+Mensaje: Guardar Encabezado BOM
+------------------------
+Commit: 8b06055
+Autor: Natareno2124
+Fecha: 2026-05-01
+Mensaje: Merge pull request #111 from anderson22t/main
+------------------------
+Commit: 5ef4d1e
+Autor: anderson22t
+Fecha: 2026-05-01
+Mensaje: Merge pull request #7 from anderson22t/Transaccion
+------------------------
+Commit: cf65814
+Autor: Anderson
+Fecha: 2026-05-01
+Mensaje: Métodos para hacer transacción
+------------------------
+Commit: fbc9771
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-01
+Mensaje: Merge pull request #110 from CesarEduardoSantizo/main
+------------------------
+Commit: 7028c08
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-01
+Mensaje: Merge pull request #3 from CesarEduardoSantizo/cambios_BOM
+------------------------
+Commit: 8efd23d
+Autor: CesarEduardoSantizo
+Fecha: 2026-05-01
+Mensaje: cambios nuevos de bom
+------------------------
+Commit: bdafb81
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge pull request #106 from Natareno2124/DetalleOrdenLety
+------------------------
+Commit: 5049661
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge pull request #109 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 00c68d9
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge pull request #108 from CesarEduardoSantizo/Actulizacion_BOM
+------------------------
+Commit: 4ce4b1b
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Boton de guardar encabezado y detalle
+------------------------
+Commit: 7956f4f
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-30
+Mensaje: Merge pull request #2 from CesarEduardoSantizo/Actulizacion_BOM
+------------------------
+Commit: 4139e81
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-30
+Mensaje: actulizacion del formulario bom
+------------------------
+Commit: abb6929
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-30
+Mensaje: Merge remote-tracking branch 'origin/main'
+------------------------
+Commit: 561941c
+Autor: Leticia Sontay
+Fecha: 2026-04-30
+Mensaje: Se agrega reporte de detalle de orden recibida
+------------------------
+Commit: d3951d3
+Autor: Leticia Sontay
+Fecha: 2026-04-30
+Mensaje: Se realizan cambios en reporte de orden recibida y se hacen pru7ebas para reporte detalle de orden recibida
+------------------------
+Commit: 6f039af
+Autor: Leticia Sontay
+Fecha: 2026-04-30
+Mensaje: Se agrega reporte para orden recibida actualizado
+------------------------
+Commit: ac68eeb
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 277b349
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Arreglando ruta de ayudas y ajustes en formulario de encabezado de orden
+------------------------
+Commit: fc4c8fa
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge pull request #105 from GerberAsturias/Estandarización_y_Costos
+------------------------
+Commit: 17f6a2c
+Autor: GerberAsturias
+Fecha: 2026-04-30
+Mensaje: Merge pull request #4 from GerberAsturias/Estandarización_y_Costos
+------------------------
+Commit: 468998c
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-04-30
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Estandarización_y_Costos
+------------------------
+Commit: 353b2ae
+Autor: Natareno2124
+Fecha: 2026-04-30
+Mensaje: Merge pull request #104 from Natareno2124/RecibirOrden_BtnGuardar_Ayuda
+------------------------
+Commit: e425c04
+Autor: Aron Esquit
+Fecha: 2026-04-30
+Mensaje: Se arreglo el boton de guardar,salir,inicio,fin,anterior,siguiente y se agrego el boton de ayuda
+------------------------
+Commit: ed3ba85
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-04-30
+Mensaje: Estandarización de plan y orden, además form de tipo costo y costo de fase
+------------------------
+Commit: cacacd3
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #103 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 55d2c0d
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #102 from CesarEduardoSantizo/ayudas_BOM
+------------------------
+Commit: 4c03136
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: e7822d4
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Corrigiendo errores de formulario de detalle
+------------------------
+Commit: c102052
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-29
+Mensaje: Merge pull request #1 from CesarEduardoSantizo/ayudas_BOM
+------------------------
+Commit: 58806d1
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-29
+Mensaje: Ayudas para crear BOM
+------------------------
+Commit: e8984a6
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #101 from Natareno2124/Maria-Morales-BOM_P2-2
+------------------------
+Commit: 9e1ec24
+Autor: mariamoralesg42
+Fecha: 2026-04-29
+Mensaje: agregando reporte BOM y boton cerrar form
+------------------------
+Commit: 6a241d9
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 533495e
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #100 from anderson22t/main
+------------------------
+Commit: 815e48e
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #99 from Natareno2124/Pro1OrRe_Dani
+------------------------
+Commit: d17f764
+Autor: anderson22t
+Fecha: 2026-04-29
+Mensaje: Merge pull request #5 from anderson22t/EstandarizacionFormulario
+------------------------
+Commit: bf3172f
+Autor: Anderson
+Fecha: 2026-04-29
+Mensaje: Estandarización y funcionalidad de formularios
+------------------------
+Commit: e8a2345
+Autor: VennusAmery
+Fecha: 2026-04-29
+Mensaje: primero botones funcionales
+------------------------
+Commit: fa07e9d
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-29
+Mensaje: Merge pull request #98 from Natareno2124/funcionalidad_detalle_bom-ruben-lopez
+------------------------
+Commit: f6c5fbb
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-29
+Mensaje: funcionalidad CRUD para el frm detalle_materiales
+------------------------
+Commit: 9483529
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: edcff92
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #97 from Natareno2124/Rama_DetalleOrdenMaterial_Pau
+------------------------
+Commit: 62680c9
+Autor: IngPau
+Fecha: 2026-04-29
+Mensaje: Modificación Frm
+------------------------
+Commit: f827839
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 2f07fe8
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #96 from Natareno2124/Rama_DetalleOrdenMaterial_Pau
+------------------------
+Commit: d366746
+Autor: IngPau
+Fecha: 2026-04-29
+Mensaje: Detalle de orden modificación
+------------------------
+Commit: bed6706
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: e555b6d
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: ajustes en proceso 1
+------------------------
+Commit: bc96700
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #95 from Natareno2124/Rama_DetalleOrdenMaterial_Pau
+------------------------
+Commit: 1e14b9d
+Autor: IngPau
+Fecha: 2026-04-29
+Mensaje: Detalle de orden - Paula Daniela Leonardo 0901-22-9580
+------------------------
+Commit: 0a22547
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #94 from Natareno2124/Maria-Morales-BOM_P2-2
+------------------------
+Commit: 810d8cc
+Autor: mariamoralesg42
+Fecha: 2026-04-29
+Mensaje: metodo eliminar BOM y llamado de formularios al principal
+------------------------
+Commit: 3ab9b9a
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #91 from Natareno2124/Diego-Monterroso-BOM_P2
+------------------------
+Commit: 965343f
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge branch 'main' into Diego-Monterroso-BOM_P2
+------------------------
+Commit: 0cd0ad1
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #93 from Natareno2124/DetalleOrdenLety
+------------------------
+Commit: 4d01cf6
+Autor: Leticia Sontay
+Fecha: 2026-04-29
+Mensaje: Se agregan comentarios y se quitan comentarios no relevantes
+------------------------
+Commit: ecb7090
+Autor: Natareno2124
+Fecha: 2026-04-29
+Mensaje: Merge pull request #90 from CesarEduardoSantizo/Proceso_Bom
+------------------------
+Commit: 24b61e8
+Autor: Leticia Sontay
+Fecha: 2026-04-29
+Mensaje: Se agrega la suma de manteriales en label
+------------------------
+Commit: 8359c1e
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se agrega funcionalidad a datos de la orden y materiales de la orden
+------------------------
+Commit: d671878
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-04-28
+Mensaje: Ver_Recetas y Detalles_Materiales conectados con la base de datos y columnas de Dgv_ConsultarRE y Dgv_Recetas ya establecidas igual que los combos de Detetalles_Materiales ya funciones
+------------------------
+Commit: 1e6b4b7
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-28
+Mensaje: Boton de guardar, editar
+------------------------
+Commit: 67fb262
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-28
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Proceso_Bom
+------------------------
+Commit: 2a35a5d
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-28
+Mensaje: Boton de guardar, editar
+------------------------
+Commit: 438a02f
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #89 from Natareno2124/DetalleOrdenLety
+------------------------
+Commit: 9c3ea0f
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge branch 'main' into DetalleOrdenLety
+------------------------
+Commit: 5088b15
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se modifican botones y se agregan los de navegador, sin funcionlidad
+------------------------
+Commit: aef5968
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #88 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 54d4f67
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje:  DataGridView y filtro de lista de ordenes recibidas funcional
+------------------------
+Commit: 02e9614
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #87 from Natareno2124/Maria-Morales-BOM_P2
+------------------------
+Commit: eed2e11
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #86 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 0562064
+Autor: mariamoralesg42
+Fecha: 2026-04-28
+Mensaje: Encabezado BOM consulta funcional
+------------------------
+Commit: 049bc98
+Autor: mariamoralesg42
+Fecha: 2026-04-28
+Mensaje: Formularios no funcionales de crear receta
+------------------------
+Commit: ec7173e
+Autor: VennusAmery
+Fecha: 2026-04-28
+Mensaje: estandarizacion 2
+------------------------
+Commit: 9ba5680
+Autor: VennusAmery
+Fecha: 2026-04-28
+Mensaje: estandarizacion
+------------------------
+Commit: 642b900
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 79d7560
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #85 from Natareno2124/DetalleOrdenLety
+------------------------
+Commit: 61df8f7
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Sentencias sql de formulario encabezado de orden
+------------------------
+Commit: 0526c19
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se agregan botones agg, guardar, eliminar, ayuda e imprimir
+------------------------
+Commit: 2c5280b
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se agregan sentencias para detalle de orden
+------------------------
+Commit: 06ffdf0
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se modifica frm Detalle de Orden
+------------------------
+Commit: b6f6398
+Autor: Natareno2124
+Fecha: 2026-04-28
+Mensaje: Merge pull request #84 from Natareno2124/DetalleOrdenLety
+------------------------
+Commit: a3d2616
+Autor: Leticia Sontay
+Fecha: 2026-04-28
+Mensaje: Se agregan campos de formularios
+------------------------
+Commit: e5c3b70
+Autor: Leticia Sontay
+Fecha: 2026-04-27
+Mensaje: Se agrega vista de detalle
+------------------------
+Commit: 51e7c9c
+Autor: Natareno2124
+Fecha: 2026-04-27
+Mensaje: Merge pull request #83 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: d9893c2
+Autor: Natareno2124
+Fecha: 2026-04-27
+Mensaje: Formularios de encabezado y detalle de orden
+------------------------
+Commit: d89820b
+Autor: Natareno2124
+Fecha: 2026-04-27
+Mensaje: Merge pull request #82 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 05c13b9
+Autor: VennusAmery
+Fecha: 2026-04-23
+Mensaje: ajustes de estandarizacion y reporte
+------------------------
+Commit: f5560b5
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Merge pull request #81 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: a2d225c
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Ajustes de MDI
+------------------------
+Commit: f2903fe
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Merge pull request #80 from Natareno2124/Rama_Ajustes_MDI_Kevin
+------------------------
+Commit: 1550930
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Merge pull request #79 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 52a1b1d
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Merge pull request #78 from Natareno2124/Rama_Estand_Paula
+------------------------
+Commit: 061b484
+Autor: Natareno2124
+Fecha: 2026-04-23
+Mensaje: Reporte de orden recibida
+------------------------
+Commit: 46756fa
+Autor: VennusAmery
+Fecha: 2026-04-22
+Mensaje: correcciones
+------------------------
+Commit: dfe5ef0
+Autor: VennusAmery
+Fecha: 2026-04-22
+Mensaje: referencias arregladas porque lo hice de nuevo todo
+------------------------
+Commit: 7c3d97d
+Autor: IngPau
+Fecha: 2026-04-22
+Mensaje: Estandarización de Navegador Fake jaja
+------------------------
+Commit: 85c397d
+Autor: Natareno2124
+Fecha: 2026-04-22
+Mensaje: Arreglando despliegue de formularios dentro del MDI
+------------------------
+Commit: cebfd42
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-15
+Mensaje: Merge pull request #77 from Natareno2124/ruben-lopez-arregladoMDI
+------------------------
+Commit: 90d4376
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-15
+Mensaje: Correccion de errores en MDI, mi culpa xd
+------------------------
+Commit: f940e93
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Merge pull request #33 from daguilae/revert-32-Kevin_ReportesAyudas
+------------------------
+Commit: c1c8288
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Revert "Acoplando MDI"
+------------------------
+Commit: 6becc88
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Merge pull request #32 from Natareno2124/Kevin_ReportesAyudas
+------------------------
+Commit: 27f12fa
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Kevin_ReportesAyudas
+------------------------
+Commit: 5ed52bf
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Cambios MDI
+------------------------
+Commit: 57b29a0
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Merge pull request #76 from Natareno2124/ruben-armando-lopez-luch_reporte-ayuda
+------------------------
+Commit: 346f93b
+Autor: Natareno2124
+Fecha: 2026-04-14
+Mensaje: Merge pull request #75 from Natareno2124/reporteMantenimientoLety
+------------------------
+Commit: 167026b
+Autor: ruben0901204620
+Fecha: 2026-04-13
+Mensaje: Frm de reportes y ayuda chm
+------------------------
+Commit: 9ef48e1
+Autor: Leticia Sontay
+Fecha: 2026-04-12
+Mensaje: agregando mantenimiento
+------------------------
+Commit: 6ea6e06
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #74 from Natareno2124/Kevin_ReportesAyudas
+------------------------
+Commit: 09b4fbd
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Kevin_ReportesAyudas
+------------------------
+Commit: 871ecbd
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Organizando Carpetas
+------------------------
+Commit: 0212713
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #73 from Natareno2124/ReporteRecibirOrden
+------------------------
+Commit: 6dd0d0d
+Autor: Leticia Sontay
+Fecha: 2026-04-12
+Mensaje: Se agrega reporte
+------------------------
+Commit: 1764981
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Kevin_ReportesAyudas
+------------------------
+Commit: 7e49a7a
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #72 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 4bc4e98
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' into Mantenimiento_TipoInventario
+------------------------
+Commit: b924d79
+Autor: vennusamery
+Fecha: 2026-04-12
+Mensaje: prueba
+------------------------
+Commit: 83d8312
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Acoplando Trasaccionales a MDI
+------------------------
+Commit: e5197b6
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Kevin_ReportesAyudas
+------------------------
+Commit: ddbc359
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #71 from Natareno2124/DLL_Explosion_Materiales_Pau
+------------------------
+Commit: e28570a
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Asignando reportes
+------------------------
+Commit: 6634718
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Prototipo No Funcional Finalizado
+------------------------
+Commit: 08b206d
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Finalizando Form de Explosión de Materiales
+------------------------
+Commit: dd4cb94
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #70 from Natareno2124/Kevin_ReportesAyudas
+------------------------
+Commit: fd62efc
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #69 from Natareno2124/Maria-Morales-CV_Recetas
+------------------------
+Commit: a28f088
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #68 from Natareno2124/EntregaPT_Aron_Diego
+------------------------
+Commit: 195f965
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Kevin_ReportesAyudas
+------------------------
+Commit: ca99cdf
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Ayudas de categoria Material
+------------------------
+Commit: a12e5c0
+Autor: mariamoralesg42
+Fecha: 2026-04-12
+Mensaje: No Funcional Consultar y Validar factibilidad recetas
+------------------------
+Commit: 6ed6a17
+Autor: Aron Esquit
+Fecha: 2026-04-12
+Mensaje: Se agrego los 3 formularios correspondientes al MDI
+------------------------
+Commit: c94d0e4
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Modificación de reportes y agregar logo
+------------------------
+Commit: 29a8190
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #67 from Natareno2124/Kevin_ReportesAyudas
+------------------------
+Commit: f88d1ab
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #66 from Natareno2124/Maria-Morales-Reportes
+------------------------
+Commit: 5f3c2c6
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #65 from anderson22t/main
+------------------------
+Commit: 5ceaef2
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Reportes Categoria Material y Materiales
+------------------------
+Commit: b306141
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Editando Formulario para la Explosión de Materiales
+------------------------
+Commit: 743236e
+Autor: mariamoralesg42
+Fecha: 2026-04-12
+Mensaje: Archivo ayudas estadoBOM en carpeta Ayudas
+------------------------
+Commit: 5c44cbd
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Creación de MVC para la Explosión de Materiales
+------------------------
+Commit: 47718d6
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Transaccional Recibir Orden
+------------------------
+Commit: 647509e
+Autor: mariamoralesg42
+Fecha: 2026-04-12
+Mensaje: Envio de archivo de reporte estado BOM
+------------------------
+Commit: 7553e22
+Autor: anderson22t
+Fecha: 2026-04-12
+Mensaje: Merge pull request #4 from anderson22t/Reportes_AndersonTrigueros
+------------------------
+Commit: 184138e
+Autor: Anderson
+Fecha: 2026-04-12
+Mensaje: Procesos de Plan de Produccion
+------------------------
+Commit: 07640af
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: reportes de mantenimientos
+------------------------
+Commit: e553c00
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Corrigiendo errores de compilacion
+------------------------
+Commit: 5e66029
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: b4bbb5e
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #64 from Natareno2124/Rama_Ayudas_Mantenimiento_Paula
+------------------------
+Commit: 8ab8719
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #63 from GerberAsturias/Rama_transaccional_OrdenProduccion_Gerber
+------------------------
+Commit: 50fb144
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #62 from CesarEduardoSantizo/feature/reportes
+------------------------
+Commit: a34810d
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #61 from Natareno2124/Reporte_Ayuda_Tipo_Movimiento_Inventario
+------------------------
+Commit: 8bc1bfd
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Merge pull request #60 from Natareno2124/Rama_Reportes_Mantenimiento_Paula
+------------------------
+Commit: 2f26183
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Resolviendo problemas de merge
+------------------------
+Commit: 2fd74b7
+Autor: Natareno2124
+Fecha: 2026-04-12
+Mensaje: Cambio de nombre de frm de login, mdi y splash
+------------------------
+Commit: 19d2593
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Agregando Ayuda Mantenimiento Tipos De Merma
+------------------------
+Commit: 9931c58
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Agregando Ayuda Mantenimiento Unidad de Medida
+------------------------
+Commit: 277c939
+Autor: GerberAsturias
+Fecha: 2026-04-12
+Mensaje: Merge pull request #3 from GerberAsturias/Rama_transaccional_OrdenProduccion_Gerber
+------------------------
+Commit: 230404b
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-04-12
+Mensaje: Transaccional Plan y orden de Produccion
+------------------------
+Commit: 9904e45
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-12
+Mensaje: Mantenimiento de Recepcion de matariales y de reportes
+------------------------
+Commit: cb6d94e
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Modificando Titulo de Form Tipo de Merma
+------------------------
+Commit: 62b2844
+Autor: Aron Esquit
+Fecha: 2026-04-12
+Mensaje: Se agrego el reporte y ayuda
+------------------------
+Commit: fe1d746
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Modificando Titulo de Form UDM
+------------------------
+Commit: 63c83fd
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Agregando Reporte de Tipo de Merma
+------------------------
+Commit: 21488d5
+Autor: IngPau
+Fecha: 2026-04-12
+Mensaje: Creación de Carpeta de Reportes y Agregando Reporte de Unidad de Medida
+------------------------
+Commit: abcfbf6
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-11
+Mensaje: Merge remote-tracking branch 'grupo/main'
+------------------------
+Commit: 5a9652e
+Autor: Natareno2124
+Fecha: 2026-04-11
+Mensaje: Merge pull request #59 from Natareno2124/Eliminacion_BATs
+------------------------
+Commit: c97d74c
+Autor: Natareno2124
+Fecha: 2026-04-11
+Mensaje: Merge pull request #57 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 6c78c6f
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: REPORTE DE TOPO DE INVENTARIO
+------------------------
+Commit: 91ca9f5
+Autor: Natareno2124
+Fecha: 2026-04-11
+Mensaje: Merge pull request #55 from Natareno2124/Rama_Mantenimientos_DiegoMonterroso
+------------------------
+Commit: fd3dc26
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: le puse el logo
+------------------------
+Commit: 7ce7c97
+Autor: IngPau
+Fecha: 2026-04-11
+Mensaje: BAT medio arreglado V2
+------------------------
+Commit: 4043ed7
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: le puse el logo
+------------------------
+Commit: ce78f5c
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: le puse un boton
+------------------------
+Commit: 114db0c
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: ni tan funcional ni tan no funcional, olvide crear otra rama creo upsi ni modo seguimos en la de tipo material porque tengo sueño auida no puedo usar el navegador transaccional mi proceso esta feo porque me dieron este x2
+------------------------
+Commit: ea3a2a4
+Autor: vennusamery
+Fecha: 2026-04-11
+Mensaje: ni tan funcional ni tan no funcional, olvide crear otra rama creo upsi ni modo seguimos en la de tipo material porque tengo sueño auida no puedo usar el navegador transaccional mi proceso esta feo porque me dieron este
+------------------------
+Commit: c7b5938
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-11
+Mensaje: Merge pull request #2 from CesarEduardoSantizo/feature/recepcionmateriales
+------------------------
+Commit: 762e76d
+Autor: CesarEduardoSantizo
+Fecha: 2026-04-11
+Mensaje: mantenimiento recepcion de materiales
+------------------------
+Commit: a61c517
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-11
+Mensaje: Merge pull request #56 from Natareno2124/ruben-lopez-proceso_planificacion_produccion
+------------------------
+Commit: c7d59b6
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-11
+Mensaje: Proceso de planificqcion-produccion con navegador transaccional
+------------------------
+Commit: 832398f
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-04-11
+Mensaje: Reportes de mantenimientos Tipo_Material y Almacenes
+------------------------
+Commit: d7d44e8
+Autor: Natareno2124
+Fecha: 2026-04-11
+Mensaje: Merge pull request #54 from Natareno2124/Aplicacion_MRP
+------------------------
+Commit: bc24908
+Autor: Natareno2124
+Fecha: 2026-04-11
+Mensaje: Merge pull request #53 from Natareno2124/ruben_lopez-navegador-transaciconal-beta
+------------------------
+Commit: 5fa604a
+Autor: Aron Esquit
+Fecha: 2026-04-11
+Mensaje: Se agrego el id de la aplicación a cada modulo
+------------------------
+Commit: 49a72ee
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-04-11
+Mensaje: Pruebas navegador transaccional
+------------------------
+Commit: a60c707
+Autor: Natareno2124
+Fecha: 2026-04-10
+Mensaje: Merge pull request #52 from anderson22t/main
+------------------------
+Commit: 9389cef
+Autor: anderson22t
+Fecha: 2026-04-10
+Mensaje: Merge pull request #3 from anderson22t/Reportes_AndersonTrigueros
+------------------------
+Commit: b3054a3
+Autor: Anderson
+Fecha: 2026-04-10
+Mensaje: Reportes de Estados
+------------------------
+Commit: d4ffe98
+Autor: Natareno2124
+Fecha: 2026-04-08
+Mensaje: Merge pull request #51 from Natareno2124/Kevin_Carpeta_DLLs
+------------------------
+Commit: 12c4590
+Autor: Natareno2124
+Fecha: 2026-04-08
+Mensaje: Carpeta para DLL y MVC de recibir orden
+------------------------
+Commit: d902887
+Autor: Natareno2124
+Fecha: 2026-04-08
+Mensaje: Merge pull request #50 from Natareno2124/Maria-Morales-DisenoLOGIN
+------------------------
+Commit: 7848d53
+Autor: mariamoralesg42
+Fecha: 2026-04-08
+Mensaje: Diseno LOGIN del sistema
+------------------------
+Commit: 1bafbb3
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #49 from Natareno2124/Kevin_Acoplar_Catalogos
+------------------------
+Commit: 055bd8a
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Acoplando mantenimientos al MDI
+------------------------
+Commit: c22af31
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Configurando ID de aplicacion en catalogos
+------------------------
+Commit: 91df57f
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #48 from Natareno2124/Mantenimiento_Leticia
+------------------------
+Commit: 10a2103
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #47 from Natareno2124/ruben-lopez-mantemiento-produccion
+------------------------
+Commit: 6c4cb23
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #46 from Natareno2124/Cambios_MDI
+------------------------
+Commit: ae3c451
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #45 from Natareno2124/Rama_Mantenimiento_Merma_Paula
+------------------------
+Commit: eebd5c0
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #44 from Natareno2124/Rama_Mantenimiento_UDM_Paula
+------------------------
+Commit: 8a1019d
+Autor: Leticia Sontay
+Fecha: 2026-03-29
+Mensaje: Se agrega Matenimiento lety Estado_Orden_Recibida
+------------------------
+Commit: fded564
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-03-29
+Mensaje: formulario del matenimiento de estado produccion
+------------------------
+Commit: 543de53
+Autor: IngPau
+Fecha: 2026-03-29
+Mensaje: MDI Ordenado - Paula Leonardo
+------------------------
+Commit: 8032907
+Autor: IngPau
+Fecha: 2026-03-29
+Mensaje: Mantenimiento Tipo Merma Finalizado - Paula Leonardo
+------------------------
+Commit: a1cf83b
+Autor: IngPau
+Fecha: 2026-03-29
+Mensaje: Mantenimiento UDM Finalizado - Paula Leonardo
+------------------------
+Commit: 447ccfd
+Autor: IngPau
+Fecha: 2026-03-29
+Mensaje: Agregando Mantenimiento UDM - Paula Leonardo
+------------------------
+Commit: 220da93
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #43 from anderson22t/main
+------------------------
+Commit: 5f2dc89
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #42 from CesarEduardoSantizo/main
+------------------------
+Commit: 3e0b06b
+Autor: Natareno2124
+Fecha: 2026-03-29
+Mensaje: Merge pull request #41 from GerberAsturias/main
+------------------------
+Commit: 4d52eb6
+Autor: anderson22t
+Fecha: 2026-03-29
+Mensaje: Merge pull request #2 from anderson22t/Mantenimiento_Anderson_Trigueros
+------------------------
+Commit: 716cd9d
+Autor: Anderson
+Fecha: 2026-03-29
+Mensaje: Mantenimientos_Anderson
+------------------------
+Commit: 8fc3fb0
+Autor: CesarEduardoSantizo
+Fecha: 2026-03-29
+Mensaje: Merge pull request #1 from CesarEduardoSantizo/cesar_santizo-mantenimiento1
+------------------------
+Commit: 04efcc3
+Autor: CesarEduardoSantizo
+Fecha: 2026-03-29
+Mensaje: Mantenimiento estado de recpecion materiales
+------------------------
+Commit: f1466e3
+Autor: GerberAsturias
+Fecha: 2026-03-29
+Mensaje: Merge pull request #2 from GerberAsturias/Rama_mantenimiento_Gerber
+------------------------
+Commit: c511117
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-03-29
+Mensaje: Mantenimiento Estado Plan de produccion
+------------------------
+Commit: b834929
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge pull request #40 from Natareno2124/Tipo_de_movimiento_inventario_Aron_Esquit
+------------------------
+Commit: 59b5c31
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge pull request #38 from Natareno2124/Rama_Mantenimientos_Kevin
+------------------------
+Commit: 754dabe
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge pull request #36 from Natareno2124/Mantenimiento_TipoInventario
+------------------------
+Commit: 98dace0
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge pull request #37 from Natareno2124/Rama_Mantenimientos_DiegoMonterroso
+------------------------
+Commit: 988b6b1
+Autor: Aron Esquit
+Fecha: 2026-03-28
+Mensaje: Se agrego el mantenimiento de tipo de movimineto inventario y la bitacora en el formulario de cambio de contraseña
+------------------------
+Commit: cb3359d
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge pull request #39 from Natareno2124/Maria-Morales-Estado_BOM
+------------------------
+Commit: b62df03
+Autor: mariamoralesg42
+Fecha: 2026-03-28
+Mensaje: Mantenimiento BOM para ver si funciona
+------------------------
+Commit: e730999
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Mantenimientos de materiales y categoria materiales
+------------------------
+Commit: 097ff94
+Autor: 221369 - DIEGO ANDRE MONTERROSO RABARIQUE
+Fecha: 2026-03-28
+Mensaje: Mantenimientos Tipo_Material y Alamacenes
+------------------------
+Commit: 5f59d18
+Autor: vennusamery
+Fecha: 2026-03-28
+Mensaje: mantenimiento tipo inventario x2
+------------------------
+Commit: bdfcaa4
+Autor: vennusamery
+Fecha: 2026-03-28
+Mensaje: mantenimiento tipo inventario
+------------------------
+Commit: e50e06b
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Rama_Mantenimientos_Kevin
+------------------------
+Commit: add9a5e
+Autor: Natareno2124
+Fecha: 2026-03-28
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: ae94c80
+Autor: Pedro Ibañez
+Fecha: 2026-03-27
+Mensaje: Merge pull request #25 from BrandonHernandez2708/0901-22-2929_Pablo_Quiroa_Subiendo_Estandarizacion_DNS_Componentes
+------------------------
+Commit: 1618692
+Autor: pablinix
+Fecha: 2026-03-27
+Mensaje: subiendo estandarizacion DNS componentes
+------------------------
+Commit: 25e0cdb
+Autor: Natareno2124
+Fecha: 2026-03-27
+Mensaje: Mantenimiento de materiales
+------------------------
+Commit: b1a2179
+Autor: Natareno2124
+Fecha: 2026-03-27
+Mensaje: Merge pull request #34 from Natareno2124/Splash_MRP
+------------------------
+Commit: b3f0d5b
+Autor: vennusamery
+Fecha: 2026-03-26
+Mensaje: Hola ya te manda al login bye
+------------------------
+Commit: 5b5206f
+Autor: Natareno2124
+Fecha: 2026-03-26
+Mensaje: Arreglando error de recursos
+------------------------
+Commit: 2a68d85
+Autor: Natareno2124
+Fecha: 2026-03-26
+Mensaje: Merge pull request #33 from Natareno2124/Splash_MRP
+------------------------
+Commit: 681011f
+Autor: Natareno2124
+Fecha: 2026-03-25
+Mensaje: Cambios
+------------------------
+Commit: 4291ad7
+Autor: Natareno2124
+Fecha: 2026-03-25
+Mensaje: Merge branch 'main' into Splash_MRP
+------------------------
+Commit: cb775ff
+Autor: Natareno2124
+Fecha: 2026-03-25
+Mensaje: Merge pull request #32 from Natareno2124/Login_RecuperarContrasenea
+------------------------
+Commit: fad00b4
+Autor: Aron Esquit
+Fecha: 2026-03-25
+Mensaje: Se agrego login y recuperar contraseña
+------------------------
+Commit: 3bf9903
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-03-25
+Mensaje: Merge pull request #31 from Natareno2124/ruben-armando-lopez-luch_MDI_cambiar-contrasena
+------------------------
+Commit: b43ae4a
+Autor: ruben0901204620
+Fecha: 2026-03-25
+Mensaje: Crecion del formulario MDI del sisteme MRP y cambiar contrasena dentro del MDI mas funcionalidad con componente de seguridad
+------------------------
+Commit: 1e033e7
+Autor: vennusamery
+Fecha: 2026-03-24
+Mensaje: Hola hice el splash con Gary el gato
+------------------------
+Commit: 8ac6c25
+Autor: Natareno2124
+Fecha: 2026-03-24
+Mensaje: Carpeta de Mantenimientos
+------------------------
+Commit: 099714c
+Autor: Natareno2124
+Fecha: 2026-03-24
+Mensaje: Proyecto de ejecucion
+------------------------
+Commit: b8a031f
+Autor: Natareno2124
+Fecha: 2026-03-24
+Mensaje: Agregando referencias
+------------------------
+Commit: 77f8001
+Autor: Natareno2124
+Fecha: 2026-03-24
+Mensaje: Archivos iniciales de MVC
+------------------------
+Commit: ddd58a5
+Autor: Natareno2124
+Fecha: 2026-03-10
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: a44c46b
+Autor: Pedro Ibañez
+Fecha: 2026-03-05
+Mensaje: Merge pull request #22 from RichardAnthonyDeLeon/RichardDeLeon
+------------------------
+Commit: d040be0
+Autor: RichardAnthonyDeLeon
+Fecha: 2026-03-05
+Mensaje: Agregando consultas simples a Navegador
+------------------------
+Commit: 13ad158
+Autor: Natareno2124
+Fecha: 2026-03-05
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: 6eb07fd
+Autor: Paula Leonardo
+Fecha: 2026-03-05
+Mensaje: Merge pull request #18 from BrandonHernandez2708/main
+------------------------
+Commit: 4c6f049
+Autor: Bárbara Saldaña
+Fecha: 2026-03-05
+Mensaje: Merge pull request #27 from Natareno2124/Antecedentes_Dani
+------------------------
+Commit: 83cf934
+Autor: Paula Leonardo
+Fecha: 2026-03-04
+Mensaje: Merge pull request #29 from Natareno2124/Paula-Leonardo_BanruralV3
+------------------------
+Commit: 1dacf24
+Autor: IngPau
+Fecha: 2026-03-04
+Mensaje: Agregando Reportes al MDI de Migración
+------------------------
+Commit: e1ef36f
+Autor: Paula Leonardo
+Fecha: 2026-03-04
+Mensaje: Merge pull request #28 from Natareno2124/Paula-Leonardo_BanruralV3
+------------------------
+Commit: bdeef13
+Autor: IngPau
+Fecha: 2026-03-04
+Mensaje: Banrural Finalizado :)
+------------------------
+Commit: 1c73bd3
+Autor: vennusamery
+Fecha: 2026-03-04
+Mensaje: cambios visuales
+------------------------
+Commit: 8b2ae53
+Autor: IngPau
+Fecha: 2026-03-04
+Mensaje: Funciones agregadas en Frm_Banrural y eliminación de Impresión
+------------------------
+Commit: 0cde007
+Autor: Natareno2124
+Fecha: 2026-03-04
+Mensaje: Merge pull request #26 from Natareno2124/Maria-Morales-Progra_Renap
+------------------------
+Commit: 5f6dd9f
+Autor: mariamoralesg42
+Fecha: 2026-03-04
+Mensaje: Modificacion de tabla y boton salir
+------------------------
+Commit: 4cae50b
+Autor: Natareno2124
+Fecha: 2026-03-04
+Mensaje: Archivo de ayudas de navegador
+------------------------
+Commit: 2e27f11
+Autor: Natareno2124
+Fecha: 2026-03-04
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: 381d4ad
+Autor: Natareno2124
+Fecha: 2026-03-04
+Mensaje: Merge pull request #25 from Natareno2124/Bitacora_en_MDI
+------------------------
+Commit: 01cc3bd
+Autor: Aron Esquit
+Fecha: 2026-03-04
+Mensaje: Se agrego la Bitacora en el MDI y registra el emision del pasaporte
+------------------------
+Commit: 1f697d2
+Autor: Natareno2124
+Fecha: 2026-03-04
+Mensaje: Merge pull request #19 from daguilae/CboDropDownNav
+------------------------
+Commit: 20d22ed
+Autor: mariamoralesg42
+Fecha: 2026-03-04
+Mensaje: boton modificar funcional
+------------------------
+Commit: 01c0825
+Autor: mariamoralesg42
+Fecha: 2026-03-04
+Mensaje: boton eliminar funcional
+------------------------
+Commit: 27d4ff8
+Autor: mariamoralesg42
+Fecha: 2026-03-04
+Mensaje: Boton guardar funcional
+------------------------
+Commit: 11f2c98
+Autor: Natareno2124
+Fecha: 2026-03-03
+Mensaje: Merge pull request #24 from Natareno2124/Antecedentes_Dani
+------------------------
+Commit: 046f642
+Autor: vennusamery
+Fecha: 2026-03-03
+Mensaje: Cambios referencias y btn salir
+------------------------
+Commit: 8143144
+Autor: Pedro Ibañez
+Fecha: 2026-03-03
+Mensaje: Arreglo de DropDown Cbos Navegador
+------------------------
+Commit: da7d491
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-03-03
+Mensaje: Merge pull request #16 from BrandonHernandez2708/Btn_Modificar_app_corregido_Brandon_Hernandez_0901-22-9663
+------------------------
+Commit: 36bbd44
+Autor: BrandonHernandez2708
+Fecha: 2026-03-03
+Mensaje: Btn modificar en aplicacion corregida
+------------------------
+Commit: 4c9b872
+Autor: Natareno2124
+Fecha: 2026-03-03
+Mensaje: Merge pull request #23 from Natareno2124/Antecedentes_Dani
+------------------------
+Commit: 8e894c3
+Autor: Natareno2124
+Fecha: 2026-03-03
+Mensaje: Merge pull request #22 from Natareno2124/Paula-Leonardo_BanruralFuncional
+------------------------
+Commit: 7e858ba
+Autor: vennusamery
+Fecha: 2026-03-03
+Mensaje: JFSKNASLM<
+------------------------
+Commit: 3465771
+Autor: IngPau
+Fecha: 2026-03-03
+Mensaje: Funciones de Frm_BuscarBoleta
+------------------------
+Commit: 5fdc3b1
+Autor: IngPau
+Fecha: 2026-03-03
+Mensaje: Limpieza en Cls_Sentencias y Cls_Controlador
+------------------------
+Commit: eba10f6
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Cambios en Frm_Banrural
+------------------------
+Commit: 8eda07a
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Cambios en sentencias, controlador y Diseño Visual
+------------------------
+Commit: 617e40c
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Cls_Sentencias, Cls_Controlador, y Frm_Banrural.cs Actualizados con nuevas funciones
+------------------------
+Commit: 0e6f345
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Capa_Vista diseño de Frm_Banrural Actualizado
+------------------------
+Commit: 74c942a
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Capa_Vista_Banrural agregando funcionalidad botones
+------------------------
+Commit: 78a90dd
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Cls_Controlador se agregaron los controladores
+------------------------
+Commit: 7922724
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Cls_Sentencias agregadas y la conexion con seguridad instanciada
+------------------------
+Commit: 679ec84
+Autor: IngPau
+Fecha: 2026-03-02
+Mensaje: Formulario_Banrural Capa Vista Modifiación
+------------------------
+Commit: 56b4af5
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: f51307d
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Ajustes en Formularios
+------------------------
+Commit: 67c9ae4
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge pull request #21 from Natareno2124/ruben_armando-lopez-luch_frm-pasaporte-ver-pasaporte
+------------------------
+Commit: d95d8f5
+Autor: ruben0901204620
+Fecha: 2026-02-22
+Mensaje: Funcionamiento de paasaporte y ver tarjeta de pasaporte
+------------------------
+Commit: 2481376
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: 4e7b98c
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge pull request #19 from anderson22t/main
+------------------------
+Commit: 3a4b84e
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Acoplando DLLs
+------------------------
+Commit: f955f32
+Autor: anderson22t
+Fecha: 2026-02-22
+Mensaje: Merge pull request #1 from anderson22t/AsignacionCita_Anderson
+------------------------
+Commit: e9f6d63
+Autor: Anderson
+Fecha: 2026-02-22
+Mensaje: Diseño de Formularios de Asignacion de Cita
+------------------------
+Commit: 11c8baf
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge pull request #18 from GerberAsturias/main
+------------------------
+Commit: 478a65f
+Autor: Natareno2124
+Fecha: 2026-02-22
+Mensaje: Merge pull request #17 from Natareno2124/PR_Pais_Emisor_ErnestoSamayoa
+------------------------
+Commit: 6492bcf
+Autor: GerberAsturias
+Fecha: 2026-02-21
+Mensaje: Merge pull request #1 from GerberAsturias/Sedes_Gerber
+------------------------
+Commit: be82de7
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-02-21
+Mensaje: Mantenimiento sedes
+------------------------
+Commit: 2e5956d
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-02-21
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf into Sedes_Gerber
+------------------------
+Commit: b553f63
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #16 from chejoizp/main
+------------------------
+Commit: 9f664ca
+Autor: ErnestoSamayoa
+Fecha: 2026-02-21
+Mensaje: Subiendo Mi carpeta con formulario Pais Emisor
+------------------------
+Commit: 36037cd
+Autor: Sergio Emmanuel Izeppi Valle
+Fecha: 2026-02-21
+Mensaje: Merge pull request #1 from chejoizp/tipopasaporte_sergio
+------------------------
+Commit: 1046823
+Autor: Sergio Emmanuel Izeppi Valle
+Fecha: 2026-02-21
+Mensaje: Mantenimiento Tipo Pasaporte
+------------------------
+Commit: 02764e7
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Arreglando referencia en MDI
+------------------------
+Commit: fd5b78b
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #14 from Natareno2124/Kevin_Natareno_Frm_Citas
+------------------------
+Commit: 68c1030
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: cambio en conexion de seguridad de migracion a hoteleria
+------------------------
+Commit: 270456f
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Agendar citas casi funcional, falta validación de número de boleta
+------------------------
+Commit: 2a0cb2c
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #13 from CesarEduardoSantizo/main
+------------------------
+Commit: 9e70e32
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge branch 'main' into main
+------------------------
+Commit: 7f38fe9
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Ajustes en funcionalidad
+------------------------
+Commit: 310ffab
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #12 from Natareno2124/Estado_Cita
+------------------------
+Commit: a1d3132
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #11 from Natareno2124/Paula-Leonardo_Banrural
+------------------------
+Commit: b4582bc
+Autor: Natareno2124
+Fecha: 2026-02-21
+Mensaje: Merge pull request #10 from Natareno2124/Antecedentes_Dani
+------------------------
+Commit: 7e2993d
+Autor: CesarEduardoSantizo
+Fecha: 2026-02-21
+Mensaje: Merge pull request #1 from CesarEduardoSantizo/Horario_Cesar
+------------------------
+Commit: 4c189ce
+Autor: CesarEduardoSantizo
+Fecha: 2026-02-21
+Mensaje: Mantenimiento de horarios
+------------------------
+Commit: b632b89
+Autor: CesarEduardoSantizo
+Fecha: 2026-02-21
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: 5c4e460
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-02-21
+Mensaje: Update connection string from bd_Migracion to bd_hoteleria
+------------------------
+Commit: 138a46d
+Autor: Aron Esquit
+Fecha: 2026-02-21
+Mensaje: Frm de Estado de Cita con Navegador
+------------------------
+Commit: 02bdc9d
+Autor: IngPau
+Fecha: 2026-02-21
+Mensaje: Formulario Banrural y Buscar Boleta Prototipos No funcionales Finalizados
+------------------------
+Commit: a4ee89b
+Autor: IngPau
+Fecha: 2026-02-21
+Mensaje: Formulario Banrural Finalizado
+------------------------
+Commit: cda6759
+Autor: IngPau
+Fecha: 2026-02-20
+Mensaje: Referencia a Cls_Conexion de Seguridad para Cls_Sentencias Banrural
+------------------------
+Commit: 1e43406
+Autor: IngPau
+Fecha: 2026-02-20
+Mensaje: Creación MVC_Banrural y Exe_Banrural
+------------------------
+Commit: 955fb18
+Autor: GERBER ALEXANDER ASTURIAS TEJAXÚN
+Fecha: 2026-02-20
+Mensaje: Merge branch 'main' of https://github.com/Natareno2124/is2k26pf
+------------------------
+Commit: 054821a
+Autor: Natareno2124
+Fecha: 2026-02-20
+Mensaje: Funciones para cargar datos en los Comboboxes
+------------------------
+Commit: c308a24
+Autor: Natareno2124
+Fecha: 2026-02-20
+Mensaje: Clases funcionales para modelo y controlador, conexion con la BD
+------------------------
+Commit: 340d214
+Autor: Natareno2124
+Fecha: 2026-02-20
+Mensaje: Diseño de formulario para agendar cita y referencias entre capas
+------------------------
+Commit: 6244bd2
+Autor: vennusamery
+Fecha: 2026-02-20
+Mensaje: Hola no funcional bye
+------------------------
+Commit: bfdfe19
+Autor: Natareno2124
+Fecha: 2026-02-20
+Mensaje: Agregando MVC para citas
+------------------------
+Commit: 94bead5
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-20
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: 70cd38b
+Autor: Paula Leonardo
+Fecha: 2026-02-20
+Mensaje: Merge pull request #8 from Natareno2124/ruben_armando_lopez_luch-frm_pasaporte
+------------------------
+Commit: 404e40f
+Autor: Paula Leonardo
+Fecha: 2026-02-20
+Mensaje: Merge pull request #9 from Natareno2124/Maria-Morales-Renap
+------------------------
+Commit: 0ce5027
+Autor: mariamoralesg42
+Fecha: 2026-02-19
+Mensaje: Diseño NO funcional del formulario RENAP
+------------------------
+Commit: e69ebd3
+Autor: ruben0901204620
+Fecha: 2026-02-19
+Mensaje: Creacion del formulario base de pasaporte
+------------------------
+Commit: 8025c1e
+Autor: mariamoralesg42
+Fecha: 2026-02-19
+Mensaje: Creacion MVC para formulario RENAP
+------------------------
+Commit: 21f3985
+Autor: Paula Leonardo
+Fecha: 2026-02-19
+Mensaje: Merge pull request #12 from TepeuI/navegadorBTN
+------------------------
+Commit: 952bac3
+Autor: Natareno2124
+Fecha: 2026-02-19
+Mensaje: Agregando carpeta para carpetas individuales
+------------------------
+Commit: 2543abf
+Autor: Natareno2124
+Fecha: 2026-02-19
+Mensaje: Merge pull request #7 from Natareno2124/CambiosMDI
+------------------------
+Commit: e3f9240
+Autor: IngPau
+Fecha: 2026-02-19
+Mensaje: Pestañas MDI
+------------------------
+Commit: d5d8a0f
+Autor: Natareno2124
+Fecha: 2026-02-19
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: 6ea057b
+Autor: Pedro Ibañez
+Fecha: 2026-02-19
+Mensaje: Navegador
+------------------------
+Commit: b804d97
+Autor: Natareno2124
+Fecha: 2026-02-19
+Mensaje: Merge pull request #9 from BrandonHernandez2708/Base_de_datos_Brandon_Hernandez_0901-22-9663
+------------------------
+Commit: a449d76
+Autor: Paula Leonardo
+Fecha: 2026-02-19
+Mensaje: Merge #5 Aprobado
+------------------------
+Commit: 948e7a9
+Autor: Natareno2124
+Fecha: 2026-02-16
+Mensaje: Merge pull request #6 from Natareno2124/Maria-Morales-MDI
+------------------------
+Commit: 952102b
+Autor: mariamoralesg42
+Fecha: 2026-02-15
+Mensaje: Cambios diseño login
+------------------------
+Commit: 9ae1891
+Autor: Natareno2124
+Fecha: 2026-02-15
+Mensaje: Merge pull request #5 from Natareno2124/SplahsDani
+------------------------
+Commit: 9988016
+Autor: vennusamery
+Fecha: 2026-02-15
+Mensaje: a ver prueba dos
+------------------------
+Commit: d17b43e
+Autor: Natareno2124
+Fecha: 2026-02-15
+Mensaje: Merge pull request #4 from Natareno2124/SplahsDani
+------------------------
+Commit: 6cc02d3
+Autor: vennusamery
+Fecha: 2026-02-15
+Mensaje: slapsh con el pug policia todo lindo obvio
+------------------------
+Commit: 22f1664
+Autor: Natareno2124
+Fecha: 2026-02-14
+Mensaje: Merge pull request #3 from Natareno2124/Grupo5_MDI_Login
+------------------------
+Commit: 9f21148
+Autor: Aron Esquit
+Fecha: 2026-02-14
+Mensaje: Se agrego el MDI, cambiar contraseña, recuperarcontraseña, login y ejecucion
+------------------------
+Commit: d4c5b77
+Autor: Natareno2124
+Fecha: 2026-02-13
+Mensaje: Merge pull request #2 from Natareno2124/Kevin-Natareno-Proyecto-Inicial
+------------------------
+Commit: 57df67c
+Autor: Natareno2124
+Fecha: 2026-02-13
+Mensaje: Agregando Referencias
+------------------------
+Commit: f65569a
+Autor: Natareno2124
+Fecha: 2026-02-13
+Mensaje: Merge pull request #1 from Natareno2124/Kevin-Natareno-Proyecto-Inicial
+------------------------
+Commit: 7f74242
+Autor: Natareno2124
+Fecha: 2026-02-13
+Mensaje: Creacion de carpeta inicial y MVC
+------------------------
+Commit: 17fe4e9
+Autor: BrandonHernandez2708
+Fecha: 2026-02-13
+Mensaje: Base de datos
+------------------------
+Commit: 907afaa
+Autor: BrandonHernandez2708
+Fecha: 2026-02-13
+Mensaje: Correcion_permisos_bitacora
+------------------------
+Commit: 89fcb64
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-12
+Mensaje: Merge pull request #12 from BrandonHernandez2708/Correcion_reporte_bitacora
+------------------------
+Commit: 2eaa1de
+Autor: Aron Esquit
+Fecha: 2026-02-12
+Mensaje: Se modifico el reporte de bitacora
+------------------------
+Commit: 0aa297b
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-11
+Mensaje: Merge pull request #11 from BrandonHernandez2708/varios_cambios_Brandon_Hernandez_0901-22-9663
+------------------------
+Commit: 8340ee3
+Autor: BrandonHernandez2708
+Fecha: 2026-02-11
+Mensaje: Correccion del boton buscar,Aplicacion y usuario a catalogo ,boton cerrar sesion,funcion buscar en permisos al insertar
+------------------------
+Commit: 4b41c68
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-11
+Mensaje: Merge pull request #10 from BrandonHernandez2708/ModulosNavDanilonew
+------------------------
+Commit: 4e9990f
+Autor: ErnestoSamayoa
+Fecha: 2026-02-10
+Mensaje: Subiendo Modulo Danilo nuevo
+------------------------
+Commit: 1ba031d
+Autor: RICARDO
+Fecha: 2026-02-07
+Mensaje: Merge pull request #9 from BrandonHernandez2708/Ayuda_CamContr_MDI
+------------------------
+Commit: 4034a4c
+Autor: Aron Esquit
+Fecha: 2026-02-07
+Mensaje: Se agrego el boton de ayuda de MDI y cambio de contraseña
+------------------------
+Commit: ba93c65
+Autor: Kenph-Ansonny
+Fecha: 2026-02-07
+Mensaje: Se arreglo de que las etiquetas se sobrepongan sobre los controles del navegador
+------------------------
+Commit: ff9f875
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-06
+Mensaje: Merge pull request #7 from BrandonHernandez2708/0901-20-4620_Ruben-Lopez-arregloDeMDISeguridadYBtnDeEnter
+------------------------
+Commit: ac557d6
+Autor: Ruben Armando Lopez Luch
+Fecha: 2026-02-06
+Mensaje: Se arreglo el MDI de seguridad y se agrego la funcion del enter en el inicio de sesion
+------------------------
+Commit: 9ab28ab
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-06
+Mensaje: Merge pull request #6 from BrandonHernandez2708/Formulario_aplicacion_reportes_Brandon_Hernandez_0901-22-9663
+------------------------
+Commit: 6f7f197
+Autor: BrandonHernandez2708
+Fecha: 2026-02-05
+Mensaje: fun_limpiar_cambios fixed
+------------------------
+Commit: b033fbf
+Autor: BrandonHernandez2708
+Fecha: 2026-02-05
+Mensaje: Formulario de reportes con aplicaciones
+------------------------
+Commit: 473eed9
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-04
+Mensaje: Merge pull request #4 from MarcosVelasquezAlcanatar/ayudas
+------------------------
+Commit: 424c6f6
+Autor: Marcos
+Fecha: 2026-02-04
+Mensaje: Creacion ayudas
+------------------------
+Commit: eff4086
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-03
+Mensaje: Merge pull request #3 from BrandonHernandez2708/EmpleadosEditadoNav
+------------------------
+Commit: d00ddca
+Autor: ErnestoSamayoa
+Fecha: 2026-02-03
+Mensaje: Subiendo Nuevo2026
+------------------------
+Commit: dbaf655
+Autor: ErnestoSamayoa
+Fecha: 2026-02-03
+Mensaje: Subiendo nuevos cambios Ernesto
+------------------------
+Commit: 4b29557
+Autor: Brandon Alexander Hernández Salguero
+Fecha: 2026-02-03
+Mensaje: Merge pull request #1 from BrandonHernandez2708/migracion_github
+------------------------
+Commit: 03578d8
+Autor: BrandonHernandez2708
+Fecha: 2026-02-03
+Mensaje: Movimiento de form empleados y form perfiles a empleados
+------------------------
+Commit: 2cafed1
+Autor: BrandonHernandez2708
+Fecha: 2026-02-03
+Mensaje: form perfiles , empleados ,boton de ayuda
+------------------------
+Commit: 83853cf
+Autor: daguilae
+Fecha: 2026-02-03
+Mensaje: Merge pull request #2 from edelaguila/main
+------------------------
+Commit: 4438b74
+Autor: edelaguila
+Fecha: 2026-02-03
+Mensaje: Merge branch 'daguilae:main' into main
+------------------------
+Commit: e28486d
+Autor: Esduardo Del Aguila
+Fecha: 2026-02-03
+Mensaje: agregando carpetas para proyectos
+------------------------
+Commit: 4dff44d
+Autor: daguilae
+Fecha: 2026-02-03
+Mensaje: Merge pull request #1 from edelaguila/main
+------------------------
+Commit: f61ee16
+Autor: Esduardo Del Aguila
+Fecha: 2026-02-03
+Mensaje: mi primer proyecto IS
+------------------------
+Commit: a9a05d3
+Autor: daguilae
+Fecha: 2026-02-03
+Mensaje: Initial commit
+------------------------

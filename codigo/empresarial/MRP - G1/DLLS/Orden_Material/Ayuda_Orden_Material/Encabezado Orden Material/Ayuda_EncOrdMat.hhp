@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_EncOrdMat.chm
+Contents file=Ayuda_EncabeOrdenMater.hhc
+Default Window=Ayuda_EncabezadoOrdenMaterial
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+Ayuda_EncabezadoOrdenMaterial=,"Ayuda_EncabeOrdenMater.hhc",,,"index.html","index.html","index.html","index.html","index.html",0x23520,,0xc387e,,,,,,,,0
+
+
+[FILES]
+index.html
+
+[INFOTYPES]
+

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ayuda - Código de Barras</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            color: #222;
+        }
+
+        header {
+            background: #0078d7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            margin: 25px auto;
+            padding: 20px;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 8px #ccc;
+        }
+
+        h2 {
+            color: #0078d7;
+            border-bottom: 2px solid #0078d7;
+            padding-bottom: 5px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #0078d7;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="text-align:center; padding:30px; background:white;">
+    <img src="img/LOGO MRP.png" alt="Sistema MRP" style="max-width:400px; width:100%;">
+</div>
+
+<header>
+    <h1>Manual de Ayuda - Código de Barras</h1>
+    <p>Módulo para generar, almacenar y consultar códigos de barras de productos.</p>
+</header>
+
+<section>
+    <h2>1. Pantalla Generar Código</h2>
+
+    <p>
+        Esta pantalla permite generar un código de barras para un producto seleccionado
+        y guardarlo en la base de datos.
+    </p>
+
+    <ul>
+        <li><b>Producto:</b> Selecciona el material o producto registrado.</li>
+        <li><b>Tipo Código:</b> Permite elegir el tipo de código de barras.</li>
+        <li><b>Generar Código:</b> Crea la imagen del código.</li>
+        <li><b>Imagen:</b> Muestra el código generado.</li>
+        <li><b>Guardar Código:</b> Guarda el código en la base de datos.</li>
+        <li><b>Ver Código:</b> Abre la pantalla de consulta.</li>
+        <li><b>Ayuda:</b> Muestra este manual.</li>
+    </ul>
+
+    <img src="img/CB.png" alt="Pantalla Generar Código">
+</section>
+
+<section>
+    <h2>2. Pantalla Ver Código</h2>
+
+    <p>
+        Permite consultar códigos de barras previamente guardados.
+    </p>
+
+    <ul>
+        <li><b>Producto:</b> Selecciona el producto.</li>
+        <li><b>Buscar:</b> Muestra el código guardado.</li>
+        <li><b>Imagen:</b> Visualiza el código almacenado.</li>
+    </ul>
+
+    <img src="img/VCB.png" alt="Pantalla Ver Código">
+</section>
+
+<section>
+    <h2>3. Tipos de Códigos de Barras</h2>
+
+    <table>
+        <tr>
+            <th>Tipo</th>
+            <th>Cómo es</th>
+            <th>Uso</th>
+        </tr>
+
+        <tr>
+            <td>CODE 128</td>
+            <td>Código lineal compacto y flexible.</td>
+            <td>Inventarios, logística, sistemas empresariales.</td>
+        </tr>
+
+        <tr>
+            <td>CODE 39</td>
+            <td>Código con letras y números.</td>
+            <td>Almacenes y control interno.</td>
+        </tr>
+
+        <tr>
+            <td>EAN-13</td>
+            <td>13 dígitos estándar comercial.</td>
+            <td>Supermercados y farmacias.</td>
+        </tr>
+
+        <tr>
+            <td>EAN-8</td>
+            <td>Versión corta de EAN.</td>
+            <td>Productos pequeños.</td>
+        </tr>
+
+        <tr>
+            <td>UPC-A</td>
+            <td>12 dígitos.</td>
+            <td>Tiendas (principalmente EE.UU).</td>
+        </tr>
+
+        <tr>
+            <td>UPC-E</td>
+            <td>Versión reducida de UPC.</td>
+            <td>Empaques pequeños.</td>
+        </tr>
+
+        <tr>
+            <td>ITF (2 of 5)</td>
+            <td>Solo números.</td>
+            <td>Cajas y logística.</td>
+        </tr>
+
+        <tr>
+            <td>Codabar</td>
+            <td>Código simple.</td>
+            <td>Bibliotecas y laboratorios.</td>
+        </tr>
+
+        <tr>
+            <td>QR Code</td>
+            <td>Código cuadrado 2D.</td>
+            <td>Links, información digital.</td>
+        </tr>
+
+        <tr>
+            <td>Data Matrix</td>
+            <td>Código 2D compacto.</td>
+            <td>Medicamentos y piezas pequeñas.</td>
+        </tr>
+
+        <tr>
+            <td>PDF417</td>
+            <td>Código rectangular 2D.</td>
+            <td>Documentos y licencias.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>4. Tipo recomendado</h2>
+
+    <p>
+        Para este sistema se recomienda utilizar <b>CODE 128</b>, ya que permite
+        manejar códigos internos con letras, números y mayor capacidad de información.
+    </p>
+</section>
+
+<section>
+    <h2>5. Cómo generar un código</h2>
+
+    <ol>
+        <li>Seleccionar el producto.</li>
+        <li>Elegir el tipo de código.</li>
+        <li>Presionar "Generar Código".</li>
+        <li>Verificar la imagen.</li>
+        <li>Presionar "Guardar Código".</li>
+    </ol>
+</section>
+
+<section>
+    <h2>6. Cómo consultar un código</h2>
+
+    <ol>
+        <li>Ir a "Ver Código".</li>
+        <li>Seleccionar el producto.</li>
+        <li>Presionar "Buscar".</li>
+        <li>Visualizar el código.</li>
+    </ol>
+</section>
+
+<section>
+    <h2>7. Recomendaciones</h2>
+
+    <ul>
+        <li>Usar CODE 128 para inventario interno.</li>
+        <li>Evitar códigos muy largos.</li>
+        <li>Verificar que el lector pueda escanear correctamente.</li>
+        <li>No duplicar códigos para diferentes productos.</li>
+    </ul>
+</section>
+
+</body>
+</html>
