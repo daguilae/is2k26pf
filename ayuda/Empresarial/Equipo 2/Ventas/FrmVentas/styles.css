@@ -1,0 +1,123 @@
+/* Estilos globales - Profesional */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Encabezado */
+h1 {
+    font-size: 28px;
+    color: #2c3e50;
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+/* Subtítulos */
+h2 {
+    font-size: 20px;
+    color: #34495e;
+    margin: 15px 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+/* Párrafos */
+p {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+/* Imágenes */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos globales - Estilo moderno */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #444;
+}
+
+/* Encabezados */
+h1 {
+    font-size: 24pt;
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #0078d7;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 18pt;
+    color: #0078d7;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 14pt;
+    color: #0056b3;
+}
+
+/* Párrafos */
+p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: justify;
+    margin: 1.5rem 0;
+}
+
+/* Imágenes (Capturas de pantalla) */
+img {
+    display: block;
+    margin: 1.5rem auto;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto; 
+}
+
+/* Botones */
+button {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14pt;
+    background-color: #0078d7;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -478,40 +478,48 @@ WHERE v.Pk_Id_Ventas = ?";
         }
 
         private static readonly string SQL_DETALLE_VENTA = @"
-        SELECT
-        dv.Fk_Id_Inventario AS IdProducto,
-        i.nombre_prod AS Producto,
-        i.descripcion AS Descripcion,
+SELECT
+dv.Fk_Id_Inventario AS IdProducto,
+i.nombre_prod AS Producto,
+i.descripcion AS Descripcion,
 
-        e.fk_bodega_id AS IdBodega,
-        b.Cmp_Nombre_Bodega AS Bodega,
+MIN(e.fk_bodega_id) AS IdBodega,
+MIN(b.Cmp_Nombre_Bodega) AS Bodega,
 
-        e.fk_id_unidad_medida AS IdUnidad,
-        u.Nombre_Unidad AS UnidadMedida,
+MIN(e.fk_id_unidad_medida) AS IdUnidad,
+MIN(u.Nombre_Unidad) AS UnidadMedida,
 
-        i.precio_unitario AS Precio,
-        dv.Cmp_Cantidad_Producto AS Cantidad,
+i.precio_unitario AS Precio,
+dv.Cmp_Cantidad_Producto AS Cantidad,
 
-        0 AS Descuento,
-        'Publico' AS TipoCliente,
+0 AS Descuento,
+'Publico' AS TipoCliente,
 
-        dv.Cmp_Precio_Subtotal AS Subtotal
+dv.Cmp_Precio_Subtotal AS Subtotal
 
-        FROM tbl_detalle_ventas dv
+FROM tbl_detalle_ventas dv
 
-        INNER JOIN tbl_inventario i
-        ON dv.Fk_Id_Inventario = i.pk_inventario_id
+INNER JOIN tbl_inventario i
+ON dv.Fk_Id_Inventario = i.pk_inventario_id
 
-        INNER JOIN tbl_existencias e
-        ON i.pk_inventario_id = e.fk_inventario_id
+INNER JOIN tbl_existencias e
+ON i.pk_inventario_id = e.fk_inventario_id
 
-        INNER JOIN tbl_bodega b
-        ON e.fk_bodega_id = b.Pk_Id_Bodega
+INNER JOIN tbl_bodega b
+ON e.fk_bodega_id = b.Pk_Id_Bodega
 
-        INNER JOIN tbl_unidad_de_medida u
-        ON e.fk_id_unidad_medida = u.ID_Unidad
+INNER JOIN tbl_unidad_de_medida u
+ON e.fk_id_unidad_medida = u.ID_Unidad
 
-        WHERE dv.Fk_Id_Ventas = ?";
+WHERE dv.Fk_Id_Ventas = ?
+
+GROUP BY
+dv.Fk_Id_Inventario,
+i.nombre_prod,
+i.descripcion,
+i.precio_unitario,
+dv.Cmp_Cantidad_Producto,
+dv.Cmp_Precio_Subtotal";
 
         public DataTable ObtenerDetalleVenta(int idVenta)
         {

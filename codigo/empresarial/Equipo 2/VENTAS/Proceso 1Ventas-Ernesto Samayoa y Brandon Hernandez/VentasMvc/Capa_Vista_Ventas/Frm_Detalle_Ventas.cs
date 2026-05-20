@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -404,8 +405,8 @@ namespace Capa_Vista_Ventas
                     _soloConsulta = true;
 
                     MessageBox.Show(
-                        "Esta venta ya fue finalizada.\n" +
-                        "Modo solo consulta.");
+                        "Venta registra.\n" +
+                        "Consulta.");
                 }
 
                 // TOTAL
@@ -491,9 +492,6 @@ namespace Capa_Vista_Ventas
 
 
 
-
-
-
         private void Dgv_Detalle_Venta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -504,7 +502,7 @@ namespace Capa_Vista_Ventas
             if (!_modoEdicion)
             {
                 MessageBox.Show(
-                    "Primero abra una venta desde el listado.");
+                    "Primero abra un registro desde ventas generales.");
                 return;
             }
 
@@ -1004,7 +1002,43 @@ namespace Capa_Vista_Ventas
 
         private void Btn_Ayuda_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Ruta relativa donde está tu archivo CHM (igual que tu compañero)
+                const string subRutaAyuda = @"ayuda\Empresarial\Equipo 2\Ventas\FrmVentas\Ventasayuda.chm";
 
+                string rutaEncontrada = null;
+                DirectoryInfo dir = new DirectoryInfo(Application.StartupPath);
+
+                // Busca la carpeta hacia arriba (10 niveles)
+                for (int i = 0; i < 10 && dir != null; i++, dir = dir.Parent)
+                {
+                    string candidata = Path.Combine(dir.FullName, subRutaAyuda);
+                    if (File.Exists(candidata))
+                    {
+                        rutaEncontrada = candidata;
+                        break;
+                    }
+                }
+                if (rutaEncontrada != null)
+
+                {
+                    // Esta es la ruta INTERNA del archivo dentro del CHM
+                    string rutaInterna = @"EncabezadoDetalleVentas.html";
+
+                    Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el archivo de ayuda.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir la ayuda:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Btn_Salir_Dventas_Click(object sender, EventArgs e)
