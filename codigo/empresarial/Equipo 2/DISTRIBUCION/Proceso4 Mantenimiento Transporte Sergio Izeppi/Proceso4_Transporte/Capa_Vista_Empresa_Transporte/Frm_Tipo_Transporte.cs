@@ -496,6 +496,7 @@ namespace Capa_Vista_Empresa_Transporte
             Txt_Placa.Enabled = true;
             Txt_Piloto.Enabled = true;
             Txt_Capacidad.Enabled = true;
+            Cbo_Estado_Transporte.Enabled = true;
 
             //Limpiar selección
             Cbo_Estado_Transporte.SelectedIndex = 0;
