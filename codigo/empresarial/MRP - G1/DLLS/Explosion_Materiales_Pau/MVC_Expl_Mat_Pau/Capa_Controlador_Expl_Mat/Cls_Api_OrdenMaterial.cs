@@ -31,7 +31,7 @@ namespace Capa_Controlador_Expl_Mat
 
     public class Cls_Api_OrdenMaterial
     {
-        private readonly string urlApi = "http://172.20.10.6:5001/api/Ordenes";
+        private readonly string urlApi = "http://172.20.10.3:5001/api/Ordenes";
 
         public RespuestaApiOrdenMaterial EnviarOrdenMaterial(OrdenMaterialApi orden)
         {
