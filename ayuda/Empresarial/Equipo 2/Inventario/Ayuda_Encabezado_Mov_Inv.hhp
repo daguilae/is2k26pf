@@ -3,16 +3,17 @@ Compatibility=1.1 or later
 Compiled file=Ayuda_Encabezado_Mov_Inv.chm
 Contents file=Ayuda_Inventario.hhc
 Default Window=Ayuda Movimiento Inventario
+Default topic=Ayuda_Encabezado_Movimiento_Inventario.html
 Display compile progress=No
 Language=0x409 English (United States)
 
 [WINDOWS]
-Ayuda Movimiento Inventario="Formularios de Ayuda para los usuarios ","Ayuda_Inventario.hhc",,"Ayuda_Encabezado_Mov_Inv1.html","Ayuda_Encabezado_Mov_Inv1.html","Ayuda_Transaccion_MOv_Inv1.html","Ayuda Transacción Movimiento Inventario",,"Ayuda Transacción Movimiento Inventario",0x23520,,0x4387e,,,,,,,,0
+Ayuda Movimiento Inventario="Formularios de Ayuda para los usuarios ","Ayuda_Inventario.hhc",,"Ayuda_Encabezado_Movimiento_Inventario.html","Ayuda_Encabezado_Movimiento_Inventario.html","Ayuda_Transaccion.html","Ayuda_Transaccion",,"Ayuda Transacción Movimiento Inventario",0x23520,,0x4387e,,,,,,,,0
 
 
 [FILES]
-Ayuda_Encabezado_Mov_Inv1.html
-Ayuda_Transaccion_MOv_Inv1.html
+Ayuda_Encabezado_Movimiento_Inventario.html
+Ayuda_Transaccion.html
 
 [INFOTYPES]
 

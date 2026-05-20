@@ -14,7 +14,7 @@
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Encabezado">
-			<param name="Local" value="Ayuda_Encabezado_Mov_Inv1.html">
+			<param name="Local" value="Ayuda_Encabezado_Movimiento_Inventario.html">
 			</OBJECT>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
@@ -23,7 +23,7 @@
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Transaccion">
-			<param name="Local" value="Ayuda_Encabezado_Mov_Inv1.html">
+			<param name="Local" value="Ayuda_Transaccion.html">
 			</OBJECT>
 	</UL>
 </UL>

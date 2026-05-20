@@ -155,7 +155,7 @@ namespace Capa_Vista_Mov_Inv
 
                 {
                     // Esta es la ruta INTERNA del archivo dentro del CHM
-                    string rutaInterna = @"Ayuda_Encabezado_Mov_Inv1.html";
+                    string rutaInterna = @"Ayuda_Encabezado_Movimiento_Inventario.html";
 
                     Help.ShowHelp(this, rutaEncontrada, HelpNavigator.Topic, rutaInterna);
                 }
