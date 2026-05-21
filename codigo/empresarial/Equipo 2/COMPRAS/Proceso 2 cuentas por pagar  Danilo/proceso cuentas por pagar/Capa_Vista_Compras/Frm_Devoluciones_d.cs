@@ -486,5 +486,10 @@ namespace Capa_Vista_Compras
                 MessageBox.Show("Error al seleccionar compra: " + ex.Message);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

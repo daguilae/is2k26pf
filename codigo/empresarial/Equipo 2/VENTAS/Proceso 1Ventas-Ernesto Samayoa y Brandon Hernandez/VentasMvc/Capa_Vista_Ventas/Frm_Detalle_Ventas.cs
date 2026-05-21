@@ -590,16 +590,17 @@ namespace Capa_Vista_Ventas
                 if (_modoEdicion)
                 {
                     resultado = controlador.ActualizarVenta(
-                        _idVenta,
-                        dCmp_Fecha_Venta,
-                        iFk_Id_Cliente,
-                        iFk_Id_Sucursal,
-                        sCmp_Estado_Venta,
-                        sCmp_Tipo_Operacion,
-                        fSaldo_total,
-                        convertirAVenta,
-                        dtDetalle
-                    );
+                       _idVenta,
+                       dCmp_Fecha_Venta,
+                       iFk_Id_Cliente,
+                       iFk_Id_Sucursal,
+                       sCmp_Estado_Venta,
+                       sCmp_Tipo_Operacion,
+                       fSaldo_total,
+                       convertirAVenta,
+                       dtDetalle,
+                       dCmp_Fecha_Vencimiento  // ← agregado
+   );
                 }
                 else
                 {

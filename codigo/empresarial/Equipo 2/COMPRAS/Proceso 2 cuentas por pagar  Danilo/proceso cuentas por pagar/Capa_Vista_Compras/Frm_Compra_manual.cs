@@ -349,5 +349,10 @@ namespace Capa_Vista_CXP
         {
             this.Close();
         }
+
+        private void Btn_guardar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

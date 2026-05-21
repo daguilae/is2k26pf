@@ -73,16 +73,19 @@ namespace Capa_Controlador_Mov_Inv
 
         private float fun_CalcularStock(float stockActual, float cantidad, int idTipoMovimiento)
         {
+            float stock_calculado = 0;
             // Ajusta los IDs según tu tabla de tipos de movimiento
             bool verificacion_TipoMov = fun_Verificar_TipoMov(idTipoMovimiento);
             if (verificacion_TipoMov) {
                 // ENTRADA - aumenta stock
-                return stockActual + cantidad;
+                stock_calculado = stockActual + cantidad;
+                return stock_calculado;
             }
             else {// SALIDA - disminuye stock
-                if (stockActual - cantidad < 0)
+                stock_calculado = stockActual - cantidad;
+                if (stock_calculado < 0)
                     throw new Exception("Stock insuficiente para realizar la salida.");
-                return stockActual - cantidad;
+                return stock_calculado;
             }
                    throw new Exception($"Tipo de movimiento no reconocido: {idTipoMovimiento}");
             
