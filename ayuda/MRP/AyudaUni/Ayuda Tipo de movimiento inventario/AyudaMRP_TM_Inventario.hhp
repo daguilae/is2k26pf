@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaMRP_TM_Inventario.chm
+Contents file=MRR_Help_TMI.hhc
+Default Window=Ayuda_TMI
+Display compile progress=No
+Language=0x580a Español (Latinoamérica)
+
+[WINDOWS]
+Ayuda_TMI="Ayuda para utilizar el formulario de tipo movimiento inventario","MRR_Help_TMI.hhc",,"ayuda_tipo_MI.html","ayuda_tipo_MI.html",,,,,0x23520,,0x383e,,,,,,,,0
+
+
+[FILES]
+ayuda_tipo_MI.html
+
+[INFOTYPES]
+
