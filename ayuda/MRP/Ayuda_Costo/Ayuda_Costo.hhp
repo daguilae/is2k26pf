@@ -1,0 +1,17 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ayuda_Costo.chm
+Contents file=Ayuda\Ayuda_Costo.hhc
+Default Window=Ayudacosto
+Display compile progress=No
+Language=0x100a Español (Guatemala)
+
+[WINDOWS]
+Ayudacosto="Ayuda para form costo","Ayuda\Ayuda_Costo.hhc",,"Ayuda\Cliente.html","Ayuda\Cliente.html",,,,,0x23520,,0x387e,,,,,,,,0
+
+
+[FILES]
+Ayuda\Cliente.html
+
+[INFOTYPES]
+

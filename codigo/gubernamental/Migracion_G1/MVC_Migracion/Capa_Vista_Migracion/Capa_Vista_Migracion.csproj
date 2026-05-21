@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64F50F85-96EC-4AB8-B0F3-3E63230AD4FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Capa_Vista_Migracion</RootNamespace>
+    <AssemblyName>Capa_Vista_Migracion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Capa_Controlador_Migracion">
+      <HintPath>..\Capa_Controlador_Migracion\bin\Debug\Capa_Controlador_Migracion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Controlador_Navegador">
+      <HintPath>..\..\..\..\componentes\navegador\NavegadorMVC\CapaControladorNavegador\bin\Debug\Capa_Controlador_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Controlador_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaControlador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Antecedentes">
+      <HintPath>..\..\DLLS_Migracion_G1\Antecedentes_Dani\DLL_Antecedentes\Capa_Vista_Antecedentes\bin\Debug\Capa_Vista_Antecedentes.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Asignacion">
+      <HintPath>..\..\DLLS_Migracion_G1\AsignacionCita_Anderson\Asignar_Cita\Capa_Vista_Asignacion\bin\Debug\Capa_Vista_Asignacion.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Banrural">
+      <HintPath>..\..\DLLS_Migracion_G1\Banrural_Paula\Banrural_MVC\Capa_Vista_Banrural\bin\Debug\Capa_Vista_Banrural.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Citas">
+      <HintPath>..\..\DLLS_Migracion_G1\Agendar_Cita_Kevin\MVC_Citas\Capa_Vista_Citas\bin\Debug\Capa_Vista_Citas.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Horario">
+      <HintPath>..\..\DLLS_Migracion_G1\Horario_Cesar\Capa_Vista_Horario\Capa_Vista_Horario\bin\Debug\Capa_Vista_Horario.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\..\componentes\navegador\NavegadorMVC\CapaVistaNavegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Pais_Emisor">
+      <HintPath>..\..\DLLS_Migracion_G1\Emisor_Pais_Ernesto\Formulario_Pais_Emisor\Capa_Vista_Pais_Emisor\bin\Debug\Capa_Vista_Pais_Emisor.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Pasaporte">
+      <HintPath>..\..\DLLS_Migracion_G1\Pasaporte_Ruben\Formulario_Pasaporte\Capa_Vista_Pasaporte\bin\Debug\Capa_Vista_Pasaporte.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Renap">
+      <HintPath>..\..\DLLS_Migracion_G1\Renap_Mariale\Renap\Capa_Vista_Renap\bin\Debug\Capa_Vista_Renap.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Reporteador, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\componentes\reporteador\reporteador\Capa_Vista_Reporteador\bin\Debug\Capa_Vista_Reporteador.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Sedes">
+      <HintPath>..\..\DLLS_Migracion_G1\Sede_Gerber\Capa_Vista_Sedes\Capa_Vista_Sedes\bin\Debug\Capa_Vista_Sedes.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Seguridad">
+      <HintPath>..\..\..\..\componentes\seguridad\SeguridadMVC\SeguridadMVC\CapaVista\bin\Debug\Capa_Vista_Seguridad.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Tipo_Pasaporte">
+      <HintPath>..\..\DLLS_Migracion_G1\Tipo_Pasaporte_Izeppi\Capa_Vista_Tipo_Pasaporte\Capa_Vista_Tipo_Pasaporte\bin\Debug\Capa_Vista_Tipo_Pasaporte.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Frm_Cambiar_Contrasenea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Cambiar_Contrasenea.Designer.cs">
+      <DependentUpon>Frm_Cambiar_Contrasenea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Estado_Cita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Estado_Cita.Designer.cs">
+      <DependentUpon>Frm_Estado_Cita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Login_Migracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Login_Migracion.Designer.cs">
+      <DependentUpon>Frm_Login_Migracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Recuperar_Contrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Recuperar_Contrasena.Designer.cs">
+      <DependentUpon>Frm_Recuperar_Contrasena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_MDI_Migracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_MDI_Migracion.Designer.cs">
+      <DependentUpon>Frm_MDI_Migracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Frm_Cambiar_Contrasenea.resx">
+      <DependentUpon>Frm_Cambiar_Contrasenea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Estado_Cita.resx">
+      <DependentUpon>Frm_Estado_Cita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Login_Migracion.resx">
+      <DependentUpon>Frm_Login_Migracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Recuperar_Contrasena.resx">
+      <DependentUpon>Frm_Recuperar_Contrasena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_MDI_Migracion.resx">
+      <DependentUpon>Frm_MDI_Migracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pug.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapa3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapaaaaa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapaaaaa1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descarga1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapaaaaa2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pug1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pug2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pugpolicia3.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

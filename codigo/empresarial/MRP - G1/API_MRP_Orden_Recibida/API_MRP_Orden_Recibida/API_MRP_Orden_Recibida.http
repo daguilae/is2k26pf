@@ -1,0 +1,6 @@
+@API_MRP_Orden_Recibida_HostAddress = http://localhost:5170
+
+GET {{API_MRP_Orden_Recibida_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

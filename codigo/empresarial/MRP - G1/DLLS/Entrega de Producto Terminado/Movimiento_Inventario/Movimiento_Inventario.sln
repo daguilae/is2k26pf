@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36324.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Vista_Movimiento_Inventario", "Capa_Vista_Movimiento_Inventario\Capa_Vista_Movimiento_Inventario.csproj", "{1C800948-CBF6-4D37-96E2-CAD25A1A58BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C800948-CBF6-4D37-96E2-CAD25A1A58BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C800948-CBF6-4D37-96E2-CAD25A1A58BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C800948-CBF6-4D37-96E2-CAD25A1A58BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C800948-CBF6-4D37-96E2-CAD25A1A58BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54A54CE7-43BD-4D7E-ADF0-421545F95527}
+	EndGlobalSection
+EndGlobal
